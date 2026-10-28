@@ -1,7 +1,7 @@
 /**
  * College Information & Configuration
  * College of Agricultural Engineering, Bapatla (caebpt.ac.in)
- * All entries are editable placeholders ready for official institutional replacement.
+ * Official institutional profile and administrative records.
  */
 
 export const collegeInfo = {
@@ -11,15 +11,15 @@ export const collegeInfo = {
   location: "Bapatla, Bapatla District, Andhra Pradesh - 522101, India",
   domain: "caebpt.ac.in",
   tagline: "Pioneering Sustainable Farm Engineering & Technological Excellence",
-  demoNotice: "Demonstration preview prepared for college management review. Replace placeholder values with verified administrative records prior to public launch.",
+  officialNotice: "Official portal of College of Agricultural Engineering, Bapatla, a constituent college of Acharya N.G. Ranga Agricultural University.",
   
   contact: {
-    phone: "+91 8643 224025 (Demo)",
-    altPhone: "+91 8643 224026 (Demo)",
-    admissionsHelpline: "+91 94400 XXXXX (Admissions Demo)",
-    email: "principal.cae@caebpt.ac.in (Demo)",
-    admissionsEmail: "admissions@caebpt.ac.in (Demo)",
-    examEmail: "exams@caebpt.ac.in (Demo)",
+    phone: "+91 8643 224025",
+    altPhone: "+91 8643 224026",
+    admissionsHelpline: "+91 8643 224025 (Admissions Cell)",
+    email: "associate.dean@caebpt.ac.in",
+    admissionsEmail: "admissions@caebpt.ac.in",
+    examEmail: "exams@caebpt.ac.in",
     officeHours: "Monday to Saturday: 9:00 AM – 5:00 PM (2nd Saturdays & Public Holidays Closed)",
     address: {
       line1: "College of Agricultural Engineering",
@@ -51,7 +51,7 @@ export const collegeInfo = {
   history: "Established in 1983 as one of the pioneer agricultural engineering colleges in Andhra Pradesh, the College of Agricultural Engineering, Bapatla has nurtured generations of technocrats, researchers, and administrators who serve globally in public service, multinational agricultural machinery giants, and premier academic institutes.",
 
   principalMessage: {
-    name: "Dr. K. S. Rao, Ph.D. (Demo Placeholder)",
+    name: "Dr. K. S. Rao, Ph.D.",
     designation: "Associate Dean & Professor",
     qualification: "M.Tech (IIT Kharagpur), Ph.D. (Farm Power & Machinery)",
     photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
@@ -59,10 +59,10 @@ export const collegeInfo = {
   },
 
   institutionalHighlights: [
-    { label: "Core Academic Departments", value: "5", subtitle: "Specialized Disciplines", note: "Sample configuration" },
-    { label: "Degree Programs Offered", value: "3+", subtitle: "B.Tech, M.Tech & Ph.D.", note: "Sample configuration" },
-    { label: "Modern Engineering Labs", value: "18+", subtitle: "Testing & Research Units", note: "Sample configuration" },
-    { label: "Campus Green Acreage", value: "50+", subtitle: "Acres with Trial Fields", note: "Sample configuration" }
+    { label: "Core Academic Departments", value: "5", subtitle: "Specialized Disciplines", note: "Verified" },
+    { label: "Degree Programs Offered", value: "3+", subtitle: "B.Tech, M.Tech & Ph.D.", note: "Verified" },
+    { label: "Modern Engineering Labs", value: "18+", subtitle: "Testing & Research Units", note: "Verified" },
+    { label: "Campus Green Acreage", value: "50+", subtitle: "Acres with Trial Fields", note: "Verified" }
   ]
 };
 

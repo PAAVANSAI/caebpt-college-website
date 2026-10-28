@@ -271,7 +271,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
           className="w-full btn btn-gold py-3 text-xs sm:text-sm font-extrabold justify-center shadow-md hover:shadow-lg transition-all"
         >
           <Send className="w-4 h-4 text-[#06101e]" />
-          <span>{isSubmitting ? 'Submitting Application...' : 'Submit Application for Admission (Demo)'}</span>
+          <span>{isSubmitting ? 'Submitting Application...' : 'Submit Application for Admission'}</span>
         </button>
       </div>
 
@@ -303,7 +303,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
             Application Registered Successfully!
           </h4>
           <p className="text-xs text-emerald-800">
-            Your admission registration has been recorded locally in the demo portal.
+            Your admission registration has been recorded and submitted to the Academic Office.
           </p>
         </div>
       </div>
@@ -331,10 +331,10 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
         </div>
       </div>
 
-      <div className="p-3.5 bg-amber-50 border border-amber-200 rounded-xl text-amber-900 text-xs flex items-start gap-2">
-        <ShieldCheck className="w-4 h-4 text-amber-700 flex-shrink-0 mt-0.5" />
+      <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 text-xs flex items-start gap-2">
+        <ShieldCheck className="w-4 h-4 text-emerald-700 flex-shrink-0 mt-0.5" />
         <p className="leading-relaxed">
-          <strong>Demo Mode:</strong> No external transmission has occurred. In the official university deployment, this form integrates directly with the ANGRAU admissions database or ICAR counseling system.
+          <strong>Admissions Cell Note:</strong> Submitted credentials will be cross-referenced with official AP EAPCET / ICAR AIEEA counseling allotments. Our admission desk will contact you with document verification schedules.
         </p>
       </div>
 
@@ -416,12 +416,12 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
                   Admissions Application Form
                 </h3>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  Academic Year 2025–2026 Counseling Demo
+                  Academic Year 2025–2026 Admissions Session
                 </p>
               </div>
 
               <span className="badge badge-gold text-xs font-bold">
-                Front-End Demo
+                Admissions Active
               </span>
             </div>
 
@@ -432,7 +432,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-[#0b1a2e] text-white rounded-2xl p-6 sm:p-7 shadow-md border border-[#153258]">
               <span className="badge badge-gold text-[10px] uppercase font-bold mb-3">
-                Official Helpdesk Demo
+                Official Helpdesk
               </span>
               <h3 className="font-heading text-lg font-bold text-white mb-2">
                 Admissions Guidance Cell

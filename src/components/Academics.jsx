@@ -138,12 +138,6 @@ export default function Academics({ onSelectProgram, onOpenEnquiry }) {
             </div>
           ))}
         </div>
-
-        {/* Disclaimer Note */}
-        <div className="p-4 rounded-xl bg-gold-50 border border-gold-200 text-center max-w-2xl mx-auto text-xs text-slate-700">
-          <strong className="text-gold-700 font-bold block mb-1">Demo Academic Data Notice</strong>
-          All eligibility criteria, semester course breakdowns, and intake seats shown above represent customizable sample data to demonstrate layout functionality. Official academic regulations can be loaded dynamically.
-        </div>
       </div>
     </section>
   );

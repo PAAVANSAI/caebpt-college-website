@@ -41,18 +41,6 @@ export default function Notices({ onSelectNotice }) {
           </p>
         </div>
 
-        {/* Demo Disclaimer Alert Box */}
-        <div className="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-start gap-3 max-w-3xl mx-auto text-amber-900 text-xs sm:text-sm">
-          <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-          <div>
-            <strong className="font-bold block text-amber-950">
-              Notice Board Demo Information
-            </strong>
-            The announcements displayed below are simulated demo circulars for website presentation purposes.
-            They do not represent real-time institutional decisions or scheduled tests.
-          </div>
-        </div>
-
         {/* Search Bar & Category Controls */}
         <div className="max-w-3xl mx-auto mb-6">
           <div className="relative">

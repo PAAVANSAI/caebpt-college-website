@@ -4,7 +4,7 @@ import { ArrowUp, Globe, Mail, Phone, MapPin, ChevronRight, ShieldCheck } from '
 import CollegeEmblem from './CollegeEmblem';
 import { useWebsite } from '../context/WebsiteContext';
 
-export default function Footer({ onOpenDemoInfo }) {
+export default function Footer() {
   const { collegeInfo, departments } = useWebsite();
 
   const scrollToTop = () => {
@@ -131,14 +131,6 @@ export default function Footer({ onOpenDemoInfo }) {
                 <ShieldCheck className="w-3.5 h-3.5 text-[#06101e]" />
                 <span>Administrator Dashboard</span>
               </Link>
-
-              <button
-                type="button"
-                onClick={onOpenDemoInfo}
-                className="btn btn-outline-gold btn-sm text-[11px] w-full justify-center"
-              >
-                <span>Demo Review Guide</span>
-              </button>
             </div>
           </div>
         </div>

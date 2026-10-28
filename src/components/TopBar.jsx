@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, Clock, Globe, ShieldAlert, ShieldCheck } from 'lucide-react';
 import { useWebsite } from '../context/WebsiteContext';
 
-export default function TopBar({ onOpenDemoInfo }) {
+export default function TopBar() {
   const { collegeInfo } = useWebsite();
 
   return (
@@ -47,17 +47,6 @@ export default function TopBar({ onOpenDemoInfo }) {
             <ShieldCheck className="w-3.5 h-3.5 text-[#06101e]" />
             <span>Admin Portal</span>
           </Link>
-
-          {/* Demo Guide Button */}
-          <button
-            onClick={onOpenDemoInfo}
-            type="button"
-            className="flex items-center gap-1.5 bg-[#d4a72c]/20 hover:bg-[#d4a72c]/30 text-[#fae4a4] border border-[#d4a72c]/50 px-2.5 py-1 rounded-full text-xs font-semibold transition-all cursor-pointer"
-            title="Click to view instructions for college management review"
-          >
-            <ShieldAlert className="w-3.5 h-3.5 text-[#ecc75f]" />
-            <span className="hidden sm:inline">Demo Guide</span>
-          </button>
         </div>
       </div>
     </div>

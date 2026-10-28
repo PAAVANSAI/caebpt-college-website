@@ -157,11 +157,6 @@ export default function Faculty() {
             </button>
           </div>
         )}
-
-        {/* Demo Data Disclaimer */}
-        <div className="text-center text-xs text-slate-500">
-          Faculty directory entries above are editable sample profiles to demonstrate departmental staffing representation.
-        </div>
       </div>
     </section>
   );

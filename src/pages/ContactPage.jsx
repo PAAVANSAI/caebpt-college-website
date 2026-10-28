@@ -38,7 +38,7 @@ export default function ContactPage({ onOpenEnquiry }) {
                 <tr>
                   <th className="py-3 px-4 font-bold">Office / Department</th>
                   <th className="py-3 px-4 font-bold">In-Charge</th>
-                  <th className="py-3 px-4 font-bold">Direct Phone (Demo)</th>
+                  <th className="py-3 px-4 font-bold">Direct Telephone</th>
                   <th className="py-3 px-4 font-bold">Email</th>
                 </tr>
               </thead>

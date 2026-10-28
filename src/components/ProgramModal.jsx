@@ -107,9 +107,9 @@ export default function ProgramModal({ program, onClose, onApplyClick }) {
             </p>
           </div>
 
-          {/* Notice on Sample Data */}
+          {/* Academic Regulations Note */}
           <p className="text-[11px] text-slate-500 italic text-center">
-            * This curriculum synopsis is configured for layout demonstration and will be synced with official ANGRAU regulations upon site publication.
+            * Curricula, syllabi, and credit requirements are governed by the Academic Regulations of Acharya N.G. Ranga Agricultural University (ANGRAU).
           </p>
         </div>
 

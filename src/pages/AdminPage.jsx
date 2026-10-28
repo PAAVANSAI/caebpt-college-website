@@ -87,7 +87,7 @@ export default function AdminPage() {
       setAuthError('');
       triggerToast('Signed in as CAE Bapatla Chief Administrator');
     } else {
-      setAuthError('Invalid administrator credentials. Hint: use the 1-Click Demo button.');
+      setAuthError('Invalid administrator credentials. (Default passcode: admin or caebpt2025)');
     }
   };
 
@@ -307,7 +307,7 @@ export default function AdminPage() {
                 type="password"
                 value={passwordInput}
                 onChange={(e) => setPasswordInput(e.target.value)}
-                placeholder="Enter admin password (or use 1-Click login below)"
+                placeholder="Enter administrative passcode (Default: admin)"
                 className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm text-slate-900 focus:bg-white focus:border-[#0b1a2e] focus:ring-2 focus:ring-[#0b1a2e]/10 transition-all"
               />
               {authError && <p className="text-xs text-red-600 font-semibold mt-1.5">{authError}</p>}
@@ -322,7 +322,7 @@ export default function AdminPage() {
 
             <div className="relative flex py-1 items-center">
               <div className="flex-grow border-t border-slate-200"></div>
-              <span className="flex-shrink mx-3 text-slate-400 text-xs font-semibold">DEMO ACCESS</span>
+              <span className="flex-shrink mx-3 text-slate-400 text-xs font-semibold">DIRECT ACCESS</span>
               <div className="flex-grow border-t border-slate-200"></div>
             </div>
 
@@ -332,7 +332,7 @@ export default function AdminPage() {
               className="w-full py-2.5 px-4 rounded-xl font-heading font-bold text-xs bg-[#fdf5df] hover:bg-[#fae4a4] text-[#06101e] border border-[#fae4a4] transition-all cursor-pointer flex items-center justify-center gap-2"
             >
               <ShieldCheck className="w-4 h-4 text-[#b88e22]" />
-              <span>1-Click Instant Demo Login</span>
+              <span>Direct Sign In as Administrator</span>
             </button>
           </form>
         </div>

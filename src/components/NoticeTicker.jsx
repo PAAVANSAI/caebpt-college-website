@@ -22,7 +22,7 @@ export default function NoticeTicker({ onSelectNotice }) {
         <div className="flex items-center gap-2 flex-shrink-0">
           <span className="inline-flex items-center gap-1.5 bg-[#d4a72c] text-[#06101e] px-2.5 py-1 rounded font-extrabold uppercase tracking-wide text-xs">
             <Bell className="w-3.5 h-3.5 fill-current" />
-            <span>Updates (Demo)</span>
+            <span>Campus Bulletins</span>
           </span>
           <span className="text-slate-400 text-xs hidden md:inline">
             Notice #{currentIndex + 1} of {(noticesData || []).length}

@@ -308,7 +308,7 @@ export function WebsiteProvider({ children }) {
     const saved = localStorage.getItem('caebpt_site_settings');
     const defaults = {
       emergencyBannerActive: true,
-      emergencyBannerText: "Admissions Counseling Demo 2025–26: Online registration window is active for mock demonstration.",
+      emergencyBannerText: "AP EAPCET & ICAR AIEEA 2025–26 Counseling Window: Official B.Tech (Agri Engg) admissions guidelines and verification schedules are active.",
       maintenanceMode: false,
       rateLimitingActive: false,
       publicAdmissionsOpen: true,
@@ -689,7 +689,7 @@ export function WebsiteProvider({ children }) {
     setEnquiries(initialEnquiries);
     setSiteSettings({
       emergencyBannerActive: true,
-      emergencyBannerText: "Admissions Counseling Demo 2025–26: Online registration window is active for mock demonstration.",
+      emergencyBannerText: "AP EAPCET & ICAR AIEEA 2025–26 Counseling Window: Official B.Tech (Agri Engg) admissions guidelines and verification schedules are active.",
       maintenanceMode: false,
       rateLimitingActive: false,
       publicAdmissionsOpen: true,

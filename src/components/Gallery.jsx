@@ -122,9 +122,9 @@ export default function Gallery() {
           ))}
         </div>
 
-        {/* Gallery Replaceable Notice */}
+        {/* Gallery Archive Notice */}
         <div className="text-center text-xs text-slate-500">
-          Photographs in this demo gallery can easily be substituted with official high-resolution photographs of CAE Bapatla's campus and ceremonies.
+          Photographic archives documenting campus developments, student initiatives, convocation ceremonies, and regional agricultural conventions.
         </div>
       </div>
 

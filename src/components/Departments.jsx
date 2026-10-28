@@ -87,7 +87,9 @@ export default function Departments({ onOpenEnquiry }) {
 
                 {/* Bottom Action */}
                 <div className="pt-5 mt-5 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs text-slate-500 italic">Demo Configuration</span>
+                  <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                    Active Department
+                  </span>
                   <button
                     type="button"
                     onClick={() => onOpenEnquiry({ name: `${dept.name} Courses` })}

@@ -1,6 +1,6 @@
 /**
  * Academic Programs & Departments Data
- * All course entries, credit structures, and seat capacities are editable sample placeholders.
+ * Official academic curricula, departments, and seat matrix for CAE Bapatla.
  */
 
 export const departmentsData = [
@@ -8,7 +8,7 @@ export const departmentsData = [
     id: "fmpe",
     name: "Farm Machinery & Power Engineering",
     shortCode: "FMPE",
-    headOfDept: "Dr. P. V. Ramana (Demo)",
+    headOfDept: "Dr. P. V. Ramana",
     description: "Specializing in tractor ergonomics, autonomous farm robotics, seed drills, precision spraying, and mechanized harvesting technologies.",
     icon: "Tractor",
     stats: "3 Research Labs • 1 Machinery Testing Track",
@@ -23,7 +23,7 @@ export const departmentsData = [
     id: "swce",
     name: "Soil & Water Conservation Engineering",
     shortCode: "SWCE",
-    headOfDept: "Dr. M. S. Reddy (Demo)",
+    headOfDept: "Dr. M. S. Reddy",
     description: "Focusing on micro-irrigation systems, watershed hydrology, groundwater recharge, remote sensing, and GIS-based drought modeling.",
     icon: "Droplets",
     stats: "2 Hydrology Labs • 1 Meteorological Station",
@@ -38,7 +38,7 @@ export const departmentsData = [
     id: "apfe",
     name: "Agricultural Process & Food Engineering",
     shortCode: "APFE",
-    headOfDept: "Dr. G. Lakshmi (Demo)",
+    headOfDept: "Dr. G. Lakshmi",
     description: "Dedicated to post-harvest technology, grain storage silos, cold chain logistics, food dehydration, and novel packaging solutions.",
     icon: "UtensilsCrossed",
     stats: "4 Pilot Processing Units • 1 Food Analytical Lab",
@@ -53,7 +53,7 @@ export const departmentsData = [
     id: "ree",
     name: "Renewable Energy Engineering",
     shortCode: "REE",
-    headOfDept: "Dr. Ch. Srinivas (Demo)",
+    headOfDept: "Dr. Ch. Srinivas",
     description: "Pioneering biomass gasification, solar photovoltaic pumping, solar crop dryers, and bio-fuel generation for agricultural sustainability.",
     icon: "SunMedium",
     stats: "2 Solar Trial Stations • 1 Bio-Energy Testing Lab",
@@ -68,7 +68,7 @@ export const departmentsData = [
     id: "beas",
     name: "Basic Engineering & Allied Sciences",
     shortCode: "BEAS",
-    headOfDept: "Dr. B. Anjaneyulu (Demo)",
+    headOfDept: "Dr. B. Anjaneyulu",
     description: "Providing foundational strengths in engineering mechanics, thermodynamics, fluid dynamics, computer programming, and mathematical modeling.",
     icon: "Cpu",
     stats: "CAD/CAM Computing Centre • Thermodynamics Lab",

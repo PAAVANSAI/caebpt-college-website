@@ -89,20 +89,20 @@ export const officialStructureData = {
         title: "Notification for Engagement of Teaching Associates in Soil & Water Conservation",
         date: "November 05, 2024",
         deadline: "November 25, 2024",
-        category: "Recruitment (Demo)",
+        category: "Recruitment",
         department: "Soil & Water Conservation Engineering",
         summary: "Applications are invited on contractual basis for Teaching Associates with M.Tech in SWCE / Water Resources.",
-        docName: "Recruitment_Notification_TA_SWCE_Demo.pdf"
+        docName: "Recruitment_Notification_TA_SWCE.pdf"
       },
       {
         id: "rec-2",
         title: "Walk-in Interview for Senior Research Fellow (SRF) under ICAR Sponsored Drone Project",
         date: "October 22, 2024",
         deadline: "November 15, 2024",
-        category: "Recruitment (Demo)",
+        category: "Recruitment",
         department: "Farm Machinery & Power Engineering",
         summary: "SRF vacancy under precision drone spraying trials in agricultural fields.",
-        docName: "SRF_WalkIn_Notification_Demo.pdf"
+        docName: "SRF_WalkIn_Notification.pdf"
       }
     ],
     tenders: [
@@ -113,7 +113,7 @@ export const officialStructureData = {
         refNo: "CAE/BPT/TEND/FMPE/2024-03",
         deadline: "November 24, 2024",
         summary: "Sealed competitive tenders invited from accredited manufacturers for supply and commissioning of PTO dynamometer testing rig.",
-        docName: "Tender_Notice_Dynamometer_Demo.pdf"
+        docName: "Tender_Notice_Dynamometer.pdf"
       },
       {
         id: "tnd-2",
@@ -122,7 +122,7 @@ export const officialStructureData = {
         refNo: "CAE/BPT/TEND/APFE/2024-02",
         deadline: "November 10, 2024",
         summary: "Procurement of spectrophotometer and texture analysis spare sensors for Post-Harvest Processing Lab.",
-        docName: "Tender_Notice_FoodLab_Demo.pdf"
+        docName: "Tender_Notice_FoodLab.pdf"
       }
     ],
     circulars: [
@@ -132,7 +132,7 @@ export const officialStructureData = {
         date: "November 04, 2024",
         issuingAuthority: "Officer In-charge of Academic Matters",
         summary: "Timetable for B.Tech (Agri Engg) 3rd, 5th, and 7th semester mid-term evaluations.",
-        docName: "Circular_Exam_Schedule_Demo.pdf"
+        docName: "Circular_Exam_Schedule.pdf"
       },
       {
         id: "cir-2",
@@ -140,7 +140,7 @@ export const officialStructureData = {
         date: "October 26, 2024",
         issuingAuthority: "Officer In-charge of Student Affairs",
         summary: "All undergraduate and postgraduate hostel residents must submit online anti-ragging undertakings.",
-        docName: "Circular_AntiRagging_Mandate_Demo.pdf"
+        docName: "Circular_AntiRagging_Mandate.pdf"
       },
       {
         id: "cir-3",
@@ -148,7 +148,7 @@ export const officialStructureData = {
         date: "October 15, 2024",
         issuingAuthority: "Administrative Officer",
         summary: "Eligible candidates may submit scholarship application forms along with parent income certificates.",
-        docName: "Circular_Scholarships_Guidelines_Demo.pdf"
+        docName: "Circular_Scholarships_Guidelines.pdf"
       }
     ]
   },
@@ -327,17 +327,17 @@ export const officialStructureData = {
           name: "Dr. K. Hemalatha, Ph.D. (Placeholder)",
           designation: "Dean of Post Graduate Studies",
           responsibilities: "Supervises M.Tech, M.Sc., and Ph.D. dissertation evaluations and university doctoral fellowships.",
-          email: "dean.pgs@angrau.ac.in (Placeholder)"
+          email: "dean.pgs@angrau.ac.in"
         }
       ]
     },
     associateDean: {
       title: "Associate Dean",
-      name: "Dr. K. S. Rao, Ph.D. (Associate Dean Placeholder)",
+      name: "Dr. K. S. Rao, Ph.D.",
       designation: "Associate Dean & Professor",
       office: "Principal's Administrative Chamber, Main Block, CAE Bapatla",
-      phone: "+91 8643 224025 (Office Demo)",
-      email: "associate.dean@caebpt.ac.in (Demo)",
+      phone: "+91 8643 224025",
+      email: "associate.dean@caebpt.ac.in",
       biography: "Serving as the executive and academic head of the College of Agricultural Engineering, Bapatla. Over 24 years of academic and administrative experience in agricultural research, tractor testings, and student mentoring."
     },
     supportingStaff: {
@@ -346,45 +346,45 @@ export const officialStructureData = {
       staffList: [
         {
           role: "Administrative Officer",
-          name: "Er. N. Satyanarayana (Placeholder)",
+          name: "Er. N. Satyanarayana",
           designation: "Administrative Officer",
           duties: "Oversees general administration, university communications, establishment matters, service registers, finance, and procurement stores.",
-          contact: "ao.cae@caebpt.ac.in (Demo) • Ext: 102"
+          contact: "ao.cae@caebpt.ac.in • Ext: 102"
         },
         {
           role: "Warden",
-          name: "Dr. T. Harikrishna (Boys Hostel) & Dr. V. Deepa (Girls Hostel) (Placeholder)",
+          name: "Dr. T. Harikrishna (Boys Hostel) & Dr. V. Deepa (Girls Hostel)",
           designation: "Hostel Wardens",
           duties: "Management of residential hostels, dining messes, student discipline, room allotments, and resident security.",
-          contact: "wardens@caebpt.ac.in (Demo) • Ext: 106"
+          contact: "wardens@caebpt.ac.in • Ext: 106"
         },
         {
           role: "Officer In-charge of Academic Matters",
-          name: "Dr. P. V. Ramana (Placeholder)",
+          name: "Dr. P. V. Ramana",
           designation: "Professor & Academic In-Charge",
           duties: "Coordinates semester registrations, examination scheduling, attendance registers, grade reports, and classroom scheduling.",
-          contact: "academics.officer@caebpt.ac.in (Demo) • Ext: 104"
+          contact: "academics.officer@caebpt.ac.in • Ext: 104"
         },
         {
           role: "Officer In-charge of Student Affairs",
-          name: "Dr. M. S. Reddy (Placeholder)",
+          name: "Dr. M. S. Reddy",
           designation: "Professor & Student Affairs In-Charge",
           duties: "Coordinates student welfare, extracurricular clubs, sports events, cultural symposia, NSS/NCC units, and grievance redressal.",
-          contact: "student.affairs@caebpt.ac.in (Demo) • Ext: 108"
+          contact: "student.affairs@caebpt.ac.in • Ext: 108"
         },
         {
           role: "Placement Officer",
-          name: "Dr. Ch. Srinivas (Placeholder)",
+          name: "Dr. Ch. Srinivas",
           designation: "Associate Professor & Placement Officer",
           duties: "Liaisons with farm equipment companies, micro-irrigation corporations, food processors, campus interviews, and career counseling.",
-          contact: "placement@caebpt.ac.in (Demo) • Ext: 110"
+          contact: "placement@caebpt.ac.in • Ext: 110"
         },
         {
           role: "Transport In-charge",
-          name: "Er. B. Anjaneyulu (Placeholder)",
+          name: "Er. B. Anjaneyulu",
           designation: "Assistant Professor & Transport In-Charge",
           duties: "Manages college transport buses, field demonstration vehicles, farm machinery mobilization, and scheduled shuttle operations.",
-          contact: "transport@caebpt.ac.in (Demo) • Ext: 114"
+          contact: "transport@caebpt.ac.in • Ext: 114"
         }
       ]
     }
@@ -728,7 +728,7 @@ export const officialStructureData = {
         year: "2024",
         department: "Farm Machinery & Power Engineering",
         authors: "Faculty Research Team, FMPE",
-        docName: "Research_Bulletin_FMPE_2024_Demo.pdf"
+        docName: "Research_Bulletin_FMPE_2024.pdf"
       },
       {
         id: "pub-2",
@@ -737,7 +737,7 @@ export const officialStructureData = {
         year: "2023",
         department: "Soil & Water Conservation Engineering",
         authors: "Faculty Research Team, SWCE",
-        docName: "Monograph_SWCE_WaterResources_Demo.pdf"
+        docName: "Monograph_SWCE_WaterResources.pdf"
       },
       {
         id: "pub-3",
@@ -746,7 +746,7 @@ export const officialStructureData = {
         year: "2023",
         department: "Agricultural Process & Food Engineering",
         authors: "Faculty Research Team, APFE",
-        docName: "Handbook_APFE_PostHarvest_Demo.pdf"
+        docName: "Handbook_APFE_PostHarvest.pdf"
       },
       {
         id: "pub-4",
@@ -755,7 +755,7 @@ export const officialStructureData = {
         year: "2023-24",
         department: "College Editorial Board",
         authors: "Student & Faculty Editorial Committee",
-        docName: "AgriEngineer_Annual_Magazine_Demo.pdf"
+        docName: "AgriEngineer_Annual_Magazine.pdf"
       }
     ]
   }

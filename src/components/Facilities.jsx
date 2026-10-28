@@ -103,9 +103,9 @@ export default function Facilities() {
           ))}
         </div>
 
-        {/* Demo Facility Notice */}
+        {/* Facility Standard Notice */}
         <div className="text-center text-xs text-slate-500">
-          Photographs and equipment inventories shown above represent representative educational assets and can be supplemented with actual campus photographs.
+          Laboratory facilities and instructional amenities are maintained in accordance with ANGRAU and ICAR educational standards.
         </div>
       </div>
     </section>

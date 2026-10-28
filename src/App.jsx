@@ -26,7 +26,6 @@ import AdminPage from './pages/AdminPage';
 // Modals
 import ProgramModal from './components/ProgramModal';
 import NoticeModal from './components/NoticeModal';
-import DemoModal from './components/DemoModal';
 import Admissions from './components/Admissions';
 import { X, GraduationCap, AlertTriangle, ArrowLeft } from 'lucide-react';
 
@@ -35,7 +34,6 @@ function AppContent() {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [selectedProgram, setSelectedProgram] = useState(null);
   const [selectedNotice, setSelectedNotice] = useState(null);
   const [isAdmissionsModalOpen, setIsAdmissionsModalOpen] = useState(false);
@@ -57,7 +55,6 @@ function AppContent() {
       {/* Main Official Header with Dropdowns */}
       <Header
         onOpenAdmissionsModal={() => handleOpenAdmissions()}
-        onOpenDemoInfo={() => setIsDemoModalOpen(true)}
       />
 
       {/* Maintenance Mode Alert if enabled in Admin Dashboard */}
@@ -172,7 +169,7 @@ function AppContent() {
       </main>
 
       {/* Collegiate Footer */}
-      <Footer onOpenDemoInfo={() => setIsDemoModalOpen(true)} />
+      <Footer />
 
       {/* Program Details Modal */}
       <ProgramModal
@@ -185,12 +182,6 @@ function AppContent() {
       <NoticeModal
         notice={selectedNotice}
         onClose={() => setSelectedNotice(null)}
-      />
-
-      {/* Demo Guide Modal */}
-      <DemoModal
-        isOpen={isDemoModalOpen}
-        onClose={() => setIsDemoModalOpen(false)}
       />
 
       {/* Admissions Enquiry Popup Modal */}

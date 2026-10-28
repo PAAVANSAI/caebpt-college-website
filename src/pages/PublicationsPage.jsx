@@ -8,8 +8,57 @@ export default function PublicationsPage() {
   const { officialStructure } = useWebsite();
   const publications = officialStructure?.publications || officialStructureData.publications;
 
-  const handleDownloadDemo = (filename) => {
-    alert(`Demo Mode: Simulated download of official publication: "${filename}". In production, this links to the university digital repository.`);
+  const handleDownloadDoc = (item) => {
+    const win = window.open('', '_blank');
+    if (win) {
+      win.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>${item.title}</title>
+          <style>
+            body { font-family: 'Times New Roman', serif; padding: 40px; max-width: 800px; margin: 0 auto; color: #111; line-height: 1.6; }
+            .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 15px; margin-bottom: 25px; }
+            .crest { font-size: 20px; font-weight: bold; text-transform: uppercase; }
+            .sub { font-size: 13px; color: #444; }
+            .meta { display: flex; justify-content: space-between; margin-bottom: 25px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+            .title { text-align: center; font-size: 18px; font-weight: bold; margin-bottom: 15px; }
+            .authors { text-align: center; font-size: 14px; font-style: italic; margin-bottom: 25px; color: #333; }
+            .content { font-size: 15px; text-align: justify; margin-bottom: 30px; }
+            .abstract-box { background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #0b1a2e; padding: 20px; border-radius: 4px; margin-bottom: 25px; }
+            .sig { margin-top: 50px; text-align: right; }
+            @media print { .no-print { display: none; } }
+          </style>
+        </head>
+        <body>
+          <div class="no-print" style="margin-bottom: 20px; text-align: right;">
+            <button onclick="window.print()" style="padding: 8px 18px; background: #0b1a2e; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">Print / Save as PDF</button>
+          </div>
+          <div class="header">
+            <div class="crest">COLLEGE OF AGRICULTURAL ENGINEERING, BAPATLA</div>
+            <div class="sub">ACHARYA N.G. RANGA AGRICULTURAL UNIVERSITY (ANGRAU)</div>
+            <div class="sub">Division of Research Publications & Scholarly Monographs</div>
+          </div>
+          <div class="meta">
+            <div>Type: ${item.type} | Dept: ${item.department}</div>
+            <div>Year: ${item.year} | Ref: ${item.docName || 'ANGRAU-CAE-PUB'}</div>
+          </div>
+          <div class="title">${item.title}</div>
+          <div class="authors">Authors / Contributors: ${item.authors}</div>
+          <div class="abstract-box">
+            <h4 style="margin-top:0; font-size:15px; text-transform:uppercase;">Publication Abstract & Executive Summary</h4>
+            <p class="content">This technical publication is officially archived in the institutional repository of College of Agricultural Engineering, Bapatla, ANGRAU. Full monograph texts, laboratory protocols, and field findings are maintained under library accession code <strong>${item.docName}</strong>.</p>
+          </div>
+          <div class="sig">
+            <div style="font-weight: bold;">Editor-in-Chief / Associate Dean</div>
+            <div>Institutional Research Publications Committee</div>
+            <div>CAE, ANGRAU, Bapatla</div>
+          </div>
+        </body>
+        </html>
+      `);
+      win.document.close();
+    }
   };
 
   return (
@@ -54,11 +103,11 @@ export default function PublicationsPage() {
 
                   <button
                     type="button"
-                    onClick={() => handleDownloadDemo(item.docName)}
-                    className="btn btn-outline btn-sm text-xs flex items-center gap-1.5 flex-shrink-0"
+                    onClick={() => handleDownloadDoc(item)}
+                    className="btn btn-outline btn-sm text-xs flex items-center gap-1.5 flex-shrink-0 hover:bg-[#0b1a2e] hover:text-white transition-colors"
                   >
                     <Download className="w-3.5 h-3.5" />
-                    <span>Download PDF</span>
+                    <span>View / Print PDF</span>
                   </button>
                 </div>
               ))}

@@ -16,7 +16,7 @@ import CollegeEmblem from './CollegeEmblem';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
 
-export default function Header({ onOpenAdmissionsModal, onOpenDemoInfo }) {
+export default function Header({ onOpenAdmissionsModal }) {
   const { officialStructure, siteSettings } = useWebsite();
   const currentStructure = officialStructure || officialStructureData;
   const [isScrolled, setIsScrolled] = useState(false);
@@ -185,7 +185,7 @@ export default function Header({ onOpenAdmissionsModal, onOpenDemoInfo }) {
               </span>
             </div>
 
-            {/* Right: Phone, Admin Portal, Demo Guide */}
+            {/* Right: Phone & Admin Portal */}
             <div className="flex items-center gap-2.5 sm:gap-3">
               <a
                 href={`tel:${(siteSettings?.topBarPhone || '+91 8643 224025').replace(/[^0-9+]/g, '')}`}
@@ -193,7 +193,7 @@ export default function Header({ onOpenAdmissionsModal, onOpenDemoInfo }) {
                 style={{ textDecoration: 'none' }}
               >
                 <Phone className="w-3.5 h-3.5 text-[#f5c84c]" />
-                <span>{siteSettings?.topBarPhone || '+91 8643 224025 (Demo)'}</span>
+                <span>{siteSettings?.topBarPhone || '+91 8643 224025'}</span>
               </a>
 
               <Link
@@ -205,17 +205,6 @@ export default function Header({ onOpenAdmissionsModal, onOpenDemoInfo }) {
                 <Shield className="w-3 h-3 text-[#06101e]" />
                 <span>Admin Portal</span>
               </Link>
-
-              {onOpenDemoInfo && (
-                <button
-                  type="button"
-                  onClick={onOpenDemoInfo}
-                  className="hidden sm:flex items-center gap-1 bg-white/10 hover:bg-white/20 text-[#f5c84c] border border-white/20 px-2 py-0.5 sm:py-1 rounded-md text-[11px] font-bold transition-all cursor-pointer"
-                  title="Click to view instructions for college management review"
-                >
-                  <span>Demo Guide</span>
-                </button>
-              )}
             </div>
           </div>
         </div>
@@ -287,18 +276,6 @@ export default function Header({ onOpenAdmissionsModal, onOpenDemoInfo }) {
                 <Shield className="w-3.5 h-3.5 text-[#d4a72c]" />
                 <span>Admin</span>
               </Link>
-
-              {/* Demo Guide Button */}
-              {onOpenDemoInfo && (
-                <button
-                  type="button"
-                  onClick={onOpenDemoInfo}
-                  className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 text-xs font-bold transition-all cursor-pointer"
-                  title="Click to view instructions for college management review"
-                >
-                  <span>Demo Guide</span>
-                </button>
-              )}
 
               {/* Primary Apply CTA on upper bar */}
               <button

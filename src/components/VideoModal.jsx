@@ -48,15 +48,15 @@ export default function VideoModal({ video, onClose }) {
             </div>
           </div>
 
-          <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg text-amber-900 text-xs flex items-center justify-between">
-            <span>Video playback demo placeholder. Official video link is configured for: <strong>{video.title}</strong></span>
+          <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-blue-900 text-xs flex items-center justify-between">
+            <span>Institutional Documentary / Video Stream: <strong>{video.title}</strong></span>
             <a
               href={video.videoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold text-amber-800 hover:text-amber-950 flex items-center gap-1"
+              className="font-bold text-blue-800 hover:text-blue-950 flex items-center gap-1"
             >
-              <span>Open on YouTube</span>
+              <span>Watch on Official Channel</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>

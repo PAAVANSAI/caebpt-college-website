@@ -191,9 +191,6 @@ export default function About() {
                   <p>
                     "{collegeInfo.principalMessage.messageText}"
                   </p>
-                  <p className="text-xs text-slate-500 pt-2 border-t border-slate-100 italic">
-                    Note: This portrait and message are replaceable demo placeholders configured for layout demonstration.
-                  </p>
                 </div>
 
                 {/* Signature Placeholder */}

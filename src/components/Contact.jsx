@@ -58,7 +58,7 @@ export default function Contact({ onOpenEnquiry }) {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                    Telephonic Contacts (Demo)
+                    Telephonic Contacts
                   </h4>
                   <p className="text-xs sm:text-sm font-semibold text-navy-950 mt-0.5">
                     Main Office: {collegeInfo.contact.phone}
@@ -75,7 +75,7 @@ export default function Contact({ onOpenEnquiry }) {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                    Official Electronic Mail (Demo)
+                    Official Electronic Mail
                   </h4>
                   <p className="text-xs sm:text-sm font-semibold text-navy-950 mt-0.5">
                     {collegeInfo.contact.email}

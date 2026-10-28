@@ -58,8 +58,55 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [activePhotoIndex, setActivePhotoIndex] = useState(null);
 
-  const handleDownloadDemo = (filename) => {
-    alert(`Demo Mode: Simulated download for official circular: "${filename}". In production, this will fetch the official university PDF.`);
+  const handleDownloadDoc = (item, type = 'Notification') => {
+    const win = window.open('', '_blank');
+    if (win) {
+      win.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>${item.title || item.docName}</title>
+          <style>
+            body { font-family: 'Times New Roman', serif; padding: 40px; max-width: 800px; margin: 0 auto; color: #111; line-height: 1.6; }
+            .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 15px; margin-bottom: 25px; }
+            .crest { font-size: 20px; font-weight: bold; text-transform: uppercase; }
+            .sub { font-size: 13px; color: #444; }
+            .meta { display: flex; justify-content: space-between; margin-bottom: 25px; font-size: 14px; font-weight: bold; }
+            .title { text-align: center; font-size: 17px; font-weight: bold; text-decoration: underline; margin-bottom: 20px; text-transform: uppercase; }
+            .content { font-size: 15px; text-align: justify; margin-bottom: 30px; }
+            .specs { background: #f9f9f9; padding: 15px; border-left: 4px solid #000; margin-bottom: 25px; font-size: 14px; }
+            .sig { margin-top: 50px; text-align: right; }
+            @media print { .no-print { display: none; } }
+          </style>
+        </head>
+        <body>
+          <div class="no-print" style="margin-bottom: 20px; text-align: right;">
+            <button onclick="window.print()" style="padding: 8px 18px; background: #0b1a2e; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">Print / Save as Official PDF</button>
+          </div>
+          <div class="header">
+            <div class="crest">COLLEGE OF AGRICULTURAL ENGINEERING, BAPATLA</div>
+            <div class="sub">ACHARYA N.G. RANGA AGRICULTURAL UNIVERSITY (ANGRAU)</div>
+            <div class="sub">Bapatla - 522 101, Bapatla District, Andhra Pradesh, India</div>
+          </div>
+          <div class="meta">
+            <div>Ref: ${item.refNo || 'CAEBPT/OFFICIAL/' + new Date().getFullYear()}</div>
+            <div>Date: ${item.date || new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}</div>
+          </div>
+          <div class="title">${type}: ${item.title || 'Official Document'}</div>
+          <div class="content">
+            <p>${item.summary || item.content || 'This document has been officially issued and entered into the institutional administrative records.'}</p>
+            ${item.deadline ? `<div class="specs"><strong>Submission / Application Deadline:</strong> ${item.deadline}<br/><strong>File Reference:</strong> ${item.docName || 'Official Notification'}</div>` : ''}
+          </div>
+          <div class="sig">
+            <div style="font-weight: bold;">Associate Dean</div>
+            <div>College of Agricultural Engineering</div>
+            <div>ANGRAU, Bapatla</div>
+          </div>
+        </body>
+        </html>
+      `);
+      win.document.close();
+    }
   };
 
   return (
@@ -69,7 +116,7 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
         <div className="bg-[#b45309] text-white py-2 px-4 text-xs font-semibold flex items-center justify-between border-b border-[#d97706]">
           <div className="container flex items-center gap-2 justify-center text-center">
             <AlertCircle className="w-4 h-4 text-[#fae4a4] flex-shrink-0" />
-            <span>{siteSettings?.emergencyBannerText || 'Admissions Counseling Demo 2025–26: Online registration window is active.'}</span>
+            <span>{siteSettings?.emergencyBannerText || 'AP EAPCET & ICAR AIEEA 2025–26 Counseling Window: Official B.Tech (Agri Engg) admissions guidelines and verification schedules are active.'}</span>
           </div>
         </div>
       )}
@@ -340,11 +387,11 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                   </div>
                   <button
                     type="button"
-                    onClick={() => handleDownloadDemo(rec.docName)}
+                    onClick={() => handleDownloadDoc(rec, 'Recruitment Notification')}
                     className="btn btn-outline btn-sm text-xs font-bold flex items-center gap-2 flex-shrink-0 hover:bg-[#0b1a2e] hover:text-white hover:border-[#0b1a2e] transition-all"
                   >
                     <Download className="w-3.5 h-3.5 text-[#b88e22]" />
-                    <span>Download Form</span>
+                    <span>View / Print Circular</span>
                   </button>
                 </div>
               ))}
@@ -374,11 +421,11 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                   </div>
                   <button
                     type="button"
-                    onClick={() => handleDownloadDemo(tnd.docName)}
+                    onClick={() => handleDownloadDoc(tnd, 'Tender Specifications')}
                     className="btn btn-outline btn-sm text-xs font-bold flex items-center gap-2 flex-shrink-0 hover:bg-[#0b1a2e] hover:text-white hover:border-[#0b1a2e] transition-all"
                   >
                     <Download className="w-3.5 h-3.5 text-[#b88e22]" />
-                    <span>Tender Specs</span>
+                    <span>View Tender Specs</span>
                   </button>
                 </div>
               ))}
@@ -409,11 +456,11 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                   </div>
                   <button
                     type="button"
-                    onClick={() => handleDownloadDemo(cir.docName)}
+                    onClick={() => handleDownloadDoc(cir, 'Official Circular')}
                     className="btn btn-primary btn-sm text-xs font-bold flex items-center gap-2 flex-shrink-0"
                   >
                     <Download className="w-3.5 h-3.5 text-[#fae4a4]" />
-                    <span>Download PDF</span>
+                    <span>View / Print PDF</span>
                   </button>
                 </div>
               ))}
