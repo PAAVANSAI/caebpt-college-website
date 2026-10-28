@@ -211,10 +211,10 @@ export default function Header({ onOpenAdmissionsModal }) {
       )}
 
       {/* 
-        TIER 1: UPPER BRAND BAR (Image 3)
-        Sits naturally in document flow. When the user scrolls down, it scrolls up naturally with 100% 1:1 tactile smoothness and zero layout bounce!
+        TIER 1: UPPER BRAND BAR (Desktop Only)
+        Sits naturally in document flow on large screens. On mobile, a dedicated unified bar is used.
       */}
-      <div className="bg-white border-b border-slate-200/80 relative z-30">
+      <div className="hidden lg:block bg-white border-b border-slate-200/80 relative z-30">
         <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 py-2.5 sm:py-3">
           <div className="flex items-center justify-between gap-4">
             {/* College Crest & Title */}
@@ -526,20 +526,44 @@ export default function Header({ onOpenAdmissionsModal }) {
             </button>
           </div>
 
-          {/* Mobile Nav Button inside Sticky Bar when scrolled */}
-          <div className="lg:hidden flex items-center justify-between w-full">
-            <span className="text-xs font-bold text-navy-950 flex items-center gap-2">
-              <CollegeEmblem size={24} />
-              <span>CAE Bapatla</span>
-            </span>
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 rounded-lg text-slate-700 hover:bg-slate-100 border border-slate-200"
-              aria-label="Toggle Mobile Menu"
+          {/* Unified Sticky Mobile Header Bar */}
+          <div className="lg:hidden flex items-center justify-between w-full py-1">
+            <Link
+              to="/"
+              className="flex items-center gap-2.5 group cursor-pointer"
+              style={{ textDecoration: 'none' }}
+              onClick={() => setMobileMenuOpen(false)}
             >
-              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-            </button>
+              <CollegeEmblem size={34} />
+              <div className="flex flex-col">
+                <span className="text-xs sm:text-sm font-extrabold text-[#0b1a2e] leading-tight">
+                  CAE Bapatla
+                </span>
+                <span className="text-[10px] text-[#b88e22] font-bold uppercase tracking-wider">
+                  ANGRAU • Estd 1983
+                </span>
+              </div>
+            </Link>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={onOpenAdmissionsModal}
+                className="btn btn-gold py-1.5 px-3 text-xs font-extrabold inline-flex items-center gap-1 shadow-xs"
+              >
+                <GraduationCap className="w-3.5 h-3.5 text-[#06101e]" />
+                <span className="hidden sm:inline">Apply</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 rounded-xl text-slate-700 hover:bg-slate-100 border border-slate-200 transition-colors cursor-pointer"
+                aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+              >
+                {mobileMenuOpen ? <X className="w-5 h-5 text-[#0b1a2e]" /> : <Menu className="w-5 h-5 text-slate-700" />}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -703,6 +727,15 @@ export default function Header({ onOpenAdmissionsModal }) {
                 <GraduationCap className="w-4 h-4 text-[#06101e]" />
                 <span className="font-extrabold text-[#06101e]">Apply for Admission</span>
               </button>
+
+              <a
+                href="tel:+918643224025"
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200 hover:bg-slate-200 transition-colors"
+                style={{ textDecoration: 'none' }}
+              >
+                <Phone className="w-3.5 h-3.5 text-[#b88e22]" />
+                <span>Call Campus Helpline: +91 8643 224025</span>
+              </a>
             </div>
           </div>
         </div>

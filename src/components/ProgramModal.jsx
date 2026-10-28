@@ -55,7 +55,7 @@ export default function ProgramModal({ program, onClose, onApplyClick }) {
           <div className="bg-slate-50 border border-slate-200 rounded-xl p-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-navy-900 mb-1 flex items-center gap-1.5">
               <FileText className="w-4 h-4 text-gold-500" />
-              <span>Eligibility Criteria (Sample Placeholder)</span>
+              <span>Eligibility Criteria & Educational Requirements</span>
             </h4>
             <p className="text-sm text-slate-700">
               {program.eligibility}
@@ -114,11 +114,11 @@ export default function ProgramModal({ program, onClose, onApplyClick }) {
         </div>
 
         {/* Modal Footer CTA */}
-        <div className="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-3">
+        <div className="p-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           <button
             type="button"
             onClick={onClose}
-            className="btn btn-outline btn-sm"
+            className="btn btn-outline btn-sm justify-center order-2 sm:order-1"
           >
             Close
           </button>
@@ -129,7 +129,7 @@ export default function ProgramModal({ program, onClose, onApplyClick }) {
               onClose();
               onApplyClick(program);
             }}
-            className="btn btn-gold btn-sm"
+            className="btn btn-gold btn-sm justify-center order-1 sm:order-2"
           >
             <span>Enquire for {program.degree}</span>
             <ArrowRight className="w-4 h-4" />

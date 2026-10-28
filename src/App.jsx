@@ -194,29 +194,29 @@ function AppContent() {
             aria-modal="true"
             aria-labelledby="admissions-modal-heading"
           >
-            <div className="bg-[#0b1a2e] text-white p-4 sm:p-6 flex items-center justify-between border-b border-[#1b3459]">
-              <div className="flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/15">
+            <div className="bg-[#0b1a2e] text-white p-3.5 sm:p-6 flex items-center justify-between border-b border-[#1b3459]">
+              <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/15">
                   <GraduationCap className="w-5 h-5 text-[#f5c84c]" />
                 </div>
-                <div>
-                  <h3 id="admissions-modal-heading" className="font-heading text-base sm:text-lg font-bold text-white leading-tight">
-                    Student Admission & Counseling Application Form (2025–2026)
+                <div className="min-w-0">
+                  <h3 id="admissions-modal-heading" className="font-heading text-xs sm:text-base md:text-lg font-bold text-white leading-snug truncate">
+                    Admissions Application Form (2025–2026)
                   </h3>
-                  <p className="text-xs text-slate-300 mt-0.5">College of Agricultural Engineering, Bapatla • Constituent College of ANGRAU</p>
+                  <p className="text-[11px] sm:text-xs text-slate-300 truncate">CAE Bapatla • Constituent College of ANGRAU</p>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setIsAdmissionsModalOpen(false)}
-                className="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-white/10 transition-colors"
+                className="text-slate-400 hover:text-white p-1.5 sm:p-2 rounded-xl hover:bg-white/10 transition-colors flex-shrink-0"
                 aria-label="Close Enquiry Modal"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="p-5 sm:p-8 max-h-[82vh] overflow-y-auto">
+            <div className="p-4 sm:p-8 max-h-[84vh] overflow-y-auto">
               <Admissions
                 initialCourse={prefilledCourse}
                 isModal={true}

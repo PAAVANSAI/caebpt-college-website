@@ -33,7 +33,7 @@ export default function ContactPage({ onOpenEnquiry }) {
           </div>
 
           <div className="max-w-4xl mx-auto overflow-x-auto bg-white rounded-2xl border border-slate-200 shadow-sm">
-            <table className="w-full text-left text-xs sm:text-sm">
+            <table className="w-full min-w-[560px] text-left text-xs sm:text-sm">
               <thead className="bg-[#0b1a2e] text-white">
                 <tr>
                   <th className="py-3 px-4 font-bold">Office / Department</th>
@@ -76,6 +76,9 @@ export default function ContactPage({ onOpenEnquiry }) {
               </tbody>
             </table>
           </div>
+          <p className="text-[11px] text-slate-400 mt-2 text-center md:hidden">
+            ⇄ Swipe table horizontally to view all direct lines & emails
+          </p>
         </div>
       </section>
     </div>

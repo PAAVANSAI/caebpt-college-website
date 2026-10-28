@@ -112,6 +112,13 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: 1.25rem;
 }
 
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 section {
   scroll-margin-top: 70px;
   position: relative;
@@ -323,10 +330,38 @@ section {
   transform: translateY(-2px);
 }
 
-/* ── Filter Tabs ────────────────────────────────── */
+/* ── Filter Tabs (Mobile Responsive & Touch Scrollable) ── */
 .filter-tabs-wrapper {
-  display: flex; align-items: center; justify-content: center;
-  flex-wrap: wrap; gap: 0.4rem; margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .filter-tabs-wrapper {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.6rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .filter-tabs-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+  .filter-tab {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 0.775rem;
+    padding: 0.45rem 0.95rem;
+  }
 }
 
 .filter-tab {
@@ -376,13 +411,19 @@ section {
   background-color: rgba(6, 16, 30, 0.75);
   backdrop-filter: blur(6px);
   display: flex; align-items: center; justify-content: center;
-  z-index: 1000; padding: 1rem;
+  z-index: 1000; padding: 0.75rem;
   animation: fadeIn 150ms ease-out;
+}
+
+@media (min-width: 640px) {
+  .modal-overlay {
+    padding: 1.25rem;
+  }
 }
 
 .modal-content {
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 16px;
   border: 1px solid #e2e8f0;
   box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.35);
   width: 100%;
@@ -391,6 +432,12 @@ section {
   overflow-y: auto;
   position: relative;
   animation: slideUp 200ms ease-out;
+}
+
+@media (min-width: 640px) {
+  .modal-content {
+    border-radius: 20px;
+  }
 }
 
 .modal-content-lg {
@@ -408,7 +455,13 @@ section {
 .lightbox-overlay {
   position: fixed; inset: 0; background-color: rgba(6, 16, 30, 0.94);
   backdrop-filter: blur(10px); z-index: 1100;
-  display: flex; flex-direction: column; justify-content: space-between; padding: 1.5rem;
+  display: flex; flex-direction: column; justify-content: space-between; padding: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .lightbox-overlay {
+    padding: 1.5rem;
+  }
 }
 
 .lightbox-content-box {

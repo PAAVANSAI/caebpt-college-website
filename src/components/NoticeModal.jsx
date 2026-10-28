@@ -108,14 +108,14 @@ export default function NoticeModal({ notice, onClose }) {
             </p>
           </div>
 
-          {/* Attachment Box */}
-          <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between gap-3">
+          {/* Attachment Box (Responsive) */}
+          <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 bg-red-100 text-red-700 rounded-lg">
+              <div className="p-2.5 bg-red-100 text-red-700 rounded-lg flex-shrink-0">
                 <FileText className="w-5 h-5" />
               </div>
-              <div>
-                <span className="font-semibold text-slate-900 text-xs sm:text-sm block">
+              <div className="min-w-0">
+                <span className="font-semibold text-slate-900 text-xs sm:text-sm block truncate">
                   {notice.attachmentName}
                 </span>
                 <span className="text-[11px] text-slate-500">
@@ -127,7 +127,7 @@ export default function NoticeModal({ notice, onClose }) {
             <button
               type="button"
               onClick={handleDownloadCircular}
-              className="btn btn-navy btn-sm text-xs flex items-center gap-1.5"
+              className="btn btn-navy btn-sm text-xs flex items-center gap-1.5 w-full sm:w-auto justify-center"
             >
               <Download className="w-3.5 h-3.5 text-[#f5c84c]" />
               <span>View / Download PDF</span>

@@ -30,7 +30,7 @@ export default function NoticeTicker({ onSelectNotice }) {
         </div>
 
         {/* Notice text & link */}
-        <div className="flex-1 min-w-[240px] flex items-center justify-between gap-3">
+        <div className="flex-1 min-w-0 flex items-center justify-between gap-2 sm:gap-3">
           <button
             type="button"
             onClick={() => onSelectNotice?.(activeNotice)}
@@ -51,7 +51,7 @@ export default function NoticeTicker({ onSelectNotice }) {
           <button
             type="button"
             onClick={handleNext}
-            className="p-1 rounded hover:bg-[#153258] text-slate-300 hover:text-white transition-colors flex items-center gap-1 text-xs cursor-pointer bg-transparent border-0"
+            className="p-1 rounded hover:bg-[#153258] text-slate-300 hover:text-white transition-colors flex items-center gap-1 text-xs cursor-pointer bg-transparent border-0 flex-shrink-0"
             title="Next Notice"
           >
             <span className="hidden sm:inline">Next</span>

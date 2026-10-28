@@ -52,8 +52,8 @@ export default function AboutUsPage() {
 
       <section className="section-padding bg-slate-50 border-b border-slate-200">
         <div className="container">
-          {/* Submenu Tabs */}
-          <div className="flex items-center justify-center flex-wrap gap-2 mb-10">
+          {/* Submenu Tabs (Mobile touch scrollable) */}
+          <div className="filter-tabs-wrapper mb-8 sm:mb-10">
             {tabs.map((t) => {
               const Icon = t.icon;
               const isActive = activeTab === t.key;

@@ -282,7 +282,7 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
           </div>
 
           {/* Announcement Category Selector Tabs */}
-          <div className="flex items-center justify-center flex-wrap gap-2.5 mb-8">
+          <div className="filter-tabs-wrapper mb-8">
             <button
               type="button"
               onClick={() => setActiveAnnouncementTab('news')}
@@ -388,7 +388,7 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                   <button
                     type="button"
                     onClick={() => handleDownloadDoc(rec, 'Recruitment Notification')}
-                    className="btn btn-outline btn-sm text-xs font-bold flex items-center gap-2 flex-shrink-0 hover:bg-[#0b1a2e] hover:text-white hover:border-[#0b1a2e] transition-all"
+                    className="btn btn-outline btn-sm text-xs font-bold flex items-center gap-2 flex-shrink-0 hover:bg-[#0b1a2e] hover:text-white hover:border-[#0b1a2e] transition-all w-full sm:w-auto justify-center"
                   >
                     <Download className="w-3.5 h-3.5 text-[#b88e22]" />
                     <span>View / Print Circular</span>
@@ -422,7 +422,7 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                   <button
                     type="button"
                     onClick={() => handleDownloadDoc(tnd, 'Tender Specifications')}
-                    className="btn btn-outline btn-sm text-xs font-bold flex items-center gap-2 flex-shrink-0 hover:bg-[#0b1a2e] hover:text-white hover:border-[#0b1a2e] transition-all"
+                    className="btn btn-outline btn-sm text-xs font-bold flex items-center gap-2 flex-shrink-0 hover:bg-[#0b1a2e] hover:text-white hover:border-[#0b1a2e] transition-all w-full sm:w-auto justify-center"
                   >
                     <Download className="w-3.5 h-3.5 text-[#b88e22]" />
                     <span>View Tender Specs</span>
@@ -457,7 +457,7 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                   <button
                     type="button"
                     onClick={() => handleDownloadDoc(cir, 'Official Circular')}
-                    className="btn btn-primary btn-sm text-xs font-bold flex items-center gap-2 flex-shrink-0"
+                    className="btn btn-primary btn-sm text-xs font-bold flex items-center gap-2 flex-shrink-0 w-full sm:w-auto justify-center"
                   >
                     <Download className="w-3.5 h-3.5 text-[#fae4a4]" />
                     <span>View / Print PDF</span>

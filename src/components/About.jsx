@@ -167,7 +167,7 @@ export default function About() {
                   <div className="relative">
                     <img
                       src={collegeInfo.principalMessage.photo}
-                      alt="Principal Photo Placeholder"
+                      alt="Associate Dean & Principal"
                       className="w-18 h-18 rounded-full object-cover border-2 border-gold-400 shadow-sm"
                       style={{ width: '72px', height: '72px' }}
                     />

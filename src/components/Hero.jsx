@@ -119,12 +119,12 @@ export default function Hero({ onOpenAdmissionsModal }) {
             {hero.intro}
           </p>
 
-          {/* Action CTAs */}
-          <div className="flex flex-wrap items-center gap-3 mb-10">
+          {/* Action CTAs (Mobile Responsive Stacking) */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 mb-8 sm:mb-10">
             <button
               type="button"
               onClick={() => scrollToSection('academics')}
-              className="btn btn-gold btn-md shadow-md hover:scale-102 transition-transform"
+              className="btn btn-gold btn-md shadow-md hover:scale-102 transition-transform justify-center"
             >
               <BookOpen className="w-4 h-4" />
               <span>Explore Courses</span>
@@ -134,7 +134,7 @@ export default function Hero({ onOpenAdmissionsModal }) {
             <button
               type="button"
               onClick={onOpenAdmissionsModal}
-              className="btn btn-outline-gold btn-md shadow-sm font-bold hover:scale-102 transition-transform"
+              className="btn btn-outline-gold btn-md shadow-sm font-bold hover:scale-102 transition-transform justify-center"
             >
               <span>Admissions Enquiry</span>
             </button>
@@ -142,7 +142,7 @@ export default function Hero({ onOpenAdmissionsModal }) {
             <button
               type="button"
               onClick={() => scrollToSection('facilities')}
-              className="btn btn-white btn-md shadow-sm font-bold hover:scale-102 transition-transform"
+              className="btn btn-white btn-md shadow-sm font-bold hover:scale-102 transition-transform justify-center"
             >
               <Building2 className="w-3.5 h-3.5 text-[#0b1a2e]" />
               <span>Campus Facilities</span>
@@ -157,11 +157,11 @@ export default function Hero({ onOpenAdmissionsModal }) {
             <span className="text-slate-300 font-normal lowercase">(accredited profile)</span>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
             {(currentCollegeInfo?.institutionalHighlights || []).map((item, idx) => (
               <div
                 key={idx}
-                className="bg-[#0b1a2e]/85 hover:bg-[#0f243f]/95 border border-white/15 hover:border-[#ecc75f] rounded-xl p-4 transition-all duration-200 shadow-md backdrop-blur-sm group"
+                className="bg-[#0b1a2e]/85 hover:bg-[#0f243f]/95 border border-white/15 hover:border-[#ecc75f] rounded-xl p-3 sm:p-4 transition-all duration-200 shadow-md backdrop-blur-sm group"
               >
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-xl sm:text-2xl font-extrabold text-[#fae4a4] font-heading tracking-tight">

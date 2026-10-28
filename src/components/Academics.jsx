@@ -63,8 +63,8 @@ export default function Academics({ onSelectProgram, onOpenEnquiry }) {
                     </span>
                   </div>
 
-                  <span className="text-xs font-semibold text-gold-600 bg-gold-50 px-2 py-0.5 rounded border border-gold-200">
-                    Sample Data
+                  <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                    ICAR Accredited
                   </span>
                 </div>
 

@@ -398,8 +398,11 @@ export default function AdminPage() {
           </div>
         </div>
 
-        {/* Horizontal Navigation Tabs */}
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 overflow-x-auto scrollbar-none flex items-center gap-1.5 py-2 border-t border-white/10 text-xs">
+        {/* Horizontal Navigation Tabs (Touch Swipe Enabled) */}
+        <div
+          className="max-w-[1400px] mx-auto px-3 sm:px-6 overflow-x-auto scrollbar-none flex items-center gap-1.5 py-2 border-t border-white/10 text-xs"
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
           {[
             { id: 'overview', label: 'Overview & Emergency', icon: Activity },
             { id: 'identity', label: 'Identity & Top Bar', icon: Globe },
