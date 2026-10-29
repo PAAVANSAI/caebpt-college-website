@@ -2511,8 +2511,9 @@ export default function AdminPage() {
                               </span>
                             )}
                             {doc.fileUrl && !doc.fileData && (
-                              <span className="badge bg-sky-100 text-sky-800 border-sky-300 text-[10px] font-bold">
-                                External URL
+                              <span className="badge bg-emerald-50 text-emerald-800 border-emerald-300 text-[10px] font-bold flex items-center gap-1">
+                                <FileText className="w-3 h-3 text-emerald-600" />
+                                Hosted PDF ({doc.fileSize || 'PDF'})
                               </span>
                             )}
                           </div>
@@ -2530,6 +2531,24 @@ export default function AdminPage() {
                             <span>•</span>
                             <span className="font-mono text-slate-400">File: {doc.docName}</span>
                           </div>
+
+                          {doc.subReports && doc.subReports.length > 0 && (
+                            <div className="pt-1.5 flex flex-wrap gap-1.5 items-center">
+                              <span className="text-[10px] font-bold text-slate-700">Sub-Reports ({doc.subReports.length}):</span>
+                              {doc.subReports.map((sub, sIdx) => (
+                                <a
+                                  key={sIdx}
+                                  href={sub.fileUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="px-2 py-0.5 bg-white border border-slate-300 hover:border-[#d4a72c] rounded text-[10px] font-bold text-navy-950 flex items-center gap-1 shadow-2xs"
+                                >
+                                  <span>{sub.shortName || sub.discipline}</span>
+                                  <span className="text-slate-500 font-mono">({sub.fileSize})</span>
+                                </a>
+                              ))}
+                            </div>
+                          )}
                         </div>
 
                         {/* Right: Actions */}
@@ -2867,8 +2886,50 @@ export default function AdminPage() {
                   </div>
                 )}
                 {previewDocModal.fileUrl && (
-                  <div className="p-3 bg-sky-50 border border-sky-200 rounded-lg text-sky-800 text-xs font-medium">
-                    External Document Link: <span className="font-mono underline">{previewDocModal.fileUrl}</span>
+                  <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs font-medium space-y-2">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <span>Official PDF: <span className="font-mono text-slate-600">{previewDocModal.fileUrl}</span></span>
+                      <div className="flex items-center gap-1.5">
+                        <a
+                          href={previewDocModal.fileUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-2.5 py-1 bg-navy-950 text-white rounded text-[11px] font-bold hover:bg-navy-900 flex items-center gap-1"
+                        >
+                          <ExternalLink className="w-3 h-3 text-[#f5c84c]" />
+                          <span>Open PDF</span>
+                        </a>
+                        <a
+                          href={previewDocModal.fileUrl}
+                          download={previewDocModal.docName}
+                          className="px-2.5 py-1 bg-[#d4a72c] text-navy-950 rounded text-[11px] font-bold hover:bg-[#b88f22] flex items-center gap-1"
+                        >
+                          <Download className="w-3 h-3" />
+                          <span>Download</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {previewDocModal.subReports && previewDocModal.subReports.length > 0 && (
+                  <div className="p-3 bg-amber-50/60 border border-amber-200 rounded-lg text-xs space-y-1.5">
+                    <span className="font-bold text-navy-950 block">Departmental Sub-Reports:</span>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                      {previewDocModal.subReports.map((sub, sIdx) => (
+                        <div key={sIdx} className="p-2 bg-white border border-slate-200 rounded text-center">
+                          <span className="font-bold text-navy-950 block text-[11px]">{sub.shortName || sub.discipline}</span>
+                          <span className="text-[10px] text-slate-500 font-mono block mb-1">{sub.fileSize}</span>
+                          <a
+                            href={sub.fileUrl}
+                            download={sub.docName}
+                            className="inline-flex items-center justify-center gap-1 px-2 py-0.5 bg-[#d4a72c] text-navy-950 font-bold rounded text-[10px]"
+                          >
+                            <Download className="w-2.5 h-2.5" />
+                            <span>Save</span>
+                          </a>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>

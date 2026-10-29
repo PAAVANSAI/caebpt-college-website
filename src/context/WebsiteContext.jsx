@@ -67,13 +67,30 @@ function sanitizeOfficialStructure(data) {
   };
 
   // Safe Accreditation object
+  const defaultDocs = defaultOfficialStructure.aboutUs.accreditation.documents || [];
+  const defaultDocsMap = new Map(defaultDocs.map(d => [d.id, d]));
+  const mergedDocs = Array.isArray(data.aboutUs?.accreditation?.documents) && data.aboutUs.accreditation.documents.length > 0
+    ? data.aboutUs.accreditation.documents.map(d => {
+        const def = defaultDocsMap.get(d.id);
+        if (def) {
+          return {
+            ...def,
+            ...d,
+            fileUrl: d.fileUrl || def.fileUrl,
+            fileSize: d.fileSize || def.fileSize,
+            subReports: d.subReports || def.subReports,
+            docName: d.docName || def.docName
+          };
+        }
+        return d;
+      })
+    : defaultDocs;
+
   const accreditationObj = {
     ...defaultOfficialStructure.aboutUs.accreditation,
     ...(data.aboutUs?.accreditation || {}),
     statusStatement: data.aboutUs?.accreditation?.statusStatement || defaultOfficialStructure.aboutUs.accreditation.statusStatement,
-    documents: Array.isArray(data.aboutUs?.accreditation?.documents) && data.aboutUs.accreditation.documents.length > 0
-      ? data.aboutUs.accreditation.documents
-      : defaultOfficialStructure.aboutUs.accreditation.documents
+    documents: mergedDocs
   };
 
   // Safe Vision & Mandate

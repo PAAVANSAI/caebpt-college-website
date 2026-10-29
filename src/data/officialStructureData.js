@@ -340,7 +340,9 @@ export const officialStructureData = {
           date: "Official Record",
           authority: "Government of Andhra Pradesh & ANGRAU Registrar",
           summary: "Official Gazette Notification declaring the establishment, faculty status, and statutory institutional governance of Dr. NTR College of Agricultural Engineering under the University Act.",
-          docName: "Gazette_Notification_Dr_NTRCAE.pdf"
+          docName: "Gazette_Notification_Dr_NTRCAE.pdf",
+          fileUrl: "/documents/accreditation/Gazette_Notification_Dr_NTRCAE.pdf",
+          fileSize: "1.7 KB"
         },
         {
           id: "ssr-college",
@@ -351,8 +353,10 @@ export const officialStructureData = {
           type: "Institutional Self Study Report (SSR)",
           date: "Cycle 2021–2026",
           authority: "Internal Quality Assurance Cell & Associate Dean",
-          summary: "Comprehensive Institutional Self Study Report of Dr. NTR College of Agricultural Engineering, Bapatla submitted to the National Agricultural Education Accreditation Board (NAEAB), ICAR, New Delhi.",
-          docName: "Self_Study_Report_College_DrNTRCAE.pdf"
+          summary: "Comprehensive Institutional Self Study Report of Dr. NTR College of Agricultural Engineering, Bapatla (169 pages) submitted to the National Agricultural Education Accreditation Board (NAEAB), ICAR, New Delhi, detailing campus infrastructure, academic departments, faculty profiles, central instrumentation, and accreditation compliances.",
+          docName: "Self_Study_Report_College_DrNTRCAE.pdf",
+          fileUrl: "/documents/accreditation/Self_Study_Report_College_DrNTRCAE.pdf",
+          fileSize: "7.5 MB"
         },
         {
           id: "ssr-btech",
@@ -364,7 +368,9 @@ export const officialStructureData = {
           date: "Cycle 2021–2026",
           authority: "Board of Studies & Undergraduate Academic Committee",
           summary: "Program-level Self Study Report for 4-Year B.Tech (Agricultural Engineering) evaluating teaching-learning standards, ICAR V Deans' Committee syllabi, laboratories, student-teacher ratio, and outcome metrics.",
-          docName: "Self_Study_Report_BTech_AgEngg.pdf"
+          docName: "Self_Study_Report_BTech_AgEngg.pdf",
+          fileUrl: "/documents/accreditation/Self_Study_Report_BTech_AgEngg.pdf",
+          fileSize: "7.5 MB"
         },
         {
           id: "ssr-mtech",
@@ -376,7 +382,9 @@ export const officialStructureData = {
           date: "Cycle 2021–2026",
           authority: "Postgraduate Academic Committee & Heads of Departments",
           summary: "Comprehensive Self Study Report for 2-Year M.Tech (Agricultural Engineering) across specialized disciplines including Farm Machinery & Power, Soil & Water Conservation, and Processing & Food Engineering.",
-          docName: "Self_Study_Report_MTech_AgEngg.pdf"
+          docName: "Self_Study_Report_MTech_AgEngg.pdf",
+          fileUrl: "/documents/accreditation/Self_Study_Report_MTech_AgEngg.pdf",
+          fileSize: "2.3 MB"
         },
         {
           id: "ssr-phd",
@@ -387,8 +395,33 @@ export const officialStructureData = {
           type: "Doctoral Research Program Self Study Report",
           date: "Cycle 2021–2026",
           authority: "Dean of Post Graduate Studies & Doctoral Research Committee",
-          summary: "Self Study Report for Ph.D. in Agricultural Engineering documenting research infrastructure, advanced laboratory facilities, peer-reviewed publications, patent disclosures, and doctoral scholar fellowships.",
-          docName: "Self_Study_Report_PhD_AgEngg.pdf"
+          summary: "Self Study Report for Ph.D. in Agricultural Engineering documenting research infrastructure, advanced laboratory facilities, peer-reviewed publications, patent disclosures, and doctoral scholar fellowships across Farm Machinery & Power Engineering (FMPE), Processing & Food Engineering (PFE), and Soil & Water Conservation Engineering (SWCE).",
+          docName: "Self_Study_Report_PhD_FMPE.pdf",
+          fileUrl: "/documents/accreditation/Self_Study_Report_PhD_FMPE.pdf",
+          fileSize: "2.1 MB",
+          subReports: [
+            {
+              discipline: "Ph.D. Farm Machinery & Power Engineering (FMPE)",
+              shortName: "FMPE",
+              docName: "Self_Study_Report_PhD_FMPE.pdf",
+              fileUrl: "/documents/accreditation/Self_Study_Report_PhD_FMPE.pdf",
+              fileSize: "2.1 MB"
+            },
+            {
+              discipline: "Ph.D. Processing & Food Engineering (PFE)",
+              shortName: "PFE",
+              docName: "Self_Study_Report_PhD_PFE.pdf",
+              fileUrl: "/documents/accreditation/Self_Study_Report_PhD_PFE.pdf",
+              fileSize: "1.5 MB"
+            },
+            {
+              discipline: "Ph.D. Soil & Water Conservation Engineering (SWCE)",
+              shortName: "SWCE",
+              docName: "Self_Study_Report_PhD_SWCE.pdf",
+              fileUrl: "/documents/accreditation/Self_Study_Report_PhD_SWCE.pdf",
+              fileSize: "2.2 MB"
+            }
+          ]
         }
       ]
     }

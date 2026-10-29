@@ -75,7 +75,14 @@ export default function AboutUsPage() {
       return;
     }
     if (doc.fileUrl) {
-      window.open(doc.fileUrl, '_blank', 'noopener,noreferrer');
+      const link = document.createElement('a');
+      link.href = doc.fileUrl;
+      link.download = doc.docName || `${doc.title.replace(/\s+/g, '_')}.pdf`;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
       return;
     }
     handleDownloadDocText(doc);
@@ -661,8 +668,9 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                               </span>
                             )}
                             {doc.fileUrl && !doc.fileData && (
-                              <span className="badge bg-sky-100 text-sky-800 border-sky-300 text-[10px] font-bold">
-                                External Link
+                              <span className="badge bg-emerald-50 text-emerald-800 border-emerald-200 text-[10px] font-bold flex items-center gap-1">
+                                <FileCheck className="w-3 h-3 text-emerald-600" />
+                                Official PDF ({doc.fileSize || 'PDF'})
                               </span>
                             )}
                           </div>
@@ -678,6 +686,31 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                           <div className="text-[11px] text-slate-500 font-medium">
                             <span className="font-bold text-slate-700">Issuing Authority:</span> {doc.authority}
                           </div>
+
+                          {/* Specialized Departmental Sub-Reports (e.g. for Ph.D. Disciplines) */}
+                          {doc.subReports && doc.subReports.length > 0 && (
+                            <div className="pt-2.5 border-t border-slate-200/80 mt-2.5 space-y-1.5">
+                              <span className="text-[11px] font-bold text-slate-800 block">
+                                Departmental Doctoral Specialization Reports:
+                              </span>
+                              <div className="flex flex-wrap gap-2">
+                                {doc.subReports.map((sub, sIdx) => (
+                                  <a
+                                    key={sIdx}
+                                    href={sub.fileUrl}
+                                    download={sub.docName}
+                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-gold-50/80 border border-slate-300 hover:border-[#d4a72c] rounded-lg text-xs font-bold text-navy-950 transition-colors shadow-2xs"
+                                    title={`Download ${sub.discipline} (${sub.fileSize})`}
+                                  >
+                                    <FileText className="w-3.5 h-3.5 text-[#d4a72c] flex-shrink-0" />
+                                    <span>{sub.discipline}</span>
+                                    <span className="text-[10px] text-slate-500 font-mono">({sub.fileSize})</span>
+                                    <Download className="w-3 h-3 text-slate-400 ml-0.5" />
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                         </div>
 
                         {/* Action Buttons */}
@@ -697,7 +730,7 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                             className="btn btn-gold text-xs font-bold px-3.5 py-2 flex items-center gap-1.5 shadow-2xs cursor-pointer"
                           >
                             <Download className="w-3.5 h-3.5 text-navy-950" />
-                            <span>{doc.fileData ? 'Download PDF' : 'Download Copy'}</span>
+                            <span>{doc.fileData || doc.fileUrl ? `Download PDF${doc.fileSize ? ` (${doc.fileSize})` : ''}` : 'Download Copy'}</span>
                           </button>
                         </div>
                       </div>
@@ -857,6 +890,75 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                 </p>
               </div>
 
+              {/* Departmental Specialization Sub-Reports (e.g. for Ph.D. Disciplines) */}
+              {selectedDoc.subReports && selectedDoc.subReports.length > 0 && (
+                <div className="space-y-3 bg-slate-50 p-4 sm:p-5 rounded-xl border border-slate-200">
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <h5 className="font-bold text-navy-950 text-xs sm:text-sm flex items-center gap-1.5">
+                      <FileText className="w-4 h-4 text-[#d4a72c]" />
+                      <span>Departmental Doctoral Specialization Dossiers ({selectedDoc.subReports.length})</span>
+                    </h5>
+                    <span className="text-[11px] text-slate-500">All reports ICAR NAEAB Accredited</span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    {selectedDoc.subReports.map((sub, sIdx) => (
+                      <div key={sIdx} className="p-3 bg-white border border-slate-200 rounded-lg flex flex-col justify-between gap-2.5 shadow-2xs">
+                        <div>
+                          <span className="font-bold text-navy-950 block text-xs">{sub.discipline}</span>
+                          <span className="text-[10px] text-slate-500 font-mono block mt-0.5">{sub.fileSize} • ICAR SSR</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 pt-1">
+                          <a
+                            href={sub.fileUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-1 text-center py-1.5 px-2 bg-slate-100 hover:bg-slate-200 text-navy-950 font-bold rounded text-[11px] transition-colors"
+                          >
+                            Open Tab
+                          </a>
+                          <a
+                            href={sub.fileUrl}
+                            download={sub.docName}
+                            className="flex-1 text-center py-1.5 px-2 bg-[#d4a72c] hover:bg-[#b88f22] text-navy-950 font-bold rounded text-[11px] transition-colors flex items-center justify-center gap-1"
+                          >
+                            <Download className="w-3 h-3" />
+                            <span>Save</span>
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Interactive PDF Document Viewer */}
+              {selectedDoc.fileUrl && (
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <h5 className="font-bold text-xs uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                      <FileText className="w-3.5 h-3.5 text-[#d4a72c]" />
+                      <span>Document Viewer ({selectedDoc.docName})</span>
+                    </h5>
+                    <a
+                      href={selectedDoc.fileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[11px] font-bold text-navy-950 hover:text-gold-600 flex items-center gap-1"
+                    >
+                      <span>Full screen view</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                  <div className="rounded-xl border border-slate-200 overflow-hidden bg-slate-100 shadow-inner">
+                    <iframe
+                      src={`${selectedDoc.fileUrl}#toolbar=1`}
+                      title={selectedDoc.title}
+                      className="w-full h-80 sm:h-96 border-0"
+                    />
+                  </div>
+                </div>
+              )}
+
               {/* Institutional Compliance Statements */}
               <div className="space-y-2 bg-amber-50/60 p-4 rounded-xl border border-amber-200 text-xs text-slate-700">
                 <h5 className="font-bold text-navy-950 text-xs">
@@ -904,15 +1006,25 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                     <span>Download Attached File ({selectedDoc.fileSize || 'PDF'})</span>
                   </button>
                 ) : selectedDoc.fileUrl ? (
-                  <a
-                    href={selectedDoc.fileUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-gold text-xs font-bold px-4 py-2 flex items-center gap-1.5 cursor-pointer shadow-xs"
-                  >
-                    <ExternalLink className="w-3.5 h-3.5 text-navy-950" />
-                    <span>Open Document Link</span>
-                  </a>
+                  <>
+                    <a
+                      href={selectedDoc.fileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-navy text-xs font-bold px-4 py-2 flex items-center gap-1.5 cursor-pointer shadow-xs"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5 text-[#f5c84c]" />
+                      <span>Open in New Tab</span>
+                    </a>
+                    <a
+                      href={selectedDoc.fileUrl}
+                      download={selectedDoc.docName}
+                      className="btn btn-gold text-xs font-bold px-4 py-2 flex items-center gap-1.5 cursor-pointer shadow-xs"
+                    >
+                      <Download className="w-3.5 h-3.5 text-navy-950" />
+                      <span>Download PDF ({selectedDoc.fileSize || 'PDF'})</span>
+                    </a>
+                  </>
                 ) : null}
 
                 <button
