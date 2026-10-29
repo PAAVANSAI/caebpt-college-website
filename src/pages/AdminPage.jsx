@@ -30,7 +30,13 @@ import {
   Info,
   Calendar,
   Layers,
-  Award
+  Award,
+  FileCheck,
+  ArrowUp,
+  ArrowDown,
+  Upload,
+  Edit,
+  X
 } from 'lucide-react';
 import PageBanner from '../components/PageBanner';
 
@@ -53,6 +59,11 @@ export default function AdminPage() {
     updateWelfareActivity,
     updateAdministration,
     updateAboutUs,
+    addAccreditationDocument,
+    updateAccreditationDocument,
+    deleteAccreditationDocument,
+    reorderAccreditationDocuments,
+    resetAccreditationDocuments,
     enquiries,
     updateEnquiryStatus,
     deleteEnquiry,
@@ -245,10 +256,162 @@ export default function AdminPage() {
 
   // 8. About Us state
   const [aboutForm, setAboutForm] = useState({
-    history: currentStructure.aboutUs?.history || '',
+    history: Array.isArray(currentStructure.aboutUs?.history?.content)
+      ? currentStructure.aboutUs.history.content.join('\n\n')
+      : (typeof currentStructure.aboutUs?.history === 'string' ? currentStructure.aboutUs.history : ''),
     mandateIntro: currentStructure.aboutUs?.visionMandate?.mandates?.[0] || '',
-    accreditationText: currentStructure.aboutUs?.accreditation?.status || ''
+    accreditationText: currentStructure.aboutUs?.accreditation?.statusStatement || currentStructure.aboutUs?.accreditation?.status || ''
   });
+
+  // 8B. Official Documents & Accreditation Documents Management State
+  const defaultDocForm = {
+    id: '',
+    tag: '<SELF STUDY REPORT OF COLLEGE>',
+    title: '',
+    refNo: '',
+    type: 'Institutional Self Study Report (SSR)',
+    date: 'Cycle 2021–2026',
+    authority: 'Internal Quality Assurance Cell & Associate Dean',
+    summary: '',
+    docName: '',
+    fileUrl: '',
+    fileData: '',
+    fileSize: ''
+  };
+
+  const [docForm, setDocForm] = useState(defaultDocForm);
+  const [isEditingDoc, setIsEditingDoc] = useState(false);
+  const [showDocForm, setShowDocForm] = useState(false);
+  const [previewDocModal, setPreviewDocModal] = useState(null);
+
+  const tagSuggestions = [
+    '<GAZETTE NOTIFICATION>',
+    '<SELF STUDY REPORT OF COLLEGE>',
+    '<SELF STUDY REPORT OF B.TECH (AG ENGG)>',
+    '<SELF STUDY REPORT OF M.TECH (AG ENGG)>',
+    '<SELF STUDY OF PH.D. (AG ENGG)>',
+    '<ICAR PEER REVIEW REPORT>',
+    '<NIRF SUBMISSION REPORT>',
+    '<ANNUAL QUALITY REPORT (AQAR)>',
+    '<ACADEMIC REGULATIONS & SYLLABUS>',
+    '<GOVERNMENT STATUTORY ORDER>'
+  ];
+
+  const handleDocFileUpload = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 8 * 1024 * 1024) {
+      alert('Selected file exceeds 8 MB. Please select a smaller document for local browser storage, or specify an external link.');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (uploadEvent) => {
+      const base64Data = uploadEvent.target.result;
+      setDocForm((prev) => ({
+        ...prev,
+        fileData: base64Data,
+        docName: file.name,
+        fileSize: (file.size / 1024).toFixed(1) + ' KB'
+      }));
+      triggerToast(`File "${file.name}" attached successfully!`);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleOpenAddDoc = () => {
+    setDocForm({
+      ...defaultDocForm,
+      refNo: `ICAR/ANGRAU/SSR/${new Date().getFullYear()}`
+    });
+    setIsEditingDoc(false);
+    setShowDocForm(true);
+  };
+
+  const handleOpenEditDoc = (doc) => {
+    setDocForm({
+      id: doc.id || '',
+      tag: doc.tag || '<OFFICIAL DOCUMENT>',
+      title: doc.title || '',
+      refNo: doc.refNo || '',
+      type: doc.type || 'Institutional Document',
+      date: doc.date || 'Cycle 2021–2026',
+      authority: doc.authority || '',
+      summary: doc.summary || '',
+      docName: doc.docName || '',
+      fileUrl: doc.fileUrl || '',
+      fileData: doc.fileData || '',
+      fileSize: doc.fileSize || ''
+    });
+    setIsEditingDoc(true);
+    setShowDocForm(true);
+  };
+
+  const handleSaveDoc = () => {
+    if (!docForm.title.trim()) {
+      alert('Please enter a Document Title.');
+      return;
+    }
+    if (!docForm.tag.trim()) {
+      alert('Please enter or select a Document Tag (e.g. <GAZETTE NOTIFICATION>).');
+      return;
+    }
+    if (!docForm.summary.trim()) {
+      alert('Please enter an Executive Summary / Description.');
+      return;
+    }
+
+    let cleanTag = docForm.tag.trim();
+    if (!cleanTag.startsWith('<')) cleanTag = '<' + cleanTag;
+    if (!cleanTag.endsWith('>')) cleanTag = cleanTag + '>';
+
+    const docPayload = {
+      ...docForm,
+      tag: cleanTag.toUpperCase(),
+      docName: docForm.docName || `${docForm.title.trim().replace(/\s+/g, '_')}.pdf`
+    };
+
+    if (isEditingDoc && docForm.id) {
+      updateAccreditationDocument(docForm.id, docPayload);
+      triggerToast(`Document "${docPayload.title}" updated successfully!`);
+    } else {
+      addAccreditationDocument(docPayload);
+      triggerToast(`New document "${docPayload.title}" added to portal!`);
+    }
+
+    setShowDocForm(false);
+    setIsEditingDoc(false);
+    setDocForm(defaultDocForm);
+  };
+
+  const handleDeleteDoc = (doc) => {
+    if (window.confirm(`Are you sure you want to remove the document "${doc.title}"?`)) {
+      deleteAccreditationDocument(doc.id);
+      triggerToast(`Document "${doc.title}" deleted.`);
+    }
+  };
+
+  const handleMoveDocUp = (index) => {
+    if (index > 0) {
+      reorderAccreditationDocuments(index, index - 1);
+      triggerToast('Document moved up in order.');
+    }
+  };
+
+  const handleMoveDocDown = (index, total) => {
+    if (index < total - 1) {
+      reorderAccreditationDocuments(index, index + 1);
+      triggerToast('Document moved down in order.');
+    }
+  };
+
+  const handleResetDocs = () => {
+    if (window.confirm('Reset official documents list back to the 5 official statutory documents?')) {
+      resetAccreditationDocuments();
+      triggerToast('Reset to default 5 official statutory documents.');
+    }
+  };
 
   // CSV Export for Enquiries
   const exportEnquiriesCSV = () => {
@@ -413,7 +576,8 @@ export default function AdminPage() {
             { id: 'administration', label: 'University Officers', icon: Award },
             { id: 'welfare', label: 'Student Welfare (12 Units)', icon: GraduationCap },
             { id: 'galleries', label: 'Photo & Video Gallery', icon: ImageIcon },
-            { id: 'about', label: 'About College & ICAR', icon: FileText },
+            { id: 'documents', label: 'Official Documents & SSRs', icon: FileCheck },
+            { id: 'about', label: 'About College & History', icon: FileText },
             { id: 'enquiries', label: `Student Applications (${enquiries.length})`, icon: Inbox },
           ].map((tab) => {
             const Icon = tab.icon;
@@ -2010,6 +2174,446 @@ export default function AdminPage() {
         )}
 
         {/* ─────────────────────────────────────────────────────────────
+            TAB: OFFICIAL DOCUMENTS & ACCREDITATION SSRs
+        ───────────────────────────────────────────────────────────── */}
+        {activeTab === 'documents' && (
+          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="badge badge-gold text-[10px] font-bold uppercase tracking-wider">
+                    Official Records & SSRs
+                  </span>
+                  <span className="badge badge-navy text-[10px] font-bold uppercase tracking-wider">
+                    {officialStructure?.aboutUs?.accreditation?.documents?.length || 0} Documents Active
+                  </span>
+                </div>
+                <h3 className="font-heading font-bold text-lg text-slate-900">
+                  Official Documents, Gazette Notifications & Self-Study Reports (SSRs)
+                </h3>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Add new statutory records, upload PDF files, edit document summaries, or reorder the official documents displayed on the live college portal.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 flex-wrap">
+                <button
+                  type="button"
+                  onClick={handleOpenAddDoc}
+                  className="btn btn-navy text-xs font-bold px-4 py-2 flex items-center gap-1.5 shadow-xs cursor-pointer"
+                >
+                  <Plus className="w-3.5 h-3.5 text-[#f5c84c]" />
+                  <span>Add New Document</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={handleResetDocs}
+                  className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-all flex items-center gap-1 cursor-pointer"
+                  title="Reset list to the official 5 statutory documents"
+                >
+                  <RefreshCw className="w-3 h-3 text-slate-500" />
+                  <span>Reset to 5 Defaults</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Document Add / Edit Form Modal / Panel */}
+            {showDocForm && (
+              <div className="p-5 sm:p-6 bg-slate-50 border-2 border-[#0b1a2e]/20 rounded-2xl shadow-sm space-y-5">
+                <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+                  <div className="flex items-center gap-2">
+                    <FileCheck className="w-4 h-4 text-[#d4a72c]" />
+                    <h4 className="font-heading font-bold text-sm sm:text-base text-navy-950">
+                      {isEditingDoc ? `Edit Document: ${docForm.title || 'Official Document'}` : 'Add New Official Document / SSR'}
+                    </h4>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowDocForm(false);
+                      setIsEditingDoc(false);
+                      setDocForm(defaultDocForm);
+                    }}
+                    className="p-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 transition-all cursor-pointer"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* Form fields */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Tag Input */}
+                  <div className="md:col-span-2 space-y-1.5">
+                    <label className="block text-xs font-bold text-slate-800">
+                      Document Tag / Identifier Badge <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={docForm.tag}
+                      onChange={(e) => setDocForm({ ...docForm, tag: e.target.value })}
+                      placeholder="e.g. <GAZETTE NOTIFICATION> or <SELF STUDY REPORT OF COLLEGE>"
+                      className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs font-mono font-bold text-[#0b1a2e]"
+                    />
+                    {/* Quick suggestion pills */}
+                    <div className="flex items-center gap-1.5 flex-wrap pt-1">
+                      <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mr-1">Quick Select:</span>
+                      {tagSuggestions.map((tag) => (
+                        <button
+                          key={tag}
+                          type="button"
+                          onClick={() => setDocForm({ ...docForm, tag })}
+                          className={`text-[10px] font-mono px-2 py-0.5 rounded transition-all cursor-pointer ${
+                            docForm.tag === tag
+                              ? 'bg-[#0b1a2e] text-[#f5c84c] font-bold shadow-2xs'
+                              : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+                          }`}
+                        >
+                          {tag}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <div className="md:col-span-2">
+                    <label className="block text-xs font-bold text-slate-800 mb-1">
+                      Official Document Title <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={docForm.title}
+                      onChange={(e) => setDocForm({ ...docForm, title: e.target.value })}
+                      placeholder="e.g. SELF STUDY REPORT OF COLLEGE"
+                      className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs font-bold text-navy-950"
+                    />
+                  </div>
+
+                  {/* Reference Number */}
+                  <div>
+                    <label className="block text-xs font-bold text-slate-800 mb-1">
+                      Document Reference Number
+                    </label>
+                    <input
+                      type="text"
+                      value={docForm.refNo}
+                      onChange={(e) => setDocForm({ ...docForm, refNo: e.target.value })}
+                      placeholder="e.g. ICAR/NAEAB/SSR/COLLEGE/2021-26"
+                      className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs font-mono"
+                    />
+                  </div>
+
+                  {/* Classification / Type */}
+                  <div>
+                    <label className="block text-xs font-bold text-slate-800 mb-1">
+                      Classification / Type
+                    </label>
+                    <input
+                      type="text"
+                      value={docForm.type}
+                      onChange={(e) => setDocForm({ ...docForm, type: e.target.value })}
+                      placeholder="e.g. Institutional Self Study Report (SSR)"
+                      className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs"
+                    />
+                  </div>
+
+                  {/* Accreditation Cycle / Date */}
+                  <div>
+                    <label className="block text-xs font-bold text-slate-800 mb-1">
+                      Accreditation Cycle / Date
+                    </label>
+                    <input
+                      type="text"
+                      value={docForm.date}
+                      onChange={(e) => setDocForm({ ...docForm, date: e.target.value })}
+                      placeholder="e.g. Cycle 2021–2026 or Official Record"
+                      className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs"
+                    />
+                  </div>
+
+                  {/* Issuing Authority */}
+                  <div>
+                    <label className="block text-xs font-bold text-slate-800 mb-1">
+                      Issuing Apex Authority
+                    </label>
+                    <input
+                      type="text"
+                      value={docForm.authority}
+                      onChange={(e) => setDocForm({ ...docForm, authority: e.target.value })}
+                      placeholder="e.g. National Agricultural Education Accreditation Board (NAEAB), ICAR"
+                      className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs"
+                    />
+                  </div>
+
+                  {/* Executive Summary */}
+                  <div className="md:col-span-2">
+                    <label className="block text-xs font-bold text-slate-800 mb-1">
+                      Executive Summary & Statutory Declaration <span className="text-red-500">*</span>
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={docForm.summary}
+                      onChange={(e) => setDocForm({ ...docForm, summary: e.target.value })}
+                      placeholder="Provide comprehensive summary of the document, regulatory review standards, and statutory declarations..."
+                      className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs leading-relaxed"
+                    />
+                  </div>
+
+                  {/* Document Attachment / Upload section */}
+                  <div className="md:col-span-2 bg-white p-4 rounded-xl border border-slate-200 space-y-3">
+                    <span className="font-bold text-xs text-navy-950 block">
+                      Document File Attachment & Download Settings
+                    </span>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {/* Local File Upload */}
+                      <div>
+                        <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                          Option 1: Upload Local PDF / DOC File
+                        </label>
+                        <div className="flex items-center gap-2">
+                          <label className="px-3 py-2 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg text-xs font-bold text-slate-800 flex items-center gap-1.5 cursor-pointer">
+                            <Upload className="w-3.5 h-3.5 text-navy-900" />
+                            <span>Browse File</span>
+                            <input
+                              type="file"
+                              accept=".pdf,.doc,.docx,.txt"
+                              onChange={handleDocFileUpload}
+                              className="hidden"
+                            />
+                          </label>
+                          {docForm.fileData && (
+                            <button
+                              type="button"
+                              onClick={() => setDocForm((prev) => ({ ...prev, fileData: '', fileSize: '' }))}
+                              className="text-[11px] text-red-600 hover:underline font-bold"
+                            >
+                              Remove Attached File
+                            </button>
+                          )}
+                        </div>
+                        {docForm.fileData ? (
+                          <div className="text-[11px] text-emerald-700 font-bold mt-1.5 flex items-center gap-1">
+                            <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                            <span>Attached: {docForm.docName} ({docForm.fileSize})</span>
+                          </div>
+                        ) : (
+                          <p className="text-[10px] text-slate-400 mt-1">
+                            Supports PDF, Word, or text files up to 8 MB.
+                          </p>
+                        )}
+                      </div>
+
+                      {/* External Web Link */}
+                      <div>
+                        <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                          Option 2: External Document URL (Optional)
+                        </label>
+                        <input
+                          type="url"
+                          value={docForm.fileUrl}
+                          onChange={(e) => setDocForm({ ...docForm, fileUrl: e.target.value })}
+                          placeholder="https://angrau.ac.in/documents/..."
+                          className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs font-mono"
+                        />
+                        <p className="text-[10px] text-slate-400 mt-1">
+                          Direct web address to download or read online.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* File Name */}
+                    <div>
+                      <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                        Download File Name (Displayed to Users)
+                      </label>
+                      <input
+                        type="text"
+                        value={docForm.docName}
+                        onChange={(e) => setDocForm({ ...docForm, docName: e.target.value })}
+                        placeholder="e.g. Self_Study_Report_College_DrNTRCAE.pdf"
+                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs font-mono"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Form Buttons */}
+                <div className="flex items-center gap-2 pt-2 border-t border-slate-200">
+                  <button
+                    type="button"
+                    onClick={handleSaveDoc}
+                    className="btn btn-navy text-xs font-bold px-5 py-2.5 flex items-center gap-2 cursor-pointer shadow-xs"
+                  >
+                    <Save className="w-4 h-4 text-[#f5c84c]" />
+                    <span>{isEditingDoc ? 'Save Document Changes' : 'Add Document to Portal'}</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowDocForm(false);
+                      setIsEditingDoc(false);
+                      setDocForm(defaultDocForm);
+                    }}
+                    className="px-4 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold rounded-xl transition-all cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Document List Display */}
+            <div className="space-y-3 pt-2">
+              <div className="flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-wider px-1">
+                <span>Active Documents in Prescribed Order ({officialStructure?.aboutUs?.accreditation?.documents?.length || 0})</span>
+                <span>Use arrows to change display order on live website</span>
+              </div>
+
+              {(!officialStructure?.aboutUs?.accreditation?.documents || officialStructure.aboutUs.accreditation.documents.length === 0) ? (
+                <div className="p-8 text-center bg-slate-50 border border-slate-200 rounded-2xl text-slate-500 space-y-3">
+                  <FileText className="w-8 h-8 text-slate-400 mx-auto" />
+                  <p className="text-sm font-semibold">No official documents currently listed.</p>
+                  <button
+                    type="button"
+                    onClick={handleResetDocs}
+                    className="btn btn-navy text-xs font-bold px-4 py-2"
+                  >
+                    Restore 5 Default Statutory Documents
+                  </button>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {officialStructure.aboutUs.accreditation.documents.map((doc, idx) => {
+                    const totalDocs = officialStructure.aboutUs.accreditation.documents.length;
+                    return (
+                      <div
+                        key={doc.id || idx}
+                        className="p-4 sm:p-5 bg-slate-50 hover:bg-slate-100/70 border border-slate-200 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all"
+                      >
+                        {/* Left: Metadata & summary */}
+                        <div className="space-y-1.5 flex-1">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="w-6 h-6 rounded-full bg-[#0b1a2e] text-[#f5c84c] text-[11px] font-mono font-bold flex items-center justify-center flex-shrink-0">
+                              {idx + 1}
+                            </span>
+                            <span className="px-2.5 py-0.5 bg-[#0b1a2e] text-[#f5c84c] text-[11px] font-mono font-extrabold rounded-md shadow-2xs">
+                              {doc.tag}
+                            </span>
+                            <span className="text-xs text-slate-500 font-mono">
+                              REF: {doc.refNo}
+                            </span>
+                            <span className="badge badge-navy text-[10px] font-bold">
+                              {doc.date}
+                            </span>
+                            {doc.fileData && (
+                              <span className="badge bg-emerald-100 text-emerald-800 border-emerald-300 text-[10px] font-bold">
+                                Attached File ({doc.fileSize || 'PDF'})
+                              </span>
+                            )}
+                            {doc.fileUrl && !doc.fileData && (
+                              <span className="badge bg-sky-100 text-sky-800 border-sky-300 text-[10px] font-bold">
+                                External URL
+                              </span>
+                            )}
+                          </div>
+
+                          <h4 className="font-heading font-extrabold text-navy-950 text-base">
+                            {doc.title}
+                          </h4>
+
+                          <p className="text-xs text-slate-600 line-clamp-2">
+                            {doc.summary}
+                          </p>
+
+                          <div className="text-[11px] text-slate-500 flex items-center gap-2 flex-wrap">
+                            <span><strong className="text-slate-700">Authority:</strong> {doc.authority}</span>
+                            <span>•</span>
+                            <span className="font-mono text-slate-400">File: {doc.docName}</span>
+                          </div>
+                        </div>
+
+                        {/* Right: Actions */}
+                        <div className="flex items-center gap-1.5 flex-shrink-0 pt-2 md:pt-0">
+                          {/* Move Up */}
+                          <button
+                            type="button"
+                            disabled={idx === 0}
+                            onClick={() => handleMoveDocUp(idx)}
+                            className="p-2 rounded-lg bg-white border border-slate-300 hover:bg-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-all text-slate-700 cursor-pointer shadow-2xs"
+                            title="Move Up"
+                          >
+                            <ArrowUp className="w-3.5 h-3.5" />
+                          </button>
+
+                          {/* Move Down */}
+                          <button
+                            type="button"
+                            disabled={idx === totalDocs - 1}
+                            onClick={() => handleMoveDocDown(idx, totalDocs)}
+                            className="p-2 rounded-lg bg-white border border-slate-300 hover:bg-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-all text-slate-700 cursor-pointer shadow-2xs"
+                            title="Move Down"
+                          >
+                            <ArrowDown className="w-3.5 h-3.5" />
+                          </button>
+
+                          {/* Preview */}
+                          <button
+                            type="button"
+                            onClick={() => setPreviewDocModal(doc)}
+                            className="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all cursor-pointer shadow-2xs"
+                            title="Preview Document"
+                          >
+                            <Eye className="w-3.5 h-3.5" />
+                          </button>
+
+                          {/* Edit */}
+                          <button
+                            type="button"
+                            onClick={() => handleOpenEditDoc(doc)}
+                            className="p-2 rounded-lg bg-[#0b1a2e] hover:bg-[#153258] text-[#f5c84c] transition-all cursor-pointer shadow-2xs flex items-center gap-1 text-xs font-bold px-2.5"
+                            title="Edit Document"
+                          >
+                            <Edit className="w-3.5 h-3.5" />
+                            <span>Edit</span>
+                          </button>
+
+                          {/* Delete */}
+                          <button
+                            type="button"
+                            onClick={() => handleDeleteDoc(doc)}
+                            className="p-2 rounded-lg bg-red-600 hover:bg-red-700 text-white transition-all cursor-pointer shadow-2xs"
+                            title="Delete Document"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* Quick Link to Status of Accreditation page */}
+            <div className="p-4 bg-amber-50/70 border border-amber-200 rounded-xl text-amber-900 text-xs flex items-center justify-between gap-3 flex-wrap">
+              <div className="flex items-center gap-2">
+                <FileCheck className="w-4 h-4 text-amber-700 flex-shrink-0" />
+                <span>All changes made here are instantly reflected live on the public <strong>About Us &rarr; Status of Accreditation</strong> page.</span>
+              </div>
+              <a
+                href="/about?tab=accreditation"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-amber-900 underline flex items-center gap-1 hover:text-amber-950"
+              >
+                <span>View Live Public Page</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
+          </div>
+        )}
+
+        {/* ─────────────────────────────────────────────────────────────
             TAB 10: ABOUT COLLEGE & ICAR
         ───────────────────────────────────────────────────────────── */}
         {activeTab === 'about' && (
@@ -2021,6 +2625,24 @@ export default function AdminPage() {
               <p className="text-xs text-slate-500 mt-1">
                 Maintain official historical narratives, 4-point mandates, and accreditation statements.
               </p>
+            </div>
+
+            {/* Quick Access Card for Official Documents */}
+            <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between gap-3 flex-wrap">
+              <div>
+                <span className="font-bold text-xs text-navy-950 block">Official Documents & Accreditation SSRs</span>
+                <span className="text-[11px] text-slate-500">
+                  {officialStructure?.aboutUs?.accreditation?.documents?.length || 0} Statutory Documents Active (&lt;GAZETTE NOTIFICATION&gt;, SSRs, etc.)
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveTab('documents')}
+                className="btn btn-navy text-xs font-bold px-4 py-2 flex items-center gap-1.5 cursor-pointer shadow-xs"
+              >
+                <FileCheck className="w-3.5 h-3.5 text-[#f5c84c]" />
+                <span>Open Documents Manager</span>
+              </button>
             </div>
 
             <div>
@@ -2049,11 +2671,15 @@ export default function AdminPage() {
 
             <button
               onClick={() => {
-                updateAboutUs('history', aboutForm.history);
-                updateAboutUs('accreditation', { status: aboutForm.accreditationText });
+                updateAboutUs('history', {
+                  content: aboutForm.history.split('\n\n').filter(Boolean)
+                });
+                updateAboutUs('accreditation', {
+                  statusStatement: aboutForm.accreditationText
+                });
                 triggerToast('About College details updated!');
               }}
-              className="btn btn-navy text-xs font-bold px-5 py-2.5 flex items-center gap-2"
+              className="btn btn-navy text-xs font-bold px-5 py-2.5 flex items-center gap-2 cursor-pointer shadow-xs"
             >
               <Save className="w-4 h-4 text-[#f5c84c]" />
               <span>Save About Us Details</span>
@@ -2169,6 +2795,93 @@ export default function AdminPage() {
                   )}
                 </tbody>
               </table>
+            </div>
+          </div>
+        )}
+
+        {/* Document Preview Modal in Admin Page */}
+        {previewDocModal && (
+          <div
+            className="fixed inset-0 z-50 bg-navy-950/80 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+            onClick={() => setPreviewDocModal(null)}
+          >
+            <div
+              className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-300 flex flex-col my-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="bg-[#0b1a2e] text-white px-5 py-3.5 flex items-center justify-between border-b border-white/10 sticky top-0 z-10">
+                <div className="flex items-center gap-2">
+                  <FileText className="w-4 h-4 text-[#f5c84c]" />
+                  <span className="font-heading font-bold text-xs sm:text-sm text-white">
+                    Document Public Preview
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setPreviewDocModal(null)}
+                  className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              <div className="p-6 space-y-4 text-slate-800">
+                <div className="text-center border-b pb-4">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                    Government of Andhra Pradesh • ANGRAU
+                  </div>
+                  <h3 className="font-heading font-extrabold text-base text-navy-950 uppercase">
+                    Dr. NTR College of Agricultural Engineering, Bapatla
+                  </h3>
+                  <p className="text-xs text-slate-500">Accredited by ICAR, New Delhi (Cycle 2021–2026)</p>
+                </div>
+
+                <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-1.5">
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <span className="px-2 py-0.5 bg-[#0b1a2e] text-[#f5c84c] font-mono text-xs font-bold rounded">
+                      {previewDocModal.tag}
+                    </span>
+                    <span className="text-xs font-mono text-slate-600 font-bold">
+                      REF: {previewDocModal.refNo}
+                    </span>
+                  </div>
+                  <h4 className="font-heading font-extrabold text-base text-navy-950">
+                    {previewDocModal.title}
+                  </h4>
+                  <div className="text-xs text-slate-600">
+                    <strong>Authority:</strong> {previewDocModal.authority} • <strong>Cycle:</strong> {previewDocModal.date}
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">Executive Summary:</span>
+                  <p className="text-xs text-slate-700 leading-relaxed text-justify">
+                    {previewDocModal.summary}
+                  </p>
+                </div>
+
+                {previewDocModal.fileData && (
+                  <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-800 text-xs font-medium flex items-center justify-between">
+                    <span>Attached File: {previewDocModal.docName} ({previewDocModal.fileSize})</span>
+                    <span className="badge bg-emerald-200 text-emerald-900 text-[10px] font-bold">Ready for Download</span>
+                  </div>
+                )}
+                {previewDocModal.fileUrl && (
+                  <div className="p-3 bg-sky-50 border border-sky-200 rounded-lg text-sky-800 text-xs font-medium">
+                    External Document Link: <span className="font-mono underline">{previewDocModal.fileUrl}</span>
+                  </div>
+                )}
+              </div>
+
+              <div className="bg-slate-50 px-5 py-3 border-t border-slate-200 flex items-center justify-end">
+                <button
+                  type="button"
+                  onClick={() => setPreviewDocModal(null)}
+                  className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-xl text-xs font-bold transition-all cursor-pointer"
+                >
+                  Close Preview
+                </button>
+              </div>
             </div>
           </div>
         )}

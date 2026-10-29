@@ -64,6 +64,23 @@ export default function AboutUsPage() {
     window.print();
   };
 
+  const handleDownloadDocument = (doc) => {
+    if (doc.fileData) {
+      const link = document.createElement('a');
+      link.href = doc.fileData;
+      link.download = doc.docName || `${doc.title.replace(/\s+/g, '_')}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      return;
+    }
+    if (doc.fileUrl) {
+      window.open(doc.fileUrl, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    handleDownloadDocText(doc);
+  };
+
   const handleDownloadDocText = (doc) => {
     const content = `========================================================================
 ACHARYA N.G. RANGA AGRICULTURAL UNIVERSITY (ANGRAU)
@@ -96,7 +113,7 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = doc.docName.replace('.pdf', '.txt');
+    link.download = (doc.docName || 'Official_Document.pdf').replace('.pdf', '.txt');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -638,6 +655,16 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                             <span className="badge badge-navy text-[10px] font-bold">
                               {doc.date}
                             </span>
+                            {doc.fileData && (
+                              <span className="badge bg-emerald-100 text-emerald-800 border-emerald-300 text-[10px] font-bold">
+                                Attached File ({doc.fileSize || 'PDF'})
+                              </span>
+                            )}
+                            {doc.fileUrl && !doc.fileData && (
+                              <span className="badge bg-sky-100 text-sky-800 border-sky-300 text-[10px] font-bold">
+                                External Link
+                              </span>
+                            )}
                           </div>
 
                           <h4 className="font-heading font-extrabold text-navy-950 text-base sm:text-lg">
@@ -666,11 +693,11 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
 
                           <button
                             type="button"
-                            onClick={() => handleDownloadDocText(doc)}
+                            onClick={() => handleDownloadDocument(doc)}
                             className="btn btn-gold text-xs font-bold px-3.5 py-2 flex items-center gap-1.5 shadow-2xs cursor-pointer"
                           >
                             <Download className="w-3.5 h-3.5 text-navy-950" />
-                            <span>Download Copy</span>
+                            <span>{doc.fileData ? 'Download PDF' : 'Download Copy'}</span>
                           </button>
                         </div>
                       </div>
@@ -866,7 +893,28 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
               <span className="text-[11px] text-slate-500 hidden sm:inline">
                 File: {selectedDoc.docName}
               </span>
-              <div className="flex items-center gap-2 ml-auto">
+              <div className="flex items-center gap-2 ml-auto flex-wrap">
+                {selectedDoc.fileData ? (
+                  <button
+                    type="button"
+                    onClick={() => handleDownloadDocument(selectedDoc)}
+                    className="btn btn-gold text-xs font-bold px-4 py-2 flex items-center gap-1.5 cursor-pointer shadow-xs"
+                  >
+                    <Download className="w-3.5 h-3.5 text-navy-950" />
+                    <span>Download Attached File ({selectedDoc.fileSize || 'PDF'})</span>
+                  </button>
+                ) : selectedDoc.fileUrl ? (
+                  <a
+                    href={selectedDoc.fileUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-gold text-xs font-bold px-4 py-2 flex items-center gap-1.5 cursor-pointer shadow-xs"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5 text-navy-950" />
+                    <span>Open Document Link</span>
+                  </a>
+                ) : null}
+
                 <button
                   type="button"
                   onClick={() => handleDownloadDocText(selectedDoc)}

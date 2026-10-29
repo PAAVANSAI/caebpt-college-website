@@ -70,8 +70,10 @@ function sanitizeOfficialStructure(data) {
   const accreditationObj = {
     ...defaultOfficialStructure.aboutUs.accreditation,
     ...(data.aboutUs?.accreditation || {}),
-    statusStatement: defaultOfficialStructure.aboutUs.accreditation.statusStatement,
-    documents: defaultOfficialStructure.aboutUs.accreditation.documents
+    statusStatement: data.aboutUs?.accreditation?.statusStatement || defaultOfficialStructure.aboutUs.accreditation.statusStatement,
+    documents: Array.isArray(data.aboutUs?.accreditation?.documents) && data.aboutUs.accreditation.documents.length > 0
+      ? data.aboutUs.accreditation.documents
+      : defaultOfficialStructure.aboutUs.accreditation.documents
   };
 
   // Safe Vision & Mandate
@@ -634,6 +636,114 @@ export function WebsiteProvider({ children }) {
     });
   };
 
+  // 9B. Official Documents & Accreditation Documents Management
+  const addAccreditationDocument = (docData) => {
+    setOfficialStructure((prev) => {
+      const currentDocs = prev.aboutUs?.accreditation?.documents || defaultOfficialStructure.aboutUs.accreditation.documents || [];
+      const newDoc = {
+        id: docData.id || `doc-${Date.now()}`,
+        order: currentDocs.length + 1,
+        tag: docData.tag || '<OFFICIAL DOCUMENT>',
+        title: docData.title || 'Untitled Document',
+        refNo: docData.refNo || `ANGRAU/CAE/${new Date().getFullYear()}/${currentDocs.length + 1}`,
+        type: docData.type || 'Institutional Document',
+        date: docData.date || 'Current Cycle',
+        authority: docData.authority || 'Dr. NTRCAE & ANGRAU',
+        summary: docData.summary || '',
+        docName: docData.docName || 'Official_Document.pdf',
+        fileUrl: docData.fileUrl || '',
+        fileData: docData.fileData || '',
+        fileSize: docData.fileSize || ''
+      };
+      const updatedDocs = [...currentDocs, newDoc];
+      return {
+        ...prev,
+        aboutUs: {
+          ...prev.aboutUs,
+          accreditation: {
+            ...prev.aboutUs?.accreditation,
+            documents: updatedDocs
+          }
+        }
+      };
+    });
+  };
+
+  const updateAccreditationDocument = (docId, updatedDocData) => {
+    setOfficialStructure((prev) => {
+      const currentDocs = prev.aboutUs?.accreditation?.documents || defaultOfficialStructure.aboutUs.accreditation.documents || [];
+      const updatedDocs = currentDocs.map((doc) => {
+        if (doc.id === docId) {
+          return { ...doc, ...updatedDocData };
+        }
+        return doc;
+      });
+      return {
+        ...prev,
+        aboutUs: {
+          ...prev.aboutUs,
+          accreditation: {
+            ...prev.aboutUs?.accreditation,
+            documents: updatedDocs
+          }
+        }
+      };
+    });
+  };
+
+  const deleteAccreditationDocument = (docId) => {
+    setOfficialStructure((prev) => {
+      const currentDocs = prev.aboutUs?.accreditation?.documents || defaultOfficialStructure.aboutUs.accreditation.documents || [];
+      const filtered = currentDocs.filter((doc) => doc.id !== docId);
+      const reindexed = filtered.map((doc, idx) => ({ ...doc, order: idx + 1 }));
+      return {
+        ...prev,
+        aboutUs: {
+          ...prev.aboutUs,
+          accreditation: {
+            ...prev.aboutUs?.accreditation,
+            documents: reindexed
+          }
+        }
+      };
+    });
+  };
+
+  const reorderAccreditationDocuments = (startIndex, endIndex) => {
+    setOfficialStructure((prev) => {
+      const currentDocs = [...(prev.aboutUs?.accreditation?.documents || defaultOfficialStructure.aboutUs.accreditation.documents || [])];
+      if (startIndex < 0 || startIndex >= currentDocs.length || endIndex < 0 || endIndex >= currentDocs.length) {
+        return prev;
+      }
+      const [removed] = currentDocs.splice(startIndex, 1);
+      currentDocs.splice(endIndex, 0, removed);
+      const reindexed = currentDocs.map((doc, idx) => ({ ...doc, order: idx + 1 }));
+      return {
+        ...prev,
+        aboutUs: {
+          ...prev.aboutUs,
+          accreditation: {
+            ...prev.aboutUs?.accreditation,
+            documents: reindexed
+          }
+        }
+      };
+    });
+  };
+
+  const resetAccreditationDocuments = () => {
+    setOfficialStructure((prev) => ({
+      ...prev,
+      aboutUs: {
+        ...prev.aboutUs,
+        accreditation: {
+          ...prev.aboutUs?.accreditation,
+          documents: defaultOfficialStructure.aboutUs.accreditation.documents
+        }
+      }
+    }));
+  };
+
   // 10. Publications
   const addPublication = (pub) => {
     setOfficialStructure((prev) => ({
@@ -724,6 +834,11 @@ export function WebsiteProvider({ children }) {
         updateWelfareActivity,
         updateAdministration,
         updateAboutUs,
+        addAccreditationDocument,
+        updateAccreditationDocument,
+        deleteAccreditationDocument,
+        reorderAccreditationDocuments,
+        resetAccreditationDocuments,
         addPublication,
         deletePublication,
 
