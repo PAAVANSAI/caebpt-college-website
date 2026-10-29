@@ -15,10 +15,10 @@ export default function Hero({ onOpenAdmissionsModal }) {
     intro: "Pioneering academic distinction, farm mechanization, micro-irrigation systems, and agro-processing engineering to drive sustainable agrarian advancement under ANGRAU.",
     bgImage: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=2000&q=85",
     highlights: [
-      { count: "5", label: "Core Academic Departments", note: "Specialized Disciplines" },
-      { count: "3+", label: "Degree Programs Offered", note: "B.Tech, M.Tech & Ph.D." },
-      { count: "18+", label: "Modern Engineering Labs", note: "Testing & Research Units" },
-      { count: "50+", label: "Campus Green Acreage", note: "Acres with Trial Fields" },
+      { count: "6", label: "Core Academic Departments", note: "Specialized Disciplines" },
+      { count: "1,046", label: "Total Graduates", note: "Graduated Agro-Engineers" },
+      { count: "25", label: "Campus Green Acreage", note: "9.51 Hectares on NH-216" },
+      { count: "2021–26", label: "ICAR Accreditation", note: "National NAEAB Cycle" },
     ]
   };
 

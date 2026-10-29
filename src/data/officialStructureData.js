@@ -9,9 +9,11 @@
 export const officialStructureData = {
   angrauUrl: "https://angrau.ac.in",
   angrauName: "Acharya N.G. Ranga Agricultural University (ANGRAU)",
-  collegeFullName: "College of Agricultural Engineering, Bapatla",
+  collegeFullName: "Dr. NTR College of Agricultural Engineering, Bapatla",
+  collegeShortName: "Dr. NTR CAE Bapatla",
   estd: "1983",
   domain: "caebpt.ac.in",
+  motto: "Engineering Solutions for Sustainable Agriculture",
 
   // 0. Hero Section Highlights & Display
   hero: {
@@ -22,10 +24,10 @@ export const officialStructureData = {
     intro: "Pioneering academic distinction, farm mechanization, micro-irrigation systems, and agro-processing engineering to drive sustainable agrarian advancement under ANGRAU.",
     bgImage: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=2000&q=85",
     highlights: [
-      { count: "5", label: "Core Academic Departments", note: "Specialized Disciplines" },
-      { count: "3+", label: "Degree Programs Offered", note: "B.Tech, M.Tech & Ph.D." },
-      { count: "18+", label: "Modern Engineering Labs", note: "Testing & Research Units" },
-      { count: "50+", label: "Campus Green Acreage", note: "Acres with Trial Fields" },
+      { count: "6", label: "Core Academic Departments", note: "Specialized Disciplines" },
+      { count: "1,046", label: "Total Graduates", note: "Graduated Agro-Engineers" },
+      { count: "25", label: "Campus Green Acreage", note: "9.51 Hectares on NH-216" },
+      { count: "2021–26", label: "ICAR Accreditation", note: "National NAEAB Cycle" },
     ]
   },
 
@@ -227,73 +229,167 @@ export const officialStructureData = {
     ]
   },
 
-  // 4. About Us Subsections
+  // 4. About Us Subsections (Official Records)
   aboutUs: {
     history: {
       title: "Historical Background",
       established: "1983",
+      collegeName: "Dr. NTR College of Agricultural Engineering, Bapatla",
+      shortName: "Dr NTRCAE",
+      shiftedDate: "May 1994",
+      campusLocation: "NH-216, Karlapalem Road, Bapatla",
+      foundationStone: {
+        date: "24-02-1988",
+        laidBy: "Dr. N.T. Rama Rao, then Hon’ble Chief Minister of Andhra Pradesh",
+        image: "/images/about/ntr_foundation_stone_1988.jpeg",
+        caption: "Dr N T Rama Rao, Chief Minister, AP laying the foundation stone of the College Building on 24.2.1988"
+      },
+      inauguration: {
+        date: "05-05-1994",
+        inauguratedBy: "Sri K. Jana Reddy, then Hon’ble Minister for Agriculture of Andhra Pradesh"
+      },
+      campusLayout: {
+        image: "/images/about/campus_layout_map.png",
+        caption: "Layout of Dr. N.T.R. College of Agricultural Engineering, Bapatla"
+      },
       content: [
-        "The College of Agricultural Engineering, Bapatla was established in the year 1983 as a premier constituent college of Acharya N.G. Ranga Agricultural University (ANGRAU) to impart specialized education and conduct mission-oriented research in the field of Agricultural Engineering.",
-        "Located in the historic coastal town of Bapatla in Andhra Pradesh, the college was set up to address regional challenges in farm mechanization, irrigation canal management, soil salinization, and post-harvest produce preservation.",
-        "Over four decades, the institution has produced over 2,000 professional agricultural engineers serving in premier multinational equipment manufacturers, state groundwater and irrigation departments, scientific institutes of the ICAR, and civil services worldwide."
+        "Acharya N.G. Ranga Agricultural University (earlier Andhra Pradesh Agricultural University) started a 4-year B.Tech (Agril. Engg.) Degree Programme in the Department of Agricultural Engineering, Agricultural College, Bapatla from the academic year 1983-84 considering the demand for Agricultural Engineering graduates in this state. The college was shifted to its new campus on NH-216 on Karlapalem road in May 1994. The foundation stone for construction of the building complex was laid by Dr. N.T. Rama Rao, the then Hon’ble Chief Minister of Andhra Pradesh on 24-02-1988 and was inaugurated in the new premises on 5-5-1994 by Sri K. Jana Reddy, the then Hon’ble Minister for Agriculture of Andhra Pradesh.",
+        "The college holds the unique distinction of being the only college offering B.Tech (Agril. Engg.) degree in Andhra Pradesh State till 2008. The annual intake of students into the degree programme was only 20 in the initial year 1983-84 and later was raised to 61 in subsequent years. Admissions are conducted through AP EAPCET by the Government of Andhra Pradesh and also through the UG-level ICAR examination. Furthermore, there is an additional quota of ICAR (20%) and a 15% quota through lateral entry for diploma students in agricultural engineering.",
+        "After shifting to the new campus, the College expanded rapidly both academically and physically. Many infrastructural facilities were added in terms of buildings and equipment for improving academic status in agricultural engineering. The College celebrated its Silver Jubilee in the year 2008 during which a silver jubilee building was constructed for a spacious digital library, book library, and two classrooms. This college was accredited by the Indian Council of Agricultural Research (ICAR), New Delhi during 1999-2000 in the first phase itself based on ICAR's Review Team Report and during subsequent phases as well. The latest accreditation of ICAR for this College is for 2021-2026.",
+        "The College was under the Faculty of Agriculture until 2010 when a new Faculty of Agricultural Engineering and Technology was established by the University as per the provisions of the University Act. The College was renamed as Dr N.T.R. College of Agricultural Engineering (Dr NTRCAE) in the year 2018 in memory of Late Dr N.T. Rama Rao, the then Chief Minister of combined Andhra Pradesh who laid the foundation stone for the College building.",
+        "Today, the Dr. NTR College of Agricultural Engineering (CAE) is widely recognized as the Center for Academic Excellence (CAE) in quality education, need-based research, and transfer of technology to farmers for improving farm production. The lush green campus is spread over 25 acres (9.51 ha) with an infrastructure ranked among the best in the country and accredited by ICAR. The courses being offered are based on ICAR’s V Deans’ Committee recommended syllabus to gear up towards equipping students to meet challenges faced by the agricultural sector.",
+        "The driving force behind the high level of academic excellence and quality education is the dedicated team of over twenty core faculty drawn from different specializations. A total of 1,046 students have completed graduation from the College so far."
+      ],
+      totalGraduates: 1046,
+      currentIntake: 61,
+      campusAcreage: "25 Acres (9.51 Hectares)",
+      coreFacultyCount: "20+",
+      coreDepartments: [
+        { code: "FMPE", name: "Farm Machinery and Power Engineering" },
+        { code: "PFE", name: "Processing and Food Engineering" },
+        { code: "IDE", name: "Irrigation and Drainage Engineering" },
+        { code: "SWCE", name: "Soil and Water Conservation Engineering" },
+        { code: "REE", name: "Renewable Energy Engineering" },
+        { code: "BEAS", name: "Basic Engineering and Applied Sciences" }
+      ],
+      landAssetPattern: [
+        { section: "A", category: "Field crops (Irrigated)", irrigated: "2.43 ha", rainfed: "-", total: "2.43 ha", pct: "25.5%" },
+        { section: "A", category: "Orchard crops (Irrigated)", irrigated: "2.22 ha", rainfed: "-", total: "2.22 ha", pct: "23.4%" },
+        { section: "A", category: "Fodder crops", irrigated: "-", rainfed: "-", total: "-", pct: "-" },
+        { section: "A", category: "Agro-forestry and other vegetation", irrigated: "-", rainfed: "-", total: "-", pct: "-" },
+        { section: "A", category: "Total Area Under Cultivation (A)", irrigated: "4.65 ha", rainfed: "-", total: "4.65 ha", pct: "48.9%", isSubtotal: true },
+        { section: "B", category: "Roads, Buildings and Sheds", irrigated: "-", rainfed: "-", total: "2.43 ha", pct: "25.5%" },
+        { section: "B", category: "Fish tanks / water bodies / Canals / Drains / Wells etc.", irrigated: "-", rainfed: "-", total: "-", pct: "-" },
+        { section: "B", category: "Farming Systems Research", irrigated: "-", rainfed: "-", total: "-", pct: "-" },
+        { section: "B", category: "Cultivable waste land", irrigated: "-", rainfed: "-", total: "-", pct: "-" },
+        { section: "B", category: "Barren & Uncultivable land", irrigated: "-", rainfed: "-", total: "2.43 ha", pct: "25.5%" },
+        { section: "B", category: "Total Area Under Infrastructure / Other (B)", irrigated: "-", rainfed: "-", total: "4.86 ha", pct: "51.1%", isSubtotal: true },
+        { section: "C", category: "Total Campus Land Area (A + B)", irrigated: "4.65 ha", rainfed: "-", total: "9.51 ha", pct: "100.0%", isTotal: true }
+      ],
+      buildingComplex: [
+        { name: "Visvesvaraya Bhavan & ELP Building", area: "0.69 acre", role: "Main Administrative Chambers & Experiential Learning Modules" },
+        { name: "Dr. M.V. Rao Block", area: "0.25 acres", role: "Workshops and Advanced Laboratory Complex" },
+        { name: "Boys Hostel", area: "0.64 acres", role: "Residential Student Hostels & Mess Facilities" },
+        { name: "Girls Hostel", area: "0.34 acres", role: "Women's Residential Hostel & Amenities" },
+        { name: "Play grounds", area: "12.50 acres", role: "Multi-Sport Grounds with Cricket Pitch, Basketball Court & Helipad" },
+        { name: "Experimental plots & Fields", area: "10.58 acres", role: "Trial Cultivation Plots, Irrigation Labs & Field Demonstration Bays" }
       ],
       milestones: [
-        { year: "1983", event: "Establishment of the College of Agricultural Engineering at Bapatla." },
-        { year: "1991", event: "Introduction of Postgraduate (M.Tech) degree programs in core engineering disciplines." },
-        { year: "2002", event: "Commissioning of modern Tractor Power Testing Track and Hydraulics Flume Centre." },
-        { year: "2012", event: "Establishment of the Food Processing Pilot Plant with semi-industrial dehydration lines." },
-        { year: "2020", event: "Launch of precision agricultural drone training and IoT-based micro-irrigation suites." }
+        { year: "1983-84", event: "APAU (now ANGRAU) started 4-year B.Tech (Agril. Engg.) Degree Programme at Agricultural College, Bapatla with initial intake of 20." },
+        { year: "1988", event: "Foundation stone laid by Dr. N.T. Rama Rao, Hon’ble Chief Minister of AP on 24-02-1988 for the new campus." },
+        { year: "1994", event: "Shifted to new campus on NH-216, Karlapalem Road; inaugurated on 05-05-1994 by Sri K. Jana Reddy, Hon’ble Minister for Agriculture." },
+        { year: "1999-2000", event: "Accredited by Indian Council of Agricultural Research (ICAR), New Delhi in the first phase itself based on ICAR's Review Team Report." },
+        { year: "2008", event: "Silver Jubilee celebrations; construction of Silver Jubilee building housing digital library, book library, and two classrooms." },
+        { year: "2010", event: "Transfer from Faculty of Agriculture to the newly established Faculty of Agricultural Engineering and Technology under the University Act." },
+        { year: "2018", event: "Renamed as Dr. N.T.R. College of Agricultural Engineering (Dr NTRCAE) in memory of Late Dr. N.T. Rama Rao." },
+        { year: "2021-2026", event: "Latest institutional accreditation conferred by ICAR, New Delhi." }
       ]
     },
     visionMandate: {
       title: "Vision and Mandate",
-      vision: "To emerge as a world-class centre of academic distinction and technological innovation in agricultural engineering, empowering future leaders to drive sustainable farm mechanization, climate-resilient water management, and agro-industrial transformation.",
+      vision: "To make Dr NTR College of Agricultural Engineering, Bapatla an integrated center for academic excellence of agricultural engineering education known for its contribution to agriculture and allied fields in making agriculture more remunerative to farmers",
+      mandate: "To serve the farming community and enhance their quality of life through excellence in education, research, development and transfer of agricultural technologies",
       mandates: [
-        "Impart high-quality undergraduate, postgraduate, and doctoral education in agricultural engineering aligned with national ICAR standards.",
-        "Conduct applied, problem-solving scientific research in farm power machinery, watershed conservation, food processing, and agro-renewable energy.",
-        "Transfer proven agricultural engineering technologies to farmers, custom hiring centres, and local agro-enterprises through outreach and training.",
-        "Foster industry-academia collaborations, entrepreneurship incubation, and technical advisory services."
+        "To serve the farming community and enhance their quality of life through excellence in agricultural engineering education.",
+        "To conduct need-based applied research addressing farm mechanization, water management, post-harvest processing, and agro-energy challenges.",
+        "To develop and transfer affordable, climate-resilient agricultural technologies directly to farmers for improving farm production.",
+        "To equip students through ICAR V Deans’ Committee recommended syllabus with academic rigor to meet national and global agricultural challenges."
       ]
     },
     orgStructure: {
       title: "Organizational Structure",
-      description: "The College operates within the statutory governance structure of Acharya N.G. Ranga Agricultural University (ANGRAU):",
-      hierarchy: [
-        { level: "Apex University Authority", role: "Vice-Chancellor, ANGRAU", name: "Dr. R. Sarada Jayalakshmi Devi (ANGRAU Vice-Chancellor)" },
-        { level: "Faculty Administration", role: "Dean of Agricultural Engineering & Technology", name: "Dr. G. Subba Rao (Faculty Dean Placeholder)" },
-        { level: "College Executive Head", role: "Associate Dean, CAE Bapatla", name: "Dr. K. S. Rao (Associate Dean Placeholder)" },
-        {
-          level: "Academic Departments",
-          heads: [
-            "Head, Farm Machinery & Power Engineering (FMPE)",
-            "Head, Soil & Water Conservation Engineering (SWCE)",
-            "Head, Agricultural Process & Food Engineering (APFE)",
-            "Head, Renewable Energy Engineering (REE)",
-            "Head, Basic Engineering & Allied Sciences (BEAS)"
-          ]
-        },
-        {
-          level: "Collegiate Supporting Administrative Officers",
-          officers: [
-            "Administrative Officer (Establishment, Finance & Stores)",
-            "Wardens (Boys & Girls Student Hostels)",
-            "Officer In-charge of Academic Matters (Examinations & Admissions)",
-            "Officer In-charge of Student Affairs (Welfare, Sports & Cultural)",
-            "Placement Officer (Training, Internships & Corporate Relations)",
-            "Transport In-charge (Campus Transit & Fleet Maintenance)"
-          ]
-        }
-      ]
+      description: "Organization structure of the Dr. NTR College of Agricultural Engineering, Bapatla:",
+      chartImage: "/images/about/organization_structure_chart.png",
+      chartCaption: "Organization structure of the Dr. NTR College of Agricultural Engineering"
     },
     accreditation: {
       title: "Status of Accreditation",
-      statusStatement: "The educational programs of the College of Agricultural Engineering, Bapatla are recognized by the Indian Council of Agricultural Research (ICAR), New Delhi, and affiliated to ANGRAU.",
-      details: [
-        { label: "Governing Apex Council", value: "Indian Council of Agricultural Research (ICAR), New Delhi" },
-        { label: "Affiliating University", value: "Acharya N.G. Ranga Agricultural University (ANGRAU)" },
-        { label: "Curriculum Standard", value: "Aligned with ICAR 5th Deans' Committee Recommendations" },
-        { label: "Approval Body", value: "Government of Andhra Pradesh / State Agricultural University System" },
-        { label: "Accreditation Status Note", value: "Official institutional accreditation certificates and NIRF records are maintained by the ANGRAU Central Quality Assurance Cell." }
+      statusStatement: "Accredited by Indian Council of Agricultural Research (ICAR), New Delhi during 1999–2000 in the first phase itself based on ICAR’s Review Team Report and during the subsequent phases also. The latest accreditation of ICAR for this College is for 2021–2026.",
+      cycle: "2021–2026",
+      governingApex: "Indian Council of Agricultural Research (ICAR), New Delhi",
+      university: "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+      orderNote: "Official statutory accreditation documents in prescribed order:",
+      documents: [
+        {
+          id: "gazette",
+          order: 1,
+          tag: "<GAZETTE NOTIFICATION>",
+          title: "GAZETTE NOTIFICATION",
+          refNo: "GO-MS-AGRI-ANGRAU-DRNTRCAE",
+          type: "Official Government Gazette Notification",
+          date: "Official Record",
+          authority: "Government of Andhra Pradesh & ANGRAU Registrar",
+          summary: "Official Gazette Notification declaring the establishment, faculty status, and statutory institutional governance of Dr. NTR College of Agricultural Engineering under the University Act.",
+          docName: "Gazette_Notification_Dr_NTRCAE.pdf"
+        },
+        {
+          id: "ssr-college",
+          order: 2,
+          tag: "<SELF STUDY REPORT OF COLLEGE>",
+          title: "SELF STUDY REPORT OF COLLEGE",
+          refNo: "ICAR/NAEAB/SSR/COLLEGE/2021-26",
+          type: "Institutional Self Study Report (SSR)",
+          date: "Cycle 2021–2026",
+          authority: "Internal Quality Assurance Cell & Associate Dean",
+          summary: "Comprehensive Institutional Self Study Report of Dr. NTR College of Agricultural Engineering, Bapatla submitted to the National Agricultural Education Accreditation Board (NAEAB), ICAR, New Delhi.",
+          docName: "Self_Study_Report_College_DrNTRCAE.pdf"
+        },
+        {
+          id: "ssr-btech",
+          order: 3,
+          tag: "<SELF STUDY REPORT OF B.TECH (AG ENGG)>",
+          title: "SELF STUDY REPORT OF B.TECH (AG ENGG)",
+          refNo: "ICAR/SSR/BTECH-AGENGG/2021-26",
+          type: "Undergraduate Program Self Study Report",
+          date: "Cycle 2021–2026",
+          authority: "Board of Studies & Undergraduate Academic Committee",
+          summary: "Program-level Self Study Report for 4-Year B.Tech (Agricultural Engineering) evaluating teaching-learning standards, ICAR V Deans' Committee syllabi, laboratories, student-teacher ratio, and outcome metrics.",
+          docName: "Self_Study_Report_BTech_AgEngg.pdf"
+        },
+        {
+          id: "ssr-mtech",
+          order: 4,
+          tag: "<SELF STUDY REPORT OF M.TECH (AG ENGG)>",
+          title: "SELF STUDY REPORT OF M.TECH (AG ENGG)",
+          refNo: "ICAR/SSR/MTECH-AGENGG/2021-26",
+          type: "Postgraduate Program Self Study Report",
+          date: "Cycle 2021–2026",
+          authority: "Postgraduate Academic Committee & Heads of Departments",
+          summary: "Comprehensive Self Study Report for 2-Year M.Tech (Agricultural Engineering) across specialized disciplines including Farm Machinery & Power, Soil & Water Conservation, and Processing & Food Engineering.",
+          docName: "Self_Study_Report_MTech_AgEngg.pdf"
+        },
+        {
+          id: "ssr-phd",
+          order: 5,
+          tag: "<SELF STUDY OF PH.D. (AG ENGG)>",
+          title: "SELF STUDY OF PH.D. (AG ENGG)",
+          refNo: "ICAR/SSR/PHD-AGENGG/2021-26",
+          type: "Doctoral Research Program Self Study Report",
+          date: "Cycle 2021–2026",
+          authority: "Dean of Post Graduate Studies & Doctoral Research Committee",
+          summary: "Self Study Report for Ph.D. in Agricultural Engineering documenting research infrastructure, advanced laboratory facilities, peer-reviewed publications, patent disclosures, and doctoral scholar fellowships.",
+          docName: "Self_Study_Report_PhD_AgEngg.pdf"
+        }
       ]
     }
   },

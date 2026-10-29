@@ -50,38 +50,43 @@ function sanitizeOfficialStructure(data) {
   if (!data || typeof data !== 'object') return defaultOfficialStructure;
 
   // Safe History object
-  let historyObj = defaultOfficialStructure.aboutUs.history;
-  if (data.aboutUs?.history) {
-    if (typeof data.aboutUs.history === 'string') {
-      historyObj = {
-        ...defaultOfficialStructure.aboutUs.history,
-        content: [data.aboutUs.history]
-      };
-    } else {
-      historyObj = {
-        ...defaultOfficialStructure.aboutUs.history,
-        ...data.aboutUs.history,
-        content: Array.isArray(data.aboutUs.history.content)
-          ? data.aboutUs.history.content
-          : defaultOfficialStructure.aboutUs.history.content,
-        milestones: Array.isArray(data.aboutUs.history.milestones)
-          ? data.aboutUs.history.milestones
-          : defaultOfficialStructure.aboutUs.history.milestones
-      };
-    }
-  }
+  const historyObj = {
+    ...defaultOfficialStructure.aboutUs.history,
+    ...(data.aboutUs?.history || {}),
+    content: data.aboutUs?.history?.content && Array.isArray(data.aboutUs.history.content) && data.aboutUs.history.content.length >= 5
+      ? data.aboutUs.history.content
+      : defaultOfficialStructure.aboutUs.history.content,
+    foundationStone: defaultOfficialStructure.aboutUs.history.foundationStone,
+    inauguration: defaultOfficialStructure.aboutUs.history.inauguration,
+    campusLayout: defaultOfficialStructure.aboutUs.history.campusLayout,
+    landAssetPattern: defaultOfficialStructure.aboutUs.history.landAssetPattern,
+    buildingComplex: defaultOfficialStructure.aboutUs.history.buildingComplex,
+    coreDepartments: defaultOfficialStructure.aboutUs.history.coreDepartments,
+    totalGraduates: defaultOfficialStructure.aboutUs.history.totalGraduates,
+    milestones: defaultOfficialStructure.aboutUs.history.milestones
+  };
 
   // Safe Accreditation object
-  let accreditationObj = defaultOfficialStructure.aboutUs.accreditation;
-  if (data.aboutUs?.accreditation) {
-    accreditationObj = {
-      ...defaultOfficialStructure.aboutUs.accreditation,
-      ...data.aboutUs.accreditation,
-      details: Array.isArray(data.aboutUs.accreditation.details)
-        ? data.aboutUs.accreditation.details
-        : defaultOfficialStructure.aboutUs.accreditation.details
-    };
-  }
+  const accreditationObj = {
+    ...defaultOfficialStructure.aboutUs.accreditation,
+    ...(data.aboutUs?.accreditation || {}),
+    statusStatement: defaultOfficialStructure.aboutUs.accreditation.statusStatement,
+    documents: defaultOfficialStructure.aboutUs.accreditation.documents
+  };
+
+  // Safe Vision & Mandate
+  const visionMandateObj = {
+    ...defaultOfficialStructure.aboutUs.visionMandate,
+    ...(data.aboutUs?.visionMandate || {})
+  };
+
+  // Safe Org Structure
+  const orgStructureObj = {
+    ...defaultOfficialStructure.aboutUs.orgStructure,
+    ...(data.aboutUs?.orgStructure || {}),
+    chartImage: defaultOfficialStructure.aboutUs.orgStructure.chartImage,
+    chartCaption: defaultOfficialStructure.aboutUs.orgStructure.chartCaption
+  };
 
   // Safe Dean Message
   const deanObj = {
@@ -184,13 +189,8 @@ function sanitizeOfficialStructure(data) {
       ...defaultOfficialStructure.aboutUs,
       ...(data.aboutUs || {}),
       history: historyObj,
-      visionMandate: {
-        ...defaultOfficialStructure.aboutUs.visionMandate,
-        ...(data.aboutUs?.visionMandate || {}),
-        mandates: Array.isArray(data.aboutUs?.visionMandate?.mandates)
-          ? data.aboutUs.visionMandate.mandates
-          : defaultOfficialStructure.aboutUs.visionMandate.mandates
-      },
+      visionMandate: visionMandateObj,
+      orgStructure: orgStructureObj,
       accreditation: accreditationObj
     },
     publications: (data.publications && typeof data.publications === 'object' && Array.isArray(data.publications.list))

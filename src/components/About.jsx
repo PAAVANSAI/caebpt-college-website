@@ -37,7 +37,7 @@ export default function About() {
                 Pioneering Agro-Technological Education in Andhra Pradesh
               </h3>
               <p className="text-slate-700 leading-relaxed mb-4 text-base">
-                The <strong className="text-navy-900">{collegeInfo.fullName}, Bapatla</strong> was established in 1983 under the auspices of Acharya N.G. Ranga Agricultural University (ANGRAU) to cultivate technical leadership in farm power, irrigation management, and agro-processing systems.
+                The <strong className="text-navy-900">{collegeInfo.fullName}</strong> was established in 1983 under the auspices of Acharya N.G. Ranga Agricultural University (ANGRAU) to cultivate technical leadership in farm power, irrigation management, and agro-processing systems.
               </p>
               <p className="text-slate-600 leading-relaxed mb-6 text-sm">
                 Over four decades, the campus has grown into a bustling center for applied agronomic engineering, offering modern laboratories, extensive trial cultivation acreage, and an ecosystem that connects students with tractor manufacturers, irrigation technology leaders, and rural welfare initiatives.
