@@ -747,23 +747,23 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                         </div>
 
                         {/* Action Buttons */}
-                        <div className="flex items-center gap-2 flex-shrink-0 pt-2 md:pt-0">
+                        <div className="grid grid-cols-2 sm:flex items-center gap-2 flex-shrink-0 pt-2 md:pt-0 w-full md:w-auto">
                           <button
                             type="button"
                             onClick={() => setSelectedDoc(doc)}
-                            className="btn btn-navy text-xs font-bold px-3.5 py-2 flex items-center gap-1.5 shadow-2xs cursor-pointer"
+                            className="btn btn-navy text-xs font-bold px-3 py-2 flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer flex-1 sm:flex-initial"
                           >
                             <Eye className="w-3.5 h-3.5 text-[#f5c84c]" />
-                            <span>View Document</span>
+                            <span>View</span>
                           </button>
 
                           <button
                             type="button"
                             onClick={() => handleDownloadDocument(doc)}
-                            className="btn btn-gold text-xs font-bold px-3.5 py-2 flex items-center gap-1.5 shadow-2xs cursor-pointer"
+                            className="btn btn-gold text-xs font-bold px-3 py-2 flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer flex-1 sm:flex-initial"
                           >
                             <Download className="w-3.5 h-3.5 text-navy-950" />
-                            <span>{doc.fileData || doc.fileUrl ? `Download PDF${doc.fileSize ? ` (${doc.fileSize})` : ''}` : 'Download Copy'}</span>
+                            <span>{doc.fileData || doc.fileUrl ? `PDF (${doc.fileSize || 'Doc'})` : 'Download'}</span>
                           </button>
                         </div>
                       </div>

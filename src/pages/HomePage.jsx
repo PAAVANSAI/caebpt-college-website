@@ -113,9 +113,9 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
     <div>
       {/* Emergency Administrative Broadcast Banner (if enabled in Admin Panel) */}
       {siteSettings?.emergencyBannerActive && (
-        <div className="bg-[#b45309] text-white py-2 px-4 text-xs font-semibold flex items-center justify-between border-b border-[#d97706]">
-          <div className="container flex items-center gap-2 justify-center text-center">
-            <AlertCircle className="w-4 h-4 text-[#fae4a4] flex-shrink-0" />
+        <div className="bg-[#b45309] text-white py-1.5 sm:py-2 px-3 sm:px-4 text-[11px] sm:text-xs font-semibold flex items-center justify-between border-b border-[#d97706]">
+          <div className="container flex items-center gap-1.5 sm:gap-2 justify-center text-center leading-snug">
+            <AlertCircle className="w-3.5 h-3.5 text-[#fae4a4] flex-shrink-0" />
             <span>{siteSettings?.emergencyBannerText || 'AP EAPCET & ICAR AIEEA 2025–26 Counseling Window: Official B.Tech (Agri Engg) admissions guidelines and verification schedules are active.'}</span>
           </div>
         </div>

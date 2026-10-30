@@ -166,16 +166,16 @@ export default function Header({ onOpenAdmissionsModal }) {
         Sits in upper scrollable container, scrolls away smoothly on scroll down.
       */}
       {siteSettings?.showTopUtilityBar !== false && (
-        <div className="bg-[#0b1a2e] text-slate-300 border-b border-white/10 text-xs py-1.5 relative z-30 transition-all">
-          <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 flex items-center justify-between gap-3 text-[11px] sm:text-xs">
+        <div className="bg-[#0b1a2e] text-slate-300 border-b border-white/10 text-xs py-1 sm:py-1.5 relative z-30 transition-all">
+          <div className="w-full max-w-[1400px] mx-auto px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-3 text-[10.5px] sm:text-xs">
             {/* Left: Domain & Affiliation */}
-            <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
-              <span className="flex items-center gap-1.5 text-[#f5c84c] font-bold tracking-wide">
-                <Globe className="w-3.5 h-3.5 text-[#f5c84c]" />
-                <span>Official Domain: {currentStructure.domain || 'caebpt.ac.in'}</span>
+            <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
+              <span className="flex items-center gap-1 sm:gap-1.5 text-[#f5c84c] font-bold tracking-tight sm:tracking-wide truncate">
+                <Globe className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#f5c84c] flex-shrink-0" />
+                <span className="truncate">Official Domain: {currentStructure.domain || 'caebpt.ac.in'}</span>
               </span>
               <span className="text-slate-500 hidden sm:inline">•</span>
-              <span className="text-slate-300 hidden sm:inline">
+              <span className="text-slate-300 hidden sm:inline truncate">
                 Affiliated to ANGRAU • Established {currentStructure.estd || '1983'}
               </span>
               <span className="text-slate-500 hidden md:inline">|</span>
@@ -186,7 +186,7 @@ export default function Header({ onOpenAdmissionsModal }) {
             </div>
 
             {/* Right: Phone & Admin Portal */}
-            <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               <a
                 href={`tel:${(siteSettings?.topBarPhone || '+91 8643 224025').replace(/[^0-9+]/g, '')}`}
                 className="hidden lg:flex items-center gap-1 text-slate-300 hover:text-white transition-colors"
@@ -198,7 +198,7 @@ export default function Header({ onOpenAdmissionsModal }) {
 
               <Link
                 to="/admin"
-                className="flex items-center gap-1 bg-[#d4a72c] hover:bg-[#ecc75f] text-[#06101e] px-2.5 py-0.5 sm:py-1 rounded-md text-[11px] font-extrabold transition-all shadow-xs"
+                className="flex items-center gap-1 bg-[#d4a72c] hover:bg-[#ecc75f] text-[#06101e] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md text-[10.5px] sm:text-[11px] font-extrabold transition-all shadow-xs flex-shrink-0"
                 title="Administrator Control Panel"
                 style={{ textDecoration: 'none' }}
               >
@@ -315,9 +315,9 @@ export default function Header({ onOpenAdmissionsModal }) {
             : 'shadow-xs border-slate-200/60'
         }`}
       >
-        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 flex items-center justify-between">
-          {/* Scrolled Compact Brand (Fades in smoothly on scroll without changing layout width) */}
-          <div className="w-[180px] xl:w-[220px] flex items-center flex-shrink-0">
+        <div className="w-full max-w-[1400px] mx-auto px-3 sm:px-6 flex items-center justify-between">
+          {/* Scrolled Compact Brand (Fades in smoothly on scroll without changing layout width) - Desktop only */}
+          <div className="hidden lg:flex w-[180px] xl:w-[220px] items-center flex-shrink-0">
             <Link
               to="/"
               className={`flex items-center gap-2 whitespace-nowrap group transition-fade-slide ${
@@ -327,7 +327,7 @@ export default function Header({ onOpenAdmissionsModal }) {
               }`}
               style={{ textDecoration: 'none' }}
             >
-              <CollegeEmblem size={30} />
+              <CollegeEmblem size={30} className="w-7 h-7 flex-shrink-0" />
               <div className="flex flex-col">
                 <span className="font-heading font-extrabold text-[#0b1a2e] text-xs sm:text-sm tracking-tight leading-none">
                   CAE Bapatla
@@ -510,8 +510,8 @@ export default function Header({ onOpenAdmissionsModal }) {
             })}
           </ul>
 
-          {/* Scrolled Compact Action Button (Fades and glides in smoothly on scroll without changing layout width) */}
-          <div className="w-[180px] xl:w-[220px] flex items-center justify-end flex-shrink-0">
+          {/* Scrolled Compact Action Button (Fades and glides in smoothly on scroll without changing layout width) - Desktop only */}
+          <div className="hidden lg:flex w-[180px] xl:w-[220px] items-center justify-end flex-shrink-0">
             <button
               type="button"
               onClick={onOpenAdmissionsModal}
@@ -527,38 +527,38 @@ export default function Header({ onOpenAdmissionsModal }) {
           </div>
 
           {/* Unified Sticky Mobile Header Bar */}
-          <div className="lg:hidden flex items-center justify-between w-full py-1">
+          <div className="lg:hidden flex items-center justify-between w-full py-1 gap-2">
             <Link
               to="/"
-              className="flex items-center gap-2.5 group cursor-pointer"
+              className="flex items-center gap-2 group cursor-pointer min-w-0"
               style={{ textDecoration: 'none' }}
               onClick={() => setMobileMenuOpen(false)}
             >
-              <CollegeEmblem size={34} />
-              <div className="flex flex-col">
-                <span className="text-xs sm:text-sm font-extrabold text-[#0b1a2e] leading-tight">
+              <CollegeEmblem size={34} className="w-8 h-8 sm:w-9 sm:h-9 flex-shrink-0" />
+              <div className="flex flex-col min-w-0">
+                <span className="text-xs sm:text-sm font-extrabold text-[#0b1a2e] leading-tight truncate">
                   CAE Bapatla
                 </span>
-                <span className="text-[10px] text-[#b88e22] font-bold uppercase tracking-wider">
+                <span className="text-[9.5px] sm:text-[10px] text-[#b88e22] font-bold uppercase tracking-wider truncate">
                   ANGRAU • Estd 1983
                 </span>
               </div>
             </Link>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
               <button
                 type="button"
                 onClick={onOpenAdmissionsModal}
-                className="btn btn-gold py-1.5 px-3 text-xs font-extrabold inline-flex items-center gap-1 shadow-xs"
+                className="btn btn-gold py-1.5 px-2.5 text-xs font-extrabold inline-flex items-center gap-1 shadow-xs"
               >
                 <GraduationCap className="w-3.5 h-3.5 text-[#06101e]" />
-                <span className="hidden sm:inline">Apply</span>
+                <span className="text-[11px] sm:text-xs">Apply</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-xl text-slate-700 hover:bg-slate-100 border border-slate-200 transition-colors cursor-pointer"
+                className="p-1.5 sm:p-2 rounded-xl text-slate-700 hover:bg-slate-100 border border-slate-200 transition-colors cursor-pointer"
                 aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
               >
                 {mobileMenuOpen ? <X className="w-5 h-5 text-[#0b1a2e]" /> : <Menu className="w-5 h-5 text-slate-700" />}
