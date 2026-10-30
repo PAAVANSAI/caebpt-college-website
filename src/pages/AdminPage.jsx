@@ -285,6 +285,7 @@ export default function AdminPage() {
   const [previewDocModal, setPreviewDocModal] = useState(null);
 
   const tagSuggestions = [
+    '<ICAR ACCREDITATION NOTIFICATION>',
     '<GAZETTE NOTIFICATION>',
     '<SELF STUDY REPORT OF COLLEGE>',
     '<SELF STUDY REPORT OF B.TECH (AG ENGG)>',
@@ -2496,6 +2497,11 @@ export default function AdminPage() {
                             <span className="w-6 h-6 rounded-full bg-[#0b1a2e] text-[#f5c84c] text-[11px] font-mono font-bold flex items-center justify-center flex-shrink-0">
                               {idx + 1}
                             </span>
+                            {doc.isPrimaryOrder && (
+                              <span className="badge bg-[#d4a72c] text-navy-950 text-[10px] font-black uppercase tracking-wider">
+                                Primary Order
+                              </span>
+                            )}
                             <span className="px-2.5 py-0.5 bg-[#0b1a2e] text-[#f5c84c] text-[11px] font-mono font-extrabold rounded-md shadow-2xs">
                               {doc.tag}
                             </span>
@@ -2531,6 +2537,13 @@ export default function AdminPage() {
                             <span>•</span>
                             <span className="font-mono text-slate-400">File: {doc.docName}</span>
                           </div>
+
+                          {doc.approvedPrograms && doc.approvedPrograms.length > 0 && (
+                            <div className="pt-1.5 flex flex-wrap gap-1 items-center">
+                              <span className="text-[10px] font-bold text-slate-700">Accredited Programmes:</span>
+                              <span className="text-[10px] text-slate-500 font-medium">B.Tech (Ag Engg), M.Tech (3 disciplines), Ph.D. (3 disciplines)</span>
+                            </div>
+                          )}
 
                           {doc.subReports && doc.subReports.length > 0 && (
                             <div className="pt-1.5 flex flex-wrap gap-1.5 items-center">
@@ -2878,6 +2891,19 @@ export default function AdminPage() {
                     {previewDocModal.summary}
                   </p>
                 </div>
+
+                {previewDocModal.approvedPrograms && previewDocModal.approvedPrograms.length > 0 && (
+                  <div className="p-3 bg-amber-50/70 border border-amber-200 rounded-lg text-xs space-y-1.5">
+                    <span className="font-bold text-navy-950 block">Accredited Programmes Approved by ICAR (Annexure-I, Item 6):</span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                      {previewDocModal.approvedPrograms.map((prog, pIdx) => (
+                        <div key={pIdx} className="p-1.5 bg-white border border-amber-200 rounded text-[11px] font-semibold text-slate-800">
+                          • {prog}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {previewDocModal.fileData && (
                   <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-800 text-xs font-medium flex items-center justify-between">

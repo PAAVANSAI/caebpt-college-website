@@ -69,22 +69,39 @@ function sanitizeOfficialStructure(data) {
   // Safe Accreditation object
   const defaultDocs = defaultOfficialStructure.aboutUs.accreditation.documents || [];
   const defaultDocsMap = new Map(defaultDocs.map(d => [d.id, d]));
-  const mergedDocs = Array.isArray(data.aboutUs?.accreditation?.documents) && data.aboutUs.accreditation.documents.length > 0
-    ? data.aboutUs.accreditation.documents.map(d => {
-        const def = defaultDocsMap.get(d.id);
-        if (def) {
-          return {
-            ...def,
-            ...d,
-            fileUrl: d.fileUrl || def.fileUrl,
-            fileSize: d.fileSize || def.fileSize,
-            subReports: d.subReports || def.subReports,
-            docName: d.docName || def.docName
-          };
-        }
-        return d;
-      })
-    : defaultDocs;
+  
+  let mergedDocs = defaultDocs;
+  if (Array.isArray(data.aboutUs?.accreditation?.documents) && data.aboutUs.accreditation.documents.length > 0) {
+    const existingIds = new Set(data.aboutUs.accreditation.documents.map(d => d.id));
+    const missingDefaults = defaultDocs.filter(def => !existingIds.has(def.id));
+
+    const updatedUserDocs = data.aboutUs.accreditation.documents.map(d => {
+      const def = defaultDocsMap.get(d.id);
+      if (def) {
+        return {
+          ...def,
+          ...d,
+          fileUrl: d.fileUrl || def.fileUrl,
+          fileSize: d.fileSize || def.fileSize,
+          subReports: d.subReports || def.subReports,
+          docName: d.docName || def.docName,
+          approvedPrograms: d.approvedPrograms || def.approvedPrograms,
+          isPrimaryOrder: d.isPrimaryOrder ?? def.isPrimaryOrder
+        };
+      }
+      return d;
+    });
+
+    // Ensure the primary ICAR Accreditation Order is ALWAYS at position 1, followed by other statutory documents
+    mergedDocs = [...missingDefaults, ...updatedUserDocs].sort((a, b) => {
+      if (a.id === 'icar-accreditation-order') return -1;
+      if (b.id === 'icar-accreditation-order') return 1;
+      return (a.order || 0) - (b.order || 0);
+    }).map((doc, idx) => ({
+      ...doc,
+      order: idx + 1
+    }));
+  }
 
   const accreditationObj = {
     ...defaultOfficialStructure.aboutUs.accreditation,

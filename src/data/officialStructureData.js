@@ -331,8 +331,32 @@ export const officialStructureData = {
       orderNote: "Official statutory accreditation documents in prescribed order:",
       documents: [
         {
-          id: "gazette",
+          id: "icar-accreditation-order",
           order: 1,
+          tag: "<ICAR ACCREDITATION NOTIFICATION>",
+          title: "OFFICIAL ICAR ACCREDITATION NOTIFICATION & ORDER",
+          refNo: "F.No. 1/8/2020-EQR.Edn",
+          type: "Official Statutory Accreditation Certificate & Order",
+          date: "December 24, 2021 (Period: 2021–2026)",
+          authority: "Indian Council of Agricultural Research (ICAR), New Delhi",
+          summary: "Official Notification (F.No. 1/8/2020-EQR.Edn) issued by the Indian Council of Agricultural Research (Agricultural Education Division) conveying accreditation granted by the Competent Authority in ICAR to Acharya N.G. Ranga Agricultural University and specifically approving Dr. NTR College of Agricultural Engineering, Bapatla and its B.Tech, M.Tech, and Ph.D. degree programmes for a period of five years (March 28, 2021 till March 27, 2026) with overall score of 2.92 equivalent to Grade 'B'.",
+          docName: "ICAR_Accreditation_Notification_2021_2026.pdf",
+          fileUrl: "/documents/accreditation/ICAR_Accreditation_Notification_2021_2026.pdf",
+          fileSize: "2.1 MB",
+          isPrimaryOrder: true,
+          approvedPrograms: [
+            "B.Tech (Agricultural Engineering)",
+            "M.Tech Farm Machinery and Power Engineering",
+            "M.Tech Processing and Food Engineering",
+            "M.Tech Soil and Water Engineering",
+            "Ph.D Farm Machinery and Power Engineering",
+            "Ph.D Processing and Food Engineering",
+            "Ph.D Soil and Water Engineering"
+          ]
+        },
+        {
+          id: "gazette",
+          order: 2,
           tag: "<GAZETTE NOTIFICATION>",
           title: "GAZETTE NOTIFICATION",
           refNo: "GO-MS-AGRI-ANGRAU-DRNTRCAE",
@@ -346,7 +370,7 @@ export const officialStructureData = {
         },
         {
           id: "ssr-college",
-          order: 2,
+          order: 3,
           tag: "<SELF STUDY REPORT OF COLLEGE>",
           title: "SELF STUDY REPORT OF COLLEGE",
           refNo: "ICAR/NAEAB/SSR/COLLEGE/2021-26",
@@ -360,7 +384,7 @@ export const officialStructureData = {
         },
         {
           id: "ssr-btech",
-          order: 3,
+          order: 4,
           tag: "<SELF STUDY REPORT OF B.TECH (AG ENGG)>",
           title: "SELF STUDY REPORT OF B.TECH (AG ENGG)",
           refNo: "ICAR/SSR/BTECH-AGENGG/2021-26",
@@ -374,7 +398,7 @@ export const officialStructureData = {
         },
         {
           id: "ssr-mtech",
-          order: 4,
+          order: 5,
           tag: "<SELF STUDY REPORT OF M.TECH (AG ENGG)>",
           title: "SELF STUDY REPORT OF M.TECH (AG ENGG)",
           refNo: "ICAR/SSR/MTECH-AGENGG/2021-26",
@@ -388,7 +412,7 @@ export const officialStructureData = {
         },
         {
           id: "ssr-phd",
-          order: 5,
+          order: 6,
           tag: "<SELF STUDY OF PH.D. (AG ENGG)>",
           title: "SELF STUDY OF PH.D. (AG ENGG)",
           refNo: "ICAR/SSR/PHD-AGENGG/2021-26",
