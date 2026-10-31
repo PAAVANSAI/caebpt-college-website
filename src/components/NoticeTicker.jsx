@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
 import { Bell, ChevronRight } from 'lucide-react';
+import { useWebsite } from '../context/WebsiteContext';
 import { noticesData } from '../data/noticesData';
 
 export default function NoticeTicker({ onSelectNotice }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { officialStructure } = useWebsite();
 
-  const activeNotice = (Array.isArray(noticesData) && noticesData.length > 0)
-    ? (noticesData[currentIndex] || noticesData[0])
+  // Read live bulletins managed under Admin Panel -> "Announcements & Circulars"
+  const liveNews = officialStructure?.announcements?.newsEvents;
+  const bulletinList = (Array.isArray(liveNews) && liveNews.length > 0)
+    ? liveNews
+    : noticesData;
+
+  const activeNotice = (Array.isArray(bulletinList) && bulletinList.length > 0)
+    ? (bulletinList[currentIndex] || bulletinList[0])
     : { title: "Academic Admissions open for 2025-26", date: "Oct 2025", isNew: true };
 
   const handleNext = () => {
-    if (Array.isArray(noticesData) && noticesData.length > 0) {
-      setCurrentIndex((prev) => (prev + 1) % noticesData.length);
+    if (Array.isArray(bulletinList) && bulletinList.length > 0) {
+      setCurrentIndex((prev) => (prev + 1) % bulletinList.length);
     }
   };
 
@@ -26,7 +34,7 @@ export default function NoticeTicker({ onSelectNotice }) {
             <span className="sm:hidden">Bulletins</span>
           </span>
           <span className="text-slate-400 text-xs hidden md:inline">
-            Notice #{currentIndex + 1} of {(noticesData || []).length}
+            Notice #{currentIndex + 1} of {(bulletinList || []).length}
           </span>
         </div>
 
