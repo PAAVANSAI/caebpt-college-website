@@ -14,6 +14,17 @@ export default defineConfig({
   },
   build: {
     target: 'es2020',
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info'],
+      },
+      format: {
+        comments: false,
+      },
+    },
     cssMinify: true,
     rollupOptions: {
       output: {

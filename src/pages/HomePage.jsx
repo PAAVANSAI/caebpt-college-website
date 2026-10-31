@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import NoticeTicker from '../components/NoticeTicker';
-import VideoModal from '../components/VideoModal';
-import Lightbox from '../components/Lightbox';
+const VideoModal = lazy(() => import('../components/VideoModal'));
+const Lightbox = lazy(() => import('../components/Lightbox'));
 import { officialStructureData } from '../data/officialStructureData';
 import { useWebsite } from '../context/WebsiteContext';
 import {
@@ -627,20 +627,25 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
         </div>
       </section>
 
-      {/* Photo Lightbox */}
-      <Lightbox
-        images={photoList}
-        activeIndex={activePhotoIndex}
-        onClose={() => setActivePhotoIndex(null)}
-        onPrev={() => setActivePhotoIndex((prev) => (prev > 0 ? prev - 1 : photoList.length - 1))}
-        onNext={() => setActivePhotoIndex((prev) => (prev < photoList.length - 1 ? prev + 1 : 0))}
-      />
+      {/* On-Demand Lazy Loaded Photo Lightbox & Video Modal */}
+      <Suspense fallback={null}>
+        {activePhotoIndex !== null && (
+          <Lightbox
+            images={photoList}
+            activeIndex={activePhotoIndex}
+            onClose={() => setActivePhotoIndex(null)}
+            onPrev={() => setActivePhotoIndex((prev) => (prev > 0 ? prev - 1 : photoList.length - 1))}
+            onNext={() => setActivePhotoIndex((prev) => (prev < photoList.length - 1 ? prev + 1 : 0))}
+          />
+        )}
 
-      {/* Video Modal Player */}
-      <VideoModal
-        video={selectedVideo}
-        onClose={() => setSelectedVideo(null)}
-      />
+        {selectedVideo && (
+          <VideoModal
+            video={selectedVideo}
+            onClose={() => setSelectedVideo(null)}
+          />
+        )}
+      </Suspense>
     </div>
   );
 }

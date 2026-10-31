@@ -4,3 +4,4 @@ Allow: /
 Disallow: /admin
 
 Sitemap: https://caebpt.netlify.app/sitemap.xml
+

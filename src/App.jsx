@@ -23,10 +23,10 @@ const GalleryPage = lazy(() => import('./pages/GalleryPage'));
 const AdmissionsPage = lazy(() => import('./pages/AdmissionsPage'));
 const AdminPage = lazy(() => import('./pages/AdminPage'));
 
-// Modals
-import ProgramModal from './components/ProgramModal';
-import NoticeModal from './components/NoticeModal';
-import Admissions from './components/Admissions';
+// Lazy-load on-demand Modals so they are excluded from the initial critical JS bundle
+const ProgramModal = lazy(() => import('./components/ProgramModal'));
+const NoticeModal = lazy(() => import('./components/NoticeModal'));
+const Admissions = lazy(() => import('./components/Admissions'));
 import { X, GraduationCap, AlertTriangle, ArrowLeft } from 'lucide-react';
 
 function PageLoader() {
@@ -186,61 +186,65 @@ function AppContent() {
       {/* Collegiate Footer */}
       <Footer />
 
-      {/* Program Details Modal */}
-      <ProgramModal
-        program={selectedProgram}
-        onClose={() => setSelectedProgram(null)}
-        onApplyClick={(program) => handleOpenAdmissions(program)}
-      />
+      {/* Dynamic On-Demand Modals (Rendered only when active) */}
+      <Suspense fallback={null}>
+        {selectedProgram && (
+          <ProgramModal
+            program={selectedProgram}
+            onClose={() => setSelectedProgram(null)}
+            onApplyClick={(program) => handleOpenAdmissions(program)}
+          />
+        )}
 
-      {/* Notice Details Modal */}
-      <NoticeModal
-        notice={selectedNotice}
-        onClose={() => setSelectedNotice(null)}
-      />
+        {selectedNotice && (
+          <NoticeModal
+            notice={selectedNotice}
+            onClose={() => setSelectedNotice(null)}
+          />
+        )}
 
-      {/* Admissions Enquiry Popup Modal */}
-      {isAdmissionsModalOpen && (
-        <div className="modal-overlay" onClick={() => setIsAdmissionsModalOpen(false)}>
-          <div
-            className="modal-content modal-content-xl w-full max-w-5xl rounded-2xl shadow-2xl overflow-hidden border border-slate-200 bg-white"
-            onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="admissions-modal-heading"
-          >
-            <div className="bg-[#0b1a2e] text-white p-3.5 sm:p-6 flex items-center justify-between border-b border-[#1b3459]">
-              <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/15">
-                  <GraduationCap className="w-5 h-5 text-[#f5c84c]" />
+        {isAdmissionsModalOpen && (
+          <div className="modal-overlay" onClick={() => setIsAdmissionsModalOpen(false)}>
+            <div
+              className="modal-content modal-content-xl w-full max-w-5xl rounded-2xl shadow-2xl overflow-hidden border border-slate-200 bg-white"
+              onClick={(e) => e.stopPropagation()}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="admissions-modal-heading"
+            >
+              <div className="bg-[#0b1a2e] text-white p-3.5 sm:p-6 flex items-center justify-between border-b border-[#1b3459]">
+                <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/15">
+                    <GraduationCap className="w-5 h-5 text-[#f5c84c]" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 id="admissions-modal-heading" className="font-heading text-xs sm:text-base md:text-lg font-bold text-white leading-snug truncate">
+                      Admissions Application Form (2025–2026)
+                    </h3>
+                    <p className="text-[11px] sm:text-xs text-slate-300 truncate">CAE Bapatla • Constituent College of ANGRAU</p>
+                  </div>
                 </div>
-                <div className="min-w-0">
-                  <h3 id="admissions-modal-heading" className="font-heading text-xs sm:text-base md:text-lg font-bold text-white leading-snug truncate">
-                    Admissions Application Form (2025–2026)
-                  </h3>
-                  <p className="text-[11px] sm:text-xs text-slate-300 truncate">CAE Bapatla • Constituent College of ANGRAU</p>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsAdmissionsModalOpen(false)}
+                  className="text-slate-400 hover:text-white p-1.5 sm:p-2 rounded-xl hover:bg-white/10 transition-colors flex-shrink-0"
+                  aria-label="Close Enquiry Modal"
+                >
+                  <X className="w-5 h-5" />
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={() => setIsAdmissionsModalOpen(false)}
-                className="text-slate-400 hover:text-white p-1.5 sm:p-2 rounded-xl hover:bg-white/10 transition-colors flex-shrink-0"
-                aria-label="Close Enquiry Modal"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
 
-            <div className="p-4 sm:p-8 max-h-[84vh] overflow-y-auto">
-              <Admissions
-                initialCourse={prefilledCourse}
-                isModal={true}
-                onClose={() => setIsAdmissionsModalOpen(false)}
-              />
+              <div className="p-4 sm:p-8 max-h-[84vh] overflow-y-auto">
+                <Admissions
+                  initialCourse={prefilledCourse}
+                  isModal={true}
+                  onClose={() => setIsAdmissionsModalOpen(false)}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </Suspense>
     </div>
   );
 }
