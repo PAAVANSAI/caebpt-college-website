@@ -1,0 +1,18 @@
+{
+  "name": "Dr. NTR College of Agricultural Engineering (CAEBPT)",
+  "description": "Official institutional portal of Dr. NTR College of Agricultural Engineering, Bapatla, constituent of Acharya N.G. Ranga Agricultural University (ANGRAU).",
+  "url": "https://caebpt.netlify.app",
+  "version": "1.0.0",
+  "organization": {
+    "name": "Acharya N.G. Ranga Agricultural University",
+    "url": "https://angrau.ac.in"
+  },
+  "capabilities": [
+    "academic-programs",
+    "admissions-information",
+    "icar-accreditation-dossiers",
+    "faculty-directory",
+    "campus-bulletins",
+    "tenders-and-recruitment"
+  ]
+}

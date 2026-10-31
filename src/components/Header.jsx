@@ -234,7 +234,7 @@ export default function Header({ onOpenAdmissionsModal }) {
                   {currentStructure.collegeFullName || "COLLEGE OF AGRICULTURAL ENGINEERING"}
                 </span>
                 <div className="flex items-center gap-2 mt-0.5 flex-wrap">
-                  <span className="text-xs font-bold text-[#b88e22] tracking-wider uppercase">
+                  <span className="text-xs font-bold text-[#854d0e] tracking-wider uppercase">
                     BAPATLA
                   </span>
                   <span className="text-slate-300 text-xs hidden sm:inline">•</span>
@@ -263,7 +263,7 @@ export default function Header({ onOpenAdmissionsModal }) {
                 style={{ textDecoration: 'none' }}
               >
                 <span>ANGRAU Portal</span>
-                <ExternalLink className="w-3.5 h-3.5 text-[#b88e22]" />
+                <ExternalLink className="w-3.5 h-3.5 text-[#854d0e]" />
               </a>
 
               {/* Admin Portal Shortcut */}
@@ -332,7 +332,7 @@ export default function Header({ onOpenAdmissionsModal }) {
                 <span className="font-heading font-extrabold text-[#0b1a2e] text-xs sm:text-sm tracking-tight leading-none">
                   CAE Bapatla
                 </span>
-                <span className="text-[10px] text-[#b88e22] font-bold tracking-wider uppercase leading-tight mt-0.5">
+                <span className="text-[10px] text-[#ecc75f] font-bold tracking-wider uppercase leading-tight mt-0.5">
                   ANGRAU
                 </span>
               </div>
@@ -438,7 +438,7 @@ export default function Header({ onOpenAdmissionsModal }) {
                                     onMouseLeave={() => setHoveredSubmenu(null)}
                                   >
                                     <div className="min-w-[290px] max-w-[340px] bg-white border border-slate-200 rounded-xl shadow-2xl py-2 px-1 ring-1 ring-black/5">
-                                      <div className="px-3 py-1 mb-1 text-[10px] font-bold uppercase tracking-wider text-[#b88e22] border-b border-slate-100 flex items-center justify-between">
+                                      <div className="px-3 py-1 mb-1 text-[10px] font-bold uppercase tracking-wider text-[#854d0e] border-b border-slate-100 flex items-center justify-between">
                                         <span>Select Department</span>
                                         <span className="text-[9px] text-slate-400 font-normal">5 units</span>
                                       </div>
@@ -475,7 +475,7 @@ export default function Header({ onOpenAdmissionsModal }) {
                                     onMouseLeave={() => setHoveredSubmenu(null)}
                                   >
                                     <div className="min-w-[290px] max-w-[340px] bg-white border border-slate-200 rounded-xl shadow-2xl py-2 px-1 ring-1 ring-black/5">
-                                      <div className="px-3 py-1 mb-1 text-[10px] font-bold uppercase tracking-wider text-[#b88e22] border-b border-slate-100 flex items-center justify-between">
+                                      <div className="px-3 py-1 mb-1 text-[10px] font-bold uppercase tracking-wider text-[#854d0e] border-b border-slate-100 flex items-center justify-between">
                                         <span>Supporting Staff Roles</span>
                                         <span className="text-[9px] text-slate-400 font-normal">6 roles</span>
                                       </div>
@@ -539,7 +539,7 @@ export default function Header({ onOpenAdmissionsModal }) {
                 <span className="text-xs sm:text-sm font-extrabold text-[#0b1a2e] leading-tight truncate">
                   CAE Bapatla
                 </span>
-                <span className="text-[9.5px] sm:text-[10px] text-[#b88e22] font-bold uppercase tracking-wider truncate">
+                <span className="text-[9.5px] sm:text-[10px] text-[#854d0e] font-bold uppercase tracking-wider truncate">
                   ANGRAU • Estd 1983
                 </span>
               </div>

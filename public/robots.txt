@@ -1,0 +1,6 @@
+# robots.txt for Dr. NTR College of Agricultural Engineering (CAEBPT)
+User-agent: *
+Allow: /
+Disallow: /admin
+
+Sitemap: https://caebpt.netlify.app/sitemap.xml

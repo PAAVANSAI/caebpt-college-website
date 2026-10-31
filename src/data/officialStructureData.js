@@ -22,7 +22,7 @@ export const officialStructureData = {
     titleAccent: "Agricultural Engineering",
     titleSuffix: "& Technology",
     intro: "Pioneering academic distinction, farm mechanization, micro-irrigation systems, and agro-processing engineering to drive sustainable agrarian advancement under ANGRAU.",
-    bgImage: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=2000&q=85",
+    bgImage: "/images/campus_hero.jpg",
     highlights: [
       { count: "6", label: "Core Academic Departments", note: "Specialized Disciplines" },
       { count: "1,046", label: "Total Graduates", note: "Graduated Agro-Engineers" },

@@ -143,7 +143,7 @@ export default function Footer() {
             <p>
               © {currentYear} College of Agricultural Engineering, Bapatla. Domain: <strong>{collegeInfo?.domain || 'caebpt.ac.in'}</strong>.
             </p>
-            <p className="text-[11px] text-slate-500 mt-0.5">
+            <p className="text-[11px] text-slate-400 mt-0.5">
               Multi-page academic portal with live administrative traffic and content control.
             </p>
           </div>

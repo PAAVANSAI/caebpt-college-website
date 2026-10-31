@@ -179,3 +179,4 @@ The visual design is aligned with ANGRAU's official agricultural and engineering
    - **Cloud Firestore**: Central database for news, circulars, and administration hierarchy changes.
    - **Firebase Cloud Storage (5 GB Free)**: Dedicated cloud bucket for new PDF uploads from the admin dashboard.
    - **Permanent Free Tier**: Google Firebase Spark plan does not sleep or pause after inactivity, ensuring the portal runs uninterrupted for 3+ years at $0 cost.
+

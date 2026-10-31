@@ -537,9 +537,9 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                   </div>
                 </div>
                 <div className="p-5">
-                  <h4 className="font-heading font-extrabold text-navy-950 text-sm leading-snug group-hover:text-navy-700 transition-colors">
+                  <h3 className="font-heading font-extrabold text-navy-950 text-sm leading-snug group-hover:text-navy-700 transition-colors">
                     {item.title}
-                  </h4>
+                  </h3>
                   <p className="text-xs text-slate-500 mt-1.5 line-clamp-2 leading-relaxed">
                     {item.caption}
                   </p>
@@ -608,9 +608,9 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                 </div>
 
                 <div className="p-5">
-                  <h4 className="font-heading font-extrabold text-navy-950 text-sm leading-snug group-hover:text-navy-700 transition-colors">
+                  <h3 className="font-heading font-extrabold text-navy-950 text-sm leading-snug group-hover:text-navy-700 transition-colors">
                     {vid.title}
-                  </h4>
+                  </h3>
                   <p className="text-xs text-slate-600 mt-1.5 line-clamp-2 leading-relaxed">
                     {vid.description}
                   </p>

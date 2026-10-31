@@ -9,13 +9,18 @@
     <meta name="keywords" content="College of Agricultural Engineering Bapatla, Dr NTRCAE, caebpt.ac.in, ANGRAU, ICAR Accreditation, B.Tech Agricultural Engineering, Agricultural College Bapatla" />
     <meta name="author" content="Dr. NTR College of Agricultural Engineering, Bapatla" />
     <title>Dr. NTR College of Agricultural Engineering (CAE), Bapatla | ANGRAU</title>
-    <!-- Preload Hero LCP Image for immediate high-speed paint -->
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1280&q=75" fetchpriority="high" />
-    <!-- Preconnect to Google Fonts and CDN -->
+    
+    <!-- Preload Hero LCP Image from Local Fast Edge CDN -->
+    <link rel="preload" as="image" href="/images/campus_hero.jpg" fetchpriority="high" />
+
+    <!-- High-Performance Non-Render-Blocking Google Fonts Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://images.unsplash.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" />
+    </noscript>
   </head>
   <body>
     <div id="root"></div>

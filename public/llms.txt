@@ -1,0 +1,25 @@
+# Dr. NTR College of Agricultural Engineering, Bapatla (ANGRAU)
+
+> Constituent college of Acharya N.G. Ranga Agricultural University (ANGRAU), established in 1983. Accredited by the Indian Council of Agricultural Research (ICAR), New Delhi for 2021–2026 with Grade 'B' (score 2.92).
+
+## Institutional Overview
+- Name: Dr. NTR College of Agricultural Engineering (Dr NTRCAE)
+- Affiliation: Acharya N.G. Ranga Agricultural University (ANGRAU)
+- Campus: 25 Acres on NH-216, Karlapalem Road, Bapatla - 522 101, Andhra Pradesh
+- Accreditation: ICAR NAEAB Accredited (Cycle 2021-2026)
+
+## Academic Degree Programmes
+- [B.Tech in Agricultural Engineering](https://caebpt.netlify.app/academics/courses): 4-year undergraduate degree program based on ICAR V Deans' Committee recommendations.
+- [M.Tech in Farm Machinery and Power Engineering](https://caebpt.netlify.app/academics/courses): Postgraduate specialization in farm mechanization and tractor engineering.
+- [M.Tech in Processing and Food Engineering](https://caebpt.netlify.app/academics/courses): Post-harvest technology, crop processing, and food value addition.
+- [M.Tech in Soil and Water Engineering](https://caebpt.netlify.app/academics/courses): Watershed hydrology, micro-irrigation, and soil conservation.
+- [Ph.D. in Agricultural Engineering](https://caebpt.netlify.app/academics/courses): Doctoral research programs across FMPE, PFE, and SWCE disciplines.
+
+## Official Statutory Documentation & Accreditation Dossiers
+- [ICAR Accreditation Notification (2021-2026)](https://caebpt.netlify.app/about?tab=accreditation): Official order F.No. 1/8/2020-EQR.Edn granting 5-year accreditation.
+- [Institutional Self Study Report (SSR)](https://caebpt.netlify.app/about?tab=accreditation): 169-page comprehensive institutional accreditation report.
+- [Official Government Gazette Notification](https://caebpt.netlify.app/about?tab=accreditation): Statutory establishment under the ANGRAU Act.
+- [College Administration & Governance](https://caebpt.netlify.app/administration): University and college administrative hierarchy.
+- [Campus Facilities & Instructional Farm](https://caebpt.netlify.app/facilities): 25-acre instructional farm, laboratories, digital library, and hostels.
+- [Admissions Portal & Guidelines](https://caebpt.netlify.app/admissions): AP EAPCET and ICAR AIEEA quota eligibility criteria.
+- [Contact & Campus Enquiries](https://caebpt.netlify.app/contact): Official contact directory and enquiry form.
