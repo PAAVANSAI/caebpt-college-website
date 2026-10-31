@@ -1028,15 +1028,18 @@ export default function AdminPage() {
                   <div className="space-y-3 pt-2 border-t border-slate-200">
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Campus Background Video URL (MP4, WebM or YouTube URL)
+                        Campus Background Video (Local MP4/WebM path or Direct URL)
                       </label>
                       <input
-                        type="url"
+                        type="text"
                         value={heroForm.bgVideo}
                         onChange={(e) => setHeroForm({ ...heroForm, bgVideo: e.target.value })}
-                        placeholder="https://assets.mixkit.co/.../video.mp4 or https://www.youtube.com/watch?v=..."
+                        placeholder="/videos/campus_drone.mp4 or https://assets.mixkit.co/.../video.mp4"
                         className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:border-[#0b1a2e]"
                       />
+                      <p className="text-[11px] text-slate-500 mt-1">
+                        💡 <strong>Recommendation:</strong> Local MP4/WebM videos (e.g. <code className="text-navy-900 bg-slate-100 px-1 py-0.5 rounded">/videos/campus_drone.mp4</code>) start playing instantly with 0ms latency. YouTube video embeds have a 2–4s player buffering delay.
+                      </p>
                     </div>
 
                     {/* Quick Presets */}

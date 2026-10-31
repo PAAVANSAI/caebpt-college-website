@@ -8,25 +8,49 @@ import Footer from './components/Footer';
 // Keep HomePage in primary initial bundle for instant First Contentful Paint (FCP)
 import HomePage from './pages/HomePage';
 
+// Resilient lazy-loader that catches post-deployment chunk hash mismatches and refreshes transparently
+function lazyWithRetry(componentImport) {
+  return lazy(async () => {
+    try {
+      return await componentImport();
+    } catch (error) {
+      const msg = error?.message || error?.toString() || '';
+      const isChunkError =
+        msg.includes('Failed to fetch dynamically imported module') ||
+        msg.includes('ChunkLoadError') ||
+        msg.includes('error loading dynamically imported module');
+
+      const lastReload = sessionStorage.getItem('chunk_auto_reload');
+      const now = Date.now();
+      if (isChunkError && (!lastReload || now - Number(lastReload) > 10000)) {
+        sessionStorage.setItem('chunk_auto_reload', String(now));
+        window.location.reload();
+        return new Promise(() => {});
+      }
+      throw error;
+    }
+  });
+}
+
 // Lazy-load all subpages and heavy Admin modules to optimize initial bundle from 680 kB to ~75 kB
-const AboutUsPage = lazy(() => import('./pages/AboutUsPage'));
-const AdministrationPage = lazy(() => import('./pages/AdministrationPage'));
-const AcademicsPage = lazy(() => import('./pages/AcademicsPage'));
-const DepartmentDetailPage = lazy(() => import('./pages/DepartmentDetailPage'));
-const StudentWelfarePage = lazy(() => import('./pages/StudentWelfarePage'));
-const PublicationsPage = lazy(() => import('./pages/PublicationsPage'));
-const ContactPage = lazy(() => import('./pages/ContactPage'));
-const NoticesPage = lazy(() => import('./pages/NoticesPage'));
-const FacultyPage = lazy(() => import('./pages/FacultyPage'));
-const FacilitiesPage = lazy(() => import('./pages/FacilitiesPage'));
-const GalleryPage = lazy(() => import('./pages/GalleryPage'));
-const AdmissionsPage = lazy(() => import('./pages/AdmissionsPage'));
-const AdminPage = lazy(() => import('./pages/AdminPage'));
+const AboutUsPage = lazyWithRetry(() => import('./pages/AboutUsPage'));
+const AdministrationPage = lazyWithRetry(() => import('./pages/AdministrationPage'));
+const AcademicsPage = lazyWithRetry(() => import('./pages/AcademicsPage'));
+const DepartmentDetailPage = lazyWithRetry(() => import('./pages/DepartmentDetailPage'));
+const StudentWelfarePage = lazyWithRetry(() => import('./pages/StudentWelfarePage'));
+const PublicationsPage = lazyWithRetry(() => import('./pages/PublicationsPage'));
+const ContactPage = lazyWithRetry(() => import('./pages/ContactPage'));
+const NoticesPage = lazyWithRetry(() => import('./pages/NoticesPage'));
+const FacultyPage = lazyWithRetry(() => import('./pages/FacultyPage'));
+const FacilitiesPage = lazyWithRetry(() => import('./pages/FacilitiesPage'));
+const GalleryPage = lazyWithRetry(() => import('./pages/GalleryPage'));
+const AdmissionsPage = lazyWithRetry(() => import('./pages/AdmissionsPage'));
+const AdminPage = lazyWithRetry(() => import('./pages/AdminPage'));
 
 // Lazy-load on-demand Modals so they are excluded from the initial critical JS bundle
-const ProgramModal = lazy(() => import('./components/ProgramModal'));
-const NoticeModal = lazy(() => import('./components/NoticeModal'));
-const Admissions = lazy(() => import('./components/Admissions'));
+const ProgramModal = lazyWithRetry(() => import('./components/ProgramModal'));
+const NoticeModal = lazyWithRetry(() => import('./components/NoticeModal'));
+const Admissions = lazyWithRetry(() => import('./components/Admissions'));
 import { X, GraduationCap, AlertTriangle, ArrowLeft } from 'lucide-react';
 
 function PageLoader() {

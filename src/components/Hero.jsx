@@ -60,13 +60,14 @@ export default function Hero({ onOpenAdmissionsModal }) {
               loop
               muted
               playsInline
-              poster={hero.bgImage}
+              preload="auto"
+              poster={hero.bgImage || "/images/campus_hero.webp"}
               className="w-full h-full object-cover object-center scale-102"
             >
               <source src={hero.bgVideo} type="video/mp4" />
               <source src={hero.bgVideo} type="video/webm" />
               <img
-                src={hero.bgImage}
+                src={hero.bgImage || "/images/campus_hero.webp"}
                 alt="College of Agricultural Engineering, Bapatla Campus"
                 className="w-full h-full object-cover"
               />
