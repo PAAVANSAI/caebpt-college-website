@@ -51,7 +51,7 @@ export const collegeInfo = {
     name: "Dr. K. S. Rao, Ph.D.",
     designation: "Associate Dean & Professor",
     qualification: "M.Tech (IIT Kharagpur), Ph.D. (Farm Power & Machinery)",
-    photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+    photo: "/images/avatars/dr_ks_rao.webp",
     messageText: "Welcome to Dr. NTR College of Agricultural Engineering, Bapatla. As agricultural paradigms shift towards climate-resilient farming, IoT-driven farm machinery, and efficient food preservation, our institution remains dedicated to preparing visionary engineers. We blend strong foundational sciences with hands-on machinery workshops, GIS-based watershed simulations, and modern incubation setups. We encourage prospective students and collaborators to explore our programs."
   },
 

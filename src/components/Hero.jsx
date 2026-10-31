@@ -13,7 +13,7 @@ export default function Hero({ onOpenAdmissionsModal }) {
     titleAccent: "Agricultural Engineering",
     titleSuffix: "& Technology",
     intro: "Pioneering academic distinction, farm mechanization, micro-irrigation systems, and agro-processing engineering to drive sustainable agrarian advancement under ANGRAU.",
-    bgImage: "/images/campus_hero.jpg",
+    bgImage: "/images/campus_hero.webp",
     highlights: [
       { count: "6", label: "Core Academic Departments", note: "Specialized Disciplines" },
       { count: "1,046", label: "Total Graduates", note: "Graduated Agro-Engineers" },
@@ -73,16 +73,23 @@ export default function Hero({ onOpenAdmissionsModal }) {
             </video>
           )
         ) : (
-          <img
-            src={hero.bgImage || "/images/campus_hero.jpg"}
-            alt="College of Agricultural Engineering, Bapatla Campus"
-            className="w-full h-full object-cover object-center scale-102 transition-transform duration-1000"
-            fetchpriority="high"
-            loading="eager"
-            decoding="async"
-            width="1280"
-            height="720"
-          />
+          <picture>
+            <source
+              type="image/webp"
+              srcSet="/images/campus_hero_720.webp 720w, /images/campus_hero.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 1280px"
+            />
+            <img
+              src={hero.bgImage || "/images/campus_hero.webp"}
+              alt="College of Agricultural Engineering, Bapatla Campus"
+              className="w-full h-full object-cover object-center scale-102 transition-transform duration-1000"
+              fetchpriority="high"
+              loading="eager"
+              decoding="async"
+              width="1280"
+              height="720"
+            />
+          </picture>
         )}
 
         {/* Balanced Academic Scrim — Keeps campus/video visible while ensuring text readability */}

@@ -160,7 +160,7 @@ export default function AdminPage() {
   const [deanForm, setDeanForm] = useState({
     name: currentStructure.messages?.dean?.name || "Dr. G. Ravi Babu",
     title: currentStructure.messages?.dean?.title || "Dean of Agricultural Engineering & Technology, ANGRAU",
-    photo: currentStructure.messages?.dean?.photo || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+    photo: currentStructure.messages?.dean?.photo || "/images/avatars/dr_subba_rao.webp",
     excerpt: currentStructure.messages?.dean?.excerpt || "Transforming agricultural engineering through AI-driven mechanization.",
     message: currentStructure.messages?.dean?.message || ""
   });
@@ -168,7 +168,7 @@ export default function AdminPage() {
   const [assocDeanForm, setAssocDeanForm] = useState({
     name: currentStructure.messages?.assocDean?.name || "Dr. B. John Wesley",
     title: currentStructure.messages?.assocDean?.title || "Associate Dean, College of Agricultural Engineering, Bapatla",
-    photo: currentStructure.messages?.assocDean?.photo || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+    photo: currentStructure.messages?.assocDean?.photo || "/images/avatars/dr_ks_rao.webp",
     excerpt: currentStructure.messages?.assocDean?.excerpt || "Over four decades of nurturing world-class technocrats and agri-entrepreneurs.",
     message: currentStructure.messages?.assocDean?.message || ""
   });

@@ -22,7 +22,7 @@ export const officialStructureData = {
     titleAccent: "Agricultural Engineering",
     titleSuffix: "& Technology",
     intro: "Pioneering academic distinction, farm mechanization, micro-irrigation systems, and agro-processing engineering to drive sustainable agrarian advancement under ANGRAU.",
-    bgImage: "/images/campus_hero.jpg",
+    bgImage: "/images/campus_hero.webp",
     highlights: [
       { count: "6", label: "Core Academic Departments", note: "Specialized Disciplines" },
       { count: "1,046", label: "Total Graduates", note: "Graduated Agro-Engineers" },
@@ -38,7 +38,7 @@ export const officialStructureData = {
       role: "Dean of Agricultural Engineering & Technology (ANGRAU)",
       name: "Dr. G. Subba Rao, Ph.D. (Official Placeholder)",
       qualification: "M.Tech (IIT Kharagpur), Ph.D. (Farm Power & Machinery)",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+      image: "/images/avatars/dr_subba_rao.webp",
       content: [
         "Agricultural engineering stands at the crucial intersection of biological science and technological innovation. At ANGRAU, we are committed to revolutionizing Indian agriculture through precision mechanization, smart micro-irrigation management, and innovative post-harvest technologies.",
         "The College of Agricultural Engineering at Bapatla has remained our flagship constituent engineering institute since 1983, nurturing graduates who lead across industries, scientific research institutions, and governmental agricultural commissions. We welcome prospective students, researchers, and industrial partners to join hands with us in advancing climate-resilient farming futures."
@@ -49,7 +49,7 @@ export const officialStructureData = {
       role: "Associate Dean & Professor, CAE Bapatla",
       name: "Dr. K. S. Rao, Ph.D. (Official Placeholder)",
       qualification: "M.Tech (IIT Roorkee), Ph.D. (Soil & Water Conservation)",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+      image: "/images/avatars/dr_ks_rao.webp",
       content: [
         "Welcome to the College of Agricultural Engineering, Bapatla. For more than four decades, this institution has served as a beacon of academic excellence in agricultural mechanization, natural resource management, and food process engineering.",
         "Our academic environment combines foundational engineering sciences with hands-on machinery workshops, GIS-based hydrological simulations, and pilot processing plants. We ensure every student receives comprehensive training, ethical grounding, and real-world industrial in-plant experience to emerge as visionary technocrats."

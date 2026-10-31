@@ -125,10 +125,13 @@ function sanitizeOfficialStructure(data) {
   };
 
   // Safe Dean Message
+  const deanRawImage = data.messages?.dean?.image || data.messages?.dean?.photo;
   const deanObj = {
     ...defaultOfficialStructure.messages.dean,
     ...(data.messages?.dean || {}),
-    image: data.messages?.dean?.image || data.messages?.dean?.photo || defaultOfficialStructure.messages.dean.image,
+    image: (deanRawImage && !deanRawImage.includes('unsplash.com'))
+      ? deanRawImage
+      : defaultOfficialStructure.messages.dean.image,
     content: Array.isArray(data.messages?.dean?.content)
       ? data.messages.dean.content
       : data.messages?.dean?.message
@@ -137,10 +140,13 @@ function sanitizeOfficialStructure(data) {
   };
 
   // Safe Associate Dean Message
+  const assocDeanRawImage = data.messages?.associateDean?.image || data.messages?.associateDean?.photo;
   const assocDeanObj = {
     ...defaultOfficialStructure.messages.associateDean,
     ...(data.messages?.associateDean || {}),
-    image: data.messages?.associateDean?.image || data.messages?.associateDean?.photo || defaultOfficialStructure.messages.associateDean.image,
+    image: (assocDeanRawImage && !assocDeanRawImage.includes('unsplash.com'))
+      ? assocDeanRawImage
+      : defaultOfficialStructure.messages.associateDean.image,
     content: Array.isArray(data.messages?.associateDean?.content)
       ? data.messages.associateDean.content
       : data.messages?.associateDean?.message
@@ -181,7 +187,10 @@ function sanitizeOfficialStructure(data) {
     ...data,
     hero: {
       ...defaultOfficialStructure.hero,
-      ...(data.hero || {})
+      ...(data.hero || {}),
+      bgImage: (data.hero?.bgImage && !data.hero.bgImage.includes('unsplash.com'))
+        ? data.hero.bgImage
+        : defaultOfficialStructure.hero.bgImage
     },
     messages: {
       dean: deanObj,
