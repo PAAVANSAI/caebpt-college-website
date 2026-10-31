@@ -112,7 +112,7 @@ export default function AdminPage() {
     angrauUrl: currentStructure.angrauUrl || "https://angrau.ac.in",
     topBarPhone: siteSettings?.topBarPhone || "+91 8643 224025",
     topBarTimings: siteSettings?.topBarTimings || "Mon - Sat: 9 AM - 5 PM",
-    showTopUtilityBar: siteSettings?.showTopUtilityBar !== false,
+    showTopUtilityBar: Boolean(siteSettings?.showTopUtilityBar),
     showUniversityBanner: siteSettings?.showUniversityBanner === true
   });
 
@@ -121,7 +121,7 @@ export default function AdminPage() {
     if (siteSettings) {
       setIdentityForm((prev) => ({
         ...prev,
-        showTopUtilityBar: siteSettings.showTopUtilityBar !== false,
+        showTopUtilityBar: Boolean(siteSettings.showTopUtilityBar),
         showUniversityBanner: siteSettings.showUniversityBanner === true,
         topBarPhone: siteSettings.topBarPhone || prev.topBarPhone,
         topBarTimings: siteSettings.topBarTimings || prev.topBarTimings

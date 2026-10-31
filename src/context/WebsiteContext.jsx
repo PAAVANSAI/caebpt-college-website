@@ -224,10 +224,20 @@ function sanitizeOfficialStructure(data) {
       : defaultOfficialStructure.welfare,
     galleries: {
       photos: Array.isArray(data.galleries?.photos)
-        ? data.galleries.photos.map((p) => ({ ...p, image: p.image || p.url }))
+        ? data.galleries.photos.map((p, idx) => ({
+            ...p,
+            image: (p.image && !p.image.includes('unsplash.com'))
+              ? p.image
+              : (defaultOfficialStructure.galleries.photos[idx]?.image || `/images/gallery/photo_${(idx % 6) + 1}.webp`)
+          }))
         : defaultOfficialStructure.galleries.photos,
       videos: Array.isArray(data.galleries?.videos)
-        ? data.galleries.videos
+        ? data.galleries.videos.map((v, idx) => ({
+            ...v,
+            thumbnail: (v.thumbnail && !v.thumbnail.includes('unsplash.com'))
+              ? v.thumbnail
+              : (defaultOfficialStructure.galleries.videos[idx]?.thumbnail || `/images/gallery/video_thumb_${(idx % 3) + 1}.webp`)
+          }))
         : defaultOfficialStructure.galleries.videos
     },
     aboutUs: {
@@ -358,7 +368,7 @@ export function WebsiteProvider({ children }) {
       rateLimitingActive: false,
       publicAdmissionsOpen: true,
       activeTheme: "Navy & Gold Standard",
-      showTopUtilityBar: true,
+      showTopUtilityBar: false,
       showUniversityBanner: false,
       topBarTimings: "Mon - Sat: 9 AM - 5 PM",
       topBarPhone: "+91 8643 224025"
@@ -847,7 +857,7 @@ export function WebsiteProvider({ children }) {
       rateLimitingActive: false,
       publicAdmissionsOpen: true,
       activeTheme: "Navy & Gold Standard",
-      showTopUtilityBar: true,
+      showTopUtilityBar: false,
       showUniversityBanner: false,
       topBarTimings: "Mon - Sat: 9 AM - 5 PM",
       topBarPhone: "+91 8643 224025"

@@ -165,7 +165,7 @@ export default function Header({ onOpenAdmissionsModal }) {
         Controlled by Admin: can be customized or toggled on/off.
         Sits in upper scrollable container, scrolls away smoothly on scroll down.
       */}
-      {siteSettings?.showTopUtilityBar !== false && (
+      {Boolean(siteSettings?.showTopUtilityBar) && (
         <div className="bg-[#0b1a2e] text-slate-300 border-b border-white/10 text-xs py-1 sm:py-1.5 relative z-30 transition-all">
           <div className="w-full max-w-[1400px] mx-auto px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-3 text-[10.5px] sm:text-xs">
             {/* Left: Domain & Affiliation */}

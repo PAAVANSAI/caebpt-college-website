@@ -162,42 +162,42 @@ export const officialStructureData = {
         id: "p-1",
         title: "Main Administrative & Academic Wing",
         category: "Campus",
-        image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80",
+        image: "/images/gallery/photo_1.webp",
         caption: "Front view of the academic block at Bapatla."
       },
       {
         id: "p-2",
         title: "Tractor & Heavy Farm Machinery Demonstration",
         category: "Machinery",
-        image: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1200&q=80",
+        image: "/images/gallery/photo_2.webp",
         caption: "Students conducting field implement trials."
       },
       {
         id: "p-3",
         title: "Post-Harvest Food Pilot Processing Plant",
         category: "Labs",
-        image: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=1200&q=80",
+        image: "/images/gallery/photo_3.webp",
         caption: "Food engineering scholars operating pilot extruders and dryers."
       },
       {
         id: "p-4",
         title: "Central Academic Library Reading Hall",
         category: "Campus",
-        image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1200&q=80",
+        image: "/images/gallery/photo_4.webp",
         caption: "Digital reading stations and technical archives."
       },
       {
         id: "p-5",
         title: "Soil & Water Hydraulics Flume Laboratory",
         category: "Labs",
-        image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80",
+        image: "/images/gallery/photo_5.webp",
         caption: "Open-channel hydraulics and sediment evaluation."
       },
       {
         id: "p-6",
         title: "Student Technical Exhibition & Prototype Expo",
         category: "Events",
-        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80",
+        image: "/images/gallery/photo_6.webp",
         caption: "Innovators showcasing automated micro-irrigation systems."
       }
     ],
@@ -206,7 +206,7 @@ export const officialStructureData = {
         id: "v-1",
         title: "Campus Virtual Tour: College of Agricultural Engineering, Bapatla",
         duration: "04:32",
-        thumbnail: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80",
+        thumbnail: "/images/gallery/video_thumb_1.webp",
         description: "An overview of the 50-acre academic campus, research trial fields, modern laboratories, and student hostels.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       },
@@ -214,7 +214,7 @@ export const officialStructureData = {
         id: "v-2",
         title: "Farm Machinery in Action: Precision Tractor Trials",
         duration: "03:15",
-        thumbnail: "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=800&q=80",
+        thumbnail: "/images/gallery/video_thumb_2.webp",
         description: "Demonstration of laser land levelers, high-clearance tractor sprayers, and seed drills at the testing track.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       },
@@ -222,7 +222,7 @@ export const officialStructureData = {
         id: "v-3",
         title: "Soil & Water Conservation: Micro-Irrigation Automation Facility",
         duration: "02:45",
-        thumbnail: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80",
+        thumbnail: "/images/gallery/video_thumb_3.webp",
         description: "Hydraulic laboratory flume experiments and automated sensor-based drip emission monitoring.",
         videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       }
