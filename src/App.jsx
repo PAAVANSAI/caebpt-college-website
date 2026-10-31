@@ -1,33 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { WebsiteProvider, useWebsite } from './context/WebsiteContext';
 import ScrollToTop from './components/ScrollToTop';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-// Pages matching official college structure
+// Keep HomePage in primary initial bundle for instant First Contentful Paint (FCP)
 import HomePage from './pages/HomePage';
-import AboutUsPage from './pages/AboutUsPage';
-import AdministrationPage from './pages/AdministrationPage';
-import AcademicsPage from './pages/AcademicsPage';
-import DepartmentDetailPage from './pages/DepartmentDetailPage';
-import StudentWelfarePage from './pages/StudentWelfarePage';
-import PublicationsPage from './pages/PublicationsPage';
-import ContactPage from './pages/ContactPage';
 
-// Additional supporting pages & admin
-import NoticesPage from './pages/NoticesPage';
-import FacultyPage from './pages/FacultyPage';
-import FacilitiesPage from './pages/FacilitiesPage';
-import GalleryPage from './pages/GalleryPage';
-import AdmissionsPage from './pages/AdmissionsPage';
-import AdminPage from './pages/AdminPage';
+// Lazy-load all subpages and heavy Admin modules to optimize initial bundle from 680 kB to ~75 kB
+const AboutUsPage = lazy(() => import('./pages/AboutUsPage'));
+const AdministrationPage = lazy(() => import('./pages/AdministrationPage'));
+const AcademicsPage = lazy(() => import('./pages/AcademicsPage'));
+const DepartmentDetailPage = lazy(() => import('./pages/DepartmentDetailPage'));
+const StudentWelfarePage = lazy(() => import('./pages/StudentWelfarePage'));
+const PublicationsPage = lazy(() => import('./pages/PublicationsPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const NoticesPage = lazy(() => import('./pages/NoticesPage'));
+const FacultyPage = lazy(() => import('./pages/FacultyPage'));
+const FacilitiesPage = lazy(() => import('./pages/FacilitiesPage'));
+const GalleryPage = lazy(() => import('./pages/GalleryPage'));
+const AdmissionsPage = lazy(() => import('./pages/AdmissionsPage'));
+const AdminPage = lazy(() => import('./pages/AdminPage'));
 
 // Modals
 import ProgramModal from './components/ProgramModal';
 import NoticeModal from './components/NoticeModal';
 import Admissions from './components/Admissions';
 import { X, GraduationCap, AlertTriangle, ArrowLeft } from 'lucide-react';
+
+function PageLoader() {
+  return (
+    <div className="min-h-[60vh] flex items-center justify-center py-24">
+      <div className="flex flex-col items-center gap-3">
+        <div className="w-9 h-9 border-3 border-slate-200 border-t-[#d4a72c] rounded-full animate-spin" />
+        <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+          Loading Page...
+        </span>
+      </div>
+    </div>
+  );
+}
 
 function AppContent() {
   const { siteSettings } = useWebsite();
@@ -68,103 +81,105 @@ function AppContent() {
       {/* Main Page Routing View */}
       <main className="flex-1">
         <div className="page-container">
-          <Routes>
-            {/* A. HOME */}
-            <Route
-              path="/"
-              element={
-                <HomePage
-                  onOpenAdmissions={handleOpenAdmissions}
-                  onSelectProgram={(p) => setSelectedProgram(p)}
-                  onSelectNotice={(n) => setSelectedNotice(n)}
-                />
-              }
-            />
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              {/* A. HOME */}
+              <Route
+                path="/"
+                element={
+                  <HomePage
+                    onOpenAdmissions={handleOpenAdmissions}
+                    onSelectProgram={(p) => setSelectedProgram(p)}
+                    onSelectNotice={(n) => setSelectedNotice(n)}
+                  />
+                }
+              />
 
-            {/* B. ABOUT US (Historical Background, Vision & Mandate, Org Structure, Accreditation) */}
-            <Route path="/about" element={<AboutUsPage />} />
-            <Route path="/about/:subSection" element={<AboutUsPage />} />
+              {/* B. ABOUT US (Historical Background, Vision & Mandate, Org Structure, Accreditation) */}
+              <Route path="/about" element={<AboutUsPage />} />
+              <Route path="/about/:subSection" element={<AboutUsPage />} />
 
-            {/* C. ADMINISTRATION (VC, Deans of Faculty, Associate Dean, Supporting Staff) */}
-            <Route path="/administration" element={<AdministrationPage />} />
-            <Route path="/administration/:subSection" element={<AdministrationPage />} />
+              {/* C. ADMINISTRATION (VC, Deans of Faculty, Associate Dean, Supporting Staff) */}
+              <Route path="/administration" element={<AdministrationPage />} />
+              <Route path="/administration/:subSection" element={<AdministrationPage />} />
 
-            {/* D. ACADEMICS (Courses, Departments) */}
-            <Route
-              path="/academics"
-              element={
-                <AcademicsPage
-                  onSelectProgram={(p) => setSelectedProgram(p)}
-                  onOpenEnquiry={handleOpenAdmissions}
-                />
-              }
-            />
-            <Route
-              path="/academics/courses"
-              element={
-                <AcademicsPage
-                  onSelectProgram={(p) => setSelectedProgram(p)}
-                  onOpenEnquiry={handleOpenAdmissions}
-                />
-              }
-            />
-            <Route
-              path="/academics/departments"
-              element={
-                <AcademicsPage
-                  onSelectProgram={(p) => setSelectedProgram(p)}
-                  onOpenEnquiry={handleOpenAdmissions}
-                />
-              }
-            />
-            {/* Individual Department Pages (with About, Lab Infra, HoD & Faculty) */}
-            <Route
-              path="/academics/departments/:deptSlug"
-              element={<DepartmentDetailPage />}
-            />
+              {/* D. ACADEMICS (Courses, Departments) */}
+              <Route
+                path="/academics"
+                element={
+                  <AcademicsPage
+                    onSelectProgram={(p) => setSelectedProgram(p)}
+                    onOpenEnquiry={handleOpenAdmissions}
+                  />
+                }
+              />
+              <Route
+                path="/academics/courses"
+                element={
+                  <AcademicsPage
+                    onSelectProgram={(p) => setSelectedProgram(p)}
+                    onOpenEnquiry={handleOpenAdmissions}
+                  />
+                }
+              />
+              <Route
+                path="/academics/departments"
+                element={
+                  <AcademicsPage
+                    onSelectProgram={(p) => setSelectedProgram(p)}
+                    onOpenEnquiry={handleOpenAdmissions}
+                  />
+                }
+              />
+              {/* Individual Department Pages (with About, Lab Infra, HoD & Faculty) */}
+              <Route
+                path="/academics/departments/:deptSlug"
+                element={<DepartmentDetailPage />}
+              />
 
-            {/* E. STUDENT'S WELFARE ACTIVITIES (All 12 items) */}
-            <Route path="/student-welfare" element={<StudentWelfarePage />} />
-            <Route path="/student-welfare/:activitySlug" element={<StudentWelfarePage />} />
+              {/* E. STUDENT'S WELFARE ACTIVITIES (All 12 items) */}
+              <Route path="/student-welfare" element={<StudentWelfarePage />} />
+              <Route path="/student-welfare/:activitySlug" element={<StudentWelfarePage />} />
 
-            {/* F. PUBLICATIONS / OTHER MAIN LINKS */}
-            <Route path="/publications" element={<PublicationsPage />} />
-            <Route
-              path="/contact"
-              element={<ContactPage onOpenEnquiry={handleOpenAdmissions} />}
-            />
+              {/* F. PUBLICATIONS / OTHER MAIN LINKS */}
+              <Route path="/publications" element={<PublicationsPage />} />
+              <Route
+                path="/contact"
+                element={<ContactPage onOpenEnquiry={handleOpenAdmissions} />}
+              />
 
-            {/* Supporting Subpages */}
-            <Route
-              path="/notices"
-              element={<NoticesPage onSelectNotice={(n) => setSelectedNotice(n)} />}
-            />
-            <Route path="/faculty" element={<FacultyPage />} />
-            <Route path="/facilities" element={<FacilitiesPage />} />
-            <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/admissions" element={<AdmissionsPage />} />
-            <Route path="/admin" element={<AdminPage />} />
+              {/* Supporting Subpages */}
+              <Route
+                path="/notices"
+                element={<NoticesPage onSelectNotice={(n) => setSelectedNotice(n)} />}
+              />
+              <Route path="/faculty" element={<FacultyPage />} />
+              <Route path="/facilities" element={<FacilitiesPage />} />
+              <Route path="/gallery" element={<GalleryPage />} />
+              <Route path="/admissions" element={<AdmissionsPage />} />
+              <Route path="/admin" element={<AdminPage />} />
 
-            {/* 404 Fallback */}
-            <Route
-              path="*"
-              element={
-                <div className="container py-24 text-center">
-                  <div className="w-16 h-16 rounded-full bg-navy-50 text-navy-900 flex items-center justify-center mx-auto mb-4 border border-navy-100 font-serif text-2xl font-bold">
-                    404
+              {/* 404 Fallback */}
+              <Route
+                path="*"
+                element={
+                  <div className="container py-24 text-center">
+                    <div className="w-16 h-16 rounded-full bg-navy-50 text-navy-900 flex items-center justify-center mx-auto mb-4 border border-navy-100 font-serif text-2xl font-bold">
+                      404
+                    </div>
+                    <h2 className="font-serif text-2xl font-bold text-navy-950 mb-2">Page Not Found</h2>
+                    <p className="text-slate-600 text-sm max-w-md mx-auto mb-6">
+                      The requested college resource or page could not be found. Please return to the official homepage.
+                    </p>
+                    <Link to="/" className="btn btn-primary btn-sm font-bold inline-flex items-center gap-2">
+                      <ArrowLeft className="w-4 h-4" />
+                      <span>Return to Home</span>
+                    </Link>
                   </div>
-                  <h2 className="font-serif text-2xl font-bold text-navy-950 mb-2">Page Not Found</h2>
-                  <p className="text-slate-600 text-sm max-w-md mx-auto mb-6">
-                    The requested college resource or page could not be found. Please return to the official homepage.
-                  </p>
-                  <Link to="/" className="btn btn-primary btn-sm font-bold inline-flex items-center gap-2">
-                    <ArrowLeft className="w-4 h-4" />
-                    <span>Return to Home</span>
-                  </Link>
-                </div>
-              }
-            />
-          </Routes>
+                }
+              />
+            </Routes>
+          </Suspense>
         </div>
       </main>
 

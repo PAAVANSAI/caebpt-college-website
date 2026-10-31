@@ -13,7 +13,7 @@ export default function Hero({ onOpenAdmissionsModal }) {
     titleAccent: "Agricultural Engineering",
     titleSuffix: "& Technology",
     intro: "Pioneering academic distinction, farm mechanization, micro-irrigation systems, and agro-processing engineering to drive sustainable agrarian advancement under ANGRAU.",
-    bgImage: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=2000&q=85",
+    bgImage: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1280&q=75",
     highlights: [
       { count: "6", label: "Core Academic Departments", note: "Specialized Disciplines" },
       { count: "1,046", label: "Total Graduates", note: "Graduated Agro-Engineers" },
@@ -74,9 +74,14 @@ export default function Hero({ onOpenAdmissionsModal }) {
           )
         ) : (
           <img
-            src={hero.bgImage}
+            src={hero.bgImage || "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1280&q=75"}
             alt="College of Agricultural Engineering, Bapatla Campus"
             className="w-full h-full object-cover object-center scale-102 transition-transform duration-1000"
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
+            width="1280"
+            height="720"
           />
         )}
 

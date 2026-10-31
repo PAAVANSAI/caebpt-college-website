@@ -170,6 +170,10 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                       src={deanMessage?.image || deanMessage?.photo || officialStructureData.messages.dean.image}
                       alt={deanMessage?.name || officialStructureData.messages.dean.name}
                       className="w-16 h-16 rounded-full object-cover border-2 border-[#d4a72c] shadow-md flex-shrink-0"
+                      loading="lazy"
+                      decoding="async"
+                      width="64"
+                      height="64"
                     />
                     <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#0b1a2e] border-2 border-white flex items-center justify-center text-[10px] text-[#fae4a4]">
                       ★
@@ -227,6 +231,10 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                       src={assocDeanMessage?.image || assocDeanMessage?.photo || officialStructureData.messages.associateDean.image}
                       alt={assocDeanMessage?.name || officialStructureData.messages.associateDean.name}
                       className="w-16 h-16 rounded-full object-cover border-2 border-[#d4a72c] shadow-md flex-shrink-0"
+                      loading="lazy"
+                      decoding="async"
+                      width="64"
+                      height="64"
                     />
                     <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#0b1a2e] border-2 border-white flex items-center justify-center text-[10px] text-[#fae4a4]">
                       ★
@@ -512,6 +520,9 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
                     loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="256"
                   />
                   <div className="absolute top-3.5 left-3.5">
                     <span className="badge badge-navy bg-navy-950/85 text-white backdrop-blur-md text-[10px] font-extrabold border border-white/20">
@@ -582,6 +593,9 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                     alt={vid.title}
                     className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500 opacity-80"
                     loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="208"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
                     <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#b88e22] to-[#ecc75f] text-[#06101e] flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
