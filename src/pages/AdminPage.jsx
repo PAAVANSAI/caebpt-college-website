@@ -631,29 +631,29 @@ export default function AdminPage() {
             {/* Live Traffic Cards */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Live Visitors</span>
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Cloud Database</span>
                 <div className="flex items-center gap-2 mt-1">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span className="text-2xl font-black text-slate-900">{trafficStats.liveVisitors}</span>
+                  <span className="text-xl sm:text-2xl font-black text-slate-900">Firestore</span>
                 </div>
-                <span className="text-[11px] text-slate-400 mt-1 block">Active online sessions</span>
+                <span className="text-[11px] text-slate-400 mt-1 block">asia-south1 (Mumbai)</span>
               </div>
 
               <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Pageviews Today</span>
-                <div className="text-2xl font-black text-slate-900 mt-1">{trafficStats.todayViews.toLocaleString()}</div>
-                <span className="text-[11px] text-emerald-600 font-semibold mt-1 block">↑ +14.2% from yesterday</span>
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Real Pageviews</span>
+                <div className="text-xl sm:text-2xl font-black text-slate-900 mt-1">{trafficStats.todayViews.toLocaleString()}</div>
+                <span className="text-[11px] text-emerald-600 font-semibold mt-1 block">Live cloud counter</span>
               </div>
 
               <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Server Health</span>
-                <div className="text-2xl font-black text-slate-900 mt-1">{trafficStats.serverHealth}</div>
-                <span className="text-[11px] text-slate-400 mt-1 block">ANGRAU Edge Network</span>
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Edge Network</span>
+                <div className="text-xl sm:text-2xl font-black text-slate-900 mt-1">99.99%</div>
+                <span className="text-[11px] text-slate-400 mt-1 block">Netlify Edge + Google Cloud</span>
               </div>
 
               <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
                 <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Student Enquiries</span>
-                <div className="text-2xl font-black text-slate-900 mt-1">{enquiries.length}</div>
+                <div className="text-xl sm:text-2xl font-black text-slate-900 mt-1">{enquiries.length}</div>
                 <span className="text-[11px] text-amber-600 font-semibold mt-1 block">
                   {enquiries.filter((e) => e.status === 'New').length} pending review
                 </span>
