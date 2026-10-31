@@ -35,6 +35,9 @@ export default defineConfig({
           if (id.includes('node_modules/lucide-react')) {
             return 'vendor-icons';
           }
+          if (id.includes('node_modules/firebase')) {
+            return 'vendor-firebase';
+          }
           if (id.includes('src/data/academicsData') || id.includes('src/data/facultyData') || id.includes('src/data/facilitiesData') || id.includes('src/data/galleryData') || id.includes('src/data/noticesData')) {
             return 'data-subpages';
           }

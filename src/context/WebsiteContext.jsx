@@ -7,6 +7,8 @@ import { facultyData as defaultFaculty } from '../data/facultyData';
 import { facilitiesData as defaultFacilities } from '../data/facilitiesData';
 import { noticesData as defaultNotices } from '../data/noticesData';
 import { galleryData as defaultGallery } from '../data/galleryData';
+import { db } from '../lib/firebase';
+import { doc, onSnapshot, setDoc, collection, deleteDoc } from 'firebase/firestore';
 
 const WebsiteContext = createContext();
 
@@ -421,6 +423,65 @@ export function WebsiteProvider({ children }) {
     localStorage.setItem('caebpt_site_settings', JSON.stringify(siteSettings));
   }, [siteSettings]);
 
+  // ── FIREBASE REALTIME LISTENERS ──────────────────────────────
+  // 1. Realtime Site Settings Sync
+  useEffect(() => {
+    try {
+      const docRef = doc(db, 'settings', 'siteSettings');
+      const unsubscribe = onSnapshot(docRef, (docSnap) => {
+        if (docSnap.exists()) {
+          const remoteSettings = docSnap.data();
+          setSiteSettings((prev) => ({ ...prev, ...remoteSettings }));
+        }
+      }, (err) => {
+        // Fallback silently to localStorage if Firestore rules are not yet configured
+        console.warn('Firestore siteSettings listener notice:', err.message);
+      });
+      return () => unsubscribe();
+    } catch (e) {
+      console.warn('Firebase listener error:', e);
+    }
+  }, []);
+
+  // 2. Realtime Official Structure / Content Sync
+  useEffect(() => {
+    try {
+      const docRef = doc(db, 'content', 'officialStructure');
+      const unsubscribe = onSnapshot(docRef, (docSnap) => {
+        if (docSnap.exists()) {
+          const remoteContent = docSnap.data();
+          setOfficialStructure((prev) => sanitizeOfficialStructure({ ...prev, ...remoteContent }));
+        }
+      }, (err) => {
+        console.warn('Firestore officialStructure listener notice:', err.message);
+      });
+      return () => unsubscribe();
+    } catch (e) {
+      console.warn('Firebase content listener error:', e);
+    }
+  }, []);
+
+  // 3. Realtime Admissions Enquiries Sync
+  useEffect(() => {
+    try {
+      const colRef = collection(db, 'enquiries');
+      const unsubscribe = onSnapshot(colRef, (querySnap) => {
+        if (!querySnap.empty) {
+          const remoteList = [];
+          querySnap.forEach((d) => remoteList.push(d.data()));
+          if (remoteList.length > 0) {
+            setEnquiries(remoteList.sort((a, b) => (b.date || '').localeCompare(a.date || '')));
+          }
+        }
+      }, (err) => {
+        console.warn('Firestore enquiries listener notice:', err.message);
+      });
+      return () => unsubscribe();
+    } catch (e) {
+      console.warn('Firebase enquiries error:', e);
+    }
+  }, []);
+
   // Traffic counter fluctuation
   useEffect(() => {
     const interval = setInterval(() => {
@@ -820,23 +881,38 @@ export function WebsiteProvider({ children }) {
     const newEnq = {
       ...enquiryData,
       id: `enq-${Date.now()}`,
-      date: new Date().toLocaleString(),
+      date: new Date().toISOString().replace('T', ' ').substring(0, 16),
       status: "New"
     };
     setEnquiries((prev) => [newEnq, ...prev]);
+    try {
+      setDoc(doc(db, 'enquiries', newEnq.id), newEnq).catch(() => {});
+    } catch {}
   };
 
   const updateEnquiryStatus = (id, status) => {
     setEnquiries((prev) => prev.map((e) => (e.id === id ? { ...e, status } : e)));
+    try {
+      setDoc(doc(db, 'enquiries', id), { status }, { merge: true }).catch(() => {});
+    } catch {}
   };
 
   const deleteEnquiry = (id) => {
     setEnquiries((prev) => prev.filter((e) => e.id !== id));
+    try {
+      deleteDoc(doc(db, 'enquiries', id)).catch(() => {});
+    } catch {}
   };
 
   // 12. Site Settings
   const updateSiteSettings = (updated) => {
-    setSiteSettings((prev) => ({ ...prev, ...updated }));
+    setSiteSettings((prev) => {
+      const next = { ...prev, ...updated };
+      try {
+        setDoc(doc(db, 'settings', 'siteSettings'), next, { merge: true }).catch(() => {});
+      } catch {}
+      return next;
+    });
   };
 
   // 13. Reset to original mock data
