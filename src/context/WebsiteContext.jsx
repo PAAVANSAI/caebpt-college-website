@@ -8,7 +8,7 @@ import { facilitiesData as defaultFacilities } from '../data/facilitiesData';
 import { noticesData as defaultNotices } from '../data/noticesData';
 import { galleryData as defaultGallery } from '../data/galleryData';
 import { db } from '../lib/firebase';
-import { doc, onSnapshot, setDoc, collection, deleteDoc } from 'firebase/firestore';
+import { doc, onSnapshot, setDoc, collection, deleteDoc, increment } from 'firebase/firestore';
 
 const WebsiteContext = createContext();
 
@@ -479,6 +479,33 @@ export function WebsiteProvider({ children }) {
       return () => unsubscribe();
     } catch (e) {
       console.warn('Firebase enquiries error:', e);
+    }
+  }, []);
+
+  // 4. Realtime Pageviews Tracking & Analytics Sync
+  useEffect(() => {
+    try {
+      const statsRef = doc(db, 'traffic', 'stats');
+      setDoc(statsRef, {
+        todayViews: increment(1),
+        lastActive: new Date().toISOString()
+      }, { merge: true }).catch(() => {});
+
+      const unsubscribe = onSnapshot(statsRef, (docSnap) => {
+        if (docSnap.exists()) {
+          const remoteStats = docSnap.data();
+          if (remoteStats.todayViews) {
+            setTrafficStats((prev) => ({
+              ...prev,
+              todayViews: Math.max(prev.todayViews, remoteStats.todayViews),
+              serverHealth: "99.99% (Google Cloud)"
+            }));
+          }
+        }
+      }, () => {});
+      return () => unsubscribe();
+    } catch (e) {
+      console.warn('Traffic stats error:', e);
     }
   }, []);
 

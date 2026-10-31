@@ -129,6 +129,17 @@ export default function AdminPage() {
     }
   }, [siteSettings]);
 
+  // Sync Broadcast Message State
+  const [broadcastMessage, setBroadcastMessage] = useState(
+    siteSettings?.emergencyBannerText || "AP EAPCET & ICAR AIEEA 2025–26 Counseling Window: Official B.Tech (Agri Engg) admissions guidelines and verification schedules are active."
+  );
+
+  useEffect(() => {
+    if (siteSettings?.emergencyBannerText) {
+      setBroadcastMessage(siteSettings.emergencyBannerText);
+    }
+  }, [siteSettings?.emergencyBannerText]);
+
   // 2. Hero Section
   const [heroForm, setHeroForm] = useState({
     headline: currentStructure.hero?.headline || "Pioneering Precision Agriculture & Water Innovation",
@@ -651,16 +662,22 @@ export default function AdminPage() {
 
             {/* Emergency Broadcast Control */}
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
-              <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center justify-between gap-4 flex-wrap">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-xl bg-amber-50 text-amber-800 border border-amber-200">
+                  <div className="p-2.5 rounded-xl bg-amber-50 text-amber-800 border border-amber-200 flex-shrink-0">
                     <Radio className="w-5 h-5 text-amber-600" />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-base text-slate-900">
-                      Emergency Alert / Counseling Broadcast Banner
-                    </h3>
-                    <p className="text-xs text-slate-500">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="font-heading font-bold text-base text-slate-900">
+                        Emergency Alert / Counseling Broadcast Banner
+                      </h3>
+                      <span className="badge badge-navy text-[10px] py-0.5 px-2 font-bold inline-flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        Live Cloud Sync
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-500 mt-0.5">
                       Displays a high-visibility urgent banner at the top of every public page.
                     </p>
                   </div>
@@ -669,10 +686,11 @@ export default function AdminPage() {
                 <label className="relative inline-flex items-center cursor-pointer">
                   <input
                     type="checkbox"
-                    checked={siteSettings.emergencyBannerActive}
+                    checked={Boolean(siteSettings.emergencyBannerActive)}
                     onChange={(e) => {
-                      updateSiteSettings({ emergencyBannerActive: e.target.checked });
-                      triggerToast(`Emergency alert banner ${e.target.checked ? 'activated' : 'deactivated'}.`);
+                      const checked = e.target.checked;
+                      updateSiteSettings({ emergencyBannerActive: checked });
+                      triggerToast(`Emergency alert banner ${checked ? 'activated' : 'deactivated'} in realtime cloud!`);
                     }}
                     className="sr-only peer"
                   />
@@ -684,13 +702,26 @@ export default function AdminPage() {
                 <label className="block text-xs font-bold text-slate-700 mb-1">
                   Broadcast Alert Message
                 </label>
-                <input
-                  type="text"
-                  value={siteSettings.emergencyBannerText}
-                  onChange={(e) => updateSiteSettings({ emergencyBannerText: e.target.value })}
-                  placeholder="e.g. AP EAPCET Counseling 2025: Verification scheduled from Nov 1st..."
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:border-[#0b1a2e]"
-                />
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <input
+                    type="text"
+                    value={broadcastMessage}
+                    onChange={(e) => setBroadcastMessage(e.target.value)}
+                    placeholder="e.g. AP EAPCET Counseling 2025: Verification scheduled..."
+                    className="flex-1 px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:border-[#0b1a2e] focus:outline-none"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      updateSiteSettings({ emergencyBannerText: broadcastMessage });
+                      triggerToast('Broadcast Alert Message updated in Firebase cloud database!');
+                    }}
+                    className="btn btn-navy text-xs font-bold px-4 py-2.5 flex items-center justify-center gap-1.5 flex-shrink-0"
+                  >
+                    <Save className="w-4 h-4 text-[#ecc75f]" />
+                    <span>Save Broadcast Message</span>
+                  </button>
+                </div>
               </div>
 
               {/* Maintenance Mode Toggle */}
@@ -707,10 +738,11 @@ export default function AdminPage() {
                 <label className="relative inline-flex items-center cursor-pointer">
                   <input
                     type="checkbox"
-                    checked={siteSettings.maintenanceMode}
+                    checked={Boolean(siteSettings.maintenanceMode)}
                     onChange={(e) => {
-                      updateSiteSettings({ maintenanceMode: e.target.checked });
-                      triggerToast(`Maintenance mode ${e.target.checked ? 'enabled' : 'disabled'}.`);
+                      const checked = e.target.checked;
+                      updateSiteSettings({ maintenanceMode: checked });
+                      triggerToast(`Maintenance mode ${checked ? 'enabled' : 'disabled'} in realtime cloud!`);
                     }}
                     className="sr-only peer"
                   />
