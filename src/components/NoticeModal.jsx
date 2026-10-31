@@ -56,14 +56,14 @@ export default function NoticeModal({ notice, onClose }) {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div
-        className="modal-content"
+        className="modal-content flex flex-col"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-labelledby="notice-modal-title"
       >
         {/* Header */}
-        <div className="bg-navy-950 text-white p-6 relative">
+        <div className="bg-navy-950 text-white p-6 relative flex-shrink-0">
           <button
             type="button"
             onClick={onClose}
@@ -97,7 +97,7 @@ export default function NoticeModal({ notice, onClose }) {
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-5">
+        <div className="p-6 space-y-5 flex-1 overflow-y-auto modal-body-scroll">
           {/* Body */}
           <div className="text-slate-700 text-sm leading-relaxed space-y-3">
             <p className="font-semibold text-navy-950">
@@ -136,7 +136,7 @@ export default function NoticeModal({ notice, onClose }) {
         </div>
 
         {/* Footer */}
-        <div className="p-4 bg-slate-50 border-t border-slate-200 flex justify-end">
+        <div className="p-4 bg-slate-50 border-t border-slate-200 flex justify-end flex-shrink-0">
           <button
             type="button"
             onClick={onClose}

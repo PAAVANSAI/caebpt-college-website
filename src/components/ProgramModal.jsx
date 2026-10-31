@@ -7,14 +7,14 @@ export default function ProgramModal({ program, onClose, onApplyClick }) {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div
-        className="modal-content"
+        className="modal-content flex flex-col"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-labelledby="program-modal-title"
       >
         {/* Modal Header */}
-        <div className="bg-navy-950 text-white p-6 relative">
+        <div className="bg-navy-950 text-white p-6 relative flex-shrink-0">
           <button
             type="button"
             onClick={onClose}
@@ -50,7 +50,7 @@ export default function ProgramModal({ program, onClose, onApplyClick }) {
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 space-y-6">
+        <div className="p-6 space-y-6 flex-1 overflow-y-auto modal-body-scroll">
           {/* Eligibility Alert */}
           <div className="bg-slate-50 border border-slate-200 rounded-xl p-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-navy-900 mb-1 flex items-center gap-1.5">
@@ -114,7 +114,7 @@ export default function ProgramModal({ program, onClose, onApplyClick }) {
         </div>
 
         {/* Modal Footer CTA */}
-        <div className="p-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+        <div className="p-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 flex-shrink-0">
           <button
             type="button"
             onClick={onClose}

@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { WebsiteProvider, useWebsite } from './context/WebsiteContext';
 import ScrollToTop from './components/ScrollToTop';
@@ -51,6 +51,18 @@ function AppContent() {
   const [selectedNotice, setSelectedNotice] = useState(null);
   const [isAdmissionsModalOpen, setIsAdmissionsModalOpen] = useState(false);
   const [prefilledCourse, setPrefilledCourse] = useState('');
+
+  // Lock background body scroll when any modal is open to eliminate double scrollbars
+  useEffect(() => {
+    const isAnyModalOpen = Boolean(selectedProgram || selectedNotice || isAdmissionsModalOpen);
+    if (isAnyModalOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [selectedProgram, selectedNotice, isAdmissionsModalOpen]);
 
   const handleOpenAdmissions = (program) => {
     if (program && program.name) {
@@ -206,13 +218,13 @@ function AppContent() {
         {isAdmissionsModalOpen && (
           <div className="modal-overlay" onClick={() => setIsAdmissionsModalOpen(false)}>
             <div
-              className="modal-content modal-content-xl w-full max-w-5xl rounded-2xl shadow-2xl overflow-hidden border border-slate-200 bg-white"
+              className="modal-content modal-content-xl w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden border border-slate-200 bg-white flex flex-col"
               onClick={(e) => e.stopPropagation()}
               role="dialog"
               aria-modal="true"
               aria-labelledby="admissions-modal-heading"
             >
-              <div className="bg-[#0b1a2e] text-white p-3.5 sm:p-6 flex items-center justify-between border-b border-[#1b3459]">
+              <div className="bg-[#0b1a2e] text-white px-4 py-3.5 sm:px-6 sm:py-4 flex items-center justify-between border-b border-[#1b3459] flex-shrink-0">
                 <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
                   <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/15">
                     <GraduationCap className="w-5 h-5 text-[#f5c84c]" />
@@ -234,7 +246,7 @@ function AppContent() {
                 </button>
               </div>
 
-              <div className="p-4 sm:p-8 max-h-[84vh] overflow-y-auto">
+              <div className="p-4 sm:p-6 overflow-y-auto modal-body-scroll flex-1">
                 <Admissions
                   initialCourse={prefilledCourse}
                   isModal={true}

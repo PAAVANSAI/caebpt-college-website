@@ -114,9 +114,9 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
   // RENDER FORM FIELDS (Spacious & Clean)
   // ─────────────────────────────────────────────────────────────
   const renderForm = () => (
-    <form onSubmit={handleSubmit} noValidate className="space-y-4">
+    <form onSubmit={handleSubmit} noValidate className={isModal ? "space-y-3" : "space-y-4"}>
       {/* Row 1: Candidate Name & Mobile */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
         <div>
           <label htmlFor="fullName" className="block text-xs font-bold text-slate-700 mb-1">
             Candidate Full Name <span className="text-red-600">*</span>
@@ -128,7 +128,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
               value={formData.fullName}
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
               placeholder="e.g. Ramesh Kumar"
-              className={`w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border rounded-xl text-slate-900 transition-all ${
+              className={`w-full ${isModal ? 'px-3 py-2 text-xs sm:text-sm' : 'px-3.5 py-2.5 text-xs sm:text-sm'} bg-white border rounded-xl text-slate-900 transition-all ${
                 errors.fullName ? 'border-red-500 bg-red-50/30' : 'border-slate-300 focus:border-[#0b1a2e] focus:ring-2 focus:ring-[#0b1a2e]/10'
               }`}
             />
@@ -146,7 +146,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             placeholder="e.g. 98765 43210"
-            className={`w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border rounded-xl text-slate-900 transition-all ${
+            className={`w-full ${isModal ? 'px-3 py-2 text-xs sm:text-sm' : 'px-3.5 py-2.5 text-xs sm:text-sm'} bg-white border rounded-xl text-slate-900 transition-all ${
               errors.phone ? 'border-red-500 bg-red-50/30' : 'border-slate-300 focus:border-[#0b1a2e] focus:ring-2 focus:ring-[#0b1a2e]/10'
             }`}
           />
@@ -155,7 +155,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
       </div>
 
       {/* Row 2: Email & City */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
         <div>
           <label htmlFor="email" className="block text-xs font-bold text-slate-700 mb-1">
             Email Address <span className="text-red-600">*</span>
@@ -166,7 +166,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             placeholder="e.g. candidate@example.com"
-            className={`w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border rounded-xl text-slate-900 transition-all ${
+            className={`w-full ${isModal ? 'px-3 py-2 text-xs sm:text-sm' : 'px-3.5 py-2.5 text-xs sm:text-sm'} bg-white border rounded-xl text-slate-900 transition-all ${
               errors.email ? 'border-red-500 bg-red-50/30' : 'border-slate-300 focus:border-[#0b1a2e] focus:ring-2 focus:ring-[#0b1a2e]/10'
             }`}
           />
@@ -183,13 +183,13 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
             value={formData.city}
             onChange={(e) => setFormData({ ...formData, city: e.target.value })}
             placeholder="e.g. Bapatla, Guntur, AP"
-            className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-300 rounded-xl text-slate-900 focus:border-[#0b1a2e] focus:ring-2 focus:ring-[#0b1a2e]/10 transition-all"
+            className={`w-full ${isModal ? 'px-3 py-2 text-xs sm:text-sm' : 'px-3.5 py-2.5 text-xs sm:text-sm'} bg-white border border-slate-300 rounded-xl text-slate-900 focus:border-[#0b1a2e] focus:ring-2 focus:ring-[#0b1a2e]/10 transition-all`}
           />
         </div>
       </div>
 
       {/* Row 3: Program & Qualification */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
         <div>
           <label htmlFor="course" className="block text-xs font-bold text-slate-700 mb-1">
             Program of Study <span className="text-red-600">*</span>
@@ -198,7 +198,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
             id="course"
             value={formData.course}
             onChange={(e) => setFormData({ ...formData, course: e.target.value })}
-            className={`w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border rounded-xl text-slate-900 transition-all ${
+            className={`w-full ${isModal ? 'px-3 py-2 text-xs sm:text-sm' : 'px-3.5 py-2.5 text-xs sm:text-sm'} bg-white border rounded-xl text-slate-900 transition-all ${
               errors.course ? 'border-red-500 bg-red-50/30' : 'border-slate-300 focus:border-[#0b1a2e] focus:ring-2 focus:ring-[#0b1a2e]/10'
             }`}
           >
@@ -220,7 +220,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
             id="qualification"
             value={formData.qualification}
             onChange={(e) => setFormData({ ...formData, qualification: e.target.value })}
-            className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-300 rounded-xl text-slate-900 focus:border-[#0b1a2e] focus:ring-2 focus:ring-[#0b1a2e]/10 transition-all"
+            className={`w-full ${isModal ? 'px-3 py-2 text-xs sm:text-sm' : 'px-3.5 py-2.5 text-xs sm:text-sm'} bg-white border border-slate-300 rounded-xl text-slate-900 focus:border-[#0b1a2e] focus:ring-2 focus:ring-[#0b1a2e]/10 transition-all`}
           >
             <option value="Intermediate (10+2 / MPC)">Intermediate (10+2 / MPC)</option>
             <option value="Intermediate (10+2 / BiPC)">Intermediate (10+2 / BiPC)</option>
@@ -239,16 +239,16 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
         </label>
         <textarea
           id="message"
-          rows={3}
+          rows={isModal ? 2 : 3}
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           placeholder="Enter any questions regarding entrance cutoffs, hostel allotment, fees structure, or certificate verification..."
-          className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-300 rounded-xl text-slate-900 focus:border-[#0b1a2e] focus:ring-2 focus:ring-[#0b1a2e]/10 transition-all leading-relaxed"
+          className={`w-full ${isModal ? 'px-3 py-2 text-xs sm:text-sm' : 'px-3.5 py-2.5 text-xs sm:text-sm'} bg-white border border-slate-300 rounded-xl text-slate-900 focus:border-[#0b1a2e] focus:ring-2 focus:ring-[#0b1a2e]/10 transition-all leading-relaxed`}
         />
       </div>
 
       {/* Consent Checkbox */}
-      <div className="pt-1">
+      <div className="pt-0.5">
         <label className="flex items-start gap-2.5 cursor-pointer text-xs text-slate-700 select-none">
           <input
             type="checkbox"
@@ -264,11 +264,11 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
       </div>
 
       {/* Submit Button */}
-      <div className="pt-2">
+      <div className="pt-1">
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full btn btn-gold py-3 text-xs sm:text-sm font-extrabold justify-center shadow-md hover:shadow-lg transition-all"
+          className="w-full btn btn-gold py-2.5 sm:py-3 text-xs sm:text-sm font-extrabold justify-center shadow-md hover:shadow-lg transition-all"
         >
           <Send className="w-4 h-4 text-[#06101e]" />
           <span>{isSubmitting ? 'Submitting Application...' : 'Submit Application for Admission'}</span>
@@ -276,7 +276,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
       </div>
 
       {/* Quick Help Contacts Footer */}
-      <div className="pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between text-xs text-slate-500 gap-2">
+      <div className="pt-2.5 border-t border-slate-200 flex flex-wrap items-center justify-between text-[11px] sm:text-xs text-slate-500 gap-2">
         <span className="flex items-center gap-1.5">
           <Phone className="w-3.5 h-3.5 text-[#b88e22]" />
           <span>Admissions Helpdesk: <strong>{collegeInfo.contact.phone}</strong></span>
@@ -367,7 +367,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
       <div className="w-full">
         {submittedData ? renderSuccess() : (
           <div>
-            <div className="mb-5 pb-3 border-b border-slate-200 flex items-center justify-between">
+            <div className="mb-3.5 pb-2.5 border-b border-slate-200 flex items-center justify-between">
               <div>
                 <h3 className="font-heading font-extrabold text-base sm:text-lg text-navy-950">
                   Candidate Application & Counseling Registration
