@@ -76,8 +76,8 @@ export default function Hero({ onOpenAdmissionsModal }) {
           <picture>
             <source
               type="image/webp"
-              srcSet="/images/campus_hero_720.webp 720w, /images/campus_hero.webp 1280w"
-              sizes="(max-width: 768px) 100vw, 1280px"
+              srcSet="/images/campus_hero_desktop.webp 1200w, /images/campus_hero.webp 960w"
+              sizes="(min-width: 1024px) 1200px, 100vw"
             />
             <img
               src={hero.bgImage || "/images/campus_hero.webp"}

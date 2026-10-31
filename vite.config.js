@@ -28,9 +28,16 @@ export default defineConfig({
     cssMinify: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-icons': ['lucide-react'],
+        manualChunks(id) {
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('node_modules/react-router-dom')) {
+            return 'vendor-react';
+          }
+          if (id.includes('node_modules/lucide-react')) {
+            return 'vendor-icons';
+          }
+          if (id.includes('src/data/academicsData') || id.includes('src/data/facultyData') || id.includes('src/data/facilitiesData') || id.includes('src/data/galleryData') || id.includes('src/data/noticesData')) {
+            return 'data-subpages';
+          }
         },
       },
     },
