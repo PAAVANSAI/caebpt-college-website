@@ -36,23 +36,26 @@ export const officialStructureData = {
     dean: {
       title: "Message from the Dean",
       role: "Dean of Agricultural Engineering & Technology (ANGRAU)",
-      name: "Dr. G. Subba Rao, Ph.D. (Official Placeholder)",
-      qualification: "M.Tech (IIT Kharagpur), Ph.D. (Farm Power & Machinery)",
+      name: "Dr. G. Ravi Babu",
+      qualification: "M.Tech, Ph.D. (Farm Power & Machinery)",
       image: "/images/avatars/dr_subba_rao.webp",
       content: [
-        "Agricultural engineering stands at the crucial intersection of biological science and technological innovation. At ANGRAU, we are committed to revolutionizing Indian agriculture through precision mechanization, smart micro-irrigation management, and innovative post-harvest technologies.",
-        "The College of Agricultural Engineering at Bapatla has remained our flagship constituent engineering institute since 1983, nurturing graduates who lead across industries, scientific research institutions, and governmental agricultural commissions. We welcome prospective students, researchers, and industrial partners to join hands with us in advancing climate-resilient farming futures."
+        "Agriculture is the key source of livelihood for 65% of the rural population of the state. Agricultural engineering integrates the technologies related to crop production, crop protection as well as post-harvest engineering & technology through advanced mechanization, water conservation practices, irrigation automation, precision farming, renewable energy engineering, and processing and value addition, thereby achieving seed-to-fork mechanization. In a nutshell, it is a profession wherein engineering interventions are introduced to provide sustainability in agricultural production by reducing labour costs, achieving timeliness of farm operations with desired efficiency with optimal water usage, and reducing post-harvest losses.",
+        "For small farms, with financial limitations and management constraints, there is a need for creating rural enterprises, custom service centers, agro service-centric, private or more so cooperative owned, catering to the needs and aspirations of weaker sections of the society. These engineering and technological needs demand highly trained agricultural engineers, equipped with knowledge, skills, and practices of engineering technology with full appreciation of biosciences to handle the challenges before them.",
+        "The College of Agricultural Engineering is aimed to produce a good number of trained Agricultural Engineers to support and maintain the pace of agricultural development in the State. The present college was established as a Degree programme during 1983 and later upgraded to a college status operating as an individual college since 1994. Till date, college has produced more than 1,800 qualified graduates who have been excelling in their fields of interest.",
+        "I am happy to note that the college brought a facelift to the existing website duly incorporating new and latest features. The college web portal is a gateway to know about college infrastructure, faculty, curricular and co-curricular activities."
       ]
     },
     associateDean: {
       title: "Message from the Associate Dean",
       role: "Associate Dean & Professor, CAE Bapatla",
-      name: "Dr. K. S. Rao, Ph.D. (Official Placeholder)",
-      qualification: "M.Tech (IIT Roorkee), Ph.D. (Soil & Water Conservation)",
+      name: "Dr. B. John Wesley",
+      qualification: "M.Tech, Ph.D. (Agricultural Processing)",
       image: "/images/avatars/dr_ks_rao.webp",
       content: [
-        "Welcome to the College of Agricultural Engineering, Bapatla. For more than four decades, this institution has served as a beacon of academic excellence in agricultural mechanization, natural resource management, and food process engineering.",
-        "Our academic environment combines foundational engineering sciences with hands-on machinery workshops, GIS-based hydrological simulations, and pilot processing plants. We ensure every student receives comprehensive training, ethical grounding, and real-world industrial in-plant experience to emerge as visionary technocrats."
+        "Dr. NTR College of Agricultural Engineering, Bapatla had a humble beginning in the year 1983 in the premises of Agricultural College, Bapatla in the then Department of Agricultural Engineering. Now, it is grown into a sprawling area of lush green land on Bapatla-Karlapalem Road on NH 216, comprising of two main buildings, four student residential hostels, a workshop complex, a library building, research fields, green houses, etc. with all facilities to excel in agricultural engineering.",
+        "The College has thrived to emerge as one of the best destinations in India for pursuing bachelor and post-graduate studies in field of Agricultural Engineering. This College has become the launch pad for the students to rise and come out in flying colours in their careers in all the facets of Engineering, Technology, and Management. The Faculty are highly qualified from national and international premium educational institutions.",
+        "Come, let us join our hands in nurturing and building a life rewarding career of responsible citizens of India who can learn and serve the country in the area of Farm Machinery; Post-harvest Process and Food Engineering; Soil Water Conservation Engineering, and Irrigation and Drainage Engineering."
       ]
     }
   },
@@ -453,91 +456,165 @@ export const officialStructureData = {
 
   // 5. Administration Sections and Submenus
   administration: {
+    title: "College Administration & University Governance",
     viceChancellor: {
       title: "Vice-Chancellor",
-      name: "Dr. R. Sarada Jayalakshmi Devi, Ph.D. (ANGRAU Leadership)",
+      name: "Dr. P.V. SATYANARAYANA",
       designation: "Hon'ble Vice-Chancellor, ANGRAU",
       university: "Acharya N.G. Ranga Agricultural University",
-      officeLocation: "Administrative Headquarters, ANGRAU, Lam, Guntur, AP",
+      officeLocation: "Administrative Headquarters, ANGRAU, Lam, Guntur - 522 034, AP",
+      email: "vicechancellor@angrau.ac.in",
+      photo: "/images/administration/dr_pv_satyanarayana.webp",
       message: "ANGRAU remains steadfast in advancing technological self-reliance, farm productivity, and scientific education across Andhra Pradesh through its constituent colleges."
     },
     deansOfFaculty: {
       title: "Deans of Faculty",
       facultyDeans: [
         {
-          name: "Dr. G. Subba Rao, Ph.D. (Placeholder)",
-          designation: "Dean of Agricultural Engineering & Technology",
+          name: "Dr. P.V.K. JAGANNADHA RAO",
+          designation: "Dean of Agricultural Engineering & Technology, ANGRAU",
           responsibilities: "Overlooks academic regulations, syllabus revisions, accreditation compliances, and post-graduate engineering research across university colleges.",
-          email: "dean.agengg@angrau.ac.in (Placeholder)"
+          phone: "0863-2347102",
+          email: "deanaet@angrau.ac.in",
+          photo: "/images/administration/dr_pvk_jagannadha_rao.webp"
         },
         {
-          name: "Dr. P. Venkateswarlu, Ph.D. (Placeholder)",
-          designation: "Dean of Agriculture",
+          name: "Dr. P. Venkateswarlu",
+          designation: "Dean of Agriculture, ANGRAU",
           responsibilities: "Coordinates agricultural sciences education and joint interdisciplinary crop-machinery trials.",
-          email: "dean.agri@angrau.ac.in (Placeholder)"
+          email: "dean.agri@angrau.ac.in",
+          photo: null
         },
         {
-          name: "Dr. K. Hemalatha, Ph.D. (Placeholder)",
-          designation: "Dean of Post Graduate Studies",
+          name: "Dr. K. Hemalatha",
+          designation: "Dean of Post Graduate Studies, ANGRAU",
           responsibilities: "Supervises M.Tech, M.Sc., and Ph.D. dissertation evaluations and university doctoral fellowships.",
-          email: "dean.pgs@angrau.ac.in"
+          email: "dean.pgs@angrau.ac.in",
+          photo: null
         }
       ]
     },
     associateDean: {
       title: "Associate Dean",
-      name: "Dr. K. S. Rao, Ph.D.",
-      designation: "Associate Dean & Professor",
+      name: "Dr. MOGAL SARDAR BAIG",
+      designation: "Associate Dean & Professor, CAE Bapatla",
       office: "Principal's Administrative Chamber, Main Block, CAE Bapatla",
-      phone: "+91 8643 224025",
-      email: "associate.dean@caebpt.ac.in",
-      biography: "Serving as the executive and academic head of the College of Agricultural Engineering, Bapatla. Over 24 years of academic and administrative experience in agricultural research, tractor testings, and student mentoring."
+      phone: "9985589428",
+      email: "ad.caebpt@angrau.ac.in",
+      photo: "/images/administration/dr_mogal_sardar_baig.webp",
+      biography: "Serving as the executive and academic head of Dr. NTR College of Agricultural Engineering, Bapatla. Spearheading collegiate excellence in agricultural education, research infrastructure, farm machinery innovations, and student career mentorship across four decades of academic distinction."
     },
     supportingStaff: {
-      title: "Supporting Staff & Officers In-Charge",
-      description: "Key collegiate officers responsible for day-to-day administrative functions, academic records, student welfare, and campus operations:",
+      title: "Administration Supporting",
+      description: "Key collegiate officers responsible for day-to-day administrative functions, academic records, student welfare, hostels, and campus operations:",
       staffList: [
         {
+          role: "Academic In-Charge (UG)",
+          name: "Dr. S. VISHNU VARDHAN",
+          designation: "Officer Incharge of Academic Matters (UG) & IT Wing Incharge",
+          phone: "9440363112",
+          email: "oam.caebpt@angrau.ac.in",
+          photo: "/images/administration/dr_s_vishnu_vardhan.webp",
+          duties: "Undergraduate curriculum coordination, semester course registrations, timetables, and campus IT infrastructure."
+        },
+        {
+          role: "Academic In-Charge (PG)",
+          name: "Dr. B. SREENIVASULA REDDY",
+          designation: "Officer Incharge of Academic Matters (PG)",
+          phone: "9618800819",
+          email: "oampg.caebpt@angrau.ac.in",
+          photo: "/images/administration/dr_b_sreenivasula_reddy.webp",
+          duties: "Postgraduate academic schedules, M.Tech/Ph.D. research thesis progress, examinations, and seminar evaluations."
+        },
+        {
+          role: "Additional OAM & Library",
+          name: "Dr. N. ASHOK KUMAR",
+          designation: "Additional OAM (UG) & Library Incharge",
+          phone: "8099479129",
+          email: "lib.caebpt@angrau.ac.in",
+          photo: "/images/administration/dr_n_ashok_kumar.webp",
+          duties: "Academic records assistance and supervision of Central Library, digital e-resources, and book bank facilities."
+        },
+        {
+          role: "Boys Hostel Warden",
+          name: "Dr. D. VIJAY KUMAR",
+          designation: "Warden (Boys Hostel) & Labour Incharge",
+          phone: "9492686634",
+          email: "wardenboys.caebpt@angrau.ac.in",
+          photo: "/images/administration/dr_d_vijay_kumar.webp",
+          duties: "Residential boys hostel management, mess facilities, student discipline, security, and campus maintenance labour."
+        },
+        {
+          role: "Girls Hostel Warden",
+          name: "Dr. K. KRUPAVATHI",
+          designation: "Warden (Girls Hostel)",
+          phone: "9533877666",
+          email: "warden.caebpt@angrau.ac.in",
+          photo: "/images/administration/dr_k_krupavathi.webp",
+          duties: "Resident girls hostel administration, student safety, mess operations, dining hygiene, and welfare supervision."
+        },
+        {
+          role: "Student Affairs (OSA)",
+          name: "Dr. A. ASHOK KUMAR",
+          designation: "Officer Incharge of Student Affairs",
+          phone: "9177522213",
+          email: "osa.caebpt@angrau.ac.in",
+          photo: "/images/administration/dr_a_ashok_kumar.webp",
+          duties: "Student co-curricular activities, cultural symposia, sports meets, grievance redressal, and collegiate welfare clubs."
+        },
+        {
+          role: "Training & Placement",
+          name: "Dr. G. RAVIBABU",
+          designation: "Training and Placement Officer",
+          phone: "9848186842",
+          email: "tpc.caebpt@angrau.ac.in",
+          photo: "/images/administration/dr_g_ravibabu.webp",
+          duties: "Corporate industry liaisons, campus recruitment drives, summer industrial internships, and skill training workshops."
+        },
+        {
+          role: "Transport Incharge",
+          name: "Dr. A. SRINIVASA RAO",
+          designation: "Transport Incharge",
+          phone: "8374647499",
+          email: "transport.caebpt@angrau.ac.in",
+          photo: "/images/administration/dr_a_srinivasa_rao.webp",
+          duties: "College vehicle fleet coordination, student field trips, bus schedules, and mechanical transport maintenance."
+        },
+        {
+          role: "NSS Unit - I",
+          name: "Dr. KVS RAMI REDDY",
+          designation: "NSS Programme Officer - I",
+          phone: "9490845917",
+          email: "nss.caebpt@angrau.ac.in",
+          photo: "/images/administration/dr_kvs_rami_reddy.webp",
+          duties: "Community outreach campaigns, rural development camps, voluntary blood donation camps, and national service initiatives."
+        },
+        {
+          role: "NSS Unit - II & WPC",
+          name: "Dr. K. LAVANYA",
+          designation: "NSS Programme Officer - II & Women Protection Cell",
+          phone: "9295350600",
+          email: "wpcell.caebpt@angrau.ac.in",
+          photo: "/images/administration/dr_k_lavanya.webp",
+          duties: "NSS women volunteer campaigns, gender sensitization programmes, counseling, and women safety empowerment cell."
+        },
+        {
+          role: "SC / ST Cell",
+          name: "Dr. B. RAJ KIRAN",
+          designation: "SC/ST Cell Incharge",
+          phone: "8500880340",
+          email: "scstcell.caebpt@angrau.ac.in",
+          photo: "/images/administration/dr_b_raj_kiran.webp",
+          duties: "Implementation of reservation policies, welfare schemes, academic mentoring, and grievance monitoring for SC/ST students."
+        },
+        {
           role: "Administrative Officer",
-          name: "Er. N. Satyanarayana",
+          name: "Smt. V. PADMA TULASI",
           designation: "Administrative Officer",
-          duties: "Oversees general administration, university communications, establishment matters, service registers, finance, and procurement stores.",
-          contact: "ao.cae@caebpt.ac.in • Ext: 102"
-        },
-        {
-          role: "Warden",
-          name: "Dr. T. Harikrishna (Boys Hostel) & Dr. V. Deepa (Girls Hostel)",
-          designation: "Hostel Wardens",
-          duties: "Management of residential hostels, dining messes, student discipline, room allotments, and resident security.",
-          contact: "wardens@caebpt.ac.in • Ext: 106"
-        },
-        {
-          role: "Officer In-charge of Academic Matters",
-          name: "Dr. P. V. Ramana",
-          designation: "Professor & Academic In-Charge",
-          duties: "Coordinates semester registrations, examination scheduling, attendance registers, grade reports, and classroom scheduling.",
-          contact: "academics.officer@caebpt.ac.in • Ext: 104"
-        },
-        {
-          role: "Officer In-charge of Student Affairs",
-          name: "Dr. M. S. Reddy",
-          designation: "Professor & Student Affairs In-Charge",
-          duties: "Coordinates student welfare, extracurricular clubs, sports events, cultural symposia, NSS/NCC units, and grievance redressal.",
-          contact: "student.affairs@caebpt.ac.in • Ext: 108"
-        },
-        {
-          role: "Placement Officer",
-          name: "Dr. Ch. Srinivas",
-          designation: "Associate Professor & Placement Officer",
-          duties: "Liaisons with farm equipment companies, micro-irrigation corporations, food processors, campus interviews, and career counseling.",
-          contact: "placement@caebpt.ac.in • Ext: 110"
-        },
-        {
-          role: "Transport In-charge",
-          name: "Er. B. Anjaneyulu",
-          designation: "Assistant Professor & Transport In-Charge",
-          duties: "Manages college transport buses, field demonstration vehicles, farm machinery mobilization, and scheduled shuttle operations.",
-          contact: "transport@caebpt.ac.in • Ext: 114"
+          phone: "8374243199",
+          email: "ao.caebpt@angrau.ac.in",
+          photo: "/images/administration/smt_v_padma_tulasi.webp",
+          duties: "General collegiate administration, university communications, establishment service registers, finance, and stores procurement."
         }
       ]
     }

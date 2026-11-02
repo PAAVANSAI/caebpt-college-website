@@ -48,11 +48,11 @@ export const collegeInfo = {
   history: "Acharya N.G. Ranga Agricultural University (earlier APAU) started a 4-year B.Tech (Agril. Engg.) Degree Programme in 1983-84. The college was shifted to its new campus on NH-216 in Karlapalem road in May 1994, with foundation stone laid on 24-02-1988 by Dr. N.T. Rama Rao. The college was the only institution offering B.Tech (Agril. Engg.) in Andhra Pradesh till 2008. Accredited by ICAR (latest 2021-2026), the 25-acre campus has produced 1,046 graduate engineers across 6 specialized departments.",
 
   principalMessage: {
-    name: "Dr. K. S. Rao, Ph.D.",
+    name: "Dr. B. John Wesley, Ph.D.",
     designation: "Associate Dean & Professor",
-    qualification: "M.Tech (IIT Kharagpur), Ph.D. (Farm Power & Machinery)",
+    qualification: "M.Tech, Ph.D. (Agricultural Processing)",
     photo: "/images/avatars/dr_ks_rao.webp",
-    messageText: "Welcome to Dr. NTR College of Agricultural Engineering, Bapatla. As agricultural paradigms shift towards climate-resilient farming, IoT-driven farm machinery, and efficient food preservation, our institution remains dedicated to preparing visionary engineers. We blend strong foundational sciences with hands-on machinery workshops, GIS-based watershed simulations, and modern incubation setups. We encourage prospective students and collaborators to explore our programs."
+    messageText: "Dr. NTR College of Agricultural Engineering, Bapatla had a humble beginning in the year 1983 in the premises of Agricultural College, Bapatla in the then Department of Agricultural Engineering. Now, it is grown into a sprawling area of lush green land on Bapatla-Karlapalem Road on NH 216, comprising of two main buildings, four student residential hostels, a workshop complex, a library building, research fields, green houses, etc. with all facilities to excel in agricultural engineering. The College has thrived to emerge as one of the best destinations in India for pursuing bachelor and post-graduate studies in field of Agricultural Engineering. This College has become the launch pad for the students to rise and come out in flying colours in their careers in all the facets of Engineering, Technology, and Management."
   },
 
   institutionalHighlights: [

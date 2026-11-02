@@ -77,33 +77,58 @@ export default function AdministrationPage() {
             {/* SUBSECTION 1: VICE-CHANCELLOR */}
             {activeTab === 'vc' && (
               <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-10 shadow-sm space-y-6">
-                <div className="flex items-center justify-between pb-4 border-b border-slate-200">
-                  <div>
-                    <span className="badge badge-navy text-xs font-bold uppercase mb-1">Apex University Authority</span>
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-6 border-b border-slate-200">
+                  <div className="relative flex-shrink-0">
+                    <img
+                      src={administration?.viceChancellor?.photo || "/images/administration/dr_pv_satyanarayana.webp"}
+                      alt={administration?.viceChancellor?.name}
+                      className="w-36 h-44 sm:w-44 sm:h-52 object-cover rounded-2xl shadow-lg border-2 border-[#d4a72c]"
+                    />
+                    <span className="badge badge-navy text-[10px] font-bold absolute -bottom-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap shadow-sm">
+                      Apex Leadership
+                    </span>
+                  </div>
+
+                  <div className="flex-1 text-center sm:text-left space-y-2">
+                    <span className="badge badge-gold text-xs font-bold uppercase">Apex University Authority</span>
                     <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
                       {administration?.viceChancellor?.name || officialStructureData.administration.viceChancellor.name}
                     </h2>
-                    <p className="text-xs sm:text-sm text-[#854d0e] font-extrabold mt-0.5">
+                    <p className="text-sm sm:text-base text-[#854d0e] font-extrabold">
                       {administration?.viceChancellor?.designation || officialStructureData.administration.viceChancellor.designation}
                     </p>
+                    <p className="text-xs sm:text-sm text-slate-600 font-medium">
+                      {administration?.viceChancellor?.university || officialStructureData.administration.viceChancellor.university}
+                    </p>
+
+                    <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2.5 pt-2">
+                      {administration?.viceChancellor?.email && (
+                        <a
+                          href={`mailto:${administration.viceChancellor.email}`}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-[#0b1a2e] hover:text-white rounded-lg text-xs font-semibold text-slate-700 transition-colors"
+                        >
+                          <Mail className="w-3.5 h-3.5 text-[#d4a72c]" />
+                          <span>{administration.viceChancellor.email}</span>
+                        </a>
+                      )}
+                      {administration?.viceChancellor?.officeLocation && (
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 rounded-lg text-xs font-semibold text-slate-700">
+                          <MapPin className="w-3.5 h-3.5 text-[#d4a72c]" />
+                          <span>{administration.viceChancellor.officeLocation}</span>
+                        </span>
+                      )}
+                    </div>
                   </div>
-                  <Shield className="w-10 h-10 text-[#d4a72c] opacity-70" />
                 </div>
 
-                <div className="p-6 bg-slate-50 border border-slate-200 rounded-2xl space-y-4">
-                  <div className="text-xs sm:text-sm text-slate-700 leading-relaxed space-y-2">
-                    <p>
-                      <strong>University:</strong> {administration?.viceChancellor?.university || officialStructureData.administration.viceChancellor.university}
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-gold-500" />
-                      <span>{administration?.viceChancellor?.officeLocation || officialStructureData.administration.viceChancellor.officeLocation}</span>
-                    </p>
+                <div className="p-6 bg-slate-50 border border-slate-200 rounded-2xl space-y-3">
+                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-navy-950">
+                    <Shield className="w-4 h-4 text-[#d4a72c]" />
+                    <span>Vice-Chancellor's Governance Mandate</span>
                   </div>
-
-                  <div className="p-4 bg-white rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-700 italic border-l-4 border-[#d4a72c]">
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic border-l-4 border-[#d4a72c] pl-4">
                     "{administration?.viceChancellor?.message || officialStructureData.administration.viceChancellor.message}"
-                  </div>
+                  </p>
                 </div>
 
                 <div className="text-xs text-slate-500">
@@ -124,16 +149,49 @@ export default function AdministrationPage() {
                   </p>
                 </div>
 
-                <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   {(administration?.deansOfFaculty?.facultyDeans || officialStructureData.administration.deansOfFaculty.facultyDeans || []).map((dean, idx) => (
-                    <div key={idx} className="p-5 bg-slate-50 border border-slate-200 rounded-xl">
-                      <h4 className="font-bold text-navy-950 text-base">{dean.name}</h4>
-                      <p className="text-xs font-bold text-[#854d0e] mt-0.5">{dean.designation}</p>
-                      <p className="text-xs text-slate-700 mt-2 leading-relaxed">{dean.responsibilities}</p>
-                      <p className="text-[11px] text-slate-500 mt-2 flex items-center gap-1.5">
-                        <Mail className="w-3.5 h-3.5 text-[#d4a72c]" />
-                        <span>{dean.email}</span>
-                      </p>
+                    <div key={idx} className="p-5 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col sm:flex-row gap-4 items-center sm:items-start hover:shadow-md transition-shadow">
+                      {dean.photo ? (
+                        <img
+                          src={dean.photo}
+                          alt={dean.name}
+                          className="w-24 h-28 object-cover rounded-xl shadow-sm border border-slate-200 flex-shrink-0"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <div className="w-24 h-28 bg-[#0b1a2e]/5 border border-slate-200 rounded-xl flex items-center justify-center flex-shrink-0 text-slate-400">
+                          <GraduationCap className="w-8 h-8 text-[#d4a72c]" />
+                        </div>
+                      )}
+                      <div className="flex-1 text-center sm:text-left space-y-1.5">
+                        <h4 className="font-bold text-navy-950 text-base">{dean.name}</h4>
+                        <p className="text-xs font-extrabold text-[#854d0e]">{dean.designation}</p>
+                        {dean.responsibilities && (
+                          <p className="text-xs text-slate-600 leading-relaxed">{dean.responsibilities}</p>
+                        )}
+                        <div className="pt-2 flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                          {dean.phone && (
+                            <a
+                              href={`tel:${dean.phone}`}
+                              className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700 bg-white px-2.5 py-1 rounded-md border border-slate-200 hover:text-navy-950"
+                            >
+                              <Phone className="w-3 h-3 text-[#d4a72c]" />
+                              <span>{dean.phone}</span>
+                            </a>
+                          )}
+                          {dean.email && (
+                            <a
+                              href={`mailto:${dean.email}`}
+                              className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700 bg-white px-2.5 py-1 rounded-md border border-slate-200 hover:text-navy-950"
+                            >
+                              <Mail className="w-3 h-3 text-[#d4a72c]" />
+                              <span>{dean.email}</span>
+                            </a>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -143,34 +201,67 @@ export default function AdministrationPage() {
             {/* SUBSECTION 3: ASSOCIATE DEAN */}
             {activeTab === 'associate-dean' && (
               <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-10 shadow-sm space-y-6">
-                <div className="flex items-center justify-between pb-4 border-b border-slate-200">
-                  <div>
-                    <span className="badge badge-gold text-xs font-bold uppercase mb-1">Collegiate Executive Head</span>
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-6 border-b border-slate-200">
+                  <div className="relative flex-shrink-0">
+                    <img
+                      src={administration?.associateDean?.photo || "/images/administration/dr_mogal_sardar_baig.webp"}
+                      alt={administration?.associateDean?.name}
+                      className="w-36 h-44 sm:w-44 sm:h-52 object-cover rounded-2xl shadow-lg border-2 border-[#d4a72c]"
+                    />
+                    <span className="badge badge-gold text-[10px] font-bold absolute -bottom-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap shadow-sm">
+                      Collegiate Head
+                    </span>
+                  </div>
+
+                  <div className="flex-1 text-center sm:text-left space-y-2">
+                    <span className="badge badge-gold text-xs font-bold uppercase">Collegiate Executive Head</span>
                     <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
                       {administration?.associateDean?.name || officialStructureData.administration.associateDean.name}
                     </h2>
-                    <p className="text-xs sm:text-sm text-[#854d0e] font-extrabold mt-0.5">
+                    <p className="text-sm sm:text-base text-[#854d0e] font-extrabold">
                       {administration?.associateDean?.designation || officialStructureData.administration.associateDean.designation}
                     </p>
+                    <p className="text-xs text-slate-500 font-medium">
+                      Dr. NTR College of Agricultural Engineering, Bapatla
+                    </p>
+
+                    <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2.5 pt-2">
+                      {administration?.associateDean?.phone && (
+                        <a
+                          href={`tel:${administration.associateDean.phone}`}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-[#0b1a2e] hover:text-white rounded-lg text-xs font-semibold text-slate-700 transition-colors"
+                        >
+                          <Phone className="w-3.5 h-3.5 text-[#d4a72c]" />
+                          <span>{administration.associateDean.phone}</span>
+                        </a>
+                      )}
+                      {administration?.associateDean?.email && (
+                        <a
+                          href={`mailto:${administration.associateDean.email}`}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-[#0b1a2e] hover:text-white rounded-lg text-xs font-semibold text-slate-700 transition-colors"
+                        >
+                          <Mail className="w-3.5 h-3.5 text-[#d4a72c]" />
+                          <span>{administration.associateDean.email}</span>
+                        </a>
+                      )}
+                      {administration?.associateDean?.office && (
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 rounded-lg text-xs font-semibold text-slate-700">
+                          <MapPin className="w-3.5 h-3.5 text-[#d4a72c]" />
+                          <span>{administration.associateDean.office}</span>
+                        </span>
+                      )}
+                    </div>
                   </div>
-                  <Building className="w-10 h-10 text-[#0b1a2e] opacity-70" />
                 </div>
 
-                <div className="p-6 bg-slate-50 border border-slate-200 rounded-2xl space-y-4 text-xs sm:text-sm text-slate-700">
-                  <p className="leading-relaxed">
+                <div className="p-6 bg-slate-50 border border-slate-200 rounded-2xl space-y-3">
+                  <h4 className="text-xs font-bold text-navy-950 uppercase tracking-wider flex items-center gap-1.5">
+                    <Building className="w-4 h-4 text-[#d4a72c]" />
+                    <span>Executive Biography & Responsibilities</span>
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                     {administration?.associateDean?.biography || officialStructureData.administration.associateDean.biography}
                   </p>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                    <div className="p-3 bg-white rounded-lg border border-slate-200 flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-[#d4a72c] flex-shrink-0" />
-                      <span>{administration?.associateDean?.office || officialStructureData.administration.associateDean.office}</span>
-                    </div>
-                    <div className="p-3 bg-white rounded-lg border border-slate-200 flex items-center gap-2">
-                      <Phone className="w-4 h-4 text-[#d4a72c] flex-shrink-0" />
-                      <span>{administration?.associateDean?.phone || officialStructureData.administration.associateDean.phone}</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             )}
@@ -178,26 +269,70 @@ export default function AdministrationPage() {
             {/* SUBSECTION 4: SUPPORTING STAFF */}
             {activeTab === 'supporting-staff' && (
               <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-10 shadow-sm space-y-6">
-                <div>
+                <div className="border-b border-slate-200 pb-4">
+                  <span className="badge badge-navy text-xs font-bold uppercase mb-1">Collegiate Officers In-Charge</span>
                   <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950 mb-2">
                     {administration?.supportingStaff?.title || officialStructureData.administration.supportingStaff.title}
                   </h2>
-                  <p className="text-xs sm:text-sm text-slate-600 mb-6">
+                  <p className="text-xs sm:text-sm text-slate-600">
                     {administration?.supportingStaff?.description || officialStructureData.administration.supportingStaff.description}
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                   {(administration?.supportingStaff?.staffList || officialStructureData.administration.supportingStaff.staffList || []).map((staff, idx) => (
-                    <div key={idx} className="p-5 bg-slate-50 border border-slate-200 rounded-xl flex flex-col justify-between">
+                    <div
+                      key={idx}
+                      className="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col justify-between hover:shadow-lg hover:border-[#d4a72c]/60 transition-all duration-200 group"
+                    >
                       <div>
-                        <span className="badge badge-navy text-[10px] font-bold mb-1.5">{staff.role}</span>
-                        <h4 className="font-bold text-navy-950 text-base">{staff.name}</h4>
-                        <p className="text-xs font-bold text-[#854d0e] mt-0.5">{staff.designation}</p>
-                        <p className="text-xs text-slate-600 mt-2 leading-relaxed">{staff.duties}</p>
+                        <div className="flex items-start gap-3.5 mb-3">
+                          <img
+                            src={staff.photo || "/images/avatars/placeholder.webp"}
+                            alt={staff.name}
+                            className="w-16 h-20 sm:w-18 sm:h-22 object-cover rounded-xl border border-slate-200 shadow-sm flex-shrink-0 group-hover:scale-102 transition-transform bg-slate-200"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          <div className="min-w-0 flex-1">
+                            <span className="badge badge-gold text-[9px] font-bold mb-1 block truncate">
+                              {staff.role}
+                            </span>
+                            <h4 className="font-bold text-navy-950 text-xs sm:text-sm leading-snug">
+                              {staff.name}
+                            </h4>
+                            <p className="text-[10.5px] font-semibold text-[#854d0e] mt-0.5 leading-tight">
+                              {staff.designation}
+                            </p>
+                          </div>
+                        </div>
+
+                        {staff.duties && (
+                          <p className="text-[11px] text-slate-600 leading-relaxed mb-3">
+                            {staff.duties}
+                          </p>
+                        )}
                       </div>
-                      <div className="pt-3 mt-4 border-t border-slate-200 text-[11px] text-slate-500 font-mono">
-                        {staff.contact}
+
+                      <div className="pt-2.5 border-t border-slate-200/80 space-y-1 text-[11px]">
+                        {staff.phone && (
+                          <a
+                            href={`tel:${staff.phone}`}
+                            className="flex items-center gap-1.5 text-slate-700 hover:text-navy-950 font-medium"
+                          >
+                            <Phone className="w-3 h-3 text-[#d4a72c] flex-shrink-0" />
+                            <span className="truncate">{staff.phone}</span>
+                          </a>
+                        )}
+                        {staff.email && (
+                          <a
+                            href={`mailto:${staff.email}`}
+                            className="flex items-center gap-1.5 text-slate-700 hover:text-navy-950 font-medium"
+                          >
+                            <Mail className="w-3 h-3 text-[#d4a72c]" />
+                            <span className="truncate">{staff.email}</span>
+                          </a>
+                        )}
                       </div>
                     </div>
                   ))}

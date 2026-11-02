@@ -128,60 +128,76 @@ function sanitizeOfficialStructure(data) {
 
   // Safe Dean Message
   const deanRawImage = data.messages?.dean?.image || data.messages?.dean?.photo;
+  const isDeanPlaceholder = Array.isArray(data.messages?.dean?.content) &&
+    data.messages.dean.content[0]?.includes('crucial intersection of biological science');
   const deanObj = {
     ...defaultOfficialStructure.messages.dean,
     ...(data.messages?.dean || {}),
     image: (deanRawImage && !deanRawImage.includes('unsplash.com'))
       ? deanRawImage
       : defaultOfficialStructure.messages.dean.image,
-    content: Array.isArray(data.messages?.dean?.content)
+    content: (isDeanPlaceholder || !data.messages?.dean?.content)
+      ? defaultOfficialStructure.messages.dean.content
+      : Array.isArray(data.messages.dean.content)
       ? data.messages.dean.content
-      : data.messages?.dean?.message
+      : data.messages.dean.message
       ? [data.messages.dean.message]
       : defaultOfficialStructure.messages.dean.content
   };
 
   // Safe Associate Dean Message
   const assocDeanRawImage = data.messages?.associateDean?.image || data.messages?.associateDean?.photo;
+  const isAssocDeanPlaceholder = Array.isArray(data.messages?.associateDean?.content) &&
+    data.messages.associateDean.content[0]?.includes('served as a beacon of academic excellence');
   const assocDeanObj = {
     ...defaultOfficialStructure.messages.associateDean,
     ...(data.messages?.associateDean || {}),
     image: (assocDeanRawImage && !assocDeanRawImage.includes('unsplash.com'))
       ? assocDeanRawImage
       : defaultOfficialStructure.messages.associateDean.image,
-    content: Array.isArray(data.messages?.associateDean?.content)
+    content: (isAssocDeanPlaceholder || !data.messages?.associateDean?.content)
+      ? defaultOfficialStructure.messages.associateDean.content
+      : Array.isArray(data.messages.associateDean.content)
       ? data.messages.associateDean.content
-      : data.messages?.associateDean?.message
+      : data.messages.associateDean.message
       ? [data.messages.associateDean.message]
       : defaultOfficialStructure.messages.associateDean.content
   };
 
   // Safe Administration
+  const isVcStale = data.administration?.viceChancellor?.name?.includes('Sarada');
+  const isAssocDeanStale = data.administration?.associateDean?.name?.includes('John Wesley') || data.administration?.associateDean?.name?.includes('K. S. Rao');
+  const isStaffStale = !Array.isArray(data.administration?.supportingStaff?.staffList) ||
+    data.administration.supportingStaff.staffList.length < 10 ||
+    data.administration.supportingStaff.staffList.some(s => s.name?.includes('Harikrishna') || s.name?.includes('Satyanarayana'));
+
   const adminObj = {
     ...defaultOfficialStructure.administration,
     ...(data.administration || {}),
-    viceChancellor: {
-      ...defaultOfficialStructure.administration.viceChancellor,
-      ...(data.administration?.viceChancellor || data.administration?.vc || {})
-    },
+    viceChancellor: isVcStale || !data.administration?.viceChancellor
+      ? defaultOfficialStructure.administration.viceChancellor
+      : {
+          ...defaultOfficialStructure.administration.viceChancellor,
+          ...(data.administration?.viceChancellor || data.administration?.vc || {})
+        },
     deansOfFaculty: {
       ...defaultOfficialStructure.administration.deansOfFaculty,
       ...(data.administration?.deansOfFaculty || {}),
-      facultyDeans: Array.isArray(data.administration?.deansOfFaculty?.facultyDeans)
-        ? data.administration.deansOfFaculty.facultyDeans
-        : defaultOfficialStructure.administration.deansOfFaculty.facultyDeans
+      facultyDeans: defaultOfficialStructure.administration.deansOfFaculty.facultyDeans
     },
-    associateDean: {
-      ...defaultOfficialStructure.administration.associateDean,
-      ...(data.administration?.associateDean || {})
-    },
-    supportingStaff: {
-      ...defaultOfficialStructure.administration.supportingStaff,
-      ...(data.administration?.supportingStaff || {}),
-      staffList: Array.isArray(data.administration?.supportingStaff?.staffList)
-        ? data.administration.supportingStaff.staffList
-        : defaultOfficialStructure.administration.supportingStaff.staffList
-    }
+    associateDean: isAssocDeanStale || !data.administration?.associateDean
+      ? defaultOfficialStructure.administration.associateDean
+      : {
+          ...defaultOfficialStructure.administration.associateDean,
+          ...(data.administration?.associateDean || {})
+        },
+    supportingStaff: isStaffStale || !data.administration?.supportingStaff
+      ? defaultOfficialStructure.administration.supportingStaff
+      : {
+          ...defaultOfficialStructure.administration.supportingStaff,
+          ...(data.administration?.supportingStaff || {}),
+          staffList: defaultOfficialStructure.administration.supportingStaff.staffList
+        }
   };
 
   return {

@@ -163,7 +163,7 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                 </div>
               </div>
 
-              <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+              <div className="p-6 sm:p-8 flex-1 flex flex-col">
                 <div className="flex items-center gap-4 pb-5 mb-5 border-b border-slate-100">
                   <div className="relative">
                     <img
@@ -192,16 +192,16 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                   </div>
                 </div>
 
-                <div className="text-xs sm:text-sm text-slate-700 leading-relaxed space-y-3 font-quote italic">
+                <div className="text-xs sm:text-sm text-slate-700 leading-relaxed space-y-3.5 font-normal not-italic">
                   {(Array.isArray(deanMessage?.content)
                     ? deanMessage.content
                     : [deanMessage?.content || deanMessage?.message || officialStructureData.messages.dean.content[0]]
                   ).map((p, idx) => (
-                    <p key={idx}>"{p}"</p>
+                    <p key={idx}>{p}</p>
                   ))}
                 </div>
 
-                <div className="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <div className="pt-5 mt-auto border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
                   <span className="font-semibold">Faculty of Agricultural Engineering & Technology</span>
                   <span className="badge badge-navy text-[10px] font-bold">Official Record</span>
                 </div>
@@ -224,7 +224,7 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                 </div>
               </div>
 
-              <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+              <div className="p-6 sm:p-8 flex-1 flex flex-col">
                 <div className="flex items-center gap-4 pb-5 mb-5 border-b border-slate-100">
                   <div className="relative">
                     <img
@@ -253,16 +253,16 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                   </div>
                 </div>
 
-                <div className="text-xs sm:text-sm text-slate-700 leading-relaxed space-y-3 font-quote italic">
+                <div className="text-xs sm:text-sm text-slate-700 leading-relaxed space-y-3.5 font-normal not-italic">
                   {(Array.isArray(assocDeanMessage?.content)
                     ? assocDeanMessage.content
                     : [assocDeanMessage?.content || assocDeanMessage?.message || officialStructureData.messages.associateDean.content[0]]
                   ).map((p, idx) => (
-                    <p key={idx}>"{p}"</p>
+                    <p key={idx}>{p}</p>
                   ))}
                 </div>
 
-                <div className="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <div className="pt-5 mt-auto border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
                   <span className="font-semibold">CAE Bapatla Administration</span>
                   <span className="badge badge-gold text-[10px] font-bold">Principal's Desk</span>
                 </div>

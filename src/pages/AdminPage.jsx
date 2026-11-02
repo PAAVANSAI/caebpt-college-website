@@ -172,16 +172,16 @@ export default function AdminPage() {
     name: currentStructure.messages?.dean?.name || "Dr. G. Ravi Babu",
     title: currentStructure.messages?.dean?.title || "Dean of Agricultural Engineering & Technology, ANGRAU",
     photo: currentStructure.messages?.dean?.photo || "/images/avatars/dr_subba_rao.webp",
-    excerpt: currentStructure.messages?.dean?.excerpt || "Transforming agricultural engineering through AI-driven mechanization.",
-    message: currentStructure.messages?.dean?.message || ""
+    excerpt: currentStructure.messages?.dean?.excerpt || "Agriculture is the key source of livelihood for 65% of the rural population of the state.",
+    message: currentStructure.messages?.dean?.message || (Array.isArray(currentStructure.messages?.dean?.content) ? currentStructure.messages.dean.content.join('\n\n') : "")
   });
 
   const [assocDeanForm, setAssocDeanForm] = useState({
-    name: currentStructure.messages?.assocDean?.name || "Dr. B. John Wesley",
-    title: currentStructure.messages?.assocDean?.title || "Associate Dean, College of Agricultural Engineering, Bapatla",
-    photo: currentStructure.messages?.assocDean?.photo || "/images/avatars/dr_ks_rao.webp",
-    excerpt: currentStructure.messages?.assocDean?.excerpt || "Over four decades of nurturing world-class technocrats and agri-entrepreneurs.",
-    message: currentStructure.messages?.assocDean?.message || ""
+    name: currentStructure.messages?.associateDean?.name || currentStructure.messages?.assocDean?.name || "Dr. B. John Wesley",
+    title: currentStructure.messages?.associateDean?.title || currentStructure.messages?.assocDean?.title || "Associate Dean, College of Agricultural Engineering, Bapatla",
+    photo: currentStructure.messages?.associateDean?.photo || currentStructure.messages?.assocDean?.photo || "/images/avatars/dr_ks_rao.webp",
+    excerpt: currentStructure.messages?.associateDean?.excerpt || currentStructure.messages?.assocDean?.excerpt || "Dr. NTR College of Agricultural Engineering, Bapatla had a humble beginning in the year 1983.",
+    message: currentStructure.messages?.associateDean?.message || (Array.isArray(currentStructure.messages?.associateDean?.content) ? currentStructure.messages.associateDean.content.join('\n\n') : "")
   });
 
   // 4. Announcements Form State
@@ -1278,11 +1278,26 @@ export default function AdminPage() {
                     className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900"
                   />
                 </div>
+
+                <div className="md:col-span-2">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Full Official Address / Message (Separate paragraphs with a blank line)</label>
+                  <textarea
+                    rows={6}
+                    value={deanForm.message}
+                    onChange={(e) => setDeanForm({ ...deanForm, message: e.target.value })}
+                    placeholder="Enter Dean's full address..."
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 leading-relaxed font-sans"
+                  />
+                </div>
               </div>
 
               <button
                 onClick={() => {
-                  updateLeadershipMessage('dean', deanForm);
+                  const contentParagraphs = deanForm.message ? deanForm.message.split('\n\n').map(p => p.trim()).filter(Boolean) : undefined;
+                  updateLeadershipMessage('dean', {
+                    ...deanForm,
+                    content: contentParagraphs && contentParagraphs.length > 0 ? contentParagraphs : undefined
+                  });
                   triggerToast("Dean's message updated successfully!");
                 }}
                 className="btn btn-navy text-xs font-bold px-4 py-2 flex items-center gap-1.5"
@@ -1344,11 +1359,26 @@ export default function AdminPage() {
                     className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900"
                   />
                 </div>
+
+                <div className="md:col-span-2">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Full Official Address / Message (Separate paragraphs with a blank line)</label>
+                  <textarea
+                    rows={6}
+                    value={assocDeanForm.message}
+                    onChange={(e) => setAssocDeanForm({ ...assocDeanForm, message: e.target.value })}
+                    placeholder="Enter Associate Dean's full address..."
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 leading-relaxed font-sans"
+                  />
+                </div>
               </div>
 
               <button
                 onClick={() => {
-                  updateLeadershipMessage('assocDean', assocDeanForm);
+                  const contentParagraphs = assocDeanForm.message ? assocDeanForm.message.split('\n\n').map(p => p.trim()).filter(Boolean) : undefined;
+                  updateLeadershipMessage('associateDean', {
+                    ...assocDeanForm,
+                    content: contentParagraphs && contentParagraphs.length > 0 ? contentParagraphs : undefined
+                  });
                   triggerToast("Associate Dean's message updated successfully!");
                 }}
                 className="btn btn-navy text-xs font-bold px-4 py-2 flex items-center gap-1.5"
