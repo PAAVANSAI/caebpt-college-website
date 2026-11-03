@@ -479,13 +479,6 @@ export const officialStructureData = {
           photo: "/images/administration/dr_pvk_jagannadha_rao.webp"
         },
         {
-          name: "Dr. P. Venkateswarlu",
-          designation: "Dean of Agriculture, ANGRAU",
-          responsibilities: "Coordinates agricultural sciences education and joint interdisciplinary crop-machinery trials.",
-          email: "dean.agri@angrau.ac.in",
-          photo: null
-        },
-        {
           name: "Dr. K. Hemalatha",
           designation: "Dean of Post Graduate Studies, ANGRAU",
           responsibilities: "Supervises M.Tech, M.Sc., and Ph.D. dissertation evaluations and university doctoral fellowships.",
