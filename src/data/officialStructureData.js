@@ -36,9 +36,9 @@ export const officialStructureData = {
     dean: {
       title: "Message from the Dean",
       role: "Dean of Agricultural Engineering & Technology (ANGRAU)",
-      name: "Dr. G. Ravi Babu",
-      qualification: "M.Tech, Ph.D. (Farm Power & Machinery)",
-      image: "/images/avatars/dr_subba_rao.webp",
+      name: "Dr. P.V.K. Jagannadha Rao",
+      qualification: "",
+      image: "/images/administration/dr_pvk_jagannadha_rao.webp",
       content: [
         "Agriculture is the key source of livelihood for 65% of the rural population of the state. Agricultural engineering integrates the technologies related to crop production, crop protection as well as post-harvest engineering & technology through advanced mechanization, water conservation practices, irrigation automation, precision farming, renewable energy engineering, and processing and value addition, thereby achieving seed-to-fork mechanization. In a nutshell, it is a profession wherein engineering interventions are introduced to provide sustainability in agricultural production by reducing labour costs, achieving timeliness of farm operations with desired efficiency with optimal water usage, and reducing post-harvest losses.",
         "For small farms, with financial limitations and management constraints, there is a need for creating rural enterprises, custom service centers, agro service-centric, private or more so cooperative owned, catering to the needs and aspirations of weaker sections of the society. These engineering and technological needs demand highly trained agricultural engineers, equipped with knowledge, skills, and practices of engineering technology with full appreciation of biosciences to handle the challenges before them.",
@@ -48,10 +48,10 @@ export const officialStructureData = {
     },
     associateDean: {
       title: "Message from the Associate Dean",
-      role: "Associate Dean & Professor, CAE Bapatla",
-      name: "Dr. B. John Wesley",
-      qualification: "M.Tech, Ph.D. (Agricultural Processing)",
-      image: "/images/avatars/dr_ks_rao.webp",
+      role: "Associate Dean, CAE Bapatla",
+      name: "Dr. Mogal Sardar Baig",
+      qualification: "",
+      image: "/images/administration/dr_mogal_sardar_baig.webp",
       content: [
         "Dr. NTR College of Agricultural Engineering, Bapatla had a humble beginning in the year 1983 in the premises of Agricultural College, Bapatla in the then Department of Agricultural Engineering. Now, it is grown into a sprawling area of lush green land on Bapatla-Karlapalem Road on NH 216, comprising of two main buildings, four student residential hostels, a workshop complex, a library building, research fields, green houses, etc. with all facilities to excel in agricultural engineering.",
         "The College has thrived to emerge as one of the best destinations in India for pursuing bachelor and post-graduate studies in field of Agricultural Engineering. This College has become the launch pad for the students to rise and come out in flying colours in their careers in all the facets of Engineering, Technology, and Management. The Faculty are highly qualified from national and international premium educational institutions.",

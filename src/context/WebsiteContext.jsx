@@ -7,8 +7,11 @@ import { facultyData as defaultFaculty } from '../data/facultyData';
 import { facilitiesData as defaultFacilities } from '../data/facilitiesData';
 import { noticesData as defaultNotices } from '../data/noticesData';
 import { galleryData as defaultGallery } from '../data/galleryData';
-import { db } from '../lib/firebase';
-import { doc, onSnapshot, setDoc, collection, deleteDoc, increment } from 'firebase/firestore';
+import { db, storage } from '../lib/firebase';
+import {
+  doc, onSnapshot, setDoc, collection, deleteDoc, increment, getDocs
+} from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 
 const WebsiteContext = createContext();
 
@@ -127,15 +130,21 @@ function sanitizeOfficialStructure(data) {
   };
 
   // Safe Dean Message
+  const isDeanStale = data.messages?.dean?.image?.includes('avatars') ||
+    data.messages?.dean?.name?.includes('Ravi Babu');
   const deanRawImage = data.messages?.dean?.image || data.messages?.dean?.photo;
   const isDeanPlaceholder = Array.isArray(data.messages?.dean?.content) &&
     data.messages.dean.content[0]?.includes('crucial intersection of biological science');
   const deanObj = {
     ...defaultOfficialStructure.messages.dean,
     ...(data.messages?.dean || {}),
-    image: (deanRawImage && !deanRawImage.includes('unsplash.com'))
-      ? deanRawImage
-      : defaultOfficialStructure.messages.dean.image,
+    name: (isDeanStale || !data.messages?.dean?.name)
+      ? defaultOfficialStructure.messages.dean.name
+      : data.messages.dean.name,
+    qualification: "",
+    image: (isDeanStale || !deanRawImage || deanRawImage.includes('unsplash.com') || deanRawImage.includes('avatars'))
+      ? defaultOfficialStructure.messages.dean.image
+      : deanRawImage,
     content: (isDeanPlaceholder || !data.messages?.dean?.content)
       ? defaultOfficialStructure.messages.dean.content
       : Array.isArray(data.messages.dean.content)
@@ -146,15 +155,22 @@ function sanitizeOfficialStructure(data) {
   };
 
   // Safe Associate Dean Message
+  const isAssocDeanMsgStale = data.messages?.associateDean?.image?.includes('avatars') ||
+    data.messages?.associateDean?.name?.includes('Wesley') ||
+    data.messages?.associateDean?.name?.includes('K. S. Rao');
   const assocDeanRawImage = data.messages?.associateDean?.image || data.messages?.associateDean?.photo;
   const isAssocDeanPlaceholder = Array.isArray(data.messages?.associateDean?.content) &&
     data.messages.associateDean.content[0]?.includes('served as a beacon of academic excellence');
   const assocDeanObj = {
     ...defaultOfficialStructure.messages.associateDean,
     ...(data.messages?.associateDean || {}),
-    image: (assocDeanRawImage && !assocDeanRawImage.includes('unsplash.com'))
-      ? assocDeanRawImage
-      : defaultOfficialStructure.messages.associateDean.image,
+    name: (isAssocDeanMsgStale || !data.messages?.associateDean?.name)
+      ? defaultOfficialStructure.messages.associateDean.name
+      : data.messages.associateDean.name,
+    qualification: "",
+    image: (isAssocDeanMsgStale || !assocDeanRawImage || assocDeanRawImage.includes('unsplash.com') || assocDeanRawImage.includes('avatars'))
+      ? defaultOfficialStructure.messages.associateDean.image
+      : assocDeanRawImage,
     content: (isAssocDeanPlaceholder || !data.messages?.associateDean?.content)
       ? defaultOfficialStructure.messages.associateDean.content
       : Array.isArray(data.messages.associateDean.content)
@@ -402,7 +418,7 @@ export function WebsiteProvider({ children }) {
     activeRegion: "asia-south1 (Mumbai)"
   });
 
-  // Persist to localStorage
+  // Persist to localStorage (fast local cache)
   useEffect(() => {
     localStorage.setItem('caebpt_official_structure', JSON.stringify(officialStructure));
   }, [officialStructure]);
@@ -446,7 +462,6 @@ export function WebsiteProvider({ children }) {
           setSiteSettings((prev) => ({ ...prev, ...remoteSettings }));
         }
       }, (err) => {
-        // Fallback silently to localStorage if Firestore rules are not yet configured
         console.warn('Firestore siteSettings listener notice:', err.message);
       });
       return () => unsubscribe();
@@ -494,7 +509,107 @@ export function WebsiteProvider({ children }) {
     }
   }, []);
 
-  // 4. Realtime Pageviews Tracking & Analytics Sync
+  // 4. Realtime Notices Sync
+  useEffect(() => {
+    try {
+      const docRef = doc(db, 'content', 'notices');
+      const unsubscribe = onSnapshot(docRef, (docSnap) => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (Array.isArray(data.list) && data.list.length > 0) {
+            setNotices(data.list);
+          }
+        }
+      }, () => {});
+      return () => unsubscribe();
+    } catch (e) {}
+  }, []);
+
+  // 5. Realtime Faculty Sync
+  useEffect(() => {
+    try {
+      const docRef = doc(db, 'content', 'faculty');
+      const unsubscribe = onSnapshot(docRef, (docSnap) => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (Array.isArray(data.list) && data.list.length > 0) {
+            setFaculty(data.list);
+          }
+        }
+      }, () => {});
+      return () => unsubscribe();
+    } catch (e) {}
+  }, []);
+
+  // 6. Realtime Programs Sync
+  useEffect(() => {
+    try {
+      const docRef = doc(db, 'content', 'programs');
+      const unsubscribe = onSnapshot(docRef, (docSnap) => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (Array.isArray(data.list) && data.list.length > 0) {
+            setPrograms(data.list);
+          }
+        }
+      }, () => {});
+      return () => unsubscribe();
+    } catch (e) {}
+  }, []);
+
+  // 7. Realtime Facilities Sync
+  useEffect(() => {
+    try {
+      const docRef = doc(db, 'content', 'facilities');
+      const unsubscribe = onSnapshot(docRef, (docSnap) => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (Array.isArray(data.list) && data.list.length > 0) {
+            setFacilities(data.list);
+          }
+        }
+      }, () => {});
+      return () => unsubscribe();
+    } catch (e) {}
+  }, []);
+
+  // 8. Realtime Departments Sync
+  useEffect(() => {
+    try {
+      const docRef = doc(db, 'content', 'departments');
+      const unsubscribe = onSnapshot(docRef, (docSnap) => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (Array.isArray(data.list) && data.list.length > 0) {
+            setDepartments(data.list);
+          }
+        }
+      }, () => {});
+      return () => unsubscribe();
+    } catch (e) {}
+  }, []);
+
+  // 9. Realtime Gallery Sync
+  useEffect(() => {
+    try {
+      const docRef = doc(db, 'content', 'gallery');
+      const unsubscribe = onSnapshot(docRef, (docSnap) => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (data.photos || data.videos) {
+            setGallery((prev) => ({
+              ...prev,
+              photos: Array.isArray(data.photos) && data.photos.length > 0 ? data.photos : prev.photos,
+              videos: Array.isArray(data.videos) && data.videos.length > 0 ? data.videos : prev.videos
+            }));
+          }
+        }
+      }, () => {});
+      return () => unsubscribe();
+    } catch (e) {}
+  }, []);
+
+  // 10. Realtime Pageviews Tracking & Analytics Sync
   useEffect(() => {
     try {
       const statsRef = doc(db, 'traffic', 'stats');
@@ -523,28 +638,31 @@ export function WebsiteProvider({ children }) {
   // OFFICIAL STRUCTURE ADMIN ACTIONS (Control ALL sections)
   // ─────────────────────────────────────────────────────────────
 
+  // Helper: persist officialStructure to Firestore after state update
+  const persistStructure = (updater) => {
+    setOfficialStructure((prev) => {
+      const next = updater(prev);
+      setDoc(doc(db, 'content', 'officialStructure'), next, { merge: true }).catch(() => {});
+      return next;
+    });
+  };
+
   // 1. General College Details & Affiliation
   const updateGeneralDetails = (details) => {
-    setOfficialStructure((prev) => ({
-      ...prev,
-      ...details
-    }));
+    persistStructure((prev) => ({ ...prev, ...details }));
   };
 
   // 2. Hero Section
   const updateHero = (heroData) => {
-    setOfficialStructure((prev) => ({
+    persistStructure((prev) => ({
       ...prev,
-      hero: {
-        ...(prev.hero || defaultOfficialStructure.hero),
-        ...heroData
-      }
+      hero: { ...(prev.hero || defaultOfficialStructure.hero), ...heroData }
     }));
   };
 
   // 3. Leadership Messages (Dean / Associate Dean)
   const updateLeadershipMessage = (key, msgData) => {
-    setOfficialStructure((prev) => {
+    persistStructure((prev) => {
       const target = key === 'dean' ? 'dean' : 'associateDean';
       const currentMsg = prev.messages?.[target] || defaultOfficialStructure.messages[target];
       const img = msgData.photo || msgData.image || currentMsg.image;
@@ -554,10 +672,8 @@ export function WebsiteProvider({ children }) {
         messages: {
           ...prev.messages,
           [target]: {
-            ...currentMsg,
-            ...msgData,
-            image: img,
-            photo: img,
+            ...currentMsg, ...msgData,
+            image: img, photo: img,
             content: Array.isArray(content) ? content : [String(content)]
           }
         }
@@ -567,24 +683,15 @@ export function WebsiteProvider({ children }) {
 
   // 4. Announcements & Circulars (newsEvents, recruitment, tenders, circulars)
   const addAnnouncement = (category, item) => {
-    setOfficialStructure((prev) => {
+    persistStructure((prev) => {
       const currentList = prev.announcements[category] || [];
-      const newItem = {
-        ...item,
-        id: `${category}-${Date.now()}`
-      };
-      return {
-        ...prev,
-        announcements: {
-          ...prev.announcements,
-          [category]: [newItem, ...currentList]
-        }
-      };
+      const newItem = { ...item, id: `${category}-${Date.now()}` };
+      return { ...prev, announcements: { ...prev.announcements, [category]: [newItem, ...currentList] } };
     });
   };
 
   const updateAnnouncement = (category, id, updated) => {
-    setOfficialStructure((prev) => {
+    persistStructure((prev) => {
       const currentList = prev.announcements[category] || [];
       return {
         ...prev,
@@ -597,68 +704,47 @@ export function WebsiteProvider({ children }) {
   };
 
   const deleteAnnouncement = (category, id) => {
-    setOfficialStructure((prev) => {
+    persistStructure((prev) => {
       const currentList = prev.announcements[category] || [];
       return {
         ...prev,
-        announcements: {
-          ...prev.announcements,
-          [category]: currentList.filter((item) => item.id !== id)
-        }
+        announcements: { ...prev.announcements, [category]: currentList.filter((item) => item.id !== id) }
       };
     });
   };
 
   // 5. Galleries (Photos & Videos)
   const addGalleryPhoto = (photo) => {
-    setOfficialStructure((prev) => ({
+    persistStructure((prev) => ({
       ...prev,
       galleries: {
         ...prev.galleries,
-        photos: [
-          {
-            ...photo,
-            id: `photo-${Date.now()}`
-          },
-          ...prev.galleries.photos
-        ]
+        photos: [{ ...photo, id: `photo-${Date.now()}` }, ...prev.galleries.photos]
       }
     }));
   };
 
   const deleteGalleryPhoto = (id) => {
-    setOfficialStructure((prev) => ({
+    persistStructure((prev) => ({
       ...prev,
-      galleries: {
-        ...prev.galleries,
-        photos: prev.galleries.photos.filter((p) => p.id !== id)
-      }
+      galleries: { ...prev.galleries, photos: prev.galleries.photos.filter((p) => p.id !== id) }
     }));
   };
 
   const addGalleryVideo = (video) => {
-    setOfficialStructure((prev) => ({
+    persistStructure((prev) => ({
       ...prev,
       galleries: {
         ...prev.galleries,
-        videos: [
-          {
-            ...video,
-            id: `video-${Date.now()}`
-          },
-          ...prev.galleries.videos
-        ]
+        videos: [{ ...video, id: `video-${Date.now()}` }, ...prev.galleries.videos]
       }
     }));
   };
 
   const deleteGalleryVideo = (id) => {
-    setOfficialStructure((prev) => ({
+    persistStructure((prev) => ({
       ...prev,
-      galleries: {
-        ...prev.galleries,
-        videos: prev.galleries.videos.filter((v) => v.id !== id)
-      }
+      galleries: { ...prev.galleries, videos: prev.galleries.videos.filter((v) => v.id !== id) }
     }));
   };
 
@@ -670,10 +756,7 @@ export function WebsiteProvider({ children }) {
     const id = shortCode.toLowerCase();
 
     const newDepartment = {
-      id,
-      slug: baseSlug,
-      name: rawName,
-      shortCode,
+      id, slug: baseSlug, name: rawName, shortCode,
       about: deptData.about || `The Department of ${rawName} offers specialized educational training, research initiatives, and laboratory infrastructure at CAE Bapatla.`,
       labs: Array.isArray(deptData.labs) && deptData.labs.length > 0 ? deptData.labs : (deptData.initialLab ? [deptData.initialLab] : ['Foundational Engineering Laboratory']),
       hodAndFaculty: {
@@ -684,35 +767,25 @@ export function WebsiteProvider({ children }) {
       }
     };
 
-    setOfficialStructure((prev) => {
+    persistStructure((prev) => {
       const existing = prev.academics?.departments || defaultOfficialStructure.academics.departments || [];
-      // avoid exact slug duplication
       const uniqueSlug = existing.some(d => d.slug === baseSlug) ? `${baseSlug}-${Date.now().toString().slice(-4)}` : baseSlug;
       newDepartment.slug = uniqueSlug;
-      return {
-        ...prev,
-        academics: {
-          ...prev.academics,
-          departments: [...existing, newDepartment]
-        }
-      };
+      return { ...prev, academics: { ...prev.academics, departments: [...existing, newDepartment] } };
     });
 
     return newDepartment;
   };
 
   const deleteDepartment = (slug) => {
-    setOfficialStructure((prev) => ({
+    persistStructure((prev) => ({
       ...prev,
-      academics: {
-        ...prev.academics,
-        departments: (prev.academics?.departments || []).filter((dept) => dept.slug !== slug)
-      }
+      academics: { ...prev.academics, departments: (prev.academics?.departments || []).filter((dept) => dept.slug !== slug) }
     }));
   };
 
   const updateDepartment = (slug, updatedData) => {
-    setOfficialStructure((prev) => ({
+    persistStructure((prev) => ({
       ...prev,
       academics: {
         ...prev.academics,
@@ -725,18 +798,16 @@ export function WebsiteProvider({ children }) {
 
   // 7. Student Welfare Activities (12 sections)
   const updateWelfareActivity = (slug, updatedData) => {
-    setOfficialStructure((prev) => ({
+    persistStructure((prev) => ({
       ...prev,
-      welfare: prev.welfare.map((act) =>
-        act.slug === slug ? { ...act, ...updatedData } : act
-      )
+      welfare: prev.welfare.map((act) => act.slug === slug ? { ...act, ...updatedData } : act)
     }));
   };
 
   // 8. Administration Directory (VC, Deans, Associate Dean, Supporting Staff)
   const updateAdministration = (section, updatedData) => {
     const key = section === 'vc' ? 'viceChancellor' : section;
-    setOfficialStructure((prev) => ({
+    persistStructure((prev) => ({
       ...prev,
       administration: {
         ...prev.administration,
@@ -747,33 +818,18 @@ export function WebsiteProvider({ children }) {
 
   // 9. About Us (History, Vision & Mandate, Org Structure, Accreditation)
   const updateAboutUs = (section, updatedData) => {
-    setOfficialStructure((prev) => {
+    persistStructure((prev) => {
       const currentSection = prev.aboutUs?.[section] || defaultOfficialStructure.aboutUs[section] || {};
-      let nextSection = {};
-      if (typeof updatedData === 'string') {
-        nextSection = {
-          ...currentSection,
-          content: [updatedData]
-        };
-      } else {
-        nextSection = {
-          ...currentSection,
-          ...updatedData
-        };
-      }
-      return {
-        ...prev,
-        aboutUs: {
-          ...prev.aboutUs,
-          [section]: nextSection
-        }
-      };
+      const nextSection = typeof updatedData === 'string'
+        ? { ...currentSection, content: [updatedData] }
+        : { ...currentSection, ...updatedData };
+      return { ...prev, aboutUs: { ...prev.aboutUs, [section]: nextSection } };
     });
   };
 
   // 9B. Official Documents & Accreditation Documents Management
   const addAccreditationDocument = (docData) => {
-    setOfficialStructure((prev) => {
+    persistStructure((prev) => {
       const currentDocs = prev.aboutUs?.accreditation?.documents || defaultOfficialStructure.aboutUs.accreditation.documents || [];
       const newDoc = {
         id: docData.id || `doc-${Date.now()}`,
@@ -790,114 +846,70 @@ export function WebsiteProvider({ children }) {
         fileData: docData.fileData || '',
         fileSize: docData.fileSize || ''
       };
-      const updatedDocs = [...currentDocs, newDoc];
       return {
         ...prev,
-        aboutUs: {
-          ...prev.aboutUs,
-          accreditation: {
-            ...prev.aboutUs?.accreditation,
-            documents: updatedDocs
-          }
-        }
+        aboutUs: { ...prev.aboutUs, accreditation: { ...prev.aboutUs?.accreditation, documents: [...currentDocs, newDoc] } }
       };
     });
   };
 
   const updateAccreditationDocument = (docId, updatedDocData) => {
-    setOfficialStructure((prev) => {
+    persistStructure((prev) => {
       const currentDocs = prev.aboutUs?.accreditation?.documents || defaultOfficialStructure.aboutUs.accreditation.documents || [];
-      const updatedDocs = currentDocs.map((doc) => {
-        if (doc.id === docId) {
-          return { ...doc, ...updatedDocData };
-        }
-        return doc;
-      });
-      return {
-        ...prev,
-        aboutUs: {
-          ...prev.aboutUs,
-          accreditation: {
-            ...prev.aboutUs?.accreditation,
-            documents: updatedDocs
-          }
-        }
-      };
+      const updatedDocs = currentDocs.map((doc) => doc.id === docId ? { ...doc, ...updatedDocData } : doc);
+      return { ...prev, aboutUs: { ...prev.aboutUs, accreditation: { ...prev.aboutUs?.accreditation, documents: updatedDocs } } };
     });
   };
 
   const deleteAccreditationDocument = (docId) => {
-    setOfficialStructure((prev) => {
+    persistStructure((prev) => {
       const currentDocs = prev.aboutUs?.accreditation?.documents || defaultOfficialStructure.aboutUs.accreditation.documents || [];
-      const filtered = currentDocs.filter((doc) => doc.id !== docId);
-      const reindexed = filtered.map((doc, idx) => ({ ...doc, order: idx + 1 }));
-      return {
-        ...prev,
-        aboutUs: {
-          ...prev.aboutUs,
-          accreditation: {
-            ...prev.aboutUs?.accreditation,
-            documents: reindexed
-          }
-        }
-      };
+      const reindexed = currentDocs.filter((doc) => doc.id !== docId).map((doc, idx) => ({ ...doc, order: idx + 1 }));
+      return { ...prev, aboutUs: { ...prev.aboutUs, accreditation: { ...prev.aboutUs?.accreditation, documents: reindexed } } };
     });
   };
 
   const reorderAccreditationDocuments = (startIndex, endIndex) => {
-    setOfficialStructure((prev) => {
+    persistStructure((prev) => {
       const currentDocs = [...(prev.aboutUs?.accreditation?.documents || defaultOfficialStructure.aboutUs.accreditation.documents || [])];
-      if (startIndex < 0 || startIndex >= currentDocs.length || endIndex < 0 || endIndex >= currentDocs.length) {
-        return prev;
-      }
+      if (startIndex < 0 || startIndex >= currentDocs.length || endIndex < 0 || endIndex >= currentDocs.length) return prev;
       const [removed] = currentDocs.splice(startIndex, 1);
       currentDocs.splice(endIndex, 0, removed);
       const reindexed = currentDocs.map((doc, idx) => ({ ...doc, order: idx + 1 }));
-      return {
-        ...prev,
-        aboutUs: {
-          ...prev.aboutUs,
-          accreditation: {
-            ...prev.aboutUs?.accreditation,
-            documents: reindexed
-          }
-        }
-      };
+      return { ...prev, aboutUs: { ...prev.aboutUs, accreditation: { ...prev.aboutUs?.accreditation, documents: reindexed } } };
     });
   };
 
   const resetAccreditationDocuments = () => {
-    setOfficialStructure((prev) => ({
+    persistStructure((prev) => ({
       ...prev,
-      aboutUs: {
-        ...prev.aboutUs,
-        accreditation: {
-          ...prev.aboutUs?.accreditation,
-          documents: defaultOfficialStructure.aboutUs.accreditation.documents
-        }
-      }
+      aboutUs: { ...prev.aboutUs, accreditation: { ...prev.aboutUs?.accreditation, documents: defaultOfficialStructure.aboutUs.accreditation.documents } }
     }));
   };
 
   // 10. Publications
   const addPublication = (pub) => {
-    setOfficialStructure((prev) => ({
+    persistStructure((prev) => ({
       ...prev,
-      publications: [
-        { ...pub, id: `pub-${Date.now()}` },
-        ...prev.publications
-      ]
+      publications: [{ ...pub, id: `pub-${Date.now()}` }, ...prev.publications]
     }));
   };
 
   const deletePublication = (id) => {
-    setOfficialStructure((prev) => ({
+    persistStructure((prev) => ({
       ...prev,
       publications: prev.publications.filter((p) => p.id !== id)
     }));
   };
 
-  // 11. Enquiries
+  // 11. Firebase Storage — upload file and return download URL
+  const uploadFileToStorage = async (file, path) => {
+    const storageRef = ref(storage, path);
+    await uploadBytes(storageRef, file);
+    return await getDownloadURL(storageRef);
+  };
+
+  // 12. Enquiries
   const addEnquiry = (enquiryData) => {
     const newEnq = {
       ...enquiryData,
@@ -991,6 +1003,7 @@ export function WebsiteProvider({ children }) {
         resetAccreditationDocuments,
         addPublication,
         deletePublication,
+        uploadFileToStorage,
 
         // Supporting Subsystems
         collegeInfo,

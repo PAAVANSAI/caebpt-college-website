@@ -186,9 +186,6 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                     <p className="text-xs text-[#854d0e] font-extrabold mt-0.5">
                       {deanMessage?.role || officialStructureData.messages.dean.role}
                     </p>
-                    <p className="text-[11px] text-slate-500 font-medium mt-0.5">
-                      {deanMessage?.qualification || officialStructureData.messages.dean.qualification}
-                    </p>
                   </div>
                 </div>
 
@@ -246,9 +243,6 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
                     </h4>
                     <p className="text-xs text-[#854d0e] font-extrabold mt-0.5">
                       {assocDeanMessage?.role || officialStructureData.messages.associateDean.role}
-                    </p>
-                    <p className="text-[11px] text-slate-500 font-medium mt-0.5">
-                      {assocDeanMessage?.qualification || officialStructureData.messages.associateDean.qualification}
                     </p>
                   </div>
                 </div>

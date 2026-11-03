@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../lib/firebase';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
 import {
@@ -64,6 +66,7 @@ export default function AdminPage() {
     deleteAccreditationDocument,
     reorderAccreditationDocuments,
     resetAccreditationDocuments,
+    uploadFileToStorage,
     enquiries,
     updateEnquiryStatus,
     deleteEnquiry,
@@ -75,10 +78,21 @@ export default function AdminPage() {
 
   const currentStructure = officialStructure || officialStructureData;
 
-  // Authentication State
+  // Authentication State — Firebase Auth
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authLoading, setAuthLoading] = useState(true); // true while Firebase checks session
+  const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const [authError, setAuthError] = useState('');
+
+  // Persist login across page refreshes via Firebase Auth session
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsAuthenticated(!!user);
+      setAuthLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
 
   // Active Navigation Tab
   const [activeTab, setActiveTab] = useState('overview');
@@ -90,16 +104,36 @@ export default function AdminPage() {
     setTimeout(() => setToastMessage(''), 3500);
   };
 
-  // Login handler
-  const handleLogin = (e) => {
+  // Login handler — Firebase Authentication
+  const handleLogin = async (e) => {
     if (e) e.preventDefault();
-    if (passwordInput === 'admin' || passwordInput === 'caebpt2025' || passwordInput.trim() === '') {
-      setIsAuthenticated(true);
-      setAuthError('');
-      triggerToast('Signed in as CAE Bapatla Chief Administrator');
-    } else {
-      setAuthError('Invalid administrator credentials. (Default passcode: admin or caebpt2025)');
+    if (!emailInput.trim() || !passwordInput) {
+      setAuthError('Please enter both email and password.');
+      return;
     }
+    setAuthError('');
+    try {
+      await signInWithEmailAndPassword(auth, emailInput.trim(), passwordInput);
+      triggerToast('Signed in as CAE Bapatla Chief Administrator');
+    } catch (err) {
+      const code = err?.code || '';
+      if (code === 'auth/user-not-found' || code === 'auth/wrong-password' || code === 'auth/invalid-credential') {
+        setAuthError('Invalid email or password. Please contact the web administrator.');
+      } else if (code === 'auth/too-many-requests') {
+        setAuthError('Too many failed attempts. Please try again later.');
+      } else if (code === 'auth/invalid-email') {
+        setAuthError('Please enter a valid email address.');
+      } else {
+        setAuthError('Sign-in failed. Check your internet connection and try again.');
+      }
+    }
+  };
+
+  // Logout handler — Firebase sign out
+  const handleLogout = async () => {
+    await signOut(auth);
+    setEmailInput('');
+    setPasswordInput('');
   };
 
   // Local state for live form edits
@@ -169,17 +203,17 @@ export default function AdminPage() {
 
   // 3. Leadership Messages
   const [deanForm, setDeanForm] = useState({
-    name: currentStructure.messages?.dean?.name || "Dr. G. Ravi Babu",
+    name: currentStructure.messages?.dean?.name || "Dr. P.V.K. Jagannadha Rao",
     title: currentStructure.messages?.dean?.title || "Dean of Agricultural Engineering & Technology, ANGRAU",
-    photo: currentStructure.messages?.dean?.photo || "/images/avatars/dr_subba_rao.webp",
+    photo: currentStructure.messages?.dean?.photo || currentStructure.messages?.dean?.image || "/images/administration/dr_pvk_jagannadha_rao.webp",
     excerpt: currentStructure.messages?.dean?.excerpt || "Agriculture is the key source of livelihood for 65% of the rural population of the state.",
     message: currentStructure.messages?.dean?.message || (Array.isArray(currentStructure.messages?.dean?.content) ? currentStructure.messages.dean.content.join('\n\n') : "")
   });
 
   const [assocDeanForm, setAssocDeanForm] = useState({
-    name: currentStructure.messages?.associateDean?.name || currentStructure.messages?.assocDean?.name || "Dr. B. John Wesley",
+    name: currentStructure.messages?.associateDean?.name || currentStructure.messages?.assocDean?.name || "Dr. Mogal Sardar Baig",
     title: currentStructure.messages?.associateDean?.title || currentStructure.messages?.assocDean?.title || "Associate Dean, College of Agricultural Engineering, Bapatla",
-    photo: currentStructure.messages?.associateDean?.photo || currentStructure.messages?.assocDean?.photo || "/images/avatars/dr_ks_rao.webp",
+    photo: currentStructure.messages?.associateDean?.photo || currentStructure.messages?.assocDean?.photo || currentStructure.messages?.associateDean?.image || "/images/administration/dr_mogal_sardar_baig.webp",
     excerpt: currentStructure.messages?.associateDean?.excerpt || currentStructure.messages?.assocDean?.excerpt || "Dr. NTR College of Agricultural Engineering, Bapatla had a humble beginning in the year 1983.",
     message: currentStructure.messages?.associateDean?.message || (Array.isArray(currentStructure.messages?.associateDean?.content) ? currentStructure.messages.associateDean.content.join('\n\n') : "")
   });
@@ -309,27 +343,38 @@ export default function AdminPage() {
     '<GOVERNMENT STATUTORY ORDER>'
   ];
 
-  const handleDocFileUpload = (e) => {
+  const [docUploading, setDocUploading] = useState(false);
+
+  const handleDocFileUpload = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (file.size > 8 * 1024 * 1024) {
-      alert('Selected file exceeds 8 MB. Please select a smaller document for local browser storage, or specify an external link.');
+    const MAX_SIZE = 50 * 1024 * 1024; // 50 MB via Firebase Storage
+    if (file.size > MAX_SIZE) {
+      alert('Selected file exceeds 50 MB. Please use a smaller file or provide an external link.');
       return;
     }
 
-    const reader = new FileReader();
-    reader.onload = (uploadEvent) => {
-      const base64Data = uploadEvent.target.result;
+    setDocUploading(true);
+    triggerToast(`Uploading "${file.name}" to secure cloud storage…`);
+    try {
+      const path = `documents/${Date.now()}_${file.name}`;
+      const downloadUrl = await uploadFileToStorage(file, path);
       setDocForm((prev) => ({
         ...prev,
-        fileData: base64Data,
+        fileUrl: downloadUrl,
+        fileData: '',   // clear base64 — no longer needed
         docName: file.name,
-        fileSize: (file.size / 1024).toFixed(1) + ' KB'
+        fileSize: file.size > 1024 * 1024
+          ? (file.size / (1024 * 1024)).toFixed(1) + ' MB'
+          : (file.size / 1024).toFixed(1) + ' KB'
       }));
-      triggerToast(`File "${file.name}" attached successfully!`);
-    };
-    reader.readAsDataURL(file);
+      triggerToast(`✅ "${file.name}" uploaded to Firebase Storage!`);
+    } catch (err) {
+      alert(`Upload failed: ${err.message}. Please check Firebase Storage rules.`);
+    } finally {
+      setDocUploading(false);
+    }
   };
 
   const handleOpenAddDoc = () => {
@@ -455,6 +500,20 @@ export default function AdminPage() {
   };
 
   // ─────────────────────────────────────────────────────────────
+  // LOADING — Firebase checking existing session
+  // ─────────────────────────────────────────────────────────────
+  if (authLoading) {
+    return (
+      <div className="min-h-[80vh] flex items-center justify-center">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-9 h-9 border-3 border-slate-200 border-t-[#d4a72c] rounded-full animate-spin" />
+          <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Verifying Session…</span>
+        </div>
+      </div>
+    );
+  }
+
+  // ─────────────────────────────────────────────────────────────
   // RENDER LOGIN SCREEN IF NOT AUTHENTICATED
   // ─────────────────────────────────────────────────────────────
   if (!isAuthenticated) {
@@ -473,16 +532,30 @@ export default function AdminPage() {
             </p>
           </div>
 
-          <form onSubmit={handleLogin} className="p-6 sm:p-8 space-y-5">
+          <form onSubmit={handleLogin} className="p-6 sm:p-8 space-y-4">
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                Administrator Password / Key
+                Administrator Email
+              </label>
+              <input
+                type="email"
+                value={emailInput}
+                onChange={(e) => setEmailInput(e.target.value)}
+                placeholder="admin@caebpt.ac.in"
+                autoComplete="email"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm text-slate-900 focus:bg-white focus:border-[#0b1a2e] focus:ring-2 focus:ring-[#0b1a2e]/10 transition-all"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                Administrator Password
               </label>
               <input
                 type="password"
                 value={passwordInput}
                 onChange={(e) => setPasswordInput(e.target.value)}
-                placeholder="Enter administrative passcode (Default: admin)"
+                placeholder="Enter secure password"
+                autoComplete="current-password"
                 className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm text-slate-900 focus:bg-white focus:border-[#0b1a2e] focus:ring-2 focus:ring-[#0b1a2e]/10 transition-all"
               />
               {authError && <p className="text-xs text-red-600 font-semibold mt-1.5">{authError}</p>}
@@ -493,21 +566,6 @@ export default function AdminPage() {
               className="w-full py-3 px-4 rounded-xl font-heading font-bold text-sm bg-[#0b1a2e] hover:bg-[#153258] text-white transition-all shadow-md cursor-pointer"
             >
               Sign In to Control Center
-            </button>
-
-            <div className="relative flex py-1 items-center">
-              <div className="flex-grow border-t border-slate-200"></div>
-              <span className="flex-shrink mx-3 text-slate-400 text-xs font-semibold">DIRECT ACCESS</span>
-              <div className="flex-grow border-t border-slate-200"></div>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => handleLogin()}
-              className="w-full py-2.5 px-4 rounded-xl font-heading font-bold text-xs bg-[#fdf5df] hover:bg-[#fae4a4] text-[#06101e] border border-[#fae4a4] transition-all cursor-pointer flex items-center justify-center gap-2"
-            >
-              <ShieldCheck className="w-4 h-4 text-[#b88e22]" />
-              <span>Direct Sign In as Administrator</span>
             </button>
           </form>
         </div>
@@ -564,7 +622,7 @@ export default function AdminPage() {
             </button>
 
             <button
-              onClick={() => setIsAuthenticated(false)}
+              onClick={handleLogout}
               className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
             >
               <LogOut className="w-3.5 h-3.5" />
@@ -2434,37 +2492,47 @@ export default function AdminPage() {
                       {/* Local File Upload */}
                       <div>
                         <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                          Option 1: Upload Local PDF / DOC File
+                          Option 1: Upload to Cloud Storage (PDF / DOC)
                         </label>
                         <div className="flex items-center gap-2">
-                          <label className="px-3 py-2 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg text-xs font-bold text-slate-800 flex items-center gap-1.5 cursor-pointer">
-                            <Upload className="w-3.5 h-3.5 text-navy-900" />
-                            <span>Browse File</span>
+                          <label className={`px-3 py-2 ${docUploading ? 'bg-slate-200 cursor-not-allowed opacity-70' : 'bg-slate-100 hover:bg-slate-200 cursor-pointer'} border border-slate-300 rounded-lg text-xs font-bold text-slate-800 flex items-center gap-1.5`}>
+                            {docUploading ? (
+                              <>
+                                <RefreshCw className="w-3.5 h-3.5 animate-spin text-navy-900" />
+                                <span>Uploading...</span>
+                              </>
+                            ) : (
+                              <>
+                                <Upload className="w-3.5 h-3.5 text-navy-900" />
+                                <span>Browse & Upload</span>
+                              </>
+                            )}
                             <input
                               type="file"
                               accept=".pdf,.doc,.docx,.txt"
                               onChange={handleDocFileUpload}
+                              disabled={docUploading}
                               className="hidden"
                             />
                           </label>
-                          {docForm.fileData && (
+                          {(docForm.fileUrl || docForm.fileData) && (
                             <button
                               type="button"
-                              onClick={() => setDocForm((prev) => ({ ...prev, fileData: '', fileSize: '' }))}
+                              onClick={() => setDocForm((prev) => ({ ...prev, fileUrl: '', fileData: '', fileSize: '', docName: '' }))}
                               className="text-[11px] text-red-600 hover:underline font-bold"
                             >
                               Remove Attached File
                             </button>
                           )}
                         </div>
-                        {docForm.fileData ? (
+                        {docForm.fileUrl || docForm.fileData ? (
                           <div className="text-[11px] text-emerald-700 font-bold mt-1.5 flex items-center gap-1">
                             <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                            <span>Attached: {docForm.docName} ({docForm.fileSize})</span>
+                            <span>Attached: {docForm.docName || 'File'} ({docForm.fileSize || 'Uploaded'})</span>
                           </div>
                         ) : (
                           <p className="text-[10px] text-slate-400 mt-1">
-                            Supports PDF, Word, or text files up to 8 MB.
+                            Uploaded directly to Firebase Storage. Supports PDF, DOC up to 50 MB.
                           </p>
                         )}
                       </div>
