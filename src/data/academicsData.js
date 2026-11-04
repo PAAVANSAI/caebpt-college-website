@@ -131,6 +131,13 @@ export const programsData = [
     duration: "4 Years (8 Semesters)",
     intake: "88 Seats / Year",
     intakeBreakdown: "61 Base (36 Convener + 24 Farmers' Quota) • 12 ICAR Quota (20%) • 6 EWS (10%) • 9 Lateral Entry (15%)",
+    intakeTable: [
+      { category: "EAMCET Convener Quota (60%)", seats: 36, note: "Common state counseling" },
+      { category: "Farmers' Quota (40%)", seats: 24, note: "State agrarian reservation" },
+      { category: "ICAR Quota (20%)", seats: 12, note: "Nominated by ICAR, New Delhi" },
+      { category: "EWS Quota (10%)", seats: 6, note: "Economically Weaker Sections" },
+      { category: "Lateral Entry Diploma (15%)", seats: 9, note: "AP ECET 2nd year entry" }
+    ],
     eligibility: "10+2 with PCM through AP EAMCET common counseling. Lateral entry for 3-Year Diploma in Agri Engg holders into 2nd year through AP ECET (APSCHE).",
     admissionProcess: "State AP EAMCET ranks (60% Convener, 40% Farmers' quota), ICAR AIEEA nomination (20%), and AP ECET for lateral entry diploma candidates.",
     department: "All Engineering Departments",
@@ -157,6 +164,11 @@ export const programsData = [
     duration: "2 Years (4 Semesters)",
     intake: "3 Seats / Year",
     intakeBreakdown: "3 Regular Sanctioned Seats + 20% ICAR Quota with Fellowship + International Student Provision",
+    intakeTable: [
+      { category: "Regular Sanctioned Intake", seats: 3, note: "ICAR JRF ranking & merit" },
+      { category: "ICAR Fellowship Quota", seats: "+ 20%", note: "Over and above regular seats" },
+      { category: "International Students", seats: "Quota", note: "Admitted since 2017-18" }
+    ],
     eligibility: "B.Tech. in Agricultural Engineering or Mechanical Engineering with qualifying ICAR JRF entrance examination ranking.",
     admissionProcess: "Entrance examination (JRF) conducted by ICAR every year (since 2018-19) as per state reservation policy. 20% over and above with ICAR fellowship.",
     department: "Farm Machinery and Power Engineering",
@@ -181,6 +193,11 @@ export const programsData = [
     duration: "2 Years (4 Semesters)",
     intake: "5 Seats / Year",
     intakeBreakdown: "5 Regular Sanctioned Seats + 20% ICAR Quota with Fellowship + International Student Provision",
+    intakeTable: [
+      { category: "Regular Sanctioned Intake", seats: 5, note: "ICAR JRF ranking & merit" },
+      { category: "ICAR Fellowship Quota", seats: "+ 20%", note: "Over and above regular seats" },
+      { category: "International Students", seats: "Quota", note: "Admitted since 2017-18" }
+    ],
     eligibility: "B.Tech. in Agricultural Engineering / Food Technology / Chemical Engineering with ICAR JRF qualification.",
     admissionProcess: "Entrance examination (JRF) conducted by ICAR as per state reservation policy, with additional 20% ICAR fellowship seats.",
     department: "Processing and Food Engineering",
@@ -203,8 +220,14 @@ export const programsData = [
     degree: "M.Tech",
     name: "M.Tech. in Soil and Water Engineering",
     duration: "2 Years (4 Semesters)",
-    intake: "5 + 1* EWS Seats / Year (*rotation)",
+    intake: "5 + 1* EWS Seats",
     intakeBreakdown: "5 Regular Seats + 1 EWS (on rotation) + 20% ICAR Quota with Fellowship + International Student Provision",
+    intakeTable: [
+      { category: "Regular Sanctioned Intake", seats: 5, note: "ICAR JRF ranking & merit" },
+      { category: "EWS Quota (*on rotation)", seats: 1, note: "Rotation basis" },
+      { category: "ICAR Fellowship Quota", seats: "+ 20%", note: "Over and above regular seats" },
+      { category: "International Students", seats: "Quota", note: "Admitted since 2017-18" }
+    ],
     eligibility: "B.Tech. in Agricultural Engineering / Civil Engineering with qualifying ICAR JRF entrance score.",
     admissionProcess: "ICAR JRF national entrance examination and state reservation policy, plus 20% over and above with ICAR fellowship.",
     department: "Soil and Water Engineering",
@@ -229,6 +252,11 @@ export const programsData = [
     duration: "3 Years (6 Semesters)",
     intake: "2 Seats / Year",
     intakeBreakdown: "2 Regular Research Seats + 20% ICAR SRF Quota with Fellowship + 1 In-service ANGRAU faculty seat",
+    intakeTable: [
+      { category: "Regular Research Intake", seats: 2, note: "ICAR SRF + Interview merit" },
+      { category: "ICAR Fellowship Quota", seats: "+ 20%", note: "Over and above with fellowship" },
+      { category: "In-Service ANGRAU Faculty", seats: "1 Seat", note: "For in-service university faculty" }
+    ],
     eligibility: "M.Tech. in Farm Machinery & Power Engineering with qualifying ICAR SRF entrance examination ranking and interview performance.",
     admissionProcess: "National entrance examination (SRF) conducted by ICAR and interview performance as per state reservation policy, plus ICAR fellowship quota.",
     department: "Farm Machinery and Power Engineering",
@@ -253,6 +281,11 @@ export const programsData = [
     duration: "3 Years (6 Semesters)",
     intake: "1 Seat / Year",
     intakeBreakdown: "1 Regular Research Seat + 20% ICAR SRF Quota with Fellowship + 1 In-service ANGRAU faculty seat",
+    intakeTable: [
+      { category: "Regular Research Intake", seats: 1, note: "ICAR SRF + Interview merit" },
+      { category: "ICAR Fellowship Quota", seats: "+ 20%", note: "Over and above with fellowship" },
+      { category: "In-Service ANGRAU Faculty", seats: "1 Seat", note: "For in-service university faculty" }
+    ],
     eligibility: "M.Tech. in Processing and Food Engineering / Agricultural Process Engineering with ICAR SRF ranking and interview.",
     admissionProcess: "ICAR SRF entrance examination and interview as per state reservation policy, plus ICAR fellowship quota.",
     department: "Processing and Food Engineering",
@@ -277,6 +310,11 @@ export const programsData = [
     duration: "3 Years (6 Semesters)",
     intake: "1 Seat / Year",
     intakeBreakdown: "1 Regular Research Seat + 20% ICAR SRF Quota with Fellowship + 1 In-service ANGRAU faculty seat",
+    intakeTable: [
+      { category: "Regular Research Intake", seats: 1, note: "ICAR SRF + Interview merit" },
+      { category: "ICAR Fellowship Quota", seats: "+ 20%", note: "Over and above with fellowship" },
+      { category: "In-Service ANGRAU Faculty", seats: "1 Seat", note: "For in-service university faculty" }
+    ],
     eligibility: "M.Tech. in Soil and Water Engineering / Conservation with ICAR SRF ranking and interview.",
     admissionProcess: "ICAR SRF entrance examination and interview as per state reservation policy, plus ICAR fellowship quota.",
     department: "Soil and Water Engineering",

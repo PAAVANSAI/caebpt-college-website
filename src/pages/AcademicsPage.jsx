@@ -104,15 +104,52 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                         {course.name}
                       </h3>
 
-                      <div className="space-y-2 text-xs text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-100 my-4">
-                        <div>
-                          <strong className="text-slate-800">Duration:</strong> {course.duration}
+                      <div className="space-y-3 text-xs text-slate-600 bg-slate-50 p-3.5 rounded-xl border border-slate-100 my-4">
+                        <div className="flex items-center justify-between border-b border-slate-200/60 pb-2">
+                          <span className="text-slate-600 font-semibold">Course Duration:</span>
+                          <span className="font-bold text-navy-950">{course.duration}</span>
                         </div>
-                        <div>
-                          <strong className="text-slate-800">Intake:</strong> {course.intake}
+
+                        {/* Numerical Intake Table */}
+                        <div className="space-y-1.5">
+                          <div className="flex items-center justify-between">
+                            <span className="text-slate-800 font-bold">Annual Sanctioned Intake:</span>
+                            <span className="badge badge-gold font-extrabold text-[11px] px-2 py-0.5">
+                              {course.intake}
+                            </span>
+                          </div>
+
+                          {Array.isArray(course.intakeTable) && course.intakeTable.length > 0 && (
+                            <div className="overflow-hidden rounded-lg border border-slate-200 bg-white">
+                              <table className="w-full text-left text-[11px] border-collapse">
+                                <thead>
+                                  <tr className="bg-slate-100/90 text-navy-950 border-b border-slate-200 font-bold">
+                                    <th className="py-1 px-2.5">Quota / Category</th>
+                                    <th className="py-1 px-2.5 text-right w-16">Seats</th>
+                                  </tr>
+                                </thead>
+                                <tbody className="divide-y divide-slate-100">
+                                  {course.intakeTable.map((item, idx) => (
+                                    <tr key={idx} className="hover:bg-slate-50/80">
+                                      <td className="py-1 px-2.5 text-slate-700 leading-tight">
+                                        {item.category}
+                                      </td>
+                                      <td className="py-1 px-2.5 text-right font-extrabold text-[#854d0e]">
+                                        {item.seats}
+                                      </td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          )}
                         </div>
-                        <div>
-                          <strong className="text-slate-800">Eligibility:</strong> {course.eligibility}
+
+                        <div className="border-t border-slate-200/60 pt-2">
+                          <strong className="text-slate-800 block mb-0.5">Eligibility:</strong>
+                          <span className="text-[11px] text-slate-600 leading-relaxed block">
+                            {course.eligibility}
+                          </span>
                         </div>
                       </div>
 
