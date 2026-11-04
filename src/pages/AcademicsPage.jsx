@@ -3,7 +3,7 @@ import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import PageBanner from '../components/PageBanner';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
-import { courseIntakeTables, consolidatedAllBranchesTable } from '../data/academicsData';
+import { courseIntakeTables, consolidatedAllBranchesTable, programsData } from '../data/academicsData';
 import {
   BookOpen,
   Building2,
@@ -128,15 +128,47 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                         </div>
                       </div>
 
-                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                        {course.highlights}
-                      </p>
+                      {Array.isArray(course.highlights) ? (
+                        <ul className="space-y-1 mb-4 text-xs text-slate-600">
+                          {course.highlights.slice(0, 2).map((h, hIdx) => (
+                            <li key={hIdx} className="flex items-start gap-1.5">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-gold-500 mt-0.5 flex-shrink-0" />
+                              <span className="line-clamp-2">{h}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                          {course.highlights}
+                        </p>
+                      )}
                     </div>
 
                     <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
                       <button
                         type="button"
-                        onClick={() => onSelectProgram(course)}
+                        onClick={() => {
+                          const match = programsData.find(
+                            (p) =>
+                              p.id === course.id ||
+                              (course.id.includes('agengg') && p.id.includes('agri')) ||
+                              p.name?.toLowerCase().includes(course.name?.toLowerCase().slice(0, 15))
+                          );
+                          const safeProgram = {
+                            ...course,
+                            ...(match || {}),
+                            highlights: Array.isArray(match?.highlights)
+                              ? match.highlights
+                              : Array.isArray(course.highlights)
+                              ? course.highlights
+                              : typeof course.highlights === 'string' && course.highlights.trim()
+                              ? [course.highlights]
+                              : [],
+                            curriculumSummary: match?.curriculumSummary || course.curriculumSummary || [],
+                            careerOpportunities: match?.careerOpportunities || course.careerOpportunities || ''
+                          };
+                          onSelectProgram(safeProgram);
+                        }}
                         className="btn btn-outline btn-sm text-xs flex-1 justify-center"
                       >
                         <FileText className="w-3.5 h-3.5" />

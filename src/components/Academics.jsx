@@ -95,7 +95,12 @@ export default function Academics({ onSelectProgram, onOpenEnquiry }) {
                       Key Highlights
                     </span>
                     <ul className="space-y-1.5 text-xs text-slate-600">
-                      {program.highlights.slice(0, 2).map((h, i) => (
+                      {(Array.isArray(program.highlights)
+                        ? program.highlights
+                        : typeof program.highlights === 'string' && program.highlights
+                        ? [program.highlights]
+                        : []
+                      ).slice(0, 2).map((h, i) => (
                         <li key={i} className="flex items-start gap-1.5 truncate">
                           <CheckCircle2 className="w-3.5 h-3.5 text-gold-500 mt-0.5 flex-shrink-0" />
                           <span className="truncate">{h}</span>
