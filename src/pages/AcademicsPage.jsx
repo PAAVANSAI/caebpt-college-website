@@ -3,6 +3,7 @@ import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import PageBanner from '../components/PageBanner';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
+import { courseIntakeTables } from '../data/academicsData';
 import {
   BookOpen,
   Building2,
@@ -12,7 +13,10 @@ import {
   ChevronRight,
   GraduationCap,
   FileText,
-  ArrowRight
+  ArrowRight,
+  Table,
+  Award,
+  Info
 } from 'lucide-react';
 
 export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
@@ -138,6 +142,185 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* ─────────────────────────────────────────────────────────────
+                  OFFICIAL INTAKE & SEAT MATRIX SECTION (UG, PG, PH.D.)
+                  ───────────────────────────────────────────────────────────── */}
+              <div className="mt-12 space-y-8 pt-8 border-t border-slate-200">
+                <div className="text-center max-w-3xl mx-auto space-y-2">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fdf5df] border border-[#fae4a4] text-xs font-bold text-[#854d0e]">
+                    <Award className="w-3.5 h-3.5 text-[#d4a72c]" />
+                    <span>Statutory Admission Quotas & Sanctioned Intake</span>
+                  </div>
+                  <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
+                    Course-Wise Annual Seat Matrix
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600">
+                    Official seat distribution governed by Acharya N.G. Ranga Agricultural University (ANGRAU), the State Council of Higher Education (APSCHE), and the Indian Council of Agricultural Research (ICAR), New Delhi.
+                  </p>
+                </div>
+
+                {/* 1. Under Graduate Courses Table */}
+                <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                  <div className="bg-gradient-to-r from-[#06101e] to-[#0b1a2e] text-white p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#1b3459]">
+                    <div>
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#ecc75f] block">
+                        Under Graduate Degree Programme
+                      </span>
+                      <h4 className="font-heading text-lg sm:text-xl font-bold text-white">
+                        {courseIntakeTables.ug.title}
+                      </h4>
+                    </div>
+                    <span className="badge badge-gold font-bold text-xs self-start sm:self-auto">
+                      Total Annual Intake: {courseIntakeTables.ug.totalIntake} Seats
+                    </span>
+                  </div>
+
+                  <div className="p-5 sm:p-6 space-y-4">
+                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+                      {courseIntakeTables.ug.admissionProcess}
+                    </p>
+
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-left text-xs sm:text-sm border-collapse">
+                        <thead>
+                          <tr className="bg-slate-100/90 text-navy-950 border-b border-slate-200">
+                            <th className="py-3 px-4 font-bold w-16">S.No.</th>
+                            <th className="py-3 px-4 font-bold">Name of B.Tech. Programme / Quota</th>
+                            <th className="py-3 px-4 font-bold text-center w-36">Total Intake / Year</th>
+                            <th className="py-3 px-4 font-bold text-center w-48">Duration</th>
+                            <th className="py-3 px-4 font-bold">Admission Channel / Governing Policy</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                          {courseIntakeTables.ug.rows.map((row, rIdx) => (
+                            <tr
+                              key={rIdx}
+                              className={row.isTotal ? "bg-[#fdf5df]/80 font-bold text-navy-950 border-t-2 border-[#d4a72c]" : "hover:bg-slate-50/80 transition-colors"}
+                            >
+                              <td className="py-3 px-4 text-slate-500 font-semibold">{row.sNo}</td>
+                              <td className="py-3 px-4 text-navy-950 font-medium">
+                                {row.name}
+                              </td>
+                              <td className="py-3 px-4 text-center font-extrabold text-[#854d0e]">{row.intake}</td>
+                              <td className="py-3 px-4 text-center text-slate-600">{row.duration}</td>
+                              <td className="py-3 px-4 text-xs text-slate-600">{row.note}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. Post Graduate Courses Table */}
+                <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                  <div className="bg-gradient-to-r from-[#06101e] to-[#0b1a2e] text-white p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#1b3459]">
+                    <div>
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#ecc75f] block">
+                        Post Graduate Degree Programmes
+                      </span>
+                      <h4 className="font-heading text-lg sm:text-xl font-bold text-white">
+                        {courseIntakeTables.pg.title}
+                      </h4>
+                    </div>
+                    <span className="badge badge-gold font-bold text-xs self-start sm:self-auto">
+                      Intake: {courseIntakeTables.pg.totalIntake} Seats (+ 20% ICAR Fellowship)
+                    </span>
+                  </div>
+
+                  <div className="p-5 sm:p-6 space-y-4">
+                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+                      {courseIntakeTables.pg.admissionProcess}
+                    </p>
+
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-left text-xs sm:text-sm border-collapse">
+                        <thead>
+                          <tr className="bg-slate-100/90 text-navy-950 border-b border-slate-200">
+                            <th className="py-3 px-4 font-bold w-16">S.No.</th>
+                            <th className="py-3 px-4 font-bold">Department Offering Program</th>
+                            <th className="py-3 px-4 font-bold">Name of M.Tech. Programme</th>
+                            <th className="py-3 px-4 font-bold text-center w-36">Total Intake / Year</th>
+                            <th className="py-3 px-4 font-bold text-center w-48">Duration</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                          {courseIntakeTables.pg.rows.map((row, rIdx) => (
+                            <tr
+                              key={rIdx}
+                              className={row.isTotal ? "bg-[#fdf5df]/80 font-bold text-navy-950 border-t-2 border-[#d4a72c]" : "hover:bg-slate-50/80 transition-colors"}
+                            >
+                              <td className="py-3 px-4 text-slate-500 font-semibold">{row.sNo}</td>
+                              <td className="py-3 px-4 text-slate-800 font-semibold">{row.department}</td>
+                              <td className="py-3 px-4 text-navy-950 font-medium">
+                                {row.programme}
+                                {row.note && <span className="block text-[11px] text-slate-500 font-normal">{row.note}</span>}
+                              </td>
+                              <td className="py-3 px-4 text-center font-extrabold text-[#854d0e]">{row.intake}</td>
+                              <td className="py-3 px-4 text-center text-slate-600">{row.duration}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Doctoral (Ph.D.) Courses Table */}
+                <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                  <div className="bg-gradient-to-r from-[#06101e] to-[#0b1a2e] text-white p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#1b3459]">
+                    <div>
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#ecc75f] block">
+                        Doctoral Research Degree Programmes
+                      </span>
+                      <h4 className="font-heading text-lg sm:text-xl font-bold text-white">
+                        {courseIntakeTables.phd.title}
+                      </h4>
+                    </div>
+                    <span className="badge badge-gold font-bold text-xs self-start sm:self-auto">
+                      Intake: {courseIntakeTables.phd.totalIntake} Regular Seats (+ ICAR Fellowship & In-Service)
+                    </span>
+                  </div>
+
+                  <div className="p-5 sm:p-6 space-y-4">
+                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+                      {courseIntakeTables.phd.admissionProcess}
+                    </p>
+
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-left text-xs sm:text-sm border-collapse">
+                        <thead>
+                          <tr className="bg-slate-100/90 text-navy-950 border-b border-slate-200">
+                            <th className="py-3 px-4 font-bold w-16">S.No.</th>
+                            <th className="py-3 px-4 font-bold">Department Offering Program</th>
+                            <th className="py-3 px-4 font-bold">Name of Ph.D. Programme</th>
+                            <th className="py-3 px-4 font-bold text-center w-36">Total Intake / Year</th>
+                            <th className="py-3 px-4 font-bold text-center w-48">Duration</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                          {courseIntakeTables.phd.rows.map((row, rIdx) => (
+                            <tr
+                              key={rIdx}
+                              className={row.isTotal ? "bg-[#fdf5df]/80 font-bold text-navy-950 border-t-2 border-[#d4a72c]" : "hover:bg-slate-50/80 transition-colors"}
+                            >
+                              <td className="py-3 px-4 text-slate-500 font-semibold">{row.sNo}</td>
+                              <td className="py-3 px-4 text-slate-800 font-semibold">{row.department}</td>
+                              <td className="py-3 px-4 text-navy-950 font-medium">
+                                {row.programme}
+                                {row.note && <span className="block text-[11px] text-slate-500 font-normal">{row.note}</span>}
+                              </td>
+                              <td className="py-3 px-4 text-center font-extrabold text-[#854d0e]">{row.intake}</td>
+                              <td className="py-3 px-4 text-center text-slate-600">{row.duration}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           )}

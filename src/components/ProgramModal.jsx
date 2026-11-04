@@ -62,6 +62,26 @@ export default function ProgramModal({ program, onClose, onApplyClick }) {
             </p>
           </div>
 
+          {/* Statutory Seat Matrix & Admission Quotas */}
+          {(program.intakeBreakdown || program.admissionProcess) && (
+            <div className="bg-[#fdf5df]/70 border border-[#fae4a4] rounded-xl p-4 space-y-2">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#854d0e] flex items-center gap-1.5">
+                <Users className="w-4 h-4 text-[#d4a72c]" />
+                <span>Statutory Seat Matrix & Admission Quotas</span>
+              </h4>
+              {program.intakeBreakdown && (
+                <p className="text-xs font-extrabold text-navy-950">
+                  {program.intakeBreakdown}
+                </p>
+              )}
+              {program.admissionProcess && (
+                <p className="text-xs text-slate-700 leading-relaxed">
+                  {program.admissionProcess}
+                </p>
+              )}
+            </div>
+          )}
+
           {/* Program Highlights */}
           <div>
             <h4 className="text-sm font-bold text-navy-950 uppercase tracking-wider mb-3">

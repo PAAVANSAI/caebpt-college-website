@@ -245,7 +245,7 @@ function sanitizeOfficialStructure(data) {
         : defaultOfficialStructure.announcements.circulars
     },
     academics: {
-      courses: Array.isArray(data.academics?.courses)
+      courses: (Array.isArray(data.academics?.courses) && data.academics.courses.length >= 7 && !data.academics.courses[0]?.intake?.includes('Sample'))
         ? data.academics.courses
         : defaultOfficialStructure.academics.courses,
       departments: Array.isArray(data.academics?.departments)
@@ -349,7 +349,9 @@ export function WebsiteProvider({ children }) {
       const saved = localStorage.getItem('caebpt_programs');
       if (!saved) return defaultPrograms;
       const parsed = JSON.parse(saved);
-      return Array.isArray(parsed) && parsed.length > 0 ? parsed : defaultPrograms;
+      return Array.isArray(parsed) && parsed.length >= 7 && !parsed[0]?.intake?.includes('Sample')
+        ? parsed
+        : defaultPrograms;
     } catch {
       return defaultPrograms;
     }
