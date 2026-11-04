@@ -110,13 +110,6 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                           <span className="font-bold text-navy-950">{course.duration}</span>
                         </div>
 
-                        <div className="flex items-center justify-between border-b border-slate-200/60 pb-2">
-                          <span className="text-slate-700 font-bold">Annual Sanctioned Intake:</span>
-                          <span className="badge badge-gold font-extrabold text-xs px-2.5 py-0.5 shadow-xs">
-                            {course.intake}
-                          </span>
-                        </div>
-
                         <div>
                           <strong className="text-slate-800 block mb-0.5">Eligibility:</strong>
                           <span className="text-[11px] text-slate-600 leading-relaxed block line-clamp-3">
@@ -130,7 +123,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                             className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#854d0e] hover:text-[#b45309] hover:underline"
                           >
                             <Table className="w-3.5 h-3.5 text-[#d4a72c]" />
-                            <span>View All Branches Numerical Seat Matrix Table ↓</span>
+                            <span>View All Branches Seat Matrix Table ↓</span>
                           </a>
                         </div>
                       </div>

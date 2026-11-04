@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Clock, Users, GraduationCap, CheckCircle2, Briefcase, FileText, ArrowRight } from 'lucide-react';
+import { X, Clock, GraduationCap, CheckCircle2, Briefcase, FileText, ArrowRight, FileCheck } from 'lucide-react';
 
 export default function ProgramModal({ program, onClose, onApplyClick }) {
   if (!program) return null;
@@ -42,10 +42,6 @@ export default function ProgramModal({ program, onClose, onApplyClick }) {
               <Clock className="w-4 h-4 text-gold-400" />
               <span>Duration: <strong>{program.duration}</strong></span>
             </div>
-            <div className="flex items-center gap-1.5">
-              <Users className="w-4 h-4 text-gold-400" />
-              <span>Intake: <strong>{program.intake}</strong></span>
-            </div>
           </div>
         </div>
 
@@ -62,23 +58,16 @@ export default function ProgramModal({ program, onClose, onApplyClick }) {
             </p>
           </div>
 
-          {/* Statutory Seat Matrix & Admission Quotas */}
-          {(program.intakeBreakdown || program.admissionProcess) && (
-            <div className="bg-[#fdf5df]/70 border border-[#fae4a4] rounded-xl p-4 space-y-2">
+          {/* Statutory Admission Channel */}
+          {program.admissionProcess && (
+            <div className="bg-[#fdf5df]/70 border border-[#fae4a4] rounded-xl p-4 space-y-1.5">
               <h4 className="text-xs font-bold uppercase tracking-wider text-[#854d0e] flex items-center gap-1.5">
-                <Users className="w-4 h-4 text-[#d4a72c]" />
-                <span>Statutory Seat Matrix & Admission Quotas</span>
+                <FileCheck className="w-4 h-4 text-[#d4a72c]" />
+                <span>Admission Process & Governing Policy</span>
               </h4>
-              {program.intakeBreakdown && (
-                <p className="text-xs font-extrabold text-navy-950">
-                  {program.intakeBreakdown}
-                </p>
-              )}
-              {program.admissionProcess && (
-                <p className="text-xs text-slate-700 leading-relaxed">
-                  {program.admissionProcess}
-                </p>
-              )}
+              <p className="text-xs text-slate-700 leading-relaxed">
+                {program.admissionProcess}
+              </p>
             </div>
           )}
 

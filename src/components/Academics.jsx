@@ -87,16 +87,6 @@ export default function Academics({ onSelectProgram, onOpenEnquiry }) {
                       </span>
                       <span className="font-semibold text-navy-900">{program.duration}</span>
                     </div>
-
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-500 flex items-center gap-1.5">
-                        <Users className="w-3.5 h-3.5 text-gold-500" />
-                        Annual Intake:
-                      </span>
-                      <span className="badge badge-gold font-bold text-xs px-2.5 py-0.5">
-                        {program.intake}
-                      </span>
-                    </div>
                   </div>
 
                   {/* Quick Highlights Preview */}
