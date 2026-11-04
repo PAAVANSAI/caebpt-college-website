@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PageBanner from '../components/PageBanner';
 import Admissions from '../components/Admissions';
-import { courseIntakeTables } from '../data/academicsData';
+import { courseIntakeTables, consolidatedAllBranchesTable } from '../data/academicsData';
 import {
   GraduationCap,
   HelpCircle,
@@ -12,12 +12,13 @@ import {
   Award,
   Users,
   Clock,
-  Layers
+  Layers,
+  Table
 } from 'lucide-react';
 
 export default function AdmissionsPage() {
   const [openFaq, setOpenFaq] = useState(0);
-  const [activeMatrixTab, setActiveMatrixTab] = useState('ug');
+  const [activeMatrixTab, setActiveMatrixTab] = useState('all');
 
   const faqs = [
     {
@@ -71,7 +72,17 @@ export default function AdmissionsPage() {
           </div>
 
           {/* Matrix Level Switcher */}
-          <div className="flex items-center justify-center gap-2 pt-2">
+          <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+            <button
+              type="button"
+              onClick={() => setActiveMatrixTab('all')}
+              className={`filter-tab text-xs sm:text-sm font-bold flex items-center gap-1.5 ${
+                activeMatrixTab === 'all' ? 'active' : ''
+              }`}
+            >
+              <Table className={`w-4 h-4 ${activeMatrixTab === 'all' ? 'text-[#f5c84c]' : 'text-slate-700'}`} />
+              <span>All Branches Matrix (106 Seats)</span>
+            </button>
             <button
               type="button"
               onClick={() => setActiveMatrixTab('ug')}
@@ -103,6 +114,142 @@ export default function AdmissionsPage() {
               <span>Doctoral (Ph.D. - 4)</span>
             </button>
           </div>
+
+          {/* TAB 0: ALL BRANCHES CONSOLIDATED SINGLE TABLE */}
+          {activeMatrixTab === 'all' && (
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden animate-fadeIn">
+              <div className="bg-gradient-to-r from-[#06101e] to-[#0b1a2e] text-white p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#1b3459]">
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#ecc75f] block">
+                    Institutional Sanctioned Seat Matrix
+                  </span>
+                  <h3 className="font-heading text-lg sm:text-xl font-bold text-white">
+                    {consolidatedAllBranchesTable.title}
+                  </h3>
+                </div>
+                <span className="badge badge-gold font-extrabold text-xs self-start sm:self-auto px-3 py-1">
+                  Grand Total: {consolidatedAllBranchesTable.totals.grandTotal}
+                </span>
+              </div>
+
+              <div className="p-4 sm:p-6 space-y-6">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[700px]">
+                    <thead>
+                      <tr className="bg-slate-100/90 text-navy-950 border-b border-slate-200 text-xs">
+                        <th className="py-3 px-3 font-bold text-center w-12">S.No.</th>
+                        <th className="py-3 px-3 font-bold w-24">Degree</th>
+                        <th className="py-3 px-4 font-bold">Branch / Specialization</th>
+                        <th className="py-3 px-3 font-bold text-center w-32">Duration</th>
+                        <th className="py-3 px-4 font-bold">Quota & Numerical Breakdown</th>
+                        <th className="py-3 px-3 font-bold text-center w-28">Total Intake</th>
+                        <th className="py-3 px-4 font-bold">Admission Channel</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 text-xs">
+                      {consolidatedAllBranchesTable.rows.map((row, rIdx) => {
+                        const isUg = row.levelBadge === 'UG';
+                        const isPg = row.levelBadge === 'PG';
+                        return (
+                          <tr
+                            key={rIdx}
+                            className={`hover:bg-slate-50/80 transition-colors ${
+                              isUg ? 'bg-amber-50/20' : ''
+                            }`}
+                          >
+                            <td className="py-3.5 px-3 text-center text-slate-500 font-bold">
+                              {row.sNo}
+                            </td>
+                            <td className="py-3.5 px-3">
+                              <span
+                                className={`inline-block px-2 py-0.5 rounded text-[11px] font-bold ${
+                                  isUg
+                                    ? 'bg-blue-100 text-blue-900 border border-blue-200'
+                                    : isPg
+                                    ? 'bg-purple-100 text-purple-900 border border-purple-200'
+                                    : 'bg-emerald-100 text-emerald-900 border border-emerald-200'
+                                }`}
+                              >
+                                {row.levelBadge}
+                              </span>
+                              <span className="block text-[11px] font-bold text-navy-950 mt-0.5">
+                                {row.degree}
+                              </span>
+                            </td>
+                            <td className="py-3.5 px-4 font-bold text-navy-950">
+                              {row.branch}
+                            </td>
+                            <td className="py-3.5 px-3 text-center text-slate-600 font-medium">
+                              {row.duration}
+                            </td>
+                            <td className="py-3.5 px-4">
+                              {Array.isArray(row.breakdown) ? (
+                                <div className="flex flex-wrap gap-1.5">
+                                  {row.breakdown.map((b, bIdx) => (
+                                    <span
+                                      key={bIdx}
+                                      className="inline-flex items-center gap-1 bg-white border border-slate-200 px-2 py-0.5 rounded text-[11px] text-slate-700 shadow-2xs"
+                                    >
+                                      <span className="text-slate-500">{b.label}:</span>
+                                      <strong className="text-navy-900">{b.val}</strong>
+                                    </span>
+                                  ))}
+                                </div>
+                              ) : (
+                                <span className="text-slate-700">{row.breakdownText}</span>
+                              )}
+                            </td>
+                            <td className="py-3.5 px-3 text-center">
+                              <span className="inline-block bg-[#fdf5df] border border-[#d4a72c] text-[#854d0e] font-extrabold text-xs px-2.5 py-1 rounded-md">
+                                {row.totalIntake}
+                              </span>
+                            </td>
+                            <td className="py-3.5 px-4 text-slate-600 text-[11px] leading-snug">
+                              {row.admissionChannel}
+                            </td>
+                          </tr>
+                        );
+                      })}
+
+                      {/* SUB-TOTALS & GRAND TOTAL ROW */}
+                      <tr className="bg-slate-100/70 border-t-2 border-slate-300 font-semibold text-slate-800">
+                        <td colSpan={5} className="py-2.5 px-4 text-right font-bold text-xs">
+                          Sub-Totals by Degree Level:
+                        </td>
+                        <td colSpan={2} className="py-2.5 px-4 text-xs space-y-0.5">
+                          <div>Undergraduate (UG): <strong>88 Seats</strong></div>
+                          <div>Postgraduate (PG): <strong>13 + 1* EWS (14 Seats)</strong></div>
+                          <div>Doctoral (Ph.D.): <strong>4 Seats</strong></div>
+                        </td>
+                      </tr>
+
+                      <tr className="bg-[#fdf5df] font-extrabold text-navy-950 border-t-2 border-[#d4a72c]">
+                        <td className="py-4 px-3 text-center text-gold-700 font-bold">★</td>
+                        <td className="py-4 px-3">
+                          <span className="badge badge-gold font-extrabold text-[11px]">ALL LEVELS</span>
+                        </td>
+                        <td className="py-4 px-4 font-heading text-sm text-navy-950">
+                          Grand Total Across All 7 Academic Branches
+                        </td>
+                        <td className="py-4 px-3 text-center text-slate-700">All Semesters</td>
+                        <td className="py-4 px-4 text-xs text-[#854d0e] font-bold">
+                          88 UG (61 Base + 12 ICAR + 6 EWS + 9 Lateral) + 14 PG + 4 Ph.D.
+                        </td>
+                        <td className="py-4 px-3 text-center">
+                          <span className="inline-block bg-[#854d0e] text-white font-extrabold text-xs px-3 py-1 rounded-md shadow-sm">
+                            106 Seats
+                          </span>
+                        </td>
+                        <td className="py-4 px-4 text-xs text-slate-700">
+                          ANGRAU / APSCHE / ICAR New Delhi Approved Quotas
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* TAB 1: UG MATRIX */}
           {activeMatrixTab === 'ug' && (

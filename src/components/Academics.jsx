@@ -88,41 +88,14 @@ export default function Academics({ onSelectProgram, onOpenEnquiry }) {
                       <span className="font-semibold text-navy-900">{program.duration}</span>
                     </div>
 
-                    <div className="space-y-1.5 pt-1">
-                      <div className="flex items-center justify-between">
-                        <span className="text-slate-500 flex items-center gap-1.5">
-                          <Users className="w-3.5 h-3.5 text-gold-500" />
-                          Intake:
-                        </span>
-                        <span className="font-bold text-navy-900 bg-amber-50 text-amber-900 px-2 py-0.5 rounded border border-amber-200 text-xs">
-                          {program.intake}
-                        </span>
-                      </div>
-
-                      {Array.isArray(program.intakeTable) && program.intakeTable.length > 0 && (
-                        <div className="overflow-hidden rounded-lg border border-slate-200 bg-white mt-1.5">
-                          <table className="w-full text-left text-[11px] border-collapse">
-                            <thead>
-                              <tr className="bg-slate-100 text-navy-950 border-b border-slate-200 font-bold">
-                                <th className="py-1 px-2">Quota / Category</th>
-                                <th className="py-1 px-2 text-right w-14">Seats</th>
-                              </tr>
-                            </thead>
-                            <tbody className="divide-y divide-slate-100">
-                              {program.intakeTable.map((item, idx) => (
-                                <tr key={idx} className="hover:bg-slate-50/80">
-                                  <td className="py-1 px-2 text-slate-700 leading-tight text-[10.5px]">
-                                    {item.category}
-                                  </td>
-                                  <td className="py-1 px-2 text-right font-extrabold text-[#854d0e]">
-                                    {item.seats}
-                                  </td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
-                      )}
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-500 flex items-center gap-1.5">
+                        <Users className="w-3.5 h-3.5 text-gold-500" />
+                        Annual Intake:
+                      </span>
+                      <span className="badge badge-gold font-bold text-xs px-2.5 py-0.5">
+                        {program.intake}
+                      </span>
                     </div>
                   </div>
 

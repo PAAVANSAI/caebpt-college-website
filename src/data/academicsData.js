@@ -122,6 +122,146 @@ export const courseIntakeTables = {
   }
 };
 
+/**
+ * Consolidated Single Table of Numerical Intake across ALL Branches (UG, PG, Ph.D.)
+ */
+export const consolidatedAllBranchesTable = {
+  title: "Comprehensive Annual Sanctioned Seat Matrix of All Branches",
+  subtitle: "Consolidated statutory numerical seat distribution across all 7 undergraduate, postgraduate, and doctoral degree programmes at CAE Bapatla",
+  totalSeats: "106 Seats / Year",
+  statutorySummary: "Approved by Acharya N.G. Ranga Agricultural University (ANGRAU), APSCHE & Indian Council of Agricultural Research (ICAR), New Delhi.",
+  rows: [
+    {
+      sNo: "1",
+      level: "Undergraduate (UG)",
+      levelBadge: "UG",
+      branch: "Agricultural Engineering",
+      degree: "B.Tech. (Ag. Engg.)",
+      duration: "4 Years (8 Semesters)",
+      breakdown: [
+        { label: "Convener Quota (60%)", val: 36 },
+        { label: "Farmers' Quota (40%)", val: 24 },
+        { label: "ICAR Quota (20%)", val: 12 },
+        { label: "EWS Quota (10%)", val: 6 },
+        { label: "Lateral Entry Diploma (15%)", val: 9 }
+      ],
+      breakdownText: "36 Convener + 24 Farmers' Quota + 12 ICAR (20%) + 6 EWS (10%) + 9 Lateral Entry (15%)",
+      totalIntake: "88",
+      totalIntakeNumber: 88,
+      admissionChannel: "AP EAMCET (Convener & Farmers') • AP ECET (Diploma 2nd Yr) • ICAR AIEEA-UG"
+    },
+    {
+      sNo: "2",
+      level: "Postgraduate (PG)",
+      levelBadge: "PG",
+      branch: "Farm Machinery & Power Engineering (FMPE)",
+      degree: "M.Tech.",
+      duration: "2 Years (4 Semesters)",
+      breakdown: [
+        { label: "Regular Intake", val: 3 },
+        { label: "ICAR Fellowship Quota", val: "+20%" },
+        { label: "International Students", val: "Yes" }
+      ],
+      breakdownText: "3 Regular + 20% ICAR Fellowship & International Quota",
+      totalIntake: "3",
+      totalIntakeNumber: 3,
+      admissionChannel: "ICAR AIEEA-PG (JRF) All-India Ranking & State Counseling"
+    },
+    {
+      sNo: "3",
+      level: "Postgraduate (PG)",
+      levelBadge: "PG",
+      branch: "Processing & Food Engineering (PFE)",
+      degree: "M.Tech.",
+      duration: "2 Years (4 Semesters)",
+      breakdown: [
+        { label: "Regular Intake", val: 5 },
+        { label: "ICAR Fellowship Quota", val: "+20%" },
+        { label: "International Students", val: "Yes" }
+      ],
+      breakdownText: "5 Regular + 20% ICAR Fellowship & International Quota",
+      totalIntake: "5",
+      totalIntakeNumber: 5,
+      admissionChannel: "ICAR AIEEA-PG (JRF) All-India Ranking & State Counseling"
+    },
+    {
+      sNo: "4",
+      level: "Postgraduate (PG)",
+      levelBadge: "PG",
+      branch: "Soil & Water Engineering (SWE)",
+      degree: "M.Tech.",
+      duration: "2 Years (4 Semesters)",
+      breakdown: [
+        { label: "Regular Intake", val: 5 },
+        { label: "EWS Quota (*on rotation)", val: 1 },
+        { label: "ICAR Fellowship Quota", val: "+20%" },
+        { label: "International Students", val: "Yes" }
+      ],
+      breakdownText: "5 Regular + 1* EWS (on rotation) + 20% ICAR Fellowship",
+      totalIntake: "5 + 1*",
+      totalIntakeNumber: 6,
+      admissionChannel: "ICAR AIEEA-PG (JRF) All-India Ranking & State Counseling"
+    },
+    {
+      sNo: "5",
+      level: "Doctoral (Ph.D.)",
+      levelBadge: "Ph.D.",
+      branch: "Farm Machinery & Power Engineering (FMPE)",
+      degree: "Ph.D.",
+      duration: "3 Years (6 Semesters)",
+      breakdown: [
+        { label: "Regular Research Intake", val: 2 },
+        { label: "ICAR Fellowship Quota", val: "+20%" },
+        { label: "In-service Faculty (ANGRAU)", val: 1 }
+      ],
+      breakdownText: "2 Regular + 20% ICAR Fellowship + 1 In-service Faculty Seat",
+      totalIntake: "2",
+      totalIntakeNumber: 2,
+      admissionChannel: "ICAR AICE-JRF/SRF (Ph.D.) Entrance Score & Viva-Voce"
+    },
+    {
+      sNo: "6",
+      level: "Doctoral (Ph.D.)",
+      levelBadge: "Ph.D.",
+      branch: "Processing & Food Engineering (PFE)",
+      degree: "Ph.D.",
+      duration: "3 Years (6 Semesters)",
+      breakdown: [
+        { label: "Regular Research Intake", val: 1 },
+        { label: "ICAR Fellowship Quota", val: "+20%" },
+        { label: "In-service Faculty (ANGRAU)", val: 1 }
+      ],
+      breakdownText: "1 Regular + 20% ICAR Fellowship + 1 In-service Faculty Seat",
+      totalIntake: "1",
+      totalIntakeNumber: 1,
+      admissionChannel: "ICAR AICE-JRF/SRF (Ph.D.) Entrance Score & Viva-Voce"
+    },
+    {
+      sNo: "7",
+      level: "Doctoral (Ph.D.)",
+      levelBadge: "Ph.D.",
+      branch: "Soil & Water Engineering (SWE)",
+      degree: "Ph.D.",
+      duration: "3 Years (6 Semesters)",
+      breakdown: [
+        { label: "Regular Research Intake", val: 1 },
+        { label: "ICAR Fellowship Quota", val: "+20%" },
+        { label: "In-service Faculty (ANGRAU)", val: 1 }
+      ],
+      breakdownText: "1 Regular + 20% ICAR Fellowship + 1 In-service Faculty Seat",
+      totalIntake: "1",
+      totalIntakeNumber: 1,
+      admissionChannel: "ICAR AICE-JRF/SRF (Ph.D.) Entrance Score & Viva-Voce"
+    }
+  ],
+  totals: {
+    ugTotal: 88,
+    pgTotal: "13 + 1* EWS (14)",
+    phdTotal: 4,
+    grandTotal: "106 Seats / Year"
+  }
+};
+
 export const programsData = [
   {
     id: "btech-agri",

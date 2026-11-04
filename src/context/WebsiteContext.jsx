@@ -245,10 +245,29 @@ function sanitizeOfficialStructure(data) {
         : defaultOfficialStructure.announcements.circulars
     },
     academics: {
-      courses: (Array.isArray(data.academics?.courses) && data.academics.courses.length >= 7 && !data.academics.courses[0]?.intake?.includes('Sample'))
-        ? data.academics.courses
-        : defaultOfficialStructure.academics.courses,
-      departments: Array.isArray(data.academics?.departments)
+      courses: defaultOfficialStructure.academics.courses.map((defCourse) => {
+        const userCourse = Array.isArray(data.academics?.courses)
+          ? data.academics.courses.find((c) => c.id === defCourse.id)
+          : null;
+        if (!userCourse) return defCourse;
+
+        const rawIntake = String(userCourse.intake || '');
+        const isStaleIntake = !rawIntake ||
+          rawIntake.includes('61 Base') ||
+          rawIntake.includes("Farmers'") ||
+          rawIntake.includes('FELLOWSHIP') ||
+          rawIntake.includes('INTERNATIONAL') ||
+          rawIntake.length > 25;
+
+        return {
+          ...defCourse,
+          ...userCourse,
+          intake: isStaleIntake ? defCourse.intake : userCourse.intake,
+          intakeTable: defCourse.intakeTable,
+          intakeBreakdown: defCourse.intakeBreakdown || userCourse.intakeBreakdown
+        };
+      }),
+      departments: Array.isArray(data.academics?.departments) && data.academics.departments.length >= 5
         ? data.academics.departments
         : defaultOfficialStructure.academics.departments
     },
