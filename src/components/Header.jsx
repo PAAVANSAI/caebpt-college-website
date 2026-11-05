@@ -71,7 +71,7 @@ export default function Header({ onOpenAdmissionsModal }) {
 
   const departmentsList = (currentStructure?.academics?.departments || officialStructureData.academics.departments || []).map((d) => ({
     label: d.name,
-    path: `/academics/departments/${d.slug}`,
+    path: `/departments/${d.slug}`,
   }));
 
   const menuItems = [
@@ -124,7 +124,7 @@ export default function Header({ onOpenAdmissionsModal }) {
     },
     {
       label: 'Departments',
-      path: '/academics/departments',
+      path: '/departments',
       submenus: departmentsList,
     },
     {

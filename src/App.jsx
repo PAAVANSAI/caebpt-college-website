@@ -36,6 +36,7 @@ function lazyWithRetry(componentImport) {
 const AboutUsPage = lazyWithRetry(() => import('./pages/AboutUsPage'));
 const AdministrationPage = lazyWithRetry(() => import('./pages/AdministrationPage'));
 const AcademicsPage = lazyWithRetry(() => import('./pages/AcademicsPage'));
+const DepartmentsPage = lazyWithRetry(() => import('./pages/DepartmentsPage'));
 const DepartmentDetailPage = lazyWithRetry(() => import('./pages/DepartmentDetailPage'));
 const StudentWelfarePage = lazyWithRetry(() => import('./pages/StudentWelfarePage'));
 const PublicationsPage = lazyWithRetry(() => import('./pages/PublicationsPage'));
@@ -139,7 +140,7 @@ function AppContent() {
               <Route path="/administration" element={<AdministrationPage />} />
               <Route path="/administration/:subSection" element={<AdministrationPage />} />
 
-              {/* D. ACADEMICS & DEPARTMENTS */}
+              {/* D. ACADEMICS */}
               <Route
                 path="/academics"
                 element={
@@ -158,21 +159,20 @@ function AppContent() {
                   />
                 }
               />
+
+              {/* E. DEPARTMENTS (Separate Top-Level Nav Tab) */}
               <Route
                 path="/departments"
-                element={
-                  <AcademicsPage
-                    onSelectProgram={(p) => setSelectedProgram(p)}
-                    onOpenEnquiry={handleOpenAdmissions}
-                    defaultTab="departments"
-                  />
-                }
+                element={<DepartmentsPage onOpenEnquiry={handleOpenAdmissions} />}
               />
               <Route
                 path="/departments/:deptSlug"
                 element={<DepartmentDetailPage />}
               />
-              {/* Individual Department Pages (with About, Lab Infra, HoD & Faculty) */}
+              <Route
+                path="/academics/departments"
+                element={<DepartmentsPage onOpenEnquiry={handleOpenAdmissions} />}
+              />
               <Route
                 path="/academics/departments/:deptSlug"
                 element={<DepartmentDetailPage />}

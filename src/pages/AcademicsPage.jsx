@@ -141,7 +141,6 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
     { key: 'pg-guidelines', label: 'PG Guidelines', icon: Scroll, badge: 'Advisory' },
     { key: 'thesis-guidelines', label: 'Thesis Guidelines', icon: BookMarked, badge: '2019 Specs' },
     { key: 'anti-plagiarism-policy', label: 'Anti-Plagiarism', icon: ShieldCheck, badge: 'Res. 2920' },
-    { key: 'departments', label: 'Departments', icon: Building2, badge: '5 Core' },
   ];
 
   // Current semester course list with search
@@ -1094,64 +1093,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
             </div>
           )}
 
-          {/* =========================================================================
-              TAB 9: DEPARTMENTS (Engineering Departments Directory)
-              ========================================================================= */}
-          {activeTab === 'departments' && (
-            <div className="space-y-6 animate-fadeIn">
-              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-2">
-                <span className="badge badge-navy text-xs font-bold">Academic Departments</span>
-                <h2 className="font-heading text-2xl font-extrabold text-navy-950">
-                  Core Engineering Departments
-                </h2>
-                <p className="text-xs sm:text-sm text-slate-600">
-                  Explore each department's historical background, specialized research laboratories, faculty roster, and student practical setups.
-                </p>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {academics.departments.map((dept) => (
-                  <Link
-                    key={dept.id}
-                    to={`/academics/departments/${dept.slug}`}
-                    className="academic-card p-6 bg-white border border-slate-200 hover:border-[#d4a72c] transition-all flex flex-col justify-between group"
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <div>
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="badge badge-navy text-xs font-bold">{dept.shortCode}</span>
-                        <span className="text-[11px] text-slate-500 font-semibold">
-                          {(dept.labs || dept.laboratories || []).length} Specialized Labs
-                        </span>
-                      </div>
-
-                      <h3 className="font-heading text-lg font-extrabold text-navy-950 mb-2 group-hover:text-navy-700 transition-colors">
-                        {dept.name}
-                      </h3>
-
-                      <p className="text-xs text-slate-600 leading-relaxed line-clamp-3 mb-4">
-                        {dept.about}
-                      </p>
-
-                      <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-700 space-y-1 mb-4">
-                        <div>
-                          <strong>HoD:</strong> {dept.hodAndFaculty?.hodName || dept.hod?.name || 'Head of Department'}
-                        </div>
-                        <div className="text-slate-500 text-[11px]">
-                          {dept.hodAndFaculty?.hodDesignation || dept.hod?.designation || 'Professor & Head'}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#b88e22]">
-                      <span>Open Department Portal</span>
-                      <ChevronRight className="w-4 h-4" />
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* =========================================================================
               CONSOLIDATED SEAT MATRIX (ALL BRANCHES IN SINGLE TABLE - 106 TOTAL SEATS)

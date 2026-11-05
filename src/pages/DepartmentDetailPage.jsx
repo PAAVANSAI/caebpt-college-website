@@ -28,8 +28,7 @@ export default function DepartmentDetailPage() {
         subtitle={`Specialized division for teaching, testing, and applied research in ${currentDept.shortCode}.`}
         tag="Academic Department"
         breadcrumb={[
-          { name: "Academics", link: "/academics" },
-          { name: "Departments", link: "/academics/departments" },
+          { name: "Departments", link: "/departments" },
           { name: currentDept.shortCode }
         ]}
       />
@@ -41,7 +40,7 @@ export default function DepartmentDetailPage() {
             {departments.map((d) => (
               <Link
                 key={d.id}
-                to={`/academics/departments/${d.slug}`}
+                to={`/departments/${d.slug}`}
                 className={`filter-tab text-xs font-bold whitespace-nowrap ${
                   d.slug === currentDept.slug ? 'active' : ''
                 }`}
