@@ -303,43 +303,120 @@ export const phdProgramData = {
 // 4. EXAMINATION REGULATIONS & EVALUATION SYSTEM
 // ============================================================================
 export const examinationRegulationsData = {
-  title: "Official Examination & Continuous Evaluation System",
+  title: "Examinations – Evaluation System",
   authority: "ANGRAU Academic Regulations & Controller of Examinations",
   attendanceRule: "Minimum 75% attendance in theory and practical classes separately is mandatory to appear for semester end examinations. Condonation up to 10% (i.e. between 65% and 74%) may be granted by the Associate Dean solely on valid medical grounds.",
-  
-  ugEvaluationScheme: [
-    {
-      component: "Theory Courses (Without Practical)",
-      midTermExam: "30 Marks (Objective & Descriptive Mid-Term)",
-      assignmentsQuizzes: "10 Marks (Class quizzes, seminars, homework)",
-      semesterEndExam: "60 Marks (3-Hour University External Theory Examination)",
-      totalMarks: "100 Marks (Passing standard: 50%)"
-    },
-    {
-      component: "Courses with Theory + Practical",
-      theoryComponent: "Theory: Mid-Term (20) + Sem-End (50) = 70 Marks",
-      practicalComponent: "Continuous Lab Work (10) + Lab Record (5) + Sem-End Practical & Viva (15) = 30 Marks",
-      semesterEndExam: "Conducted jointly by internal and nominated external examiners",
-      totalMarks: "100 Marks (50% aggregate passing required)"
-    },
-    {
-      component: "Student READY / Industrial In-Plant Training",
-      midTermExam: "Continuous Monthly Progress Diary (25 Marks)",
-      assignmentsQuizzes: "Host Industry Supervisor Evaluation (25 Marks)",
-      semesterEndExam: "Comprehensive Technical Report & Viva-Voce (50 Marks)",
-      totalMarks: "100 Marks evaluated by Faculty Committee"
-    }
-  ],
 
+  // Undergraduate Programme: B.Tech (Ag Engg)
+  ugEvaluation: {
+    programme: "UNDERGRADUATE PROGRAMME: B.Tech (Ag Engg)",
+    generalPrinciples: "The evaluation of the student in a course shall be based on his/ her performance in various kinds of examinations, records, class work and other types of exercises. The detailed course outlines in each course shall be prepared by the concerned teacher(s) in consultation with the University Head of the Department/ Head of the Department, which will be made available to the students during the first week of the semester. A schedule of the mid-semester examinations of the academic programme shall be prepared by the Associate Dean and notified to the students at the beginning of each semester.",
+    internalEvaluation: {
+      title: "Internal Evaluation",
+      midSemester: {
+        name: "Mid-Semester Examination",
+        timing: "Conducted after 50% of the working days are over in a semester.",
+        duration: "One and half (1 ½) hours",
+        marks: 50,
+        rules: "The answer scripts of mid-semester examinations shall be evaluated by the concerned course teacher and shall be shown to the students. The students shall have the option to request the teacher for clarification of any doubts in scoring, provided that such clarification is requested for when the answer scripts are made available to them. This shall not apply for final examinations."
+      },
+      finalPractical: {
+        name: "Final Practical Examination",
+        timing: "Conducted in the last practical class of the semester.",
+        totalMarks: 50,
+        breakdown: [
+          { component: "Continuous evaluation of practical classes including class work and record", marks: 25 },
+          { component: "Final practical examination including viva-voce examination", marks: 25 }
+        ]
+      }
+    },
+    externalEvaluation: {
+      title: "External Evaluation",
+      semesterFinalTheory: {
+        name: "Semester Final Theory Examinations",
+        authority: "Conducted in the theory portion of each course by the University at the end of each semester.",
+        duration: "Two and half (2 ½) hours",
+        marks: 100,
+        confidentialWorkflow: "On the last day of semester final theory examinations, the Associate Dean shall send all the coded answer scripts of each course, year of study wise in sealed cover to the designated evaluation centre (constituent colleges in the University) and shall be evaluated by the course teacher of the evaluation center. After evaluation by the concerned course teacher, the marks award list of students shall be sent to the respective college by the Associate Dean of the evaluation centre."
+      }
+    }
+  },
+
+  // Postgraduate Programmes: M.Tech. & Ph.D.
+  pgEvaluation: {
+    programme: "POSTGRADUATE PROGRAMMES: M.Tech. & Ph.D.",
+    generalPrinciples: "During the semester, teacher in charge of a course shall hold different kinds of tests and assign to the student’s laboratory, library or field work. The students may also participate in seminars and submit term paper. The marks to be allotted between the theory and practical work shall be in the proportion of their respective credit hours. The weightage for theory and practical examinations is as follows:",
+    weightageTable: [
+      {
+        theoryItem: "Assignment / term paper / seminars (internal evaluation)",
+        theoryMarks: 20,
+        practicalItem: "Record and class work (internal evaluation)",
+        practicalMarks: 50
+      },
+      {
+        theoryItem: "One mid-term examination (internal evaluation)",
+        theoryMarks: 30,
+        practicalItem: "Final examination (internal evaluation)",
+        practicalMarks: 50
+      },
+      {
+        theoryItem: "Semester final examination of 3 hrs (external evaluation)",
+        theoryMarks: 50,
+        practicalItem: "—",
+        practicalMarks: "—"
+      }
+    ],
+    theoryTotal: 100,
+    practicalTotal: 100,
+    evaluationStandard: "Each course may be evaluated @ 50 marks for each credit which may be finally reduced to 100 for awarding grade. In order to pass, a PG student must secure a minimum of 50% marks in both theory and practical final examination."
+  },
+
+  // Examination Schedules & Re-examination Rules
+  schedulesAndRules: {
+    title: "Examination Schedules & Academic Progression",
+    points: [
+      "Midterm examination after about 50 days from the commencement of the semester.",
+      "Semester final theory and practical examination at the end of the semester.",
+      "A PG student getting a grade less than 6.00/10.00 in any course will be deemed to have failed in that course. However, student may not be required to study that course by repetition, but he/she may appear all examinations including semester final examination in that course when conducted next according to the regular schedule.",
+      "In case of students who have successfully completed all courses except failed course, the Associate Dean may permit re-examination during final semester (4th semester for M.Tech./M.Sc. / 5th semester for Ph.D.) or any subsequent semesters."
+    ]
+  },
+
+  // Minimum Credit Requirements for Master's and Doctoral Programmes
+  minimumCreditRequirement: {
+    title: "Minimum Credit Requirement",
+    table: [
+      { subject: "Major", masters: "20", doctoral: "15" },
+      { subject: "Minor", masters: "09", doctoral: "08" },
+      { subject: "Supporting", masters: "05", doctoral: "05" },
+      { subject: "Seminar", masters: "01", doctoral: "02" },
+      { subject: "Research", masters: "20", doctoral: "45" },
+      { subject: "Total credits", masters: "55", doctoral: "75", isTotal: true },
+      { subject: "Compulsory Non-credit courses", masters: "06", doctoral: "06", isNonCredit: true }
+    ]
+  },
+
+  // Qualifying / Comprehensive Examination & Thesis Defense
+  qualifyingAndThesis: {
+    title: "Qualifying / Comprehensive Examination & Thesis Evaluation",
+    eligibility: "After completion of all core courses (for M.Sc./M.Tech students) and 75% of approved credit load, a qualifying / comprehensive examination comprising of both written and oral components may be conducted. In order to be eligible, the student should have secured an OGPA of 6.50.",
+    writtenExam: "The written test will precede the oral. 50% at Master’s degree level and 70% at Ph.D. level shall be the minimum marks for passing the written qualifying examination.",
+    oralExam: "The oral examination shall be conducted by the student's Advisory Committee and an External Examiner either from another campus of this university or outside as nominated by the Dean PG Studies.",
+    thesisSubmission: "A student shall submit thesis for Master’s degree and Ph.D. degree after completion of coursework requirement, the required number of research credits, and after passing the qualifying examination successfully.",
+    externalEvaluation: "The thesis submitted by the student shall be sent to an External Examiner for evaluation. For the Ph.D. degree, the thesis shall be sent for evaluation to two (2) External Examiners from outside the University.",
+    degreeAward: "A student of Master’s degree and Ph.D. degree programme shall be eligible for the award of degree after completion of final oral (thesis) examination satisfactorily."
+  },
+
+  // Grading System (OGPA)
   gradingSystem: {
     scale: "10.00 Point Scale (OGPA - Overall Grade Point Average)",
-    passingGradePoint: "5.00 out of 10.00 for UG; 6.50 out of 10.00 for PG and Ph.D.",
+    passingGradePoint: "5.00 out of 10.00 for UG; 6.00 out of 10.00 for PG courses (OGPA 6.50 for qualifying/degree).",
     classifications: [
       { ogpa: "8.50 – 10.00", classification: "First Class with Distinction", honors: "Eligible for University Gold Medals & Merit Certificates" },
       { ogpa: "7.00 – 8.49", classification: "First Class", honors: "Standard Professional First Division" },
       { ogpa: "6.00 – 6.99", classification: "Second Class", honors: "Satisfactory Degree Completion" },
-      { ogpa: "5.00 – 5.99", classification: "Pass Division", honors: "Minimum Passing Standard" },
-      { ogpa: "Below 5.00", classification: "Fail / Re-appear", honors: "Must clear course in supplementary examination" }
+      { ogpa: "5.00 – 5.99", classification: "Pass Division (UG Only)", honors: "Minimum UG Passing Standard" },
+      { ogpa: "Below 5.00 (UG) / Below 6.00 (PG)", classification: "Fail / Re-appear", honors: "Must clear course in supplementary examination" }
     ]
   },
 

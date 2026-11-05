@@ -855,13 +855,14 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
           )}
 
           {/* =========================================================================
-              TAB 4: EXAMINATION (Evaluation Scheme, OGPA 10-Point Scale)
+              TAB 4: EXAMINATION (Evaluation System, UG & PG Rules, Credit Matrices)
               ========================================================================= */}
           {activeTab === 'examination' && (
             <div className="space-y-8 animate-fadeIn">
+              {/* Header Banner */}
               <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-[#fdf5df] text-[#854d0e] flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-[#fdf5df] text-[#854d0e] flex items-center justify-center flex-shrink-0 border border-[#fae4a4]">
                     <FileCheck className="w-6 h-6 text-[#d4a72c]" />
                   </div>
                   <div>
@@ -887,41 +888,274 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                 </div>
               </div>
 
-              {/* Evaluation Components Table */}
-              <div className="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
-                <div className="p-4 bg-slate-50 border-b border-slate-200">
-                  <h3 className="font-heading text-base font-bold text-navy-950">
-                    Undergraduate Evaluation Scheme & Marks Weightage
+              {/* 1. UNDERGRADUATE PROGRAMME: B.Tech (Ag Engg) */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-6">
+                <div>
+                  <span className="badge badge-navy text-xs font-bold">Undergraduate System</span>
+                  <h3 className="font-heading text-xl font-bold text-navy-950 mt-1">
+                    {examinationRegulationsData.ugEvaluation.programme}
                   </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed mt-2">
+                    {examinationRegulationsData.ugEvaluation.generalPrinciples}
+                  </p>
                 </div>
 
-                <div className="overflow-x-auto">
-                  <table className="w-full text-xs text-left border-collapse min-w-[700px]">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                  {/* Internal Evaluation Card */}
+                  <div className="p-5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-4">
+                    <div className="flex items-center justify-between border-b border-slate-200 pb-2.5">
+                      <h4 className="font-heading text-sm font-bold text-navy-950 flex items-center gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                        <span>INTERNAL EVALUATION</span>
+                      </h4>
+                      <span className="badge badge-gold text-[10px] font-bold">Continuous</span>
+                    </div>
+
+                    {/* Mid-Semester */}
+                    <div className="space-y-1.5 text-xs">
+                      <div className="flex items-center justify-between">
+                        <strong className="text-slate-900 font-bold">
+                          {examinationRegulationsData.ugEvaluation.internalEvaluation.midSemester.name}
+                        </strong>
+                        <span className="badge badge-navy text-[10px]">
+                          {examinationRegulationsData.ugEvaluation.internalEvaluation.midSemester.marks} Marks
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-500">
+                        {examinationRegulationsData.ugEvaluation.internalEvaluation.midSemester.timing} • Duration: {examinationRegulationsData.ugEvaluation.internalEvaluation.midSemester.duration}.
+                      </p>
+                      <p className="text-slate-600 text-[11.5px] leading-relaxed bg-white p-3 rounded-lg border border-slate-200/60">
+                        {examinationRegulationsData.ugEvaluation.internalEvaluation.midSemester.rules}
+                      </p>
+                    </div>
+
+                    {/* Final Practical */}
+                    <div className="space-y-2 text-xs pt-2 border-t border-slate-200/60">
+                      <div className="flex items-center justify-between">
+                        <strong className="text-slate-900 font-bold">
+                          {examinationRegulationsData.ugEvaluation.internalEvaluation.finalPractical.name}
+                        </strong>
+                        <span className="badge badge-navy text-[10px]">
+                          {examinationRegulationsData.ugEvaluation.internalEvaluation.finalPractical.totalMarks} Marks
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-500">
+                        {examinationRegulationsData.ugEvaluation.internalEvaluation.finalPractical.timing}
+                      </p>
+                      <ul className="space-y-1 text-[11.5px] text-slate-600 bg-white p-3 rounded-lg border border-slate-200/60">
+                        {examinationRegulationsData.ugEvaluation.internalEvaluation.finalPractical.breakdown.map((item, idx) => (
+                          <li key={idx} className="flex items-start justify-between gap-2">
+                            <span>• {item.component}</span>
+                            <strong className="text-[#854d0e] whitespace-nowrap">{item.marks} Marks</strong>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* External Evaluation Card */}
+                  <div className="p-5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-4">
+                    <div className="flex items-center justify-between border-b border-slate-200 pb-2.5">
+                      <h4 className="font-heading text-sm font-bold text-navy-950 flex items-center gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                        <span>EXTERNAL EVALUATION</span>
+                      </h4>
+                      <span className="badge badge-navy text-[10px] font-bold">University Central</span>
+                    </div>
+
+                    <div className="space-y-2 text-xs">
+                      <div className="flex items-center justify-between">
+                        <strong className="text-slate-900 font-bold">
+                          {examinationRegulationsData.ugEvaluation.externalEvaluation.semesterFinalTheory.name}
+                        </strong>
+                        <span className="badge badge-gold text-[10px]">
+                          {examinationRegulationsData.ugEvaluation.externalEvaluation.semesterFinalTheory.marks} Marks
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-500">
+                        {examinationRegulationsData.ugEvaluation.externalEvaluation.semesterFinalTheory.authority} • Duration: {examinationRegulationsData.ugEvaluation.externalEvaluation.semesterFinalTheory.duration}.
+                      </p>
+
+                      <div className="space-y-1 bg-white p-3.5 rounded-lg border border-slate-200/60">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-700 block">
+                          Coded Answer Scripts & Confidential Evaluation Workflow:
+                        </span>
+                        <p className="text-slate-600 text-[11.5px] leading-relaxed">
+                          {examinationRegulationsData.ugEvaluation.externalEvaluation.semesterFinalTheory.confidentialWorkflow}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2. POSTGRADUATE PROGRAMMES: M.Tech. & Ph.D. */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-6">
+                <div>
+                  <span className="badge badge-gold text-xs font-bold">Postgraduate & Doctoral Evaluation</span>
+                  <h3 className="font-heading text-xl font-bold text-navy-950 mt-1">
+                    {examinationRegulationsData.pgEvaluation.programme}
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed mt-2">
+                    {examinationRegulationsData.pgEvaluation.generalPrinciples}
+                  </p>
+                </div>
+
+                {/* PG Weightage Table matching user document exactly */}
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full text-xs text-left border-collapse min-w-[650px]">
                     <thead>
-                      <tr className="bg-slate-100/70 text-navy-950 border-b border-slate-200">
-                        <th className="py-3 px-4 font-bold">Course Category</th>
-                        <th className="py-3 px-4 font-bold">Mid-Term Evaluation</th>
-                        <th className="py-3 px-4 font-bold">Continuous / Practical</th>
-                        <th className="py-3 px-4 font-bold">Semester-End University Exam</th>
-                        <th className="py-3 px-4 font-bold">Aggregate Passing Standard</th>
+                      <tr className="bg-slate-100/90 text-navy-950 border-b border-slate-200">
+                        <th className="py-3 px-4 font-bold">Theory Component</th>
+                        <th className="py-3 px-3 font-bold text-center w-24">Marks</th>
+                        <th className="py-3 px-4 font-bold">Practicals Component</th>
+                        <th className="py-3 px-3 font-bold text-center w-24">Marks</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
-                      {examinationRegulationsData.ugEvaluationScheme.map((item, idx) => (
-                        <tr key={idx} className="hover:bg-slate-50 transition-colors">
-                          <td className="py-3.5 px-4 font-bold text-navy-950">{item.component}</td>
-                          <td className="py-3.5 px-4 text-slate-700">{item.midTermExam || item.theoryComponent}</td>
-                          <td className="py-3.5 px-4 text-slate-700">{item.assignmentsQuizzes || item.practicalComponent}</td>
-                          <td className="py-3.5 px-4 text-slate-700">{item.semesterEndExam}</td>
-                          <td className="py-3.5 px-4 font-bold text-[#854d0e]">{item.totalMarks}</td>
+                      {examinationRegulationsData.pgEvaluation.weightageTable.map((row, rIdx) => (
+                        <tr key={rIdx} className="hover:bg-slate-50 transition-colors">
+                          <td className="py-3 px-4 text-slate-800 font-medium">{row.theoryItem}</td>
+                          <td className="py-3 px-3 text-center font-bold text-navy-950 bg-slate-50/50">{row.theoryMarks}</td>
+                          <td className="py-3 px-4 text-slate-800 font-medium">{row.practicalItem}</td>
+                          <td className="py-3 px-3 text-center font-bold text-navy-950 bg-slate-50/50">{row.practicalMarks}</td>
                         </tr>
                       ))}
+                      {/* Total Row */}
+                      <tr className="bg-[#fdf5df] font-bold border-t-2 border-[#d4a72c] text-navy-950">
+                        <td className="py-3 px-4 font-extrabold uppercase">Total Theory</td>
+                        <td className="py-3 px-3 text-center font-extrabold text-[#854d0e]">{examinationRegulationsData.pgEvaluation.theoryTotal}</td>
+                        <td className="py-3 px-4 font-extrabold uppercase">Total Practicals</td>
+                        <td className="py-3 px-3 text-center font-extrabold text-[#854d0e]">{examinationRegulationsData.pgEvaluation.practicalTotal}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 text-xs text-slate-700 space-y-1">
+                  <strong className="block font-bold text-navy-950">Evaluation & Passing Standard:</strong>
+                  <p className="leading-relaxed text-[11.5px]">
+                    {examinationRegulationsData.pgEvaluation.evaluationStandard}
+                  </p>
+                </div>
+              </div>
+
+              {/* 3. MINIMUM CREDIT REQUIREMENT TABLE */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div>
+                    <span className="badge badge-navy text-xs font-bold">Curriculum Structure</span>
+                    <h3 className="font-heading text-lg font-bold text-navy-950 mt-1">
+                      {examinationRegulationsData.minimumCreditRequirement.title}
+                    </h3>
+                  </div>
+                  <span className="badge badge-gold font-bold text-xs">Statutory Norms</span>
+                </div>
+
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full text-xs text-left border-collapse min-w-[550px]">
+                    <thead>
+                      <tr className="bg-slate-100/90 text-navy-950 border-b border-slate-200">
+                        <th className="py-3 px-4 font-bold">Subject Category</th>
+                        <th className="py-3 px-4 font-bold text-center w-48">Master’s programme (M.Tech.)</th>
+                        <th className="py-3 px-4 font-bold text-center w-48">Doctoral programme (Ph.D.)</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {examinationRegulationsData.minimumCreditRequirement.table.map((row, idx) => {
+                        const isTotal = row.isTotal;
+                        const isNonCredit = row.isNonCredit;
+                        return (
+                          <tr
+                            key={idx}
+                            className={`hover:bg-slate-50 transition-colors ${
+                              isTotal
+                                ? 'bg-[#fdf5df] font-bold border-t-2 border-[#d4a72c]'
+                                : isNonCredit
+                                ? 'bg-slate-50/70 text-slate-600 italic'
+                                : ''
+                            }`}
+                          >
+                            <td className="py-3 px-4 font-semibold text-slate-800">{row.subject}</td>
+                            <td className="py-3 px-4 text-center font-bold text-navy-950">{row.masters}</td>
+                            <td className="py-3 px-4 text-center font-bold text-navy-950">{row.doctoral}</td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>
               </div>
 
-              {/* 10.00-Point Grading Scale & OGPA Classifications */}
+              {/* 4. QUALIFYING / COMPREHENSIVE EXAMINATION & THESIS EVALUATION */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <div>
+                  <span className="badge badge-gold text-xs font-bold">Advisory & Defense</span>
+                  <h3 className="font-heading text-lg font-bold text-navy-950 mt-1">
+                    {examinationRegulationsData.qualifyingAndThesis.title}
+                  </h3>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2">
+                    <strong className="text-navy-950 block font-bold flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      <span>Eligibility for Qualifying Examination</span>
+                    </strong>
+                    <p className="text-slate-600 leading-relaxed text-[11.5px]">
+                      {examinationRegulationsData.qualifyingAndThesis.eligibility}
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2">
+                    <strong className="text-navy-950 block font-bold flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                      <span>Written & Oral Examination Standards</span>
+                    </strong>
+                    <p className="text-slate-600 leading-relaxed text-[11.5px]">
+                      {examinationRegulationsData.qualifyingAndThesis.writtenExam}
+                    </p>
+                    <p className="text-slate-600 leading-relaxed text-[11.5px] pt-1 border-t border-slate-200/60">
+                      {examinationRegulationsData.qualifyingAndThesis.oralExam}
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2 md:col-span-2">
+                    <strong className="text-navy-950 block font-bold flex items-center gap-1.5">
+                      <Scroll className="w-4 h-4 text-[#854d0e]" />
+                      <span>Thesis Submission & External Evaluation Norms</span>
+                    </strong>
+                    <p className="text-slate-600 leading-relaxed text-[11.5px]">
+                      {examinationRegulationsData.qualifyingAndThesis.thesisSubmission}
+                    </p>
+                    <p className="text-slate-600 leading-relaxed text-[11.5px]">
+                      {examinationRegulationsData.qualifyingAndThesis.externalEvaluation}
+                    </p>
+                    <p className="text-[#854d0e] font-semibold text-[11.5px] pt-1">
+                      ★ {examinationRegulationsData.qualifyingAndThesis.degreeAward}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 5. EXAMINATION SCHEDULES & RE-EXAMINATION RULES */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <h3 className="font-heading text-lg font-bold text-navy-950">
+                  {examinationRegulationsData.schedulesAndRules.title}
+                </h3>
+                <ul className="space-y-2 text-xs text-slate-700">
+                  {examinationRegulationsData.schedulesAndRules.points.map((pt, pIdx) => (
+                    <li key={pIdx} className="flex items-start gap-2 bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
+                      <span className="w-5 h-5 rounded-full bg-[#0b1a2e] text-[#f5c84c] text-[10px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                        {pIdx + 1}
+                      </span>
+                      <span className="leading-relaxed text-[11.5px]">{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* 6. 10.00-POINT GRADING SCALE (OGPA) */}
               <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
                 <div className="flex items-center justify-between flex-wrap gap-2">
                   <div>
@@ -929,13 +1163,13 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                       10.00-Point Scale Grading System (OGPA)
                     </h3>
                     <p className="text-xs text-slate-500">
-                      Passing grade point: 5.00/10.00 (UG) and 6.50/10.00 (PG & Ph.D.)
+                      Passing grade point: {examinationRegulationsData.gradingSystem.passingGradePoint}
                     </p>
                   </div>
                   <span className="badge badge-navy text-xs font-bold">University Scale</span>
                 </div>
 
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
                   <table className="w-full text-xs text-left border-collapse min-w-[600px]">
                     <thead>
                       <tr className="bg-slate-100/70 text-navy-950 border-b border-slate-200">
