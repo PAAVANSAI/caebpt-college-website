@@ -139,7 +139,7 @@ function AppContent() {
               <Route path="/administration" element={<AdministrationPage />} />
               <Route path="/administration/:subSection" element={<AdministrationPage />} />
 
-              {/* D. ACADEMICS (Courses, Departments) */}
+              {/* D. ACADEMICS & DEPARTMENTS */}
               <Route
                 path="/academics"
                 element={
@@ -150,7 +150,7 @@ function AppContent() {
                 }
               />
               <Route
-                path="/academics/courses"
+                path="/academics/:section"
                 element={
                   <AcademicsPage
                     onSelectProgram={(p) => setSelectedProgram(p)}
@@ -159,13 +159,18 @@ function AppContent() {
                 }
               />
               <Route
-                path="/academics/departments"
+                path="/departments"
                 element={
                   <AcademicsPage
                     onSelectProgram={(p) => setSelectedProgram(p)}
                     onOpenEnquiry={handleOpenAdmissions}
+                    defaultTab="departments"
                   />
                 }
+              />
+              <Route
+                path="/departments/:deptSlug"
+                element={<DepartmentDetailPage />}
               />
               {/* Individual Department Pages (with About, Lab Infra, HoD & Faculty) */}
               <Route

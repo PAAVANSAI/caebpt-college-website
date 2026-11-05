@@ -69,6 +69,11 @@ export default function Header({ onOpenAdmissionsModal }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const departmentsList = (currentStructure?.academics?.departments || officialStructureData.academics.departments || []).map((d) => ({
+    label: d.name,
+    path: `/academics/departments/${d.slug}`,
+  }));
+
   const menuItems = [
     { label: 'Home', path: '/' },
     {
@@ -106,16 +111,21 @@ export default function Header({ onOpenAdmissionsModal }) {
       label: 'Academics',
       path: '/academics',
       submenus: [
-        { label: 'Courses (B.Tech, M.Tech, Ph.D.)', path: '/academics/courses' },
-        {
-          label: 'Departments',
-          path: '/academics/departments',
-          childrenList: (currentStructure?.academics?.departments || officialStructureData.academics.departments || []).map((d) => ({
-            label: d.name,
-            path: `/academics/departments/${d.slug}`,
-          })),
-        },
+        { label: 'ADMISSION PROCESS', path: '/admissions' },
+        { label: 'UG COURSES', path: '/academics/ug-courses' },
+        { label: 'PG COURSES', path: '/academics/pg-courses' },
+        { label: 'PH.D COURSES', path: '/academics/phd-courses' },
+        { label: 'EXAMINATION', path: '/academics/examination' },
+        { label: 'UG GUIDELINES', path: '/academics/ug-guidelines' },
+        { label: 'PG GUIDELINES', path: '/academics/pg-guidelines' },
+        { label: 'THESIS GUIDELINES', path: '/academics/thesis-guidelines' },
+        { label: 'ANTI-PLAGIARISM POLICY', path: '/academics/anti-plagiarism-policy' },
       ],
+    },
+    {
+      label: 'Departments',
+      path: '/academics/departments',
+      submenus: departmentsList,
     },
     {
       label: "Student's Welfare",
