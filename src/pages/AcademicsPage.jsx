@@ -11,6 +11,7 @@ import {
   phdProgramData,
   examinationRegulationsData,
   ugGuidelinesData,
+  ugRegulationsData,
   pgGuidelinesData,
   pgRegulationsData,
   thesisGuidelinesData,
@@ -107,7 +108,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
     { key: 'pg-courses', label: 'PG Courses', icon: BookOpen, badge: 'M.Tech' },
     { key: 'phd-courses', label: 'Ph.D Courses', icon: Award, badge: 'Doctoral' },
     { key: 'examination', label: 'Examination', icon: FileCheck, badge: 'Regulations' },
-    { key: 'ug-guidelines', label: 'UG Guidelines', icon: Compass, badge: 'Directives' },
+    { key: 'ug-guidelines', label: 'UG Guidelines', icon: Compass, badge: 'Regulations' },
     { key: 'pg-guidelines', label: 'PG Guidelines', icon: Scroll, badge: 'Regulations' },
     { key: 'thesis-guidelines', label: 'Thesis Guidelines', icon: BookMarked, badge: '2019 Specs' },
     { key: 'anti-plagiarism-policy', label: 'Anti-Plagiarism', icon: ShieldCheck, badge: 'Res. 2920' },
@@ -1199,32 +1200,370 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
           )}
 
           {/* =========================================================================
-              TAB 5: UG GUIDELINES
+              TAB 5: UG GUIDELINES / UNDERGRADUATE ACADEMIC REGULATIONS
+              The ANGRAU Regulations, 2016 (As amended upto 25-11-2017)
               ========================================================================= */}
           {activeTab === 'ug-guidelines' && (
-            <div className="space-y-6 animate-fadeIn">
-              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-2">
-                <span className="badge badge-gold text-xs font-bold">B.Tech Code of Academic Practice</span>
-                <h2 className="font-heading text-2xl font-extrabold text-navy-950">
-                  {ugGuidelinesData.title}
+            <div className="space-y-8 animate-fadeIn">
+              {/* Statutory Header Card */}
+              <div className="bg-white rounded-2xl border-l-4 border-l-[#d4a72c] border border-slate-200 p-6 sm:p-8 shadow-sm space-y-3">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fdf5df] border border-[#fae4a4] text-xs font-bold text-[#854d0e]">
+                    <Compass className="w-4 h-4 text-[#d4a72c]" />
+                    <span>Official ANGRAU Statutory Regulations</span>
+                  </div>
+                  <span className="badge badge-gold text-xs font-bold">
+                    {ugRegulationsData.shortTitle}
+                  </span>
+                </div>
+                <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
+                  {ugRegulationsData.title}
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-600">
-                  Official guidelines governing course registration, credit loads, mentor-mentee advisement, in-plant industrial training, and campus discipline.
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Governing: <strong className="text-navy-900">{ugRegulationsData.programmesGoverned}</strong>
                 </p>
+                <div className="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
+                  <div>
+                    <span className="font-semibold text-slate-700">Foreword by: </span>
+                    <span>{ugRegulationsData.forewordBy}</span>
+                  </div>
+                  <div className="text-[11px] text-slate-500 italic max-w-xl">
+                    {ugRegulationsData.statutoryReference}
+                  </div>
+                </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {ugGuidelinesData.items.map((item, idx) => (
-                  <div key={idx} className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-2">
-                    <div className="flex items-center gap-2 text-[#854d0e] font-bold text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-[#d4a72c]" />
-                      <span>{item.heading}</span>
+              {/* 1. ACADEMIC CALENDAR, SEMESTER & CREDIT DEFINITIONS */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <h3 className="font-heading text-lg font-bold text-navy-950 flex items-center gap-2">
+                    <BookOpen className="w-5 h-5 text-blue-600" />
+                    <span>1. Academic Calendar, Credits & Core Definitions</span>
+                  </h3>
+                  <span className="badge badge-navy font-bold text-xs">Regulation 2.0</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+                  {ugRegulationsData.definitions.map((def, dIdx) => (
+                    <div key={dIdx} className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1.5 flex flex-col justify-between">
+                      <div>
+                        <strong className="text-navy-950 block font-bold text-[13px] text-[#854d0e] mb-1">
+                          {def.term}
+                        </strong>
+                        <p className="text-slate-600 leading-relaxed text-[11.5px]">
+                          {def.desc}
+                        </p>
+                      </div>
                     </div>
-                    <p className="text-xs text-slate-600 leading-relaxed pl-6">
-                      {item.description}
+                  ))}
+                </div>
+              </div>
+
+              {/* 2. ADVISORY SYSTEM & FORMAT-1 REGISTRATION & AWARD BOOK */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <h3 className="font-heading text-lg font-bold text-navy-950 flex items-center gap-2">
+                    <Users className="w-5 h-5 text-[#854d0e]" />
+                    <span>{ugRegulationsData.advisorySystem.title}</span>
+                  </h3>
+                  <span className="badge badge-gold font-bold text-xs">Format-1 Record</span>
+                </div>
+                <div className="p-4 bg-[#fdf5df] rounded-xl border border-[#fae4a4] text-xs text-slate-800 space-y-2">
+                  <strong className="text-navy-950 block font-bold text-xs">
+                    {ugRegulationsData.advisorySystem.batchAssignment}
+                  </strong>
+                  <ul className="space-y-1.5 pl-4 list-disc text-[11.5px] text-slate-700">
+                    {ugRegulationsData.advisorySystem.responsibilities.map((resp, rIdx) => (
+                      <li key={rIdx}>{resp}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* 3. REGISTRATION & STUDY LOAD */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <h3 className="font-heading text-lg font-bold text-navy-950">
+                    {ugRegulationsData.registrationAndStudyLoad.title}
+                  </h3>
+                  <span className="badge badge-navy font-bold text-xs">Max 23 Credits / Semester</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                  <div className="p-5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2">
+                    <strong className="text-navy-950 font-bold block text-xs">
+                      Subsequent Semester In-Person Registration:
+                    </strong>
+                    <ul className="space-y-1.5 pl-4 list-disc text-slate-600 text-[11.5px]">
+                      {ugRegulationsData.registrationAndStudyLoad.subsequentSemesters.map((s, sIdx) => (
+                        <li key={sIdx}>{s}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="p-5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2.5">
+                    <div>
+                      <strong className="text-navy-950 font-bold block text-xs">
+                        Late Registration Window & Fee:
+                      </strong>
+                      <p className="text-slate-600 text-[11.5px] mt-1">
+                        {ugRegulationsData.registrationAndStudyLoad.lateRegistration}
+                      </p>
+                    </div>
+                    <div className="pt-2 border-t border-slate-200">
+                      <strong className="text-[#854d0e] font-bold block text-xs">
+                        Semester Study Load Ceiling:
+                      </strong>
+                      <p className="text-slate-700 text-[11.5px] mt-0.5">
+                        {ugRegulationsData.registrationAndStudyLoad.maxStudyLoad}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 4. ATTENDANCE & CONDONATION RULES */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <h3 className="font-heading text-lg font-bold text-navy-950">
+                    {ugRegulationsData.attendanceRules.title}
+                  </h3>
+                  <span className="badge badge-gold font-bold text-xs">Min. 75% Separate</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1">
+                    <span className="text-[10px] font-bold uppercase text-slate-500 block">General Attendance Rule</span>
+                    <p className="text-slate-700 text-[11.5px] leading-relaxed">
+                      {ugRegulationsData.attendanceRules.minAttendance}
                     </p>
                   </div>
-                ))}
+
+                  <div className="p-4 bg-amber-50/70 rounded-xl border border-amber-200/80 space-y-1">
+                    <span className="text-[10px] font-bold uppercase text-amber-800 block">Medical Condonation (Indoor)</span>
+                    <p className="text-amber-950 text-[11.5px] leading-relaxed">
+                      {ugRegulationsData.attendanceRules.medicalRelaxation}
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1">
+                    <span className="text-[10px] font-bold uppercase text-slate-500 block">Temporary Discontinuation</span>
+                    <p className="text-slate-700 text-[11.5px] leading-relaxed">
+                      {ugRegulationsData.attendanceRules.temporaryDiscontinuation}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-3.5 bg-red-50/60 rounded-xl border border-red-200/70 text-xs text-red-950 space-y-1">
+                  <strong className="font-bold flex items-center gap-1.5 text-red-900">
+                    <AlertTriangle className="w-4 h-4 text-red-700" />
+                    <span>First Semester Attendance Rule & Cancellation Safeguard:</span>
+                  </strong>
+                  <p className="text-[11.5px] text-red-900 leading-relaxed pl-5">
+                    {ugRegulationsData.attendanceRules.firstYearCancellation}
+                  </p>
+                </div>
+              </div>
+
+              {/* 5. EVALUATION, SPOT VALUATION & MARKS SYSTEM */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-5">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div>
+                    <h3 className="font-heading text-lg font-bold text-navy-950">
+                      {ugRegulationsData.evaluationAndExaminations.title}
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Mid-Semester (50 Marks) • Final Common Theory (100 Marks) • 60:40 Proportion
+                    </p>
+                  </div>
+                  <span className="badge badge-navy text-xs font-bold">B.Tech Spot Valuation</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                  <div className="p-5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2">
+                    <strong className="text-navy-950 font-bold block text-sm">
+                      Mid-Semester Examination (Internal)
+                    </strong>
+                    <ul className="space-y-1.5 text-slate-700 text-[11.5px]">
+                      <li>• <strong>Timing:</strong> {ugRegulationsData.evaluationAndExaminations.midSemesterExam.timing}</li>
+                      <li>• <strong>Duration & Marks:</strong> {ugRegulationsData.evaluationAndExaminations.midSemesterExam.duration} ({ugRegulationsData.evaluationAndExaminations.midSemesterExam.marks})</li>
+                      <li>• <strong>Doubts Clarification:</strong> Answer scripts shown directly to students with clarification of scoring.</li>
+                      <li>• <strong>Special Re-Exam:</strong> Arranged within 2 weeks for serious illness/accident.</li>
+                      <li className="text-red-700 font-semibold pt-1">★ {ugRegulationsData.evaluationAndExaminations.midSemesterExam.mandatoryClause}</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2">
+                    <strong className="text-navy-950 font-bold block text-sm">
+                      Semester Final Examination & Spot Valuation
+                    </strong>
+                    <ul className="space-y-1.5 text-slate-700 text-[11.5px]">
+                      <li>• <strong>Duration:</strong> {ugRegulationsData.evaluationAndExaminations.finalTheoryExam.duration}</li>
+                      <li>• <strong>Preparation Holidays:</strong> {ugRegulationsData.evaluationAndExaminations.finalTheoryExam.preparationHolidays}</li>
+                      <li>• <strong>Spot Valuation:</strong> {ugRegulationsData.evaluationAndExaminations.finalTheoryExam.spotValuation}</li>
+                      <li>• <strong>Scribe Facility:</strong> {ugRegulationsData.evaluationAndExaminations.finalTheoryExam.scribeProvision}</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Marks Allocation Ratios */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                  <div className="p-3.5 bg-[#fdf5df] rounded-xl border border-[#fae4a4] space-y-1 text-center">
+                    <span className="text-[10px] font-bold uppercase text-[#854d0e] block">Credit Evaluation</span>
+                    <strong className="text-navy-950 text-xs block">50 Marks / Credit</strong>
+                    <p className="text-[11px] text-slate-600">Theory and practical allotted in proportion to credits</p>
+                  </div>
+
+                  <div className="p-3.5 bg-blue-50/70 rounded-xl border border-blue-200/70 space-y-1 text-center">
+                    <span className="text-[10px] font-bold uppercase text-blue-800 block">Theory Proportion</span>
+                    <strong className="text-navy-950 text-xs block">60 : 40 Ratio</strong>
+                    <p className="text-[11px] text-slate-600">Semester Final Theory (60) : Mid-Semester (40)</p>
+                  </div>
+
+                  <div className="p-3.5 bg-emerald-50/70 rounded-xl border border-emerald-200/70 space-y-1 text-center">
+                    <span className="text-[10px] font-bold uppercase text-emerald-800 block">Practical Proportion</span>
+                    <strong className="text-navy-950 text-xs block">1 : 1 Ratio (50 : 50)</strong>
+                    <p className="text-[11px] text-slate-600">Continuous Evaluation (50) : Final Exam + Viva (50)</p>
+                  </div>
+                </div>
+
+                {/* Unfair Means Penalty */}
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2 text-xs">
+                  <strong className="text-navy-950 font-bold block flex items-center gap-1.5">
+                    <ShieldCheck className="w-4 h-4 text-red-600" />
+                    <span>Statutory Penalties for Use of Unfair Means (Clause 8.6):</span>
+                  </strong>
+                  <ul className="space-y-1 pl-4 list-disc text-slate-600 text-[11.5px]">
+                    {ugRegulationsData.evaluationAndExaminations.unfairMeansPenalty.map((pen, pIdx) => (
+                      <li key={pIdx}>{pen}</li>
+                    ))}
+                  </ul>
+                  <p className="text-[11px] text-slate-500 pt-1 border-t border-slate-200">
+                    ★ <strong>Scrutiny of Grades (Clause 8.7):</strong> {ugRegulationsData.evaluationAndExaminations.scrutinyOfGrades}
+                  </p>
+                </div>
+              </div>
+
+              {/* 6. ACADEMIC STATUS, PASSING & YEAR-TO-YEAR PROMOTION */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-5">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div>
+                    <h3 className="font-heading text-lg font-bold text-navy-950">
+                      {ugRegulationsData.academicProgression.title}
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Passing Grade Point: 5.00/10.00 (Min. 50% separate in theory & practical)
+                    </p>
+                  </div>
+                  <span className="badge badge-gold font-bold text-xs">Year-of-Standing Rules</span>
+                </div>
+
+                {/* Promotion Table */}
+                <div className="space-y-2">
+                  <strong className="text-xs font-bold text-navy-950 uppercase tracking-wider block">
+                    Statutory Year-to-Year Promotion Criteria (Implemented w.e.f. 2008-09):
+                  </strong>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                    {ugRegulationsData.academicProgression.yearToYearPromotion.map((promo, pIdx) => (
+                      <div key={pIdx} className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2">
+                        <span className="badge badge-navy text-[10px] font-bold">{promo.stage}</span>
+                        <p className="text-slate-700 text-[11.5px] leading-relaxed">
+                          {promo.rule}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Final Year Supplementary Re-Exam */}
+                <div className="p-4 bg-[#fdf5df] rounded-xl border border-[#fae4a4] text-xs text-[#854d0e] space-y-1.5">
+                  <strong className="block font-bold text-sm text-navy-950">
+                    Special Supplementary Re-Examination for Final Year Graduating Students:
+                  </strong>
+                  <p className="text-[11.5px] text-slate-700 leading-relaxed">
+                    {ugRegulationsData.academicProgression.finalYearSpecialReExam}
+                  </p>
+                  <p className="text-[11px] text-slate-500 pt-1 border-t border-amber-200/70">
+                    ★ Re-examination Fee: {ugRegulationsData.academicProgression.reExamFee}
+                  </p>
+                </div>
+              </div>
+
+              {/* 7. GRADUATION REQUIREMENTS & DEGREE CLASSIFICATION */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <h3 className="font-heading text-lg font-bold text-navy-950">
+                    {ugRegulationsData.graduationRequirements.title}
+                  </h3>
+                  <span className="badge badge-navy font-bold text-xs">Regulation 10.0</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                  {ugRegulationsData.graduationRequirements.residentialLimits.map((res, rIdx) => (
+                    <div key={rIdx} className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2">
+                      <strong className="text-navy-950 block font-bold text-xs">{res.category}</strong>
+                      <div className="grid grid-cols-2 gap-2 text-center pt-1">
+                        <div className="bg-white p-2 rounded-lg border border-slate-200">
+                          <span className="text-[10px] text-slate-500 uppercase block">Min Residential</span>
+                          <strong className="text-navy-900 text-xs">{res.minResidential}</strong>
+                        </div>
+                        <div className="bg-white p-2 rounded-lg border border-slate-200">
+                          <span className="text-[10px] text-slate-500 uppercase block">Max Duration</span>
+                          <strong className="text-[#854d0e] text-xs">{res.maxDuration}</strong>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Degree Classification Cards */}
+                <div className="space-y-2 pt-2">
+                  <strong className="text-xs font-bold text-navy-950 uppercase tracking-wider block">
+                    Classification of Successful Candidates (10.00-Point Scale):
+                  </strong>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs text-center">
+                    {ugRegulationsData.graduationRequirements.degreeClassifications.map((cl, cIdx) => (
+                      <div key={cIdx} className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                        <strong className="text-navy-950 block text-[11.5px]">{cl.classification}</strong>
+                        <span className="inline-block bg-[#fdf5df] border border-[#d4a72c] text-[#854d0e] font-extrabold text-xs px-2 py-0.5 rounded">
+                          {cl.ogpa}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-[11px] text-slate-500 italic pt-1">
+                    {ugRegulationsData.graduationRequirements.transcriptNote}
+                  </p>
+                </div>
+              </div>
+
+              {/* 8. TRANSFER POLICY & STUDENT RESPONSIBILITY */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs space-y-3">
+                  <h4 className="font-heading text-base font-bold text-navy-950">
+                    {ugRegulationsData.transferPolicy.title}
+                  </h4>
+                  <ul className="space-y-1.5 text-slate-600 text-[11.5px]">
+                    {ugRegulationsData.transferPolicy.rules.map((rule, rIdx) => (
+                      <li key={rIdx} className="flex items-start gap-1.5">
+                        <span className="text-[#854d0e] font-bold">•</span>
+                        <span>{rule}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs space-y-3">
+                  <h4 className="font-heading text-base font-bold text-navy-950">
+                    {ugRegulationsData.registrationAndAwardBook.title}
+                  </h4>
+                  <p className="text-slate-600 text-[11.5px] leading-relaxed">
+                    {ugRegulationsData.registrationAndAwardBook.desc}
+                  </p>
+                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-500 text-[11px]">
+                    <strong>Statutory Note (Clause 11.0):</strong> All students are expected to know degree requirements and assume full responsibility. In no case shall a regulation be waived simply because a student pleads ignorance.
+                  </div>
+                </div>
               </div>
             </div>
           )}

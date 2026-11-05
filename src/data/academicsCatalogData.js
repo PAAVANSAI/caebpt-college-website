@@ -424,33 +424,155 @@ export const examinationRegulationsData = {
 };
 
 // ============================================================================
-// 5. UNDERGRADUATE (UG) GUIDELINES
+// 5. UNDERGRADUATE (UG) RULES & REGULATIONS (The ANGRAU Regulations, 2016)
+// Academic Regulations Governing Undergraduate Programmes (as amended upto 25-11-2017)
 // ============================================================================
-export const ugGuidelinesData = {
-  title: "Undergraduate Academic Guidelines & Regulations",
-  items: [
-    {
-      heading: "Admissions & Lateral Entry",
-      description: "Regular entry through AP EAPCET counseling (MPC stream) with 60% Convener quota and 40% Farmers' quota reservation. Diploma in Agricultural Engineering holders are admitted directly into the 2nd year (3rd semester) under the 15% lateral entry quota via AP ECET."
+export const ugRegulationsData = {
+  title: "Academic Regulations Governing Undergraduate Programmes",
+  shortTitle: "The ANGRAU Regulations, 2016 (As amended upto 25-11-2017)",
+  programmesGoverned: "B.Tech. (Agricultural Engineering), B.Tech. (Food Technology), B.Sc. (Hons) Agriculture, and B.Sc. (Hons) Community Science",
+  authority: "Acharya N.G. Ranga Agricultural University (ANGRAU), Lam, Guntur, Andhra Pradesh",
+  forewordBy: "Dr. V. Damodara Naidu, Vice-Chancellor",
+  statutoryReference: "Enacted in exercise of powers conferred under Clause (d) of Subsection-2 of Section 22 of ANGRAU Act 1963 (Act No. 24 of 1963) read with Statute No. 21 of the First Statutes.",
+
+  definitions: [
+    { term: "Academic Year", desc: "June to April ordinarily (except in the year of admission) consisting of two semesters." },
+    { term: "Semester Duration", desc: "Minimum duration of 110 working days, consisting of 95 instructional days and 15 examination days (except admission year). Short semesters require proportionate class increases." },
+    { term: "Credit Hour", desc: "One hour lecture or 2 to 3 hours of laboratory or field practical each week in a semester (known as semester credit or credit)." },
+    { term: "Course & Grade Point", desc: "Course is a unit of instruction. Grade point is the marks secured divided by 10 (10-point scale upto 1 decimal place). Credit point is credit hours × grade point." },
+    { term: "GPA & OGPA Precision", desc: "GPA is quotient of total credit points by total credit hours taken in that semester (corrected to 1 decimal place). OGPA is cumulative credit points divided by all completed credits (corrected to 2 decimal places)." },
+    { term: "Semester Final Examinations", desc: "Conducted by the University at the end of each semester in the theory portion of the course." }
+  ],
+
+  advisorySystem: {
+    title: "Advisor System & Student Mentorship (Regulation 5.0)",
+    batchAssignment: "Students on admission are divided into convenient batches by the Associate Dean and assigned to a dedicated teacher designated as 'Advisor'.",
+    responsibilities: [
+      "Assists each student immediately after enrolment in planning their academic study programme and filling registration cards.",
+      "Establishes and fosters close personal relationship through periodical meetings (both batch and individual) to review study programmes and resolve difficulties.",
+      "Recommends remedial actions in consultation with course teachers and the Associate Dean.",
+      "Maintains permanent record in 'Registration & Award Book' (Format-1) containing past history, courses registered, exams appeared, grades obtained, advisory meetings log, and conduct/disciplinary records."
+    ]
+  },
+
+  registrationAndStudyLoad: {
+    title: "Registration & Semester Study Load (Regulation 6.0)",
+    firstSemester: "Orientation and registration programme conducted by Associate Dean; attendance reckoned from the date of registration.",
+    subsequentSemesters: [
+      "In-person registration producing identity card at registration centre on the scheduled day.",
+      "Students with backlogs can register total backlog courses plus allowable fresh courses offered for that batch.",
+      "Payment of college, department, hostel, and library dues/arrears must precede registration."
+    ],
+    lateRegistration: "Late fee of ₹10/- for first 3 working days from the next day of scheduled registration, and thereafter ₹100/- per day for a further period of 7 days (total 10 working days late registration window).",
+    maxStudyLoad: "The total study load for a student shall NOT exceed 23 credit hours per semester (includes fresh courses and backlog courses registered for want of attendance)."
+  },
+
+  attendanceRules: {
+    title: "Attendance Requirements & Condonation Rules (Regulation 7.0)",
+    minAttendance: "75% minimum attendance separately in theory and practicals. Shortage below 75% in either treats course registration as cancelled.",
+    medicalRelaxation: "Condonation up to 10% (i.e. minimum 65% for theory and practical separately) is permitted ONLY on medical grounds in case of indoor hospitalization.",
+    firstYearCancellation: "If a 1st year UG student fails to register or fails to put in at least 75% attendance in all courses, admission stands cancelled. However, if student secured at least 60% attendance, they may apply within 7 calendar days from last day of instruction with proof to Associate Dean. A high-level committee (Associate Dean, Senior Professor, Academic Advisor, Student Advisor, Medical Officer) evaluates exceptional merit.",
+    temporaryDiscontinuation: "Permitted after completing 1st semester with prior permission of Associate Dean within 1 month. Maximum break cannot exceed 4 semesters. Re-admission application at least 1 month prior to semester commencement. Leaving with T.C. cancels readmission eligibility permanently."
+  },
+
+  evaluationAndExaminations: {
+    title: "Evaluation System, Examinations & Spot Valuation (Regulation 8.0)",
+    outlinesAndSchedule: "Detailed course outlines prepared in consultation with HOD and distributed in Week 1. Associate Dean notifies mid-semester schedule at commencement.",
+    midSemesterExam: {
+      timing: "Conducted by course teacher after 50% working days are completed in a semester.",
+      duration: "One and half (1 ½) hours duration.",
+      marks: "50 marks. Answer scripts evaluated and shown directly to students with clarification of scoring doubts.",
+      specialReExam: "No condonation for absence; however, special re-examination is arranged within 2 weeks for students prevented by serious illness or accident.",
+      mandatoryClause: "Unless a student appears for the mid-semester examination, he/she shall NOT be permitted to appear for the semester final theory and practical examinations!"
     },
-    {
-      heading: "Credit Load per Semester",
-      description: "A student can register for a maximum of 25 credits and a minimum of 16 credits in a regular semester, except in the final semester (Student READY) or during approved makeup semesters."
+    finalTheoryExam: {
+      duration: "Two and half (2 ½) hours duration (100 marks), conducted by the University.",
+      preparationHolidays: "Two (2) preparation holidays (inclusive of public holiday) given before commencement of final theory examinations.",
+      spotValuation: "In B.Tech (Agricultural Engineering), spot valuation procedure is strictly followed. Coded scripts jumbled and sent in sealed cover to nominated evaluation centre; valuation completed within 6 working days.",
+      scribeProvision: "Students with 60% physical disability allowed a scribe on request."
     },
-    {
-      heading: "Academic Advisory & Mentorship System",
-      description: "Each undergraduate scholar is assigned a dedicated Faculty Advisor upon admission. The advisor monitors semester course registration, reviews academic progress, counsels on elective selection, and provides career mentorship throughout the 4-year tenure."
+    marksRatio: {
+      creditEvaluation: "Each credit is evaluated for 50 marks. Theory and practical marks apportioned to credit ratio.",
+      theoryProportion: "60 : 40 ratio between Semester Final Common Theory Examination and Mid-Semester Examination.",
+      practicalProportion: "1 : 1 ratio (50 : 50) between continuous internal practical evaluation (records/class work) and final practical examination with viva-voce.",
+      studentReady: "Evaluated according to guidelines in Student READY / RAWEP / Industrial Attachment / ELP manuals."
     },
-    {
-      heading: "Student READY Program (8th Semester)",
-      description: "The 8th semester is devoted entirely to the Student READY (Rural Entrepreneurship Awareness Development Yojana) program comprising 10 weeks of mandatory Agro-Industrial In-Plant Training, Experiential Learning Programme (ELP), and final year design project work."
-    },
-    {
-      heading: "Code of Conduct & Anti-Ragging Strictures",
-      description: "Ragging in any form inside or outside the college campus and student hostels is strictly prohibited by law. Violators face immediate suspension, rustication, and criminal prosecution under the Andhra Pradesh Prohibition of Ragging Act."
-    }
-  ]
+    unfairMeansPenalty: [
+      "Mid-Semester Exam: Student found copying deemed to have failed in that course.",
+      "Semester Final Exam: Deemed to have failed in ALL courses registered/appeared in that semester and barred from remaining exams.",
+      "Serious Malpractice (abusing/threatening/assaulting invigilator): Failed in all semester courses + debarred for succeeding semester or permanently by Vice-Chancellor."
+    ],
+    scrutinyOfGrades: "Application to Registrar within 1 week of grade announcement for retotaling of marks or calculation of grade points with prescribed fee."
+  },
+
+  academicProgression: {
+    title: "Academic Status, Passing Standards & Promotion Rules (Regulation 9.0)",
+    passingStandard: [
+      "Minimum 50% marks in both final theory and final practical examinations separately for a pass.",
+      "Passing Grade Point: 5.00 out of 10.00. Grade below 5.0 is awarded 'F' (Fail).",
+      "Physically Challenged (Handicapped) Students: Reduction of pass marks by 10% in each subject is allowed.",
+      "Option to re-write mid-semester examination in the same semester when next taking the final examination."
+    ],
+    finalYearSpecialReExam: "For final year B.Tech (Agricultural Engineering) students, special re-examination is conducted within ONE MONTH of college reopening after vacation in not more than three (3) failed courses, provided passing them completes graduation requirements.",
+    reExamFee: "₹100/- per course (maximum ₹500/-) payable within 40 days from date of commencement of subsequent semester.",
+    yearToYearPromotion: [
+      {
+        stage: "Promotion to Second Year",
+        rule: "Automatic promotion irrespective of the number of backlog / failed courses in the first year."
+      },
+      {
+        stage: "Promotion to Third Year",
+        rule: "Must have passed ALL courses of First Year, and must NOT have more than 6 backlog courses of Second Year."
+      },
+      {
+        stage: "Promotion to Fourth Year",
+        rule: "Must have passed ALL courses of Second Year, and must NOT have more than 6 backlog courses of Third Year."
+      }
+    ]
+  },
+
+  graduationRequirements: {
+    title: "Graduation Requirements & Degree Classification (Regulation 10.0)",
+    residentialLimits: [
+      {
+        category: "Regular B.Tech (Ag Engg) Students (4-Year Programme)",
+        minResidential: "8 Semesters (4 Years)",
+        maxDuration: "14 Semesters (7 Academic Years)"
+      },
+      {
+        category: "Lateral Entry Diploma Students (Direct 2nd Year via ECET)",
+        minResidential: "6 Semesters (3 Years)",
+        maxDuration: "12 Semesters (6 Academic Years)"
+      }
+    ],
+    completionCriteria: "Satisfactory completion of all prescribed courses, Student READY programmes (In-Plant Industrial Training / ELP / Projects), and securing minimum cumulative OGPA of 5.00 / 10.00.",
+    degreeClassifications: [
+      { classification: "First Class with Distinction", ogpa: "8.00 and above / 10.00", badge: "badge-gold" },
+      { classification: "First Class", ogpa: "7.00 to 7.99 / 10.00", badge: "badge-navy" },
+      { classification: "Second Class", ogpa: "6.00 to 6.99 / 10.00", badge: "badge-slate" },
+      { classification: "Pass Division", ogpa: "5.00 to 5.99 / 10.00", badge: "badge-slate" },
+      { classification: "Fail / Incomplete", ogpa: "Below 5.00 / 10.00", badge: "badge-red" }
+    ],
+    transcriptNote: "Class / division shall not be printed on the degree certificate parchment, but is officially stated as a footnote in the Consolidated Transcript of Marks."
+  },
+
+  transferPolicy: {
+    title: "Inter-College Transfer Policy (Regulation 12.0)",
+    rules: [
+      "No transfer allowed during the first year of study.",
+      "Transfer requests entertained only at the beginning of the academic year.",
+      "Applicant applies to Associate Dean who forwards with specific remarks to Registrar for Vice-Chancellor approval.",
+      "Transfer of students from other universities to ANGRAU is strictly prohibited."
+    ]
+  },
+
+  registrationAndAwardBook: {
+    title: "Format-1: Registration & Award Book (Regulation 5.0)",
+    desc: "Permanent official academic ledger maintained by the Faculty Advisor tracking student identification, semester registration, re-examinations, GPA/OGPA, advisory meetings log, and conduct/discipline records across all semesters."
+  }
 };
+
+export const ugGuidelinesData = ugRegulationsData;
 
 // ============================================================================
 // 6. POSTGRADUATE (PG) RULES & REGULATIONS (ANGRAU 1980 / Amended upto 2016)
