@@ -148,10 +148,10 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
         breadcrumb={[{ name: "Academics" }]}
       />
 
-      {/* Official Academics Navigation Tab Bar — Always fully wrapped and responsive */}
-      <section className="bg-white border-b border-slate-200 sticky top-16 z-30 shadow-xs">
+      {/* Official Academics Navigation Tab Bar — Single continuous line like before */}
+      <section className="bg-white border-b border-slate-200 shadow-xs relative z-20">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-wrap items-center gap-2 py-3">
+          <div className="flex items-center gap-2 py-3 overflow-x-auto no-scrollbar whitespace-nowrap flex-nowrap scroll-smooth">
             {academicTabs.map((tab) => {
               const IconComp = tab.icon;
               const isActive = activeTab === tab.key;
@@ -160,13 +160,13 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                   key={tab.key}
                   type="button"
                   onClick={() => handleTabClick(tab.key)}
-                  className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] font-bold transition-all flex items-center gap-2 border cursor-pointer select-none ${
+                  className={`px-3.5 py-2 rounded-xl text-xs sm:text-[13px] font-bold transition-all flex items-center gap-1.5 sm:gap-2 border cursor-pointer select-none whitespace-nowrap flex-shrink-0 ${
                     isActive
                       ? 'bg-[#0b1a2e] text-white border-[#0b1a2e] shadow-sm ring-2 ring-[#d4a72c]/40 font-extrabold'
                       : 'text-slate-700 bg-white hover:bg-slate-100 hover:text-navy-950 border-slate-200 shadow-2xs'
                   }`}
                 >
-                  <IconComp className={`w-4 h-4 ${isActive ? 'text-[#f5c84c]' : 'text-slate-500'}`} />
+                  <IconComp className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isActive ? 'text-[#f5c84c]' : 'text-slate-500'}`} />
                   <span>{tab.label}</span>
                   {tab.badge && (
                     <span
@@ -185,8 +185,8 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
       </section>
 
       {/* Main Content Area */}
-      <main className="py-8 sm:py-12">
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
+      <main className="py-8 sm:py-10">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 space-y-8 sm:space-y-10">
 
           {/* =========================================================================
               TAB 0: ADMISSION PROCESS (Statutory Flow, Quota Rules & Farmers' Quota)
