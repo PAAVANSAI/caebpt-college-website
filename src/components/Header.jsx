@@ -111,7 +111,7 @@ export default function Header({ onOpenAdmissionsModal }) {
       label: 'Academics',
       path: '/academics',
       submenus: [
-        { label: 'ADMISSION PROCESS', path: '/admissions' },
+        { label: 'ADMISSION PROCESS', path: '/academics/admission-process' },
         { label: 'UG COURSES', path: '/academics/ug-courses' },
         { label: 'PG COURSES', path: '/academics/pg-courses' },
         { label: 'PH.D COURSES', path: '/academics/phd-courses' },

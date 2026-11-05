@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useSearchParams, useLocation, useParams, useNavigate } from 'react-router-dom';
+import { Link, useSearchParams, useLocation, useParams } from 'react-router-dom';
 import PageBanner from '../components/PageBanner';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
 import { consolidatedAllBranchesTable, programsData } from '../data/academicsData';
+import { admissionCriteriaUG, statutoryFlowcharts } from '../data/admissionsData';
 import {
   ugCurriculumData,
   pgProgramData,
@@ -34,7 +35,10 @@ import {
   Download,
   Calendar,
   Clock,
-  ExternalLink
+  ExternalLink,
+  Users,
+  MapPin,
+  Check
 } from 'lucide-react';
 
 export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
@@ -42,15 +46,16 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
   const { section } = useParams();
   const [searchParams] = useSearchParams();
   const location = useLocation();
-  const navigate = useNavigate();
 
-  // Normalize active tab directly from URL (eliminating state desynchronization)
-  const getActiveTab = () => {
+  // Helper to resolve initial tab from URL or query parameters
+  const parseTabFromLocation = () => {
     if (section) {
       if (section === 'courses') return 'ug-courses';
+      if (section === 'admissions' || section === 'admission' || section === 'admission-process') return 'admission-process';
       return section;
     }
     const path = location.pathname.toLowerCase();
+    if (path.includes('/admission-process') || path.includes('/admissions')) return 'admission-process';
     if (path.includes('/ug-courses')) return 'ug-courses';
     if (path.includes('/pg-courses')) return 'pg-courses';
     if (path.includes('/phd-courses')) return 'phd-courses';
@@ -60,10 +65,32 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
     if (path.includes('/thesis-guidelines')) return 'thesis-guidelines';
     if (path.includes('/anti-plagiarism-policy')) return 'anti-plagiarism-policy';
     if (path.includes('/courses')) return 'ug-courses';
-    return searchParams.get('tab') || searchParams.get('view') || 'ug-courses';
+    const q = searchParams.get('tab') || searchParams.get('view');
+    if (q) return q;
+    return 'admission-process';
   };
 
-  const activeTab = getActiveTab();
+  const [activeTab, setActiveTab] = useState(parseTabFromLocation);
+
+  // Sync state if navigated externally via navbar
+  useEffect(() => {
+    setActiveTab(parseTabFromLocation());
+  }, [location.pathname, section, searchParams]);
+
+  // Handle browser back/forward buttons seamlessly
+  useEffect(() => {
+    const handlePopState = () => {
+      setActiveTab(parseTabFromLocation());
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Instant in-place tab switching without scroll jumping
+  const handleTabClick = (tabKey) => {
+    setActiveTab(tabKey);
+    window.history.pushState(null, '', `/academics/${tabKey}`);
+  };
 
   // Local state for interactive filtering inside tabs
   const [selectedSemester, setSelectedSemester] = useState('Semester I');
@@ -72,33 +99,9 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
 
   const academics = officialStructure?.academics || officialStructureData.academics;
 
-  // Safe Program Selector Helper
-  const handleOpenProgramModal = (courseObj) => {
-    if (!onSelectProgram) return;
-    const match = programsData.find(
-      (p) =>
-        p.id === courseObj.id ||
-        (courseObj.id && courseObj.id.includes('agengg') && p.id.includes('agri')) ||
-        p.name?.toLowerCase().includes(courseObj.name?.toLowerCase().slice(0, 15))
-    );
-    const safeProgram = {
-      ...courseObj,
-      ...(match || {}),
-      highlights: Array.isArray(match?.highlights)
-        ? match.highlights
-        : Array.isArray(courseObj.highlights)
-        ? courseObj.highlights
-        : typeof courseObj.highlights === 'string' && courseObj.highlights.trim()
-        ? [courseObj.highlights]
-        : [],
-      curriculumSummary: match?.curriculumSummary || courseObj.curriculumSummary || [],
-      careerOpportunities: match?.careerOpportunities || courseObj.careerOpportunities || ''
-    };
-    onSelectProgram(safeProgram);
-  };
-
-  // Nav tabs strictly matching ANGRAU official hierarchy
+  // Nav tabs strictly matching official ANGRAU hierarchy
   const academicTabs = [
+    { key: 'admission-process', label: 'Admission Process', icon: Sparkles, badge: 'Official Flow' },
     { key: 'ug-courses', label: 'UG Courses', icon: GraduationCap, badge: 'B.Tech' },
     { key: 'pg-courses', label: 'PG Courses', icon: BookOpen, badge: 'M.Tech' },
     { key: 'phd-courses', label: 'Ph.D Courses', icon: Award, badge: 'Doctoral' },
@@ -145,46 +148,36 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
         breadcrumb={[{ name: "Academics" }]}
       />
 
-      {/* Official Academics Navigation Tab Bar */}
+      {/* Official Academics Navigation Tab Bar — Always fully wrapped and responsive */}
       <section className="bg-white border-b border-slate-200 sticky top-16 z-30 shadow-xs">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center gap-2 py-3 overflow-x-auto no-scrollbar lg:flex-wrap">
-            {/* Direct Link to Admission Process */}
-            <Link
-              to="/admissions"
-              className="flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold text-[#854d0e] bg-[#fdf5df] border border-[#fae4a4] hover:bg-[#f6e5b8] hover:border-[#d4a72c] transition-all flex items-center gap-1.5 shadow-2xs"
-              style={{ textDecoration: 'none' }}
-            >
-              <Sparkles className="w-3.5 h-3.5 text-[#d4a72c]" />
-              <span>Admission Process</span>
-            </Link>
-
+          <div className="flex flex-wrap items-center gap-2 py-3">
             {academicTabs.map((tab) => {
               const IconComp = tab.icon;
               const isActive = activeTab === tab.key;
               return (
-                <Link
+                <button
                   key={tab.key}
-                  to={`/academics/${tab.key}`}
-                  className={`flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 border ${
+                  type="button"
+                  onClick={() => handleTabClick(tab.key)}
+                  className={`px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] font-bold transition-all flex items-center gap-2 border cursor-pointer select-none ${
                     isActive
-                      ? 'bg-[#0b1a2e] text-white border-[#0b1a2e] shadow-sm'
-                      : 'text-slate-700 bg-slate-50 hover:bg-white hover:text-navy-950 border-slate-200 hover:border-slate-300'
+                      ? 'bg-[#0b1a2e] text-white border-[#0b1a2e] shadow-sm ring-2 ring-[#d4a72c]/40 font-extrabold'
+                      : 'text-slate-700 bg-white hover:bg-slate-100 hover:text-navy-950 border-slate-200 shadow-2xs'
                   }`}
-                  style={{ textDecoration: 'none' }}
                 >
-                  <IconComp className={`w-3.5 h-3.5 ${isActive ? 'text-[#f5c84c]' : 'text-slate-500'}`} />
+                  <IconComp className={`w-4 h-4 ${isActive ? 'text-[#f5c84c]' : 'text-slate-500'}`} />
                   <span>{tab.label}</span>
                   {tab.badge && (
                     <span
                       className={`text-[9.5px] px-1.5 py-0.5 rounded font-semibold ${
-                        isActive ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'
+                        isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
                       }`}
                     >
                       {tab.badge}
                     </span>
                   )}
-                </Link>
+                </button>
               );
             })}
           </div>
@@ -194,6 +187,150 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
       {/* Main Content Area */}
       <main className="py-8 sm:py-12">
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
+
+          {/* =========================================================================
+              TAB 0: ADMISSION PROCESS (Statutory Flow, Quota Rules & Farmers' Quota)
+              ========================================================================= */}
+          {activeTab === 'admission-process' && (
+            <div className="space-y-8 animate-fadeIn">
+              <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-100">
+                  <div className="space-y-2 max-w-3xl">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fdf5df] border border-[#fae4a4] text-xs font-bold text-[#854d0e]">
+                      <Sparkles className="w-4 h-4 text-[#d4a72c]" />
+                      <span>Statutory APSCHE & ICAR Counseling Standards</span>
+                    </div>
+                    <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
+                      Admission Process & Policy Guidelines
+                    </h2>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Admissions to Undergraduate, Postgraduate, and Doctoral degree offerings are strictly merit-driven, governed by statutory reservation quotas, Farmers' quota verification, and national ICAR entrance tests.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap lg:flex-col gap-3 flex-shrink-0">
+                    <Link
+                      to="/admissions"
+                      className="btn btn-navy text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <span>Open Full Admissions Portal</span>
+                      <ArrowRight className="w-4 h-4 text-[#ecc75f]" />
+                    </Link>
+                    <a
+                      href="#seat-matrix-all-branches"
+                      onClick={scrollToSeatMatrix}
+                      className="btn btn-gold text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <Table className="w-4 h-4" />
+                      <span>View 106 Seats Matrix ↓</span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Admission Streams Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+                  {/* UG Stream */}
+                  <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="badge badge-navy text-xs font-bold">Undergraduate (UG)</span>
+                      <span className="text-xs font-bold text-[#854d0e]">88 Seats / Year</span>
+                    </div>
+                    <h3 className="font-heading text-base font-extrabold text-navy-950">
+                      B.Tech. (Agricultural Engineering)
+                    </h3>
+                    <ul className="space-y-1.5 text-xs text-slate-600">
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                        <span><strong>Convener Quota (60%):</strong> 36 Seats via AP EAPCET rank.</span>
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                        <span><strong>Farmers' Quota (40%):</strong> 24 Seats (Form-I & II verified).</span>
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                        <span><strong>ICAR Quota (20%):</strong> 12 Seats via CUET / ICAR AIEEA-UG.</span>
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                        <span><strong>Lateral Entry (15%):</strong> 9 Seats for Diploma holders via AP ECET.</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* PG Stream */}
+                  <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="badge badge-gold text-xs font-bold">Postgraduate (PG)</span>
+                      <span className="text-xs font-bold text-[#854d0e]">14 Seats / Year</span>
+                    </div>
+                    <h3 className="font-heading text-base font-extrabold text-navy-950">
+                      Master of Technology (M.Tech.)
+                    </h3>
+                    <ul className="space-y-1.5 text-xs text-slate-600">
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                        <span><strong>Farm Machinery & Power:</strong> 3 Seats (+ ICAR Quota).</span>
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                        <span><strong>Processing & Food Engg:</strong> 5 Seats (+ ICAR Quota).</span>
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                        <span><strong>Soil & Water Engg:</strong> 5 + 1* EWS Seats (+ ICAR Quota).</span>
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                        <span>Admission based on <strong>ICAR AIEEA-PG (JRF)</strong> ranking.</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Ph.D Stream */}
+                  <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="badge badge-navy text-xs font-bold">Doctoral (Ph.D.)</span>
+                      <span className="text-xs font-bold text-[#854d0e]">4 Seats / Year</span>
+                    </div>
+                    <h3 className="font-heading text-base font-extrabold text-navy-950">
+                      Doctor of Philosophy (Ph.D.)
+                    </h3>
+                    <ul className="space-y-1.5 text-xs text-slate-600">
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                        <span><strong>FMPE Division:</strong> 2 Seats (+ ICAR SRF Quota).</span>
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                        <span><strong>PFE Division:</strong> 1 Seat (+ ICAR SRF Quota).</span>
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                        <span><strong>SWE Division:</strong> 1 Seat (+ ICAR SRF Quota).</span>
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                        <span>Admission via <strong>ICAR AICE-JRF/SRF</strong> test and interview.</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Farmers' Quota Information Alert */}
+              <div className="bg-amber-50/70 border border-amber-200/80 p-6 rounded-2xl space-y-3">
+                <div className="flex items-center gap-2 text-amber-900 font-bold text-sm">
+                  <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0" />
+                  <span>Important Criteria for 40% Farmers' Quota (Form-I & Form-II)</span>
+                </div>
+                <p className="text-xs text-amber-950 leading-relaxed">
+                  Candidates claiming reservation under the 40% Farmers' Quota in B.Tech (Agri Engg) must have studied for a minimum period of 4 years in schools situated in Non-Municipal areas (Form-I certificate issued by Headmaster), and the candidate or parent must own a minimum of 1.00 acre of cultivable agricultural land (Form-II certified by the Tahsildar / VRO).
+                </p>
+              </div>
+            </div>
+          )}
 
           {/* =========================================================================
               TAB 1: UG COURSES (ICAR VI Deans' Committee Recommendations 2024)
