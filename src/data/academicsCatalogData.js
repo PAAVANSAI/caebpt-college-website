@@ -453,33 +453,182 @@ export const ugGuidelinesData = {
 };
 
 // ============================================================================
-// 6. POSTGRADUATE (PG) GUIDELINES
+// 6. POSTGRADUATE (PG) RULES & REGULATIONS (ANGRAU 1980 / Amended upto 2016)
+// Compiled by: Dr. R. Veeraraghavaiah, Dr. T. Srinivas, Dr. T. Venkata Sridhar
 // ============================================================================
-export const pgGuidelinesData = {
-  title: "Postgraduate & Doctoral Academic Guidelines",
-  items: [
-    {
-      heading: "Advisory Committee Constitution",
-      description: "Within the first semester of admission, an Advisory Committee is constituted for every M.Tech and Ph.D scholar comprising: Major Advisor (Chairperson from student's department), Minor Advisor, Supporting Department Member, and the Dean's Nominee."
-    },
-    {
-      heading: "Program of Research (PP-1, PP-2 & PG-3)",
-      description: "The student must formulate and defend the research problem and synopsis (PP-1 & PP-2) before the Advisory Committee and departmental faculty. Approval by the Dean of Post Graduate Studies is mandatory prior to commencement of field/laboratory investigations."
-    },
-    {
-      heading: "Qualifying Comprehensive Examination",
-      description: "After completing at least 75% of prescribed coursework, students must clear the Comprehensive Written Examination followed by an Oral Comprehensive Viva-Voce conducted with an appointed External Examiner."
-    },
-    {
-      heading: "Pre-Thesis Submission Colloquium",
-      description: "A minimum of 3 months prior to final thesis submission, the candidate must deliver an open pre-submission seminar (Colloquium) detailing research results and statistical inferences in the presence of faculty and scholars."
-    },
-    {
-      heading: "Mandatory Publications for Degree Award",
-      description: "Ph.D scholars must show documentary evidence of at least 2 accepted/published research papers in NAAS-rated peer-reviewed journals, and M.Tech scholars must have at least 1 manuscript submitted/accepted."
+export const pgRegulationsData = {
+  title: "Rules and Regulations: Post-Graduate Degree Programme",
+  subtitle: "Official Statutory Regulations Governing Master's (M.Tech) & Doctoral (Ph.D) Degree Programmes",
+  authority: "Acharya N.G. Ranga Agricultural University (ANGRAU), Lam, Guntur - 522 034",
+  compiledBy: "Dr. R. Veeraraghavaiah, Dr. T. Srinivas, Dr. T. Venkata Sridhar",
+  amendmentStatus: "Post Graduate Studies Regulations, 1980 (As amended upto July, 2016)",
+  statuteReference: "Enacted in exercise of powers conferred under Section 40, read with Clause (d) of Sub-Section (2) of Section 22 of Andhra Pradesh Agricultural University Act, 1963.",
+
+  definitions: [
+    { term: "Academic Year", desc: "June to April ordinarily, consisting of two semesters. A uniform national academic calendar is strictly enforced with all PG courses commencing simultaneously on 1st August of every year (Academic Council Resoln. No. 2461)." },
+    { term: "Credit Hour / Semester Credit", desc: "Each credit hour represents 1 hour lecture or 2 to 3 hours of laboratory or field practicals each week in a semester. Classes are proportionately increased for shortened terms in admission year." },
+    { term: "Semester Duration", desc: "An academic term consisting of not less than 21 weeks, equivalent to 85 to 100 instructional days (except in the year of admission)." },
+    { term: "GPA & OGPA Precision", desc: "Grade Point Average (GPA) is computed on a 10.00-point scale and corrected to one decimal place. Overall Grade Point Average (OGPA) reflects cumulative academic performance across all completed semesters and is corrected to two decimal places." },
+    { term: "Admissions & Late Registration", desc: "No candidate shall be admitted after expiry of 15 working days from semester commencement. During 2nd and subsequent semesters, late registration with prescribed fee is permitted up to 10 working days, with attendance reckoned from day one." }
+  ],
+
+  advisorySystem: {
+    title: "Advisor System & Advisory Committee Constitution (Regulation 6)",
+    proposalsTimeline: "Submitted in triplicate to Dean of Post Graduate Studies within 6 weeks from commencement of 1st semester (PG Form 1).",
+    programmeOfStudies: "Submitted by the end of the 1st semester (PG Form 2).",
+    committeeComposition: [
+      {
+        level: "Master's Degree (M.Tech)",
+        membersCount: "3 Members",
+        composition: "Two (2) faculty members or accredited teachers from the Major Field (including Major Advisor as Chairperson) + One (1) member representing the Minor Field."
+      },
+      {
+        level: "Doctoral Degree (Ph.D)",
+        membersCount: "Minimum 4 Members",
+        composition: "Two (2) from Major Field (including Major Advisor as Chairperson) + One (1) from Minor Field + One (1) from Supporting Departments (Academic Council Resoln. Nos. 2444 & 2461)."
+      }
+    ],
+    accreditationRules: [
+      "Professors, Deans, Directors, Principal Scientists, and Associate Professors with Ph.D who have guided at least 2 M.Sc/M.Tech students or completed 3 years of service after Ph.D are accredited to teach and guide M.Tech & Ph.D scholars.",
+      "Assistant Professors with Ph.D degree or 5 years of teaching/research/extension experience after Master's degree are accredited to teach & guide Master's degree students.",
+      "Advisement Cap: Normally, not more than 4 PG students (total of Master's and Ph.D combined) shall be guided by any teacher at any one time (students who completed research credits are excluded from this count)."
+    ],
+    changeInCommittee: "If Major Advisor is transferred within ANGRAU, he/she may continue to guide if feasible. If the Chairperson resigns or retires, guidance may continue for up to 3 months (extension beyond 3 months requires approval of the Vice-Chancellor). If an Advisory Committee member is away > 3 months or transferred, a substitute member is appointed immediately by Dean PGS."
+  },
+
+  creditRequirements: {
+    title: "Minimum Statutory Credit Requirements (Regulation 8.2)",
+    table: [
+      { subject: "Major Subject", masters: "20 Credits", doctoral: "15 Credits", note: "Core parent engineering department in which student is admitted" },
+      { subject: "Minor Subject", masters: "09 Credits", doctoral: "08 Credits", note: "Closely related engineering/allied discipline (1 or more for Master's; 1 for Ph.D)" },
+      { subject: "Supporting Subject", masters: "05 Credits", doctoral: "05 Credits", note: "Relevant supporting sciences/mathematics essential for thesis research" },
+      { subject: "Credit Seminar", masters: "01 Credit", doctoral: "02 Credits", note: "Master's: 1 in Major Field; Ph.D: 1 in Major Field + 1 in Minor Field" },
+      { subject: "Research Work (Thesis)", masters: "20 Credits", doctoral: "45 Credits", note: "Original investigation and dissertation defense" },
+      { subject: "Total Academic Credits", masters: "55 Credits", doctoral: "75 Credits", note: "Minimum prescribed graduation requirement" },
+      { subject: "Compulsory Non-Credit Courses", masters: "06 Courses (PGS 501–506)", doctoral: "06 Courses (Exempt if completed in Master's)", note: "Evaluated on min 75% attendance + term paper as Satisfactory/Unsatisfactory" }
+    ],
+    semesterLoad: {
+      max: "Maximum: 18 credits per semester (excluding non-credit compulsory courses; 15+1 for marginal adjustments).",
+      min: "Minimum: 10 credits per semester (During first 2 semesters, students must register minimum 10 course credits excluding research).",
+      finalSemester: "Students permitted to register < 10 credits during last semester if permissible credit load is satisfied."
     }
+  },
+
+  timeLimitsAndResidency: {
+    title: "Minimum Residential Requirements & Maximum Time Limits (Regulation 8.6)",
+    limits: [
+      { programme: "Master's Degree (M.Tech)", minResidency: "4 Semesters", maxTime: "4 Years (from date of admission)" },
+      { programme: "Doctoral Degree (Ph.D)", minResidency: "6 Semesters", maxTime: "6 Years (from date of admission)" }
+    ],
+    rules: [
+      "Failure to complete graduation requirements within maximum time limit (4 years for M.Tech; 6 years for Ph.D) results in automatic cancellation of admission.",
+      "Extension for Ph.D: Permitted up to 1 year (1 to 2 semesters) on full-time basis only if employer sanctions study leave; application must be submitted 3 months in advance in PG Form 14.",
+      "Ph.D 3-Year Thesis Expiry: If Ph.D thesis is not submitted within 3 years after passing the Qualifying Examination, the candidate must appear for a fresh comprehensive examination."
+    ]
+  },
+
+  discontinuationAndResumption: {
+    title: "Temporary Discontinuation, Resumption & Employment (Regulations 8.7 & 8.8)",
+    points: [
+      "Discontinuation is permitted ONLY ONCE in the entire PG programme, and strictly after completing at least two (2) semesters of study. Discontinuation before completing 2 semesters results in cancellation of admission.",
+      "Written application must be submitted to Associate Dean within 30 calendar days of discontinuation (late fee of ₹100/month up to 5 months on genuine medical grounds).",
+      "Resumption of studies must occur within 4 semesters for Master's or within 6 semesters for Ph.D from semester of discontinuation (PG Form 12-A).",
+      "For Ph.D scholars, if duration of break exceeds 4 semesters, the Advisory Committee must conduct a fresh comprehensive examination to decide deficiencies.",
+      "Employment During Study (Clause 8.8): Permitted to discontinue and rejoin if employment opportunity arises; student must execute a bond with adequate sureties to refund all stipend/financial assistance received if failing to submit thesis within prescribed limit."
+    ]
+  },
+
+  scholasticProbationAndPassing: {
+    title: "Academic Status, Scholastic Probation & Dismissal (Regulation 13)",
+    standards: [
+      { metric: "Minimum Passing Standard", value: "GPA of 6.50 / 10.00 at end of 1st semester; OGPA of 6.50 / 10.00 during subsequent semesters." },
+      { metric: "Scholastic Probation", value: "GPA/OGPA between 6.00 and 6.49 places the student on Scholastic Probation during the subsequent semester." },
+      { metric: "Repeat Probation or Withdrawal", value: "If a student on Scholastic Probation again fails to secure OGPA 6.50, Dean PGS decides whether to allow probation for a 2nd time or withdraw student from University." },
+      { metric: "Cancellation of Admission", value: "Failure to secure GPA of 6.50 at end of 1st semester or OGPA 6.00 in subsequent semesters results in automatic cancellation of admission." },
+      { metric: "Improvement Re-examination", value: "PG students with GPA/OGPA < 6.50 may re-appear in courses with grade < 6.50 to elevate OGPA to 6.50 or above." }
+    ]
+  },
+
+  qualifyingExamination: {
+    title: "Qualifying (Comprehensive) Examination (Regulation 16)",
+    eligibility: "Completion of all core courses (Master's) and 75% of approved coursework with minimum cumulative OGPA of 6.50.",
+    format: [
+      {
+        level: "Master's Degree (M.Tech)",
+        writtenDetails: "One (1) written paper of 3 hours duration covering core courses. Passing standard: 50% minimum marks.",
+        oralDetails: "Oral qualifying exam covering core and elective courses conducted by Advisory Committee + External Examiner nominated by Dean PGS."
+      },
+      {
+        level: "Doctoral Degree (Ph.D)",
+        writtenDetails: "Two (2) written papers each of 3 hours duration (Paper I: Major Field; Paper II: Minor Fields). Passing standard: 70% minimum marks.",
+        oralDetails: "Oral examination conducted by Advisory Committee + External Examiner nominated by Dean PGS."
+      }
+    ],
+    attemptsRule: "Maximum of 3 attempts permitted. Re-examination cannot take place earlier than 3 months after previous test. A candidate failing for the third time shall not continue as a student in the University."
+  },
+
+  thesisRegulations: {
+    title: "Thesis Submission, Adjudication & Mandatory Publications (Regulations 17 & 18)",
+    synopsisTimeline: "Research synopsis (PG Form 3) submitted by end of 2nd semester (Master's) or 3rd semester (Ph.D). Mandatory time gap between synopsis and thesis submission is 1 semester for Master's and 2 semesters for Ph.D.",
+    mandatoryPublications: [
+      "Master's Degree: Must submit at least one (1) research paper for publication with proof from journal editor along with thesis submission.",
+      "Doctoral Degree (Ph.D): Must submit at least two (2) research papers for publication with proof of submission from journal editor along with thesis submission."
+    ],
+    externalAdjudication: [
+      {
+        level: "Master's Thesis Evaluation",
+        desc: "Evaluated by one (1) External Examiner outside the college (report required within 3 weeks). Final oral thesis viva-voce conducted by Advisory Committee + Head of Department."
+      },
+      {
+        level: "Ph.D Dissertation Evaluation",
+        desc: "Evaluated by two (2) External Examiners outside the University (selected from panel of 8 eminent scientists submitted in PG Form 13 two months prior). If both recommend acceptance, final oral defense is held with 1 External Examiner. If 1 examiner rejects, referred to a 3rd External Examiner."
+      }
+    ],
+    revisionAndResubmission: "If major revision is recommended: Master's thesis resubmitted after 3 months (within 6 months); Ph.D thesis resubmitted after 6 months (within 6–12 months). Maximum 2 thesis submissions permitted; failure at second attempt permanently debars candidate from degree.",
+    finalCopies: "Candidate must submit 3 hardbound copies (1 for Department, 2 + 2 CDs for University Library) along with Bound Copy Certificate (PG Form 9)."
+  },
+
+  degreeClassification: {
+    title: "Eligibility for Degree Award & Class Divisions (Regulation 19)",
+    divisions: [
+      { division: "First Class with Distinction", ogpa: "8.50 and above / 10.00", desc: "Highest academic honor; Gold Medal & Merit Certificate eligibility" },
+      { division: "First Class", ogpa: "8.00 to 8.49 / 10.00", desc: "Awarded degree with First Class division" },
+      { division: "Second Class", ogpa: "6.50 to 7.99 / 10.00", desc: "Standard degree completion division" },
+      { division: "Ineligible for Degree", ogpa: "Below 6.50 / 10.00", desc: "Cannot qualify for Master's or Doctoral degree award" }
+    ]
+  },
+
+  publicationEthics: {
+    title: "Guidelines to Prevent Unethical Practices in Research Publications (Regulation 24)",
+    rules: [
+      "Strict Authorship Hierarchy: For all research papers prepared on the basis of student research, authorship must strictly be in order of: 1. Student, 2. Major Advisor (Chairperson), 3. Co-Chairperson, 4. Members of Advisory Committee.",
+      "Mandatory Attribution Footnote: Whenever thesis material is published, a footnote must state: 'Part of the thesis submitted for the Post Graduate degree of Acharya N.G. Ranga Agricultural University'.",
+      "Departmental Routing: All research papers must be routed through Head of Department / Research Station with certification that due weightage is given to all contributors."
+    ]
+  },
+
+  statutoryFormsSchedule: [
+    { form: "PG Form 1", timeline: "Within 6 weeks of 1st Semester", purpose: "Proposal for Constitution of Advisory Committee (triplicate to Dean PGS)" },
+    { form: "PG Form 1-A", timeline: "Whenever changes occur", purpose: "Proposal for Change in Advisory Committee / Chairperson" },
+    { form: "PG Form 2", timeline: "End of 1st Semester", purpose: "Proposed Programme of Course Work (Core, Minor, Supporting, Non-credit)" },
+    { form: "PG Form 2-A", timeline: "Within 2 weeks / 6 weeks", purpose: "Temporary or permanent change/withdrawal/addition/deletion of courses" },
+    { form: "PG Form 3", timeline: "End of 2nd Sem (M.Tech) / 3rd Sem (Ph.D)", purpose: "Original Synopsis of Thesis / Dissertation Research Problem" },
+    { form: "PG Form 3-A", timeline: "Prior to research change", purpose: "Proposal for Change in Approved Synopsis / Title" },
+    { form: "PG Form 4 & 5", timeline: "During 3rd / 4th Semester", purpose: "Proposal and Official Result of Written & Oral Qualifying Examination" },
+    { form: "PG Form 6", timeline: "Along with thesis submission", purpose: "Proposal for Submission of Thesis (with No Dues & photos)" },
+    { form: "PG Form 7", timeline: "After final oral defense", purpose: "Confidential Report on PG Thesis and Final Viva-Voce Examination" },
+    { form: "PG Form 9", timeline: "After viva-voce corrections", purpose: "Certificate Regarding Submission of Bound Copies & CDs of Thesis to Library" },
+    { form: "PG Form 10 & 13", timeline: "2 months before Ph.D thesis submission", purpose: "Ph.D Academic Information & Panel of 8 External Examiners" },
+    { form: "PG Form 11", timeline: "Before last working day of each semester", purpose: "Proposal for Evaluation of Research Credits (Semester Progress Report)" },
+    { form: "PG Form 12, 12-A, 12-B", timeline: "Upon need / re-admission", purpose: "Permission for Temporary Discontinuation and Resumption of Studies" },
+    { form: "PG Form 14", timeline: "3 months before expiry of maximum time", purpose: "Proposal for Extension of Time Limit for Ph.D Thesis Submission" },
+    { form: "PG Form 16", timeline: "Within 25 days of semester start", purpose: "Proposal for Re-Examination in Failed Course" },
+    { form: "PG Form 17", timeline: "Maintained in Department", purpose: "Academic Progress Register of PG Students (Semester-wise)" },
+    { form: "PG Form 18 & 18-A", timeline: "Beginning of each semester", purpose: "Registration Card-cum-Grade Card & Semester GPA Report" }
   ]
 };
+
+export const pgGuidelinesData = pgRegulationsData;
 
 // ============================================================================
 // 7. THESIS PRESENTATION GUIDELINES (ANGRAU 2019 Booklet)

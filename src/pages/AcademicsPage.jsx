@@ -12,6 +12,7 @@ import {
   examinationRegulationsData,
   ugGuidelinesData,
   pgGuidelinesData,
+  pgRegulationsData,
   thesisGuidelinesData,
   antiPlagiarismPolicyData
 } from '../data/academicsCatalogData';
@@ -107,7 +108,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
     { key: 'phd-courses', label: 'Ph.D Courses', icon: Award, badge: 'Doctoral' },
     { key: 'examination', label: 'Examination', icon: FileCheck, badge: 'Regulations' },
     { key: 'ug-guidelines', label: 'UG Guidelines', icon: Compass, badge: 'Directives' },
-    { key: 'pg-guidelines', label: 'PG Guidelines', icon: Scroll, badge: 'Advisory' },
+    { key: 'pg-guidelines', label: 'PG Guidelines', icon: Scroll, badge: 'Regulations' },
     { key: 'thesis-guidelines', label: 'Thesis Guidelines', icon: BookMarked, badge: '2019 Specs' },
     { key: 'anti-plagiarism-policy', label: 'Anti-Plagiarism', icon: ShieldCheck, badge: 'Res. 2920' },
   ];
@@ -1229,32 +1230,436 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
           )}
 
           {/* =========================================================================
-              TAB 6: PG GUIDELINES
+              TAB 6: PG GUIDELINES / POST-GRADUATE DEGREE PROGRAMME REGULATIONS
+              Official ANGRAU Regulations (Compiled by Dr. R. Veeraraghavaiah et al.)
               ========================================================================= */}
           {activeTab === 'pg-guidelines' && (
-            <div className="space-y-6 animate-fadeIn">
-              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-2">
-                <span className="badge badge-navy text-xs font-bold">Postgraduate Academic Directives</span>
-                <h2 className="font-heading text-2xl font-extrabold text-navy-950">
-                  {pgGuidelinesData.title}
+            <div className="space-y-8 animate-fadeIn">
+              {/* Statutory Header Card */}
+              <div className="bg-white rounded-2xl border-l-4 border-l-[#854d0e] border border-slate-200 p-6 sm:p-8 shadow-sm space-y-3">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fdf5df] border border-[#fae4a4] text-xs font-bold text-[#854d0e]">
+                    <Scroll className="w-4 h-4 text-[#d4a72c]" />
+                    <span>Official ANGRAU Statutory Regulations</span>
+                  </div>
+                  <span className="badge badge-navy text-xs font-bold">
+                    {pgRegulationsData.amendmentStatus}
+                  </span>
+                </div>
+                <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
+                  {pgRegulationsData.title}
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-600">
-                  Statutory procedures for M.Tech and Ph.D scholars: Advisory committee formation, research synopsis defense, comprehensive examinations, and dissertation submission.
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {pgRegulationsData.subtitle} • {pgRegulationsData.authority}
                 </p>
+                <div className="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
+                  <div>
+                    <span className="font-semibold text-slate-700">Compiled by: </span>
+                    <span>{pgRegulationsData.compiledBy}</span>
+                  </div>
+                  <div className="text-[11px] text-slate-500 italic max-w-xl">
+                    {pgRegulationsData.statuteReference}
+                  </div>
+                </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {pgGuidelinesData.items.map((item, idx) => (
-                  <div key={idx} className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-2">
-                    <div className="flex items-center gap-2 text-navy-950 font-bold text-sm">
-                      <Scroll className="w-4 h-4 text-[#b88e22]" />
-                      <span>{item.heading}</span>
+              {/* 1. STATUTORY DEFINITIONS */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <h3 className="font-heading text-lg font-bold text-navy-950 flex items-center gap-2">
+                    <BookOpen className="w-5 h-5 text-blue-600" />
+                    <span>1. Academic Calendar, Credits & Core Definitions</span>
+                  </h3>
+                  <span className="badge badge-gold font-bold text-xs">Regulation 2</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+                  {pgRegulationsData.definitions.map((def, dIdx) => (
+                    <div key={dIdx} className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1.5 flex flex-col justify-between">
+                      <div>
+                        <strong className="text-navy-950 block font-bold text-[13px] text-[#854d0e] mb-1">
+                          {def.term}
+                        </strong>
+                        <p className="text-slate-600 leading-relaxed text-[11.5px]">
+                          {def.desc}
+                        </p>
+                      </div>
                     </div>
-                    <p className="text-xs text-slate-600 leading-relaxed pl-6">
-                      {item.description}
+                  ))}
+                </div>
+              </div>
+
+              {/* 2. ADVISOR SYSTEM & ADVISORY COMMITTEE (REGULATION 6) */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-5">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div>
+                    <h3 className="font-heading text-lg font-bold text-navy-950">
+                      {pgRegulationsData.advisorySystem.title}
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Proposals in PG Form 1: {pgRegulationsData.advisorySystem.proposalsTimeline}
                     </p>
                   </div>
-                ))}
+                  <span className="badge badge-navy text-xs font-bold">Regulation 6</span>
+                </div>
+
+                {/* Committee Composition Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {pgRegulationsData.advisorySystem.committeeComposition.map((comm, cIdx) => (
+                    <div key={cIdx} className="p-5 bg-[#fbfdff] rounded-xl border-2 border-blue-200/80 space-y-2">
+                      <div className="flex items-center justify-between">
+                        <strong className="text-sm font-bold text-navy-950">
+                          {comm.level}
+                        </strong>
+                        <span className="badge badge-gold text-xs font-extrabold">{comm.membersCount}</span>
+                      </div>
+                      <p className="text-xs text-slate-700 leading-relaxed">
+                        {comm.composition}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Accreditation & Faculty Rules */}
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-3">
+                  <h4 className="text-xs font-bold text-navy-950 uppercase tracking-wider flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    <span>Faculty Accreditation & Advisement Limits</span>
+                  </h4>
+                  <ul className="space-y-2 text-xs text-slate-600">
+                    {pgRegulationsData.advisorySystem.accreditationRules.map((r, rIdx) => (
+                      <li key={rIdx} className="flex items-start gap-2">
+                        <span className="text-[#854d0e] font-bold mt-0.5">•</span>
+                        <span className="leading-relaxed">{r}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="pt-2 border-t border-slate-200/60 text-xs text-slate-600 leading-relaxed">
+                    <strong className="text-navy-950">Committee Changes / Retirement (Clause 6.2): </strong>
+                    {pgRegulationsData.advisorySystem.changeInCommittee}
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. MINIMUM STATUTORY CREDIT REQUIREMENTS (REGULATION 8.2) */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div>
+                    <h3 className="font-heading text-lg font-bold text-navy-950">
+                      {pgRegulationsData.creditRequirements.title}
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Statutory framework prescribed by Academic Council Resoln. Nos. 2444 & 2461.
+                    </p>
+                  </div>
+                  <span className="badge badge-gold font-bold text-xs">M.Tech: 55 Cr • Ph.D: 75 Cr</span>
+                </div>
+
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full text-xs text-left border-collapse min-w-[650px]">
+                    <thead>
+                      <tr className="bg-slate-100/70 text-navy-950 border-b border-slate-200">
+                        <th className="py-3 px-4 font-bold">Course Category</th>
+                        <th className="py-3 px-4 font-bold text-center w-36">Master's (M.Tech)</th>
+                        <th className="py-3 px-4 font-bold text-center w-36">Doctoral (Ph.D)</th>
+                        <th className="py-3 px-4 font-bold">Statutory Definition & Focus</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {pgRegulationsData.creditRequirements.table.map((row, idx) => {
+                        const isTotal = row.subject.includes('Total');
+                        const isNonCredit = row.subject.includes('Non-Credit');
+                        return (
+                          <tr
+                            key={idx}
+                            className={`transition-colors ${
+                              isTotal
+                                ? 'bg-[#fdf5df] font-extrabold text-navy-950 border-t-2 border-[#d4a72c]'
+                                : isNonCredit
+                                ? 'bg-slate-50/70 font-semibold text-slate-700 italic'
+                                : 'hover:bg-slate-50 text-slate-700'
+                            }`}
+                          >
+                            <td className="py-3 px-4 font-medium">
+                              {row.subject}
+                            </td>
+                            <td className={`py-3 px-4 text-center ${isTotal ? 'text-[#854d0e] font-extrabold text-sm' : 'font-semibold'}`}>
+                              {row.masters}
+                            </td>
+                            <td className={`py-3 px-4 text-center ${isTotal ? 'text-[#854d0e] font-extrabold text-sm' : 'font-semibold'}`}>
+                              {row.doctoral}
+                            </td>
+                            <td className="py-3 px-4 text-slate-600 text-[11.5px]">
+                              {row.note}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Semester Load Bounds */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pt-2">
+                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <span className="text-[11px] font-bold uppercase text-slate-500 block">Maximum Semester Load</span>
+                    <strong className="text-navy-950 text-xs block">{pgRegulationsData.creditRequirements.semesterLoad.max}</strong>
+                  </div>
+                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <span className="text-[11px] font-bold uppercase text-slate-500 block">Minimum Semester Load</span>
+                    <strong className="text-navy-950 text-xs block">{pgRegulationsData.creditRequirements.semesterLoad.min}</strong>
+                  </div>
+                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <span className="text-[11px] font-bold uppercase text-slate-500 block">Final Semester Load</span>
+                    <span className="text-slate-600 text-[11px] block">{pgRegulationsData.creditRequirements.semesterLoad.finalSemester}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 4. RESIDENTIAL REQUIREMENTS & MAXIMUM TIME LIMITS (REGULATION 8.6) */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <h3 className="font-heading text-lg font-bold text-navy-950">
+                    {pgRegulationsData.timeLimitsAndResidency.title}
+                  </h3>
+                  <span className="badge badge-navy text-xs font-bold">Regulation 8.6</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {pgRegulationsData.timeLimitsAndResidency.limits.map((l, lIdx) => (
+                    <div key={lIdx} className="p-5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2">
+                      <strong className="text-sm font-bold text-navy-950 block">
+                        {l.programme}
+                      </strong>
+                      <div className="grid grid-cols-2 gap-2 text-xs pt-1">
+                        <div className="bg-white p-2.5 rounded-lg border border-slate-200">
+                          <span className="text-[10px] text-slate-500 uppercase block font-semibold">Min Residential Limit</span>
+                          <span className="font-extrabold text-navy-900 text-sm">{l.minResidency}</span>
+                        </div>
+                        <div className="bg-white p-2.5 rounded-lg border border-slate-200">
+                          <span className="text-[10px] text-slate-500 uppercase block font-semibold">Maximum Time Limit</span>
+                          <span className="font-extrabold text-[#854d0e] text-sm">{l.maxTime}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="p-4 bg-amber-50/60 rounded-xl border border-amber-200/70 space-y-2 text-xs text-amber-950">
+                  <strong className="font-bold flex items-center gap-1.5">
+                    <AlertTriangle className="w-4 h-4 text-amber-700" />
+                    <span>Important Strictures on Maximum Time Limits & Extensions:</span>
+                  </strong>
+                  <ul className="space-y-1.5 pl-5 list-disc text-[11.5px] text-amber-900">
+                    {pgRegulationsData.timeLimitsAndResidency.rules.map((rule, rIdx) => (
+                      <li key={rIdx}>{rule}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* 5. TEMPORARY DISCONTINUATION & RESUMPTION (REGULATION 8.7 & 8.8) */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <h3 className="font-heading text-lg font-bold text-navy-950">
+                    {pgRegulationsData.discontinuationAndResumption.title}
+                  </h3>
+                  <span className="badge badge-gold font-bold text-xs">Only Once Permitted</span>
+                </div>
+                <ul className="space-y-2 text-xs text-slate-700">
+                  {pgRegulationsData.discontinuationAndResumption.points.map((pt, pIdx) => (
+                    <li key={pIdx} className="flex items-start gap-2.5 bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
+                      <span className="w-5 h-5 rounded-full bg-[#0b1a2e] text-[#f5c84c] text-[10px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                        {pIdx + 1}
+                      </span>
+                      <span className="leading-relaxed text-[11.5px]">{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* 6. ACADEMIC STATUS & SCHOLASTIC PROBATION (REGULATION 13) */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <h3 className="font-heading text-lg font-bold text-navy-950">
+                    {pgRegulationsData.scholasticProbationAndPassing.title}
+                  </h3>
+                  <span className="badge badge-navy text-xs font-bold">Regulation 13</span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+                  {pgRegulationsData.scholasticProbationAndPassing.standards.map((std, sIdx) => (
+                    <div key={sIdx} className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1">
+                      <strong className="text-navy-950 block font-bold text-[12px] text-[#854d0e]">
+                        {std.metric}
+                      </strong>
+                      <p className="text-slate-600 leading-relaxed text-[11.5px]">
+                        {std.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* 7. QUALIFYING (COMPREHENSIVE) EXAMINATION (REGULATION 16) */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div>
+                    <h3 className="font-heading text-lg font-bold text-navy-950">
+                      {pgRegulationsData.qualifyingExamination.title}
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Eligibility: {pgRegulationsData.qualifyingExamination.eligibility}
+                    </p>
+                  </div>
+                  <span className="badge badge-gold font-bold text-xs">Regulation 16</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                  {pgRegulationsData.qualifyingExamination.format.map((fmt, fIdx) => (
+                    <div key={fIdx} className="p-5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2">
+                      <strong className="text-sm font-bold text-navy-950 block">
+                        {fmt.level}
+                      </strong>
+                      <div className="space-y-1.5 pt-1 text-[11.5px] text-slate-700">
+                        <p><strong className="text-slate-900">Written Exam:</strong> {fmt.writtenDetails}</p>
+                        <p><strong className="text-slate-900">Oral Viva-Voce:</strong> {fmt.oralDetails}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="p-3.5 bg-blue-50/70 rounded-xl border border-blue-200/70 text-xs text-blue-950 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-blue-700 flex-shrink-0" />
+                  <span><strong>Attempts Standard:</strong> {pgRegulationsData.qualifyingExamination.attemptsRule}</span>
+                </div>
+              </div>
+
+              {/* 8. THESIS SUBMISSION, ADJUDICATION & MANDATORY PUBLICATIONS (REGULATIONS 17 & 18) */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-5">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <h3 className="font-heading text-lg font-bold text-navy-950">
+                    {pgRegulationsData.thesisRegulations.title}
+                  </h3>
+                  <span className="badge badge-navy text-xs font-bold">Regulations 17 & 18</span>
+                </div>
+
+                <div className="p-4 bg-[#fdf5df] rounded-xl border border-[#fae4a4] space-y-2 text-xs">
+                  <strong className="text-[#854d0e] block font-bold text-[13px] uppercase tracking-wide">
+                    Mandatory Publications for Submission of Thesis
+                  </strong>
+                  <ul className="space-y-1.5 pl-4 list-disc text-slate-800 text-[11.5px]">
+                    {pgRegulationsData.thesisRegulations.mandatoryPublications.map((pub, pIdx) => (
+                      <li key={pIdx}><strong>{pub}</strong></li>
+                    ))}
+                  </ul>
+                  <p className="text-[11px] text-slate-600 pt-1">
+                    ★ {pgRegulationsData.thesisRegulations.synopsisTimeline}
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                  {pgRegulationsData.thesisRegulations.externalAdjudication.map((adj, aIdx) => (
+                    <div key={aIdx} className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1.5">
+                      <strong className="text-navy-950 block font-bold text-xs">{adj.level}</strong>
+                      <p className="text-slate-600 leading-relaxed text-[11.5px]">{adj.desc}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                  <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <span className="text-[11px] font-bold uppercase text-slate-500 block">Revision & Re-submission Window</span>
+                    <p className="text-slate-700 text-[11.5px]">{pgRegulationsData.thesisRegulations.revisionAndResubmission}</p>
+                  </div>
+                  <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                    <span className="text-[11px] font-bold uppercase text-slate-500 block">Required Copies & Certificates</span>
+                    <p className="text-slate-700 text-[11.5px]">{pgRegulationsData.thesisRegulations.finalCopies}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 9. DEGREE ELIGIBILITY & CLASSIFICATION (REGULATION 19) */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <h3 className="font-heading text-lg font-bold text-navy-950">
+                    {pgRegulationsData.degreeClassification.title}
+                  </h3>
+                  <span className="badge badge-gold font-bold text-xs">Regulation 19</span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                  {pgRegulationsData.degreeClassification.divisions.map((div, dIdx) => (
+                    <div key={dIdx} className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1.5">
+                      <strong className="text-navy-950 block font-bold text-xs">{div.division}</strong>
+                      <span className="inline-block bg-[#fdf5df] border border-[#d4a72c] text-[#854d0e] font-extrabold text-xs px-2 py-0.5 rounded">
+                        {div.ogpa}
+                      </span>
+                      <p className="text-[11px] text-slate-600 leading-snug">{div.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* 10. PUBLICATION ETHICS & AUTHORSHIP HIERARCHY (REGULATION 24) */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-3">
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-5 h-5 text-emerald-600" />
+                  <h3 className="font-heading text-lg font-bold text-navy-950">
+                    {pgRegulationsData.publicationEthics.title}
+                  </h3>
+                </div>
+                <ul className="space-y-2 text-xs text-slate-700">
+                  {pgRegulationsData.publicationEthics.rules.map((rule, rIdx) => (
+                    <li key={rIdx} className="flex items-start gap-2 bg-slate-50 p-3 rounded-xl border border-slate-200/80">
+                      <span className="text-emerald-700 font-bold mt-0.5">✓</span>
+                      <span className="leading-relaxed text-[11.5px]">{rule}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* 11. STATUTORY SCHEDULE OF OFFICIAL PG FORMS (PG-1 TO PG-19) */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div>
+                    <h3 className="font-heading text-lg font-bold text-navy-950 flex items-center gap-2">
+                      <Table className="w-5 h-5 text-[#854d0e]" />
+                      <span>Appendix: Schedule of Statutory PG Forms & Timelines</span>
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Standard proformas to be submitted to Dean of Post Graduate Studies from admission to convocation.
+                    </p>
+                  </div>
+                  <span className="badge badge-navy text-xs font-bold">PG Forms 1 to 18A</span>
+                </div>
+
+                <div className="overflow-x-auto rounded-xl border border-slate-200">
+                  <table className="w-full text-xs text-left border-collapse min-w-[650px]">
+                    <thead>
+                      <tr className="bg-slate-100/70 text-navy-950 border-b border-slate-200">
+                        <th className="py-2.5 px-3 font-bold w-32">Form No.</th>
+                        <th className="py-2.5 px-3 font-bold w-52">Mandatory Submission Timeline</th>
+                        <th className="py-2.5 px-4 font-bold">Statutory Purpose & Approval Workflow</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {pgRegulationsData.statutoryFormsSchedule.map((f, fIdx) => (
+                        <tr key={fIdx} className="hover:bg-slate-50 text-slate-700">
+                          <td className="py-2.5 px-3 font-bold text-navy-950 font-mono text-[11.5px]">
+                            {f.form}
+                          </td>
+                          <td className="py-2.5 px-3 text-[#854d0e] font-semibold text-[11px]">
+                            {f.timeline}
+                          </td>
+                          <td className="py-2.5 px-4 text-slate-600 text-[11.5px]">
+                            {f.purpose}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           )}
