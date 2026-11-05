@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useSearchParams, useLocation, useParams } from 'react-router-dom';
+import { Link, useSearchParams, useLocation, useParams, useNavigate } from 'react-router-dom';
 import PageBanner from '../components/PageBanner';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
@@ -16,95 +16,61 @@ import {
 } from '../data/academicsCatalogData';
 import {
   BookOpen,
-  Building2,
-  Clock,
-  Users,
-  CheckCircle2,
-  ChevronRight,
   GraduationCap,
-  FileText,
-  ArrowRight,
-  Table,
-  Award,
-  Info,
-  ShieldCheck,
   FileCheck,
+  Compass,
   Scroll,
-  Search,
+  BookMarked,
+  ShieldCheck,
+  Table,
   Sparkles,
   Layers,
-  Compass,
+  Search,
+  CheckCircle2,
   AlertTriangle,
+  ArrowRight,
+  ChevronRight,
+  Award,
   Download,
-  ExternalLink,
-  BookMarked
+  Calendar,
+  Clock,
+  ExternalLink
 } from 'lucide-react';
 
-export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultTab }) {
+export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
   const { officialStructure } = useWebsite();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
   const { section } = useParams();
+  const [searchParams] = useSearchParams();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  // Normalize initial tab from URL path or param
-  const getInitialTab = () => {
-    if (defaultTab) return defaultTab;
+  // Normalize active tab directly from URL (eliminating state desynchronization)
+  const getActiveTab = () => {
     if (section) {
       if (section === 'courses') return 'ug-courses';
       return section;
     }
-    if (location.pathname.includes('/ug-courses')) return 'ug-courses';
-    if (location.pathname.includes('/pg-courses')) return 'pg-courses';
-    if (location.pathname.includes('/phd-courses')) return 'phd-courses';
-    if (location.pathname.includes('/examination')) return 'examination';
-    if (location.pathname.includes('/ug-guidelines')) return 'ug-guidelines';
-    if (location.pathname.includes('/pg-guidelines')) return 'pg-guidelines';
-    if (location.pathname.includes('/thesis-guidelines')) return 'thesis-guidelines';
-    if (location.pathname.includes('/anti-plagiarism-policy')) return 'anti-plagiarism-policy';
-    if (location.pathname.includes('/departments')) return 'departments';
-    if (location.pathname.includes('/courses')) return 'ug-courses';
+    const path = location.pathname.toLowerCase();
+    if (path.includes('/ug-courses')) return 'ug-courses';
+    if (path.includes('/pg-courses')) return 'pg-courses';
+    if (path.includes('/phd-courses')) return 'phd-courses';
+    if (path.includes('/examination')) return 'examination';
+    if (path.includes('/ug-guidelines')) return 'ug-guidelines';
+    if (path.includes('/pg-guidelines')) return 'pg-guidelines';
+    if (path.includes('/thesis-guidelines')) return 'thesis-guidelines';
+    if (path.includes('/anti-plagiarism-policy')) return 'anti-plagiarism-policy';
+    if (path.includes('/courses')) return 'ug-courses';
     return searchParams.get('tab') || searchParams.get('view') || 'ug-courses';
   };
 
-  const [activeTab, setActiveTab] = useState(getInitialTab);
+  const activeTab = getActiveTab();
+
+  // Local state for interactive filtering inside tabs
   const [selectedSemester, setSelectedSemester] = useState('Semester I');
   const [courseSearchQuery, setCourseSearchQuery] = useState('');
   const [skillSearchQuery, setSkillSearchQuery] = useState('');
 
   const academics = officialStructure?.academics || officialStructureData.academics;
-
-  useEffect(() => {
-    if (section) {
-      if (section === 'courses') setActiveTab('ug-courses');
-      else setActiveTab(section);
-    } else if (location.pathname.includes('/ug-courses')) {
-      setActiveTab('ug-courses');
-    } else if (location.pathname.includes('/pg-courses')) {
-      setActiveTab('pg-courses');
-    } else if (location.pathname.includes('/phd-courses')) {
-      setActiveTab('phd-courses');
-    } else if (location.pathname.includes('/examination')) {
-      setActiveTab('examination');
-    } else if (location.pathname.includes('/ug-guidelines')) {
-      setActiveTab('ug-guidelines');
-    } else if (location.pathname.includes('/pg-guidelines')) {
-      setActiveTab('pg-guidelines');
-    } else if (location.pathname.includes('/thesis-guidelines')) {
-      setActiveTab('thesis-guidelines');
-    } else if (location.pathname.includes('/anti-plagiarism-policy')) {
-      setActiveTab('anti-plagiarism-policy');
-    } else if (location.pathname.includes('/departments')) {
-      setActiveTab('departments');
-    } else {
-      const t = searchParams.get('tab') || searchParams.get('view');
-      if (t) setActiveTab(t);
-    }
-  }, [location.pathname, section, searchParams]);
-
-  const handleTabChange = (tabKey) => {
-    setActiveTab(tabKey);
-    setSearchParams({ tab: tabKey });
-  };
 
   // Safe Program Selector Helper
   const handleOpenProgramModal = (courseObj) => {
@@ -131,7 +97,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
     onSelectProgram(safeProgram);
   };
 
-  // Nav tabs matching ANGRAU official hierarchy
+  // Nav tabs strictly matching ANGRAU official hierarchy
   const academicTabs = [
     { key: 'ug-courses', label: 'UG Courses', icon: GraduationCap, badge: 'B.Tech' },
     { key: 'pg-courses', label: 'PG Courses', icon: BookOpen, badge: 'M.Tech' },
@@ -143,8 +109,20 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
     { key: 'anti-plagiarism-policy', label: 'Anti-Plagiarism', icon: ShieldCheck, badge: 'Res. 2920' },
   ];
 
+  // Helper for scrolling smoothly to seat matrix
+  const scrollToSeatMatrix = (e) => {
+    e.preventDefault();
+    const el = document.getElementById('seat-matrix-all-branches');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   // Current semester course list with search
-  const currentSemesterObj = ugCurriculumData.semesters.find((s) => s.semester === selectedSemester) || ugCurriculumData.semesters[0];
+  const currentSemesterObj =
+    ugCurriculumData.semesters.find((s) => s.semester === selectedSemester) ||
+    ugCurriculumData.semesters[0];
+
   const filteredSemesterCourses = currentSemesterObj.courses.filter(
     (c) =>
       c.title.toLowerCase().includes(courseSearchQuery.toLowerCase()) ||
@@ -159,7 +137,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
   );
 
   return (
-    <div>
+    <div className="bg-slate-50 min-h-screen">
       <PageBanner
         title="Official Academic Programs & Regulations"
         subtitle="Comprehensive curricula, ICAR VI Deans' Committee framework, thesis presentation standards, examination guidelines, and anti-plagiarism regulations under ANGRAU."
@@ -169,12 +147,12 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
 
       {/* Official Academics Navigation Tab Bar */}
       <section className="bg-white border-b border-slate-200 sticky top-16 z-30 shadow-xs">
-        <div className="container max-w-7xl mx-auto px-4">
-          <div className="flex items-center gap-1.5 overflow-x-auto py-2.5 no-scrollbar">
-            {/* Quick Link to Admission Process */}
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex items-center gap-2 py-3 overflow-x-auto no-scrollbar lg:flex-wrap">
+            {/* Direct Link to Admission Process */}
             <Link
               to="/admissions"
-              className="flex-shrink-0 px-3 py-2 rounded-xl text-xs font-bold text-[#854d0e] bg-[#fdf5df] border border-[#fae4a4] hover:bg-[#fae4a4] transition-all flex items-center gap-1.5"
+              className="flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold text-[#854d0e] bg-[#fdf5df] border border-[#fae4a4] hover:bg-[#f6e5b8] hover:border-[#d4a72c] transition-all flex items-center gap-1.5 shadow-2xs"
               style={{ textDecoration: 'none' }}
             >
               <Sparkles className="w-3.5 h-3.5 text-[#d4a72c]" />
@@ -185,28 +163,28 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
               const IconComp = tab.icon;
               const isActive = activeTab === tab.key;
               return (
-                <button
+                <Link
                   key={tab.key}
-                  type="button"
-                  onClick={() => handleTabChange(tab.key)}
-                  className={`flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                  to={`/academics/${tab.key}`}
+                  className={`flex-shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 border ${
                     isActive
-                      ? 'bg-[#0b1a2e] text-white shadow-sm'
-                      : 'text-slate-700 bg-slate-100 hover:bg-slate-200/80 hover:text-navy-950'
+                      ? 'bg-[#0b1a2e] text-white border-[#0b1a2e] shadow-sm'
+                      : 'text-slate-700 bg-slate-50 hover:bg-white hover:text-navy-950 border-slate-200 hover:border-slate-300'
                   }`}
+                  style={{ textDecoration: 'none' }}
                 >
                   <IconComp className={`w-3.5 h-3.5 ${isActive ? 'text-[#f5c84c]' : 'text-slate-500'}`} />
                   <span>{tab.label}</span>
                   {tab.badge && (
                     <span
-                      className={`text-[9.5px] px-1.5 py-0.2 rounded font-semibold ${
+                      className={`text-[9.5px] px-1.5 py-0.5 rounded font-semibold ${
                         isActive ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'
                       }`}
                     >
                       {tab.badge}
                     </span>
                   )}
-                </button>
+                </Link>
               );
             })}
           </div>
@@ -214,67 +192,69 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
       </section>
 
       {/* Main Content Area */}
-      <section className="section-padding bg-slate-50 min-h-[600px]">
-        <div className="container max-w-7xl mx-auto space-y-10">
+      <main className="py-8 sm:py-12">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
 
           {/* =========================================================================
               TAB 1: UG COURSES (ICAR VI Deans' Committee Recommendations 2024)
               ========================================================================= */}
           {activeTab === 'ug-courses' && (
             <div className="space-y-10 animate-fadeIn">
-              {/* Header Box */}
-              <div className="bg-gradient-to-r from-[#06101e] to-[#0b1a2e] text-white p-6 sm:p-8 rounded-2xl shadow-md border border-[#1b3459]">
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+              {/* Institutional Overview Header Card */}
+              <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-100">
                   <div className="space-y-2 max-w-3xl">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-bold text-[#f5c84c]">
-                      <GraduationCap className="w-4 h-4" />
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fdf5df] border border-[#fae4a4] text-xs font-bold text-[#854d0e]">
+                      <GraduationCap className="w-4 h-4 text-[#d4a72c]" />
                       <span>ICAR VI Deans' Committee Approved Curriculum (2024–25)</span>
                     </div>
-                    <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-white">
+                    <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
                       B.Tech. (Agricultural Engineering)
                     </h2>
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                       4-Year Full-Time Professional Degree Program designed to impart state-of-the-art engineering competencies across farm mechanization, irrigation automation, post-harvest agro-processing, and renewable energy technologies.
                     </p>
                   </div>
-                  <div className="flex flex-wrap lg:flex-col gap-3">
+                  <div className="flex flex-wrap lg:flex-col gap-3 flex-shrink-0">
                     <a
                       href="#seat-matrix-all-branches"
-                      className="btn btn-gold text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap"
+                      onClick={scrollToSeatMatrix}
+                      className="btn btn-navy text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
+                      style={{ textDecoration: 'none' }}
                     >
-                      <Table className="w-4 h-4" />
+                      <Table className="w-4 h-4 text-[#f5c84c]" />
                       <span>View 88 UG Seats Matrix ↓</span>
                     </a>
                     {onOpenEnquiry && (
                       <button
                         type="button"
                         onClick={() => onOpenEnquiry(academics.courses[0])}
-                        className="btn bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap"
+                        className="btn btn-gold text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
                       >
                         <span>Admission Enquiry</span>
-                        <ArrowRight className="w-4 h-4 text-[#ecc75f]" />
+                        <ArrowRight className="w-4 h-4" />
                       </button>
                     )}
                   </div>
                 </div>
 
                 {/* Credit Distribution Metrics */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-6 border-t border-white/10 text-center">
-                  <div className="bg-white/5 p-3 rounded-xl border border-white/10">
-                    <span className="text-[11px] text-slate-300 uppercase block">Total Duration</span>
-                    <strong className="text-lg font-extrabold text-white">4 Years (8 Sems)</strong>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 text-center">
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <span className="text-[11px] font-bold text-slate-500 uppercase block mb-1">Duration</span>
+                    <strong className="text-lg sm:text-xl font-extrabold text-navy-950">4 Years (8 Sems)</strong>
                   </div>
-                  <div className="bg-white/5 p-3 rounded-xl border border-white/10">
-                    <span className="text-[11px] text-slate-300 uppercase block">Total Credits</span>
-                    <strong className="text-lg font-extrabold text-[#f5c84c]">180 + 4 NG</strong>
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <span className="text-[11px] font-bold text-slate-500 uppercase block mb-1">Total Credits</span>
+                    <strong className="text-lg sm:text-xl font-extrabold text-[#854d0e]">180 + 4 NG</strong>
                   </div>
-                  <div className="bg-white/5 p-3 rounded-xl border border-white/10">
-                    <span className="text-[11px] text-slate-300 uppercase block">Theory + Practical</span>
-                    <strong className="text-lg font-extrabold text-white">91 Th + 83 Pr</strong>
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <span className="text-[11px] font-bold text-slate-500 uppercase block mb-1">Theory + Practical</span>
+                    <strong className="text-lg sm:text-xl font-extrabold text-navy-950">91 Th + 83 Pr</strong>
                   </div>
-                  <div className="bg-white/5 p-3 rounded-xl border border-white/10">
-                    <span className="text-[11px] text-slate-300 uppercase block">MOOCs / Online</span>
-                    <strong className="text-lg font-extrabold text-white">6 Credits</strong>
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <span className="text-[11px] font-bold text-slate-500 uppercase block mb-1">MOOCs / Online</span>
+                    <strong className="text-lg sm:text-xl font-extrabold text-navy-950">6 Credits</strong>
                   </div>
                 </div>
               </div>
@@ -286,7 +266,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
                     <Sparkles className="w-5 h-5 text-[#b88e22]" />
                     <span>NEP 2020 Multiple Entry & Exit Options</span>
                   </h3>
-                  <span className="text-xs text-slate-500">National Education Policy 2020 Compliance</span>
+                  <span className="text-xs text-slate-500">National Education Policy Compliance</span>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   {ugCurriculumData.nepEntryExit.map((nep, nIdx) => (
@@ -307,7 +287,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
               </div>
 
               {/* Department-Wise Credit Allocation Breakdown */}
-              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
                 <div className="flex items-center justify-between flex-wrap gap-2">
                   <div>
                     <h3 className="font-heading text-lg font-bold text-navy-950">
@@ -334,11 +314,11 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
                     <tbody className="divide-y divide-slate-100">
                       {ugCurriculumData.departmentWiseCredits.map((d, idx) => (
                         <tr key={idx} className="hover:bg-slate-50 transition-colors">
-                          <td className="py-2 px-3 font-mono font-bold text-navy-900">{d.code}</td>
-                          <td className="py-2 px-3 font-medium text-slate-700">{d.dept}</td>
-                          <td className="py-2 px-3 text-center text-slate-600">{d.theory}</td>
-                          <td className="py-2 px-3 text-center text-slate-600">{d.practical}</td>
-                          <td className="py-2 px-3 text-center font-bold text-navy-950">{d.total}</td>
+                          <td className="py-2.5 px-3 font-mono font-bold text-navy-900">{d.code}</td>
+                          <td className="py-2.5 px-3 font-medium text-slate-700">{d.dept}</td>
+                          <td className="py-2.5 px-3 text-center text-slate-600">{d.theory}</td>
+                          <td className="py-2.5 px-3 text-center text-slate-600">{d.practical}</td>
+                          <td className="py-2.5 px-3 text-center font-bold text-navy-950">{d.total}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -367,7 +347,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
                       value={courseSearchQuery}
                       onChange={(e) => setCourseSearchQuery(e.target.value)}
                       placeholder="Search course title or code..."
-                      className="w-full pl-9 pr-3 py-1.5 text-xs bg-white border border-slate-200 rounded-xl focus:border-[#0b1a2e] focus:outline-none"
+                      className="w-full pl-9 pr-3 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:border-[#0b1a2e] focus:outline-none"
                     />
                   </div>
                 </div>
@@ -451,7 +431,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
               </div>
 
               {/* 24 Skill Enhancement Modules (SRDY) */}
-              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
                     <h3 className="font-heading text-lg font-bold text-navy-950 flex items-center gap-2">
@@ -495,7 +475,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
               </div>
 
               {/* Representative Elective Courses */}
-              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
                 <div>
                   <h3 className="font-heading text-lg font-bold text-navy-950">
                     Departmental Elective Courses (Specialized Tracks)
@@ -507,7 +487,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                   {ugCurriculumData.electiveCourses.map((e, eIdx) => (
-                    <div key={eIdx} className="p-3 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1">
+                    <div key={eIdx} className="p-3.5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1">
                       <div className="flex items-center justify-between text-[11px]">
                         <span className="font-mono font-bold text-navy-950">{e.code}</span>
                         <span className="badge badge-gold text-[9.5px] font-bold">{e.credits}</span>
@@ -528,28 +508,42 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
               ========================================================================= */}
           {activeTab === 'pg-courses' && (
             <div className="space-y-8 animate-fadeIn">
-              <div className="bg-gradient-to-r from-[#06101e] to-[#0b1a2e] text-white p-6 sm:p-8 rounded-2xl shadow-md border border-[#1b3459]">
-                <div className="max-w-3xl space-y-2">
-                  <span className="badge badge-gold text-xs font-bold">Postgraduate Academic Degrees</span>
-                  <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-white">
-                    Master of Technology [M.Tech. (Ag. Engg.)]
-                  </h2>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    2-Year (4 Semesters) postgraduate research programs governed by ICAR PG recommendations and ANGRAU academic regulations, with 70 total credits including 30 research dissertation credits.
-                  </p>
+              <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-100">
+                  <div className="max-w-3xl space-y-2">
+                    <span className="badge badge-gold text-xs font-bold">Postgraduate Academic Degrees</span>
+                    <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
+                      Master of Technology [M.Tech. (Ag. Engg.)]
+                    </h2>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      2-Year (4 Semesters) postgraduate research programs governed by ICAR PG recommendations and ANGRAU academic regulations, with 70 total credits including 30 research dissertation credits.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap lg:flex-col gap-3 flex-shrink-0">
+                    <a
+                      href="#seat-matrix-all-branches"
+                      onClick={scrollToSeatMatrix}
+                      className="btn btn-navy text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <Table className="w-4 h-4 text-[#f5c84c]" />
+                      <span>View PG Seat Matrix ↓</span>
+                    </a>
+                  </div>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6 pt-6 border-t border-white/10 text-center">
-                  <div className="bg-white/5 p-3 rounded-xl border border-white/10">
-                    <span className="text-[11px] text-slate-300 uppercase block">Duration</span>
-                    <strong className="text-base sm:text-lg font-extrabold text-white">2 Years (4 Sems)</strong>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 text-center">
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <span className="text-[11px] font-bold text-slate-500 uppercase block mb-1">Duration</span>
+                    <strong className="text-base sm:text-lg font-extrabold text-navy-950">2 Years (4 Sems)</strong>
                   </div>
-                  <div className="bg-white/5 p-3 rounded-xl border border-white/10">
-                    <span className="text-[11px] text-slate-300 uppercase block">Total Credits</span>
-                    <strong className="text-base sm:text-lg font-extrabold text-[#f5c84c]">70 Credits</strong>
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <span className="text-[11px] font-bold text-slate-500 uppercase block mb-1">Total Credits</span>
+                    <strong className="text-base sm:text-lg font-extrabold text-[#854d0e]">70 Credits</strong>
                   </div>
-                  <div className="bg-white/5 p-3 rounded-xl border border-white/10 col-span-2 sm:col-span-1">
-                    <span className="text-[11px] text-slate-300 uppercase block">Total PG Intake</span>
-                    <strong className="text-base sm:text-lg font-extrabold text-white">13 + 1* EWS (14 Seats)</strong>
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 col-span-2 sm:col-span-1">
+                    <span className="text-[11px] font-bold text-slate-500 uppercase block mb-1">Total PG Intake</span>
+                    <strong className="text-base sm:text-lg font-extrabold text-navy-950">13 + 1* EWS (14 Seats)</strong>
                   </div>
                 </div>
               </div>
@@ -595,7 +589,9 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
                     <div className="pt-4 border-t border-slate-100 mt-4 flex items-center gap-2">
                       <a
                         href="#seat-matrix-all-branches"
+                        onClick={scrollToSeatMatrix}
                         className="btn btn-outline btn-sm text-xs flex-1 justify-center"
+                        style={{ textDecoration: 'none' }}
                       >
                         <Table className="w-3.5 h-3.5" />
                         <span>Seat Breakdown</span>
@@ -621,28 +617,42 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
               ========================================================================= */}
           {activeTab === 'phd-courses' && (
             <div className="space-y-8 animate-fadeIn">
-              <div className="bg-gradient-to-r from-[#06101e] to-[#0b1a2e] text-white p-6 sm:p-8 rounded-2xl shadow-md border border-[#1b3459]">
-                <div className="max-w-3xl space-y-2">
-                  <span className="badge badge-gold text-xs font-bold">Doctoral Academic Research</span>
-                  <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-white">
-                    Doctor of Philosophy [Ph.D. (Ag. Engg.)]
-                  </h2>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    3-Year advanced doctoral program featuring 100 total credits (25 coursework + 75 research dissertation), patentable engineering innovations, and rigorous peer-reviewed NAAS publications.
-                  </p>
+              <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-100">
+                  <div className="max-w-3xl space-y-2">
+                    <span className="badge badge-gold text-xs font-bold">Doctoral Academic Research</span>
+                    <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
+                      Doctor of Philosophy [Ph.D. (Ag. Engg.)]
+                    </h2>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      3-Year advanced doctoral program featuring 100 total credits (25 coursework + 75 research dissertation), patentable engineering innovations, and rigorous peer-reviewed NAAS publications.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap lg:flex-col gap-3 flex-shrink-0">
+                    <a
+                      href="#seat-matrix-all-branches"
+                      onClick={scrollToSeatMatrix}
+                      className="btn btn-navy text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <Table className="w-4 h-4 text-[#f5c84c]" />
+                      <span>View Doctoral Matrix ↓</span>
+                    </a>
+                  </div>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6 pt-6 border-t border-white/10 text-center">
-                  <div className="bg-white/5 p-3 rounded-xl border border-white/10">
-                    <span className="text-[11px] text-slate-300 uppercase block">Duration</span>
-                    <strong className="text-base sm:text-lg font-extrabold text-white">3 Years (6 Sems)</strong>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 text-center">
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <span className="text-[11px] font-bold text-slate-500 uppercase block mb-1">Duration</span>
+                    <strong className="text-base sm:text-lg font-extrabold text-navy-950">3 Years (6 Sems)</strong>
                   </div>
-                  <div className="bg-white/5 p-3 rounded-xl border border-white/10">
-                    <span className="text-[11px] text-slate-300 uppercase block">Doctoral Credits</span>
-                    <strong className="text-base sm:text-lg font-extrabold text-[#f5c84c]">100 Credits</strong>
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <span className="text-[11px] font-bold text-slate-500 uppercase block mb-1">Doctoral Credits</span>
+                    <strong className="text-base sm:text-lg font-extrabold text-[#854d0e]">100 Credits</strong>
                   </div>
-                  <div className="bg-white/5 p-3 rounded-xl border border-white/10 col-span-2 sm:col-span-1">
-                    <span className="text-[11px] text-slate-300 uppercase block">Annual Intake</span>
-                    <strong className="text-base sm:text-lg font-extrabold text-white">4 Regular Seats</strong>
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 col-span-2 sm:col-span-1">
+                    <span className="text-[11px] font-bold text-slate-500 uppercase block mb-1">Annual Intake</span>
+                    <strong className="text-base sm:text-lg font-extrabold text-navy-950">4 Regular Seats</strong>
                   </div>
                 </div>
               </div>
@@ -684,7 +694,9 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
                     <div className="pt-4 border-t border-slate-100 mt-4 flex items-center gap-2">
                       <a
                         href="#seat-matrix-all-branches"
+                        onClick={scrollToSeatMatrix}
                         className="btn btn-outline btn-sm text-xs flex-1 justify-center"
+                        style={{ textDecoration: 'none' }}
                       >
                         <Table className="w-3.5 h-3.5" />
                         <span>Seat Matrix</span>
@@ -727,7 +739,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
                 </div>
 
                 {/* Attendance Regulation Alert */}
-                <div className="p-4 bg-amber-50/60 rounded-xl border border-amber-200/80 text-xs text-amber-900 space-y-1">
+                <div className="p-4 bg-amber-50/70 rounded-xl border border-amber-200/80 text-xs text-amber-900 space-y-1">
                   <strong className="block font-bold flex items-center gap-1.5">
                     <AlertTriangle className="w-4 h-4 text-amber-600" />
                     <span>Statutory Attendance Threshold (75% Rule)</span>
@@ -773,7 +785,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
               </div>
 
               {/* 10.00-Point Grading Scale & OGPA Classifications */}
-              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
                 <div className="flex items-center justify-between flex-wrap gap-2">
                   <div>
                     <h3 className="font-heading text-lg font-bold text-navy-950">
@@ -881,23 +893,21 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
               ========================================================================= */}
           {activeTab === 'thesis-guidelines' && (
             <div className="space-y-8 animate-fadeIn">
-              <div className="bg-gradient-to-r from-[#4a0d0d] via-[#631313] to-[#2d0707] text-white p-6 sm:p-8 rounded-2xl shadow-md border border-[#8a2424]">
-                <div className="max-w-3xl space-y-2">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs font-bold text-[#ecc75f]">
-                    <BookMarked className="w-4 h-4" />
-                    <span>Official ANGRAU 2019 Booklet Standards</span>
-                  </div>
-                  <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-white">
-                    Post Graduate Thesis Presentation Guidelines
-                  </h2>
-                  <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
-                    Mandatory typographical rules, binding color codes, margins, and sequence of chapters prescribed by the Dean of Post Graduate Studies, ANGRAU.
-                  </p>
+              <div className="bg-white rounded-2xl border-l-4 border-l-[#800000] border border-slate-200 p-6 sm:p-8 shadow-sm space-y-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-xs font-bold text-[#800000]">
+                  <BookMarked className="w-4 h-4 text-[#800000]" />
+                  <span>Official ANGRAU 2019 Booklet Standards</span>
                 </div>
+                <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
+                  Post Graduate Thesis Presentation Guidelines
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Mandatory typographical rules, binding color codes, margins, and sequence of chapters prescribed by the Dean of Post Graduate Studies, ANGRAU.
+                </p>
               </div>
 
               {/* Physical Specifications Card */}
-              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
                 <div className="flex items-center justify-between flex-wrap gap-2">
                   <h3 className="font-heading text-lg font-bold text-navy-950">
                     Physical & Typographical Specifications
@@ -941,7 +951,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
               </div>
 
               {/* Sequence of Parts in Thesis */}
-              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
                 <div>
                   <h3 className="font-heading text-lg font-bold text-navy-950">
                     Mandatory Sequence of Parts in Thesis
@@ -967,7 +977,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
               </div>
 
               {/* Citation Guidelines */}
-              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs space-y-3">
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-3">
                 <h3 className="font-heading text-lg font-bold text-navy-950">
                   Literature Cited (Author-Year System Format)
                 </h3>
@@ -994,7 +1004,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
               ========================================================================= */}
           {activeTab === 'anti-plagiarism-policy' && (
             <div className="space-y-8 animate-fadeIn">
-              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border-l-4 border-l-emerald-600 border border-slate-200 shadow-2xs space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center flex-shrink-0">
                     <ShieldCheck className="w-6 h-6 text-emerald-600" />
@@ -1092,8 +1102,6 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
               </div>
             </div>
           )}
-
-
 
           {/* =========================================================================
               CONSOLIDATED SEAT MATRIX (ALL BRANCHES IN SINGLE TABLE - 106 TOTAL SEATS)
@@ -1278,7 +1286,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry, defaultT
           </div>
 
         </div>
-      </section>
+      </main>
     </div>
   );
 }
