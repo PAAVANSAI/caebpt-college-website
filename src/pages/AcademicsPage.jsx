@@ -17,6 +17,7 @@ import {
   thesisGuidelinesData,
   antiPlagiarismPolicyData
 } from '../data/academicsCatalogData';
+import PgFormModal from '../components/PgFormModal';
 import {
   BookOpen,
   GraduationCap,
@@ -40,7 +41,9 @@ import {
   ExternalLink,
   Users,
   MapPin,
-  Check
+  Check,
+  Printer,
+  Eye
 } from 'lucide-react';
 
 export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
@@ -48,6 +51,8 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
   const { section } = useParams();
   const [searchParams] = useSearchParams();
   const location = useLocation();
+
+  const [selectedPgForm, setSelectedPgForm] = useState(null);
 
   // Helper to resolve initial tab from URL or query parameters
   const parseTabFromLocation = () => {
@@ -2146,28 +2151,48 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                       <span>Schedule of Statutory PG Proformas (PG Forms 1 to 19)</span>
                     </h3>
                     <p className="text-xs text-slate-500">
-                      Standard proformas prescribed by Dean of Post Graduate Studies, ANGRAU from initial admission to final viva-voce and library clearance.
+                      Standard proformas prescribed by Dean of Post Graduate Studies, ANGRAU from initial admission to final viva-voce and library clearance. Click on any form to view, fill, and print.
                     </p>
                   </div>
-                  <span className="badge badge-navy text-xs font-bold">
-                    23 Official Statutory Proformas
-                  </span>
+                  
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="badge badge-navy text-xs font-bold">
+                      23 Official Statutory Proformas
+                    </span>
+                    <a
+                      href="/documents/academics/ANGRAU_PG_Forms.pdf"
+                      download="ANGRAU_PG_Forms_Complete_Booklet.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1.5 rounded-xl bg-[#0b1a2e] hover:bg-[#d4a72c] text-white hover:text-[#06101e] text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
+                      style={{ textDecoration: 'none' }}
+                      title="Download complete 40-page official PDF booklet"
+                    >
+                      <Download className="w-3.5 h-3.5 text-[#f5c84c]" />
+                      <span>Download Official Booklet (PDF)</span>
+                    </a>
+                  </div>
                 </div>
 
                 <div className="overflow-x-auto rounded-xl border border-slate-200">
-                  <table className="w-full text-xs text-left border-collapse min-w-[760px]">
+                  <table className="w-full text-xs text-left border-collapse min-w-[800px]">
                     <thead>
                       <tr className="bg-slate-100 text-navy-950 border-b border-slate-200">
                         <th className="py-3 px-3 font-bold w-44">Form No. & Official Title</th>
-                        <th className="py-3 px-3 font-bold w-52">Mandatory Timeline & Copies</th>
+                        <th className="py-3 px-3 font-bold w-48">Mandatory Timeline & Copies</th>
                         <th className="py-3 px-4 font-bold">Statutory Purpose, Workflow & Key Regulations</th>
+                        <th className="py-3 px-3 font-bold w-32 text-center">Action / Print</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
                       {pgRegulationsData.statutoryFormsSchedule.map((f, fIdx) => (
-                        <tr key={fIdx} className="hover:bg-slate-50 transition-colors">
+                        <tr
+                          key={fIdx}
+                          onClick={() => setSelectedPgForm(f)}
+                          className="hover:bg-[#fdf5df]/50 cursor-pointer transition-colors group"
+                        >
                           <td className="py-3 px-3 align-top">
-                            <span className="font-bold text-[#0b1a2e] block font-mono text-xs">
+                            <span className="font-bold text-[#0b1a2e] group-hover:text-[#854d0e] block font-mono text-xs">
                               {f.form}
                             </span>
                             <span className="text-[11px] font-semibold text-slate-800 leading-tight block mt-0.5">
@@ -2192,6 +2217,20 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                                 {f.workflow}
                               </div>
                             )}
+                          </td>
+                          <td className="py-3 px-3 align-middle text-center">
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setSelectedPgForm(f);
+                              }}
+                              className="px-2.5 py-1.5 rounded-lg bg-[#0b1a2e] group-hover:bg-[#d4a72c] text-white group-hover:text-[#06101e] text-[11px] font-bold inline-flex items-center gap-1 transition-all shadow-2xs cursor-pointer whitespace-nowrap"
+                              title={`Open ${f.form} for printing and viewing`}
+                            >
+                              <Printer className="w-3 h-3 text-[#f5c84c] group-hover:text-[#06101e]" />
+                              <span>Open & Print</span>
+                            </button>
                           </td>
                         </tr>
                       ))}
@@ -2430,6 +2469,14 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
           {/* Closing tab container */}
         </div>
       </main>
+
+      {/* Interactive Official PG Proforma Modal for Viewing & Printing */}
+      {selectedPgForm && (
+        <PgFormModal
+          form={selectedPgForm}
+          onClose={() => setSelectedPgForm(null)}
+        />
+      )}
     </div>
   );
 }
