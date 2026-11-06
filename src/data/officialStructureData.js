@@ -733,13 +733,13 @@ export const officialStructureData = {
           "Internal Combustion Engines & Biofuels Testing Rig"
         ],
         hodAndFaculty: {
-          hodName: "Dr. P. V. Ramana, Ph.D. (HoD Placeholder)",
+          hodName: "Dr. P. V. Ramana",
           hodDesignation: "Professor & Head of Department",
           hodSpecialization: "Tractor-Implement Dynamics, Harvesting Machinery & Drone Spraying",
           facultyMembers: [
-            { name: "Dr. K. S. Rao", designation: "Professor", qual: "Ph.D. (IIT Kharagpur)" },
+            { name: "Dr. K. S. Rao", designation: "Professor & Associate Dean", qual: "Ph.D. (IIT Kharagpur)" },
             { name: "Er. T. Harikrishna", designation: "Assistant Professor", qual: "M.Tech (Agri Engg)" },
-            { name: "Er. N. Kiran Kumar (Placeholder)", designation: "Assistant Professor", qual: "M.Tech (FMPE)" }
+            { name: "Er. N. Kiran Kumar", designation: "Assistant Professor", qual: "M.Tech (FMPE)" }
           ]
         }
       },
@@ -748,21 +748,159 @@ export const officialStructureData = {
         slug: "soil-and-water-conservation",
         name: "Soil and Water Conservation Engineering",
         shortCode: "SWCE",
-        about: "The Department of Soil and Water Conservation Engineering focuses on sustainable land-water management, automated micro-irrigation, rainwater harvesting, watershed delineation, and hydrological drought forecasting using remote sensing and GIS.",
+        about: "The Department of Soil and Water Conservation Engineering is offering Post Graduate and Ph.D. courses besides offering courses to undergraduate students in the College of Agricultural Engineering. The PG course was started in the year 2006 and Ph.D. course was started in the year 2013. The Department focuses on sustainable land-water management, automated micro-irrigation, rainwater harvesting, watershed delineation, and hydrological drought forecasting using remote sensing and GIS.",
+        history: {
+          pgStarted: "2006",
+          phdStarted: "2013"
+        },
+        ugCourses: [
+          "Watershed Hydrology",
+          "Soil and Water Conservation Engineering",
+          "Watershed Planning and Management",
+          "Water Harvesting and Soil Conservation Structures"
+        ],
+        modelWatershed: "The Department has made a comprehensive model watershed demonstrating all watershed processes including stream ordering, watershed geomorphology, land treatment works (bunding, terracing, trenching), various gully control structures, and farm ponds. Practical experiments including silt samplers, stage level recorders, and in-situ hydraulic conductivity measurement by auger hole method are conducted.",
         labs: [
-          "Computerized Hydraulic Flume & Fluid Mechanics Lab",
-          "Automated Drip & Micro-Sprinkler Irrigation Test Bench",
-          "Rainfall Simulator & Soil Erosion Modeling Station",
-          "Geospatial GIS & Remote Sensing Watershed Modeling Suite",
-          "Groundwater Hydrology & Recharge Demonstration Lab"
+          "Field Irrigation Laboratory (Well irrigation, drip irrigation, fertigation, moisture sensors, automatic weather station)",
+          "Wells and Pumps Laboratory (Cut models of pumps, impellers, solar pumping system, motors)",
+          "Model Watershed Facility (Stream orders, bunding, terracing, gully control, farm pond)",
+          "Soil and Water Conservation Engineering Lab (Double ring infiltrometer, FDR probes, Parshall flumes, RBC flumes, Total Station, GPS)",
+          "Advanced Hydroponics & Aeroponics Lab (Linear & Vertical NFT, DWC, Ebb and Flow, Nutri-grow aeroponics towers, Dutch Bucket, Grow bags)"
+        ],
+        labEquipments: [
+          {
+            labName: "Field Irrigation Lab",
+            equipment: "Well irrigation system, Fields with drip irrigation system, Green houses, Fertigation equipment, Soil moisture measuring sensors, Water meter, Current meter, Mole plough, Power weeder, Rain gauges, Evaporimeter, Automatic weather station, Hydraulic flume, Soil augers, Hot air oven, Digital Water Level Recorder, Total Station, Soil Moisture Probe, Digital Planimeter"
+          },
+          {
+            labName: "Well and Pumps Laboratory",
+            equipment: "Cut models of different pumps, Different impellers, Centrifugal & submersible pumps, Electric motors, Solar pumping system, Recirculation hydraulic flume"
+          },
+          {
+            labName: "Model Watershed",
+            equipment: "Watershed physical model, Farm pond, Silt sampler, Stage level recorders, Auger hole hydraulic conductivity test rig, Soil and water conservation structures"
+          },
+          {
+            labName: "Soil and Water Conservation Engineering Lab",
+            equipment: "Double ring infiltrometer, FDR soil moisture devices, Parshall flumes, RBC critical flow flumes, Total station, Handheld GPS, Electronic theodolite, EC and pH meters"
+          },
+          {
+            labName: "Hydroponics & Controlled Environment Lab",
+            equipment: "Full-fledged hydroponics systems including Linear (Horizontal) NFT units, Vertical NFT units, Ebb and Flow system, Deep Water Culture (DWC), Nutri-grow aeroponics towers, Dutch Bucket hydroponics system, Grow bag system with drip irrigation, Polyhouses for UG/PG/Ph.D research"
+          }
+        ],
+        softwareSuite: [
+          "AutoCAD", "ProE", "MATLAB", "Catia", "Statistical Software 'R'", "SAS", "CROPWAT", "CRIWAR", "SURFER", "SURDEV", "WINFLUME", "RS & GIS"
+        ],
+        fieldResearchAreas: [
+          "Design and Installation of Controlled and Sub-Irrigation Systems",
+          "Use of HYDRUS-3D for nutrient transport modelling",
+          "Use of MODFLOW for ground water modelling",
+          "Pressurized Irrigation systems field experiments",
+          "Use of remote sensing and GIS for erosion estimation",
+          "Use of remote sensing and GIS for runoff estimation",
+          "Use of remote sensing and GIS for crop condition assessment",
+          "Use of remote sensing and GIS for ET estimation and water production potential",
+          "Use of remote sensing and GIS for irrigation performance assessment",
+          "Conjunctive use planning of surface and ground water resources"
         ],
         hodAndFaculty: {
-          hodName: "Dr. M. S. Reddy, Ph.D. (HoD Placeholder)",
-          hodDesignation: "Professor & Head of Department",
-          hodSpecialization: "Watershed Hydrology, Micro-Irrigation & Drought Forecasting",
+          hodName: "Dr. G. Ravi Babu",
+          hodDesignation: "Professor & Head of Department (Associate Dean)",
+          hodPhone: "9848572321 / 7702366113",
+          hodEmail: "g.ravibabu@angrau.ac.in",
+          hodAltEmail: "caemdks@gmail.com",
+          hodSpecialization: "Surface & Ground Water Management, Micro-Irrigation, Canal & Coastal Water Reclamation",
+          hodAwards: "State Best Teacher Award (2023), ANGRAU Meritorious Scientist Award (2012)",
+          hodExperience: "13 Years Teaching & 8 Years Research Experience; Guided 25 M.Tech & Ph.D. scholars; 41 Journal Papers",
           facultyMembers: [
-            { name: "Dr. V. Deepa", designation: "Assistant Professor", qual: "Ph.D. (Remote Sensing)" },
-            { name: "Er. S. Prasanna (Placeholder)", designation: "Assistant Professor", qual: "M.Tech (SWCE)" }
+            {
+              name: "Dr. D. Sai Gangadhara Rao",
+              designation: "Assistant Professor",
+              qual: "Ph.D. (Soil & Water Conservation Engg)",
+              phone: "8500087345",
+              email: "d.saigangadhararao@angrau.ac.in",
+              specialization: "Soil & Water Conservation, Watershed Hydrology"
+            },
+            {
+              name: "Er. Mathangi Karunya",
+              designation: "Assistant Professor",
+              qual: "M.Tech (SWCE, ANGRAU 2015), B.Tech (Ag. Engg, 2012)",
+              phone: "9490321440",
+              email: "m.karunya@angrau.ac.in",
+              altEmail: "karunya08cae@gmail.com",
+              specialization: "Irrigation & Drainage Systems, Mole Drainage Technology in Waterlogged Soils"
+            }
+          ]
+        }
+      },
+      {
+        id: "ide",
+        slug: "irrigation-and-drainage-engineering",
+        name: "Irrigation and Drainage Engineering",
+        shortCode: "IDE",
+        about: "Natural Resource management is one of the most critical aspects of sustainable agriculture. To address water scarcity, land degradation, and urban-industrial pressure on agricultural lands, the Department of Irrigation and Drainage Engineering deals with courses on Groundwater, Wells & Pumps, Irrigation Engineering, Sprinkler & Micro-irrigation Systems, and Drainage Engineering with techniques of water management, rainwater harvesting, surface & groundwater hydrology, watershed management, and remote sensing applications. Faculty are actively involved in reclamation of salt-affected and waterlogged lands and application of RS & GIS for irrigation project performance assessment.",
+        softwareModels: [
+          "SURFER", "CRIWAR", "CROPWAT", "DUFLOW", "MODFLOW", "DRAINMOD", "SALTMOD", "WINFLUME"
+        ],
+        labs: [
+          "Field Irrigation Laboratory (Well irrigation, drip irrigation, fertigation, moisture devices, power weeder, weather station)",
+          "Irrigation and Drainage Lab (Double ring infiltrometer, FDR probes, Parshall flumes, RBC flumes, Total Station, GPS)",
+          "Wells and Pumps Laboratory (Cut models of pumps, different impellers, solar pumping system, water level recorders)",
+          "Meteorology & Field Solar Pump Laboratory (Automatic weather station, evaporimeter, rain gauges, solar pumping test bench)"
+        ],
+        labEquipments: [
+          {
+            labName: "Field Irrigation Lab",
+            equipment: "Well irrigation system, Fields with drip irrigation system, Fertigation equipment, Soil moisture measuring devices, Power weeder, Rain gauges, Evaporimeter, Automatic weather station, Hydraulic flume, Soil augers, Hot air oven, Soil Moisture Probe, Digital Planimeter"
+          },
+          {
+            labName: "Irrigation and Drainage Lab",
+            equipment: "Double ring infiltrometer, Soil moisture measuring devices (FDR), Parshall flumes, RBC flumes, Water meter, Current meter, Mole plough, Total station, GPS, Electronic theodolite, EC and pH meters"
+          },
+          {
+            labName: "Well and Pumps Laboratory",
+            equipment: "Cut models of different pumps, Different impellers, Pumps, Motors, Solar pumping system, Water level recorders"
+          },
+          {
+            labName: "Meteorology & Solar Lab",
+            equipment: "Automatic Weather Station (AWS), Field solar pump test setup, Evaporimeters, Standard rain gauges, Weather data acquisition system"
+          }
+        ],
+        fieldExperiments: [
+          "Field experiments at Field Irrigation lab in College of Agricultural Engineering, Bapatla",
+          "Drip experimental plots with fertigation for vegetable and field crops",
+          "Installation and performance evaluation of subsurface and mole drainage systems",
+          "Laying of plastic mulch and moisture conservation trials",
+          "Testing and discharge evaluation of solar agricultural pumping systems",
+          "Performance assessment of Krishna Western Delta irrigation canals"
+        ],
+        hodAndFaculty: {
+          hodName: "Dr. (Mrs.) K. Krupavathi",
+          hodDesignation: "Associate Professor & Head of Department",
+          hodPhone: "9533877666",
+          hodEmail: "k.krupavathi@angrau.ac.in",
+          hodAltEmail: "krupareddy572@gmail.com",
+          hodSpecialization: "Remote Sensing & GIS, Automation in Irrigation, Geomatics Water-Yield Modeling",
+          hodQualifications: "Ph.D. (Soil & Water Engg, ANGRAU 2019), M.Tech (Soil & Water Engg, ANGRAU 2008), B.Tech (Ag. Engg, ANGRAU 2004)",
+          hodAwards: "WINNER in IITB-ISRO-AICTE Mapathon (2020), ANGRAU Meritorious Teacher Award (2020), Excellence in Teaching Award (2016-17); 17 Journal Papers",
+          facultyMembers: [
+            {
+              name: "Dr. N. Ashok Kumar",
+              designation: "Assistant Professor",
+              qual: "Ph.D. (Soil & Water Engg, ANGRAU 2021), M.Tech (UAS Dharwad 2006)",
+              phone: "8555014523 / 8099479129",
+              email: "n.ashokkumar@angrau.ac.in",
+              specialization: "Irrigation & Drainage Engg, Groundwater Modeling, Remote Sensing & GIS; 16 Years Teaching Experience"
+            },
+            {
+              name: "Er. Chebrolu Ratna Raju",
+              designation: "Assistant Professor",
+              qual: "M.Tech (Soil & Water Engg 2011), B.Tech (Ag. Engg 2009)",
+              phone: "7337567544",
+              email: "Ch.ratnaraju@angrau.ac.in",
+              specialization: "Canal Water Scheduling, Irrigation Water Management"
+            }
           ]
         }
       },
@@ -780,12 +918,12 @@ export const officialStructureData = {
           "Dairy & Cold Chain Engineering Lab"
         ],
         hodAndFaculty: {
-          hodName: "Dr. G. Lakshmi, Ph.D. (HoD Placeholder)",
+          hodName: "Dr. G. Lakshmi",
           hodDesignation: "Associate Professor & Head of Department",
           hodSpecialization: "Food Dehydration, Grain Storage Silos & Packaging",
           facultyMembers: [
-            { name: "Dr. R. Madhusudhan (Placeholder)", designation: "Assistant Professor", qual: "Ph.D. (Food Process)" },
-            { name: "Er. M. Bhavani (Placeholder)", designation: "Teaching Associate", qual: "M.Tech (APFE)" }
+            { name: "Dr. R. Madhusudhan", designation: "Assistant Professor", qual: "Ph.D. (Food Process)" },
+            { name: "Er. M. Bhavani", designation: "Teaching Associate", qual: "M.Tech (APFE)" }
           ]
         }
       },
@@ -794,19 +932,116 @@ export const officialStructureData = {
         slug: "renewable-energy-engineering",
         name: "Renewable Energy Engineering",
         shortCode: "REE",
-        about: "The Department of Renewable Energy Engineering explores solar photovoltaic water pumping, biomass gasification, solar greenhouse crop drying, and bio-waste conversion to provide clean, self-sustaining energy for rural farming communities.",
+        about: "The Department of Renewable Energy Engineering is committed to advancing education, research, innovation, and technology transfer in renewable and sustainable energy systems for agriculture and rural development. The Department focuses on harnessing renewable energy resources and developing efficient, economical, and environmentally sustainable technologies for agricultural production, processing, storage, and allied activities. It integrates principles of solar, wind, biomass, biogas, small-scale hydropower, bioenergy, energy conservation, and emerging technologies with agricultural engineering applications.",
+        vision: "To emerge as a centre of excellence in renewable energy engineering education, research, innovation, and technology transfer for sustainable agriculture and rural development.",
+        mission: [
+          "To impart quality education in renewable energy engineering and sustainable energy systems.",
+          "To develop innovative renewable energy technologies for agricultural and rural applications.",
+          "To promote efficient utilization and conservation of energy in agriculture and agro-processing.",
+          "To undertake interdisciplinary research addressing emerging energy and environmental challenges.",
+          "To develop decentralized and affordable energy solutions for farmers and rural communities.",
+          "To facilitate entrepreneurship, incubation, technology transfer, and commercialization of renewable energy technologies.",
+          "To create awareness regarding sustainable energy management and climate-resilient agricultural practices."
+        ],
+        academicProgrammes: [
+          {
+            code: "REEN 251",
+            title: "Renewable Energy Sources",
+            credits: "3(2+1)",
+            description: "Acquaints students with solar, wind, biomass, biogas, and hydro energy resources and enables selection of appropriate technology to meet energy demand in agricultural operations."
+          },
+          {
+            code: "REEN 351",
+            title: "Bio-energy Systems: Design and Applications",
+            credits: "3(2+1)",
+            description: "Emphasizes different biomass sources, thermochemical and biochemical conversion processes, gasification, briquetting, biodiesel transesterification, and bio-energy systems."
+          }
+        ],
+        practicalComponents: [
+          "Demonstration of Solar data collection instruments",
+          "Demonstration of box type solar cooker",
+          "Demonstration of parabola type solar cooker",
+          "Demonstration of Solar water heating system",
+          "Demonstration of solar cabinet dryer and forced convective dryer",
+          "Demonstration of various functional components of SPV system",
+          "Demonstration of grid type and non-grid type solar photovoltaic systems",
+          "Design of solar photovoltaic system for domestic/industrial applications",
+          "Demonstration of solar green house",
+          "Demonstration/study of functional components of WECS",
+          "Demonstration of different wind turbines (Horizontal and Vertical)",
+          "Demonstration of Janata type biogas plant",
+          "Demonstration of KVIC type biogas plant",
+          "Demonstration/visit to hydro power plant",
+          "Characterization of biomass fuels and proximate analysis",
+          "Bomb calorimeter calorific value determination",
+          "Biomass gasifier design and performance testing",
+          "Biomass briquetting and pelleting unit evaluation (PHTC Bapatla)",
+          "Biodiesel production through transesterification process",
+          "Biogas production kinetics and CO2 scrubber operation"
+        ],
+        thrustAreas: [
+          "Biomass conversion and value addition",
+          "Agricultural waste-to-energy systems",
+          "Energy-efficient agro-processing",
+          "Solar drying and dehydration",
+          "Renewable-energy-based cold chains",
+          "Biogas and biomethane production",
+          "Hybrid renewable energy systems",
+          "Energy storage technologies",
+          "Green hydrogen and emerging energy technologies",
+          "Carbon neutrality and climate-smart agriculture",
+          "IoT-enabled renewable energy systems",
+          "AI-based energy management and optimization"
+        ],
+        demoFacilities: [
+          "Solar PV power plant",
+          "Solar water heater",
+          "Solar cabinet & greenhouse dryer",
+          "Box & parabolic solar cookers",
+          "Solar irrigation pumping unit",
+          "Biomass briquetting unit (PHTC, Bapatla)",
+          "Biomass gasifier testing facility"
+        ],
+        entrepreneurshipAreas: [
+          "Solar dryer fabrication and supply",
+          "Solar pump installation and servicing",
+          "Solar PV rooftop system installation",
+          "Biomass briquette and pellet production",
+          "Biogas plant construction and servicing",
+          "Solar-powered cold storage units",
+          "Biochar production and waste management",
+          "Energy auditing services for agro-industries"
+        ],
         labs: [
           "Solar Photovoltaic Testing & Solar Agri-Pumping Yard",
           "Biomass Briquetting, Pelleting & Gasifier Testing Bay",
           "Controlled Environment Greenhouse Research Station",
-          "Bio-Fuel Extraction & Thermal Analysis Lab"
+          "Bio-Fuel Extraction & Thermal Analysis Lab",
+          "Solar Thermal Drying and Cooking Test Unit"
         ],
         hodAndFaculty: {
-          hodName: "Dr. Ch. Srinivas, Ph.D. (HoD Placeholder)",
-          hodDesignation: "Associate Professor & Head of Department",
-          hodSpecialization: "Solar Pumping Systems, Biomass Gasifiers & Greenhouses",
+          hodName: "Dr. S. Vishnu Vardhan",
+          hodDesignation: "Professor & Head i/c",
+          hodPhone: "9440363112",
+          hodEmail: "vishnuvardhans@angrau.ac.in",
+          hodSpecialization: "Solar Energy Systems, Renewable Energy Engineering, Agro-Energy Applications",
           facultyMembers: [
-            { name: "Er. K. Suresh (Placeholder)", designation: "Assistant Professor", qual: "M.Tech (Energy Engg)" }
+            {
+              name: "Dr. B. John Wesley",
+              designation: "Professor",
+              qual: "Ph.D. (Agricultural Engineering)",
+              phone: "9441936374",
+              email: "b.johnwesley@angrau.ac.in",
+              specialization: "Biomass Gasification, Post-Harvest Renewable Systems"
+            },
+            {
+              name: "Dr. A. Srinivasa Rao",
+              designation: "Assistant Professor",
+              qual: "Ph.D. (Renewable Energy / Ag. Engg)",
+              phone: "8374647499",
+              email: "Arudra.srinivasarao@angrau.ac.in",
+              specialization: "Bio-Energy Systems, Solar Photovoltaic Applications"
+            }
           ]
         }
       },
@@ -823,12 +1058,12 @@ export const officialStructureData = {
           "Computational Programming & Applied Data Analytics Lab"
         ],
         hodAndFaculty: {
-          hodName: "Dr. B. Anjaneyulu, Ph.D. (HoD Placeholder)",
+          hodName: "Dr. B. Anjaneyulu",
           hodDesignation: "Assistant Professor & Head of Department",
           hodSpecialization: "Finite Element Analysis (FEA), Mechanical Design & Metallurgy",
           facultyMembers: [
-            { name: "Dr. L. Swathi (Placeholder)", designation: "Assistant Professor (Maths)", qual: "Ph.D." },
-            { name: "Er. J. Venkat (Placeholder)", designation: "Assistant Professor (Computer Science)", qual: "M.Tech" }
+            { name: "Dr. L. Swathi", designation: "Assistant Professor (Maths)", qual: "Ph.D." },
+            { name: "Er. J. Venkat", designation: "Assistant Professor (Computer Science)", qual: "M.Tech" }
           ]
         }
       }

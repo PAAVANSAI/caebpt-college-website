@@ -101,17 +101,17 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
 
   const academics = officialStructure?.academics || officialStructureData.academics;
 
-  // Nav tabs strictly matching official ANGRAU hierarchy
+  // Nav tabs strictly matching official ANGRAU hierarchy (Screenshots 1-4)
   const academicTabs = [
-    { key: 'admission-process', label: 'Admission Process', icon: Sparkles, badge: 'Official Flow' },
-    { key: 'ug-courses', label: 'UG Courses', icon: GraduationCap, badge: 'B.Tech' },
-    { key: 'pg-courses', label: 'PG Courses', icon: BookOpen, badge: 'M.Tech' },
-    { key: 'phd-courses', label: 'Ph.D Courses', icon: Award, badge: 'Doctoral' },
-    { key: 'examination', label: 'Examination', icon: FileCheck, badge: 'Regulations' },
-    { key: 'ug-guidelines', label: 'UG Guidelines', icon: Compass, badge: 'Regulations' },
-    { key: 'pg-guidelines', label: 'PG Guidelines', icon: Scroll, badge: 'Regulations' },
-    { key: 'thesis-guidelines', label: 'Thesis Guidelines', icon: BookMarked, badge: '2019 Specs' },
-    { key: 'anti-plagiarism-policy', label: 'Anti-Plagiarism', icon: ShieldCheck, badge: 'Res. 2920' },
+    { key: 'admission-process', label: 'Admission Process', icon: Sparkles },
+    { key: 'ug-courses', label: 'UG Courses', icon: GraduationCap },
+    { key: 'pg-courses', label: 'PG Courses', icon: BookOpen },
+    { key: 'phd-courses', label: 'Ph.D Courses', icon: Award },
+    { key: 'examination', label: 'Examination', icon: FileCheck },
+    { key: 'ug-guidelines', label: 'UG Guidelines', icon: Compass },
+    { key: 'pg-guidelines', label: 'PG Guidelines', icon: Scroll },
+    { key: 'thesis-guidelines', label: 'Thesis Guidelines', icon: BookMarked },
+    { key: 'anti-plagiarism-policy', label: 'Anti-Plagiarism Policy', icon: ShieldCheck },
   ];
 
   // Helper for scrolling smoothly to seat matrix
@@ -150,10 +150,10 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
         breadcrumb={[{ name: "Academics" }]}
       />
 
-      {/* Official Academics Navigation Tab Bar — Single continuous line like before */}
-      <section className="bg-white border-b border-slate-200 shadow-xs relative z-20">
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center gap-2 py-3 overflow-x-auto no-scrollbar whitespace-nowrap flex-nowrap scroll-smooth">
+      {/* Official Academics Navigation Tab Bar — Single continuous line strictly matching ANGRAU */}
+      <section className="bg-white border-b border-slate-200 shadow-2xs sticky top-14 z-40">
+        <div className="w-full max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-6">
+          <div className="flex items-center justify-start xl:justify-center gap-1 sm:gap-1.5 py-2 overflow-x-auto no-scrollbar whitespace-nowrap flex-nowrap scroll-smooth">
             {academicTabs.map((tab) => {
               const IconComp = tab.icon;
               const isActive = activeTab === tab.key;
@@ -161,24 +161,20 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                 <button
                   key={tab.key}
                   type="button"
+                  ref={(el) => {
+                    if (isActive && el) {
+                      el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    }
+                  }}
                   onClick={() => handleTabClick(tab.key)}
-                  className={`px-3.5 py-2 rounded-xl text-xs sm:text-[13px] font-bold transition-all flex items-center gap-1.5 sm:gap-2 border cursor-pointer select-none whitespace-nowrap flex-shrink-0 ${
+                  className={`px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-[12.5px] font-bold transition-all flex items-center gap-1.5 border cursor-pointer select-none whitespace-nowrap flex-shrink-0 ${
                     isActive
-                      ? 'bg-[#0b1a2e] text-white border-[#0b1a2e] shadow-sm ring-2 ring-[#d4a72c]/40 font-extrabold'
-                      : 'text-slate-700 bg-white hover:bg-slate-100 hover:text-navy-950 border-slate-200 shadow-2xs'
+                      ? 'bg-[#0b1a2e] text-[#f5c84c] border-[#0b1a2e] shadow-xs font-extrabold ring-1 ring-[#f5c84c]/50'
+                      : 'text-slate-700 bg-white hover:bg-slate-100 hover:text-navy-950 border-slate-200'
                   }`}
                 >
-                  <IconComp className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isActive ? 'text-[#f5c84c]' : 'text-slate-500'}`} />
+                  <IconComp className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? 'text-[#f5c84c]' : 'text-slate-500'}`} />
                   <span>{tab.label}</span>
-                  {tab.badge && (
-                    <span
-                      className={`text-[9.5px] px-1.5 py-0.5 rounded font-semibold ${
-                        isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
-                      }`}
-                    >
-                      {tab.badge}
-                    </span>
-                  )}
                 </button>
               );
             })}
@@ -2139,45 +2135,78 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
               </div>
 
               {/* 11. STATUTORY SCHEDULE OF OFFICIAL PG FORMS (PG-1 TO PG-19) */}
-              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
-                <div className="flex items-center justify-between flex-wrap gap-2">
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-5">
+                <div className="flex items-center justify-between flex-wrap gap-3">
                   <div>
-                    <h3 className="font-heading text-lg font-bold text-navy-950 flex items-center gap-2">
-                      <Table className="w-5 h-5 text-[#854d0e]" />
-                      <span>Appendix: Schedule of Statutory PG Forms & Timelines</span>
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#fdf5df] border border-[#fae4a4] text-[11px] font-bold text-[#854d0e] mb-1">
+                      <FileCheck className="w-3.5 h-3.5 text-[#d4a72c]" />
+                      <span>Official ANGRAU Postgraduate Statutory Booklet</span>
+                    </div>
+                    <h3 className="font-heading text-lg sm:text-xl font-bold text-navy-950 flex items-center gap-2">
+                      <span>Schedule of Statutory PG Proformas (PG Forms 1 to 19)</span>
                     </h3>
                     <p className="text-xs text-slate-500">
-                      Standard proformas to be submitted to Dean of Post Graduate Studies from admission to convocation.
+                      Standard proformas prescribed by Dean of Post Graduate Studies, ANGRAU from initial admission to final viva-voce and library clearance.
                     </p>
                   </div>
-                  <span className="badge badge-navy text-xs font-bold">PG Forms 1 to 18A</span>
+                  <span className="badge badge-navy text-xs font-bold">
+                    23 Official Statutory Proformas
+                  </span>
                 </div>
 
                 <div className="overflow-x-auto rounded-xl border border-slate-200">
-                  <table className="w-full text-xs text-left border-collapse min-w-[650px]">
+                  <table className="w-full text-xs text-left border-collapse min-w-[760px]">
                     <thead>
-                      <tr className="bg-slate-100/70 text-navy-950 border-b border-slate-200">
-                        <th className="py-2.5 px-3 font-bold w-32">Form No.</th>
-                        <th className="py-2.5 px-3 font-bold w-52">Mandatory Submission Timeline</th>
-                        <th className="py-2.5 px-4 font-bold">Statutory Purpose & Approval Workflow</th>
+                      <tr className="bg-slate-100 text-navy-950 border-b border-slate-200">
+                        <th className="py-3 px-3 font-bold w-44">Form No. & Official Title</th>
+                        <th className="py-3 px-3 font-bold w-52">Mandatory Timeline & Copies</th>
+                        <th className="py-3 px-4 font-bold">Statutory Purpose, Workflow & Key Regulations</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
                       {pgRegulationsData.statutoryFormsSchedule.map((f, fIdx) => (
-                        <tr key={fIdx} className="hover:bg-slate-50 text-slate-700">
-                          <td className="py-2.5 px-3 font-bold text-navy-950 font-mono text-[11.5px]">
-                            {f.form}
+                        <tr key={fIdx} className="hover:bg-slate-50 transition-colors">
+                          <td className="py-3 px-3 align-top">
+                            <span className="font-bold text-[#0b1a2e] block font-mono text-xs">
+                              {f.form}
+                            </span>
+                            <span className="text-[11px] font-semibold text-slate-800 leading-tight block mt-0.5">
+                              {f.name}
+                            </span>
                           </td>
-                          <td className="py-2.5 px-3 text-[#854d0e] font-semibold text-[11px]">
-                            {f.timeline}
+                          <td className="py-3 px-3 align-top space-y-1">
+                            <span className="text-[#854d0e] font-bold text-[11px] block">
+                              {f.timeline}
+                            </span>
+                            {f.copies && (
+                              <span className="inline-block px-1.5 py-0.5 bg-amber-50 border border-amber-200 rounded text-[10px] text-amber-900 font-medium">
+                                Mode: {f.copies}
+                              </span>
+                            )}
                           </td>
-                          <td className="py-2.5 px-4 text-slate-600 text-[11.5px]">
-                            {f.purpose}
+                          <td className="py-3 px-4 align-top space-y-1.5 text-slate-600 text-[11.5px] leading-relaxed">
+                            <p>{f.purpose}</p>
+                            {f.workflow && (
+                              <div className="text-[10.5px] text-slate-500 bg-slate-50 p-1.5 rounded border border-slate-200/60">
+                                <strong className="text-slate-700">Approval Workflow: </strong>
+                                {f.workflow}
+                              </div>
+                            )}
                           </td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
+                </div>
+
+                <div className="p-4 bg-[#fdf5df]/80 rounded-xl border border-[#fae4a4] text-xs text-slate-700 space-y-1">
+                  <div className="font-bold text-[#854d0e] flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    <span>Statutory Instruction for Postgraduate Scholars:</span>
+                  </div>
+                  <p className="text-[11.5px] leading-relaxed">
+                    All proformas must be printed in the prescribed dimensions and submitted in the required number of copies (Triplicate / 5 Copies / Sealed cover) through the Academic Advisor and Head of the Department to the Associate Dean and Dean of Post Graduate Studies, ANGRAU. No handwritten changes or substitutions are permitted unless approved through PG Form 1-A, 2-A, or 3-A.
+                  </p>
                 </div>
               </div>
             </div>

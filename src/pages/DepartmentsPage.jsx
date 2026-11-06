@@ -23,9 +23,13 @@ import {
 const deptIconMap = {
   fmpe: Tractor,
   swce: Droplets,
-  pfe: UtensilsCrossed,
+  ide: Droplets,
   iden: Droplets,
+  apfe: UtensilsCrossed,
+  pfe: UtensilsCrossed,
+  ree: SunMedium,
   reen: SunMedium,
+  beas: Building2,
 };
 
 export default function DepartmentsPage({ onOpenEnquiry }) {

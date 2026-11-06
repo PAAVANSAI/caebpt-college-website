@@ -730,23 +730,190 @@ export const pgRegulationsData = {
   },
 
   statutoryFormsSchedule: [
-    { form: "PG Form 1", timeline: "Within 6 weeks of 1st Semester", purpose: "Proposal for Constitution of Advisory Committee (triplicate to Dean PGS)" },
-    { form: "PG Form 1-A", timeline: "Whenever changes occur", purpose: "Proposal for Change in Advisory Committee / Chairperson" },
-    { form: "PG Form 2", timeline: "End of 1st Semester", purpose: "Proposed Programme of Course Work (Core, Minor, Supporting, Non-credit)" },
-    { form: "PG Form 2-A", timeline: "Within 2 weeks / 6 weeks", purpose: "Temporary or permanent change/withdrawal/addition/deletion of courses" },
-    { form: "PG Form 3", timeline: "End of 2nd Sem (M.Tech) / 3rd Sem (Ph.D)", purpose: "Original Synopsis of Thesis / Dissertation Research Problem" },
-    { form: "PG Form 3-A", timeline: "Prior to research change", purpose: "Proposal for Change in Approved Synopsis / Title" },
-    { form: "PG Form 4 & 5", timeline: "During 3rd / 4th Semester", purpose: "Proposal and Official Result of Written & Oral Qualifying Examination" },
-    { form: "PG Form 6", timeline: "Along with thesis submission", purpose: "Proposal for Submission of Thesis (with No Dues & photos)" },
-    { form: "PG Form 7", timeline: "After final oral defense", purpose: "Confidential Report on PG Thesis and Final Viva-Voce Examination" },
-    { form: "PG Form 9", timeline: "After viva-voce corrections", purpose: "Certificate Regarding Submission of Bound Copies & CDs of Thesis to Library" },
-    { form: "PG Form 10 & 13", timeline: "2 months before Ph.D thesis submission", purpose: "Ph.D Academic Information & Panel of 8 External Examiners" },
-    { form: "PG Form 11", timeline: "Before last working day of each semester", purpose: "Proposal for Evaluation of Research Credits (Semester Progress Report)" },
-    { form: "PG Form 12, 12-A, 12-B", timeline: "Upon need / re-admission", purpose: "Permission for Temporary Discontinuation and Resumption of Studies" },
-    { form: "PG Form 14", timeline: "3 months before expiry of maximum time", purpose: "Proposal for Extension of Time Limit for Ph.D Thesis Submission" },
-    { form: "PG Form 16", timeline: "Within 25 days of semester start", purpose: "Proposal for Re-Examination in Failed Course" },
-    { form: "PG Form 17", timeline: "Maintained in Department", purpose: "Academic Progress Register of PG Students (Semester-wise)" },
-    { form: "PG Form 18 & 18-A", timeline: "Beginning of each semester", purpose: "Registration Card-cum-Grade Card & Semester GPA Report" }
+    {
+      form: "PG Form 1",
+      name: "Proposal for Constitution of the Advisory Committee",
+      timeline: "Within 6 weeks from Commencement of the 1st Semester",
+      copies: "Triplicate (to Dean of P.G. Studies)",
+      workflow: "Academic Advisor (PG) → Head of Department → Associate Dean → Dean of P.G. Studies",
+      purpose: "Statutory constitution of the student's advisory committee. M.Sc.: 2 from major field + 1 from minor field; Ph.D.: 2 from major + 1 minor + 1 supporting field. Maximum 4 students guided concurrently by any Chairperson."
+    },
+    {
+      form: "PG Form 1-A",
+      name: "Proposal for Change of the Advisory Committee",
+      timeline: "Whenever change of Chairman/Member occurs",
+      copies: "Triplicate (to Dean of P.G. Studies)",
+      workflow: "Existing Chairperson/Member → Proposed Member → Head of Department → Associate Dean → Dean of P.G. Studies",
+      purpose: "Proposal for change of Chairman or Member due to transfer, superannuation, or resignation within ANGRAU. Requires status of synopsis approval, willingness of proposed guide, and research progress record."
+    },
+    {
+      form: "PG Form 2",
+      name: "Proposed Programme of Studies for Post Graduate Students",
+      timeline: "To be submitted to Dean PGS by end of the First Semester",
+      copies: "5 Copies (Associate Dean, HoD, Chairperson, Student, Dean PGS)",
+      workflow: "Student → Advisory Committee → Head of Department → Academic Advisor (PG) → Associate Dean → Dean PGS",
+      purpose: "Formulation of comprehensive course work (Core, Non-core, Minor, Supporting, Compulsory Non-Credit, and Research credits). Maximum time limit for completion: M.Sc. 4 years, Ph.D. 6 years."
+    },
+    {
+      form: "PG Form 2-A",
+      name: "Proposal for Change in Programme of Course Work",
+      timeline: "Temporary: within 2 weeks / withdrawal: 6 weeks; Permanent: addition by end of 2nd sem / deletion within 15 days of 3rd sem",
+      copies: "Triplicate (got approved before registering courses)",
+      workflow: "Student → Advisory Committee → Head of Department → Associate Dean / Dean PGS",
+      purpose: "Statutory course changes. Temporary changes permitted by Associate Dean (within 2-6 weeks); permanent course additions/deletions require formal sanction of Dean of P.G. Studies."
+    },
+    {
+      form: "PG Form 3",
+      name: "Original / Revised Synopsis of Thesis / Dissertation Problem",
+      timeline: "By end of 2nd Semester (M.Tech) / 3rd Semester (Ph.D)",
+      copies: "Triplicate (to Dean of P.G. Studies)",
+      workflow: "Student → Advisory Committee → University Head of Department → Head of Department → Associate Dean → Dean PGS",
+      purpose: "Submission of research problem, objectives, brief resume of work, literature cited, and technical programme of work. Mandatory time gap between synopsis and thesis submission is 1 semester for M.Tech and 2 semesters for Ph.D. Includes plagiarism anti-duplication certificate."
+    },
+    {
+      form: "PG Form 3-A",
+      name: "Proposal for Change in Approved Synopsis / Title",
+      timeline: "Prior to making changes in research execution",
+      copies: "Triplicate (to Dean of P.G. Studies)",
+      workflow: "Student → Advisory Committee → Head of Department → Associate Dean → Dean PGS",
+      purpose: "Change in approved thesis title or technical programme. Accounts for research credits completed, weightage claimed, and research credits to be cancelled and re-registered."
+    },
+    {
+      form: "PG Form 4",
+      name: "Proposal for M.Sc. / Ph.D. Qualifying (Comprehensive Examination)",
+      timeline: "To be completed before written examination in triplicate",
+      copies: "Triplicate (in sealed cover to Dean PGS)",
+      workflow: "Chairperson of Advisory Committee → Head of Department → Dean PGS",
+      purpose: "Verification of candidate eligibility: completion of minimum 80% prescribed course work, passing all prescribed core courses, and securing required OGPA before conducting qualifying examinations."
+    },
+    {
+      form: "PG Form 5",
+      name: "Result of the Qualifying Examination (Written & Oral)",
+      timeline: "Immediately after oral examination along with PG Form 4",
+      copies: "Sealed Cover to Dean of P.G. Studies",
+      workflow: "External Examiner + Advisory Committee + HoD (Co-opted) → Dean PGS",
+      purpose: "Official statutory declaration of candidate performance (PASSED / NOT PASSED and SATISFACTORY / NOT SATISFACTORY in block letters) by examining committee and external examiner."
+    },
+    {
+      form: "PG Form 6",
+      name: "Proposal for Submission of Thesis",
+      timeline: "Along with thesis submission in Department",
+      copies: "Original with 2 passport photographs",
+      workflow: "Student → Head of Department → Chairperson → Associate Dean → Dean PGS",
+      purpose: "Comprehensive clearance: verification of course completion, OGPA, clearance of 'F' grades, convocation form, fee payment for transcript/provisional certificate, leave sanction copy, and anti-duplication certificate."
+    },
+    {
+      form: "PG Form 7",
+      name: "Report on P.G. Thesis and Final Viva-Voce Examination (CONFIDENTIAL)",
+      timeline: "Immediately upon completion of final oral defense",
+      copies: "Confidential official submission to Dean PGS",
+      workflow: "External Examiner (Ph.D) + Advisory Committee + HoD → Chairperson → Dean PGS",
+      purpose: "Final certification that thesis has been adjudicated, corrections pointed out by External Examiner incorporated, oral defense conducted, and candidate adjudged SUCCESSFUL."
+    },
+    {
+      form: "PG Form 9",
+      name: "Certificate Regarding Submission of Bound Copies of Thesis & CDs to Library",
+      timeline: "After viva-voce corrections are completed",
+      copies: "3 Bound Copies (1 HoD, 2 Library) + 2 CDs + 6 Copies of Abstracts",
+      workflow: "Student → College Librarian → Chairperson → Head of Department → Dean PGS",
+      purpose: "Mandatory library clearance prerequisite before official university results, transcripts, or provisional degree certificates are processed and released."
+    },
+    {
+      form: "PG Form 10",
+      name: "Form of Information in Respect of Ph.D. Students Before Submission of Thesis",
+      timeline: "To be submitted to Dean PGS two months before thesis submission",
+      copies: "Original with passport photo & semester-wise academic records",
+      workflow: "Student → Chairperson → Head of Department → Associate Dean → Dean PGS",
+      purpose: "Complete doctoral dossier verification including course credits, research credits, semester-wise OGPA, date of passing qualifying examination, and approved thesis title."
+    },
+    {
+      form: "PG Form 11",
+      name: "Proposal for Evaluation of Research Credits (Semester Progress Report)",
+      timeline: "Before the last working day of each semester",
+      copies: "Dual copies (1 retained in Department, 1 to Associate Dean for GPA report)",
+      workflow: "Student → Advisory Committee → Head of Department → Associate Dean",
+      purpose: "Evaluation of research credits registered during the semester (literature review, field trials, observations, laboratory analysis). Uncompleted credits are mandated to be re-registered."
+    },
+    {
+      form: "PG Form 12",
+      name: "Statutory University Memo for Temporary Discontinuation of Studies",
+      timeline: "Upon application and approval",
+      copies: "Official Office Memo issued by Associate Dean",
+      workflow: "Associate Dean → Student (Cc: Chairperson, HoD, Dean PGS)",
+      purpose: "Grants formal permission for temporary break in studies. Max break allowed: 4 semesters for M.Sc., 6 semesters for Ph.D. Over 4 semesters break in Ph.D. requires fresh comprehensive examination."
+    },
+    {
+      form: "PG Form 12-A",
+      name: "Request for Permission to Resume Studies (Re-admission)",
+      timeline: "Well in advance of 4th sem (M.Sc.) / 6th sem (Ph.D.) of discontinuation",
+      copies: "Triplicate (to Associate Dean)",
+      workflow: "Student → Chairperson → Head of Department → Associate Dean → Dean PGS",
+      purpose: "Re-admission application detailing credits completed, balance credits to register, expiration date of maximum allowed duration, and reasons for discontinuation."
+    },
+    {
+      form: "PG Form 12-B",
+      name: "Official Order Permitting Resumption of Studies",
+      timeline: "Upon formal evaluation by Associate Dean",
+      copies: "Official Endorsement Memo",
+      workflow: "Associate Dean → Student (Cc: Chairperson, HoD, Dean PGS)",
+      purpose: "Statutory order according re-admission with conditions: no stipend entitlement, leave evidence for in-service candidates, and mandatory completion within outer time limit."
+    },
+    {
+      form: "PG Form 13",
+      name: "Proforma for Sending Panel of 8 External Examiners for Ph.D. Thesis",
+      timeline: "2 months before submission of Ph.D. thesis",
+      copies: "Confidential submission to Dean of P.G. Studies",
+      workflow: "Chairperson → Head of Department → Dean PGS",
+      purpose: "Panel of 8 eminent scientists/professors representing reputed national/international institutions with contact addresses, phone numbers, and emails for doctoral thesis adjudication."
+    },
+    {
+      form: "PG Form 14",
+      name: "Proposal for Extension of Time for Submission of Ph.D. Thesis",
+      timeline: "3 months before expiry of maximum time limit (6 years)",
+      copies: "Triplicate along with late fee receipt",
+      workflow: "Student → Major Advisor → Head of Department → Associate Dean → Dean PGS",
+      purpose: "For scholars who completed coursework and research credits but require additional time (maximum 2 semesters extension) to finalize thesis on valid documented grounds."
+    },
+    {
+      form: "PG Form 16",
+      name: "Proposal for Re-Examination in Failed Course",
+      timeline: "Within 25 days from commencement of semester",
+      copies: "Original with re-examination fee receipt (Rs. 100/- per course)",
+      workflow: "Student → Course In-charge → Head of Department → Associate Dean",
+      purpose: "Registration for supplementary re-examination in failed courses. Mandatory attendance for internal quizzes and practical evaluations even if course is not currently offered."
+    },
+    {
+      form: "PG Form 17",
+      name: "Academic Progress Register of P.G. Students",
+      timeline: "Permanent departmental register updated every semester",
+      copies: "Departmental Master Ledger",
+      workflow: "Maintained by Head of Department & PG Academic Advisor",
+      purpose: "Comprehensive departmental ledger recording semester-wise course/research credits, OGPA, and dates of submission of all statutory PG Forms (1, 2, 3, 4, 5, 6, 7/8, 9)."
+    },
+    {
+      form: "PG Form 18",
+      name: "Registration-cum-Grade Card for P.G. Courses (Semester I / II)",
+      timeline: "At the beginning of each semester on designated registration day",
+      copies: "Official Card (Student, Advisor, HoD, Exam Cell)",
+      workflow: "Student → Course In-charge → Chairperson → Head of Department → Academic Advisor",
+      purpose: "Semester registration of courses and research credits (maximum credit load: 15+1 per semester, or 9 research credits for in-service candidates on duty). Computation of GPA and OGPA."
+    },
+    {
+      form: "PG Form 18-A",
+      name: "Registration Card / G.P.A. Report of P.G. Courses",
+      timeline: "At semester registration alongside Form 18",
+      copies: "Official Progress Record",
+      workflow: "Student → Chairperson → Head of Department → Associate Dean",
+      purpose: "Cumulative academic checkpoint verifying submission status of PG Forms 1, 2, 3, 4 & 5, research progress status (Satisfactory/Unsatisfactory), and scholastic probation warnings."
+    },
+    {
+      form: "PG Form 19",
+      name: "Annexure: Proforma for Introduction of New P.G. Programme",
+      timeline: "Submitted when proposing new M.Sc./M.Tech/Ph.D. specialization",
+      copies: "University Statutory Proposal",
+      workflow: "Head of Department / Officer Proposing → Associate Dean → Academic Council → ANGRAU Board",
+      purpose: "Institutional audit for new academic programmes: teaching faculty strength, laboratory facilities, budget estimates for 5 years, workload analysis, and syllabus framework."
+    }
   ]
 };
 
