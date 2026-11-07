@@ -134,23 +134,12 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
     { key: 'anti-plagiarism-policy', label: 'Anti-Plagiarism Policy', icon: ShieldCheck },
   ];
 
-  // Helper for scrolling smoothly to seat matrix
+  // Helper for scrolling smoothly to seat matrix in admission process tab
   const scrollToSeatMatrix = (e) => {
     e.preventDefault();
-    if (activeTab !== 'admission-process') {
-      setActiveTab('admission-process');
-      window.history.pushState(null, '', '/academics/admission-process');
-      setTimeout(() => {
-        const el = document.getElementById('seat-matrix-all-branches');
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    } else {
-      const el = document.getElementById('seat-matrix-all-branches');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
+    const el = document.getElementById('seat-matrix-all-branches');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -572,24 +561,15 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                   </div>
                   <div className="flex flex-wrap lg:flex-col gap-3 flex-shrink-0">
                     <a
-                      href="#seat-matrix-all-branches"
-                      onClick={scrollToSeatMatrix}
-                      className="btn btn-navy text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      <Table className="w-4 h-4 text-[#f5c84c]" />
-                      <span>View 88 UG Seats Matrix ↓</span>
-                    </a>
-                    <a
                       href="/documents/academics/ICAR_VI_Deans_Committee_BTech_Curriculum.pdf"
                       download="ICAR_VI_Deans_Committee_BTech_Curriculum.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-outline text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
+                      className="btn btn-navy text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
                       style={{ textDecoration: 'none' }}
                       title="Download Official ICAR VI Deans' Committee B.Tech Curriculum PDF"
                     >
-                      <Download className="w-4 h-4 text-[#d4a72c]" />
+                      <Download className="w-4 h-4 text-[#f5c84c]" />
                       <span>ICAR VI Deans' Syllabus (.pdf)</span>
                     </a>
                     <a
@@ -896,17 +876,18 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                       2-Year (4 Semesters) postgraduate research programs governed by ICAR PG recommendations and ANGRAU academic regulations, with 70 total credits including 30 research dissertation credits.
                     </p>
                   </div>
-                  <div className="flex flex-wrap lg:flex-col gap-3 flex-shrink-0">
-                    <a
-                      href="#seat-matrix-all-branches"
-                      onClick={scrollToSeatMatrix}
-                      className="btn btn-navy text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      <Table className="w-4 h-4 text-[#f5c84c]" />
-                      <span>View PG Seat Matrix ↓</span>
-                    </a>
-                  </div>
+                  {onOpenEnquiry && (
+                    <div className="flex flex-wrap lg:flex-col gap-3 flex-shrink-0">
+                      <button
+                        type="button"
+                        onClick={() => onOpenEnquiry({ name: "M.Tech. (Agricultural Engineering)", level: "Postgraduate" })}
+                        className="btn btn-navy text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
+                      >
+                        <span>Admission Enquiry</span>
+                        <ArrowRight className="w-4 h-4 text-[#f5c84c]" />
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 text-center">
@@ -963,26 +944,18 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                       </div>
                     </div>
 
-                    <div className="pt-4 border-t border-slate-100 mt-4 flex items-center gap-2">
-                      <a
-                        href="#seat-matrix-all-branches"
-                        onClick={scrollToSeatMatrix}
-                        className="btn btn-outline btn-sm text-xs flex-1 justify-center"
-                        style={{ textDecoration: 'none' }}
-                      >
-                        <Table className="w-3.5 h-3.5" />
-                        <span>Seat Breakdown</span>
-                      </a>
-                      {onOpenEnquiry && (
+                    {onOpenEnquiry && (
+                      <div className="pt-4 border-t border-slate-100 mt-4">
                         <button
                           type="button"
                           onClick={() => onOpenEnquiry({ name: b.name, level: "Postgraduate" })}
-                          className="btn btn-gold btn-sm text-xs px-3"
+                          className="btn btn-navy btn-sm text-xs w-full flex items-center justify-center gap-1.5"
                         >
-                          <span>Enquire</span>
+                          <span>Admission Enquiry</span>
+                          <ArrowRight className="w-3.5 h-3.5 text-[#f5c84c]" />
                         </button>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -1005,17 +978,18 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                       3-Year advanced doctoral program featuring 100 total credits (25 coursework + 75 research dissertation), patentable engineering innovations, and rigorous peer-reviewed NAAS publications.
                     </p>
                   </div>
-                  <div className="flex flex-wrap lg:flex-col gap-3 flex-shrink-0">
-                    <a
-                      href="#seat-matrix-all-branches"
-                      onClick={scrollToSeatMatrix}
-                      className="btn btn-navy text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      <Table className="w-4 h-4 text-[#f5c84c]" />
-                      <span>View Doctoral Matrix ↓</span>
-                    </a>
-                  </div>
+                  {onOpenEnquiry && (
+                    <div className="flex flex-wrap lg:flex-col gap-3 flex-shrink-0">
+                      <button
+                        type="button"
+                        onClick={() => onOpenEnquiry({ name: "Ph.D. in Agricultural Engineering", level: "Doctoral" })}
+                        className="btn btn-navy text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
+                      >
+                        <span>Admission Enquiry</span>
+                        <ArrowRight className="w-4 h-4 text-[#f5c84c]" />
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 text-center">
@@ -1068,26 +1042,18 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                       </div>
                     </div>
 
-                    <div className="pt-4 border-t border-slate-100 mt-4 flex items-center gap-2">
-                      <a
-                        href="#seat-matrix-all-branches"
-                        onClick={scrollToSeatMatrix}
-                        className="btn btn-outline btn-sm text-xs flex-1 justify-center"
-                        style={{ textDecoration: 'none' }}
-                      >
-                        <Table className="w-3.5 h-3.5" />
-                        <span>Seat Matrix</span>
-                      </a>
-                      {onOpenEnquiry && (
+                    {onOpenEnquiry && (
+                      <div className="pt-4 border-t border-slate-100 mt-4">
                         <button
                           type="button"
                           onClick={() => onOpenEnquiry({ name: p.name, level: "Doctoral" })}
-                          className="btn btn-gold btn-sm text-xs px-3"
+                          className="btn btn-navy btn-sm text-xs w-full flex items-center justify-center gap-1.5"
                         >
-                          <span>Enquire</span>
+                          <span>Admission Enquiry</span>
+                          <ArrowRight className="w-3.5 h-3.5 text-[#f5c84c]" />
                         </button>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
