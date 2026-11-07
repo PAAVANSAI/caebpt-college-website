@@ -8,15 +8,15 @@ export const departmentsData = [
     id: "fmpe",
     name: "Farm Machinery & Power Engineering",
     shortCode: "FMPE",
-    headOfDept: "Dr. P. V. Ramana",
-    description: "Specializing in tractor ergonomics, autonomous farm robotics, seed drills, precision spraying, and mechanized harvesting technologies.",
+    headOfDept: "Dr. K. V. S. Rami Reddy",
+    description: "Specializing in agricultural machinery, tractor ergonomics, soil dynamics, CNC manufacturing, precision drone spraying, and on-farm mechanization R&D.",
     icon: "Tractor",
-    stats: "3 Research Labs • 1 Machinery Testing Track",
+    stats: "5 Specialized Labs • Advanced CNC Workshop • Custom Hiring Centre",
     keyFocusAreas: [
       "Precision Farming & Drone Spraying",
       "Ergonomics & Safety in Farm Machinery",
-      "Electric & Hybrid Farm Tractors",
-      "Autonomous Harvesters & Sensor Integration"
+      "Soil Dynamics & Traction Mechanics",
+      "Autonomous Harvesters & CNC Prototyping"
     ]
   },
   {
@@ -51,17 +51,17 @@ export const departmentsData = [
   },
   {
     id: "apfe",
-    name: "Agricultural Process & Food Engineering",
-    shortCode: "APFE",
-    headOfDept: "Dr. G. Lakshmi",
-    description: "Dedicated to post-harvest technology, grain storage silos, cold chain logistics, food dehydration, and novel packaging solutions.",
+    name: "Processing & Food Engineering",
+    shortCode: "PFE",
+    headOfDept: "Dr. B. Sreenivasula Reddy",
+    description: "Dedicated to post-harvest technology, grain milling, drying kinetics, twin-screw extrusion, commercial ANGRAU FOODS experiential learning, and novel food packaging.",
     icon: "UtensilsCrossed",
-    stats: "4 Pilot Processing Units • 1 Food Analytical Lab",
+    stats: "6 Specialized Labs • Commercial ELP Unit • FSSAI Certified",
     keyFocusAreas: [
-      "Post-Harvest Loss Minimization",
-      "Thermal & Non-Thermal Food Processing",
-      "Grain Storage, Drying & Silo Engineering",
-      "Bio-Degradable Food Packaging Systems"
+      "Refractive Window Drying & Freeze Dehydration",
+      "Millet Extrusion & Fortified Foods",
+      "Modified Atmosphere Packaging & Ripening Chambers",
+      "Grain Storage, Milling & Primary Processing"
     ]
   },
   {

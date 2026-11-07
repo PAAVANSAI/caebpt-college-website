@@ -71,6 +71,21 @@ export default function DepartmentDetailPage() {
       };
 
   const deptDossiers = {
+    fmpe: {
+      path: "/documents/departments/Department_Farm_Machinery_and_Power_Engineering_Profile.docx",
+      filename: "Department_Farm_Machinery_and_Power_Engineering_Profile.docx",
+      label: "Download FMPE Profile Dossier (.docx)"
+    },
+    pfe: {
+      path: "/documents/departments/Department_Processing_and_Food_Engineering_Profile.docx",
+      filename: "Department_Processing_and_Food_Engineering_Profile.docx",
+      label: "Download PFE Profile Dossier (.docx)"
+    },
+    apfe: {
+      path: "/documents/departments/Department_Processing_and_Food_Engineering_Profile.docx",
+      filename: "Department_Processing_and_Food_Engineering_Profile.docx",
+      label: "Download PFE Profile Dossier (.docx)"
+    },
     ree: {
       path: "/documents/departments/Department_Renewable_Energy_Engineering_Profile.docx",
       filename: "Department_Renewable_Energy_Engineering_Profile.docx",

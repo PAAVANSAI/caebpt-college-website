@@ -724,22 +724,120 @@ export const officialStructureData = {
         slug: "farm-machinery-and-power",
         name: "Farm Machinery and Power Engineering",
         shortCode: "FMPE",
-        about: "The Department of Farm Machinery and Power Engineering is dedicated to modernizing agricultural operations through ergonomic tractors, automated seed drills, autonomous drone sprayers, and combine harvesters. It combines mechanical design with agronomic suitability to improve field efficiency and reduce farmer drudgery.",
+        about: "The Department of Farm Machinery and Power Engineering was started with a vision to explore and cater the application of agricultural machinery and power sources to the field of agriculture for enhancing the efficiency, drudgery reduction and timeliness in operation. The department is created to pursue excellence in teaching, research and industrial collaborative activities with farmer-involved on-farm research and developments. The academic curriculum with Undergraduate program includes the study of basic principles and practical exposure on farm machinery starting from land preparation, sowing, intercultural, plant protection, and harvesting operations. Laboratory and field experimental facilities on each operation alleviate knowledge in the subject and assist on-field machine servicing capabilities. Also, PG and Ph.D. programs under the department provide explicitness in design of agricultural machinery, human safety, soil dynamics, traction mechanics, precision agriculture, testing & evaluation of farm machinery, robotics in agriculture, and drone technology. AUTOCAD, SOLIDWORKS, and ANSYS softwares are equipped for complete design, modeling, and stress analysis of farm machinery prior to prototyping. The Department is established with an R&D facility on farm mechanization, under which a Custom Hiring Centre provides machinery on an affordable rental basis to farmers. A Farm Implements Production Unit manufactures customized small hand tools/implements on order basis, and an advanced workshop with CNC Lathe and CNC Milling machines assists in inherent development of agricultural machinery.",
+        softwareSuite: ["AUTOCAD", "SOLIDWORKS", "ANSYS"],
+        specialUnits: [
+          "Custom Hiring Centre (Machinery on affordable rental basis to farmers)",
+          "Farm Implements Production Unit (Development & manufacturing of customized small tools/implements)",
+          "Advanced CNC Workshop Facility (CNC Lathe & CNC Milling machines for prototype development)",
+          "ANGRAU Farm Implements Production Centre (ELP Unit - SRDY 482 (0+10))"
+        ],
+        elpUnit: {
+          title: "ANGRAU Farm Implements Production Centre (ELP Unit)",
+          established: "2020-21",
+          course: "Experiential Learning On-Campus (Student READY) – SRDY 482 (0+10)",
+          duration: "10 Weeks (First Semester of Final Year B.Tech)",
+          description: "Final year students of B.Tech. (Ag. Engg.) procure raw materials and fabricate small agricultural tools and implements with initial investment. Income is generated through selling these implements to local farmers and institutions, developing manufacturing and rural entrepreneurship skills."
+        },
         labs: [
-          "Tractor Ergonomics and Vibration Analysis Lab",
-          "Tractor Power Testing Track & PTO Dynamometer Unit",
-          "Farm Implements & Tillage Machinery Testing Bay",
-          "Autonomous Agro-Drone Flight & Sensor Calibration Lab",
-          "Internal Combustion Engines & Biofuels Testing Rig"
+          "Farm Machinery Laboratory",
+          "Farm Power Laboratory",
+          "Ergonomics Laboratory",
+          "Advanced Workshop (CNC Facilities)",
+          "Soil Dynamics Laboratory"
+        ],
+        labEquipments: [
+          {
+            labName: "Farm Machinery Laboratory",
+            equipment: "Knapsack sprayer, Hand compression sprayer, Mist blower, Hand operated castor thresher, Groundnut pod stripper, Axial flow thresher, Paddy reaper, Maize Sheller, Power Sprayer, Sub-soiler, Paddy thresher, ULV Sprayer, Post hole digger, 9 tyne cultivator (spring loaded), Boom sprayer, Disc plough, Battery operated cotton picker, Wheel type dibbler, Rotary mulcher, Groundnut digger shaker cum windrower, Mobile shredder, Foot operated sprayer, Rocking sprayer, Bucket scraper, Multi crop thresher (Electric motor operated), Rotavator, Rice transplanter (Riding type), Rice transplanter (walking type), Nursery raising machine, Seed cum fertilizer drill automatic, Reversible M.B. Plough, Rotary plough, Spider weeder, Multi crop ridge planter, Rotary slasher, Laser land leveler, Self propelled high clearance sprayer, Combine harvester (self propelled), Combine harvester (tractor mounted), Rigid tyne cultivator, John Deere 4 WD tractor along with hoe and bucket attachments, Mahindra 40 H.P, Escorts tractor, V.S.T Mini tractor, Power tiller"
+          },
+          {
+            labName: "Farm Power Laboratory",
+            equipment: "Cut models: Diesel engine (single cylinder), Tractor differential, Tractor steering, Rear axle assembly, Hydraulic brake, Master cylinder, Ignition system, Self starter, Distributor, Ignition Coil, Magneto, Synchromesh gear box, Constant mesh gear box, Steering gear box, Diaphragm clutch system, Multi plates clutch, Four wheel brake, Cone clutch, Mechanical brake system. LED Panels: Fuel injection system, Lubrication system, Gear box 8+2, Hydraulic system. Tractor cut section without wheel assemblies, etc."
+          },
+          {
+            labName: "Ergonomics Laboratory",
+            equipment: "Motorized treadmill, Digital heart rate monitor, Digital pulse monitor with finger sensor cable, Dual digital thermometer with core/skin temperature process, Electromyography unit, Ergometer cycle, Bourdon tube pressure gauge (digital), Speed measurement trainer, Torque cell transducer (10 kg), Strain measurement trainer (1 kg), Digital sound level meter, Digital vibration meter, etc."
+          },
+          {
+            labName: "Advanced Workshop",
+            equipment: "Lathe machines with all accessories and attachments, Spot welding machine (pedestal type), Welding Machine with transformer (600 AMPS air cooled) and accessories, Wooden work table (3' X 8'), Bench grinder 1/2 HP, Wood turning lathe, Shaper machine (18\"), Air compressor, Iron cutting machine (14\"), Hydraulic press, Shearing machine, Hydraulic hack saw machine with 2 hp motor, Hydraulic pipe bending machine, Stand drilling machine 1/2\", Pipe bending machine (1/2\" to 1/4\"), Hand drilling machine (6 mm), Universal milling machine, Radial drilling machine 1\" capacity, Heavy duty sheet bending machine (4'), CNC Lathe machine, CNC Milling machine, etc."
+          },
+          {
+            labName: "Soil Dynamics Laboratory",
+            equipment: "Rectangular and circular soil bins, Force analysis instrumentation, S Type load cells (1 ton and 3 ton capacity), Digital force gauge, Digital and analogue tachometers, Cone penetrometer, Strain gauge (cantilever type), Universal load cell (750 kg), Digital transducer indicator suitable for AG make universal load cell, Variable frequency drive motor (1.5 kW), etc."
+          }
+        ],
+        fieldResearchAreas: [
+          "Precision farming technologies and sensor instrumentation",
+          "Traction mechanics and soil-tool interaction modeling",
+          "Robotics and automation in agriculture & Agro-Drone spraying",
+          "Design, stress analysis and prototyping of farm implements",
+          "Ergonomic evaluation and operator vibration/drudgery reduction",
+          "Dryland agriculture mechanization and in-situ moisture conservation",
+          "Laser land leveling and precision seed-cum-fertilizer drilling"
         ],
         hodAndFaculty: {
-          hodName: "Dr. P. V. Ramana",
+          hodName: "Dr. K. V. S. Rami Reddy",
           hodDesignation: "Professor & Head of Department",
-          hodSpecialization: "Tractor-Implement Dynamics, Harvesting Machinery & Drone Spraying",
+          hodPhone: "9490845917",
+          hodEmail: "kvs.ramireddy@angrau.ac.in",
+          hodAltEmail: "ksubbaramireddy@gmail.com",
+          hodQualifications: "Ph.D. (FMPE, ANGRAU 2017), M.Tech (FMPE, MPKV Rahuri 1998), B.Tech (Ag. Engg, ANGRAU 1994)",
+          hodSpecialization: "Precision Farming Technologies, Machinery Instrumentation, Tractor Rotary Weeders & Axial Sprayers",
+          hodExperience: "30 Years Academic & Research Distinction; Established Farm Machinery, Farm Power & CNC Labs; 25 Journal Papers",
+          hodAwards: "Life Member in Indian Society of Agricultural Engineers (ISAE) & Andhra Agricultural Journal",
           facultyMembers: [
-            { name: "Dr. K. S. Rao", designation: "Professor & Associate Dean", qual: "Ph.D. (IIT Kharagpur)" },
-            { name: "Er. T. Harikrishna", designation: "Assistant Professor", qual: "M.Tech (Agri Engg)" },
-            { name: "Er. N. Kiran Kumar", designation: "Assistant Professor", qual: "M.Tech (FMPE)" }
+            {
+              name: "Dr. B. Hari Babu",
+              designation: "Associate Professor",
+              phone: "9182780358",
+              email: "b.haribabu@angrau.ac.in",
+              qual: "Ph.D. (Agricultural Engineering)",
+              specialization: "Farm Machinery Design, Testing & Evaluation"
+            },
+            {
+              name: "Dr. A. Ashok Kumar",
+              designation: "Assistant Professor",
+              phone: "9177522213",
+              email: "a.ashokkumar@angrau.ac.in",
+              qual: "Ph.D. (IIT Kharagpur 2017), M.Tech (IIT Kharagpur 2011), B.Tech (ANGRAU 2009)",
+              specialization: "Mechatronics, Electronics & Robotics in Agriculture, Embedded Tractor Performance Systems; IEI Young Engineer Award, ISAE-TAFE Gold Medal"
+            },
+            {
+              name: "Er. D. Vijay Kumar",
+              designation: "Assistant Professor",
+              phone: "9492686634",
+              email: "d.vijayakumar@angrau.ac.in",
+              qual: "M.Tech (FMPE, ANGRAU 2010), B.Tech (Ag. Engg, ANGRAU 2006)",
+              specialization: "Farm Mechanization in Dryland Agriculture, Conservation Straw Management, Rice Transplanters & Groundnut Planters"
+            },
+            {
+              name: "Dr. B. Raj Kiran",
+              designation: "Assistant Professor",
+              phone: "8500220340 / 9177345631",
+              email: "b.rajkiran@angrau.ac.in",
+              altEmail: "raj.be018@gmail.com",
+              qual: "Ph.D. (ANGRAU 2022), M.Tech (IIT Kharagpur 2010), B.Tech (ANGRAU 2008)",
+              specialization: "CAD/CAM Design, Deep Learning & Computer Vision in Precision Farming, Automatic Transplanters & Spot Spraying"
+            },
+            {
+              name: "Er. N. Kishore",
+              designation: "Assistant Professor",
+              phone: "8500856998 / 9398431758",
+              email: "n.kishore@angrau.ac.in",
+              altEmail: "kishorenalabolu@gmail.com",
+              qual: "M.Tech (IIT Kharagpur - GATE AIR 40), B.Tech (CAE Bapatla)",
+              specialization: "In-Situ Rainwater Conservation Diker Mechanisms, Bird Scarers for Millets; Netaji Subhas-ICAR International Fellow (Univ. of Nebraska)"
+            },
+            {
+              name: "Dr. G. Veera Prasad",
+              designation: "Assistant Professor (AICRP on FIM)",
+              phone: "9492686634",
+              email: "g.veeraprasad@angrau.ac.in",
+              qual: "Ph.D. (Farm Machinery & Power Engineering)",
+              specialization: "Farm Implements & Machinery Scheme, Field Performance Testing & Evaluation"
+            }
           ]
         }
       },
@@ -907,23 +1005,123 @@ export const officialStructureData = {
       {
         id: "apfe",
         slug: "agricultural-process-and-food-engineering",
-        name: "Agricultural Process and Food Engineering",
-        shortCode: "APFE",
-        about: "The Department of Agricultural Process & Food Engineering focuses on post-harvest handling, grain milling, drying kinetics, cold storage management, and value-added food processing to minimize agrarian crop loss and boost farmer incomes.",
+        name: "Processing and Food Engineering",
+        shortCode: "PFE",
+        about: "Processing operations are undertaken to add value to agricultural materials after their production. The main purpose of agricultural processing is to minimise the qualitative and quantitative deterioration of the material after harvest. The various agricultural processing operations performed on various crops (cereals, pulses and oilseeds) are cleaning, grading, sorting, drying, cooling, storage, milling, size reduction, expelling, mixing, blending, packaging, waste utilization, and seed treatment. Cleaning of grains and other agricultural products is performed before any further processing operation to ensure purity, and grading of cleaned seed is conducted to obtain premium quality seed with high germination and viability. M.Tech. (Agricultural Engineering) PG program was started from the academic year 2006-07 onwards with a monthly stipend of Rs. 7,000/-. Ph.D. (Agricultural Engineering) program was initiated during the year 2012-13 with a monthly stipend of Rs. 10,000/-, strictly adhering to the ICAR specified postgraduate curriculum.",
+        pgHistory: {
+          mtechStarted: "2006-07",
+          mtechStipend: "Rs. 7,000/- per month",
+          phdStarted: "2012-13",
+          phdStipend: "Rs. 10,000/- per month",
+          curriculum: "ICAR Specified Postgraduate Curriculum"
+        },
+        elpUnit: {
+          title: "ANGRAU FOODS - Commercial Experiential Learning Unit",
+          fssaiLicense: "101320100077",
+          description: "Hands-on commercial production, automated packaging, quality analysis, and market distribution of fortified and millet-based consumer food products under the experiential learning program.",
+          products: [
+            "Gud Makhana",
+            "Instant Ragi Dosa Mix",
+            "Instant Foxtail & Little Millet Dosa Mix (Korralu & Samalu)",
+            "Ragi Malt",
+            "Finger Millet Cookies",
+            "Multi Millet Atta",
+            "Ragi Mixture (FSSAI Lic. No. 101320100077)",
+            "Blackgram Laddu",
+            "Chilli Powder",
+            "Turmeric Powder"
+          ]
+        },
         labs: [
-          "Semi-Industrial Pilot Food Processing & Dehydration Plant",
-          "Grain Milling, Sizing & Silo Storage Lab",
-          "Food Quality Analytical Lab (Spectrophotometer, Texture Analyzer)",
-          "Extrusion Processing & Packaging Technology Unit",
-          "Dairy & Cold Chain Engineering Lab"
+          "Instrumentation Laboratory",
+          "Process Engineering Laboratory",
+          "Food Analysis Laboratory",
+          "Food Microbiology Laboratory",
+          "Environmental Control Laboratory",
+          "Extrusion Processing & Packaging Laboratory"
+        ],
+        labEquipments: [
+          {
+            labName: "Instrumentation Laboratory",
+            equipment: "Unibloc moisture analyzer, Brookfield digital viscometer, PC based double beam UV-visible spectrophotometer, Freeze dryer (Lyophilizer), Electronic balance, pH meter, Digital LCD food thermometer, Infrared moisture meter, Colorimeter, etc."
+          },
+          {
+            labName: "Process Engineering Laboratory",
+            equipment: "Refrigerated centrifuge, Tablet making machine, Water bath incubator shaker, Vacuum filtration assembly with vacuum pump, Vacuum oven, Digital bomb calorimeter, Oscilloscope, Function generator, Digital LCR meter, Hollow fiber ultra-filtration membrane set, Tray dryer, Microwave convection oven, IoT-enabled Refractive Window Dryer, Specific gravity separator, Rubber roll sheller, Aspirator and polisher, Mini dhal mill, etc."
+          },
+          {
+            labName: "Food Analysis Laboratory",
+            equipment: "Automatic nitrogen protein estimation system (KelPlus Protein Analyzer), Automatic PC compatible solvent extraction system (Soxhlet apparatus), Clevenger apparatus of oil heavier & oil lighter with heating mantles and voltage stabilizer, Sonicator with soundproof enclosure, Testo Thermal Image Camera, etc."
+          },
+          {
+            labName: "Food Microbiology Laboratory",
+            equipment: "B.O.D. incubator, Autoclave, Laminar flow chamber, Deep freeze up to -40 °C, Centrifuge, Ice flaking machine, Binocular biological microscope, Commercial refrigeration unit, etc."
+          },
+          {
+            labName: "Environmental Control Laboratory",
+            equipment: "Environment chamber, Fruit Ripening Chamber, Controlled atmosphere testing unit, Cold storage simulation systems, etc."
+          },
+          {
+            labName: "Extrusion Processing & Packaging Lab",
+            equipment: "Pilot scale twin screw extruder with automated control panel, Tray and cup seal packaging machine (ETS PACK / PREMA), Continuous band sealer, Nitrogen flushing unit, etc."
+          }
+        ],
+        fieldResearchAreas: [
+          "Refractive window drying kinetics and freeze dehydration of perishable fruits and vegetables",
+          "Millet-based extrusion product formulation and therapeutic snack development",
+          "Modified Atmosphere Packaging (MAP) and fruit ripening chambers for post-harvest shelf-life extension",
+          "Enzyme-assisted essential oil extraction and pulse dehulling optimization",
+          "Non-destructive quality evaluation using thermal imaging and UV-visible spectrophotometry",
+          "Byproduct valorization and functional food formulation from agricultural waste"
         ],
         hodAndFaculty: {
-          hodName: "Dr. G. Lakshmi",
-          hodDesignation: "Associate Professor & Head of Department",
-          hodSpecialization: "Food Dehydration, Grain Storage Silos & Packaging",
+          hodName: "Dr. B. Sreenivasula Reddy",
+          hodDesignation: "Professor & Head of Department",
+          hodPhone: "9618800819",
+          hodEmail: "b.sreenivasulareddy@angrau.ac.in",
+          hodQualifications: "Ph.D. (Processing & Food Engineering)",
+          hodSpecialization: "Food Process Engineering, Grain Drying & Milling Technology, Storage Structures",
           facultyMembers: [
-            { name: "Dr. R. Madhusudhan", designation: "Assistant Professor", qual: "Ph.D. (Food Process)" },
-            { name: "Er. M. Bhavani", designation: "Teaching Associate", qual: "M.Tech (APFE)" }
+            {
+              name: "Dr. S. Vishnu Vardhan",
+              designation: "Professor",
+              phone: "9440363112",
+              email: "vishnuvardhans@angrau.ac.in",
+              qual: "Ph.D. (Agricultural Engineering)",
+              specialization: "Renewable Energy Applications in Food Processing, Solar Dehydration & Biomass Systems"
+            },
+            {
+              name: "Dr. K. Lavanya",
+              designation: "Associate Professor",
+              phone: "9182164437",
+              email: "k.lavanya@angrau.ac.in",
+              qual: "Ph.D. (Food Process Engineering)",
+              specialization: "Novel Food Processing Technologies, Fruit & Vegetable Preservation"
+            },
+            {
+              name: "Dr. B. Pravallika",
+              designation: "Teaching Associate",
+              phone: "9866486926",
+              email: "pravallikabogala@gmail.com",
+              qual: "Ph.D. (Food Engineering)",
+              specialization: "Functional Foods, Extrusion Processing & Sensory Evaluation"
+            },
+            {
+              name: "Dr. D. D. Smith",
+              designation: "Principal Scientist & Head (AICRP on PHET)",
+              phone: "9949906751",
+              email: "dd.smith@angrau.ac.in",
+              qual: "Ph.D. (Post Harvest Engineering)",
+              specialization: "AICRP on Post Harvest Engineering & Technology, Value Addition Machinery & Pilot Plants"
+            },
+            {
+              name: "Dr. V. Vasudeva Rao",
+              designation: "Scientist (AICRP on PHET)",
+              phone: "9177101614",
+              email: "v.vasudevarao@angrau.ac.in",
+              qual: "Ph.D. (Agricultural Process Engineering)",
+              specialization: "Post-Harvest Operations, Loss Minimization & Primary Processing Equipment"
+            }
           ]
         }
       },

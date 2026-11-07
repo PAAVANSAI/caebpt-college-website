@@ -272,6 +272,9 @@ function sanitizeOfficialStructure(data) {
         const isDeptsStale = !Array.isArray(userDepts) ||
           userDepts.length < 6 ||
           !userDepts.some(d => d.id === 'ide' || d.slug?.includes('irrigation')) ||
+          !userDepts.some(d => d.id === 'fmpe' && d.hodAndFaculty?.hodName?.includes('Rami Reddy')) ||
+          !userDepts.some(d => (d.id === 'apfe' || d.id === 'pfe') && d.hodAndFaculty?.hodName?.includes('Sreenivasula')) ||
+          !userDepts.some(d => d.id === 'ree' && d.hodAndFaculty?.hodName?.includes('Vishnu Vardhan')) ||
           JSON.stringify(userDepts).includes('Placeholder') ||
           JSON.stringify(userDepts).includes('Dr. Ch. Srinivas') ||
           JSON.stringify(userDepts).includes('Dr. M. S. Reddy') ||
@@ -383,12 +386,14 @@ export function WebsiteProvider({ children }) {
       if (!saved) return defaultFaculty;
       const parsed = JSON.parse(saved);
       const isStale = !Array.isArray(parsed) ||
-        parsed.length < 8 ||
+        parsed.length < 15 ||
         JSON.stringify(parsed).includes('Placeholder') ||
         JSON.stringify(parsed).includes('Dr. Ch. Srinivas') ||
         JSON.stringify(parsed).includes('Dr. M. S. Reddy') ||
         !parsed.some(f => f.name?.includes('Krupavathi')) ||
-        !parsed.some(f => f.name?.includes('Vishnu Vardhan'));
+        !parsed.some(f => f.name?.includes('Vishnu Vardhan')) ||
+        !parsed.some(f => f.name?.includes('Rami Reddy')) ||
+        !parsed.some(f => f.name?.includes('Sreenivasula'));
       return isStale ? defaultFaculty : parsed;
     } catch {
       return defaultFaculty;
@@ -429,7 +434,10 @@ export function WebsiteProvider({ children }) {
         JSON.stringify(parsed).includes('Placeholder') ||
         JSON.stringify(parsed).includes('Dr. Ch. Srinivas') ||
         JSON.stringify(parsed).includes('Dr. M. S. Reddy') ||
-        !parsed.some(d => d.id === 'ide' || d.slug?.includes('irrigation'));
+        !parsed.some(d => d.id === 'ide' || d.slug?.includes('irrigation')) ||
+        !parsed.some(d => d.id === 'fmpe' && d.headOfDept?.includes('Rami Reddy')) ||
+        !parsed.some(d => (d.id === 'apfe' || d.id === 'pfe') && d.headOfDept?.includes('Sreenivasula')) ||
+        !parsed.some(d => d.id === 'ree' && d.headOfDept?.includes('Vishnu Vardhan'));
       return isStale ? defaultDepartments : parsed;
     } catch {
       return defaultDepartments;
