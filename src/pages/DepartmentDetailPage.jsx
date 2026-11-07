@@ -26,17 +26,23 @@ export default function DepartmentDetailPage() {
   const { officialStructure } = useWebsite();
   const departments = officialStructure?.academics?.departments || officialStructureData.academics.departments;
 
+  const normalizedSlug = (deptSlug || '').toLowerCase().replace(/-engineering$/, '');
   const currentDept =
-    departments.find(
-      (d) =>
+    departments.find((d) => {
+      const dNorm = (d.slug || '').toLowerCase().replace(/-engineering$/, '');
+      return (
         d.slug === deptSlug ||
         d.id === deptSlug ||
         d.shortCode?.toLowerCase() === deptSlug?.toLowerCase() ||
-        (deptSlug === 'ide' && d.id === 'ide') ||
-        (deptSlug === 'irrigation-and-drainage-engineering' && d.id === 'ide') ||
-        (deptSlug === 'renewable-energy-engineering' && d.id === 'ree') ||
-        (deptSlug === 'soil-and-water-conservation' && d.id === 'swce')
-    ) || departments[0];
+        dNorm === normalizedSlug ||
+        (deptSlug?.includes('irrigation') && d.id === 'ide') ||
+        (deptSlug?.includes('renewable') && d.id === 'ree') ||
+        (deptSlug?.includes('conservation') && d.id === 'swce') ||
+        (deptSlug?.includes('machinery') && d.id === 'fmpe') ||
+        (deptSlug?.includes('food') && (d.id === 'apfe' || d.id === 'pfe')) ||
+        (deptSlug?.includes('basic') && d.id === 'beas')
+      );
+    }) || departments[0];
 
   return (
     <div>
