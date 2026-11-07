@@ -122,9 +122,20 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
   // Helper for scrolling smoothly to seat matrix
   const scrollToSeatMatrix = (e) => {
     e.preventDefault();
-    const el = document.getElementById('seat-matrix-all-branches');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+    if (activeTab !== 'admission-process') {
+      setActiveTab('admission-process');
+      window.history.pushState(null, '', '/academics/admission-process');
+      setTimeout(() => {
+        const el = document.getElementById('seat-matrix-all-branches');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const el = document.getElementById('seat-matrix-all-branches');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -158,7 +169,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
       {/* Official Academics Navigation Tab Bar — Single continuous line strictly matching ANGRAU */}
       <section className="bg-white border-b border-slate-200 shadow-2xs sticky top-14 z-40">
         <div className="w-full max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-6">
-          <div className="flex items-center justify-start xl:justify-center gap-1 sm:gap-1.5 py-2 overflow-x-auto no-scrollbar whitespace-nowrap flex-nowrap scroll-smooth">
+          <div className="flex items-center justify-start lg:justify-center gap-1 sm:gap-1.5 py-2 overflow-x-auto no-scrollbar whitespace-nowrap flex-nowrap scroll-smooth">
             {academicTabs.map((tab) => {
               const IconComp = tab.icon;
               const isActive = activeTab === tab.key;
@@ -172,7 +183,7 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                     }
                   }}
                   onClick={() => handleTabClick(tab.key)}
-                  className={`px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-[12.5px] font-bold transition-all flex items-center gap-1.5 border cursor-pointer select-none whitespace-nowrap flex-shrink-0 ${
+                  className={`px-2 lg:px-2.5 xl:px-3 py-1.5 rounded-lg text-xs lg:text-[11.5px] xl:text-xs font-bold transition-all flex items-center gap-1 sm:gap-1.5 border cursor-pointer select-none whitespace-nowrap flex-shrink-0 ${
                     isActive
                       ? 'bg-[#0b1a2e] text-[#f5c84c] border-[#0b1a2e] shadow-xs font-extrabold ring-1 ring-[#f5c84c]/50'
                       : 'text-slate-700 bg-white hover:bg-slate-100 hover:text-navy-950 border-slate-200'

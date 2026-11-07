@@ -27,7 +27,7 @@ export default function DepartmentDetailPage() {
   const departments = officialStructure?.academics?.departments || officialStructureData.academics.departments;
 
   const normalizedSlug = (deptSlug || '').toLowerCase().replace(/-engineering$/, '');
-  const currentDept =
+  const matchedDept =
     departments.find((d) => {
       const dNorm = (d.slug || '').toLowerCase().replace(/-engineering$/, '');
       return (
@@ -43,6 +43,23 @@ export default function DepartmentDetailPage() {
         (deptSlug?.includes('basic') && d.id === 'beas')
       );
     }) || departments[0];
+
+  const officialDept =
+    officialStructureData.academics.departments.find(
+      (d) => d.id === matchedDept?.id || d.slug === matchedDept?.slug || d.shortCode === matchedDept?.shortCode
+    ) || officialStructureData.academics.departments[0];
+
+  // Guaranteed fallback to clean verified data if cached state has placeholders or missing fields
+  const currentDept =
+    !matchedDept || JSON.stringify(matchedDept).includes('Placeholder') || !matchedDept?.hodAndFaculty?.hodPhone
+      ? officialDept
+      : {
+          ...officialDept,
+          ...matchedDept,
+          hodAndFaculty: JSON.stringify(matchedDept.hodAndFaculty || {}).includes('Placeholder')
+            ? officialDept.hodAndFaculty
+            : (matchedDept.hodAndFaculty || officialDept.hodAndFaculty)
+        };
 
   return (
     <div>

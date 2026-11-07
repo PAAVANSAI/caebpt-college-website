@@ -267,9 +267,34 @@ function sanitizeOfficialStructure(data) {
           intakeBreakdown: defCourse.intakeBreakdown || userCourse.intakeBreakdown
         };
       }),
-      departments: Array.isArray(data.academics?.departments) && data.academics.departments.length >= 5
-        ? data.academics.departments
-        : defaultOfficialStructure.academics.departments
+      departments: (() => {
+        const userDepts = data.academics?.departments;
+        const isDeptsStale = !Array.isArray(userDepts) ||
+          userDepts.length < 6 ||
+          !userDepts.some(d => d.id === 'ide' || d.slug?.includes('irrigation')) ||
+          JSON.stringify(userDepts).includes('Placeholder') ||
+          JSON.stringify(userDepts).includes('Dr. Ch. Srinivas') ||
+          JSON.stringify(userDepts).includes('Dr. M. S. Reddy') ||
+          userDepts.some(d => !d.hodAndFaculty || !d.hodAndFaculty.hodName || d.hodAndFaculty.hodName.includes('Placeholder'));
+
+        if (isDeptsStale) {
+          return defaultOfficialStructure.academics.departments;
+        }
+
+        return defaultOfficialStructure.academics.departments.map(defDept => {
+          const userDept = userDepts.find(d => d.id === defDept.id || d.slug === defDept.slug);
+          if (!userDept || JSON.stringify(userDept).includes('Placeholder') || JSON.stringify(userDept).includes('Dr. Ch. Srinivas') || JSON.stringify(userDept).includes('Dr. M. S. Reddy')) {
+            return defDept;
+          }
+          return {
+            ...defDept,
+            ...userDept,
+            hodAndFaculty: JSON.stringify(userDept.hodAndFaculty || {}).includes('Placeholder')
+              ? defDept.hodAndFaculty
+              : (userDept.hodAndFaculty || defDept.hodAndFaculty)
+          };
+        });
+      })()
     },
     administration: adminObj,
     welfare: Array.isArray(data.welfare) && data.welfare.length > 0
@@ -357,7 +382,14 @@ export function WebsiteProvider({ children }) {
       const saved = localStorage.getItem('caebpt_faculty');
       if (!saved) return defaultFaculty;
       const parsed = JSON.parse(saved);
-      return Array.isArray(parsed) && parsed.length > 0 ? parsed : defaultFaculty;
+      const isStale = !Array.isArray(parsed) ||
+        parsed.length < 8 ||
+        JSON.stringify(parsed).includes('Placeholder') ||
+        JSON.stringify(parsed).includes('Dr. Ch. Srinivas') ||
+        JSON.stringify(parsed).includes('Dr. M. S. Reddy') ||
+        !parsed.some(f => f.name?.includes('Krupavathi')) ||
+        !parsed.some(f => f.name?.includes('Vishnu Vardhan'));
+      return isStale ? defaultFaculty : parsed;
     } catch {
       return defaultFaculty;
     }
@@ -392,7 +424,13 @@ export function WebsiteProvider({ children }) {
       const saved = localStorage.getItem('caebpt_departments');
       if (!saved) return defaultDepartments;
       const parsed = JSON.parse(saved);
-      return Array.isArray(parsed) && parsed.length > 0 ? parsed : defaultDepartments;
+      const isStale = !Array.isArray(parsed) ||
+        parsed.length < 6 ||
+        JSON.stringify(parsed).includes('Placeholder') ||
+        JSON.stringify(parsed).includes('Dr. Ch. Srinivas') ||
+        JSON.stringify(parsed).includes('Dr. M. S. Reddy') ||
+        !parsed.some(d => d.id === 'ide' || d.slug?.includes('irrigation'));
+      return isStale ? defaultDepartments : parsed;
     } catch {
       return defaultDepartments;
     }

@@ -23,15 +23,30 @@ export const departmentsData = [
     id: "swce",
     name: "Soil & Water Conservation Engineering",
     shortCode: "SWCE",
-    headOfDept: "Dr. M. S. Reddy",
+    headOfDept: "Dr. G. Ravi Babu",
     description: "Focusing on micro-irrigation systems, watershed hydrology, groundwater recharge, remote sensing, and GIS-based drought modeling.",
     icon: "Droplets",
-    stats: "2 Hydrology Labs • 1 Meteorological Station",
+    stats: "5 Specialized Labs • Model Watershed Complex",
     keyFocusAreas: [
       "Drip & Sprinkler Automation",
       "Watershed Delineation & Soil Erosion Modeling",
       "Groundwater Recharging Structures",
       "Satellite Remote Sensing & GIS in Agriculture"
+    ]
+  },
+  {
+    id: "ide",
+    name: "Irrigation & Drainage Engineering",
+    shortCode: "IDE",
+    headOfDept: "Dr. (Mrs.) K. Krupavathi",
+    description: "Managing natural agricultural water resources through precision micro-irrigation, canal automation, saline soil reclamation, and geomatics-based hydrological modeling.",
+    icon: "Droplets",
+    stats: "4 Specialized Labs • Meteorological Station",
+    keyFocusAreas: [
+      "Groundwater Modeling & Well Hydraulics",
+      "Micro-Irrigation Automation & Fertigation",
+      "Saline & Waterlogged Soil Reclamation",
+      "Geomatics, Remote Sensing & Delta Water Management"
     ]
   },
   {
@@ -53,10 +68,10 @@ export const departmentsData = [
     id: "ree",
     name: "Renewable Energy Engineering",
     shortCode: "REE",
-    headOfDept: "Dr. Ch. Srinivas",
+    headOfDept: "Dr. S. Vishnu Vardhan",
     description: "Pioneering biomass gasification, solar photovoltaic pumping, solar crop dryers, and bio-fuel generation for agricultural sustainability.",
     icon: "SunMedium",
-    stats: "2 Solar Trial Stations • 1 Bio-Energy Testing Lab",
+    stats: "Solar PV Agri-Pumping Yard • Biomass Gasifier Station",
     keyFocusAreas: [
       "Solar Water Pumping Systems",
       "Biomass Pelleting & Gasifiers",

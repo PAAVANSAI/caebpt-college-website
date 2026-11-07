@@ -36,10 +36,20 @@ export default function DepartmentsPage({ onOpenEnquiry }) {
   const { officialStructure } = useWebsite();
   const [searchQuery, setSearchQuery] = useState('');
 
-  const departments =
+  const rawDepartments =
     officialStructure?.academics?.departments ||
     officialStructureData.academics.departments ||
     [];
+
+  // Ensure clean official data if cached context contains stale placeholders
+  const departments =
+    !Array.isArray(rawDepartments) ||
+    rawDepartments.length < 6 ||
+    JSON.stringify(rawDepartments).includes('Placeholder') ||
+    JSON.stringify(rawDepartments).includes('Dr. Ch. Srinivas') ||
+    JSON.stringify(rawDepartments).includes('Dr. M. S. Reddy')
+      ? officialStructureData.academics.departments
+      : rawDepartments;
 
   const filteredDepartments = departments.filter(
     (dept) =>

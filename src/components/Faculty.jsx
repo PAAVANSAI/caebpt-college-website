@@ -10,6 +10,7 @@ export default function Faculty() {
     { label: 'All Faculty', value: 'All' },
     { label: 'Farm Machinery (FMPE)', value: 'fmpe' },
     { label: 'Soil & Water (SWCE)', value: 'swce' },
+    { label: 'Irrigation & Drainage (IDE)', value: 'ide' },
     { label: 'Food Process (APFE)', value: 'apfe' },
     { label: 'Renewable Energy (REE)', value: 'ree' },
     { label: 'Basic Engg (BEAS)', value: 'beas' },

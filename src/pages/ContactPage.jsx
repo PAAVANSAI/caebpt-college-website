@@ -63,9 +63,21 @@ export default function ContactPage({ onOpenEnquiry }) {
                 </tr>
                 <tr className="hover:bg-slate-50">
                   <td className="py-3 px-4 font-semibold text-navy-950">Soil & Water Conservation</td>
-                  <td className="py-3 px-4">Dr. M. S. Reddy</td>
-                  <td className="py-3 px-4">+91 8643 224028</td>
-                  <td className="py-3 px-4 text-slate-500">head.swce@caebpt.ac.in</td>
+                  <td className="py-3 px-4">Dr. G. Ravi Babu</td>
+                  <td className="py-3 px-4">+91 98485 72321</td>
+                  <td className="py-3 px-4 text-slate-500">g.ravibabu@angrau.ac.in</td>
+                </tr>
+                <tr className="hover:bg-slate-50">
+                  <td className="py-3 px-4 font-semibold text-navy-950">Irrigation & Drainage</td>
+                  <td className="py-3 px-4">Dr. (Mrs.) K. Krupavathi</td>
+                  <td className="py-3 px-4">+91 95338 77666</td>
+                  <td className="py-3 px-4 text-slate-500">k.krupavathi@angrau.ac.in</td>
+                </tr>
+                <tr className="hover:bg-slate-50">
+                  <td className="py-3 px-4 font-semibold text-navy-950">Renewable Energy Engg.</td>
+                  <td className="py-3 px-4">Dr. S. Vishnu Vardhan</td>
+                  <td className="py-3 px-4">+91 94403 63112</td>
+                  <td className="py-3 px-4 text-slate-500">vishnuvardhans@angrau.ac.in</td>
                 </tr>
                 <tr className="hover:bg-slate-50">
                   <td className="py-3 px-4 font-semibold text-navy-950">Central Library In-Charge</td>
