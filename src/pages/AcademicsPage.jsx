@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useSearchParams, useLocation, useParams } from 'react-router-dom';
 import PageBanner from '../components/PageBanner';
 import { useWebsite } from '../context/WebsiteContext';
@@ -99,6 +99,21 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
     window.history.pushState(null, '', `/academics/${tabKey}`);
   };
 
+  const tabContainerRef = useRef(null);
+
+  // Smoothly center active tab horizontally within its container without altering window vertical scroll
+  useEffect(() => {
+    if (tabContainerRef.current) {
+      const activeBtn = tabContainerRef.current.querySelector('[data-active="true"]');
+      if (activeBtn) {
+        const container = tabContainerRef.current;
+        const scrollLeft =
+          activeBtn.offsetLeft - (container.clientWidth / 2) + (activeBtn.clientWidth / 2);
+        container.scrollTo({ left: Math.max(0, scrollLeft), behavior: 'smooth' });
+      }
+    }
+  }, [activeTab]);
+
   // Local state for interactive filtering inside tabs
   const [selectedSemester, setSelectedSemester] = useState('Semester I');
   const [courseSearchQuery, setCourseSearchQuery] = useState('');
@@ -167,9 +182,12 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
       />
 
       {/* Official Academics Navigation Tab Bar — Single continuous line strictly matching ANGRAU */}
-      <section className="bg-white border-b border-slate-200 shadow-2xs sticky top-14 z-40">
-        <div className="w-full max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-6">
-          <div className="flex items-center justify-start lg:justify-center gap-1 sm:gap-1.5 py-2 overflow-x-auto no-scrollbar whitespace-nowrap flex-nowrap scroll-smooth">
+      <section className="bg-white border-b border-slate-200 shadow-xs relative z-20">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+          <div
+            ref={tabContainerRef}
+            className="flex items-center justify-start lg:justify-center gap-1.5 py-3 overflow-x-auto no-scrollbar whitespace-nowrap flex-nowrap scroll-smooth"
+          >
             {academicTabs.map((tab) => {
               const IconComp = tab.icon;
               const isActive = activeTab === tab.key;
@@ -177,13 +195,9 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                 <button
                   key={tab.key}
                   type="button"
-                  ref={(el) => {
-                    if (isActive && el) {
-                      el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                    }
-                  }}
+                  data-active={isActive ? "true" : "false"}
                   onClick={() => handleTabClick(tab.key)}
-                  className={`px-2 lg:px-2.5 xl:px-3 py-1.5 rounded-lg text-xs lg:text-[11.5px] xl:text-xs font-bold transition-all flex items-center gap-1 sm:gap-1.5 border cursor-pointer select-none whitespace-nowrap flex-shrink-0 ${
+                  className={`px-2.5 lg:px-3 py-1.5 sm:py-2 rounded-lg text-xs lg:text-[11.5px] xl:text-xs font-bold transition-all flex items-center gap-1.5 border cursor-pointer select-none whitespace-nowrap flex-shrink-0 ${
                     isActive
                       ? 'bg-[#0b1a2e] text-[#f5c84c] border-[#0b1a2e] shadow-xs font-extrabold ring-1 ring-[#f5c84c]/50'
                       : 'text-slate-700 bg-white hover:bg-slate-100 hover:text-navy-950 border-slate-200'
@@ -199,8 +213,8 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
       </section>
 
       {/* Main Content Area */}
-      <main className="py-8 sm:py-10">
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 space-y-8 sm:space-y-10">
+      <main className="py-6 sm:py-8">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8">
 
           {/* =========================================================================
               TAB 0: ADMISSION PROCESS (Statutory Flow, Quota Rules & Farmers' Quota)
@@ -1404,9 +1418,23 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                     <Compass className="w-4 h-4 text-[#d4a72c]" />
                     <span>Official ANGRAU Statutory Regulations</span>
                   </div>
-                  <span className="badge badge-gold text-xs font-bold">
-                    {ugRegulationsData.shortTitle}
-                  </span>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="badge badge-gold text-xs font-bold">
+                      {ugRegulationsData.shortTitle}
+                    </span>
+                    <a
+                      href="/documents/academics/ANGRAU_UG_Regulations_2016_2017.pdf"
+                      download="ANGRAU_UG_Academic_Regulations_2016_2017.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1.5 rounded-xl bg-[#0b1a2e] hover:bg-[#d4a72c] text-white hover:text-[#06101e] text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
+                      style={{ textDecoration: 'none' }}
+                      title="Download official ANGRAU UG Regulations PDF"
+                    >
+                      <Download className="w-3.5 h-3.5 text-[#f5c84c]" />
+                      <span>Download Official PDF (3.5 MB)</span>
+                    </a>
+                  </div>
                 </div>
                 <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
                   {ugRegulationsData.title}
@@ -1773,9 +1801,23 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                     <Scroll className="w-4 h-4 text-[#d4a72c]" />
                     <span>Official ANGRAU Statutory Regulations</span>
                   </div>
-                  <span className="badge badge-navy text-xs font-bold">
-                    {pgRegulationsData.amendmentStatus}
-                  </span>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="badge badge-navy text-xs font-bold">
+                      {pgRegulationsData.amendmentStatus}
+                    </span>
+                    <a
+                      href="/documents/academics/ANGRAU_PG_Regulations.pdf"
+                      download="ANGRAU_Post_Graduate_Regulations_Booklet.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1.5 rounded-xl bg-[#0b1a2e] hover:bg-[#d4a72c] text-white hover:text-[#06101e] text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
+                      style={{ textDecoration: 'none' }}
+                      title="Download complete 114-page official ANGRAU PG Regulations Booklet"
+                    >
+                      <Download className="w-3.5 h-3.5 text-[#f5c84c]" />
+                      <span>Download Regulations Booklet (9.0 MB)</span>
+                    </a>
+                  </div>
                 </div>
                 <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
                   {pgRegulationsData.title}
@@ -2268,9 +2310,23 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
           {activeTab === 'thesis-guidelines' && (
             <div className="space-y-8 animate-fadeIn">
               <div className="bg-white rounded-2xl border-l-4 border-l-[#800000] border border-slate-200 p-6 sm:p-8 shadow-sm space-y-2">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-xs font-bold text-[#800000]">
-                  <BookMarked className="w-4 h-4 text-[#800000]" />
-                  <span>Official ANGRAU 2019 Booklet Standards</span>
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-xs font-bold text-[#800000]">
+                    <BookMarked className="w-4 h-4 text-[#800000]" />
+                    <span>Official ANGRAU 2019 Booklet Standards</span>
+                  </div>
+                  <a
+                    href="/documents/academics/ANGRAU_Thesis_Guidelines_2019.pdf"
+                    download="ANGRAU_Thesis_Presentation_Guidelines_2019.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1.5 rounded-xl bg-[#0b1a2e] hover:bg-[#d4a72c] text-white hover:text-[#06101e] text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
+                    style={{ textDecoration: 'none' }}
+                    title="Download official ANGRAU 2019 Thesis Guidelines Booklet"
+                  >
+                    <Download className="w-3.5 h-3.5 text-[#f5c84c]" />
+                    <span>Download Guidelines PDF (3.1 MB)</span>
+                  </a>
                 </div>
                 <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
                   Post Graduate Thesis Presentation Guidelines
@@ -2379,21 +2435,35 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
           {activeTab === 'anti-plagiarism-policy' && (
             <div className="space-y-8 animate-fadeIn">
               <div className="bg-white p-6 sm:p-8 rounded-2xl border-l-4 border-l-emerald-600 border border-slate-200 shadow-2xs space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center flex-shrink-0">
-                    <ShieldCheck className="w-6 h-6 text-emerald-600" />
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center flex-shrink-0">
+                      <ShieldCheck className="w-6 h-6 text-emerald-600" />
+                    </div>
+                    <div>
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 block">
+                        Academic Council Resolution No. 2920
+                      </span>
+                      <h2 className="font-heading text-2xl font-extrabold text-navy-950">
+                        ANGRAU Anti-Plagiarism Policy & Regulations
+                      </h2>
+                      <p className="text-xs text-slate-500">
+                        UGC Regulations 2018 Compliant • Mandatory URKUND / Turnitin Plagiarism Check via INFLIBNET
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 block">
-                      Academic Council Resolution No. 2920
-                    </span>
-                    <h2 className="font-heading text-2xl font-extrabold text-navy-950">
-                      ANGRAU Anti-Plagiarism Policy & Regulations
-                    </h2>
-                    <p className="text-xs text-slate-500">
-                      UGC Regulations 2018 Compliant • Mandatory URKUND / Turnitin Plagiarism Check via INFLIBNET
-                    </p>
-                  </div>
+                  <a
+                    href="/documents/academics/ANGRAU_Anti_Plagiarism_Policy_Res2920.pdf"
+                    download="ANGRAU_Anti_Plagiarism_Policy_Resolution_2920.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1.5 rounded-xl bg-[#0b1a2e] hover:bg-[#d4a72c] text-white hover:text-[#06101e] text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs self-start sm:self-auto"
+                    style={{ textDecoration: 'none' }}
+                    title="Download official ANGRAU Anti-Plagiarism Resolution No. 2920 PDF"
+                  >
+                    <Download className="w-3.5 h-3.5 text-[#f5c84c]" />
+                    <span>Download Policy PDF (3.3 MB)</span>
+                  </a>
                 </div>
 
                 <div className="p-4 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-950 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
