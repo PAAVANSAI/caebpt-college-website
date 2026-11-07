@@ -13,7 +13,7 @@ export default function Hero({ onOpenAdmissionsModal }) {
     titleAccent: "Agricultural Engineering",
     titleSuffix: "& Technology",
     intro: "Pioneering academic distinction, farm mechanization, micro-irrigation systems, and agro-processing engineering to drive sustainable agrarian advancement under ANGRAU.",
-    bgImage: "/images/campus_hero.webp",
+    bgImage: "/images/campus_hero.jpg",
     highlights: [
       { count: "6", label: "Core Academic Departments", note: "Specialized Disciplines" },
       { count: "1,046", label: "Total Graduates", note: "Graduated Agro-Engineers" },
@@ -61,36 +61,29 @@ export default function Hero({ onOpenAdmissionsModal }) {
               muted
               playsInline
               preload="auto"
-              poster={hero.bgImage || "/images/campus_hero.webp"}
+              poster={hero.bgImage || "/images/campus_hero.jpg"}
               className="w-full h-full object-cover object-center scale-102"
             >
               <source src={hero.bgVideo} type="video/mp4" />
               <source src={hero.bgVideo} type="video/webm" />
               <img
-                src={hero.bgImage || "/images/campus_hero.webp"}
-                alt="College of Agricultural Engineering, Bapatla Campus"
+                src={hero.bgImage || "/images/campus_hero.jpg"}
+                alt="Dr NTR College of Agricultural Engineering, Bapatla Campus"
                 className="w-full h-full object-cover"
               />
             </video>
           )
         ) : (
-          <picture>
-            <source
-              type="image/webp"
-              srcSet="/images/campus_hero_desktop.webp 1200w, /images/campus_hero.webp 960w"
-              sizes="(min-width: 1024px) 1200px, 100vw"
-            />
-            <img
-              src={hero.bgImage || "/images/campus_hero.webp"}
-              alt="College of Agricultural Engineering, Bapatla Campus"
-              className="w-full h-full object-cover object-center scale-102 transition-transform duration-1000"
-              fetchpriority="high"
-              loading="eager"
-              decoding="async"
-              width="1280"
-              height="720"
-            />
-          </picture>
+          <img
+            src={hero.bgImage || "/images/campus_hero.jpg"}
+            alt="Dr NTR College of Agricultural Engineering, Bapatla Campus"
+            className="w-full h-full object-cover object-center scale-102 transition-transform duration-1000"
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
+            width="1280"
+            height="720"
+          />
         )}
 
         {/* Balanced Academic Scrim — Keeps campus/video visible while ensuring text readability */}

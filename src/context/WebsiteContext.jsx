@@ -222,7 +222,7 @@ function sanitizeOfficialStructure(data) {
     hero: {
       ...defaultOfficialStructure.hero,
       ...(data.hero || {}),
-      bgImage: (data.hero?.bgImage && !data.hero.bgImage.includes('unsplash.com'))
+      bgImage: (data.hero?.bgImage && !data.hero.bgImage.includes('unsplash.com') && !data.hero.bgImage.includes('campus_hero.webp'))
         ? data.hero.bgImage
         : defaultOfficialStructure.hero.bgImage
     },
