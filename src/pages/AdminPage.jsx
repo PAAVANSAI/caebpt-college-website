@@ -403,6 +403,41 @@ export default function AdminPage() {
     }
   };
 
+  const [imageUploading, setImageUploading] = useState(false);
+
+  const uploadImageFile = async (file, onComplete) => {
+    if (!file) return;
+    if (!file.type.startsWith('image/')) {
+      alert('Please select a valid image file (JPG, PNG, WebP).');
+      return;
+    }
+
+    setImageUploading(true);
+    triggerToast(`Processing "${file.name}"...`);
+
+    try {
+      const storagePath = `uploads/${Date.now()}_${file.name}`;
+      const downloadUrl = await uploadFileToStorage(file, storagePath);
+      onComplete(downloadUrl);
+      triggerToast(`✅ "${file.name}" uploaded to cloud storage!`);
+      setImageUploading(false);
+      return;
+    } catch {
+      // Offline / Local fallback: Base64 data URL
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        onComplete(event.target.result);
+        triggerToast(`✅ "${file.name}" loaded from your laptop!`);
+        setImageUploading(false);
+      };
+      reader.onerror = () => {
+        alert('Failed to read image file from your computer.');
+        setImageUploading(false);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleOpenAddDoc = () => {
     setDocForm({
       ...defaultDocForm,
@@ -1208,19 +1243,37 @@ export default function AdminPage() {
                   <div className="space-y-3 pt-2 border-t border-slate-200">
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Campus Background Image URL
+                        Campus Background Image
                       </label>
-                      <div className="flex gap-3">
+                      <div className="flex flex-col sm:flex-row gap-3">
                         <input
-                          type="url"
+                          type="text"
                           value={heroForm.bgImage}
                           onChange={(e) => setHeroForm({ ...heroForm, bgImage: e.target.value })}
+                          placeholder="/images/campus_hero.jpg or URL"
                           className="flex-1 px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:border-[#0b1a2e]"
                         />
+                        <label className="px-4 py-2.5 bg-[#0b1a2e] hover:bg-[#153258] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2 cursor-pointer shadow-xs transition-all whitespace-nowrap">
+                          <Upload className="w-4 h-4 text-[#f5c84c]" />
+                          <span>{imageUploading ? 'Uploading...' : 'Upload Photo from Laptop'}</span>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            disabled={imageUploading}
+                            onChange={(e) => {
+                              const f = e.target.files?.[0];
+                              if (f) uploadImageFile(f, (url) => setHeroForm((prev) => ({ ...prev, bgImage: url })));
+                            }}
+                            className="hidden"
+                          />
+                        </label>
                         <div className="w-20 h-12 rounded-lg overflow-hidden border border-slate-200 flex-shrink-0 bg-slate-100 shadow-xs">
                           <img src={heroForm.bgImage} alt="Preview" className="w-full h-full object-cover" />
                         </div>
                       </div>
+                      <p className="text-[11px] text-slate-500 mt-1.5">
+                        💡 Click <strong>"Upload Photo from Laptop"</strong> to choose any picture from your computer, or enter an image URL / path.
+                      </p>
                     </div>
 
                     {/* Quick Image Presets */}
@@ -1339,15 +1392,30 @@ export default function AdminPage() {
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Dean Photo URL</label>
-                  <div className="flex gap-3">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Dean Official Photo</label>
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <input
-                      type="url"
+                      type="text"
                       value={deanForm.photo}
                       onChange={(e) => setDeanForm({ ...deanForm, photo: e.target.value })}
+                      placeholder="/images/administration/... or URL"
                       className="flex-1 px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900"
                     />
-                    <div className="w-12 h-12 rounded-full overflow-hidden border border-slate-200 flex-shrink-0 bg-slate-100">
+                    <label className="px-3.5 py-2.5 bg-[#0b1a2e] hover:bg-[#153258] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-1.5 cursor-pointer shadow-xs transition-all whitespace-nowrap">
+                      <Upload className="w-3.5 h-3.5 text-[#f5c84c]" />
+                      <span>{imageUploading ? 'Uploading...' : 'Upload Photo'}</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        disabled={imageUploading}
+                        onChange={(e) => {
+                          const f = e.target.files?.[0];
+                          if (f) uploadImageFile(f, (url) => setDeanForm((prev) => ({ ...prev, photo: url })));
+                        }}
+                        className="hidden"
+                      />
+                    </label>
+                    <div className="w-12 h-12 rounded-full overflow-hidden border border-slate-200 flex-shrink-0 bg-slate-100 shadow-2xs">
                       <img src={deanForm.photo} alt="Dean Preview" className="w-full h-full object-cover" />
                     </div>
                   </div>
@@ -1420,15 +1488,30 @@ export default function AdminPage() {
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Associate Dean Photo URL</label>
-                  <div className="flex gap-3">
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Associate Dean Official Photo</label>
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <input
-                      type="url"
+                      type="text"
                       value={assocDeanForm.photo}
                       onChange={(e) => setAssocDeanForm({ ...assocDeanForm, photo: e.target.value })}
+                      placeholder="/images/administration/... or URL"
                       className="flex-1 px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900"
                     />
-                    <div className="w-12 h-12 rounded-full overflow-hidden border border-slate-200 flex-shrink-0 bg-slate-100">
+                    <label className="px-3.5 py-2.5 bg-[#0b1a2e] hover:bg-[#153258] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-1.5 cursor-pointer shadow-xs transition-all whitespace-nowrap">
+                      <Upload className="w-3.5 h-3.5 text-[#f5c84c]" />
+                      <span>{imageUploading ? 'Uploading...' : 'Upload Photo'}</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        disabled={imageUploading}
+                        onChange={(e) => {
+                          const f = e.target.files?.[0];
+                          if (f) uploadImageFile(f, (url) => setAssocDeanForm((prev) => ({ ...prev, photo: url })));
+                        }}
+                        className="hidden"
+                      />
+                    </label>
+                    <div className="w-12 h-12 rounded-full overflow-hidden border border-slate-200 flex-shrink-0 bg-slate-100 shadow-2xs">
                       <img src={assocDeanForm.photo} alt="Associate Dean Preview" className="w-full h-full object-cover" />
                     </div>
                   </div>
@@ -2275,13 +2358,30 @@ export default function AdminPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Image URL</label>
-                  <input
-                    type="url"
-                    value={newPhotoForm.url}
-                    onChange={(e) => setNewPhotoForm({ ...newPhotoForm, url: e.target.value })}
-                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs"
-                  />
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Image URL or Upload</label>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={newPhotoForm.url}
+                      onChange={(e) => setNewPhotoForm({ ...newPhotoForm, url: e.target.value })}
+                      placeholder="/images/... or URL"
+                      className="flex-1 px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs"
+                    />
+                    <label className="px-3 py-2 bg-[#0b1a2e] hover:bg-[#153258] text-white text-[11px] font-bold rounded-lg flex items-center justify-center gap-1 cursor-pointer whitespace-nowrap shadow-xs transition-all">
+                      <Upload className="w-3 h-3 text-[#f5c84c]" />
+                      <span>{imageUploading ? '...' : 'Upload'}</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        disabled={imageUploading}
+                        onChange={(e) => {
+                          const f = e.target.files?.[0];
+                          if (f) uploadImageFile(f, (url) => setNewPhotoForm((prev) => ({ ...prev, url })));
+                        }}
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
                 </div>
                 <div className="md:col-span-3">
                   <button
