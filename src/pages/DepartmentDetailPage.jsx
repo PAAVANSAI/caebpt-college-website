@@ -18,7 +18,8 @@ import {
   Compass,
   Sparkles,
   ExternalLink,
-  Table as TableIcon
+  Table as TableIcon,
+  Download
 } from 'lucide-react';
 
 export default function DepartmentDetailPage() {
@@ -50,16 +51,46 @@ export default function DepartmentDetailPage() {
     ) || officialStructureData.academics.departments[0];
 
   // Guaranteed fallback to clean verified data if cached state has placeholders or missing fields
-  const currentDept =
-    !matchedDept || JSON.stringify(matchedDept).includes('Placeholder') || !matchedDept?.hodAndFaculty?.hodPhone
-      ? officialDept
-      : {
-          ...officialDept,
-          ...matchedDept,
-          hodAndFaculty: JSON.stringify(matchedDept.hodAndFaculty || {}).includes('Placeholder')
+  const isStaleDept =
+    !matchedDept ||
+    JSON.stringify(matchedDept).includes('Placeholder') ||
+    JSON.stringify(matchedDept).includes('Dr. Ch. Srinivas') ||
+    JSON.stringify(matchedDept).includes('Dr. M. S. Reddy') ||
+    (officialDept.hodAndFaculty?.hodPhone && !matchedDept?.hodAndFaculty?.hodPhone);
+
+  const currentDept = isStaleDept
+    ? officialDept
+    : {
+        ...officialDept,
+        ...matchedDept,
+        hodAndFaculty:
+          JSON.stringify(matchedDept.hodAndFaculty || {}).includes('Placeholder') ||
+          JSON.stringify(matchedDept.hodAndFaculty || {}).includes('Dr. Ch. Srinivas')
             ? officialDept.hodAndFaculty
             : (matchedDept.hodAndFaculty || officialDept.hodAndFaculty)
-        };
+      };
+
+  const deptDossiers = {
+    ree: {
+      path: "/documents/departments/Department_Renewable_Energy_Engineering_Profile.docx",
+      filename: "Department_Renewable_Energy_Engineering_Profile.docx",
+      label: "Download REE Profile Dossier (.docx)"
+    },
+    ide: {
+      path: "/documents/departments/Department_Irrigation_and_Drainage_Engineering_Profile.docx",
+      filename: "Department_Irrigation_and_Drainage_Engineering_Profile.docx",
+      label: "Download IDE Profile Dossier (.docx)"
+    },
+    swce: {
+      path: "/documents/departments/Department_Soil_and_Water_Conservation_Engineering_Profile.docx",
+      filename: "Department_Soil_and_Water_Conservation_Engineering_Profile.docx",
+      label: "Download SWCE Profile Dossier (.docx)"
+    }
+  };
+
+  const currentDossier =
+    deptDossiers[currentDept.id?.toLowerCase()] ||
+    deptDossiers[currentDept.shortCode?.toLowerCase()];
 
   return (
     <div>
@@ -95,9 +126,23 @@ export default function DepartmentDetailPage() {
 
           {/* SUBSECTION 1: ABOUT THE DEPARTMENT */}
           <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-10 shadow-sm space-y-4">
-            <div className="flex items-center gap-2 text-[#854d0e] text-xs font-extrabold uppercase tracking-wider">
-              <Building2 className="w-4 h-4 text-[#d4a72c]" />
-              <span>Institutional Overview</span>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-2 text-[#854d0e] text-xs font-extrabold uppercase tracking-wider">
+                <Building2 className="w-4 h-4 text-[#d4a72c]" />
+                <span>Institutional Overview</span>
+              </div>
+              {currentDossier && (
+                <a
+                  href={currentDossier.path}
+                  download={currentDossier.filename}
+                  className="btn btn-navy text-xs font-bold py-1.5 px-3 flex items-center gap-1.5 self-start sm:self-auto shadow-xs"
+                  style={{ textDecoration: 'none' }}
+                  title={currentDossier.label}
+                >
+                  <Download className="w-3.5 h-3.5 text-[#ecc75f]" />
+                  <span>{currentDossier.label}</span>
+                </a>
+              )}
             </div>
             <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
               About the Department

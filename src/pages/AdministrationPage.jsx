@@ -13,7 +13,8 @@ import {
   Briefcase,
   MapPin,
   CheckCircle2,
-  FileText
+  FileText,
+  Download
 } from 'lucide-react';
 
 export default function AdministrationPage() {
@@ -52,25 +53,37 @@ export default function AdministrationPage() {
 
       <section className="section-padding bg-slate-50 border-b border-slate-200">
         <div className="container">
-          {/* Submenu Tabs (Mobile touch scrollable) */}
-          <div className="filter-tabs-wrapper mb-8 sm:mb-10">
-            {tabs.map((t) => {
-              const Icon = t.icon;
-              const isActive = activeTab === t.key;
-              return (
-                <button
-                  key={t.key}
-                  type="button"
-                  onClick={() => handleTabChange(t.key)}
-                  className={`filter-tab text-xs sm:text-sm font-bold flex items-center gap-2 ${
-                    isActive ? 'active' : ''
-                  }`}
-                >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-[#f5c84c]' : 'text-slate-700'}`} />
-                  <span>{t.label}</span>
-                </button>
-              );
-            })}
+          {/* Submenu Tabs (Mobile touch scrollable) with Official Document Download */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 sm:mb-10">
+            <div className="filter-tabs-wrapper mb-0">
+              {tabs.map((t) => {
+                const Icon = t.icon;
+                const isActive = activeTab === t.key;
+                return (
+                  <button
+                    key={t.key}
+                    type="button"
+                    onClick={() => handleTabChange(t.key)}
+                    className={`filter-tab text-xs sm:text-sm font-bold flex items-center gap-2 ${
+                      isActive ? 'active' : ''
+                    }`}
+                  >
+                    <Icon className={`w-4 h-4 ${isActive ? 'text-[#f5c84c]' : 'text-slate-700'}`} />
+                    <span>{t.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+            <a
+              href="/documents/administration/College_Administrative_Governance_and_Staff.docx"
+              download="College_Administrative_Governance_and_Staff.docx"
+              className="btn btn-navy text-xs font-bold py-2.5 px-3.5 flex items-center gap-2 whitespace-nowrap shadow-xs self-start md:self-auto"
+              style={{ textDecoration: 'none' }}
+              title="Download College Administrative Governance & Staff Directory (.docx)"
+            >
+              <Download className="w-3.5 h-3.5 text-[#ecc75f]" />
+              <span>Download Staff Directory (.docx)</span>
+            </a>
           </div>
 
           <div className="max-w-5xl mx-auto">

@@ -253,6 +253,16 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                       <Table className="w-4 h-4" />
                       <span>View 106 Seats Matrix ↓</span>
                     </a>
+                    <a
+                      href="/documents/academics/ANGRAU_Admission_Process_Guidelines.docx"
+                      download="ANGRAU_Admission_Process_Guidelines.docx"
+                      className="btn btn-outline text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
+                      style={{ textDecoration: 'none' }}
+                      title="Download Official Admission Process Guidelines Document (.docx)"
+                    >
+                      <Download className="w-4 h-4 text-[#d4a72c]" />
+                      <span>Download Guidelines (.docx)</span>
+                    </a>
                   </div>
                 </div>
 
@@ -569,6 +579,28 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                     >
                       <Table className="w-4 h-4 text-[#f5c84c]" />
                       <span>View 88 UG Seats Matrix ↓</span>
+                    </a>
+                    <a
+                      href="/documents/academics/ICAR_VI_Deans_Committee_BTech_Curriculum.pdf"
+                      download="ICAR_VI_Deans_Committee_BTech_Curriculum.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-outline text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
+                      style={{ textDecoration: 'none' }}
+                      title="Download Official ICAR VI Deans' Committee B.Tech Curriculum PDF"
+                    >
+                      <Download className="w-4 h-4 text-[#d4a72c]" />
+                      <span>ICAR VI Deans' Syllabus (.pdf)</span>
+                    </a>
+                    <a
+                      href="/documents/academics/ANGRAU_UG_Courses_Curriculum.docx"
+                      download="ANGRAU_UG_Courses_Curriculum.docx"
+                      className="btn btn-outline text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
+                      style={{ textDecoration: 'none' }}
+                      title="Download Official ANGRAU UG Courses Curriculum Document (.docx)"
+                    >
+                      <Download className="w-4 h-4 text-[#d4a72c]" />
+                      <span>UG Courses (.docx)</span>
                     </a>
                     {onOpenEnquiry && (
                       <button
@@ -1069,19 +1101,31 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
             <div className="space-y-8 animate-fadeIn">
               {/* Header Banner */}
               <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-[#fdf5df] text-[#854d0e] flex items-center justify-center flex-shrink-0 border border-[#fae4a4]">
-                    <FileCheck className="w-6 h-6 text-[#d4a72c]" />
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-xl bg-[#fdf5df] text-[#854d0e] flex items-center justify-center flex-shrink-0 border border-[#fae4a4]">
+                      <FileCheck className="w-6 h-6 text-[#d4a72c]" />
+                    </div>
+                    <div>
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#854d0e] block">
+                        ANGRAU Statutory Academic Code
+                      </span>
+                      <h2 className="font-heading text-2xl font-extrabold text-navy-950">
+                        {examinationRegulationsData.title}
+                      </h2>
+                      <p className="text-xs text-slate-500">{examinationRegulationsData.authority}</p>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#854d0e] block">
-                      ANGRAU Statutory Academic Code
-                    </span>
-                    <h2 className="font-heading text-2xl font-extrabold text-navy-950">
-                      {examinationRegulationsData.title}
-                    </h2>
-                    <p className="text-xs text-slate-500">{examinationRegulationsData.authority}</p>
-                  </div>
+                  <a
+                    href="/documents/academics/ANGRAU_Examinations_Evaluation_System.docx"
+                    download="ANGRAU_Examinations_Evaluation_System.docx"
+                    className="btn btn-navy text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs self-start sm:self-auto"
+                    style={{ textDecoration: 'none' }}
+                    title="Download Official ANGRAU Examination and Evaluation Code (.docx)"
+                  >
+                    <Download className="w-4 h-4 text-[#ecc75f]" />
+                    <span>Download Exam Code (.docx)</span>
+                  </a>
                 </div>
 
                 {/* Attendance Regulation Alert */}

@@ -188,12 +188,22 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                         {historyData.collegeName || "Dr. NTR College of Agricultural Engineering, Bapatla"}
                       </h2>
                     </div>
-                    <div className="text-right text-xs text-slate-500 font-medium">
+                    <div className="text-right text-xs text-slate-500 font-medium flex flex-col items-end gap-1.5">
                       <div className="flex items-center gap-1.5 text-slate-700 font-bold">
                         <MapPin className="w-3.5 h-3.5 text-[#d4a72c]" />
                         <span>{historyData.campusLocation || "NH-216, Karlapalem Road, Bapatla"}</span>
                       </div>
                       <span>Shifted to Campus: {historyData.shiftedDate || "May 1994"}</span>
+                      <a
+                        href="/documents/about/College_Historical_Background_and_Mandate.docx"
+                        download="College_Historical_Background_and_Mandate.docx"
+                        className="btn btn-outline text-xs font-bold py-1 px-2.5 flex items-center gap-1.5 mt-1 shadow-2xs"
+                        style={{ textDecoration: 'none' }}
+                        title="Download Official Historical Background and Mandate Document (.docx)"
+                      >
+                        <Download className="w-3 h-3 text-[#d4a72c]" />
+                        <span>Download History Dossier (.docx)</span>
+                      </a>
                     </div>
                   </div>
 
