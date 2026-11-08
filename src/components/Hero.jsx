@@ -1,5 +1,5 @@
-import React from 'react';
-import { ArrowRight, BookOpen, Building2, ChevronDown, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, BookOpen, Building2, ChevronDown, ChevronRight, Plus, Sparkles, Award } from 'lucide-react';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
 import { collegeInfo as defaultCollegeInfo } from '../data/collegeInfo';
@@ -40,8 +40,8 @@ export default function Hero({ onOpenAdmissionsModal }) {
   const ytVideoId = isVideoMode ? getYouTubeId(hero.bgVideo) : null;
 
   return (
-    <section id="home" className="relative bg-[#06101e] text-white overflow-hidden min-h-[580px] flex items-center">
-      {/* Background Campus Media (Image or Video) */}
+    <section id="home" className="relative bg-[#06101e] text-white overflow-hidden min-h-[640px] lg:min-h-[720px] flex items-center">
+      {/* Background Campus Media with Soft Cinematic Depth-of-Field */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {isVideoMode ? (
           ytVideoId ? (
@@ -62,7 +62,7 @@ export default function Hero({ onOpenAdmissionsModal }) {
               playsInline
               preload="auto"
               poster={hero.bgImage || "/images/campus_hero.jpg"}
-              className="w-full h-full object-cover object-center scale-102"
+              className="w-full h-full object-cover object-center scale-105 filter blur-[1.5px]"
             >
               <source src={hero.bgVideo} type="video/mp4" />
               <source src={hero.bgVideo} type="video/webm" />
@@ -77,7 +77,7 @@ export default function Hero({ onOpenAdmissionsModal }) {
           <img
             src={hero.bgImage || "/images/campus_hero.jpg"}
             alt="Dr NTR College of Agricultural Engineering, Bapatla Campus"
-            className="w-full h-full object-cover object-center scale-102 transition-transform duration-1000"
+            className="w-full h-full object-cover object-center scale-105 filter blur-[1.5px] transition-transform duration-1000"
             fetchpriority="high"
             loading="eager"
             decoding="async"
@@ -86,16 +86,17 @@ export default function Hero({ onOpenAdmissionsModal }) {
           />
         )}
 
-        {/* Directional & Depth Scrim — Darker on left where text sits, balanced on right to showcase campus */}
+        {/* Amrita-Inspired Deep Cinematic Gradient Scrim (Vignette) */}
         <div
           className="absolute inset-0"
           style={{
             background: `
-              linear-gradient(to right, rgba(6, 16, 30, 0.92) 0%, rgba(6, 16, 30, 0.82) 40%, rgba(6, 16, 30, 0.48) 72%, rgba(6, 16, 30, 0.32) 100%),
-              linear-gradient(180deg, rgba(6, 16, 30, 0.70) 0%, rgba(6, 16, 30, 0.25) 45%, rgba(6, 16, 30, 0.92) 100%)
+              linear-gradient(to right, rgba(6, 16, 30, 0.94) 0%, rgba(6, 16, 30, 0.78) 48%, rgba(6, 16, 30, 0.45) 80%, rgba(6, 16, 30, 0.35) 100%),
+              linear-gradient(180deg, rgba(6, 16, 30, 0.70) 0%, transparent 40%, rgba(6, 16, 30, 0.95) 100%)
             `
           }}
         />
+
         {/* Subtle grid pattern overlay */}
         <div
           className="absolute inset-0 opacity-10 pointer-events-none"
@@ -106,74 +107,103 @@ export default function Hero({ onOpenAdmissionsModal }) {
         />
       </div>
 
-      <div className="container relative z-10 py-6 sm:py-10 lg:py-14">
-        {/* Frosted Glass Content Panel for High Readability over Bright Photo */}
-        <div className="max-w-2xl bg-[#06101e]/65 sm:bg-[#06101e]/70 backdrop-blur-md p-5 sm:p-7 md:p-8 rounded-3xl border border-white/15 shadow-2xl mb-6 sm:mb-8">
+      <div className="container relative z-10 py-12 sm:py-16 lg:py-24">
+        {/* Floating Open Cinematic Layout (No boxed card!) */}
+        <div className="max-w-3xl">
           {/* Institutional Badge */}
-          <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-[#0b1a2e]/90 border border-[#d4a72c]/60 text-[#fae4a4] text-[10.5px] sm:text-xs font-bold mb-3 sm:mb-4 shadow-sm">
-            <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#ecc75f] flex-shrink-0" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0b1a2e]/90 border border-[#d4a72c]/50 text-[#fae4a4] text-xs font-bold mb-5 shadow-lg backdrop-blur-md">
+            <Sparkles className="w-3.5 h-3.5 text-[#ecc75f] flex-shrink-0" />
             <span>{hero.badge}</span>
           </div>
 
-          {/* Clean Academic Headline */}
-          <h1 className="font-heading text-xl sm:text-3xl md:text-4xl lg:text-[40px] font-extrabold text-white leading-snug sm:leading-tight mb-3 sm:mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-            {hero.titleMain}{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ecc75f] via-[#fae4a4] to-[#ecc75f] font-extrabold">
-              {hero.titleAccent}
-            </span>{' '}
-            {hero.titleSuffix}
+          {/* Large, Bold, Elegant Typography */}
+          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-[64px] font-black text-white tracking-tight leading-[1.08] mb-5 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+            Excellence in <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ecc75f] via-[#fae4a4] to-[#ecc75f]">
+              Agricultural Engineering
+            </span> <br />
+            & Technology
           </h1>
 
-          {/* Intro Text */}
-          <p className="text-xs sm:text-sm md:text-base text-slate-100 leading-relaxed mb-5 sm:mb-6 max-w-xl font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+          {/* Clean Sub-headline */}
+          <p className="text-sm sm:text-base md:text-lg text-slate-200/95 font-medium leading-relaxed mb-8 max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
             {hero.intro}
           </p>
 
-          {/* Action CTAs (Mobile Responsive Stacking) */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
+          {/* Amrita-Style Pill Action Buttons */}
+          <div className="flex flex-wrap items-center gap-3 mb-10 sm:mb-14">
+            <button
+              type="button"
+              onClick={onOpenAdmissionsModal}
+              className="px-6 py-3.5 rounded-full bg-[#d4a72c] hover:bg-[#ecc75f] text-[#06101e] font-extrabold text-xs sm:text-sm flex items-center gap-2 shadow-2xl hover:scale-105 transition-all cursor-pointer"
+            >
+              <Plus className="w-4 h-4 stroke-[3]" />
+              <span>Apply for Admission</span>
+            </button>
+
             <button
               type="button"
               onClick={() => scrollToSection('academics')}
-              className="btn btn-gold py-2.5 px-4 text-xs sm:text-sm font-extrabold shadow-md hover:scale-102 transition-transform flex items-center justify-center gap-2"
+              className="px-5 py-3.5 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-sm flex items-center gap-2 backdrop-blur-md border border-white/20 shadow-lg hover:scale-105 transition-all cursor-pointer"
             >
-              <BookOpen className="w-4 h-4" />
+              <BookOpen className="w-4 h-4 text-[#f5c84c]" />
               <span>Explore Courses</span>
-              <ArrowRight className="w-3.5 h-3.5" />
             </button>
 
-            <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
-              <button
-                type="button"
-                onClick={onOpenAdmissionsModal}
-                className="btn btn-outline-gold py-2.5 px-3 text-xs sm:text-sm font-bold shadow-sm hover:scale-102 transition-transform justify-center"
-              >
-                <span>Admissions Enquiry</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => scrollToSection('facilities')}
-                className="btn btn-white py-2.5 px-3 text-xs sm:text-sm font-bold shadow-sm hover:scale-102 transition-transform flex items-center justify-center gap-1.5"
-              >
-                <Building2 className="w-3.5 h-3.5 text-[#0b1a2e]" />
-                <span>Facilities</span>
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={() => scrollToSection('facilities')}
+              className="px-5 py-3.5 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-sm flex items-center gap-2 backdrop-blur-md border border-white/20 shadow-lg hover:scale-105 transition-all cursor-pointer"
+            >
+              <Building2 className="w-4 h-4 text-[#f5c84c]" />
+              <span>Facilities</span>
+            </button>
           </div>
         </div>
 
+        {/* Amrita-Style Floating Corner Preview Card (Bottom-Right) */}
+        <div className="hidden xl:flex items-center gap-3.5 p-3 pr-4 bg-[#06101e]/85 backdrop-blur-md border border-white/15 rounded-2xl shadow-2xl max-w-sm absolute right-12 bottom-36 z-20 hover:border-[#ecc75f]/50 transition-all">
+          <div className="w-20 h-14 rounded-xl overflow-hidden flex-shrink-0 border border-white/10 shadow-xs">
+            <img
+              src="/images/campus_hero.jpg"
+              alt="Campus Preview"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="flex-1 min-w-0">
+            <h4 className="text-xs font-extrabold text-white truncate">
+              Dr. NTR CAE Bapatla
+            </h4>
+            <p className="text-[11px] text-slate-300 truncate">
+              Constituent College of ANGRAU • Estd. 1983
+            </p>
+            <div className="flex items-center gap-1.5 mt-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="text-[10px] text-[#fae4a4] font-bold">ICAR Accredited Institution</span>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => scrollToSection('about')}
+            className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+            title="Learn More About College"
+          >
+            <ChevronRight className="w-4 h-4 text-[#ecc75f]" />
+          </button>
+        </div>
+
         {/* Live Highlight Cards Row */}
-        <div className="pt-4 sm:pt-6 border-t border-white/20">
-          <div className="text-[10px] sm:text-[11px] text-[#ecc75f] font-bold tracking-wider uppercase mb-2.5 sm:mb-3 flex items-center gap-2">
+        <div className="pt-6 sm:pt-8 border-t border-white/15">
+          <div className="text-[10px] sm:text-[11px] text-[#ecc75f] font-bold tracking-wider uppercase mb-3 flex items-center gap-2">
             <span>Institutional Highlights</span>
             <span className="text-slate-300 font-normal lowercase">(accredited profile)</span>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
             {(currentCollegeInfo?.institutionalHighlights || []).map((item, idx) => (
               <div
                 key={idx}
-                className="bg-[#0b1a2e]/85 hover:bg-[#0f243f]/95 border border-white/15 hover:border-[#ecc75f] rounded-xl p-2.5 sm:p-4 transition-all duration-200 shadow-md backdrop-blur-sm group"
+                className="bg-[#0b1a2e]/85 hover:bg-[#0f243f]/95 border border-white/15 hover:border-[#ecc75f] rounded-xl p-3 sm:p-4 transition-all duration-200 shadow-md backdrop-blur-sm group"
               >
                 <div className="flex items-center justify-between mb-1 sm:mb-1.5">
                   <span className="text-lg sm:text-2xl font-extrabold text-[#fae4a4] font-heading tracking-tight">
