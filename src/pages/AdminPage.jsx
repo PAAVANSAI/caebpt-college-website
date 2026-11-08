@@ -887,55 +887,127 @@ export default function AdminPage() {
             </div>
 
             {/* Toggle Bars */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <span className="font-bold text-xs sm:text-sm text-slate-900 block">
-                    Show Top Utility Bar
-                  </span>
-                  <span className="text-[11px] text-slate-500">
-                    Dark navy bar with official domain (caebpt.ac.in), phone, timings & admin link.
-                  </span>
-                </div>
-                <label className="relative inline-flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={identityForm.showTopUtilityBar}
-                    onChange={(e) => {
-                      const checked = e.target.checked;
-                      setIdentityForm((prev) => ({ ...prev, showTopUtilityBar: checked }));
-                      updateSiteSettings({ showTopUtilityBar: checked });
-                      triggerToast(checked ? 'Top Utility Bar enabled on live website!' : 'Top Utility Bar hidden from live website.');
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-50 p-5 rounded-2xl border border-slate-200">
+              {/* Toggle 1: Top Utility Bar */}
+              <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-2xs space-y-3 flex flex-col justify-between">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-xs sm:text-sm text-slate-900 block">
+                        Show Top Utility Bar
+                      </span>
+                      <span className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full ${
+                        identityForm.showTopUtilityBar
+                          ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                          : 'bg-slate-100 text-slate-500'
+                      }`}>
+                        {identityForm.showTopUtilityBar ? 'ACTIVE' : 'HIDDEN'}
+                      </span>
+                    </div>
+                    <span className="text-[11px] text-slate-500 block mt-1 leading-snug">
+                      Dark navy utility strip with official domain (caebpt.ac.in), phone, timings & admin link.
+                    </span>
+                  </div>
+
+                  {/* Bulletproof Accessible Switch Button */}
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={Boolean(identityForm.showTopUtilityBar)}
+                    onClick={() => {
+                      const nextVal = !identityForm.showTopUtilityBar;
+                      setIdentityForm((prev) => ({ ...prev, showTopUtilityBar: nextVal }));
+                      updateSiteSettings({ showTopUtilityBar: nextVal });
+                      updateGeneralDetails({
+                        headerSettings: {
+                          ...(currentStructure?.headerSettings || {}),
+                          showTopUtilityBar: nextVal
+                        }
+                      });
+                      triggerToast(nextVal ? '✅ Top Utility Bar activated on live website!' : 'Top Utility Bar hidden from live website.');
                     }}
-                    className="sr-only peer"
-                  />
-                  <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#0b1a2e]"></div>
-                </label>
+                    className={`relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none shadow-xs ${
+                      identityForm.showTopUtilityBar ? 'bg-emerald-600' : 'bg-slate-300'
+                    }`}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className={`pointer-events-none inline-block h-6 w-6 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out ${
+                        identityForm.showTopUtilityBar ? 'translate-x-5' : 'translate-x-0'
+                      }`}
+                    />
+                  </button>
+                </div>
+
+                {/* Live Mini Preview inside Admin Card */}
+                {identityForm.showTopUtilityBar && (
+                  <div className="p-2.5 bg-[#0b1a2e] rounded-lg text-slate-300 text-[10.5px] border border-white/10 flex items-center justify-between gap-2 overflow-x-auto">
+                    <span className="text-[#f5c84c] font-bold truncate">🌐 Domain: {identityForm.domain}</span>
+                    <span className="text-slate-400 hidden sm:inline">•</span>
+                    <span className="text-slate-300 truncate">{identityForm.topBarTimings}</span>
+                    <span className="px-1.5 py-0.5 rounded bg-[#d4a72c] text-[#06101e] font-extrabold text-[9px]">Live</span>
+                  </div>
+                )}
               </div>
 
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <span className="font-bold text-xs sm:text-sm text-slate-900 block">
-                    Show ANGRAU University Apex Banner
-                  </span>
-                  <span className="text-[11px] text-slate-500">
-                    Gold apex affiliation banner linking to Acharya N.G. Ranga Agricultural University.
-                  </span>
-                </div>
-                <label className="relative inline-flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={identityForm.showUniversityBanner}
-                    onChange={(e) => {
-                      const checked = e.target.checked;
-                      setIdentityForm((prev) => ({ ...prev, showUniversityBanner: checked }));
-                      updateSiteSettings({ showUniversityBanner: checked });
-                      triggerToast(checked ? 'ANGRAU Apex Banner enabled on live website!' : 'ANGRAU Apex Banner hidden from live website.');
+              {/* Toggle 2: ANGRAU University Apex Banner */}
+              <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-2xs space-y-3 flex flex-col justify-between">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-xs sm:text-sm text-slate-900 block">
+                        Show ANGRAU Apex Banner
+                      </span>
+                      <span className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full ${
+                        identityForm.showUniversityBanner
+                          ? 'bg-amber-100 text-amber-900 border border-amber-300'
+                          : 'bg-slate-100 text-slate-500'
+                      }`}>
+                        {identityForm.showUniversityBanner ? 'ACTIVE' : 'HIDDEN'}
+                      </span>
+                    </div>
+                    <span className="text-[11px] text-slate-500 block mt-1 leading-snug">
+                      Gold apex affiliation banner linking to Acharya N.G. Ranga Agricultural University.
+                    </span>
+                  </div>
+
+                  {/* Bulletproof Accessible Switch Button */}
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={Boolean(identityForm.showUniversityBanner)}
+                    onClick={() => {
+                      const nextVal = !identityForm.showUniversityBanner;
+                      setIdentityForm((prev) => ({ ...prev, showUniversityBanner: nextVal }));
+                      updateSiteSettings({ showUniversityBanner: nextVal });
+                      updateGeneralDetails({
+                        headerSettings: {
+                          ...(currentStructure?.headerSettings || {}),
+                          showUniversityBanner: nextVal
+                        }
+                      });
+                      triggerToast(nextVal ? '✅ ANGRAU Apex Banner activated on live website!' : 'ANGRAU Apex Banner hidden from live website.');
                     }}
-                    className="sr-only peer"
-                  />
-                  <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#0b1a2e]"></div>
-                </label>
+                    className={`relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none shadow-xs ${
+                      identityForm.showUniversityBanner ? 'bg-[#d4a72c]' : 'bg-slate-300'
+                    }`}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className={`pointer-events-none inline-block h-6 w-6 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out ${
+                        identityForm.showUniversityBanner ? 'translate-x-5' : 'translate-x-0'
+                      }`}
+                    />
+                  </button>
+                </div>
+
+                {/* Live Mini Preview inside Admin Card */}
+                {identityForm.showUniversityBanner && (
+                  <div className="p-2.5 bg-gradient-to-r from-[#855e09] via-[#d4a72c] to-[#855e09] rounded-lg text-[#06101e] text-[10.5px] font-bold border border-[#b88e22] flex items-center justify-between gap-2 overflow-x-auto">
+                    <span className="truncate">🏛️ Acharya N.G. Ranga Agricultural University (ANGRAU)</span>
+                    <span className="px-1.5 py-0.5 rounded bg-[#06101e] text-[#f5c84c] text-[9px] font-extrabold flex-shrink-0">Apex Banner</span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -1033,7 +1105,11 @@ export default function AdminPage() {
                   collegeShortName: identityForm.collegeShortName,
                   domain: identityForm.domain,
                   estd: identityForm.estd,
-                  angrauUrl: identityForm.angrauUrl
+                  angrauUrl: identityForm.angrauUrl,
+                  headerSettings: {
+                    showTopUtilityBar: identityForm.showTopUtilityBar,
+                    showUniversityBanner: identityForm.showUniversityBanner
+                  }
                 });
                 updateSiteSettings({
                   showTopUtilityBar: identityForm.showTopUtilityBar,

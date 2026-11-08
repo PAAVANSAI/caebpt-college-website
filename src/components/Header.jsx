@@ -139,13 +139,20 @@ export default function Header({ onOpenAdmissionsModal }) {
     { label: 'Contact Us', path: '/contact' },
   ];
 
+  const showUniversityBanner = Boolean(
+    siteSettings?.showUniversityBanner ?? currentStructure?.headerSettings?.showUniversityBanner
+  );
+  const showTopUtilityBar = Boolean(
+    siteSettings?.showTopUtilityBar ?? currentStructure?.headerSettings?.showTopUtilityBar
+  );
+
   return (
     <>
       {/* 
         TIER 0A: OFFICIAL ANGRAU UNIVERSITY APEX BANNER
-        Controlled by Admin: siteSettings?.showUniversityBanner === true
+        Controlled by Admin: showUniversityBanner
       */}
-      {siteSettings?.showUniversityBanner === true && (
+      {showUniversityBanner && (
         <div className="bg-gradient-to-r from-[#855e09] via-[#d4a72c] to-[#855e09] text-[#06101e] px-4 py-1.5 text-xs font-bold border-b border-[#b88e22] shadow-xs relative z-40">
           <div className="w-full max-w-[1400px] mx-auto flex items-center justify-between gap-3 flex-wrap text-[11px] sm:text-xs">
             <div className="flex items-center gap-2">
@@ -175,7 +182,7 @@ export default function Header({ onOpenAdmissionsModal }) {
         Controlled by Admin: can be customized or toggled on/off.
         Sits in upper scrollable container, scrolls away smoothly on scroll down.
       */}
-      {Boolean(siteSettings?.showTopUtilityBar) && (
+      {showTopUtilityBar && (
         <div className="bg-[#0b1a2e] text-slate-300 border-b border-white/10 text-xs py-1 sm:py-1.5 relative z-30 transition-all">
           <div className="w-full max-w-[1400px] mx-auto px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-3 text-[10.5px] sm:text-xs">
             {/* Left: Domain & Affiliation */}
