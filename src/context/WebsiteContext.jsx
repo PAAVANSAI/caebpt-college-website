@@ -253,15 +253,34 @@ function sanitizeOfficialStructure(data) {
         }
   };
 
+  const isHeroHighlightsStale = !Array.isArray(data.hero?.highlights) ||
+    data.hero.highlights.length < 4 ||
+    JSON.stringify(data.hero.highlights).includes('"5"') ||
+    !data.hero.highlights.some(h => h.label?.includes('Core Academic') || h.label?.includes('Departments'));
+
   return {
     ...defaultOfficialStructure,
     ...data,
+    collegeFullName: (data.collegeFullName && data.collegeFullName.includes('NTR'))
+      ? data.collegeFullName
+      : defaultOfficialStructure.collegeFullName,
+    collegeShortName: (data.collegeShortName && data.collegeShortName.includes('NTR'))
+      ? data.collegeShortName
+      : defaultOfficialStructure.collegeShortName,
     hero: {
       ...defaultOfficialStructure.hero,
       ...(data.hero || {}),
+      badge: data.hero?.badge || defaultOfficialStructure.hero.badge,
+      titleMain: data.hero?.titleMain || defaultOfficialStructure.hero.titleMain,
+      titleAccent: data.hero?.titleAccent || defaultOfficialStructure.hero.titleAccent,
+      titleSuffix: data.hero?.titleSuffix || defaultOfficialStructure.hero.titleSuffix,
+      intro: data.hero?.intro || data.hero?.subtitle || defaultOfficialStructure.hero.intro,
       bgImage: (data.hero?.bgImage && !data.hero.bgImage.includes('unsplash.com') && !data.hero.bgImage.includes('campus_hero.webp'))
         ? data.hero.bgImage
-        : defaultOfficialStructure.hero.bgImage
+        : defaultOfficialStructure.hero.bgImage,
+      highlights: isHeroHighlightsStale
+        ? defaultOfficialStructure.hero.highlights
+        : data.hero.highlights
     },
     messages: {
       dean: deanObj,

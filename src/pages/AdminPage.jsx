@@ -176,13 +176,13 @@ export default function AdminPage() {
   // Local state for live form edits
   // 1. Identity & Top Bar
   const [identityForm, setIdentityForm] = useState({
-    collegeFullName: currentStructure.collegeFullName || "COLLEGE OF AGRICULTURAL ENGINEERING",
-    collegeShortName: currentStructure.collegeShortName || "CAE Bapatla",
+    collegeFullName: currentStructure.collegeFullName || "Dr. NTR College of Agricultural Engineering, Bapatla",
+    collegeShortName: currentStructure.collegeShortName || "Dr. NTR CAE Bapatla",
     estd: currentStructure.estd || "1983",
     domain: currentStructure.domain || "caebpt.ac.in",
     angrauUrl: currentStructure.angrauUrl || "https://angrau.ac.in",
-    topBarPhone: siteSettings?.topBarPhone || "+91 8643 224025",
-    topBarTimings: siteSettings?.topBarTimings || "Mon - Sat: 9 AM - 5 PM",
+    topBarPhone: siteSettings?.topBarPhone || "+91 8643 224026",
+    topBarTimings: siteSettings?.topBarTimings || "Mon - Sat: 9:00 AM - 5:00 PM",
     showTopUtilityBar: Boolean(siteSettings?.showTopUtilityBar),
     showUniversityBanner: siteSettings?.showUniversityBanner === true
   });
@@ -229,16 +229,17 @@ export default function AdminPage() {
 
   // 2. Hero Section
   const [heroForm, setHeroForm] = useState({
-    headline: currentStructure.hero?.headline || "Pioneering Precision Agriculture & Water Innovation",
-    subtitle: currentStructure.hero?.subtitle || "Established in 1983 as Andhra Pradesh's premier engineering institution under Acharya N.G. Ranga Agricultural University.",
-    badgeText: currentStructure.hero?.badgeText || "AP EAPCET & ICAR AIEEA Accredited Institution",
+    badge: currentStructure.hero?.badge || officialStructureData.hero.badge,
+    titleMain: currentStructure.hero?.titleMain || officialStructureData.hero.titleMain,
+    titleAccent: currentStructure.hero?.titleAccent || officialStructureData.hero.titleAccent,
+    titleSuffix: currentStructure.hero?.titleSuffix || officialStructureData.hero.titleSuffix,
+    intro: currentStructure.hero?.intro || currentStructure.hero?.subtitle || officialStructureData.hero.intro,
     mediaType: currentStructure.hero?.mediaType || "image",
-    bgVideo: currentStructure.hero?.bgVideo || "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-green-landscape-with-agricultural-crops-42289-large.mp4",
-    bgImage: currentStructure.hero?.bgImage || "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1600&q=80",
-    yearsStat: currentStructure.hero?.yearsStat || "42+",
-    departmentsStat: currentStructure.hero?.departmentsStat || "5",
-    labsStat: currentStructure.hero?.labsStat || "22+",
-    placementStat: currentStructure.hero?.placementStat || "92%"
+    bgVideo: currentStructure.hero?.bgVideo || "",
+    bgImage: currentStructure.hero?.bgImage || officialStructureData.hero.bgImage,
+    highlights: Array.isArray(currentStructure.hero?.highlights) && currentStructure.hero.highlights.length >= 4
+      ? currentStructure.hero.highlights
+      : officialStructureData.hero.highlights
   });
 
   // Department Creation State
@@ -256,20 +257,76 @@ export default function AdminPage() {
 
   // 3. Leadership Messages
   const [deanForm, setDeanForm] = useState({
-    name: currentStructure.messages?.dean?.name || "Dr. P.V.K. Jagannadha Rao",
-    title: currentStructure.messages?.dean?.title || "Dean of Agricultural Engineering & Technology, ANGRAU",
-    photo: currentStructure.messages?.dean?.photo || currentStructure.messages?.dean?.image || "/images/administration/dr_pvk_jagannadha_rao.webp",
-    excerpt: currentStructure.messages?.dean?.excerpt || "Agriculture is the key source of livelihood for 65% of the rural population of the state.",
+    name: currentStructure.messages?.dean?.name || officialStructureData.messages.dean.name,
+    title: currentStructure.messages?.dean?.title || officialStructureData.messages.dean.title,
+    designation: currentStructure.messages?.dean?.designation || officialStructureData.messages.dean.role,
+    photo: currentStructure.messages?.dean?.photo || currentStructure.messages?.dean?.image || officialStructureData.messages.dean.image,
+    excerpt: currentStructure.messages?.dean?.excerpt || officialStructureData.messages.dean.excerpt,
     message: currentStructure.messages?.dean?.message || (Array.isArray(currentStructure.messages?.dean?.content) ? currentStructure.messages.dean.content.join('\n\n') : "")
   });
 
   const [assocDeanForm, setAssocDeanForm] = useState({
-    name: currentStructure.messages?.associateDean?.name || currentStructure.messages?.assocDean?.name || "Dr. Mogal Sardar Baig",
-    title: currentStructure.messages?.associateDean?.title || currentStructure.messages?.assocDean?.title || "Associate Dean, College of Agricultural Engineering, Bapatla",
-    photo: currentStructure.messages?.associateDean?.photo || currentStructure.messages?.assocDean?.photo || currentStructure.messages?.associateDean?.image || "/images/administration/dr_mogal_sardar_baig.webp",
-    excerpt: currentStructure.messages?.associateDean?.excerpt || currentStructure.messages?.assocDean?.excerpt || "Dr. NTR College of Agricultural Engineering, Bapatla had a humble beginning in the year 1983.",
+    name: currentStructure.messages?.associateDean?.name || currentStructure.messages?.assocDean?.name || officialStructureData.messages.associateDean.name,
+    title: currentStructure.messages?.associateDean?.title || currentStructure.messages?.assocDean?.title || officialStructureData.messages.associateDean.title,
+    designation: currentStructure.messages?.associateDean?.designation || currentStructure.messages?.associateDean?.role || officialStructureData.messages.associateDean.role,
+    photo: currentStructure.messages?.associateDean?.photo || currentStructure.messages?.assocDean?.photo || currentStructure.messages?.associateDean?.image || officialStructureData.messages.associateDean.image,
+    excerpt: currentStructure.messages?.associateDean?.excerpt || currentStructure.messages?.assocDean?.excerpt || officialStructureData.messages.associateDean.excerpt,
     message: currentStructure.messages?.associateDean?.message || (Array.isArray(currentStructure.messages?.associateDean?.content) ? currentStructure.messages.associateDean.content.join('\n\n') : "")
   });
+
+  // Reactive Sync: When officialStructure loads from Context, populate all forms seamlessly
+  useEffect(() => {
+    if (currentStructure) {
+      if (currentStructure.collegeFullName) {
+        setIdentityForm((prev) => ({
+          ...prev,
+          collegeFullName: currentStructure.collegeFullName,
+          collegeShortName: currentStructure.collegeShortName || prev.collegeShortName,
+          estd: currentStructure.estd || prev.estd,
+          domain: currentStructure.domain || prev.domain,
+          angrauUrl: currentStructure.angrauUrl || prev.angrauUrl
+        }));
+      }
+      if (currentStructure.hero) {
+        setHeroForm((prev) => ({
+          ...prev,
+          badge: currentStructure.hero.badge || prev.badge,
+          titleMain: currentStructure.hero.titleMain || prev.titleMain,
+          titleAccent: currentStructure.hero.titleAccent || prev.titleAccent,
+          titleSuffix: currentStructure.hero.titleSuffix || prev.titleSuffix,
+          intro: currentStructure.hero.intro || currentStructure.hero.subtitle || prev.intro,
+          mediaType: currentStructure.hero.mediaType || prev.mediaType,
+          bgVideo: currentStructure.hero.bgVideo || prev.bgVideo,
+          bgImage: currentStructure.hero.bgImage || prev.bgImage,
+          highlights: Array.isArray(currentStructure.hero.highlights) && currentStructure.hero.highlights.length >= 4
+            ? currentStructure.hero.highlights
+            : prev.highlights
+        }));
+      }
+      if (currentStructure.messages?.dean) {
+        setDeanForm((prev) => ({
+          ...prev,
+          name: currentStructure.messages.dean.name || prev.name,
+          title: currentStructure.messages.dean.title || prev.title,
+          designation: currentStructure.messages.dean.designation || currentStructure.messages.dean.role || prev.designation,
+          photo: currentStructure.messages.dean.image || currentStructure.messages.dean.photo || prev.photo,
+          excerpt: currentStructure.messages.dean.excerpt || prev.excerpt,
+          message: Array.isArray(currentStructure.messages.dean.content) ? currentStructure.messages.dean.content.join('\n\n') : (currentStructure.messages.dean.message || prev.message)
+        }));
+      }
+      if (currentStructure.messages?.associateDean) {
+        setAssocDeanForm((prev) => ({
+          ...prev,
+          name: currentStructure.messages.associateDean.name || prev.name,
+          title: currentStructure.messages.associateDean.title || prev.title,
+          designation: currentStructure.messages.associateDean.designation || currentStructure.messages.associateDean.role || prev.designation,
+          photo: currentStructure.messages.associateDean.image || currentStructure.messages.associateDean.photo || prev.photo,
+          excerpt: currentStructure.messages.associateDean.excerpt || prev.excerpt,
+          message: Array.isArray(currentStructure.messages.associateDean.content) ? currentStructure.messages.associateDean.content.join('\n\n') : (currentStructure.messages.associateDean.message || prev.message)
+        }));
+      }
+    }
+  }, [currentStructure]);
 
   // 4. Announcements Form State
   const [selectedAnnouncementType, setSelectedAnnouncementType] = useState('newsEvents');
@@ -286,15 +343,15 @@ export default function AdminPage() {
 
   // 5. Selected Department for Editing
   const [selectedDeptSlug, setSelectedDeptSlug] = useState(
-    currentStructure.academics?.departments?.[0]?.slug || 'fmpe'
+    currentStructure.academics?.departments?.[0]?.slug || 'farm-machinery-and-power'
   );
   const activeDept = currentStructure.academics?.departments?.find((d) => d.slug === selectedDeptSlug) || currentStructure.academics?.departments?.[0];
   const [deptForm, setDeptForm] = useState({
     about: activeDept?.about || '',
-    hodName: activeDept?.hod?.name || '',
-    hodDesignation: activeDept?.hod?.designation || '',
-    hodEmail: activeDept?.hod?.email || '',
-    hodPhoto: activeDept?.hod?.photo || '',
+    hodName: activeDept?.hodAndFaculty?.hodName || activeDept?.hod?.name || '',
+    hodDesignation: activeDept?.hodAndFaculty?.hodDesignation || activeDept?.hod?.designation || '',
+    hodEmail: activeDept?.hodAndFaculty?.hodEmail || activeDept?.hod?.email || '',
+    hodPhoto: activeDept?.hodAndFaculty?.hodPhoto || activeDept?.hod?.photo || '',
     newLabName: ''
   });
 
@@ -305,10 +362,10 @@ export default function AdminPage() {
     if (d) {
       setDeptForm({
         about: d.about || '',
-        hodName: d.hod?.name || '',
-        hodDesignation: d.hod?.designation || '',
-        hodEmail: d.hod?.email || '',
-        hodPhoto: d.hod?.photo || '',
+        hodName: d.hodAndFaculty?.hodName || d.hod?.name || '',
+        hodDesignation: d.hodAndFaculty?.hodDesignation || d.hod?.designation || '',
+        hodEmail: d.hodAndFaculty?.hodEmail || d.hod?.email || '',
+        hodPhoto: d.hodAndFaculty?.hodPhoto || d.hod?.photo || '',
         newLabName: ''
       });
     }
@@ -1170,45 +1227,72 @@ export default function AdminPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="md:col-span-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="md:col-span-3">
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Hero Badge Text
+                  Hero Top Badge Text
                 </label>
                 <input
                   type="text"
-                  value={heroForm.badgeText}
-                  onChange={(e) => setHeroForm({ ...heroForm, badgeText: e.target.value })}
+                  value={heroForm.badge || "ESTD. 1983 • Constituent of ANGRAU • Bapatla"}
+                  onChange={(e) => setHeroForm({ ...heroForm, badge: e.target.value })}
                   className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:border-[#0b1a2e]"
                 />
               </div>
 
-              <div className="md:col-span-2">
+              <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Main Hero Headline
+                  Title Prefix
                 </label>
                 <input
                   type="text"
-                  value={heroForm.headline}
-                  onChange={(e) => setHeroForm({ ...heroForm, headline: e.target.value })}
+                  value={heroForm.titleMain || "Excellence in"}
+                  onChange={(e) => setHeroForm({ ...heroForm, titleMain: e.target.value })}
+                  placeholder="e.g. Excellence in"
                   className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:border-[#0b1a2e]"
                 />
               </div>
 
-              <div className="md:col-span-2">
+              <div>
+                <label className="block text-xs font-bold text-[#b88e22] mb-1">
+                  Title Accent (Gold Highlight)
+                </label>
+                <input
+                  type="text"
+                  value={heroForm.titleAccent || "Agricultural Engineering"}
+                  onChange={(e) => setHeroForm({ ...heroForm, titleAccent: e.target.value })}
+                  placeholder="e.g. Agricultural Engineering"
+                  className="w-full px-3.5 py-2.5 bg-amber-50/50 border border-[#d4a72c] rounded-xl text-xs sm:text-sm text-slate-900 font-bold focus:bg-white"
+                />
+              </div>
+
+              <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Intro Subtitle
+                  Title Suffix
+                </label>
+                <input
+                  type="text"
+                  value={heroForm.titleSuffix || "& Technology"}
+                  onChange={(e) => setHeroForm({ ...heroForm, titleSuffix: e.target.value })}
+                  placeholder="e.g. & Technology"
+                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:border-[#0b1a2e]"
+                />
+              </div>
+
+              <div className="md:col-span-3">
+                <label className="block text-xs font-bold text-slate-700 mb-1">
+                  Intro Subtitle / Overview Paragraph
                 </label>
                 <textarea
                   rows={2}
-                  value={heroForm.subtitle}
-                  onChange={(e) => setHeroForm({ ...heroForm, subtitle: e.target.value })}
+                  value={heroForm.intro || ""}
+                  onChange={(e) => setHeroForm({ ...heroForm, intro: e.target.value })}
                   className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:border-[#0b1a2e]"
                 />
               </div>
 
               {/* Hero Background Media Controls: Image or Video */}
-              <div className="md:col-span-2 p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-4">
+              <div className="md:col-span-3 p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-4">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
                     <label className="block text-xs font-bold text-slate-900 uppercase tracking-wider">
@@ -1258,104 +1342,23 @@ export default function AdminPage() {
                         type="text"
                         value={heroForm.bgVideo}
                         onChange={(e) => setHeroForm({ ...heroForm, bgVideo: e.target.value })}
-                        placeholder="/videos/campus_drone.mp4 or https://assets.mixkit.co/.../video.mp4"
+                        placeholder="/videos/campus_drone.mp4 or https://..."
                         className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:border-[#0b1a2e]"
                       />
-                      <p className="text-[11px] text-slate-500 mt-1">
-                        💡 <strong>Recommendation:</strong> Local MP4/WebM videos (e.g. <code className="text-navy-900 bg-slate-100 px-1 py-0.5 rounded">/videos/campus_drone.mp4</code>) start playing instantly with 0ms latency. YouTube video embeds have a 2–4s player buffering delay.
-                      </p>
-                    </div>
-
-                    {/* Quick Presets */}
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-[11px] font-bold text-slate-500">Quick Presets:</span>
-                      <button
-                        type="button"
-                        onClick={() => setHeroForm({
-                          ...heroForm,
-                          bgVideo: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-green-landscape-with-agricultural-crops-42289-large.mp4'
-                        })}
-                        className="px-2.5 py-1 text-[11px] font-bold bg-white border border-slate-300 rounded-lg hover:border-[#0b1a2e] text-slate-700 cursor-pointer"
-                      >
-                        🌾 Green Agricultural Fields (MP4)
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setHeroForm({
-                          ...heroForm,
-                          bgVideo: 'https://assets.mixkit.co/videos/preview/mixkit-drone-view-of-agricultural-fields-and-crops-42291-large.mp4'
-                        })}
-                        className="px-2.5 py-1 text-[11px] font-bold bg-white border border-slate-300 rounded-lg hover:border-[#0b1a2e] text-slate-700 cursor-pointer"
-                      >
-                        🚜 Aerial Farmland & Tractor Bay (MP4)
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setHeroForm({
-                          ...heroForm,
-                          bgVideo: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-                        })}
-                        className="px-2.5 py-1 text-[11px] font-bold bg-white border border-slate-300 rounded-lg hover:border-[#0b1a2e] text-slate-700 cursor-pointer"
-                      >
-                        🎥 YouTube Video Stream
-                      </button>
-                    </div>
-
-                    {/* Video Live Preview */}
-                    <div className="relative rounded-xl overflow-hidden border border-slate-300 bg-slate-900 h-48 max-w-lg">
-                      {heroForm.bgVideo.includes('youtube.com') || heroForm.bgVideo.includes('youtu.be') ? (
-                        <div className="w-full h-full flex flex-col items-center justify-center text-white text-xs gap-2 p-4 text-center">
-                          <Video className="w-8 h-8 text-[#f5c84c]" />
-                          <span className="font-bold">YouTube Background Video Configured</span>
-                          <span className="text-[11px] text-slate-400 truncate max-w-sm">{heroForm.bgVideo}</span>
-                        </div>
-                      ) : (
-                        <video
-                          key={heroForm.bgVideo}
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          className="w-full h-full object-cover"
-                        >
-                          <source src={heroForm.bgVideo} type="video/mp4" />
-                        </video>
-                      )}
-                      <div className="absolute top-2 right-2 bg-black/60 px-2 py-0.5 rounded text-[10px] text-white font-bold">
-                        Live Preview
-                      </div>
-                    </div>
-
-                    {/* Fallback poster image */}
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">
-                        Fallback Poster Image (shown while video is buffering)
-                      </label>
-                      <div className="flex gap-3">
-                        <input
-                          type="url"
-                          value={heroForm.bgImage}
-                          onChange={(e) => setHeroForm({ ...heroForm, bgImage: e.target.value })}
-                          className="flex-1 px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900"
-                        />
-                        <div className="w-16 h-10 rounded-lg overflow-hidden border border-slate-200 flex-shrink-0 bg-slate-100">
-                          <img src={heroForm.bgImage} alt="Fallback Preview" className="w-full h-full object-cover" />
-                        </div>
-                      </div>
                     </div>
                   </div>
                 ) : (
                   <div className="space-y-3 pt-2 border-t border-slate-200">
                     <div>
                       <label className="block text-xs font-bold text-slate-800 mb-1">
-                        Campus Background Image
+                        Official Campus Background Photograph
                       </label>
                       <div className="flex flex-col sm:flex-row gap-3">
                         <input
                           type="text"
-                          value={heroForm.bgImage}
+                          value={heroForm.bgImage || "/images/campus_hero.jpg"}
                           onChange={(e) => setHeroForm({ ...heroForm, bgImage: e.target.value })}
-                          placeholder="/images/campus_hero.jpg or URL"
+                          placeholder="/images/campus_hero.jpg or image URL"
                           className="flex-1 px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:border-[#0b1a2e]"
                         />
                         <label className="px-4 py-2.5 bg-[#0b1a2e] hover:bg-[#153258] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2 cursor-pointer shadow-xs transition-all whitespace-nowrap">
@@ -1373,89 +1376,87 @@ export default function AdminPage() {
                           />
                         </label>
                         <div className="w-20 h-12 rounded-lg overflow-hidden border border-slate-200 flex-shrink-0 bg-slate-100 shadow-xs">
-                          <img src={heroForm.bgImage} alt="Preview" className="w-full h-full object-cover" />
+                          <img src={heroForm.bgImage || "/images/campus_hero.jpg"} alt="Hero Preview" className="w-full h-full object-cover" />
                         </div>
                       </div>
                       <p className="text-[11px] text-slate-500 mt-1.5">
-                        💡 Click <strong>"Upload Photo from Laptop"</strong> to choose any picture from your computer, or enter an image URL / path.
+                        💡 Active Image: <code className="bg-slate-100 px-1 py-0.5 rounded text-navy-900 font-bold">{heroForm.bgImage || '/images/campus_hero.jpg'}</code> (Official Dr. NTR College campus facade).
                       </p>
-                    </div>
-
-                    {/* Quick Image Presets */}
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-[11px] font-bold text-slate-500">Sample Campus Photos:</span>
-                      <button
-                        type="button"
-                        onClick={() => setHeroForm({
-                          ...heroForm,
-                          bgImage: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=2000&q=85'
-                        })}
-                        className="px-2.5 py-1 text-[11px] font-bold bg-white border border-slate-300 rounded-lg hover:border-[#0b1a2e] text-slate-700 cursor-pointer"
-                      >
-                        🏛️ Academic Main Building
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setHeroForm({
-                          ...heroForm,
-                          bgImage: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1600&q=80'
-                        })}
-                        className="px-2.5 py-1 text-[11px] font-bold bg-white border border-slate-300 rounded-lg hover:border-[#0b1a2e] text-slate-700 cursor-pointer"
-                      >
-                        🌾 Research Trial Farms
-                      </button>
                     </div>
                   </div>
                 )}
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Years of Excellence Stat</label>
-                <input
-                  type="text"
-                  value={heroForm.yearsStat}
-                  onChange={(e) => setHeroForm({ ...heroForm, yearsStat: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Academic Departments Stat</label>
-                <input
-                  type="text"
-                  value={heroForm.departmentsStat}
-                  onChange={(e) => setHeroForm({ ...heroForm, departmentsStat: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Research Labs Stat</label>
-                <input
-                  type="text"
-                  value={heroForm.labsStat}
-                  onChange={(e) => setHeroForm({ ...heroForm, labsStat: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Placement Track Record Stat</label>
-                <input
-                  type="text"
-                  value={heroForm.placementStat}
-                  onChange={(e) => setHeroForm({ ...heroForm, placementStat: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900"
-                />
+              {/* 4 Official Institutional Highlight Stat Cards */}
+              <div className="md:col-span-3 pt-2">
+                <span className="font-bold text-xs text-slate-900 uppercase tracking-wider block mb-3">
+                  Institutional Highlight Cards (4 Main Stats on Homepage)
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  {(heroForm.highlights || [
+                    { count: "6", label: "Core Academic Departments", note: "Specialized Disciplines" },
+                    { count: "1,046", label: "Total Graduates", note: "Graduated Agro-Engineers" },
+                    { count: "25", label: "Campus Green Acreage", note: "9.51 Hectares on NH-216" },
+                    { count: "2021–26", label: "ICAR Accreditation", note: "National NAEAB Cycle" }
+                  ]).map((stat, idx) => (
+                    <div key={idx} className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                      <span className="text-[10px] font-extrabold uppercase text-slate-400 block">Card #{idx + 1}</span>
+                      <div>
+                        <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Stat Number</label>
+                        <input
+                          type="text"
+                          value={stat.count}
+                          onChange={(e) => {
+                            const newHighlights = [...(heroForm.highlights || [])];
+                            newHighlights[idx] = { ...newHighlights[idx], count: e.target.value };
+                            setHeroForm({ ...heroForm, highlights: newHighlights });
+                          }}
+                          className="w-full px-2.5 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-bold text-[#0b1a2e]"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Stat Title / Label</label>
+                        <input
+                          type="text"
+                          value={stat.label}
+                          onChange={(e) => {
+                            const newHighlights = [...(heroForm.highlights || [])];
+                            newHighlights[idx] = { ...newHighlights[idx], label: e.target.value };
+                            setHeroForm({ ...heroForm, highlights: newHighlights });
+                          }}
+                          className="w-full px-2.5 py-1.5 bg-white border border-slate-300 rounded-lg text-xs text-slate-800"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[10px] font-bold text-slate-600 mb-0.5">Subtitle / Note</label>
+                        <input
+                          type="text"
+                          value={stat.note}
+                          onChange={(e) => {
+                            const newHighlights = [...(heroForm.highlights || [])];
+                            newHighlights[idx] = { ...newHighlights[idx], note: e.target.value };
+                            setHeroForm({ ...heroForm, highlights: newHighlights });
+                          }}
+                          className="w-full px-2.5 py-1.5 bg-white border border-slate-300 rounded-lg text-[11px] text-slate-500"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
             <button
               onClick={() => {
-                updateHero(heroForm);
+                updateHero({
+                  ...heroForm,
+                  headline: `${heroForm.titleMain || ''} ${heroForm.titleAccent || ''} ${heroForm.titleSuffix || ''}`.trim(),
+                  subtitle: heroForm.intro,
+                  badgeText: heroForm.badge
+                });
                 triggerToast('Hero Section updated on Home page!');
               }}
-              className="btn btn-navy text-xs font-bold px-5 py-2.5 flex items-center gap-2"
+              className="btn btn-navy text-xs font-bold px-5 py-2.5 flex items-center gap-2 cursor-pointer shadow-xs"
             >
               <Save className="w-4 h-4 text-[#f5c84c]" />
               <span>Save Hero Section</span>
@@ -2271,8 +2272,8 @@ export default function AdminPage() {
                   <label className="block text-[11px] font-bold text-slate-700 mb-1">Name</label>
                   <input
                     type="text"
-                    defaultValue={currentStructure.administration?.vc?.name || 'Dr. R. Sarada Jayalakshmi Devi'}
-                    onBlur={(e) => updateAdministration('vc', { name: e.target.value })}
+                    defaultValue={currentStructure.administration?.viceChancellor?.name || currentStructure.administration?.vc?.name || 'Dr. P.V. SATYANARAYANA'}
+                    onBlur={(e) => updateAdministration('viceChancellor', { name: e.target.value })}
                     className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs"
                   />
                 </div>
@@ -2280,8 +2281,8 @@ export default function AdminPage() {
                   <label className="block text-[11px] font-bold text-slate-700 mb-1">Designation</label>
                   <input
                     type="text"
-                    defaultValue={currentStructure.administration?.vc?.designation || 'Honourable Vice-Chancellor, ANGRAU'}
-                    onBlur={(e) => updateAdministration('vc', { designation: e.target.value })}
+                    defaultValue={currentStructure.administration?.viceChancellor?.designation || currentStructure.administration?.vc?.designation || "Hon'ble Vice-Chancellor, ANGRAU"}
+                    onBlur={(e) => updateAdministration('viceChancellor', { designation: e.target.value })}
                     className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs"
                   />
                 </div>
@@ -2294,16 +2295,17 @@ export default function AdminPage() {
                 Faculty Deans (ANGRAU)
               </span>
               <div className="space-y-2">
-                {(Array.isArray(currentStructure.administration?.deansOfFaculty?.facultyDeans)
+                {(Array.isArray(currentStructure.administration?.deansOfFaculty?.facultyDeans) && currentStructure.administration.deansOfFaculty.facultyDeans.length > 0
                   ? currentStructure.administration.deansOfFaculty.facultyDeans
-                  : []).map((dean, dIdx) => (
+                  : officialStructureData.administration.deansOfFaculty.facultyDeans
+                ).map((dean, dIdx) => (
                   <div
                     key={dIdx}
                     className="p-3 bg-slate-50 rounded-lg border border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs"
                   >
                     <div>
                       <span className="font-bold text-slate-900">{dean.name}</span>
-                      <p className="text-[11px] text-slate-500 mt-0.5">{dean.faculty} • {dean.designation}</p>
+                      <p className="text-[11px] text-slate-500 mt-0.5">{dean.designation}</p>
                     </div>
                   </div>
                 ))}
@@ -2316,11 +2318,10 @@ export default function AdminPage() {
                 Supporting Staff Roles (6 Divisions)
               </span>
               <div className="space-y-2">
-                {(Array.isArray(currentStructure.administration?.supportingStaff?.staffList)
+                {(Array.isArray(currentStructure.administration?.supportingStaff?.staffList) && currentStructure.administration.supportingStaff.staffList.length > 0
                   ? currentStructure.administration.supportingStaff.staffList
-                  : Array.isArray(currentStructure.administration?.supportingStaff)
-                  ? currentStructure.administration.supportingStaff
-                  : []).map((staff, sIdx) => (
+                  : officialStructureData.administration.supportingStaff.staffList
+                ).map((staff, sIdx) => (
                   <div
                     key={sIdx}
                     className="p-3 bg-slate-50 rounded-lg border border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs"
