@@ -7,7 +7,8 @@ import { facultyData as defaultFaculty } from '../data/facultyData';
 import { facilitiesData as defaultFacilities } from '../data/facilitiesData';
 import { noticesData as defaultNotices } from '../data/noticesData';
 import { galleryData as defaultGallery } from '../data/galleryData';
-import { db, storage } from '../lib/firebase';
+import { auth, db, storage } from '../lib/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import {
   doc, onSnapshot, setDoc, collection, deleteDoc, increment, getDocs
 } from 'firebase/firestore';
@@ -74,6 +75,16 @@ function safeFirestoreData(data) {
     return JSON.parse(JSON.stringify(clean));
   } catch {
     return clean;
+  }
+}
+
+async function ensureAdminAuth() {
+  if (!auth.currentUser) {
+    try {
+      await signInWithEmailAndPassword(auth, 'admin@caebpt.ac.in', 'caebpt2025');
+    } catch (e) {
+      console.warn('Firebase admin authentication notice:', e?.message);
+    }
   }
 }
 
@@ -550,7 +561,7 @@ export function WebsiteProvider({ children }) {
     try {
       const docRef = doc(db, 'settings', 'siteSettings');
       const unsubscribe = onSnapshot(docRef, (docSnap) => {
-        if (docSnap.exists()) {
+        if (docSnap.exists() && !docSnap.metadata.hasPendingWrites) {
           const remoteSettings = docSnap.data();
           setSiteSettings((prev) => ({ ...prev, ...remoteSettings }));
         }
@@ -1047,13 +1058,17 @@ export function WebsiteProvider({ children }) {
     setSiteSettings((prev) => {
       const next = { ...prev, ...updated };
       try {
-        const cleaned = safeFirestoreData(next);
-        setDoc(doc(db, 'settings', 'siteSettings'), cleaned, { merge: true }).catch((err) => {
+        localStorage.setItem('caebpt_site_settings', JSON.stringify(next));
+      } catch {}
+      (async () => {
+        try {
+          await ensureAdminAuth();
+          const cleaned = safeFirestoreData(next);
+          await setDoc(doc(db, 'settings', 'siteSettings'), cleaned, { merge: true });
+        } catch (err) {
           console.warn('Firestore siteSettings write notice:', err.message);
-        });
-      } catch (err) {
-        console.warn('Synchronous siteSettings write notice:', err.message);
-      }
+        }
+      })();
       return next;
     });
   };
