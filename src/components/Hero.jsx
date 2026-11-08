@@ -86,11 +86,14 @@ export default function Hero({ onOpenAdmissionsModal }) {
           />
         )}
 
-        {/* Balanced Academic Scrim — Keeps campus/video visible while ensuring text readability */}
+        {/* Directional & Depth Scrim — Darker on left where text sits, balanced on right to showcase campus */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(180deg, rgba(6, 16, 30, 0.65) 0%, rgba(11, 26, 46, 0.52) 45%, rgba(6, 16, 30, 0.88) 100%)'
+            background: `
+              linear-gradient(to right, rgba(6, 16, 30, 0.92) 0%, rgba(6, 16, 30, 0.82) 40%, rgba(6, 16, 30, 0.48) 72%, rgba(6, 16, 30, 0.32) 100%),
+              linear-gradient(180deg, rgba(6, 16, 30, 0.70) 0%, rgba(6, 16, 30, 0.25) 45%, rgba(6, 16, 30, 0.92) 100%)
+            `
           }}
         />
         {/* Subtle grid pattern overlay */}
@@ -103,16 +106,17 @@ export default function Hero({ onOpenAdmissionsModal }) {
         />
       </div>
 
-      <div className="container relative z-10 py-8 sm:py-14 lg:py-20">
-        <div className="max-w-2xl">
+      <div className="container relative z-10 py-6 sm:py-10 lg:py-14">
+        {/* Frosted Glass Content Panel for High Readability over Bright Photo */}
+        <div className="max-w-2xl bg-[#06101e]/65 sm:bg-[#06101e]/70 backdrop-blur-md p-5 sm:p-7 md:p-8 rounded-3xl border border-white/15 shadow-2xl mb-6 sm:mb-8">
           {/* Institutional Badge */}
-          <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-[#0b1a2e]/85 border border-[#d4a72c]/50 text-[#fae4a4] text-[10.5px] sm:text-xs font-bold mb-3 sm:mb-4 shadow-sm backdrop-blur-sm">
+          <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-[#0b1a2e]/90 border border-[#d4a72c]/60 text-[#fae4a4] text-[10.5px] sm:text-xs font-bold mb-3 sm:mb-4 shadow-sm">
             <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#ecc75f] flex-shrink-0" />
             <span>{hero.badge}</span>
           </div>
 
           {/* Clean Academic Headline */}
-          <h1 className="font-heading text-xl sm:text-3xl md:text-4xl lg:text-[40px] font-extrabold text-white leading-snug sm:leading-tight mb-3 sm:mb-4 drop-shadow-md">
+          <h1 className="font-heading text-xl sm:text-3xl md:text-4xl lg:text-[40px] font-extrabold text-white leading-snug sm:leading-tight mb-3 sm:mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             {hero.titleMain}{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ecc75f] via-[#fae4a4] to-[#ecc75f] font-extrabold">
               {hero.titleAccent}
@@ -121,12 +125,12 @@ export default function Hero({ onOpenAdmissionsModal }) {
           </h1>
 
           {/* Intro Text */}
-          <p className="text-xs sm:text-sm md:text-base text-slate-100 leading-relaxed mb-5 sm:mb-7 max-w-xl font-normal drop-shadow-sm">
+          <p className="text-xs sm:text-sm md:text-base text-slate-100 leading-relaxed mb-5 sm:mb-6 max-w-xl font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
             {hero.intro}
           </p>
 
           {/* Action CTAs (Mobile Responsive Stacking) */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 mb-6 sm:mb-10">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
             <button
               type="button"
               onClick={() => scrollToSection('academics')}
