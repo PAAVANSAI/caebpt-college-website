@@ -161,37 +161,6 @@ export default function Hero({ onOpenAdmissionsModal }) {
           </div>
         </div>
 
-        {/* Amrita-Style Floating Corner Preview Card (Bottom-Right) */}
-        <div className="hidden xl:flex items-center gap-3.5 p-3 pr-4 bg-[#06101e]/85 backdrop-blur-md border border-white/15 rounded-2xl shadow-2xl max-w-sm absolute right-12 bottom-36 z-20 hover:border-[#ecc75f]/50 transition-all">
-          <div className="w-20 h-14 rounded-xl overflow-hidden flex-shrink-0 border border-white/10 shadow-xs">
-            <img
-              src="/images/campus_hero.jpg"
-              alt="Campus Preview"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="flex-1 min-w-0">
-            <h4 className="text-xs font-extrabold text-white truncate">
-              Dr. NTR CAE Bapatla
-            </h4>
-            <p className="text-[11px] text-slate-300 truncate">
-              Constituent College of ANGRAU • Estd. 1983
-            </p>
-            <div className="flex items-center gap-1.5 mt-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              <span className="text-[10px] text-[#fae4a4] font-bold">ICAR Accredited Institution</span>
-            </div>
-          </div>
-          <button
-            type="button"
-            onClick={() => scrollToSection('about')}
-            className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-            title="Learn More About College"
-          >
-            <ChevronRight className="w-4 h-4 text-[#ecc75f]" />
-          </button>
-        </div>
-
         {/* Live Highlight Cards Row */}
         <div className="pt-6 sm:pt-8 border-t border-white/15">
           <div className="text-[10px] sm:text-[11px] text-[#ecc75f] font-bold tracking-wider uppercase mb-3 flex items-center gap-2">
