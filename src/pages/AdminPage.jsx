@@ -921,7 +921,8 @@ export default function AdminPage() {
                       updateGeneralDetails({
                         headerSettings: {
                           ...(currentStructure?.headerSettings || {}),
-                          showTopUtilityBar: nextVal
+                          showTopUtilityBar: nextVal,
+                          showUniversityBanner: Boolean(identityForm.showUniversityBanner)
                         }
                       });
                       triggerToast(nextVal ? '✅ Top Utility Bar activated on live website!' : 'Top Utility Bar hidden from live website.');
@@ -983,6 +984,7 @@ export default function AdminPage() {
                       updateGeneralDetails({
                         headerSettings: {
                           ...(currentStructure?.headerSettings || {}),
+                          showTopUtilityBar: Boolean(identityForm.showTopUtilityBar),
                           showUniversityBanner: nextVal
                         }
                       });
@@ -1101,21 +1103,21 @@ export default function AdminPage() {
             <button
               onClick={() => {
                 updateGeneralDetails({
-                  collegeFullName: identityForm.collegeFullName,
-                  collegeShortName: identityForm.collegeShortName,
-                  domain: identityForm.domain,
-                  estd: identityForm.estd,
-                  angrauUrl: identityForm.angrauUrl,
+                  collegeFullName: identityForm.collegeFullName || "COLLEGE OF AGRICULTURAL ENGINEERING",
+                  collegeShortName: identityForm.collegeShortName || "CAE Bapatla",
+                  domain: identityForm.domain || "caebpt.ac.in",
+                  estd: identityForm.estd || "1983",
+                  angrauUrl: identityForm.angrauUrl || "https://angrau.ac.in",
                   headerSettings: {
-                    showTopUtilityBar: identityForm.showTopUtilityBar,
-                    showUniversityBanner: identityForm.showUniversityBanner
+                    showTopUtilityBar: Boolean(identityForm.showTopUtilityBar),
+                    showUniversityBanner: Boolean(identityForm.showUniversityBanner)
                   }
                 });
                 updateSiteSettings({
-                  showTopUtilityBar: identityForm.showTopUtilityBar,
-                  showUniversityBanner: identityForm.showUniversityBanner,
-                  topBarPhone: identityForm.topBarPhone,
-                  topBarTimings: identityForm.topBarTimings
+                  showTopUtilityBar: Boolean(identityForm.showTopUtilityBar),
+                  showUniversityBanner: Boolean(identityForm.showUniversityBanner),
+                  topBarPhone: identityForm.topBarPhone || "+91 8643 224026",
+                  topBarTimings: identityForm.topBarTimings || "Mon - Sat: 9:00 AM - 5:00 PM"
                 });
                 triggerToast('Identity & Header settings saved successfully!');
               }}
@@ -1521,10 +1523,10 @@ export default function AdminPage() {
 
               <button
                 onClick={() => {
-                  const contentParagraphs = deanForm.message ? deanForm.message.split('\n\n').map(p => p.trim()).filter(Boolean) : undefined;
+                  const contentParagraphs = deanForm.message ? deanForm.message.split('\n\n').map(p => p.trim()).filter(Boolean) : [];
                   updateLeadershipMessage('dean', {
                     ...deanForm,
-                    content: contentParagraphs && contentParagraphs.length > 0 ? contentParagraphs : undefined
+                    ...(contentParagraphs.length > 0 ? { content: contentParagraphs } : {})
                   });
                   triggerToast("Dean's message updated successfully!");
                 }}
@@ -1617,10 +1619,10 @@ export default function AdminPage() {
 
               <button
                 onClick={() => {
-                  const contentParagraphs = assocDeanForm.message ? assocDeanForm.message.split('\n\n').map(p => p.trim()).filter(Boolean) : undefined;
+                  const contentParagraphs = assocDeanForm.message ? assocDeanForm.message.split('\n\n').map(p => p.trim()).filter(Boolean) : [];
                   updateLeadershipMessage('associateDean', {
                     ...assocDeanForm,
-                    content: contentParagraphs && contentParagraphs.length > 0 ? contentParagraphs : undefined
+                    ...(contentParagraphs.length > 0 ? { content: contentParagraphs } : {})
                   });
                   triggerToast("Associate Dean's message updated successfully!");
                 }}

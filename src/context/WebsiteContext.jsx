@@ -51,6 +51,32 @@ const initialEnquiries = [
   }
 ];
 
+/**
+ * Deeply sanitizes data before writing to Firestore.
+ * Removes all undefined properties, converts undefined in arrays to null/omits them,
+ * and ensures 100% compliant JSON-serializable payloads for Firestore setDoc().
+ */
+function safeFirestoreData(data) {
+  if (data === undefined) return null;
+  if (data === null || typeof data !== 'object') return data;
+  if (Array.isArray(data)) {
+    return data
+      .filter((item) => item !== undefined)
+      .map((item) => safeFirestoreData(item));
+  }
+  const clean = {};
+  for (const [key, val] of Object.entries(data)) {
+    if (val !== undefined) {
+      clean[key] = safeFirestoreData(val);
+    }
+  }
+  try {
+    return JSON.parse(JSON.stringify(clean));
+  } catch {
+    return clean;
+  }
+}
+
 function sanitizeOfficialStructure(data) {
   if (!data || typeof data !== 'object') return defaultOfficialStructure;
 
@@ -709,7 +735,14 @@ export function WebsiteProvider({ children }) {
   const persistStructure = (updater) => {
     setOfficialStructure((prev) => {
       const next = updater(prev);
-      setDoc(doc(db, 'content', 'officialStructure'), next, { merge: true }).catch(() => {});
+      try {
+        const cleaned = safeFirestoreData(next);
+        setDoc(doc(db, 'content', 'officialStructure'), cleaned, { merge: true }).catch((err) => {
+          console.warn('Firestore officialStructure write notice:', err.message);
+        });
+      } catch (err) {
+        console.warn('Synchronous persistStructure write notice:', err.message);
+      }
       return next;
     });
   };
@@ -986,15 +1019,20 @@ export function WebsiteProvider({ children }) {
     };
     setEnquiries((prev) => [newEnq, ...prev]);
     try {
-      setDoc(doc(db, 'enquiries', newEnq.id), newEnq).catch(() => {});
-    } catch {}
+      const cleaned = safeFirestoreData(newEnq);
+      setDoc(doc(db, 'enquiries', newEnq.id), cleaned).catch(() => {});
+    } catch (err) {
+      console.warn('Enquiry write notice:', err.message);
+    }
   };
 
   const updateEnquiryStatus = (id, status) => {
     setEnquiries((prev) => prev.map((e) => (e.id === id ? { ...e, status } : e)));
     try {
       setDoc(doc(db, 'enquiries', id), { status }, { merge: true }).catch(() => {});
-    } catch {}
+    } catch (err) {
+      console.warn('Enquiry status write notice:', err.message);
+    }
   };
 
   const deleteEnquiry = (id) => {
@@ -1009,8 +1047,13 @@ export function WebsiteProvider({ children }) {
     setSiteSettings((prev) => {
       const next = { ...prev, ...updated };
       try {
-        setDoc(doc(db, 'settings', 'siteSettings'), next, { merge: true }).catch(() => {});
-      } catch {}
+        const cleaned = safeFirestoreData(next);
+        setDoc(doc(db, 'settings', 'siteSettings'), cleaned, { merge: true }).catch((err) => {
+          console.warn('Firestore siteSettings write notice:', err.message);
+        });
+      } catch (err) {
+        console.warn('Synchronous siteSettings write notice:', err.message);
+      }
       return next;
     });
   };
