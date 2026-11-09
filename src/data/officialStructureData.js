@@ -778,8 +778,10 @@ export const officialStructureData = {
           "Laser land leveling and precision seed-cum-fertilizer drilling"
         ],
         hodAndFaculty: {
+          hodId: "dr-kvs-rami-reddy",
           hodName: "Dr. K. V. S. Rami Reddy",
           hodDesignation: "Professor & Head of Department",
+          hodPhoto: "/images/faculty/dr_kvs_rami_reddy.webp",
           hodPhone: "9490845917",
           hodEmail: "kvs.ramireddy@angrau.ac.in",
           hodAltEmail: "ksubbaramireddy@gmail.com",
@@ -789,32 +791,40 @@ export const officialStructureData = {
           hodAwards: "Life Member in Indian Society of Agricultural Engineers (ISAE) & Andhra Agricultural Journal",
           facultyMembers: [
             {
+              id: "dr-b-hari-babu",
               name: "Dr. B. Hari Babu",
               designation: "Associate Professor",
+              photo: "/images/faculty/dr_b_hari_babu.webp",
               phone: "9182780358",
               email: "b.haribabu@angrau.ac.in",
               qual: "Ph.D. (Agricultural Engineering)",
               specialization: "Farm Machinery Design, Testing & Evaluation"
             },
             {
+              id: "dr-a-ashok-kumar",
               name: "Dr. A. Ashok Kumar",
               designation: "Assistant Professor",
+              photo: "/images/faculty/dr_a_ashok_kumar.webp",
               phone: "9177522213",
               email: "a.ashokkumar@angrau.ac.in",
               qual: "Ph.D. (IIT Kharagpur 2017), M.Tech (IIT Kharagpur 2011), B.Tech (ANGRAU 2009)",
               specialization: "Mechatronics, Electronics & Robotics in Agriculture, Embedded Tractor Performance Systems; IEI Young Engineer Award, ISAE-TAFE Gold Medal"
             },
             {
+              id: "dr-d-vijay-kumar",
               name: "Er. D. Vijay Kumar",
               designation: "Assistant Professor",
+              photo: "/images/faculty/dr_d_vijay_kumar.webp",
               phone: "9492686634",
               email: "d.vijayakumar@angrau.ac.in",
               qual: "M.Tech (FMPE, ANGRAU 2010), B.Tech (Ag. Engg, ANGRAU 2006)",
               specialization: "Farm Mechanization in Dryland Agriculture, Conservation Straw Management, Rice Transplanters & Groundnut Planters"
             },
             {
+              id: "dr-b-raj-kiran",
               name: "Dr. B. Raj Kiran",
               designation: "Assistant Professor",
+              photo: "/images/faculty/dr_b_raj_kiran.webp",
               phone: "8500220340 / 9177345631",
               email: "b.rajkiran@angrau.ac.in",
               altEmail: "raj.be018@gmail.com",
@@ -822,8 +832,10 @@ export const officialStructureData = {
               specialization: "CAD/CAM Design, Deep Learning & Computer Vision in Precision Farming, Automatic Transplanters & Spot Spraying"
             },
             {
+              id: "er-n-kishore",
               name: "Er. N. Kishore",
               designation: "Assistant Professor",
+              photo: "/images/faculty/er_n_kishore.webp",
               phone: "8500856998 / 9398431758",
               email: "n.kishore@angrau.ac.in",
               altEmail: "kishorenalabolu@gmail.com",
@@ -831,8 +843,10 @@ export const officialStructureData = {
               specialization: "In-Situ Rainwater Conservation Diker Mechanisms, Bird Scarers for Millets; Netaji Subhas-ICAR International Fellow (Univ. of Nebraska)"
             },
             {
+              id: "dr-g-veera-prasad",
               name: "Dr. G. Veera Prasad",
               designation: "Assistant Professor (AICRP on FIM)",
+              photo: "/images/faculty/dr_g_veera_prasad.webp",
               phone: "9492686634",
               email: "g.veeraprasad@angrau.ac.in",
               qual: "Ph.D. (Farm Machinery & Power Engineering)",
@@ -903,8 +917,10 @@ export const officialStructureData = {
           "Conjunctive use planning of surface and ground water resources"
         ],
         hodAndFaculty: {
+          hodId: "dr-g-ravi-babu",
           hodName: "Dr. G. Ravi Babu",
           hodDesignation: "Professor & Head of Department (Associate Dean)",
+          hodPhoto: "/images/faculty/dr_g_ravibabu.webp",
           hodPhone: "9848572321 / 7702366113",
           hodEmail: "g.ravibabu@angrau.ac.in",
           hodAltEmail: "caemdks@gmail.com",
@@ -913,16 +929,20 @@ export const officialStructureData = {
           hodExperience: "13 Years Teaching & 8 Years Research Experience; Guided 25 M.Tech & Ph.D. scholars; 41 Journal Papers",
           facultyMembers: [
             {
+              id: "dr-d-sai-gangadhara-rao",
               name: "Dr. D. Sai Gangadhara Rao",
               designation: "Assistant Professor",
+              photo: "/images/faculty/dr_d_sai_gangadhara_rao.webp",
               qual: "Ph.D. (Soil & Water Conservation Engg)",
               phone: "8500087345",
               email: "d.saigangadhararao@angrau.ac.in",
               specialization: "Soil & Water Conservation, Watershed Hydrology"
             },
             {
+              id: "er-m-karunya",
               name: "Er. Mathangi Karunya",
               designation: "Assistant Professor",
+              photo: "/images/faculty/er_m_karunya.webp",
               qual: "M.Tech (SWCE, ANGRAU 2015), B.Tech (Ag. Engg, 2012)",
               phone: "9490321440",
               email: "m.karunya@angrau.ac.in",
@@ -974,8 +994,10 @@ export const officialStructureData = {
           "Performance assessment of Krishna Western Delta irrigation canals"
         ],
         hodAndFaculty: {
+          hodId: "dr-k-krupavathi",
           hodName: "Dr. (Mrs.) K. Krupavathi",
           hodDesignation: "Associate Professor & Head of Department",
+          hodPhoto: "/images/faculty/dr_k_krupavathi.webp",
           hodPhone: "9533877666",
           hodEmail: "k.krupavathi@angrau.ac.in",
           hodAltEmail: "krupareddy572@gmail.com",
@@ -984,16 +1006,20 @@ export const officialStructureData = {
           hodAwards: "WINNER in IITB-ISRO-AICTE Mapathon (2020), ANGRAU Meritorious Teacher Award (2020), Excellence in Teaching Award (2016-17); 17 Journal Papers",
           facultyMembers: [
             {
+              id: "dr-n-ashok-kumar",
               name: "Dr. N. Ashok Kumar",
               designation: "Assistant Professor",
+              photo: "/images/faculty/dr_n_ashok_kumar.webp",
               qual: "Ph.D. (Soil & Water Engg, ANGRAU 2021), M.Tech (UAS Dharwad 2006)",
               phone: "8555014523 / 8099479129",
               email: "n.ashokkumar@angrau.ac.in",
               specialization: "Irrigation & Drainage Engg, Groundwater Modeling, Remote Sensing & GIS; 16 Years Teaching Experience"
             },
             {
+              id: "er-ch-ratna-raju",
               name: "Er. Chebrolu Ratna Raju",
               designation: "Assistant Professor",
+              photo: "/images/faculty/er_ch_ratna_raju.webp",
               qual: "M.Tech (Soil & Water Engg 2011), B.Tech (Ag. Engg 2009)",
               phone: "7337567544",
               email: "Ch.ratnaraju@angrau.ac.in",
@@ -1075,48 +1101,60 @@ export const officialStructureData = {
           "Byproduct valorization and functional food formulation from agricultural waste"
         ],
         hodAndFaculty: {
+          hodId: "dr-b-sreenivasula-reddy",
           hodName: "Dr. B. Sreenivasula Reddy",
           hodDesignation: "Professor & Head of Department",
+          hodPhoto: "/images/faculty/dr_b_sreenivasula_reddy.webp",
           hodPhone: "9618800819",
           hodEmail: "b.sreenivasulareddy@angrau.ac.in",
           hodQualifications: "Ph.D. (Processing & Food Engineering)",
           hodSpecialization: "Food Process Engineering, Grain Drying & Milling Technology, Storage Structures",
           facultyMembers: [
             {
+              id: "dr-s-vishnu-vardhan",
               name: "Dr. S. Vishnu Vardhan",
               designation: "Professor",
+              photo: "/images/faculty/dr_s_vishnu_vardhan.webp",
               phone: "9440363112",
               email: "vishnuvardhans@angrau.ac.in",
               qual: "Ph.D. (Agricultural Engineering)",
               specialization: "Renewable Energy Applications in Food Processing, Solar Dehydration & Biomass Systems"
             },
             {
+              id: "dr-k-lavanya",
               name: "Dr. K. Lavanya",
               designation: "Associate Professor",
+              photo: "/images/faculty/dr_k_lavanya.webp",
               phone: "9182164437",
               email: "k.lavanya@angrau.ac.in",
               qual: "Ph.D. (Food Process Engineering)",
               specialization: "Novel Food Processing Technologies, Fruit & Vegetable Preservation"
             },
             {
+              id: "dr-b-pravallika",
               name: "Dr. B. Pravallika",
               designation: "Teaching Associate",
+              photo: "/images/faculty/dr_b_pravallika.webp",
               phone: "9866486926",
               email: "pravallikabogala@gmail.com",
               qual: "Ph.D. (Food Engineering)",
               specialization: "Functional Foods, Extrusion Processing & Sensory Evaluation"
             },
             {
+              id: "dr-dd-smith",
               name: "Dr. D. D. Smith",
               designation: "Principal Scientist & Head (AICRP on PHET)",
+              photo: "/images/faculty/dr_dd_smith.webp",
               phone: "9949906751",
               email: "dd.smith@angrau.ac.in",
               qual: "Ph.D. (Post Harvest Engineering)",
               specialization: "AICRP on Post Harvest Engineering & Technology, Value Addition Machinery & Pilot Plants"
             },
             {
+              id: "dr-v-vasudeva-rao",
               name: "Dr. V. Vasudeva Rao",
               designation: "Scientist (AICRP on PHET)",
+              photo: "/images/faculty/dr_v_vasudeva_rao.webp",
               phone: "9177101614",
               email: "v.vasudevarao@angrau.ac.in",
               qual: "Ph.D. (Agricultural Process Engineering)",
@@ -1218,23 +1256,29 @@ export const officialStructureData = {
           "Solar Thermal Drying and Cooking Test Unit"
         ],
         hodAndFaculty: {
+          hodId: "dr-s-vishnu-vardhan",
           hodName: "Dr. S. Vishnu Vardhan",
           hodDesignation: "Professor & Head i/c",
+          hodPhoto: "/images/faculty/dr_s_vishnu_vardhan.webp",
           hodPhone: "9440363112",
           hodEmail: "vishnuvardhans@angrau.ac.in",
           hodSpecialization: "Solar Energy Systems, Renewable Energy Engineering, Agro-Energy Applications",
           facultyMembers: [
             {
+              id: "dr-b-john-wesley",
               name: "Dr. B. John Wesley",
               designation: "Professor",
+              photo: "/images/faculty/dr_b_john_wesley.webp",
               qual: "Ph.D. (Agricultural Engineering)",
               phone: "9441936374",
               email: "b.johnwesley@angrau.ac.in",
               specialization: "Biomass Gasification, Post-Harvest Renewable Systems"
             },
             {
+              id: "dr-a-srinivasa-rao",
               name: "Dr. A. Srinivasa Rao",
               designation: "Assistant Professor",
+              photo: "/images/faculty/dr_a_srinivasa_rao.webp",
               qual: "Ph.D. (Renewable Energy / Ag. Engg)",
               phone: "8374647499",
               email: "Arudra.srinivasarao@angrau.ac.in",
@@ -1256,12 +1300,13 @@ export const officialStructureData = {
           "Computational Programming & Applied Data Analytics Lab"
         ],
         hodAndFaculty: {
+          hodId: "dr-b-anjaneyulu",
           hodName: "Dr. B. Anjaneyulu",
           hodDesignation: "Assistant Professor & Head of Department",
+          hodPhoto: "/images/faculty/dr_b_hari_babu.webp",
           hodSpecialization: "Finite Element Analysis (FEA), Mechanical Design & Metallurgy",
           facultyMembers: [
-            { name: "Dr. L. Swathi", designation: "Assistant Professor (Maths)", qual: "Ph.D." },
-            { name: "Er. J. Venkat", designation: "Assistant Professor (Computer Science)", qual: "M.Tech" }
+            { id: "dr-b-anjaneyulu", name: "Dr. B. Anjaneyulu", designation: "Assistant Professor & Head", photo: "/images/faculty/dr_b_hari_babu.webp", qual: "Ph.D. (Mech Engg), M.Tech" }
           ]
         }
       }

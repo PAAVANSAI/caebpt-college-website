@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Users, Mail, BookOpen, Award, Search, GraduationCap, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Users, Mail, BookOpen, Award, Search, GraduationCap, MapPin, ChevronRight, Phone } from 'lucide-react';
 import { facultyData } from '../data/facultyData';
 
 export default function Faculty() {
@@ -80,23 +81,27 @@ export default function Faculty() {
           {filteredFaculty.map((member) => (
             <div
               key={member.id}
-              className="academic-card group bg-white border border-slate-200 hover:border-gold-400/80 transition-all flex flex-col"
+              className="academic-card group bg-white border border-slate-200 hover:border-gold-400/80 transition-all flex flex-col justify-between shadow-2xs hover:shadow-md"
             >
-              {/* Profile Image & Department Badge */}
-              <div className="relative overflow-hidden bg-slate-100 pt-6 px-6 flex justify-center">
-                <div className="relative w-28 h-28 rounded-full overflow-hidden border-2 border-gold-400/80 shadow-md group-hover:scale-105 transition-transform">
-                  <img
-                    src={member.avatar}
-                    alt={`${member.name} Portrait Placeholder`}
-                    className="w-full h-full object-cover object-center"
-                    loading="lazy"
-                  />
+              <div>
+                {/* Profile Image & Department Badge */}
+                <div className="relative overflow-hidden bg-slate-100 pt-6 px-6 flex justify-center">
+                  <div className="relative w-28 h-28 rounded-full overflow-hidden border-2 border-gold-400/80 shadow-md group-hover:scale-105 transition-transform bg-white">
+                    <img
+                      src={member.avatar}
+                      alt={member.name}
+                      className="w-full h-full object-cover object-center"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "/images/administration/dr_mogal_sardar_baig.webp";
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* Faculty Info */}
-              <div className="p-5 flex-1 flex flex-col justify-between">
-                <div>
+                {/* Faculty Info */}
+                <div className="p-5">
                   <div className="text-center mb-3">
                     <h3 className="font-bold text-navy-950 text-base leading-snug group-hover:text-navy-700 transition-colors">
                       {member.name}
@@ -115,29 +120,43 @@ export default function Faculty() {
                       <span className="text-[10px] font-bold uppercase text-slate-400 block">
                         Qualifications
                       </span>
-                      <span className="font-medium text-slate-800">{member.qualification}</span>
+                      <span className="font-medium text-slate-800 line-clamp-2">{member.qualification}</span>
                     </div>
 
                     <div>
                       <span className="text-[10px] font-bold uppercase text-slate-400 block">
                         Research Focus
                       </span>
-                      <span className="text-slate-700 leading-tight block">{member.specialization}</span>
+                      <span className="text-slate-700 leading-tight block line-clamp-2">{member.specialization}</span>
                     </div>
                   </div>
-                </div>
 
-                {/* Contact & Room Details */}
-                <div className="pt-2 border-t border-slate-100 text-[11px] text-slate-500 space-y-1">
-                  <div className="flex items-center gap-1.5 truncate">
-                    <Mail className="w-3.5 h-3.5 text-gold-500 flex-shrink-0" />
-                    <span className="truncate">{member.email}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 truncate">
-                    <BookOpen className="w-3.5 h-3.5 text-navy-600 flex-shrink-0" />
-                    <span className="truncate">{member.publications}</span>
+                  {/* Contact & Room Details */}
+                  <div className="pt-2 border-t border-slate-100 text-[11px] text-slate-500 space-y-1">
+                    <div className="flex items-center gap-1.5 truncate">
+                      <Mail className="w-3.5 h-3.5 text-gold-500 flex-shrink-0" />
+                      <span className="truncate">{member.email}</span>
+                    </div>
+                    {member.phone && (
+                      <div className="flex items-center gap-1.5 truncate">
+                        <Phone className="w-3.5 h-3.5 text-navy-600 flex-shrink-0" />
+                        <span className="truncate">{member.phone}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
+              </div>
+
+              {/* View Profile Action Link */}
+              <div className="px-5 pb-5 pt-0">
+                <Link
+                  to={`/faculty/${member.id}`}
+                  className="btn btn-outline btn-sm w-full text-xs font-bold justify-center gap-1 group-hover:bg-[#0b1a2e] group-hover:text-white transition-all"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <span>View Full Profile</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             </div>
           ))}

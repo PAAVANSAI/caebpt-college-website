@@ -43,6 +43,7 @@ const PublicationsPage = lazyWithRetry(() => import('./pages/PublicationsPage'))
 const ContactPage = lazyWithRetry(() => import('./pages/ContactPage'));
 const NoticesPage = lazyWithRetry(() => import('./pages/NoticesPage'));
 const FacultyPage = lazyWithRetry(() => import('./pages/FacultyPage'));
+const FacultyProfilePage = lazyWithRetry(() => import('./pages/FacultyProfilePage'));
 const FacilitiesPage = lazyWithRetry(() => import('./pages/FacilitiesPage'));
 const GalleryPage = lazyWithRetry(() => import('./pages/GalleryPage'));
 const AdmissionsPage = lazyWithRetry(() => import('./pages/AdmissionsPage'));
@@ -195,6 +196,8 @@ function AppContent() {
                 element={<NoticesPage onSelectNotice={(n) => setSelectedNotice(n)} />}
               />
               <Route path="/faculty" element={<FacultyPage />} />
+              <Route path="/faculty/:facultyId" element={<FacultyProfilePage />} />
+              <Route path="/departments/:deptSlug/faculty/:facultyId" element={<FacultyProfilePage />} />
               <Route path="/facilities" element={<FacilitiesPage />} />
               <Route path="/gallery" element={<GalleryPage />} />
               <Route path="/admissions" element={<AdmissionsPage />} />

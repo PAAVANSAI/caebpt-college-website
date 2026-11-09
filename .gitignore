@@ -52,3 +52,8 @@ Thumbs.db
 *.tsbuildinfo
 .turbo/
 
+# Local document organization & documentation maps
+Official_College_Documents/
+WEBSITE_STRUCTURE_AND_SITEMAP.md
+
+

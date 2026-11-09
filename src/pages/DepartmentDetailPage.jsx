@@ -361,64 +361,102 @@ export default function DepartmentDetailPage() {
             </h2>
 
             {/* HoD Card */}
-            <div className="p-6 bg-gradient-to-r from-navy-50/90 to-[#fdf5df]/60 border-2 border-navy-200/80 rounded-2xl space-y-3">
-              <div className="flex items-center justify-between flex-wrap gap-2">
-                <span className="badge badge-gold text-[10px] font-extrabold uppercase">Department Head</span>
-                {currentDept?.hodAndFaculty?.hodPhone && (
-                  <div className="flex items-center gap-3 text-xs">
-                    <a
-                      href={`tel:${currentDept.hodAndFaculty.hodPhone.split('/')[0].trim()}`}
-                      className="inline-flex items-center gap-1 font-bold text-slate-700 hover:text-navy-950"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      <Phone className="w-3.5 h-3.5 text-[#d4a72c]" />
-                      <span>{currentDept.hodAndFaculty.hodPhone}</span>
-                    </a>
-                    {currentDept.hodAndFaculty.hodEmail && (
-                      <a
-                        href={`mailto:${currentDept.hodAndFaculty.hodEmail}`}
-                        className="inline-flex items-center gap-1 font-bold text-blue-700 hover:underline"
+            <div className="p-6 bg-gradient-to-r from-navy-50/90 to-[#fdf5df]/60 border-2 border-navy-200/80 rounded-2xl space-y-4">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                {/* HoD Portrait Photo */}
+                <div className="relative flex-shrink-0">
+                  <div className="w-24 h-28 sm:w-28 sm:h-32 rounded-xl overflow-hidden border-2 border-white shadow-md ring-2 ring-[#d4a72c]/60 bg-white">
+                    <img
+                      src={currentDept?.hodAndFaculty?.hodPhoto || "/images/administration/dr_mogal_sardar_baig.webp"}
+                      alt={currentDept?.hodAndFaculty?.hodName || 'Head of Department'}
+                      className="w-full h-full object-cover object-center"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "/images/administration/dr_mogal_sardar_baig.webp";
+                      }}
+                    />
+                  </div>
+                  <span className="badge badge-gold text-[9px] font-extrabold uppercase absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap shadow-xs">
+                    Dept Head
+                  </span>
+                </div>
+
+                {/* HoD Information */}
+                <div className="flex-1 text-center sm:text-left space-y-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                      <h3 className="font-heading font-extrabold text-navy-950 text-xl">
+                        {currentDept?.hodAndFaculty?.hodName || 'Head of Department'}
+                      </h3>
+                      <p className="text-xs font-bold text-[#854d0e] mt-0.5">
+                        {currentDept?.hodAndFaculty?.hodDesignation || 'Professor & Head'}
+                      </p>
+                    </div>
+
+                    {/* View Profile Button */}
+                    {currentDept?.hodAndFaculty?.hodId && (
+                      <Link
+                        to={`/faculty/${currentDept.hodAndFaculty.hodId}`}
+                        className="btn btn-primary btn-sm text-xs font-bold inline-flex items-center gap-1.5 shadow-2xs"
                         style={{ textDecoration: 'none' }}
                       >
-                        <Mail className="w-3.5 h-3.5" />
-                        <span>{currentDept.hodAndFaculty.hodEmail}</span>
-                      </a>
+                        <span>View Profile</span>
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </Link>
                     )}
                   </div>
-                )}
-              </div>
 
-              <div>
-                <h3 className="font-heading font-extrabold text-navy-950 text-xl">
-                  {currentDept?.hodAndFaculty?.hodName || 'Head of Department'}
-                </h3>
-                <p className="text-xs font-bold text-[#854d0e] mt-0.5">
-                  {currentDept?.hodAndFaculty?.hodDesignation || 'Professor & Head'}
-                </p>
-                {currentDept?.hodAndFaculty?.hodQualifications && (
-                  <p className="text-xs text-slate-500 mt-0.5">
-                    {currentDept.hodAndFaculty.hodQualifications}
-                  </p>
-                )}
-              </div>
+                  {currentDept?.hodAndFaculty?.hodQualifications && (
+                    <p className="text-xs text-slate-600 font-medium">
+                      {currentDept.hodAndFaculty.hodQualifications}
+                    </p>
+                  )}
 
-              <div className="pt-2 text-xs text-slate-700 space-y-1">
-                <p>
-                  <strong>Thrust Area / Specialization: </strong>
-                  {currentDept?.hodAndFaculty?.hodSpecialization || 'Agricultural Engineering'}
-                </p>
-                {currentDept?.hodAndFaculty?.hodAwards && (
-                  <p className="text-[#854d0e]">
-                    <strong>Awards & Distinctions: </strong>
-                    {currentDept.hodAndFaculty.hodAwards}
-                  </p>
-                )}
-                {currentDept?.hodAndFaculty?.hodExperience && (
-                  <p className="text-slate-600">
-                    <strong>Experience & Record: </strong>
-                    {currentDept.hodAndFaculty.hodExperience}
-                  </p>
-                )}
+                  <div className="pt-2 text-xs text-slate-700 space-y-1">
+                    <p>
+                      <strong>Thrust Area / Specialization: </strong>
+                      {currentDept?.hodAndFaculty?.hodSpecialization || 'Agricultural Engineering'}
+                    </p>
+                    {currentDept?.hodAndFaculty?.hodAwards && (
+                      <p className="text-[#854d0e]">
+                        <strong>Awards & Distinctions: </strong>
+                        {currentDept.hodAndFaculty.hodAwards}
+                      </p>
+                    )}
+                    {currentDept?.hodAndFaculty?.hodExperience && (
+                      <p className="text-slate-600">
+                        <strong>Experience: </strong>
+                        {currentDept.hodAndFaculty.hodExperience}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Contact Links */}
+                  {(currentDept?.hodAndFaculty?.hodPhone || currentDept?.hodAndFaculty?.hodEmail) && (
+                    <div className="pt-2 border-t border-navy-200/50 flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs">
+                      {currentDept.hodAndFaculty.hodPhone && (
+                        <a
+                          href={`tel:${currentDept.hodAndFaculty.hodPhone.split('/')[0].trim().replace(/\s+/g, '')}`}
+                          className="inline-flex items-center gap-1 font-bold text-slate-700 hover:text-navy-950"
+                          style={{ textDecoration: 'none' }}
+                        >
+                          <Phone className="w-3.5 h-3.5 text-[#d4a72c]" />
+                          <span>{currentDept.hodAndFaculty.hodPhone}</span>
+                        </a>
+                      )}
+                      {currentDept.hodAndFaculty.hodEmail && (
+                        <a
+                          href={`mailto:${currentDept.hodAndFaculty.hodEmail}`}
+                          className="inline-flex items-center gap-1 font-bold text-blue-700 hover:underline"
+                          style={{ textDecoration: 'none' }}
+                        >
+                          <Mail className="w-3.5 h-3.5" />
+                          <span>{currentDept.hodAndFaculty.hodEmail}</span>
+                        </a>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 
@@ -427,29 +465,61 @@ export default function DepartmentDetailPage() {
               <h4 className="font-bold text-navy-950 text-sm mb-3">Teaching Faculty Members</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {(currentDept?.hodAndFaculty?.facultyMembers || []).map((fac, idx) => (
-                  <div key={idx} className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-                    <h5 className="font-bold text-navy-950 text-sm">{fac.name}</h5>
-                    <p className="text-xs font-bold text-[#854d0e]">{fac.designation}</p>
-                    <p className="text-[11px] text-slate-600">{fac.qual}</p>
-                    {fac.specialization && (
-                      <p className="text-[11px] text-slate-500 pt-1 border-t border-slate-200/60">
-                        <strong>Focus: </strong>{fac.specialization}
-                      </p>
-                    )}
-                    {(fac.phone || fac.email) && (
-                      <div className="pt-1 flex flex-wrap items-center gap-2 text-[10.5px] text-slate-600">
-                        {fac.phone && (
-                          <span className="inline-flex items-center gap-1 font-semibold">
-                            <Phone className="w-3 h-3 text-[#d4a72c]" /> {fac.phone}
-                          </span>
-                        )}
-                        {fac.email && (
-                          <a href={`mailto:${fac.email}`} className="text-blue-700 hover:underline">
-                            {fac.email}
-                          </a>
-                        )}
+                  <div key={idx} className="p-4 bg-slate-50 hover:bg-white rounded-xl border border-slate-200 hover:border-[#fae4a4] transition-all space-y-3 flex flex-col justify-between shadow-2xs">
+                    <div className="space-y-2">
+                      <div className="flex items-start gap-3">
+                        {/* Faculty Portrait Thumbnail */}
+                        <div className="w-14 h-16 rounded-lg overflow-hidden border border-slate-200 flex-shrink-0 bg-slate-100 shadow-2xs">
+                          <img
+                            src={fac.photo || "/images/administration/dr_mogal_sardar_baig.webp"}
+                            alt={fac.name}
+                            className="w-full h-full object-cover object-center"
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src = "/images/administration/dr_mogal_sardar_baig.webp";
+                            }}
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h5 className="font-bold text-navy-950 text-sm leading-snug">{fac.name}</h5>
+                          <p className="text-xs font-bold text-[#854d0e]">{fac.designation}</p>
+                          <p className="text-[11px] text-slate-600 line-clamp-1">{fac.qual}</p>
+                        </div>
                       </div>
-                    )}
+
+                      {fac.specialization && (
+                        <p className="text-[11px] text-slate-600 pt-1 border-t border-slate-200/60 leading-relaxed">
+                          <strong>Focus: </strong>{fac.specialization}
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="space-y-2 pt-2 border-t border-slate-200/60">
+                      {(fac.phone || fac.email) && (
+                        <div className="flex flex-wrap items-center gap-2 text-[10.5px] text-slate-600">
+                          {fac.phone && (
+                            <span className="inline-flex items-center gap-1 font-semibold">
+                              <Phone className="w-3 h-3 text-[#d4a72c]" /> {fac.phone}
+                            </span>
+                          )}
+                          {fac.email && (
+                            <a href={`mailto:${fac.email}`} className="text-blue-700 hover:underline">
+                              {fac.email}
+                            </a>
+                          )}
+                        </div>
+                      )}
+
+                      {/* View Profile Action Link */}
+                      <Link
+                        to={`/faculty/${fac.id || fac.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                        className="inline-flex items-center gap-1 text-xs font-extrabold text-[#0b1a2e] hover:text-[#854d0e] transition-colors"
+                        style={{ textDecoration: 'none' }}
+                      >
+                        <span>View Profile</span>
+                        <ChevronRight className="w-3.5 h-3.5 text-[#d4a72c]" />
+                      </Link>
+                    </div>
                   </div>
                 ))}
               </div>
