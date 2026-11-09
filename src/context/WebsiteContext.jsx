@@ -58,23 +58,35 @@ const initialEnquiries = [
  * and ensures 100% compliant JSON-serializable payloads for Firestore setDoc().
  */
 function safeFirestoreData(data) {
-  if (data === undefined) return null;
-  if (data === null || typeof data !== 'object') return data;
-  if (Array.isArray(data)) {
-    return data
-      .filter((item) => item !== undefined)
-      .map((item) => safeFirestoreData(item));
-  }
-  const clean = {};
-  for (const [key, val] of Object.entries(data)) {
-    if (val !== undefined) {
-      clean[key] = safeFirestoreData(val);
-    }
-  }
+  if (data === undefined) return {};
   try {
-    return JSON.parse(JSON.stringify(clean));
-  } catch {
-    return clean;
+    const jsonStr = JSON.stringify(data, (key, value) => {
+      if (value === undefined) return null;
+      return value;
+    });
+    if (!jsonStr) return {};
+    const parsed = JSON.parse(jsonStr);
+
+    function removeUndefinedAndCleanArrays(obj) {
+      if (obj === undefined) return null;
+      if (obj === null || typeof obj !== 'object') return obj;
+      if (Array.isArray(obj)) {
+        return obj
+          .filter((item) => item !== undefined)
+          .map((item) => (item === undefined ? null : removeUndefinedAndCleanArrays(item)));
+      }
+      const res = {};
+      for (const [k, v] of Object.entries(obj)) {
+        if (v !== undefined) {
+          res[k] = removeUndefinedAndCleanArrays(v);
+        }
+      }
+      return res;
+    }
+    return removeUndefinedAndCleanArrays(parsed);
+  } catch (err) {
+    console.warn("safeFirestoreData serialization notice:", err);
+    return {};
   }
 }
 
@@ -334,7 +346,8 @@ function sanitizeOfficialStructure(data) {
           JSON.stringify(userDepts).includes('Placeholder') ||
           JSON.stringify(userDepts).includes('Dr. Ch. Srinivas') ||
           JSON.stringify(userDepts).includes('Dr. M. S. Reddy') ||
-          userDepts.some(d => !d.hodAndFaculty || !d.hodAndFaculty.hodName || d.hodAndFaculty.hodName.includes('Placeholder'));
+          userDepts.some(d => !d.hodAndFaculty || !d.hodAndFaculty.hodName || d.hodAndFaculty.hodName.includes('Placeholder')) ||
+          !userDepts.every(d => d.hodAndFaculty?.hodPhoto);
 
         if (isDeptsStale) {
           return defaultOfficialStructure.academics.departments;
@@ -345,12 +358,28 @@ function sanitizeOfficialStructure(data) {
           if (!userDept || JSON.stringify(userDept).includes('Placeholder') || JSON.stringify(userDept).includes('Dr. Ch. Srinivas') || JSON.stringify(userDept).includes('Dr. M. S. Reddy')) {
             return defDept;
           }
+          const defHod = defDept.hodAndFaculty || {};
+          const userHod = userDept.hodAndFaculty || {};
           return {
             ...defDept,
             ...userDept,
-            hodAndFaculty: JSON.stringify(userDept.hodAndFaculty || {}).includes('Placeholder')
-              ? defDept.hodAndFaculty
-              : (userDept.hodAndFaculty || defDept.hodAndFaculty)
+            hodAndFaculty: {
+              ...defHod,
+              ...userHod,
+              hodPhoto: defHod.hodPhoto,
+              hodId: defHod.hodId,
+              facultyMembers: (defHod.facultyMembers || []).map((defMember) => {
+                const uMember = (userHod.facultyMembers || []).find(
+                  (m) => m.name === defMember.name || m.id === defMember.id
+                );
+                return {
+                  ...defMember,
+                  ...(uMember || {}),
+                  photo: defMember.photo,
+                  id: defMember.id
+                };
+              })
+            }
           };
         });
       })()
@@ -598,7 +627,7 @@ export function WebsiteProvider({ children }) {
     try {
       const docRef = doc(db, 'content', 'officialStructure');
       const unsubscribe = onSnapshot(docRef, (docSnap) => {
-        if (docSnap.exists()) {
+        if (docSnap.exists() && !docSnap.metadata.hasPendingWrites) {
           const remoteContent = docSnap.data();
           setOfficialStructure((prev) => sanitizeOfficialStructure({ ...prev, ...remoteContent }));
         }
@@ -766,13 +795,19 @@ export function WebsiteProvider({ children }) {
     setOfficialStructure((prev) => {
       const next = updater(prev);
       try {
-        const cleaned = safeFirestoreData(next);
-        setDoc(doc(db, 'content', 'officialStructure'), cleaned, { merge: true }).catch((err) => {
+        localStorage.setItem('caebpt_official_structure', JSON.stringify(next));
+      } catch {}
+      (async () => {
+        try {
+          await ensureAdminAuth();
+          const cleaned = safeFirestoreData(next);
+          if (cleaned && typeof cleaned === 'object' && Object.keys(cleaned).length > 0) {
+            await setDoc(doc(db, 'content', 'officialStructure'), cleaned, { merge: true });
+          }
+        } catch (err) {
           console.warn('Firestore officialStructure write notice:', err.message);
-        });
-      } catch (err) {
-        console.warn('Synchronous persistStructure write notice:', err.message);
-      }
+        }
+      })();
       return next;
     });
   };

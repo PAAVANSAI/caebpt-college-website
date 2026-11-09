@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import PageBanner from '../components/PageBanner';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
+import { facultyData, getFacultyById } from '../data/facultyData';
 import {
   Building2,
   Layers,
@@ -50,25 +51,41 @@ export default function DepartmentDetailPage() {
       (d) => d.id === matchedDept?.id || d.slug === matchedDept?.slug || d.shortCode === matchedDept?.shortCode
     ) || officialStructureData.academics.departments[0];
 
-  // Guaranteed fallback to clean verified data if cached state has placeholders or missing fields
-  const isStaleDept =
-    !matchedDept ||
-    JSON.stringify(matchedDept).includes('Placeholder') ||
-    JSON.stringify(matchedDept).includes('Dr. Ch. Srinivas') ||
-    JSON.stringify(matchedDept).includes('Dr. M. S. Reddy') ||
-    (officialDept.hodAndFaculty?.hodPhone && !matchedDept?.hodAndFaculty?.hodPhone);
+  // Guaranteed verified HOD and Faculty resolution:
+  // Merges official verified photos and IDs so stale localStorage or Firestore snapshots never drop photos
+  const defHod = officialDept?.hodAndFaculty || {};
+  const userHod = matchedDept?.hodAndFaculty || {};
 
-  const currentDept = isStaleDept
-    ? officialDept
-    : {
-        ...officialDept,
-        ...matchedDept,
-        hodAndFaculty:
-          JSON.stringify(matchedDept.hodAndFaculty || {}).includes('Placeholder') ||
-          JSON.stringify(matchedDept.hodAndFaculty || {}).includes('Dr. Ch. Srinivas')
-            ? officialDept.hodAndFaculty
-            : (matchedDept.hodAndFaculty || officialDept.hodAndFaculty)
-      };
+  // Neutral fallback silhouette if photo is unavailable
+  const DEFAULT_AVATAR = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
+
+  const resolvedHodPhoto = defHod.hodPhoto || facultyData.find(f => f.id === defHod.hodId)?.avatar || DEFAULT_AVATAR;
+  const resolvedHodId = defHod.hodId || "faculty";
+
+  const resolvedFacultyMembers = (defHod.facultyMembers || []).map((defFac) => {
+    const userFac = (userHod.facultyMembers || []).find(
+      (m) => m.id === defFac.id || m.name === defFac.name
+    );
+    const facultyProfile = facultyData.find(f => f.id === defFac.id || f.name?.toLowerCase() === defFac.name?.toLowerCase());
+    return {
+      ...defFac,
+      ...(userFac || {}),
+      id: defFac.id,
+      photo: defFac.photo || facultyProfile?.avatar || DEFAULT_AVATAR
+    };
+  });
+
+  const currentDept = {
+    ...officialDept,
+    ...matchedDept,
+    hodAndFaculty: {
+      ...defHod,
+      ...userHod,
+      hodPhoto: resolvedHodPhoto,
+      hodId: resolvedHodId,
+      facultyMembers: resolvedFacultyMembers
+    }
+  };
 
   const deptDossiers = {
     fmpe: {
@@ -367,12 +384,12 @@ export default function DepartmentDetailPage() {
                 <div className="relative flex-shrink-0">
                   <div className="w-24 h-28 sm:w-28 sm:h-32 rounded-xl overflow-hidden border-2 border-white shadow-md ring-2 ring-[#d4a72c]/60 bg-white">
                     <img
-                      src={currentDept?.hodAndFaculty?.hodPhoto || "/images/administration/dr_mogal_sardar_baig.webp"}
+                      src={currentDept?.hodAndFaculty?.hodPhoto}
                       alt={currentDept?.hodAndFaculty?.hodName || 'Head of Department'}
                       className="w-full h-full object-cover object-center"
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = "/images/administration/dr_mogal_sardar_baig.webp";
+                        e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
                       }}
                     />
                   </div>
@@ -471,12 +488,12 @@ export default function DepartmentDetailPage() {
                         {/* Faculty Portrait Thumbnail */}
                         <div className="w-14 h-16 rounded-lg overflow-hidden border border-slate-200 flex-shrink-0 bg-slate-100 shadow-2xs">
                           <img
-                            src={fac.photo || "/images/administration/dr_mogal_sardar_baig.webp"}
+                            src={fac.photo}
                             alt={fac.name}
                             className="w-full h-full object-cover object-center"
                             onError={(e) => {
                               e.target.onerror = null;
-                              e.target.src = "/images/administration/dr_mogal_sardar_baig.webp";
+                              e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
                             }}
                           />
                         </div>

@@ -1303,10 +1303,10 @@ export const officialStructureData = {
           hodId: "dr-b-anjaneyulu",
           hodName: "Dr. B. Anjaneyulu",
           hodDesignation: "Assistant Professor & Head of Department",
-          hodPhoto: "/images/faculty/dr_b_hari_babu.webp",
+          hodPhoto: "/images/faculty/dr_b_anjaneyulu.webp",
           hodSpecialization: "Finite Element Analysis (FEA), Mechanical Design & Metallurgy",
           facultyMembers: [
-            { id: "dr-b-anjaneyulu", name: "Dr. B. Anjaneyulu", designation: "Assistant Professor & Head", photo: "/images/faculty/dr_b_hari_babu.webp", qual: "Ph.D. (Mech Engg), M.Tech" }
+            { id: "dr-b-anjaneyulu", name: "Dr. B. Anjaneyulu", designation: "Assistant Professor & Head", photo: "/images/faculty/dr_b_anjaneyulu.webp", qual: "Ph.D. (Mech Engg), M.Tech" }
           ]
         }
       }

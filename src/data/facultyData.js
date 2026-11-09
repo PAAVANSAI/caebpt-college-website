@@ -1371,7 +1371,7 @@ export const facultyData = [
     department: "Basic Engineering & Allied Sciences",
     deptId: "beas",
     deptSlug: "basic-engineering",
-    avatar: "/images/faculty/dr_b_hari_babu.webp", // Clean verified faculty portrait fallback
+    avatar: "/images/faculty/dr_b_anjaneyulu.webp", // Dedicated BEAS department faculty portrait
     email: "faculty.beas@caebpt.ac.in",
     phone: "08643-224036",
     office: "Basic Engineering Block, Room 202",

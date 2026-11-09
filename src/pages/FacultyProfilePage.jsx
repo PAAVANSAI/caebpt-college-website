@@ -135,9 +135,9 @@ export default function FacultyProfilePage() {
                   alt={faculty.name}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
                   onError={(e) => {
-                    // Fallback to stylized SVG avatar if specific image load fails
+                    // Fallback to neutral silhouette SVG avatar if specific image load fails
                     e.target.onerror = null;
-                    e.target.src = "/images/administration/dr_mogal_sardar_baig.webp";
+                    e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
                   }}
                 />
                 <div className="absolute top-2 right-2 bg-emerald-600 text-white p-1 rounded-full shadow" title="Active Verified Faculty">
@@ -572,7 +572,7 @@ export default function FacultyProfilePage() {
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             e.target.onerror = null;
-                            e.target.src = "/images/administration/dr_mogal_sardar_baig.webp";
+                            e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
                           }}
                         />
                       </div>
@@ -620,3 +620,4 @@ export default function FacultyProfilePage() {
     </div>
   );
 }
+
