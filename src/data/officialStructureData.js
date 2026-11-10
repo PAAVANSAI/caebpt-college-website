@@ -1316,160 +1316,978 @@ export const officialStructureData = {
   // 7. Student's Welfare Activities (All 12 Mandatory Items)
   welfare: [
     {
-      id: "hostels",
-      slug: "hostels",
-      name: "Hostels",
-      title: "Student Residential Hostels",
-      summary: "Well-maintained separate residential halls for boys and girls with 24/7 security, nutritious dining messes, RO drinking water, and Wi-Fi.",
-      features: [
-        "Separate hostel buildings for male and female engineering students",
-        "Student mess committee managing balanced, hygienic dining menus",
-        "Round-the-clock security personnel and CCTV campus surveillance",
-        "Solar water heating systems and high-speed Wi-Fi access"
-      ]
+        "id": "hostels",
+        "slug": "hostels",
+        "name": "Hostels",
+        "title": "Student Residential Hostels (Boys & Girls)",
+        "summary": "Dr. N.T.R. College of Agricultural Engineering, Bapatla provides safe, comfortable, and student-friendly residential accommodations across separate Boys and Girls hostel complexes equipped with RO water plants, Wi-Fi connectivity, nutritious dining messes, gymnasiums, and round-the-clock CCTV security.",
+        "dossier": {
+            "path": "/documents/welfare/03_Hostels_Residential_Facilities_Profile.docx",
+            "filename": "03_Hostels_Residential_Facilities_Profile.docx",
+            "label": "Download Hostels Official Dossier (.docx)"
+        },
+        "keyStatistics": [
+            {
+                "label": "Boys Hostels",
+                "value": "2 Halls (59 Rooms)",
+                "icon": "Building"
+            },
+            {
+                "label": "Boys Capacity",
+                "value": "177 Capacity (165 Residing)",
+                "icon": "Users"
+            },
+            {
+                "label": "Girls Hostels",
+                "value": "2 Halls + 3 Quarters (33 Rooms)",
+                "icon": "Building"
+            },
+            {
+                "label": "Girls Capacity",
+                "value": "120 Students Capacity",
+                "icon": "Users"
+            },
+            {
+                "label": "Hygienic Water",
+                "value": "RO Plants & Dispensers in all Wings",
+                "icon": "Activity"
+            },
+            {
+                "label": "24/7 Security",
+                "value": "CCTV Surveillance & Wardens",
+                "icon": "ShieldCheck"
+            }
+        ],
+        "fullNarrative": [
+            "The boy students of Dr. N.T.R. College of Agricultural Engineering, Bapatla, are accommodated in two hostels namely, Dr. K.L. Rao Hall of Residence and the New Boys Hostel. Together, these hostels provide a safe, comfortable, and student-friendly residential environment that supports the academic and personal well-being of undergraduate, postgraduate, and doctoral students. The two hostels collectively consist of 59 rooms with an accommodation capacity of approximately 177 students. At present, around 165 students belonging to UG, PG, and Ph.D. programmes are residing in the hostels. Most of the hostel rooms are spacious enough to comfortably accommodate four students. Each student is provided with an individual cot along with essential furniture such as cupboards, reading tables, and chairs to facilitate comfortable living and academic activities.",
+            "The boys' hostels are equipped with adequate dining and kitchen facilities to ensure proper boarding arrangements for students. The hostel mess contains large dining tables, sufficient seating arrangements, purified drinking water facilities, refrigerator, freezer, ceiling fans, and an LED television with a sound system for student recreation. An RO water purification plant and water coolers are also installed to provide safe and hygienic drinking water. To support academic activities and digital learning, Wi-Fi connectivity is provided in the hostels, enabling students to access online learning resources and digital platforms. Reading rooms are also available within the hostel premises with newspapers and magazines. Special attention has been given to accessibility and inclusiveness by providing disabled-friendly restrooms and ramp facilities for differently abled students in the New Boys Hostel. A gymnasium with essential exercise equipment is available, alongside outdoor sports facilities including basketball, volleyball, badminton, cricket, and football grounds with running tracks. CCTV cameras are installed at strategic locations and a senior faculty Hostel Warden closely monitors discipline, boarding, and student welfare.",
+            "Hostel facility is provided to all B.Tech Agricultural Engineering girl students in the Girls hostel campus including M.Tech and Ph.D. students. The main hostel building (inaugurated on 27/04/2015) has two floors with a capacity to accommodate 80 girl students in 23 rooms. One separate newly constructed hostel inaugurated on 31/12/2018 with 10 rooms is allotted for first-year students. In addition, three staff quarters were converted as student rooms with an accommodation facility for 40 students.",
+            "The girls hostel features a decent modern dining hall, hot water facility, refrigerator, inverter with battery backup, and water dispensers in each wing for cool, hot, and normal water. The students are served with the best quality food prepared at the boys hostel as per the menu constantly updated and maintained purely by student representatives. The girls hostel is fully protected with compound walls, security gates, caretakers, and lady and gent watchmen caring for students 24 hours a day. The hostel has an Open Gym, volleyball court, shuttle badminton, and tennikoit courts for physical fitness."
+        ],
+        "tables": [
+            {
+                "title": "Collegiate Hostel Accommodation & Residential Overview",
+                "columns": [
+                    "Residential Complex",
+                    "Inauguration / Target Batch",
+                    "Room Count & Capacity",
+                    "Key Amenities & Provisions"
+                ],
+                "rows": [
+                    [
+                        "Dr. K.L. Rao Hall of Residence (Old Boys Hostel)",
+                        "Senior B.Tech, M.Tech & Ph.D. Boys",
+                        "Part of 59 Rooms (~177 Cap)",
+                        "Individual cots, study tables, cupboards, Wi-Fi, TV lounge, reading room"
+                    ],
+                    [
+                        "New Boys Hostel",
+                        "UG Boys (Accessible Wing)",
+                        "Part of 59 Rooms (Accessible)",
+                        "Disabled-friendly restrooms, wheelchair ramps, gym, indoor sports"
+                    ],
+                    [
+                        "Main Girls Hostel Block",
+                        "Inaugurated 27/04/2015 (Two Floors)",
+                        "23 Rooms (80 Students Capacity)",
+                        "Modern dining hall, solar water heating, inverters, multi-temp water dispensers"
+                    ],
+                    [
+                        "New NABARD-Funded Girls Hostel",
+                        "Inaugurated 31/12/2018 (First Year Block)",
+                        "10 Rooms Dedicated for Freshers",
+                        "Compound perimeter wall, 24/7 security watchmen, attached recreational lawns"
+                    ],
+                    [
+                        "Converted Staff Quarters Block",
+                        "Residential Degree Scholars",
+                        "3 Quarters (40 Students Capacity)",
+                        "Self-contained residential layout, continuous power backup & water supply"
+                    ]
+                ]
+            }
+        ],
+        "gallery": [
+            {
+                "url": "/images/welfare/hostel_kl_rao_old_boys.webp",
+                "caption": "Dr. K.L. Rao Hall of Residence (Old Boys Hostel)",
+                "alt": "Dr. K.L. Rao Hall of Residence Old Boys Hostel"
+            },
+            {
+                "url": "/images/welfare/hostel_new_boys.webp",
+                "caption": "New Boys Hostel with Accessibility Ramp and Modern Architecture",
+                "alt": "New Boys Hostel CAE Bapatla"
+            },
+            {
+                "url": "/images/welfare/hostel_old_girls.webp",
+                "caption": "Main Girls Residential Hostel Complex (Two-Storey Wing)",
+                "alt": "Main Girls Hostel Complex"
+            },
+            {
+                "url": "/images/welfare/hostel_nabard_girls.webp",
+                "caption": "NABARD-Funded First-Year Girls Hostel Wing",
+                "alt": "NABARD Funded Girls Hostel"
+            },
+            {
+                "url": "/images/welfare/hostel_dining_hall.webp",
+                "caption": "Hygienic Modern Dining Hall with Stainless Steel Seating",
+                "alt": "Hostel Dining Hall"
+            },
+            {
+                "url": "/images/welfare/hostel_outdoor_gym_girls.webp",
+                "caption": "Outdoor Open Gymnasium for Girls Hostel Students",
+                "alt": "Outdoor Gym for Girls"
+            }
+        ],
+        "features": [
+            "Separate well-secured residential complexes for male and female engineering students",
+            "Total accommodation capacity of ~177 boys (59 rooms) and 120 girls (33 rooms + 3 quarters)",
+            "Student-managed mess committees supervising nutritious, hygienic, and varied daily menus",
+            "Purified RO water filtration plants and water dispensers (hot, cool, normal) in all wings",
+            "Accessibility-oriented infrastructure including wheelchair ramps and disabled-friendly restrooms in New Boys Hostel",
+            "Solar water heating, battery inverter backups, Wi-Fi connectivity, and reading rooms with daily newspapers",
+            "Comprehensive physical fitness facilities with indoor multi-gym, open fitness equipment, and sports courts",
+            "24/7 safety and security with compound walls, security gates, watchmen, CCTV cameras, and Senior Faculty Wardens"
+        ]
     },
     {
-      id: "sports-cultural",
-      slug: "sports-cultural",
-      name: "Sports, Games, Cultural and Literary Activities",
-      title: "Sports, Games & Cultural Affairs",
-      summary: "Encouraging athletic excellence, physical fitness, and cultural vibrancy through university sports meets, inter-collegiate tournaments, and annual tech-fests.",
-      features: [
-        "Standard outdoor cricket/football ground and 400m running track",
-        "Illuminated volleyball, basketball, and badminton courts",
-        "Equipped multi-station fitness gymnasium",
-        "Literary and cultural clubs organizing debates, elocution, drama, and symposia"
-      ]
+        "id": "sports-cultural",
+        "slug": "sports-cultural",
+        "name": "Sports, Games, Cultural and Literary Activities",
+        "title": "Cultural Centre, Physical Education & Sports Facilities",
+        "summary": "Promoting physical stamina, team spirit, artistic talents, and cultural enrichment through comprehensive indoor/outdoor sports arenas, gymnasium facilities, daily coaching under the Physical Director, and dynamic youth festivals organized by the Cultural Centre.",
+        "dossier": {
+            "path": "/documents/welfare/04_Cultural_Centre_and_Sports_Facilities_Profile.docx",
+            "filename": "04_Cultural_Centre_and_Sports_Facilities_Profile.docx",
+            "label": "Download Cultural & Sports Official Dossier (.docx)"
+        },
+        "keyStatistics": [
+            {
+                "label": "Cricket Arena",
+                "value": "Full Cricket Pitch & Field",
+                "icon": "Award"
+            },
+            {
+                "label": "Basketball Arena",
+                "value": "Standard Outdoor Court",
+                "icon": "Dumbbell"
+            },
+            {
+                "label": "Volleyball Courts",
+                "value": "2 Dedicated Courts",
+                "icon": "Activity"
+            },
+            {
+                "label": "Fitness Centres",
+                "value": "Indoor & Outdoor Gymnasiums",
+                "icon": "Dumbbell"
+            },
+            {
+                "label": "Indoor Games",
+                "value": "Table Tennis, Carroms, Chess",
+                "icon": "Trophy"
+            },
+            {
+                "label": "Cultural Stage",
+                "value": "College & Hostel Day Stage",
+                "icon": "Sparkles"
+            }
+        ],
+        "fullNarrative": [
+            "The College has established a dedicated Cultural Centre to promote holistic student development through cultural, literary, artistic, and creative activities. The Centre provides infrastructure and institutional support for students to explore their talents, preserve cultural heritage, develop leadership and communication skills, and participate in university, state, and national-level cultural events. Student clubs operating under the Centre provide sustained opportunities for engagement throughout the academic year. The activities and achievements of the Centre are systematically documented as part of the institutional student-development initiatives.",
+            "The Cultural Centre facilitates regular cultural activities and provides opportunities for students to participate in music, dance, drama, literary activities, visual arts, traditional arts, photography, film-making, and other creative pursuits. It also serves as a vibrant platform for preserving and promoting the rich Indian, Telugu, and regional cultural heritage, while encouraging students to develop confidence, communication skills, teamwork, creativity, and leadership abilities through annual College and Hostel Day celebrations and inter-collegiate cultural meets.",
+            "Students practice sports and games daily in the evening under the expert supervision of the Physical Director. Physical education is integrated into the academic syllabus: there is one compulsory practical class in the first year of B.Tech. (Agricultural Engineering) to make the students conversant with the official rules and regulations of Physical Education and competitive sportsmanship.",
+            "The campus hosts extensive infrastructural facilities for both outdoor sports and indoor recreation. A well-equipped indoor gymnasium alongside outdoor open gyms enhances student physical fitness. Dedicated playing courts for cricket, football, basketball, volleyball, ball badminton, shuttle badminton, tennikoit, table tennis, carroms, and chess are maintained in tournament-ready condition."
+        ],
+        "tables": [
+            {
+                "title": "Sports and Games Infrastructural Facilities at CAE Bapatla",
+                "columns": [
+                    "Sl. No.",
+                    "Name of Game / Discipline",
+                    "Available Infrastructure on Campus"
+                ],
+                "rows": [
+                    [
+                        "1",
+                        "Cricket",
+                        "Full-size cricket pitch with expansive outfield"
+                    ],
+                    [
+                        "2",
+                        "Football",
+                        "Standard collegiate football playing ground"
+                    ],
+                    [
+                        "3",
+                        "Ball Badminton",
+                        "One outdoor court (separate for boys and girls)"
+                    ],
+                    [
+                        "4",
+                        "Indoor Gymnasium",
+                        "Well-equipped multi-station gym with conditioning equipment"
+                    ],
+                    [
+                        "5",
+                        "Table Tennis",
+                        "Two table tennis boards (separate for boys and girls)"
+                    ],
+                    [
+                        "6",
+                        "Volleyball",
+                        "Two standard volleyball courts (separate for boys and girls)"
+                    ],
+                    [
+                        "7",
+                        "Shuttle Badminton",
+                        "Dedicated outdoor shuttle badminton courts"
+                    ],
+                    [
+                        "8",
+                        "Tennikoit",
+                        "Specialized tennikoit court for girl students"
+                    ],
+                    [
+                        "9",
+                        "Carroms",
+                        "4 tournament indoor carrom boards (separate for boys and girls)"
+                    ],
+                    [
+                        "10",
+                        "Chess",
+                        "5 indoor chess boards for tactical and cognitive training"
+                    ]
+                ]
+            }
+        ],
+        "gallery": [
+            {
+                "url": "/images/welfare/cultural_college_day_stage.webp",
+                "caption": "College and Hostel Day Annual Cultural Stage Celebrations",
+                "alt": "Cultural Program in the College"
+            },
+            {
+                "url": "/images/welfare/cultural_intercollegiate_participants.webp",
+                "caption": "Inter-Collegiate Cultural Festival Folk & Traditional Dance Contingent",
+                "alt": "Inter-Collegiate Cultural Program"
+            },
+            {
+                "url": "/images/welfare/sports_cricket_ground.webp",
+                "caption": "Collegiate Cricket Ground with Turf Playing Pitch",
+                "alt": "Cricket ground CAE Bapatla"
+            },
+            {
+                "url": "/images/welfare/sports_basketball_court.webp",
+                "caption": "Full-Size Regulation Basketball Court with Floodlighting",
+                "alt": "Basketball Court"
+            },
+            {
+                "url": "/images/welfare/sports_volleyball_court_1.webp",
+                "caption": "Collegiate Volleyball Court Arena",
+                "alt": "Volley Ball Court"
+            },
+            {
+                "url": "/images/welfare/sports_volleyball_court_2.webp",
+                "caption": "Intra-Collegiate Volleyball Tournament Match in Progress",
+                "alt": "Volleyball match"
+            },
+            {
+                "url": "/images/welfare/sports_open_gym.webp",
+                "caption": "Campus Outdoor Open Gymnasium Fitness Station",
+                "alt": "Open Gym Facilities"
+            },
+            {
+                "url": "/images/welfare/sports_indoor_gym.webp",
+                "caption": "Indoor Conditioning Gymnasium with Multi-Station Equipment",
+                "alt": "Indoor gymnasium"
+            },
+            {
+                "url": "/images/welfare/sports_carrom_facility.webp",
+                "caption": "Indoor Student Recreation and Carrom Board Arena",
+                "alt": "Carrom board facility"
+            },
+            {
+                "url": "/images/welfare/sports_table_tennis.webp",
+                "caption": "Indoor Table Tennis Facility with Regulation Boards",
+                "alt": "Table tennis facility"
+            }
+        ],
+        "features": [
+            "Dedicated Cultural Centre facilitating music, dance, drama, literary activities, visual arts, and regional heritage",
+            "Annual College and Hostel Day cultural celebrations and active participation in ANGRAU Inter-Collegiate Youth Fests",
+            "Daily evening games practice supervised by the college Physical Director",
+            "Compulsory first-year practical coursework on rules and regulations of Physical Education",
+            "Full tournament-standard outdoor sports facilities: cricket pitch, football ground, basketball court, volleyball, and badminton",
+            "Well-equipped multi-station indoor gymnasiums and outdoor open gyms for student physical conditioning",
+            "Indoor gaming provisions: 2 table tennis boards, 4 tournament carrom boards, and 5 chess boards",
+            "Separate gaming courts and recreational allocations ensuring full encouragement for girl students"
+        ]
     },
     {
-      id: "scholarships",
-      slug: "scholarships",
-      name: "Scholarships",
-      title: "Scholarships & Financial Assistance",
-      summary: "Facilitating access to central, state government, and ICAR scholarships for meritorious and underprivileged engineering students.",
-      features: [
-        "Government of AP Jagananna Vidya Deevena (Fee Reimbursement)",
-        "ICAR National Talent Scholarship (NTS) for undergraduate scholars",
-        "Post-Graduate Merit Scholarships & GATE Stipends",
-        "Endowment awards and merit-cum-means financial aids"
-      ]
+        "id": "scholarships",
+        "slug": "scholarships",
+        "name": "Scholarships",
+        "title": "Scholarships & Financial Assistance",
+        "summary": "Facilitating seamless access to central government, state government, and ICAR scholarships to ensure meritorious and underprivileged agricultural engineering students complete their education with financial ease.",
+        "keyStatistics": [
+            {
+                "label": "State Scheme",
+                "value": "Jagananna Vidya Deevena (RTF)",
+                "icon": "Award"
+            },
+            {
+                "label": "National Scheme",
+                "value": "ICAR NTS (National Talent Scholarship)",
+                "icon": "CheckCircle2"
+            },
+            {
+                "label": "PG Stipends",
+                "value": "M.Tech & Ph.D. GATE / University Stipends",
+                "icon": "GraduationCap"
+            },
+            {
+                "label": "Financial Aid",
+                "value": "Endowments & Merit-cum-Means",
+                "icon": "HeartHandshake"
+            }
+        ],
+        "fullNarrative": [
+            "Dr. N.T.R. College of Agricultural Engineering, Bapatla, ensures that financial constraints never stand in the way of academic distinction. The College Scholarship Section facilitates the timely disbursement of central, state, and institutional financial aids, scholarships, and fellowships.",
+            "Undergraduate B.Tech. students admitted through AP EAPCET and ICAR AIEEA are eligible for comprehensive tuition fee reimbursements and maintenance allowances under Government of Andhra Pradesh welfare schemes including Jagananna Vidya Deevena and Jagananna Vasathi Deevena. Non-local students admitted through the all-India quota receive the prestigious ICAR National Talent Scholarship (NTS).",
+            "Postgraduate and doctoral scholars pursuing M.Tech. and Ph.D. programmes receive university research stipends, ICAR Senior/Junior Research Fellowships, and AICTE/GATE post-graduate scholarships. In addition, collegiate endowment funds created by alumni and philanthropic donors provide annual merit-cum-means assistance to deserving students."
+        ],
+        "features": [
+            "Government of AP Jagananna Vidya Deevena (Fee Reimbursement) and Vasathi Deevena",
+            "ICAR National Talent Scholarship (NTS) for undergraduate all-India scholars",
+            "Post-Graduate Merit Fellowships & GATE Stipends for M.Tech. and Ph.D. scholars",
+            "Institutional endowment awards and merit-cum-means financial assistance"
+        ]
     },
     {
-      id: "nss-ncc",
-      slug: "nss-ncc",
-      name: "NSS/NCC",
-      title: "National Service Scheme (NSS) & NCC",
-      summary: "Instilling social service, rural outreach, civic responsibility, and leadership discipline through active campus NSS and NCC units.",
-      features: [
-        "Annual 7-day special rural service camp in adopted village communities",
-        "Blood donation camps, tree plantation drives, and cleanliness campaigns",
-        "Awareness campaigns on water conservation and micro-irrigation for local farmers",
-        "Participation in university and state-level parade contingents"
-      ]
+        "id": "nss-ncc",
+        "slug": "nss-ncc",
+        "name": "NSS/NCC",
+        "title": "National Cadet Corps (NCC Unit 115-C, 22 A BN) & NSS",
+        "summary": "Instilling discipline, patriotism, leadership, and selfless community service through the historic NCC Unit 115-C (active since 1957 under 22 A BN Tenali) and dynamic National Service Scheme (NSS) rural outreach programmes.",
+        "dossier": {
+            "path": "/documents/welfare/06_National_Cadet_Corps_NCC_Profile.docx",
+            "filename": "06_National_Cadet_Corps_NCC_Profile.docx",
+            "label": "Download NCC Official Dossier (.docx)"
+        },
+        "keyStatistics": [
+            {
+                "label": "NCC Unit",
+                "value": "115-C Company",
+                "icon": "ShieldCheck"
+            },
+            {
+                "label": "Battalion",
+                "value": "22 A Battalion NCC, Tenali",
+                "icon": "Users"
+            },
+            {
+                "label": "Active Since",
+                "value": "1957 (Over 6 Decades)",
+                "icon": "Calendar"
+            },
+            {
+                "label": "Sanctioned Strength",
+                "value": "50 Cadets",
+                "icon": "Award"
+            },
+            {
+                "label": "Motto",
+                "value": "Unity and Discipline",
+                "icon": "HeartHandshake"
+            },
+            {
+                "label": "Training",
+                "value": "Foot Drill, Map Reading, Weapons",
+                "icon": "Activity"
+            }
+        ],
+        "fullNarrative": [
+            "Dr. NTR College of Agricultural Engineering, Bapatla has a prestigious NCC unit (115-C) operating under the control of 22 A Battalion (BN) NCC, Tenali since 1957. Presently, it runs with a sanctioned strength of 50 cadets drawn from all four years of B.Tech. (Agricultural Engineering). NCC cadets regularly attend rigorous training classes on the campus. Cadets are thoroughly trained in foot drill, parade etiquette, and military subjects such as Map Reading and field craft.",
+            "Cadets actively participate in vital national and institutional ceremonial events including NCC Day, Independence Day, Republic Day, and International Yoga Day. The unit coordinates wide-ranging social service activities such as tree planting drives, voluntary blood donation camps, disaster relief initiatives, and rural awareness campaigns. Many collegiate cadets have distinguished themselves by participating in prestigious National Integration Camps (NIC) and state-level guard of honour contingents.",
+            "Aim of NCC: The Aims of the NCC laid out in 1988 have stood the test of time and continue to meet the requirements expected of it in the current socio-economic scenario of the country. The NCC aims at developing character, comradeship, discipline, a secular outlook, the spirit of adventure, and ideals of selfless service amongst young citizens. Further, it aims at creating a pool of organized, trained, and motivated youth with leadership qualities in all walks of life, who will serve the Nation regardless of which career they choose. Needless to say, the NCC also provides an environment conducive to motivating young Indians to join the Indian Armed Forces.",
+            "Motto of NCC: The need for having a motto for the Corps was discussed in the 11th Central Advisory Committee (CAC) meeting held on 11 Aug 1978. The final decision for selection of 'Unity and Discipline' as motto for the NCC was taken in the 12th CAC meeting held on 12 Oct 1980.",
+            "The NCC Flag: The NCC flag for various units was first introduced in 1951. In 1954, the existing tricolour flag was officially introduced. The three colours depict the three services of the Corps: Red for the Army, Deep Blue for the Navy, and Light Blue for the Air Force. The letters NCC and the golden NCC crest in the middle, encircled by a wreath of lotus flowers, give the flag a colourful look and a distinct identity."
+        ],
+        "gallery": [
+            {
+                "url": "/images/welfare/ncc_flag_tricolour.webp",
+                "caption": "Official Tricolour NCC Flag with Golden Lotus Crest (Army, Navy & Air Force)",
+                "alt": "NCC Flag"
+            },
+            {
+                "url": "/images/welfare/ncc_classroom_training.webp",
+                "caption": "Cadets Attending Military Subjects, Map Reading and Leadership Lectures",
+                "alt": "NCC Classroom Training"
+            },
+            {
+                "url": "/images/welfare/ncc_parade_foot_drill.webp",
+                "caption": "NCC Cadets Undergoing Foot Drill Practice on College Parade Grounds",
+                "alt": "NCC Foot Drill"
+            }
+        ],
+        "features": [
+            "Prestigious NCC Unit 115-C functioning under 22 A Battalion NCC, Tenali since 1957",
+            "Sanctioned strength of 50 cadets across all four years of B.Tech. (Agricultural Engineering)",
+            "Weekly practical foot drill, military theory classes, map reading, and weapon training",
+            "Ceremonial guard of honour on Independence Day, Republic Day, and NCC Day",
+            "Annual National Integration Camps (NIC) and Combined Annual Training Camps (CATC) participation",
+            "Community outreach: voluntary blood donation, mass afforestation, and Swachh Bharat campaigns",
+            "Grooming youth with high moral character, secular outlook, and motivation to join the Indian Armed Forces",
+            "Active NSS units conducting 7-day special annual rural development camps in adopted villages"
+        ]
     },
     {
-      id: "international-students",
-      slug: "international-students",
-      name: "International Students",
-      title: "International Students Cell",
-      summary: "Dedicated single-window advisory unit assisting international scholars with admissions, visa endorsements, orientation, and campus boarding.",
-      features: [
-        "Guidance on Indian Council of Agricultural Research (ICAR) foreign quota admissions",
-        "Assistance with FRRO registration and residence permits",
-        "Special residential hostel arrangements and cultural mentorship",
-        "Academic tutorial support and language orientation"
-      ]
+        "id": "international-students",
+        "slug": "international-students",
+        "name": "International Students",
+        "title": "International Students Advisory Cell",
+        "summary": "Dedicated single-window support system assisting international scholars with ICAR foreign quota admissions, visa endorsements, FRRO registrations, campus acclimatization, and customized residential care.",
+        "keyStatistics": [
+            {
+                "label": "Admissions Channel",
+                "value": "ICAR / DARE / MEA Quotas",
+                "icon": "Globe"
+            },
+            {
+                "label": "Support Desk",
+                "value": "FRRO & Visa Endorsement Desk",
+                "icon": "CheckCircle2"
+            },
+            {
+                "label": "Mentorship",
+                "value": "Dedicated Faculty Advisor",
+                "icon": "Users"
+            },
+            {
+                "label": "Residential Care",
+                "value": "Comfortable Hostel Quarters",
+                "icon": "Building"
+            }
+        ],
+        "fullNarrative": [
+            "The International Students Cell at Dr. NTR College of Agricultural Engineering acts as a comprehensive single-window facilitation unit for foreign nationals and NRI scholars admitted into undergraduate and post-graduate engineering programs through the Indian Council of Agricultural Research (ICAR), Department of Agricultural Research and Education (DARE), and Ministry of External Affairs (MEA).",
+            "The Cell assists international students with administrative documentation including Foreigners Regional Registration Office (FRRO) clearances, student visa extensions, university bonafide certifications, and medical insurance coverage. The Cell pairs every international scholar with a senior faculty mentor to ensure smooth academic acclimatization, language orientation, and cultural adjustment within the campus community."
+        ],
+        "features": [
+            "Single-window processing for ICAR / DARE / MEA international quota admissions",
+            "Full administrative coordination for FRRO registrations and visa extension endorsements",
+            "Dedicated faculty mentorship facilitating academic and cultural adaptation",
+            "Special hostel accommodation arrangements with dietary and connectivity provisions"
+        ]
     },
     {
-      id: "placement-cell",
-      slug: "placement-cell",
-      name: "Placement Cell",
-      title: "Training and Placement Cell",
-      summary: "Bridging the gap between academia and agricultural industry leaders, facilitating mock interviews, soft skills training, and campus placements.",
-      features: [
-        "Strong recruitment ties with tractor MNCs, micro-irrigation firms, and food processing giants",
-        "Coordination of 6-month industrial in-plant training for final-year students",
-        "Aptitude, resume-building, and technical mock interview sessions",
-        "Career guidance for GATE, CAT, GRE, and Civil Services examinations"
-      ]
+        "id": "placement-cell",
+        "slug": "placement-cell",
+        "name": "Placement Cell",
+        "title": "Career Development Cell & Campus Placement Bureau",
+        "summary": "Fostering professional excellence, industry certifications (IBM, CISCO, Infosys), aptitude mastery, and top corporate placements across 36+ recruiting titans, alongside stellar achievements in GATE (AIR 2, 4, 15, 16) and ARS/ICAR examinations.",
+        "dossier": {
+            "path": "/documents/welfare/07_Career_Development_and_Placement_Cell_Profile.docx",
+            "filename": "07_Career_Development_and_Placement_Cell_Profile.docx",
+            "label": "Download Career Development Official Dossier (.docx)"
+        },
+        "keyStatistics": [
+            {
+                "label": "Recruiting Titans",
+                "value": "36+ Leading Companies",
+                "icon": "Briefcase"
+            },
+            {
+                "label": "Industry Certifications",
+                "value": "IBM, CISCO, Infosys Partnerships",
+                "icon": "CheckCircle2"
+            },
+            {
+                "label": "GATE National Ranks",
+                "value": "AIR 2, 4, 15, 16, 23, 27, 29, 31, 56",
+                "icon": "Award"
+            },
+            {
+                "label": "ARS / ICAR Achievers",
+                "value": "AIR 17, 18, 48 (SRF/JRF)",
+                "icon": "GraduationCap"
+            },
+            {
+                "label": "In-Plant Training",
+                "value": "6-Month Student READY / ELP",
+                "icon": "Users"
+            },
+            {
+                "label": "Training Modules",
+                "value": "Soft Skills, Quantitative & Verbal Aptitude",
+                "icon": "Activity"
+            }
+        ],
+        "fullNarrative": [
+            "Students are encouraged to seek opportunities and enhance their learning experience with practical knowledge. The Career Development Cell (CDC) provides a platform for students and companies alike so that collegiate collaboration is mutually beneficial. Once a student enters this University, the Institution takes the responsibility to develop that individual into a complete personality. Students are provided with umpteen choices to pursue in parallel to their academics. The placement season generates a vibrant environment on campus, leaving no stone unturned to place every eligible student in premier agricultural engineering and tech corporations.",
+            "The Career Development Cell carries the twin responsibility of conducting Career Counseling and Training Programmes, and organizing campus recruitment activities. All students are encouraged to attend training programs for enhanced performance in interviews. The Cell hand-holds students through career guidance, motivational counselling, knowledge sharing, and capacity building. Trainees are closely monitored for improvements and gauged through company-specific Mock tests until they gain industry-ready eligibility.",
+            "Prestigious skill development and certification achievements include JAVA Certification in association with IBM, Network Certification in association with CISCO, DB2 training Certification in association with IBM, and Campus Connect in association with Infosys.",
+            "Soft Skills & Employability: An all-comprehensive soft skill programme aims at enhancing the personality of students right from the first semester. It lays a strong foundation for self-development, develops the right attitude towards personal, social, and professional life, enables students to strengthen interpersonal skills, work effectively in teams, and empowers them in decision-making and conflict resolution with a win-win attitude. It prepares students for the corporate world through video profiles and professional etiquette training.",
+            "Quantitative Aptitude and Logical Reasoning: Equips students to apply basic mathematical concepts coupled with analytical reasoning. It sharpens general mental ability, numeracy, logical reasoning, and equips students with techniques to perform accurate data interpretation.",
+            "Verbal Aptitude: Develops constructive thinking skills underlying verbal logic, enriches vocabulary, equips students with speed reading comprehension and critical reasoning, and strengthens grammar and linguistic proficiency for placement interviews, competitive exams for higher studies (GRE, GMAT, CAT, XAT, TOEFL, IELTS), and Government/Banking sector examinations.",
+            "Objectives: 1. Acquire interpersonal skills and be an effective goal-oriented team player. 2. Develop professionalism with idealistic, practical, and moral values. 3. Acquire communication and problem-solving skills. 4. Build a strong base in fundamental mathematical concepts. 5. Grasp approaches and strategies to solve problems with speed and accuracy. 6. Master fundamental grammatical rules for flawless language usage."
+        ],
+        "gallery": [
+            {
+                "url": "/images/welfare/placement_national_exam_achievers.webp",
+                "caption": "Student Performance in National Exams: GATE Toppers (AIR 2, 4, 15, 16) & ARS / ICAR SRF/JRF Achievers",
+                "alt": "GATE Toppers and National Exam Achievers"
+            },
+            {
+                "url": "/images/welfare/placement_recruiting_partners.webp",
+                "caption": "Student Placement Profile \u2013 36+ Corporate Recruiting Partners (John Deere, Mahindra, TAFE, Sonalika, Kubota, CNH, Netafim)",
+                "alt": "Recruiting Partners"
+            },
+            {
+                "url": "/images/welfare/placement_internship_partners.webp",
+                "caption": "Student READY / In-Plant Training & Internship Partners (Simply Fresh, Samunnati, Heritage, Sangam, Godrej Agrovet)",
+                "alt": "Internship Partners"
+            },
+            {
+                "url": "/images/welfare/placement_skill_development_partners.webp",
+                "caption": "Skill Development Partners (IIITDM Jabalpur, WALAMTARI, ICAR-CIAE, ICAR-IIHR, NRFMTTI, ICAR-CIPHET)",
+                "alt": "Skill Development Partners"
+            }
+        ],
+        "features": [
+            "Dedicated Career Development Cell coordinating campus recruitments, corporate tie-ups, and career counselling",
+            "Prestigious global technology partnerships: IBM Java & DB2 Certifications, CISCO Network Certification, Infosys Campus Connect",
+            "Stellar national exam track record: GATE AIR 2, 4, 15, 16, 23, 27, 29, 31, 56; ARS & ICAR SRF/JRF AIRs 17, 18, 48",
+            "36+ Top Recruiting Partners including John Deere, Mahindra, TAFE, Sonalika, Escorts, Kubota, CNH, New Holland, Netafim, and Adani",
+            "6-Month hands-on Student READY, Experiential Learning Programme (ELP), and In-Plant Training across prominent agro-industries",
+            "Comprehensive multi-semester training modules in Soft Skills, Video Profiling, Quantitative Aptitude, and Verbal Logic",
+            "Rigorous company-specific mock tests, aptitude drills, technical interview coaching, and resume building workshops",
+            "Specialized preparation coaching for international examinations (GRE, GMAT, TOEFL, IELTS, CAT) and Civil/Banking Services"
+        ]
     },
     {
-      id: "health-clinics",
-      slug: "health-clinics",
-      name: "Health Clinics",
-      title: "Campus Health Centre & Medical Care",
-      summary: "Round-the-clock primary medical aid, basic diagnostics, and ambulance support for students, faculty, and resident campus staff.",
-      features: [
-        "Qualified medical doctor and nursing assistant on duty during working hours",
-        "Stocked dispensary with essential medicines and first-aid provisions",
-        "Tie-ups with specialized multi-speciality hospitals in Bapatla and Guntur",
-        "Emergency ambulance service available 24/7 on campus"
-      ]
+        "id": "health-clinics",
+        "slug": "health-clinics",
+        "name": "Health Clinics",
+        "title": "Campus Health Clinic & Primary Medical Care Centre",
+        "summary": "Dedicated on-campus healthcare clinic providing primary medical consultations by a qualified physician, nursing assistance, observation bed care, first aid, emergency equipment, and dispensed medicines supported by ICAR and NUF funds.",
+        "dossier": {
+            "path": "/documents/welfare/01_Health_Clinic_Profile.docx",
+            "filename": "01_Health_Clinic_Profile.docx",
+            "label": "Download Health Clinic Official Dossier (.docx)"
+        },
+        "keyStatistics": [
+            {
+                "label": "Medical Officer",
+                "value": "Qualified Doctor (Appointed)",
+                "icon": "Activity"
+            },
+            {
+                "label": "Nursing Staff",
+                "value": "Male & Female Staff Nurses",
+                "icon": "Users"
+            },
+            {
+                "label": "Observation Facility",
+                "value": "Bed Facilities for Patient Care",
+                "icon": "Building"
+            },
+            {
+                "label": "Emergency Equipment",
+                "value": "Oxygen Cylinders, Stretchers, Wheelchairs",
+                "icon": "ShieldCheck"
+            },
+            {
+                "label": "Medicine Storage",
+                "value": "Medical Refrigeration for Injections",
+                "icon": "CheckCircle2"
+            },
+            {
+                "label": "Institutional Funds",
+                "value": "ICAR Student Amenities & NUF Funds",
+                "icon": "HeartHandshake"
+            }
+        ],
+        "fullNarrative": [
+            "Dr. N.T.R. College of Agricultural Engineering, Bapatla, provides health care facilities within the campus through a dedicated Health Clinic established for the welfare of students, faculty, and staff members. The clinic functions as a primary healthcare support centre to address routine medical needs, provide first aid, and handle emergency health situations within the College premises.",
+            "A qualified Medical Doctor is appointed on a contractual basis to provide medical consultation and treatment during scheduled college hours and whenever emergency situations arise. The health clinic ensures timely medical attention and basic healthcare services for students and staff members residing within the campus.",
+            "To support medical services efficiently, both male and female staff nurses are available at the clinic for monitoring the health condition of students, administering prescribed medicines and injections, and assisting the doctor during consultations and emergencies. The clinic is also provided with bed facilities for observation, first aid, and temporary care of patients requiring rest and monitoring.",
+            "A systematic record maintenance mechanism is followed in the clinic. Details of medical consultations, prescriptions issued, and medicines dispensed are entered in a health register for future reference and monitoring of the health condition of individual students during subsequent visits.",
+            "The Health Clinic is adequately equipped with essential medicines, emergency drugs, disposables, injections, digital and analog health monitoring instruments, oxygen cylinders, stretchers, wheelchairs, and refrigeration facilities for safe storage of injectable medicines and medical supplies. These facilities enable the clinic to effectively manage common illnesses, minor injuries, and emergency medical situations within the campus.",
+            "The expenditure for medical facilities, medicines, and healthcare equipment is supported through ICAR Student Amenities funds and NUF (Non-Unit Fund) resources of the College. The College continuously strives to strengthen the healthcare support system to ensure the safety, well-being, and healthy academic environment for all students and staff members."
+        ],
+        "gallery": [
+            {
+                "url": "/images/welfare/health_clinic_bed_facility.webp",
+                "caption": "Fig 1. Inpatient Observation Beds, IV Stands & Wheelchair Facility in the Health Clinic",
+                "alt": "Bed facility in the health clinic"
+            },
+            {
+                "url": "/images/welfare/health_clinic_consultation.webp",
+                "caption": "Health Clinic Consultation Table, Medical Supply Cabinets & Diagnostic Equipment",
+                "alt": "Health Clinic at Dr NTR CAE Bapatla"
+            }
+        ],
+        "features": [
+            "Dedicated primary healthcare support centre operating inside the collegiate campus for students and staff",
+            "Qualified Medical Doctor appointed on contractual basis for routine consultations and emergency response",
+            "Both male and female staff nurses available for continuous patient monitoring, injections, and assistance",
+            "Equipped inpatient observation beds for temporary patient rest, first aid, and clinical monitoring",
+            "Systematic digital and manual health register logging every consultation, prescription, and dispensed medication",
+            "Stocked dispensary with essential medicines, emergency drugs, disposables, and monitoring instruments",
+            "Critical emergency infrastructure: oxygen cylinders, stretchers, wheelchairs, and medical refrigeration",
+            "Healthcare operations and medicine procurement supported by ICAR Student Amenities Funds and collegiate NUF resources"
+        ]
     },
     {
-      id: "alumni",
-      slug: "alumni",
-      name: "Alumni",
-      title: "Alumni Association",
-      summary: "A vibrant global network of CAE Bapatla alumni occupying leadership positions across industry, academia, research, and governance.",
-      features: [
-        "Annual alumni re-union and mentorship chapters",
-        "Guest lectures and technical webinars by distinguished alumni",
-        "Alumni endowment scholarships for financially deserving students",
-        "Guidance for overseas higher education and entrepreneurial startups"
-      ]
+        "id": "alumni",
+        "slug": "alumni",
+        "name": "Alumni",
+        "title": "Alumni Association & Global Mentorship Network",
+        "summary": "A dynamic global network of CAE Bapatla alumni holding senior leadership positions across agricultural machinery giants, research institutes, central government, and global academia, mentoring collegiate students and funding merit scholarships.",
+        "keyStatistics": [
+            {
+                "label": "Global Network",
+                "value": "Spanning 20+ Countries",
+                "icon": "Globe"
+            },
+            {
+                "label": "Industry Leaders",
+                "value": "Tractor MNCs & Irrigation Giants",
+                "icon": "Briefcase"
+            },
+            {
+                "label": "Alumni Awards",
+                "value": "Annual Merit Scholarships",
+                "icon": "Award"
+            },
+            {
+                "label": "Mentorship",
+                "value": "Career Guidance & Startups",
+                "icon": "HeartHandshake"
+            }
+        ],
+        "fullNarrative": [
+            "Dr. NTR College of Agricultural Engineering, Bapatla boasts a proud alumni fraternity of four decades standing. Alumni members occupy preeminent roles as chief engineers, vice presidents, scientists in ICAR/CSIR, professors in foreign and Indian universities, civil servants, and innovative agri-tech entrepreneurs.",
+            "The Alumni Association actively supports the college by funding competitive merit-cum-means scholarships, delivering guest lectures on emerging industrial practices, sponsoring student research competitions, and providing direct career referrals for fresh graduates."
+        ],
+        "features": [
+            "Vibrant four-decade-old alumni association with chapters across India, USA, Europe, and Australia",
+            "Alumni-sponsored endowment awards and student emergency financial assistance funds",
+            "Regular technical guest lectures, webinar series, and career orientation sessions by alumni leaders",
+            "Direct industry mentorship for final-year projects, in-plant training placements, and startup incubation"
+        ]
     },
     {
-      id: "anti-ragging",
-      slug: "anti-ragging",
-      name: "Anti-Ragging Cell",
-      title: "Anti-Ragging Cell & Helpline",
-      summary: "Strict zero-tolerance policy against ragging in accordance with Supreme Court and UGC/ICAR mandates, ensuring a secure and supportive campus.",
-      features: [
-        "Active anti-ragging squad conducting regular surprise visits to hostels",
-        "Mandatory online affidavit submission by every student and parent",
-        "Confidential 24/7 complaint box and institutional helpline: +91 8643 224025",
-        "National Anti-Ragging Helpline: 1800-180-5522 (Toll Free)"
-      ]
+        "id": "anti-ragging",
+        "slug": "anti-ragging",
+        "name": "Anti-Ragging Cell",
+        "title": "Anti-Ragging Cell, Disciplinary Committee & 24/7 Helplines",
+        "summary": "Strict zero-tolerance policy against ragging per Hon'ble Supreme Court mandates, enforced by a broad-based statutory committee comprising administrative, police, judicial, and student representatives, supported by 24/7 national and campus helplines.",
+        "dossier": {
+            "path": "/documents/welfare/05_Anti_Ragging_Cell_and_Measures_Profile.docx",
+            "filename": "05_Anti_Ragging_Cell_and_Measures_Profile.docx",
+            "label": "Download Anti-Ragging Official Dossier (.docx)"
+        },
+        "keyStatistics": [
+            {
+                "label": "National Helpline",
+                "value": "1800-180-5522 (Toll-Free, 24x7)",
+                "icon": "Phone"
+            },
+            {
+                "label": "Associate Dean",
+                "value": "9949906751",
+                "icon": "Phone"
+            },
+            {
+                "label": "OSA Convener",
+                "value": "9533877666",
+                "icon": "Phone"
+            },
+            {
+                "label": "Hostel Wardens",
+                "value": "Boys: 9618800819 | Girls: 9295350600",
+                "icon": "Phone"
+            },
+            {
+                "label": "Regulatory Policy",
+                "value": "Zero-Tolerance (Supreme Court / UGC)",
+                "icon": "ShieldAlert"
+            },
+            {
+                "label": "Daily Protocol",
+                "value": "Freshers Undertaking Twice a Day",
+                "icon": "CheckCircle2"
+            }
+        ],
+        "fullNarrative": [
+            "The College maintains an active Anti-Ragging Cell, formulated every year, which consists of the Associate Dean, Officer In-Charge of Student Activities as Convener, Deputy Superintendent of Police, Circle Inspector of Police, Mandal Revenue Officer, Advocate, Department Heads, Officer In-Charge of Academic Matters (UG and PG), faculty members, Physical Director, students of II, III, and Final Year B.Tech. (Agricultural Engineering), parents of students, reporters of daily newspapers, reporters of news channels, and secretaries of NGOs. This Cell monitors any eventuality of ragging on campus. Apart from the Anti-Ragging Cell, a Disciplinary Action Committee functions in the College for taking immediate statutory action on erring students.",
+            "Strict measures to prevent ragging in the college have been systematically undertaken:",
+            "1. Ragging acts banners are prominently displayed in college corridors and hostels.",
+            "2. Anti-ragging warning boards are permanently erected in classrooms, seminar halls, and entrances.",
+            "3. Anti-ragging schedules are allotted to Staff, PG students, and Final-year students of the college.",
+            "4. Anti-ragging squads are formed for round-the-clock surprise inspections.",
+            "5. High-level Anti-ragging committee is reconstituted each academic year.",
+            "6. Semi-transparent, sealed complaint boxes are installed in the main college building and hostels.",
+            "7. Obtaining signatures from First-year students stating whether there is ragging in hostels daily two times a day.",
+            "8. Circulation of anti-ragging toll-free number and personal mobile numbers of all teaching staff with First-year students and their parents.",
+            "9. Ragging affidavits (Annexure I \u2013 Student and Annexure II \u2013 Parent) are collected as a mandatory admission requirement.",
+            "10. A round-the-clock monitoring and surveillance system is in place for preventing ragging across the entire campus."
+        ],
+        "tables": [
+            {
+                "title": "Statutory Anti-Ragging Helplines & Emergency Contact Directory",
+                "columns": [
+                    "Designation / Authority",
+                    "Official In-Charge",
+                    "Phone / Helpline Number",
+                    "Jurisdiction & Responsibility"
+                ],
+                "rows": [
+                    [
+                        "National Anti-Ragging Helpline",
+                        "UGC / Central Monitoring Agency",
+                        "1800-180-5522 (Toll Free, 24x7)",
+                        "Nationwide toll-free confidential grievance registration"
+                    ],
+                    [
+                        "Associate Dean",
+                        "Dr. Mogal Sardar Baig",
+                        "9949906751",
+                        "Executive Head of the College & Institutional Disciplinary Authority"
+                    ],
+                    [
+                        "Officer In-Charge of Student Activities (OSA)",
+                        "Faculty Convener",
+                        "9533877666",
+                        "Cell Convener, overall student welfare & grievance investigation"
+                    ],
+                    [
+                        "Hostel Warden (Boys Hostels)",
+                        "Senior Male Faculty Warden",
+                        "9618800819",
+                        "Day & night discipline oversight in Boys Hostels"
+                    ],
+                    [
+                        "Hostel Warden (Girls Hostels)",
+                        "Senior Female Faculty Warden",
+                        "9295350600",
+                        "Residential safety, mentoring & security in Girls Hostels"
+                    ],
+                    [
+                        "Circle Inspector / Rural SI of Police",
+                        "Bapatla Rural Police Station",
+                        "Local Police Station / Dial 112",
+                        "Civil police oversight, emergency police dispatch & legal enforcement"
+                    ],
+                    [
+                        "Mandal Revenue Officer (MRO)",
+                        "Revenue Department, Bapatla",
+                        "Official Revenue Office",
+                        "Civil administration and magisterial coordination"
+                    ]
+                ]
+            }
+        ],
+        "gallery": [
+            {
+                "url": "/images/welfare/antiragging_poster_release.webp",
+                "caption": "Fig 1. Release of Anti-Ragging Poster by Associate Dean, Police Sub-Inspector, Legal Counsel, and Students",
+                "alt": "Release of anti-ragging poster"
+            },
+            {
+                "url": "/images/welfare/antiragging_awareness_campaign.webp",
+                "caption": "Fig 2. Associate Dean and Law Enforcement Officials Addressing Students During Anti-Ragging Campaign",
+                "alt": "Anti-ragging awareness campaign"
+            },
+            {
+                "url": "/images/welfare/antiragging_warning_boards.webp",
+                "caption": "Fig 3. Permanent Anti-Ragging Statutory Warning Boards Installed at Classrooms and Entrances",
+                "alt": "Anti ragging warning boards"
+            },
+            {
+                "url": "/images/welfare/antiragging_helpline_corridors.webp",
+                "caption": "Fig 4. National Toll-Free Helpline (1800-180-5522) and Officials Contact Board Displayed in Corridors",
+                "alt": "Anti-ragging helpline notice board"
+            }
+        ],
+        "features": [
+            "Comprehensive multi-stakeholder Anti-Ragging Cell formulated annually comprising police, revenue, legal, and NGO members",
+            "Strict zero-tolerance policy in full compliance with Supreme Court, UGC, and ICAR statutory regulations",
+            "10-point rigorous prevention framework including daily freshers undertakings collected twice a day",
+            "National Anti-Ragging 24x7 Toll-Free Helpline: 1800-180-5522 prominently displayed across campus",
+            "Direct emergency telephone access to Associate Dean (9949906751), OSA (9533877666), and Hostels Wardens",
+            "Active faculty Anti-Ragging Squads conducting unscheduled surprise inspections in hostel blocks",
+            "Semi-transparent confidential complaint boxes installed in college buildings and student hostels",
+            "Mandatory online and physical affidavit submissions from all admitted students and their parents"
+        ]
     },
     {
-      id: "sc-st-cell",
-      slug: "sc-st-cell",
-      name: "SC/ST Cell",
-      title: "SC / ST Welfare & Equal Opportunity Cell",
-      summary: "Ensuring social inclusion, equal opportunities, grievance redressal, and academic remedial assistance for SC and ST students.",
-      features: [
-        "Monitoring proper implementation of statutory reservation quotas",
-        "Remedial coaching classes and English language proficiency training",
-        "Guidance on state and central social welfare scholarship disbursement",
-        "Confidential grievance cell headed by senior faculty members"
-      ]
+        "id": "sc-st-cell",
+        "slug": "sc-st-cell",
+        "name": "SC/ST Cell",
+        "title": "SC / ST Welfare & Equal Opportunity Cell",
+        "summary": "Ensuring social justice, academic hand-holding, remedial tutorials, and timely scholarship distribution for Scheduled Caste and Scheduled Tribe students per constitutional mandates.",
+        "keyStatistics": [
+            {
+                "label": "Statutory Oversight",
+                "value": "Constitutional Mandate Compliance",
+                "icon": "ShieldCheck"
+            },
+            {
+                "label": "Remedial Support",
+                "value": "Tutorials & Language Coaching",
+                "icon": "BookOpen"
+            },
+            {
+                "label": "Scholarships Desk",
+                "value": "Social Welfare Department Liaison",
+                "icon": "Award"
+            },
+            {
+                "label": "Redressal Cell",
+                "value": "Confidential Grievance Committee",
+                "icon": "HeartHandshake"
+            }
+        ],
+        "fullNarrative": [
+            "The SC/ST Welfare Cell at Dr. NTR College of Agricultural Engineering ensures the effective implementation of reservation policies, welfare schemes, and developmental measures designated for Scheduled Caste and Scheduled Tribe students.",
+            "The Cell conducts special remedial classes in challenging engineering subjects like Applied Mathematics, Thermodynamics, and Computer Programming. It ensures priority allocation of Book Bank Scheme resources, guides students in applying for government stipends, and provides a confidential platform to address any academic or social grievances."
+        ],
+        "features": [
+            "Ensuring statutory compliance with central and state affirmative action reservation quotas",
+            "Remedial academic classes and communicative English skill enhancement tutorials",
+            "Priority access to college library Book Bank schemes and specialized text books",
+            "Liaison with Social Welfare departments for prompt release of scholarships and post-matric allowances"
+        ]
     },
     {
-      id: "women-protection",
-      slug: "women-protection",
-      name: "Women Protection Cell",
-      title: "Women Protection Cell & Internal Complaints Committee (ICC)",
-      summary: "Promoting gender equity, safety, self-confidence, and a dignified learning environment for female students and women staff members.",
-      features: [
-        "Internal Complaints Committee (ICC) constituted per POSH Act guidelines",
-        "Regular workshops on women safety, mental health, and leadership",
-        "Dedicated grievance redressal mechanism with female counselor support",
-        "Campus self-defense training programs and guest seminars"
-      ]
+        "id": "women-protection",
+        "slug": "women-protection",
+        "name": "Women Protection Cell",
+        "title": "Women Protection Cell & Internal Complaints Committee (ICC)",
+        "summary": "Fostering gender equity, safety, self-confidence, and a secure academic workspace for female students and women faculty/staff members in compliance with the POSH Act.",
+        "keyStatistics": [
+            {
+                "label": "Statutory Body",
+                "value": "ICC per POSH Act 2013",
+                "icon": "ShieldCheck"
+            },
+            {
+                "label": "Campus Security",
+                "value": "Dedicated Watchwomen & Surveillance",
+                "icon": "ShieldAlert"
+            },
+            {
+                "label": "Counselling",
+                "value": "Female Faculty Counselors",
+                "icon": "HeartHandshake"
+            },
+            {
+                "label": "Programs",
+                "value": "Self-Defense & Health Workshops",
+                "icon": "Activity"
+            }
+        ],
+        "fullNarrative": [
+            "The Women Protection Cell and Internal Complaints Committee (ICC) functions in accordance with the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013. The committee is headed by a senior woman faculty member and includes lady faculty, staff, student representatives, and external legal/social activist members.",
+            "The Cell conducts regular awareness seminars on personal hygiene, legal rights, mental health, and cyber safety. It organizes self-defense training workshops and maintains confidential grievance channels, ensuring a dignified and supportive collegiate ecosystem for all women on campus."
+        ],
+        "features": [
+            "Internal Complaints Committee (ICC) constituted in strict accordance with the POSH Act 2013",
+            "Zero tolerance for gender discrimination, intimidation, or harassment across all campus premises",
+            "Regular health, hygiene, cyber safety, and leadership empowerment workshops for female scholars",
+            "Female faculty counsellors providing confidential mental health and personal guidance"
+        ]
     },
     {
-      id: "library",
-      slug: "library",
-      name: "Library and e-Resources",
-      title: "Central Academic Library & e-Resources",
-      summary: "Extensive repository of over 25,000 agricultural engineering volumes, international journals, research theses, and CeRA digital consortium access.",
-      features: [
-        "Access to Consortium for e-Resources in Agriculture (CeRA) with thousands of journals",
-        "Automated digital catalog (OPAC) and RFID book circulation",
-        "High-speed browsing center with dedicated terminals for research scholars",
-        "Quiet study cubicles and competitive examination reference books section"
-      ]
+        "id": "library",
+        "slug": "library",
+        "name": "Library and e-Resources",
+        "title": "Central Academic Library, e-Resources & Computational Centres",
+        "summary": "Spacious academic repository containing 11,934 volumes, automated with KOHA Library Management Software, complete with book banks, competitive exam resources, popular vernacular periodicals, and fully air-conditioned UG (40 systems) & PG (15 systems) computer centres backed by 40 MBPS Internet.",
+        "dossier": {
+            "path": "/documents/welfare/02_Library_and_Computer_Centre_Profile.docx",
+            "filename": "02_Library_and_Computer_Centre_Profile.docx",
+            "label": "Download Library Official Dossier (.docx)"
+        },
+        "keyStatistics": [
+            {
+                "label": "Total Books",
+                "value": "11,934 Volumes",
+                "icon": "BookOpen"
+            },
+            {
+                "label": "Library Software",
+                "value": "KOHA Management System",
+                "icon": "CheckCircle2"
+            },
+            {
+                "label": "UG Computer Lab",
+                "value": "40 High-End Air-Conditioned PCs",
+                "icon": "Building"
+            },
+            {
+                "label": "PG Computer Lab",
+                "value": "15 Advanced Research PCs",
+                "icon": "Users"
+            },
+            {
+                "label": "Internet Speed",
+                "value": "40 MBPS Dedicated Bandwidth",
+                "icon": "Activity"
+            },
+            {
+                "label": "e-Databases",
+                "value": "CeRA, KrishiKosh, CAB, DELNET, OPAC",
+                "icon": "Globe"
+            }
+        ],
+        "fullNarrative": [
+            "The Library creates a beautiful environment for the students to learn and grasp knowledge without any interference. The Library is a valuable asset to the college and it is so spacious and contains many books, e-books, Book Bank Scheme, Reference section, and journals (both Foreign and Indian) published by both national and international authors. There are 11,934 books available in the library. The library operations are automated and updated with KOHA Library Management Software.",
+            "The library offers computer books with accompanying CDs, comprehensive dictionaries (Telugu to English and English to Telugu), handbooks, annual reports, General Studies volumes, and the World Atlas so that students can prepare thoroughly for competitive exams such as UPSC, APPSC, BSRB Bank exams, GRE, GMAT, TOEFL, IELTS, and CAT. Apart from these, there is a wide variety of Telugu and English daily newspapers and popular weekly & monthly magazines like Rythunestham, Annadata, Vyavasayam, and competitive magazines kept for students' general reading.",
+            "There are fully air-conditioned UG and PG computer centres which provide a highly interactive learning environment. Both UG and PG Computer rooms are well equipped with 40 and 15 computers respectively having high-end configurations with 40 MBPS Internet speed to utilize electronic information resources, namely CeRA (Consortium for e-Resources in Agriculture), CAB Abstracts, KrishiKosh, EBSCO, Indiastat, CRC Netbase e-books, CAB e-books, Elsevier e-books, CMIE, EPWRF India Times Series, EZ Proxy, DELNET, and OPAC for the continuous improvement of academic and research standards.",
+            "The practical classes of 'Computer Programming in C', 'AUTOCAD', 'Computational methods through C Programming', and 'Library and Information Services' for U.G. and P.G. students are conducted in the computer centre. Auxiliary facilities including photocopying, computer printing, and digital browsing are available to support students in their daily academic and research activities."
+        ],
+        "gallery": [
+            {
+                "url": "/images/welfare/library_newspaper_section.webp",
+                "caption": "Students Daily Newspaper and Periodicals Reading Section",
+                "alt": "Students Newspaper Section"
+            },
+            {
+                "url": "/images/welfare/library_reading_section.webp",
+                "caption": "Central Reading Hall and Reference Study Section",
+                "alt": "Students Reading Section"
+            },
+            {
+                "url": "/images/welfare/library_book_stacks.webp",
+                "caption": "Central Stacks Housing 11,934 Academic Engineering Volumes",
+                "alt": "Library Stacks"
+            },
+            {
+                "url": "/images/welfare/computer_lab_ug_digital.webp",
+                "caption": "Fully Air-Conditioned UG Computer Lab & Digital Library (40 Systems, 40 Mbps Speed)",
+                "alt": "UG Computer Lab"
+            },
+            {
+                "url": "/images/welfare/computer_lab_pg.webp",
+                "caption": "PG Computational Lab for Research Data Analysis and Modelling (15 Systems)",
+                "alt": "PG Computer Lab"
+            }
+        ],
+        "features": [
+            "Extensive academic collection of 11,934 books, Book Bank schemes, reference volumes, and national/international journals",
+            "Integrated modern library automation with KOHA Library Management Software and OPAC cataloguing",
+            "Specialized preparation collection for competitive exams: UPSC, APPSC, Bank PO, GRE, GMAT, TOEFL, IELTS, and CAT",
+            "Daily English and Telugu newspapers alongside esteemed agricultural magazines: Annadata, Rythunestham, and Vyavasayam",
+            "Two fully air-conditioned computer centers: UG Lab with 40 PCs and PG Research Lab with 15 high-end PCs",
+            "40 MBPS dedicated high-speed Internet connectivity facilitating smooth digital research and electronic access",
+            "Consortium digital databases: CeRA, KrishiKosh, CAB Abstracts, EBSCO, Elsevier e-books, Indiastat, DELNET, and EZ Proxy",
+            "On-site student reprographic services including laser printing, document scanning, and photocopying"
+        ]
     }
   ],
 

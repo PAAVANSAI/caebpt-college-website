@@ -385,9 +385,24 @@ function sanitizeOfficialStructure(data) {
       })()
     },
     administration: adminObj,
-    welfare: Array.isArray(data.welfare) && data.welfare.length > 0
-      ? data.welfare
-      : defaultOfficialStructure.welfare,
+    welfare: defaultOfficialStructure.welfare.map((defW) => {
+      const userW = Array.isArray(data.welfare)
+        ? data.welfare.find((w) => w.id === defW.id || w.slug === defW.slug)
+        : null;
+      return {
+        ...defW,
+        ...(userW || {}),
+        fullNarrative: defW.fullNarrative,
+        gallery: defW.gallery,
+        tables: defW.tables,
+        dossier: defW.dossier,
+        keyStatistics: defW.keyStatistics,
+        sections: defW.sections,
+        features: (userW?.features && userW.features.length >= defW.features.length)
+          ? userW.features
+          : defW.features
+      };
+    }),
     galleries: {
       photos: Array.isArray(data.galleries?.photos)
         ? data.galleries.photos.map((p, idx) => ({
