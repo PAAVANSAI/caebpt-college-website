@@ -25,7 +25,7 @@ export default function Departments({ onOpenEnquiry }) {
             <span className="academic-divider-diamond" />
           </div>
           <p className="section-subtitle">
-            Five core engineering and allied departments providing foundational depth, specialized research facilities, and applied field learning.
+            Six specialized engineering and allied departments providing foundational depth, specialized research facilities, and applied field learning.
           </p>
         </div>
 

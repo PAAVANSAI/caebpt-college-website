@@ -62,8 +62,8 @@ export default function DepartmentsPage({ onOpenEnquiry }) {
   return (
     <div>
       <PageBanner
-        title="Engineering Departments"
-        subtitle="Five specialized academic and research departments driving advanced agricultural mechanization, irrigation automation, and sustainable food process engineering."
+        title="Engineering & Allied Departments"
+        subtitle="Six specialized academic and research departments driving advanced agricultural mechanization, irrigation automation, food process engineering, renewable energy, and foundational engineering."
         tag="Academic Divisions"
         breadcrumb={[{ name: "Departments" }]}
       />
@@ -79,7 +79,7 @@ export default function DepartmentsPage({ onOpenEnquiry }) {
                 <span>Constituent College of ANGRAU • Established 1983</span>
               </div>
               <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-white">
-                5 Core Engineering Departments
+                Six Academic Departments & Specialized Wings
               </h2>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 Each department is equipped with specialized research laboratories, computer simulation facilities, and field trial farms supporting undergraduate, master's, and doctoral scholars.

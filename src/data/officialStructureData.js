@@ -2319,9 +2319,9 @@ export const officialStructureData = {
         title: "Post-Harvest Produce Preservation and Extrusion Technologies",
         type: "Extension Handbook",
         year: "2023",
-        department: "Agricultural Process & Food Engineering",
-        authors: "Faculty Research Team, APFE",
-        docName: "Handbook_APFE_PostHarvest.pdf"
+        department: "Processing & Food Engineering",
+        authors: "Faculty Research Team, PFE",
+        docName: "Handbook_PFE_PostHarvest.pdf"
       },
       {
         id: "pub-4",

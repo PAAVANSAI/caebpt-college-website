@@ -15,13 +15,91 @@ import {
 import { collegeInfo } from '../data/collegeInfo';
 import { useWebsite } from '../context/WebsiteContext';
 
+export const officialDepartmentAndCourseOptions = [
+  {
+    group: "Academic Departments (Our 6 Core Departments)",
+    options: [
+      { value: "Department of Farm Machinery and Power Engineering", label: "Department of Farm Machinery and Power Engineering (FMPE)" },
+      { value: "Department of Processing and Food Engineering", label: "Department of Processing and Food Engineering (PFE)" },
+      { value: "Department of Soil and Water Conservation Engineering", label: "Department of Soil and Water Conservation Engineering (SWCE)" },
+      { value: "Department of Irrigation and Drainage Engineering", label: "Department of Irrigation and Drainage Engineering (IDE)" },
+      { value: "Department of Renewable Energy Engineering", label: "Department of Renewable Energy Engineering (REE)" },
+      { value: "Department of Basic Engineering and Allied Sciences", label: "Department of Basic Engineering and Allied Sciences (BEAS)" },
+    ]
+  },
+  {
+    group: "Undergraduate Degree Programs (B.Tech)",
+    options: [
+      { value: "B.Tech in Agricultural Engineering", label: "B.Tech in Agricultural Engineering (4 Years - ICAR Accredited)" },
+      { value: "Lateral Entry B.Tech in Agricultural Engineering", label: "Lateral Entry B.Tech (Agri Polytechnic Diploma Holders - AP ECET)" },
+    ]
+  },
+  {
+    group: "Postgraduate Degree Programs (M.Tech - 2 Years)",
+    options: [
+      { value: "M.Tech in Farm Machinery & Power Engineering", label: "M.Tech in Farm Machinery & Power Engineering (FMPE - 2 Years)" },
+      { value: "M.Tech in Processing & Food Engineering", label: "M.Tech in Processing & Food Engineering (PFE - 2 Years)" },
+      { value: "M.Tech in Soil & Water Conservation Engineering", label: "M.Tech in Soil & Water Conservation Engineering (SWCE - 2 Years)" },
+    ]
+  },
+  {
+    group: "Doctoral Research Programs (Ph.D. - 3 Years)",
+    options: [
+      { value: "Ph.D. in Farm Machinery & Power Engineering", label: "Ph.D. in Farm Machinery & Power Engineering (FMPE - Doctoral)" },
+      { value: "Ph.D. in Processing & Food Engineering", label: "Ph.D. in Processing & Food Engineering (PFE - Doctoral)" },
+      { value: "Ph.D. in Soil & Water Conservation Engineering", label: "Ph.D. in Soil & Water Conservation Engineering (SWCE - Doctoral)" },
+      { value: "Ph.D. in Agricultural Engineering", label: "Ph.D. in Agricultural Engineering (General Doctoral Research)" },
+    ]
+  }
+];
+
+export const normalizeProgramOrDept = (val) => {
+  if (!val) return 'B.Tech in Agricultural Engineering';
+  const s = String(val).toLowerCase();
+
+  if (s.includes('farm machinery') || s.includes('fmpe')) {
+    if (s.includes('m.tech') || s.includes('mtech')) return 'M.Tech in Farm Machinery & Power Engineering';
+    if (s.includes('ph.d') || s.includes('phd') || s.includes('doctoral')) return 'Ph.D. in Farm Machinery & Power Engineering';
+    return 'Department of Farm Machinery and Power Engineering';
+  }
+  if (s.includes('food') || s.includes('pfe') || s.includes('apfe') || s.includes('process')) {
+    if (s.includes('m.tech') || s.includes('mtech')) return 'M.Tech in Processing & Food Engineering';
+    if (s.includes('ph.d') || s.includes('phd') || s.includes('doctoral')) return 'Ph.D. in Processing & Food Engineering';
+    return 'Department of Processing and Food Engineering';
+  }
+  if (s.includes('soil') || s.includes('swce') || s.includes('swe') || s.includes('conservation')) {
+    if (s.includes('m.tech') || s.includes('mtech')) return 'M.Tech in Soil & Water Conservation Engineering';
+    if (s.includes('ph.d') || s.includes('phd') || s.includes('doctoral')) return 'Ph.D. in Soil & Water Conservation Engineering';
+    return 'Department of Soil and Water Conservation Engineering';
+  }
+  if (s.includes('irrigation') || s.includes('drainage') || s.includes('ide')) {
+    return 'Department of Irrigation and Drainage Engineering';
+  }
+  if (s.includes('renewable') || s.includes('energy') || s.includes('ree')) {
+    return 'Department of Renewable Energy Engineering';
+  }
+  if (s.includes('basic') || s.includes('beas') || s.includes('allied')) {
+    return 'Department of Basic Engineering and Allied Sciences';
+  }
+  if (s.includes('lateral') || s.includes('diploma') || s.includes('ecet')) {
+    return 'Lateral Entry B.Tech in Agricultural Engineering';
+  }
+  if (s.includes('b.tech') || s.includes('btech')) {
+    return 'B.Tech in Agricultural Engineering';
+  }
+  if (s.includes('ph.d') || s.includes('phd') || s.includes('doctoral')) {
+    return 'Ph.D. in Agricultural Engineering';
+  }
+  return val;
+};
+
 export default function Admissions({ initialCourse = '', isModal = false, onClose = () => {} }) {
   const { addEnquiry } = useWebsite();
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
     email: '',
-    course: initialCourse || 'B.Tech in Agricultural Engineering',
+    course: normalizeProgramOrDept(initialCourse),
     city: '',
     qualification: 'Intermediate (10+2 / MPC)',
     message: '',
@@ -34,7 +112,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
 
   useEffect(() => {
     if (initialCourse) {
-      setFormData((prev) => ({ ...prev, course: initialCourse }));
+      setFormData((prev) => ({ ...prev, course: normalizeProgramOrDept(initialCourse) }));
     }
   }, [initialCourse]);
 
@@ -101,7 +179,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
       fullName: '',
       phone: '',
       email: '',
-      course: 'B.Tech in Agricultural Engineering',
+      course: normalizeProgramOrDept(initialCourse),
       city: '',
       qualification: 'Intermediate (10+2 / MPC)',
       message: '',
@@ -192,7 +270,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
         <div>
           <label htmlFor="course" className="block text-xs font-bold text-slate-700 mb-1">
-            Program of Study <span className="text-red-600">*</span>
+            Department / Program of Study <span className="text-red-600">*</span>
           </label>
           <select
             id="course"
@@ -202,12 +280,15 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
               errors.course ? 'border-red-500 bg-red-50/30' : 'border-slate-300 focus:border-[#0b1a2e] focus:ring-2 focus:ring-[#0b1a2e]/10'
             }`}
           >
-            <option value="B.Tech in Agricultural Engineering">B.Tech in Agricultural Engineering (4 Years - ICAR)</option>
-            <option value="Lateral Entry (Diploma Holders)">Lateral Entry B.Tech (Agri Polytechnic Diploma Holders)</option>
-            <option value="M.Tech in Farm Machinery & Power">M.Tech in Farm Machinery & Power Engineering (2 Years)</option>
-            <option value="M.Tech in Soil & Water Conservation">M.Tech in Soil & Water Conservation Engineering (2 Years)</option>
-            <option value="M.Tech in Agricultural Process & Food Engg">M.Tech in Agricultural Process & Food Engineering (2 Years)</option>
-            <option value="Ph.D. in Agricultural Engineering">Ph.D. in Agricultural Engineering (Doctoral Research)</option>
+            {officialDepartmentAndCourseOptions.map((grp) => (
+              <optgroup key={grp.group} label={grp.group}>
+                {grp.options.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </optgroup>
+            ))}
           </select>
           {errors.course && <p className="text-[11px] text-red-600 mt-1 font-semibold">{errors.course}</p>}
         </div>
