@@ -72,7 +72,7 @@ export default function FacultyProfilePage() {
     { id: 'education', label: 'Qualifications & Degrees', icon: GraduationCap },
     { id: 'contributions', label: 'Notable Contributions', icon: Sparkles },
     { id: 'publications', label: 'Research & Publications', icon: BookOpen },
-    { id: 'awards', label: 'Awards & Memberships', icon: Award }
+    { id: 'awards', label: 'Awards & Achievements', icon: Award }
   ];
 
   return (
@@ -301,6 +301,33 @@ export default function FacultyProfilePage() {
                   </div>
                 )}
 
+                {/* Major Honors & Achievements Spotlight */}
+                {faculty.awards && faculty.awards.length > 0 && (
+                  <div className="p-5 bg-gradient-to-br from-[#fdf5df] via-amber-50/50 to-white rounded-2xl border border-[#fae4a4] space-y-3">
+                    <div className="flex items-center justify-between">
+                      <h4 className="text-xs font-bold text-[#854d0e] uppercase tracking-wider flex items-center gap-1.5">
+                        <Award className="w-4 h-4 text-[#d4a72c]" />
+                        <span>Key Achievements, Honors & Distinctions ({faculty.awards.length})</span>
+                      </h4>
+                      <button
+                        type="button"
+                        onClick={() => setActiveTab('awards')}
+                        className="text-[11px] font-bold text-[#854d0e] hover:underline cursor-pointer"
+                      >
+                        View Full Accolades &rarr;
+                      </button>
+                    </div>
+                    <div className="space-y-2">
+                      {faculty.awards.slice(0, 3).map((awd, idx) => (
+                        <div key={idx} className="flex items-start gap-2.5 text-xs font-semibold text-slate-800">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                          <span className="leading-snug">{awd}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Quick Metrics Bar */}
                 {faculty.publicationCounts && (
                   <div className="pt-4 border-t border-slate-100">
@@ -478,7 +505,7 @@ export default function FacultyProfilePage() {
               </div>
             )}
 
-            {/* TAB CONTENT: 5. AWARDS & MEMBERSHIPS */}
+            {/* TAB CONTENT: 5. AWARDS & ACHIEVEMENTS */}
             {activeTab === 'awards' && (
               <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
                 <div>
@@ -486,21 +513,25 @@ export default function FacultyProfilePage() {
                     <Award className="w-5 h-5 text-[#d4a72c]" />
                     <span>Awards, Distinctions & Professional Memberships</span>
                   </h3>
-                  <p className="text-xs text-slate-500">State recognitions, national fellowship grants, and learned society affiliations.</p>
+                  <p className="text-xs text-slate-500">State recognitions, national fellowship grants, research honors, and learned society affiliations.</p>
                 </div>
 
-                {/* Awards List */}
+                {/* Awards & Achievements List */}
                 <div className="space-y-3">
-                  <h4 className="text-xs font-bold text-navy-950 uppercase tracking-wider">Honors & Awards Won:</h4>
-                  {(Array.isArray(faculty.awards) ? faculty.awards : [faculty.awards]).filter(Boolean).map((awd, aIdx) => (
-                    <div key={aIdx} className="p-4 bg-amber-50/60 rounded-xl border border-amber-200/80 flex items-start gap-3">
+                  <h4 className="text-xs font-bold text-navy-950 uppercase tracking-wider">Honors, Awards & Achievements Won:</h4>
+                  {[
+                    ...(Array.isArray(faculty.awards) ? faculty.awards : [faculty.awards]),
+                    ...(Array.isArray(faculty.achievements) ? faculty.achievements : [faculty.achievements])
+                  ].filter(Boolean).map((awd, aIdx) => (
+                    <div key={aIdx} className="p-4 bg-amber-50/70 rounded-xl border border-amber-200/80 flex items-start gap-3 hover:border-amber-300 transition-colors">
                       <Award className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
                       <p className="text-xs sm:text-sm text-amber-950 font-semibold leading-relaxed">
                         {awd}
                       </p>
                     </div>
                   ))}
-                  {(!faculty.awards || (Array.isArray(faculty.awards) && faculty.awards.length === 0)) && (
+                  {(!faculty.awards || (Array.isArray(faculty.awards) && faculty.awards.length === 0)) &&
+                   (!faculty.achievements || (Array.isArray(faculty.achievements) && faculty.achievements.length === 0)) && (
                     <p className="text-xs text-slate-500 italic">No individual state awards recorded in current dossier.</p>
                   )}
                 </div>

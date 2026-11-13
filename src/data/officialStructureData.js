@@ -1013,7 +1013,7 @@ export const officialStructureData = {
               qual: "Ph.D. (Soil & Water Engg, ANGRAU 2021), M.Tech (UAS Dharwad 2006)",
               phone: "8555014523 / 8099479129",
               email: "n.ashokkumar@angrau.ac.in",
-              specialization: "Irrigation & Drainage Engg, Groundwater Modeling, Remote Sensing & GIS; 16 Years Teaching Experience"
+              specialization: "Irrigation & Drainage Engg, Groundwater Modeling, Remote Sensing & GIS; Best Teacher Award (2023), Excellence Teaching Award (2023), Young Professional Award (2024)"
             },
             {
               id: "er-ch-ratna-raju",
