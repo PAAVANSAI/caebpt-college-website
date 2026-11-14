@@ -33,7 +33,7 @@ export default function Hero() {
   const ytVideoId = isVideoMode ? getYouTubeId(hero.bgVideo) : null;
 
   return (
-    <section id="home" className="relative bg-[#06101e] text-white overflow-hidden min-h-[360px] sm:min-h-[400px] lg:min-h-[440px] flex items-center">
+    <section id="home" className="relative bg-[#06101e] text-white overflow-hidden min-h-[560px] sm:min-h-[640px] md:min-h-[700px] lg:min-h-[780px] xl:min-h-[820px] flex items-center">
       {/* Background Campus Media with Soft Cinematic Depth-of-Field */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {isVideoMode ? (
@@ -70,7 +70,7 @@ export default function Hero() {
           <img
             src={hero.bgImage || "/images/campus_hero.jpg"}
             alt="Dr NTR College of Agricultural Engineering, Bapatla Campus"
-            className="w-full h-full object-cover object-center scale-105 filter blur-[1.5px] transition-transform duration-1000"
+            className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000"
             fetchpriority="high"
             loading="eager"
             decoding="async"
@@ -84,8 +84,8 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background: `
-              linear-gradient(to right, rgba(6, 16, 30, 0.94) 0%, rgba(6, 16, 30, 0.78) 48%, rgba(6, 16, 30, 0.45) 80%, rgba(6, 16, 30, 0.35) 100%),
-              linear-gradient(180deg, rgba(6, 16, 30, 0.70) 0%, transparent 40%, rgba(6, 16, 30, 0.95) 100%)
+              linear-gradient(to right, rgba(6, 16, 30, 0.88) 0%, rgba(6, 16, 30, 0.60) 45%, rgba(6, 16, 30, 0.35) 80%, rgba(6, 16, 30, 0.30) 100%),
+              linear-gradient(180deg, rgba(6, 16, 30, 0.65) 0%, transparent 40%, rgba(6, 16, 30, 0.90) 100%)
             `
           }}
         />
@@ -100,7 +100,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="container relative z-10 py-12 sm:py-16">
+      <div className="container relative z-10 py-20 sm:py-28 lg:py-36">
         {/* Floating Open Cinematic Layout */}
         <div className="w-full">
           {/* Institutional Badge */}
