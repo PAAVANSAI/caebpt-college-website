@@ -33,7 +33,7 @@ export default function Hero() {
   const ytVideoId = isVideoMode ? getYouTubeId(hero.bgVideo) : null;
 
   return (
-    <section id="home" className="relative bg-[#06101e] text-white overflow-hidden min-h-[calc(100vh-185px)] lg:min-h-[calc(100vh-188px)] flex items-center">
+    <section id="home" className="relative bg-[#06101e] text-white overflow-hidden min-h-[calc(100vh-185px)] lg:min-h-[calc(100vh-188px)] flex items-start">
       {/* Background Campus Media with Soft Cinematic Depth-of-Field */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {isVideoMode ? (
@@ -85,7 +85,7 @@ export default function Hero() {
           style={{
             background: `
               linear-gradient(to right, rgba(6, 16, 30, 0.88) 0%, rgba(6, 16, 30, 0.60) 45%, rgba(6, 16, 30, 0.35) 80%, rgba(6, 16, 30, 0.30) 100%),
-              linear-gradient(180deg, rgba(6, 16, 30, 0.65) 0%, transparent 40%, rgba(6, 16, 30, 0.90) 100%)
+              linear-gradient(180deg, rgba(6, 16, 30, 0.75) 0%, rgba(6, 16, 30, 0.40) 35%, transparent 60%, rgba(6, 16, 30, 0.85) 100%)
             `
           }}
         />
@@ -100,11 +100,11 @@ export default function Hero() {
         />
       </div>
 
-      <div className="container relative z-10 py-10 sm:py-12 lg:py-14">
+      <div className="container relative z-10 pt-5 sm:pt-7 lg:pt-8 pb-6">
         {/* Floating Open Cinematic Layout */}
         <div className="w-full">
           {/* Institutional Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0b1a2e]/90 border border-[#d4a72c]/50 text-[#fae4a4] text-xs font-bold mb-5 shadow-lg backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0b1a2e]/90 border border-[#d4a72c]/50 text-[#fae4a4] text-xs font-bold mb-3 sm:mb-4 shadow-lg backdrop-blur-md">
             <Sparkles className="w-3.5 h-3.5 text-[#ecc75f] flex-shrink-0" />
             <span>{hero.badge}</span>
           </div>
