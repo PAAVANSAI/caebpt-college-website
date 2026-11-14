@@ -41,7 +41,6 @@ import {
   ExternalLink,
   Users,
   MapPin,
-  Check,
   Printer,
   Eye
 } from 'lucide-react';
@@ -211,7 +210,7 @@ export default function AcademicsPage({ onSelectProgram }) {
           {activeTab === 'admission-process' && (
             <div className="space-y-8 animate-fadeIn">
               <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-100">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                   <div className="space-y-2 max-w-3xl">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fdf5df] border border-[#fae4a4] text-xs font-bold text-[#854d0e]">
                       <Sparkles className="w-4 h-4 text-[#d4a72c]" />
@@ -252,96 +251,6 @@ export default function AcademicsPage({ onSelectProgram }) {
                       <Download className="w-4 h-4 text-[#d4a72c]" />
                       <span>Download Guidelines (.docx)</span>
                     </a>
-                  </div>
-                </div>
-
-                {/* Admission Streams Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
-                  {/* UG Stream */}
-                  <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="badge badge-navy text-xs font-bold">Undergraduate (UG)</span>
-                      <span className="text-xs font-bold text-[#854d0e]">88 Seats / Year</span>
-                    </div>
-                    <h3 className="font-heading text-base font-extrabold text-navy-950">
-                      B.Tech. (Agricultural Engineering)
-                    </h3>
-                    <ul className="space-y-1.5 text-xs text-slate-600">
-                      <li className="flex items-start gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span><strong>Convener Quota (60%):</strong> 36 Seats via AP EAPCET rank.</span>
-                      </li>
-                      <li className="flex items-start gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span><strong>Farmers' Quota (40%):</strong> 24 Seats (Form-I & II verified).</span>
-                      </li>
-                      <li className="flex items-start gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span><strong>ICAR Quota (20%):</strong> 12 Seats via CUET / ICAR AIEEA-UG.</span>
-                      </li>
-                      <li className="flex items-start gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span><strong>Lateral Entry (15%):</strong> 9 Seats for Diploma holders via AP ECET.</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  {/* PG Stream */}
-                  <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="badge badge-gold text-xs font-bold">Postgraduate (PG)</span>
-                      <span className="text-xs font-bold text-[#854d0e]">14 Seats / Year</span>
-                    </div>
-                    <h3 className="font-heading text-base font-extrabold text-navy-950">
-                      Master of Technology (M.Tech.)
-                    </h3>
-                    <ul className="space-y-1.5 text-xs text-slate-600">
-                      <li className="flex items-start gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span><strong>Farm Machinery & Power:</strong> 3 Seats (+ ICAR Quota).</span>
-                      </li>
-                      <li className="flex items-start gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span><strong>Processing & Food Engg:</strong> 5 Seats (+ ICAR Quota).</span>
-                      </li>
-                      <li className="flex items-start gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span><strong>Soil & Water Engg:</strong> 5 + 1* EWS Seats (+ ICAR Quota).</span>
-                      </li>
-                      <li className="flex items-start gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span>Admission based on <strong>ICAR AIEEA-PG (JRF)</strong> ranking.</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  {/* Ph.D Stream */}
-                  <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="badge badge-navy text-xs font-bold">Doctoral (Ph.D.)</span>
-                      <span className="text-xs font-bold text-[#854d0e]">4 Seats / Year</span>
-                    </div>
-                    <h3 className="font-heading text-base font-extrabold text-navy-950">
-                      Doctor of Philosophy (Ph.D.)
-                    </h3>
-                    <ul className="space-y-1.5 text-xs text-slate-600">
-                      <li className="flex items-start gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span><strong>FMPE Division:</strong> 2 Seats (+ ICAR SRF Quota).</span>
-                      </li>
-                      <li className="flex items-start gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span><strong>PFE Division:</strong> 1 Seat (+ ICAR SRF Quota).</span>
-                      </li>
-                      <li className="flex items-start gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span><strong>SWE Division:</strong> 1 Seat (+ ICAR SRF Quota).</span>
-                      </li>
-                      <li className="flex items-start gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                        <span>Admission via <strong>ICAR AICE-JRF/SRF</strong> test and interview.</span>
-                      </li>
-                    </ul>
                   </div>
                 </div>
               </div>
