@@ -33,7 +33,7 @@ export default function Hero() {
   const ytVideoId = isVideoMode ? getYouTubeId(hero.bgVideo) : null;
 
   return (
-    <section id="home" className="relative bg-[#06101e] text-white overflow-hidden min-h-[calc(100vh-158px)] lg:min-h-[calc(100vh-160px)] flex items-center">
+    <section id="home" className="relative bg-[#06101e] text-white overflow-hidden min-h-[calc(100vh-185px)] lg:min-h-[calc(100vh-188px)] flex items-center">
       {/* Background Campus Media with Soft Cinematic Depth-of-Field */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {isVideoMode ? (
@@ -100,7 +100,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="container relative z-10 py-14 sm:py-16 lg:py-20">
+      <div className="container relative z-10 py-10 sm:py-12 lg:py-14">
         {/* Floating Open Cinematic Layout */}
         <div className="w-full">
           {/* Institutional Badge */}
