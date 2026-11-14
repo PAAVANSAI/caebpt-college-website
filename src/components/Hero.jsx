@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowRight, ChevronDown, ChevronRight, Sparkles, Award } from 'lucide-react';
+import React from 'react';
+import { Sparkles } from 'lucide-react';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
 import { collegeInfo as defaultCollegeInfo } from '../data/collegeInfo';
@@ -33,7 +33,7 @@ export default function Hero() {
   const ytVideoId = isVideoMode ? getYouTubeId(hero.bgVideo) : null;
 
   return (
-    <section id="home" className="relative bg-[#06101e] text-white overflow-hidden min-h-[500px] lg:min-h-[560px] flex items-center">
+    <section id="home" className="relative bg-[#06101e] text-white overflow-hidden min-h-[360px] sm:min-h-[400px] lg:min-h-[440px] flex items-center">
       {/* Background Campus Media with Soft Cinematic Depth-of-Field */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {isVideoMode ? (
@@ -100,66 +100,23 @@ export default function Hero() {
         />
       </div>
 
-      <div className="container relative z-10 py-10 sm:py-14 lg:py-18">
+      <div className="container relative z-10 py-12 sm:py-16">
         {/* Floating Open Cinematic Layout */}
-        <div className="max-w-5xl">
+        <div className="w-full">
           {/* Institutional Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0b1a2e]/90 border border-[#d4a72c]/50 text-[#fae4a4] text-xs font-bold mb-5 shadow-lg backdrop-blur-md">
             <Sparkles className="w-3.5 h-3.5 text-[#ecc75f] flex-shrink-0" />
             <span>{hero.badge}</span>
           </div>
 
-          {/* Large, Bold, Single-Line Typography */}
-          <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-[44px] xl:text-[50px] font-black text-white tracking-tight leading-tight mb-8 sm:mb-12 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+          {/* Guaranteed Strict Single-Line Typography */}
+          <h1 className="font-heading text-[clamp(1.15rem,2.9vw,2.95rem)] font-black text-white tracking-tight leading-none whitespace-nowrap overflow-hidden text-ellipsis drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
             Excellence in{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ecc75f] via-[#fae4a4] to-[#ecc75f]">
               Agricultural Engineering
             </span>{' '}
             & Technology
           </h1>
-        </div>
-
-        {/* Live Highlight Cards Row */}
-        <div className="pt-6 sm:pt-8 border-t border-white/15">
-          <div className="text-[10px] sm:text-[11px] text-[#ecc75f] font-bold tracking-wider uppercase mb-3 flex items-center gap-2">
-            <span>Institutional Highlights</span>
-            <span className="text-slate-300 font-normal lowercase">(accredited profile)</span>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
-            {(currentCollegeInfo?.institutionalHighlights || []).map((item, idx) => (
-              <div
-                key={idx}
-                className="bg-[#0b1a2e]/85 hover:bg-[#0f243f]/95 border border-white/15 hover:border-[#ecc75f] rounded-xl p-3 sm:p-4 transition-all duration-200 shadow-md backdrop-blur-sm group"
-              >
-                <div className="flex items-center justify-between mb-1 sm:mb-1.5">
-                  <span className="text-lg sm:text-2xl font-extrabold text-[#fae4a4] font-heading tracking-tight">
-                    {item.value}
-                  </span>
-                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#d4a72c] group-hover:scale-125 transition-transform" />
-                </div>
-                <div className="text-[11px] sm:text-xs font-bold text-white group-hover:text-[#fae4a4] transition-colors leading-tight">
-                  {item.label}
-                </div>
-                <div className="text-[9.5px] sm:text-[11px] text-slate-300 mt-0.5 leading-tight">
-                  {item.subtitle}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Scroll Prompt */}
-        <div className="mt-8 text-center">
-          <button
-            type="button"
-            onClick={() => scrollToSection('about')}
-            className="inline-flex flex-col items-center gap-1 text-slate-300 hover:text-[#ecc75f] transition-colors text-[11px] font-semibold cursor-pointer bg-transparent border-0 p-0"
-            aria-label="Scroll to About section"
-          >
-            <span>Learn More About College</span>
-            <ChevronDown className="w-3.5 h-3.5 animate-bounce text-[#ecc75f]" />
-          </button>
         </div>
       </div>
     </section>

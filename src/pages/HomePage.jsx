@@ -5,6 +5,7 @@ import NoticeTicker from '../components/NoticeTicker';
 const VideoModal = lazy(() => import('../components/VideoModal'));
 const Lightbox = lazy(() => import('../components/Lightbox'));
 import { officialStructureData } from '../data/officialStructureData';
+import { collegeInfo as defaultCollegeInfo } from '../data/collegeInfo';
 import { useWebsite } from '../context/WebsiteContext';
 import {
   Quote,
@@ -26,8 +27,10 @@ import {
 } from 'lucide-react';
 
 export default function HomePage({ onSelectProgram, onSelectNotice }) {
-  const { siteSettings, officialStructure } = useWebsite();
+  const { siteSettings, officialStructure, collegeInfo } = useWebsite();
   const currentStructure = officialStructure || officialStructureData;
+  const currentCollegeInfo = collegeInfo || defaultCollegeInfo;
+  const institutionalHighlights = currentCollegeInfo.institutionalHighlights || defaultCollegeInfo.institutionalHighlights;
   const messages = currentStructure?.messages || officialStructureData.messages;
   const deanMessage = messages?.dean || officialStructureData.messages.dean;
   const assocDeanMessage = messages?.associateDean || officialStructureData.messages.associateDean;
@@ -262,6 +265,56 @@ export default function HomePage({ onSelectProgram, onSelectNotice }) {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* INSTITUTIONAL HIGHLIGHTS WIDGETS (PLACED ON TOP OF NEWS & CIRCULARS) */}
+      <section className="bg-[#0b1a2e] text-white py-8 sm:py-10 border-b border-[#1b3558] relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-10 pointer-events-none"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 20px 20px, rgba(212, 167, 44, 0.4) 2%, transparent 0%)',
+            backgroundSize: '40px 40px'
+          }}
+        />
+        <div className="container relative z-10">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5 pb-3 border-b border-white/10">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#d4a72c] animate-pulse" />
+              <h3 className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#ecc75f]">
+                Institutional Highlights & Accredited Benchmarks
+              </h3>
+            </div>
+            <span className="text-[11px] sm:text-xs text-slate-300 font-medium">
+              ANGRAU • ICAR NAEAB Accredited Institution • Bapatla
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            {institutionalHighlights.map((item, idx) => (
+              <div
+                key={idx}
+                className="bg-[#06101e]/90 hover:bg-[#0e213b] border border-white/15 hover:border-[#ecc75f] rounded-xl p-4 sm:p-5 transition-all duration-200 shadow-md backdrop-blur-sm group flex flex-col justify-between"
+              >
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-xl sm:text-3xl font-extrabold text-[#fae4a4] font-heading tracking-tight">
+                    {item.value}
+                  </span>
+                  <span className="w-2 h-2 rounded-full bg-[#d4a72c] group-hover:scale-125 transition-transform" />
+                </div>
+                <div>
+                  <div className="text-xs sm:text-sm font-bold text-white group-hover:text-[#fae4a4] transition-colors leading-snug">
+                    {item.label}
+                  </div>
+                  {item.subtitle && (
+                    <div className="text-[10px] sm:text-[11px] text-slate-300 mt-0.5 leading-tight">
+                      {item.subtitle}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
