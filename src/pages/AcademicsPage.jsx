@@ -26,7 +26,6 @@ import {
   Scroll,
   BookMarked,
   ShieldCheck,
-  Table,
   Sparkles,
   Layers,
   Search,
@@ -133,15 +132,6 @@ export default function AcademicsPage({ onSelectProgram }) {
     { key: 'anti-plagiarism-policy', label: 'Anti-Plagiarism Policy', icon: ShieldCheck },
   ];
 
-  // Helper for scrolling smoothly to seat matrix in admission process tab
-  const scrollToSeatMatrix = (e) => {
-    e.preventDefault();
-    const el = document.getElementById('seat-matrix-all-branches');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   // Current semester course list with search
   const currentSemesterObj =
     ugCurriculumData.semesters.find((s) => s.semester === selectedSemester) ||
@@ -210,48 +200,17 @@ export default function AcademicsPage({ onSelectProgram }) {
           {activeTab === 'admission-process' && (
             <div className="space-y-8 animate-fadeIn">
               <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                  <div className="space-y-2 max-w-3xl">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fdf5df] border border-[#fae4a4] text-xs font-bold text-[#854d0e]">
-                      <Sparkles className="w-4 h-4 text-[#d4a72c]" />
-                      <span>Statutory APSCHE & ICAR Counseling Standards</span>
-                    </div>
-                    <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
-                      Admission Process & Policy Guidelines
-                    </h2>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      Admissions to Undergraduate, Postgraduate, and Doctoral degree offerings are strictly merit-driven, governed by statutory reservation quotas, Farmers' quota verification, and national ICAR entrance tests.
-                    </p>
+                <div className="space-y-2 max-w-4xl">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fdf5df] border border-[#fae4a4] text-xs font-bold text-[#854d0e]">
+                    <Sparkles className="w-4 h-4 text-[#d4a72c]" />
+                    <span>Statutory APSCHE & ICAR Counseling Standards</span>
                   </div>
-                  <div className="flex flex-wrap lg:flex-col gap-3 flex-shrink-0">
-                    <Link
-                      to="/admissions"
-                      className="btn btn-navy text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      <span>Open Full Admissions Portal</span>
-                      <ArrowRight className="w-4 h-4 text-[#ecc75f]" />
-                    </Link>
-                    <a
-                      href="#seat-matrix-all-branches"
-                      onClick={scrollToSeatMatrix}
-                      className="btn btn-gold text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      <Table className="w-4 h-4" />
-                      <span>View 106 Seats Matrix ↓</span>
-                    </a>
-                    <a
-                      href="/documents/academics/ANGRAU_Admission_Process_Guidelines.docx"
-                      download="ANGRAU_Admission_Process_Guidelines.docx"
-                      className="btn btn-outline text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
-                      style={{ textDecoration: 'none' }}
-                      title="Download Official Admission Process Guidelines Document (.docx)"
-                    >
-                      <Download className="w-4 h-4 text-[#d4a72c]" />
-                      <span>Download Guidelines (.docx)</span>
-                    </a>
-                  </div>
+                  <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
+                    Admission Process & Policy Guidelines
+                  </h2>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Admissions to Undergraduate, Postgraduate, and Doctoral degree offerings are strictly merit-driven, governed by statutory reservation quotas, Farmers' quota verification, and national ICAR entrance tests.
+                  </p>
                 </div>
               </div>
 
