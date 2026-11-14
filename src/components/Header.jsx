@@ -231,21 +231,21 @@ export default function Header() {
         Sits naturally in document flow on large screens. On mobile, a dedicated unified bar is used.
       */}
       <div className="hidden lg:block bg-white border-b border-slate-200/80 relative z-30">
-        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 py-3 sm:py-3.5">
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 py-3.5 sm:py-4">
           <div className="flex items-center justify-between gap-4">
             {/* College Crest & Title */}
             <Link
               to="/"
-              className="flex items-center gap-3.5 group cursor-pointer"
+              className="flex items-center gap-4 group cursor-pointer"
               style={{ textDecoration: 'none' }}
             >
               <div className="flex-shrink-0 transition-transform duration-200 group-hover:scale-105">
-                <CollegeEmblem size={52} />
+                <CollegeEmblem size={56} />
               </div>
 
               <div className="flex flex-col justify-center">
                 <span
-                  className="font-heading font-black text-[#0b1a2e] text-lg sm:text-xl lg:text-2xl xl:text-[25px] tracking-tight leading-tight"
+                  className="font-heading font-black text-[#0b1a2e] text-xl sm:text-2xl lg:text-[26px] xl:text-[28px] tracking-tight leading-tight drop-shadow-2xs"
                 >
                   {currentStructure.collegeFullName || "Dr. NTR College of Agricultural Engineering, Bapatla"}
                 </span>
@@ -505,17 +505,14 @@ export default function Header() {
           <div className="lg:hidden flex items-center justify-between w-full py-1 gap-2">
             <Link
               to="/"
-              className="flex items-center gap-2 group cursor-pointer min-w-0"
+              className="flex items-center gap-2.5 group cursor-pointer min-w-0"
               style={{ textDecoration: 'none' }}
               onClick={() => setMobileMenuOpen(false)}
             >
-              <CollegeEmblem size={34} className="w-8 h-8 sm:w-9 sm:h-9 flex-shrink-0" />
+              <CollegeEmblem size={36} className="w-9 h-9 flex-shrink-0" />
               <div className="flex flex-col min-w-0">
-                <span className="text-xs sm:text-sm font-extrabold text-[#0b1a2e] leading-tight truncate">
-                  CAE Bapatla
-                </span>
-                <span className="text-[9.5px] sm:text-[10px] text-[#854d0e] font-bold uppercase tracking-wider truncate">
-                  ANGRAU • Estd 1983
+                <span className="text-sm sm:text-base font-extrabold text-[#0b1a2e] leading-tight truncate">
+                  Dr. NTR CAE Bapatla
                 </span>
               </div>
             </Link>
@@ -540,7 +537,7 @@ export default function Header() {
             {/* Mobile Top Badge with ANGRAU and Admin shortcuts */}
             <div className="p-2.5 mb-2 bg-[#f2f7fc] rounded-xl flex items-center justify-between border border-[#c5d7ed]">
               <span className="text-xs font-bold text-[#0b1a2e]">
-                caebpt.ac.in • ANGRAU
+                Dr. NTR CAE Bapatla
               </span>
               <div className="flex items-center gap-2">
                 <a
