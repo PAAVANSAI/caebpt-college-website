@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, BookOpen, Building2, ChevronDown, ChevronRight, Sparkles, Award } from 'lucide-react';
+import { ArrowRight, ChevronDown, ChevronRight, Sparkles, Award } from 'lucide-react';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
 import { collegeInfo as defaultCollegeInfo } from '../data/collegeInfo';
@@ -22,13 +22,6 @@ export default function Hero() {
     ]
   };
 
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   // Helper to extract YouTube Video ID for background streaming
   const getYouTubeId = (url) => {
     if (!url) return null;
@@ -40,7 +33,7 @@ export default function Hero() {
   const ytVideoId = isVideoMode ? getYouTubeId(hero.bgVideo) : null;
 
   return (
-    <section id="home" className="relative bg-[#06101e] text-white overflow-hidden min-h-[640px] lg:min-h-[720px] flex items-center">
+    <section id="home" className="relative bg-[#06101e] text-white overflow-hidden min-h-[500px] lg:min-h-[560px] flex items-center">
       {/* Background Campus Media with Soft Cinematic Depth-of-Field */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {isVideoMode ? (
@@ -107,49 +100,23 @@ export default function Hero() {
         />
       </div>
 
-      <div className="container relative z-10 py-12 sm:py-16 lg:py-24">
-        {/* Floating Open Cinematic Layout (No boxed card!) */}
-        <div className="max-w-3xl">
+      <div className="container relative z-10 py-10 sm:py-14 lg:py-18">
+        {/* Floating Open Cinematic Layout */}
+        <div className="max-w-5xl">
           {/* Institutional Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0b1a2e]/90 border border-[#d4a72c]/50 text-[#fae4a4] text-xs font-bold mb-5 shadow-lg backdrop-blur-md">
             <Sparkles className="w-3.5 h-3.5 text-[#ecc75f] flex-shrink-0" />
             <span>{hero.badge}</span>
           </div>
 
-          {/* Large, Bold, Elegant Typography */}
-          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-[64px] font-black text-white tracking-tight leading-[1.08] mb-5 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
-            Excellence in <br />
+          {/* Large, Bold, Single-Line Typography */}
+          <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-[44px] xl:text-[50px] font-black text-white tracking-tight leading-tight mb-8 sm:mb-12 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+            Excellence in{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ecc75f] via-[#fae4a4] to-[#ecc75f]">
               Agricultural Engineering
-            </span> <br />
+            </span>{' '}
             & Technology
           </h1>
-
-          {/* Clean Sub-headline */}
-          <p className="text-sm sm:text-base md:text-lg text-slate-200/95 font-medium leading-relaxed mb-8 max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-            {hero.intro}
-          </p>
-
-          {/* Clean Action Buttons */}
-          <div className="flex flex-wrap items-center gap-3 mb-10 sm:mb-14">
-            <button
-              type="button"
-              onClick={() => scrollToSection('academics')}
-              className="px-6 py-3.5 rounded-full bg-[#d4a72c] hover:bg-[#ecc75f] text-[#06101e] font-extrabold text-xs sm:text-sm flex items-center gap-2 shadow-2xl hover:scale-105 transition-all cursor-pointer"
-            >
-              <BookOpen className="w-4 h-4 text-[#06101e]" />
-              <span>Explore Academic Programmes</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => scrollToSection('facilities')}
-              className="px-5 py-3.5 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-sm flex items-center gap-2 backdrop-blur-md border border-white/20 shadow-lg hover:scale-105 transition-all cursor-pointer"
-            >
-              <Building2 className="w-4 h-4 text-[#f5c84c]" />
-              <span>Campus Facilities</span>
-            </button>
-          </div>
         </div>
 
         {/* Live Highlight Cards Row */}
