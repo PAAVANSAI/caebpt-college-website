@@ -100,6 +100,8 @@ async function ensureAdminAuth() {
   }
 }
 
+const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_14_v4';
+
 function sanitizeOfficialStructure(data) {
   if (!data || typeof data !== 'object') return defaultOfficialStructure;
 
@@ -359,26 +361,31 @@ function sanitizeOfficialStructure(data) {
             return defDept;
           }
           const defHod = defDept.hodAndFaculty || {};
-          const userHod = userDept.hodAndFaculty || {};
           return {
             ...defDept,
             ...userDept,
             hodAndFaculty: {
               ...defHod,
-              ...userHod,
-              hodPhoto: defHod.hodPhoto,
               hodId: defHod.hodId,
-              facultyMembers: (defHod.facultyMembers || []).map((defMember) => {
-                const uMember = (userHod.facultyMembers || []).find(
-                  (m) => m.name === defMember.name || m.id === defMember.id
-                );
-                return {
-                  ...defMember,
-                  ...(uMember || {}),
-                  photo: defMember.photo,
-                  id: defMember.id
-                };
-              })
+              hodName: defHod.hodName,
+              hodDesignation: defHod.hodDesignation,
+              hodPhoto: defHod.hodPhoto,
+              hodPhone: defHod.hodPhone,
+              hodEmail: defHod.hodEmail,
+              hodSpecialization: defHod.hodSpecialization,
+              hodAwards: defHod.hodAwards,
+              hodExperience: defHod.hodExperience,
+              facultyMembers: (defHod.facultyMembers || []).map((defMember) => ({
+                ...defMember,
+                id: defMember.id,
+                name: defMember.name,
+                designation: defMember.designation,
+                photo: defMember.photo,
+                qual: defMember.qual,
+                phone: defMember.phone,
+                email: defMember.email,
+                specialization: defMember.specialization
+              }))
             }
           };
         });
@@ -439,6 +446,12 @@ export function WebsiteProvider({ children }) {
   // Official Structure Master State (Covers 100% of the college website specification)
   const [officialStructure, setOfficialStructure] = useState(() => {
     try {
+      const storedVersion = localStorage.getItem('caebpt_structure_version');
+      if (storedVersion !== STRUCTURE_CACHE_VERSION) {
+        localStorage.setItem('caebpt_structure_version', STRUCTURE_CACHE_VERSION);
+        localStorage.removeItem('caebpt_official_structure');
+        return defaultOfficialStructure;
+      }
       const saved = localStorage.getItem('caebpt_official_structure');
       return saved ? sanitizeOfficialStructure(JSON.parse(saved)) : defaultOfficialStructure;
     } catch (e) {
@@ -587,6 +600,7 @@ export function WebsiteProvider({ children }) {
 
   // Persist to localStorage (fast local cache)
   useEffect(() => {
+    localStorage.setItem('caebpt_structure_version', STRUCTURE_CACHE_VERSION);
     localStorage.setItem('caebpt_official_structure', JSON.stringify(officialStructure));
   }, [officialStructure]);
 

@@ -3,7 +3,7 @@ import PageBanner from '../components/PageBanner';
 import Contact from '../components/Contact';
 import { MapPin, Phone, Mail, Clock, HelpCircle, Building } from 'lucide-react';
 
-export default function ContactPage({ onOpenEnquiry }) {
+export default function ContactPage() {
   return (
     <div>
       <PageBanner
@@ -13,7 +13,7 @@ export default function ContactPage({ onOpenEnquiry }) {
         breadcrumb={[{ name: "Contact" }]}
       />
 
-      <Contact onOpenEnquiry={onOpenEnquiry} />
+      <Contact />
 
       {/* Internal Phone Directory Table */}
       <section className="section-padding bg-slate-50 border-b border-slate-200">

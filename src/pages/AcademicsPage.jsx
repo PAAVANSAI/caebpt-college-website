@@ -46,7 +46,7 @@ import {
   Eye
 } from 'lucide-react';
 
-export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
+export default function AcademicsPage({ onSelectProgram }) {
   const { officialStructure } = useWebsite();
   const { section } = useParams();
   const [searchParams] = useSearchParams();
@@ -582,16 +582,6 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                       <Download className="w-4 h-4 text-[#d4a72c]" />
                       <span>UG Courses (.docx)</span>
                     </a>
-                    {onOpenEnquiry && (
-                      <button
-                        type="button"
-                        onClick={() => onOpenEnquiry(academics.courses[0])}
-                        className="btn btn-gold text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
-                      >
-                        <span>Admission Enquiry</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </button>
-                    )}
                   </div>
                 </div>
 
@@ -876,18 +866,6 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                       2-Year (4 Semesters) postgraduate research programs governed by ICAR PG recommendations and ANGRAU academic regulations, with 70 total credits including 30 research dissertation credits.
                     </p>
                   </div>
-                  {onOpenEnquiry && (
-                    <div className="flex flex-wrap lg:flex-col gap-3 flex-shrink-0">
-                      <button
-                        type="button"
-                        onClick={() => onOpenEnquiry({ name: "M.Tech. (Agricultural Engineering)", level: "Postgraduate" })}
-                        className="btn btn-navy text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
-                      >
-                        <span>Admission Enquiry</span>
-                        <ArrowRight className="w-4 h-4 text-[#f5c84c]" />
-                      </button>
-                    </div>
-                  )}
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 text-center">
@@ -943,19 +921,6 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                         <strong>Research Infrastructure:</strong> {b.researchLabs}
                       </div>
                     </div>
-
-                    {onOpenEnquiry && (
-                      <div className="pt-4 border-t border-slate-100 mt-4">
-                        <button
-                          type="button"
-                          onClick={() => onOpenEnquiry({ name: b.name, level: "Postgraduate" })}
-                          className="btn btn-navy btn-sm text-xs w-full flex items-center justify-center gap-1.5"
-                        >
-                          <span>Admission Enquiry</span>
-                          <ArrowRight className="w-3.5 h-3.5 text-[#f5c84c]" />
-                        </button>
-                      </div>
-                    )}
                   </div>
                 ))}
               </div>
@@ -978,18 +943,6 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                       3-Year advanced doctoral program featuring 100 total credits (25 coursework + 75 research dissertation), patentable engineering innovations, and rigorous peer-reviewed NAAS publications.
                     </p>
                   </div>
-                  {onOpenEnquiry && (
-                    <div className="flex flex-wrap lg:flex-col gap-3 flex-shrink-0">
-                      <button
-                        type="button"
-                        onClick={() => onOpenEnquiry({ name: "Ph.D. in Agricultural Engineering", level: "Doctoral" })}
-                        className="btn btn-navy text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
-                      >
-                        <span>Admission Enquiry</span>
-                        <ArrowRight className="w-4 h-4 text-[#f5c84c]" />
-                      </button>
-                    </div>
-                  )}
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 text-center">
@@ -1041,19 +994,6 @@ export default function AcademicsPage({ onSelectProgram, onOpenEnquiry }) {
                         <p className="text-xs text-slate-600 leading-relaxed">{p.keyAreas}</p>
                       </div>
                     </div>
-
-                    {onOpenEnquiry && (
-                      <div className="pt-4 border-t border-slate-100 mt-4">
-                        <button
-                          type="button"
-                          onClick={() => onOpenEnquiry({ name: p.name, level: "Doctoral" })}
-                          className="btn btn-navy btn-sm text-xs w-full flex items-center justify-center gap-1.5"
-                        >
-                          <span>Admission Enquiry</span>
-                          <ArrowRight className="w-3.5 h-3.5 text-[#f5c84c]" />
-                        </button>
-                      </div>
-                    )}
                   </div>
                 ))}
               </div>

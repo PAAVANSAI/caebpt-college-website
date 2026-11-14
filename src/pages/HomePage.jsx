@@ -25,7 +25,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 
-export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNotice }) {
+export default function HomePage({ onSelectProgram, onSelectNotice }) {
   const { siteSettings, officialStructure } = useWebsite();
   const currentStructure = officialStructure || officialStructureData;
   const messages = currentStructure?.messages || officialStructureData.messages;
@@ -122,7 +122,7 @@ export default function HomePage({ onOpenAdmissions, onSelectProgram, onSelectNo
       )}
 
       {/* Hero Banner Section */}
-      <Hero onOpenAdmissionsModal={() => onOpenAdmissions?.()} />
+      <Hero />
 
       {/* Live Notice Ticker */}
       <NoticeTicker onSelectNotice={onSelectNotice} />

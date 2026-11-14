@@ -59,19 +59,30 @@ export default function DepartmentDetailPage() {
   // Neutral fallback silhouette if photo is unavailable
   const DEFAULT_AVATAR = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
 
-  const resolvedHodPhoto = defHod.hodPhoto || facultyData.find(f => f.id === defHod.hodId)?.avatar || DEFAULT_AVATAR;
-  const resolvedHodId = defHod.hodId || "faculty";
+  const hodFacultyProfile = facultyData.find(f => 
+    (defHod.hodId && f.id === defHod.hodId) || 
+    (defHod.hodName && f.name?.toLowerCase() === defHod.hodName?.toLowerCase()) ||
+    (defHod.hodName && f.fullName?.toLowerCase() === defHod.hodName?.toLowerCase())
+  );
+  const resolvedHodPhoto = defHod.hodPhoto || hodFacultyProfile?.avatar || DEFAULT_AVATAR;
+  const resolvedHodId = defHod.hodId || hodFacultyProfile?.id || (defHod.hodName ? defHod.hodName.toLowerCase().replace(/[^a-z0-9]+/g, '-') : null);
 
   const resolvedFacultyMembers = (defHod.facultyMembers || []).map((defFac) => {
     const userFac = (userHod.facultyMembers || []).find(
-      (m) => m.id === defFac.id || m.name === defFac.name
+      (m) => m.id === defFac.id || m.name?.toLowerCase() === defFac.name?.toLowerCase()
     );
-    const facultyProfile = facultyData.find(f => f.id === defFac.id || f.name?.toLowerCase() === defFac.name?.toLowerCase());
+    const facultyProfile = facultyData.find(f => 
+      f.id === defFac.id || 
+      f.name?.toLowerCase() === defFac.name?.toLowerCase() ||
+      f.fullName?.toLowerCase() === defFac.name?.toLowerCase()
+    );
+    const authenticPhoto = defFac.photo || facultyProfile?.avatar || DEFAULT_AVATAR;
+    const canonicalId = defFac.id || facultyProfile?.id || defFac.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
     return {
       ...defFac,
       ...(userFac || {}),
-      id: defFac.id,
-      photo: defFac.photo || facultyProfile?.avatar || DEFAULT_AVATAR
+      id: canonicalId,
+      photo: authenticPhoto
     };
   });
 
@@ -81,8 +92,13 @@ export default function DepartmentDetailPage() {
     hodAndFaculty: {
       ...defHod,
       ...userHod,
-      hodPhoto: resolvedHodPhoto,
       hodId: resolvedHodId,
+      hodName: defHod.hodName || userHod.hodName,
+      hodDesignation: defHod.hodDesignation || userHod.hodDesignation,
+      hodPhoto: resolvedHodPhoto,
+      hodPhone: defHod.hodPhone || userHod.hodPhone,
+      hodEmail: defHod.hodEmail || userHod.hodEmail,
+      hodSpecialization: defHod.hodSpecialization || userHod.hodSpecialization,
       facultyMembers: resolvedFacultyMembers
     }
   };

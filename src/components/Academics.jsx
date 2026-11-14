@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BookOpen, Clock, Users, ArrowRight, CheckCircle2, Sparkles, GraduationCap } from 'lucide-react';
 import { programsData } from '../data/academicsData';
 
-export default function Academics({ onSelectProgram, onOpenEnquiry }) {
+export default function Academics({ onSelectProgram }) {
   const [selectedLevel, setSelectedLevel] = useState('All');
 
   const filterTabs = ['All', 'Undergraduate', 'Postgraduate', 'Doctoral'];
@@ -112,24 +112,14 @@ export default function Academics({ onSelectProgram, onOpenEnquiry }) {
               </div>
 
               {/* Card Footer Actions */}
-              <div className="p-4 bg-slate-50/70 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
+              <div className="p-4 bg-slate-50/70 border-t border-slate-100 flex items-center justify-center gap-2 mt-auto">
                 <button
                   type="button"
                   onClick={() => onSelectProgram(program)}
-                  className="btn btn-outline btn-sm text-xs flex-1 justify-center"
+                  className="btn btn-outline btn-sm text-xs w-full justify-center"
                 >
                   <BookOpen className="w-3.5 h-3.5" />
                   <span>Syllabus & Details</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => onOpenEnquiry(program)}
-                  className="btn btn-gold btn-sm text-xs px-3"
-                  title="Enquire about this course"
-                >
-                  <span>Enquire</span>
-                  <ArrowRight className="w-3 h-3" />
                 </button>
               </div>
             </div>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PageBanner from '../components/PageBanner';
-import Admissions from '../components/Admissions';
 import { courseIntakeTables, consolidatedAllBranchesTable } from '../data/academicsData';
 import {
   admissionCriteriaUG,
@@ -114,9 +113,6 @@ export default function AdmissionsPage() {
             </a>
             <a href="#academic-lifecycle" className="px-2.5 py-1 rounded hover:bg-white/10 text-slate-300 hover:text-white transition-colors">
               Registration Lifecycle
-            </a>
-            <a href="#admissions-form" className="px-2.5 py-1 rounded bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold transition-colors">
-              Enquiry Form
             </a>
           </div>
         </div>
@@ -1193,14 +1189,7 @@ export default function AdmissionsPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 8: ONLINE ADMISSION APPLICATION & COUNSELING ENQUIRY
-          ───────────────────────────────────────────────────────────── */}
-      <section id="admissions-form" className="scroll-mt-24">
-        <Admissions />
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-          SECTION 9: FREQUENTLY ASKED QUESTIONS (FAQS)
+          SECTION 8: FREQUENTLY ASKED QUESTIONS (FAQS)
           ───────────────────────────────────────────────────────────── */}
       <section className="section-padding bg-white border-b border-slate-200">
         <div className="container max-w-4xl mx-auto space-y-6">

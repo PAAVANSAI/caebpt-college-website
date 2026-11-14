@@ -32,7 +32,7 @@ const deptIconMap = {
   beas: Building2,
 };
 
-export default function DepartmentsPage({ onOpenEnquiry }) {
+export default function DepartmentsPage() {
   const { officialStructure } = useWebsite();
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -178,15 +178,6 @@ export default function DepartmentsPage({ onOpenEnquiry }) {
                       <span>Explore Department</span>
                       <ChevronRight className="w-3.5 h-3.5" />
                     </Link>
-                    {onOpenEnquiry && (
-                      <button
-                        type="button"
-                        onClick={() => onOpenEnquiry({ name: `${dept.name} Division` })}
-                        className="btn btn-outline text-xs font-bold py-2 px-3"
-                      >
-                        <span>Enquire</span>
-                      </button>
-                    )}
                   </div>
                 </div>
               );

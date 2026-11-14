@@ -5,7 +5,6 @@ import {
   X,
   ChevronDown,
   ChevronRight,
-  GraduationCap,
   ExternalLink,
   Shield,
   Globe,
@@ -16,7 +15,7 @@ import CollegeEmblem from './CollegeEmblem';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
 
-export default function Header({ onOpenAdmissionsModal }) {
+export default function Header() {
   const { officialStructure, siteSettings } = useWebsite();
   const currentStructure = officialStructure || officialStructureData;
   const [isScrolled, setIsScrolled] = useState(false);
@@ -294,16 +293,6 @@ export default function Header({ onOpenAdmissionsModal }) {
                 <span>Admin</span>
               </Link>
 
-              {/* Primary Apply CTA on upper bar */}
-              <button
-                type="button"
-                onClick={onOpenAdmissionsModal}
-                className="btn btn-gold px-4 py-2 text-xs font-extrabold hidden sm:inline-flex items-center gap-1.5 shadow-sm"
-              >
-                <GraduationCap className="w-4 h-4 text-[#06101e]" />
-                <span>Apply for Admission</span>
-              </button>
-
               {/* Mobile Hamburger Toggle (Visible on screens < 1024px) */}
               <button
                 type="button"
@@ -527,22 +516,6 @@ export default function Header({ onOpenAdmissionsModal }) {
             })}
           </ul>
 
-          {/* Scrolled Compact Action Button (Fades and glides in smoothly on scroll without changing layout width) - Desktop only */}
-          <div className="hidden lg:flex w-[180px] xl:w-[220px] items-center justify-end flex-shrink-0">
-            <button
-              type="button"
-              onClick={onOpenAdmissionsModal}
-              className={`btn btn-gold btn-sm text-xs font-extrabold whitespace-nowrap shadow-xs transition-fade-slide hidden lg:inline-flex items-center gap-1.5 ${
-                isScrolled
-                  ? 'opacity-100 translate-y-0 pointer-events-auto'
-                  : 'opacity-0 -translate-y-1.5 pointer-events-none'
-              }`}
-            >
-              <GraduationCap className="w-3.5 h-3.5" />
-              <span>Apply Now</span>
-            </button>
-          </div>
-
           {/* Unified Sticky Mobile Header Bar */}
           <div className="lg:hidden flex items-center justify-between w-full py-1 gap-2">
             <Link
@@ -563,15 +536,6 @@ export default function Header({ onOpenAdmissionsModal }) {
             </Link>
 
             <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
-              <button
-                type="button"
-                onClick={onOpenAdmissionsModal}
-                className="btn btn-gold py-1.5 px-2.5 text-xs font-extrabold inline-flex items-center gap-1 shadow-xs"
-              >
-                <GraduationCap className="w-3.5 h-3.5 text-[#06101e]" />
-                <span className="text-[11px] sm:text-xs">Apply</span>
-              </button>
-
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -733,18 +697,6 @@ export default function Header({ onOpenAdmissionsModal }) {
 
             {/* Mobile Footer CTAs */}
             <div className="pt-3 mt-2 border-t border-slate-200 space-y-2">
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenAdmissionsModal();
-                }}
-                className="w-full btn btn-gold btn-md justify-center font-extrabold shadow-sm"
-              >
-                <GraduationCap className="w-4 h-4 text-[#06101e]" />
-                <span className="font-extrabold text-[#06101e]">Apply for Admission</span>
-              </button>
-
               <a
                 href="tel:+918643224025"
                 className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200 hover:bg-slate-200 transition-colors"

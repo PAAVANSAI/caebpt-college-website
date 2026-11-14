@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { X, Clock, GraduationCap, CheckCircle2, Briefcase, FileText, ArrowRight, FileCheck } from 'lucide-react';
 
-export default function ProgramModal({ program, onClose, onApplyClick }) {
+export default function ProgramModal({ program, onClose }) {
   if (!program) return null;
 
   const highlightsList = Array.isArray(program.highlights)
@@ -150,17 +151,15 @@ export default function ProgramModal({ program, onClose, onApplyClick }) {
             Close
           </button>
 
-          <button
-            type="button"
-            onClick={() => {
-              onClose();
-              onApplyClick(program);
-            }}
-            className="btn btn-gold btn-sm justify-center order-1 sm:order-2"
+          <Link
+            to="/admissions"
+            onClick={onClose}
+            className="btn btn-gold btn-sm justify-center order-1 sm:order-2 inline-flex items-center gap-1.5"
+            style={{ textDecoration: 'none' }}
           >
-            <span>Enquire for {program.degree}</span>
+            <span>Admissions Criteria & Guidelines</span>
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </Link>
         </div>
       </div>
     </div>

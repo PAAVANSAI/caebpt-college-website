@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { ArrowRight, BookOpen, Building2, ChevronDown, ChevronRight, Plus, Sparkles, Award } from 'lucide-react';
+import { ArrowRight, BookOpen, Building2, ChevronDown, ChevronRight, Sparkles, Award } from 'lucide-react';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
 import { collegeInfo as defaultCollegeInfo } from '../data/collegeInfo';
 
-export default function Hero({ onOpenAdmissionsModal }) {
+export default function Hero() {
   const { officialStructure, collegeInfo } = useWebsite();
   const currentCollegeInfo = collegeInfo || defaultCollegeInfo;
   const hero = officialStructure?.hero || officialStructureData.hero || {
@@ -130,24 +130,15 @@ export default function Hero({ onOpenAdmissionsModal }) {
             {hero.intro}
           </p>
 
-          {/* Amrita-Style Pill Action Buttons */}
+          {/* Clean Action Buttons */}
           <div className="flex flex-wrap items-center gap-3 mb-10 sm:mb-14">
             <button
               type="button"
-              onClick={onOpenAdmissionsModal}
+              onClick={() => scrollToSection('academics')}
               className="px-6 py-3.5 rounded-full bg-[#d4a72c] hover:bg-[#ecc75f] text-[#06101e] font-extrabold text-xs sm:text-sm flex items-center gap-2 shadow-2xl hover:scale-105 transition-all cursor-pointer"
             >
-              <Plus className="w-4 h-4 stroke-[3]" />
-              <span>Apply for Admission</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => scrollToSection('academics')}
-              className="px-5 py-3.5 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-sm flex items-center gap-2 backdrop-blur-md border border-white/20 shadow-lg hover:scale-105 transition-all cursor-pointer"
-            >
-              <BookOpen className="w-4 h-4 text-[#f5c84c]" />
-              <span>Explore Courses</span>
+              <BookOpen className="w-4 h-4 text-[#06101e]" />
+              <span>Explore Academic Programmes</span>
             </button>
 
             <button
@@ -156,7 +147,7 @@ export default function Hero({ onOpenAdmissionsModal }) {
               className="px-5 py-3.5 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-sm flex items-center gap-2 backdrop-blur-md border border-white/20 shadow-lg hover:scale-105 transition-all cursor-pointer"
             >
               <Building2 className="w-4 h-4 text-[#f5c84c]" />
-              <span>Facilities</span>
+              <span>Campus Facilities</span>
             </button>
           </div>
         </div>

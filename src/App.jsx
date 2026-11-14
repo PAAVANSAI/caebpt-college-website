@@ -52,8 +52,7 @@ const AdminPage = lazyWithRetry(() => import('./pages/AdminPage'));
 // Lazy-load on-demand Modals so they are excluded from the initial critical JS bundle
 const ProgramModal = lazyWithRetry(() => import('./components/ProgramModal'));
 const NoticeModal = lazyWithRetry(() => import('./components/NoticeModal'));
-const Admissions = lazyWithRetry(() => import('./components/Admissions'));
-import { X, GraduationCap, AlertTriangle, ArrowLeft } from 'lucide-react';
+import { AlertTriangle } from 'lucide-react';
 
 function PageLoader() {
   return (
@@ -75,12 +74,10 @@ function AppContent() {
 
   const [selectedProgram, setSelectedProgram] = useState(null);
   const [selectedNotice, setSelectedNotice] = useState(null);
-  const [isAdmissionsModalOpen, setIsAdmissionsModalOpen] = useState(false);
-  const [prefilledCourse, setPrefilledCourse] = useState('');
 
   // Lock background body scroll when any modal is open to eliminate double scrollbars
   useEffect(() => {
-    const isAnyModalOpen = Boolean(selectedProgram || selectedNotice || isAdmissionsModalOpen);
+    const isAnyModalOpen = Boolean(selectedProgram || selectedNotice);
     if (isAnyModalOpen) {
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
@@ -88,25 +85,14 @@ function AppContent() {
         document.body.style.overflow = originalOverflow;
       };
     }
-  }, [selectedProgram, selectedNotice, isAdmissionsModalOpen]);
-
-  const handleOpenAdmissions = (program) => {
-    if (program && program.name) {
-      setPrefilledCourse(program.name);
-    } else {
-      setPrefilledCourse('B.Tech in Agricultural Engineering');
-    }
-    setIsAdmissionsModalOpen(true);
-  };
+  }, [selectedProgram, selectedNotice]);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 selection:bg-[#fae4a4] selection:text-[#06101e]">
       <ScrollToTop />
 
       {/* Main Official Header with Dropdowns */}
-      <Header
-        onOpenAdmissionsModal={() => handleOpenAdmissions()}
-      />
+      <Header />
 
       {/* Maintenance Mode Alert if enabled in Admin Dashboard */}
       {siteSettings.maintenanceMode && (
@@ -126,7 +112,6 @@ function AppContent() {
                 path="/"
                 element={
                   <HomePage
-                    onOpenAdmissions={handleOpenAdmissions}
                     onSelectProgram={(p) => setSelectedProgram(p)}
                     onSelectNotice={(n) => setSelectedNotice(n)}
                   />
@@ -147,7 +132,6 @@ function AppContent() {
                 element={
                   <AcademicsPage
                     onSelectProgram={(p) => setSelectedProgram(p)}
-                    onOpenEnquiry={handleOpenAdmissions}
                   />
                 }
               />
@@ -156,7 +140,6 @@ function AppContent() {
                 element={
                   <AcademicsPage
                     onSelectProgram={(p) => setSelectedProgram(p)}
-                    onOpenEnquiry={handleOpenAdmissions}
                   />
                 }
               />
@@ -164,7 +147,7 @@ function AppContent() {
               {/* E. DEPARTMENTS (Separate Top-Level Nav Tab) */}
               <Route
                 path="/departments"
-                element={<DepartmentsPage onOpenEnquiry={handleOpenAdmissions} />}
+                element={<DepartmentsPage />}
               />
               <Route
                 path="/departments/:deptSlug"
@@ -172,7 +155,7 @@ function AppContent() {
               />
               <Route
                 path="/academics/departments"
-                element={<DepartmentsPage onOpenEnquiry={handleOpenAdmissions} />}
+                element={<DepartmentsPage />}
               />
               <Route
                 path="/academics/departments/:deptSlug"
@@ -187,7 +170,7 @@ function AppContent() {
               <Route path="/publications" element={<PublicationsPage />} />
               <Route
                 path="/contact"
-                element={<ContactPage onOpenEnquiry={handleOpenAdmissions} />}
+                element={<ContactPage />}
               />
 
               {/* Supporting Subpages */}
@@ -236,7 +219,6 @@ function AppContent() {
           <ProgramModal
             program={selectedProgram}
             onClose={() => setSelectedProgram(null)}
-            onApplyClick={(program) => handleOpenAdmissions(program)}
           />
         )}
 
@@ -245,48 +227,6 @@ function AppContent() {
             notice={selectedNotice}
             onClose={() => setSelectedNotice(null)}
           />
-        )}
-
-        {isAdmissionsModalOpen && (
-          <div className="modal-overlay" onClick={() => setIsAdmissionsModalOpen(false)}>
-            <div
-              className="modal-content modal-content-xl w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden border border-slate-200 bg-white flex flex-col"
-              onClick={(e) => e.stopPropagation()}
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="admissions-modal-heading"
-            >
-              <div className="bg-[#0b1a2e] text-white px-4 py-3.5 sm:px-6 sm:py-4 flex items-center justify-between border-b border-[#1b3459] flex-shrink-0">
-                <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/15">
-                    <GraduationCap className="w-5 h-5 text-[#f5c84c]" />
-                  </div>
-                  <div className="min-w-0">
-                    <h3 id="admissions-modal-heading" className="font-heading text-xs sm:text-base md:text-lg font-bold text-white leading-snug truncate">
-                      Admissions Application Form (2025–2026)
-                    </h3>
-                    <p className="text-[11px] sm:text-xs text-slate-300 truncate">CAE Bapatla • Constituent College of ANGRAU</p>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setIsAdmissionsModalOpen(false)}
-                  className="text-slate-400 hover:text-white p-1.5 sm:p-2 rounded-xl hover:bg-white/10 transition-colors flex-shrink-0"
-                  aria-label="Close Enquiry Modal"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              <div className="p-4 sm:p-6 overflow-y-auto modal-body-scroll flex-1">
-                <Admissions
-                  initialCourse={prefilledCourse}
-                  isModal={true}
-                  onClose={() => setIsAdmissionsModalOpen(false)}
-                />
-              </div>
-            </div>
-          </div>
         )}
       </Suspense>
     </div>

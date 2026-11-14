@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Layers, Tractor, Droplets, UtensilsCrossed, SunMedium, Cpu, CheckCircle2, User, ArrowRight } from 'lucide-react';
 import { departmentsData } from '../data/academicsData';
 
@@ -10,7 +11,7 @@ const iconMap = {
   Cpu: Cpu,
 };
 
-export default function Departments({ onOpenEnquiry }) {
+export default function Departments() {
   return (
     <section id="departments" className="section-padding bg-white border-b border-slate-200">
       <div className="container">
@@ -90,14 +91,14 @@ export default function Departments({ onOpenEnquiry }) {
                   <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                     Active Department
                   </span>
-                  <button
-                    type="button"
-                    onClick={() => onOpenEnquiry({ name: `${dept.name} Courses` })}
+                  <Link
+                    to={`/departments/${dept.slug || dept.id}`}
                     className="text-xs font-bold text-navy-800 hover:text-gold-600 inline-flex items-center gap-1 cursor-pointer"
+                    style={{ textDecoration: 'none' }}
                   >
-                    <span>Enquire Dept</span>
+                    <span>View Department</span>
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             );

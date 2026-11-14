@@ -2,7 +2,7 @@ import React from 'react';
 import { MapPin, Phone, Mail, Clock, Send, Globe, Navigation, ExternalLink } from 'lucide-react';
 import { collegeInfo } from '../data/collegeInfo';
 
-export default function Contact({ onOpenEnquiry }) {
+export default function Contact() {
   return (
     <section id="contact" className="section-padding bg-white border-b border-slate-200">
       <div className="container">
@@ -101,15 +101,15 @@ export default function Contact({ onOpenEnquiry }) {
               </div>
             </div>
 
-            {/* Quick Action Enquiry Button */}
-            <button
-              type="button"
-              onClick={() => onOpenEnquiry({ name: 'General Information Enquiry' })}
-              className="btn btn-primary btn-md w-full justify-center shadow-md text-xs sm:text-sm font-semibold"
+            {/* Quick Action Email Button */}
+            <a
+              href={`mailto:${collegeInfo.contact.email}`}
+              className="btn btn-primary btn-md w-full justify-center shadow-md text-xs sm:text-sm font-semibold inline-flex items-center gap-2"
+              style={{ textDecoration: 'none' }}
             >
-              <Send className="w-4 h-4 text-gold-300" />
-              <span>Submit General Campus Enquiry</span>
-            </button>
+              <Mail className="w-4 h-4 text-gold-300" />
+              <span>Email Campus Office: {collegeInfo.contact.email}</span>
+            </a>
           </div>
 
           {/* Right Column: Google Maps Interactive Embed & Directions */}
