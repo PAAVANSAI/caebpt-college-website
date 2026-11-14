@@ -231,39 +231,24 @@ export default function Header() {
         Sits naturally in document flow on large screens. On mobile, a dedicated unified bar is used.
       */}
       <div className="hidden lg:block bg-white border-b border-slate-200/80 relative z-30">
-        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 py-2.5 sm:py-3">
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 py-3 sm:py-3.5">
           <div className="flex items-center justify-between gap-4">
             {/* College Crest & Title */}
             <Link
               to="/"
-              className="flex items-center gap-3 group cursor-pointer"
+              className="flex items-center gap-3.5 group cursor-pointer"
               style={{ textDecoration: 'none' }}
             >
               <div className="flex-shrink-0 transition-transform duration-200 group-hover:scale-105">
-                <CollegeEmblem size={44} />
+                <CollegeEmblem size={52} />
               </div>
 
-              <div className="flex flex-col">
+              <div className="flex flex-col justify-center">
                 <span
-                  className="font-heading font-extrabold text-[#0b1a2e] text-base sm:text-lg lg:text-xl tracking-tight leading-tight"
+                  className="font-heading font-black text-[#0b1a2e] text-lg sm:text-xl lg:text-2xl xl:text-[25px] tracking-tight leading-tight"
                 >
-                  {currentStructure.collegeFullName || "COLLEGE OF AGRICULTURAL ENGINEERING"}
+                  {currentStructure.collegeFullName || "Dr. NTR College of Agricultural Engineering, Bapatla"}
                 </span>
-                <div className="flex items-center gap-2 mt-0.5 flex-wrap">
-                  <span className="text-xs font-bold text-[#854d0e] tracking-wider uppercase">
-                    BAPATLA
-                  </span>
-                  <span className="text-slate-300 text-xs hidden sm:inline">•</span>
-                  <span className="text-xs text-slate-500 font-medium hidden sm:inline">
-                    {currentStructure.domain}
-                  </span>
-                  <span className="badge badge-navy text-[10px] py-0.5 px-2 hidden sm:inline-flex font-bold">
-                    ESTD. {currentStructure.estd}
-                  </span>
-                  <span className="text-xs text-slate-500 font-semibold hidden md:inline">
-                    Constituent of ANGRAU
-                  </span>
-                </div>
               </div>
             </Link>
 
