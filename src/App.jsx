@@ -52,7 +52,7 @@ const AdminPage = lazyWithRetry(() => import('./pages/AdminPage'));
 // Lazy-load on-demand Modals so they are excluded from the initial critical JS bundle
 const ProgramModal = lazyWithRetry(() => import('./components/ProgramModal'));
 const NoticeModal = lazyWithRetry(() => import('./components/NoticeModal'));
-import { AlertTriangle } from 'lucide-react';
+import { AlertTriangle, ArrowLeft } from 'lucide-react';
 
 function PageLoader() {
   return (
