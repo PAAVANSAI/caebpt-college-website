@@ -33,7 +33,7 @@ export default function Hero() {
   const ytVideoId = isVideoMode ? getYouTubeId(hero.bgVideo) : null;
 
   return (
-    <section id="home" className="relative bg-[#06101e] text-white overflow-hidden min-h-[420px] sm:min-h-[460px] lg:min-h-[500px] flex items-center">
+    <section id="home" className="relative bg-[#06101e] text-white overflow-hidden min-h-[calc(100vh-158px)] lg:min-h-[calc(100vh-160px)] flex items-center">
       {/* Background Campus Media with Soft Cinematic Depth-of-Field */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {isVideoMode ? (
