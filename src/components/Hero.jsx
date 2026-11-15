@@ -1,8 +1,41 @@
-import React from 'react';
-import { Sparkles } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
 import { collegeInfo as defaultCollegeInfo } from '../data/collegeInfo';
+
+const DEFAULT_HERO_SLIDES = [
+  {
+    image: "/images/hero/slide_1_workshop.jpg",
+    title: "Mechanical Workshop & Fabrication Lab",
+    alt: "Agricultural engineering students in mechanical workshop laboratory"
+  },
+  {
+    image: "/images/hero/slide_2_surveying.jpg",
+    title: "Field Surveying & Topographic Levelling Practice",
+    alt: "Faculty instructing students in surveying and theodolite field work"
+  },
+  {
+    image: "/images/hero/slide_3_machinery_lab.jpg",
+    title: "Farm Machinery & Seeding Technology Demonstration",
+    alt: "Students learning farm machinery mechanisms in lab"
+  },
+  {
+    image: "/images/hero/slide_4_implements_yard.jpg",
+    title: "Farm Power Implements & Field Testing Yard",
+    alt: "Outdoor machinery yard with tractor implements and equipment"
+  },
+  {
+    image: "/images/hero/slide_5_statue.jpg",
+    title: "College Entrance & Institutional Memorial",
+    alt: "Golden bust statue and entrance of Dr NTR CAE Bapatla"
+  },
+  {
+    image: "/images/hero/slide_6_signboard.jpg",
+    title: "ANGRAU Dr NTR College Foundation Plaque",
+    alt: "University stone foundation inscription in Telugu"
+  }
+];
 
 export default function Hero() {
   const { officialStructure, collegeInfo } = useWebsite();
@@ -13,16 +46,32 @@ export default function Hero() {
     titleAccent: "Agricultural Engineering",
     titleSuffix: "& Technology",
     intro: "Pioneering academic distinction, farm mechanization, micro-irrigation systems, and agro-processing engineering to drive sustainable agrarian advancement under ANGRAU.",
-    bgImage: "/images/campus_hero.jpg",
-    highlights: [
-      { count: "6", label: "Core Academic Departments", note: "Specialized Disciplines" },
-      { count: "1,046", label: "Total Graduates", note: "Graduated Agro-Engineers" },
-      { count: "25", label: "Campus Green Acreage", note: "9.51 Hectares on NH-216" },
-      { count: "2021–26", label: "ICAR Accreditation", note: "National NAEAB Cycle" },
-    ]
   };
 
-  // Helper to extract YouTube Video ID for background streaming
+  const slides = Array.isArray(hero.slides) && hero.slides.length > 0
+    ? hero.slides
+    : DEFAULT_HERO_SLIDES;
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  }, [slides.length]);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  }, [slides.length]);
+
+  useEffect(() => {
+    if (isPaused || slides.length <= 1) return;
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isPaused, nextSlide, slides.length]);
+
+  // Helper to extract YouTube Video ID for background streaming (if video is enabled)
   const getYouTubeId = (url) => {
     if (!url) return null;
     const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
@@ -33,8 +82,13 @@ export default function Hero() {
   const ytVideoId = isVideoMode ? getYouTubeId(hero.bgVideo) : null;
 
   return (
-    <section id="home" className="relative bg-[#06101e] text-white overflow-hidden min-h-[calc(100vh-185px)] lg:min-h-[calc(100vh-188px)] flex items-start">
-      {/* Background Campus Media with Soft Cinematic Depth-of-Field */}
+    <section
+      id="home"
+      className="relative bg-[#06101e] text-white overflow-hidden min-h-[calc(100vh-185px)] lg:min-h-[calc(100vh-188px)] flex items-start"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Background Campus Media: Sliding Carousel or Video */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {isVideoMode ? (
           ytVideoId ? (
@@ -54,45 +108,58 @@ export default function Hero() {
               muted
               playsInline
               preload="auto"
-              poster={hero.bgImage || "/images/campus_hero.jpg"}
+              poster={slides[0]?.image || "/images/hero/slide_1_workshop.jpg"}
               className="w-full h-full object-cover object-center scale-105 filter blur-[1.5px]"
             >
               <source src={hero.bgVideo} type="video/mp4" />
               <source src={hero.bgVideo} type="video/webm" />
               <img
-                src={hero.bgImage || "/images/campus_hero.jpg"}
+                src={slides[0]?.image || "/images/hero/slide_1_workshop.jpg"}
                 alt="Dr NTR College of Agricultural Engineering, Bapatla Campus"
                 className="w-full h-full object-cover"
               />
             </video>
           )
         ) : (
-          <img
-            src={hero.bgImage || "/images/campus_hero.jpg"}
-            alt="Dr NTR College of Agricultural Engineering, Bapatla Campus"
-            className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000"
-            fetchpriority="high"
-            loading="eager"
-            decoding="async"
-            width="1280"
-            height="720"
-          />
+          /* Multi-image Sliding Carousel with Gentle Ken-Burns Zoom */
+          slides.map((slide, idx) => {
+            const isActive = idx === currentSlide;
+            return (
+              <div
+                key={slide.image || idx}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  isActive ? 'opacity-100 z-[1]' : 'opacity-0 z-0 pointer-events-none'
+                }`}
+              >
+                <img
+                  src={slide.image}
+                  alt={slide.alt || "Campus view at Dr NTR CAE Bapatla"}
+                  className={`w-full h-full object-cover object-center transform transition-transform duration-[7000ms] ease-out ${
+                    isActive ? 'scale-105' : 'scale-100'
+                  }`}
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  fetchpriority={idx === 0 ? "high" : "low"}
+                  decoding="async"
+                />
+              </div>
+            );
+          })
         )}
 
         {/* Amrita-Inspired Deep Cinematic Gradient Scrim (Vignette) */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 z-[2] pointer-events-none"
           style={{
             background: `
-              linear-gradient(to right, rgba(6, 16, 30, 0.88) 0%, rgba(6, 16, 30, 0.60) 45%, rgba(6, 16, 30, 0.35) 80%, rgba(6, 16, 30, 0.30) 100%),
-              linear-gradient(180deg, rgba(6, 16, 30, 0.75) 0%, rgba(6, 16, 30, 0.40) 35%, transparent 60%, rgba(6, 16, 30, 0.85) 100%)
+              linear-gradient(to right, rgba(6, 16, 30, 0.88) 0%, rgba(6, 16, 30, 0.55) 50%, rgba(6, 16, 30, 0.40) 80%, rgba(6, 16, 30, 0.35) 100%),
+              linear-gradient(180deg, rgba(6, 16, 30, 0.80) 0%, rgba(6, 16, 30, 0.35) 40%, transparent 65%, rgba(6, 16, 30, 0.85) 100%)
             `
           }}
         />
 
         {/* Subtle grid pattern overlay */}
         <div
-          className="absolute inset-0 opacity-10 pointer-events-none"
+          className="absolute inset-0 z-[3] opacity-10 pointer-events-none"
           style={{
             backgroundImage: 'radial-gradient(circle at 25px 25px, rgba(212, 167, 44, 0.4) 2%, transparent 0%), radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.2) 2%, transparent 0%)',
             backgroundSize: '100px 100px'
@@ -100,13 +167,50 @@ export default function Hero() {
         />
       </div>
 
+      {/* Slide Navigation Controls & Indicators */}
+      {!isVideoMode && slides.length > 1 && (
+        <div className="absolute bottom-4 right-4 sm:right-8 z-[10] flex items-center gap-1.5 sm:gap-2 bg-[#06101e]/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-lg">
+          <button
+            type="button"
+            onClick={prevSlide}
+            className="p-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <div className="flex items-center gap-1.5 px-1">
+            {slides.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setCurrentSlide(idx)}
+                className={`transition-all duration-300 rounded-full cursor-pointer ${
+                  idx === currentSlide
+                    ? 'w-6 h-1.5 bg-[#ecc75f]'
+                    : 'w-1.5 h-1.5 bg-white/40 hover:bg-white/80'
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={nextSlide}
+            className="p-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+      )}
+
       <div className="container relative z-10 pt-5 sm:pt-7 lg:pt-8 pb-6">
         {/* Floating Open Cinematic Layout */}
         <div className="w-full">
           {/* Institutional Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0b1a2e]/90 border border-[#d4a72c]/50 text-[#fae4a4] text-xs font-bold mb-3 sm:mb-4 shadow-lg backdrop-blur-md">
             <Sparkles className="w-3.5 h-3.5 text-[#ecc75f] flex-shrink-0" />
-            <span>{hero.badge}</span>
+            <span>{hero.badge || "ESTD. 1983 • Constituent of ANGRAU • Bapatla"}</span>
           </div>
 
           {/* Guaranteed Strict Single-Line Typography */}
