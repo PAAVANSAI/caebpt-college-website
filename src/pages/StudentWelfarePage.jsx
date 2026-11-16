@@ -100,32 +100,11 @@ export default function StudentWelfarePage() {
                       <span className="badge badge-gold text-[11px] font-extrabold uppercase tracking-wide">
                         Official Welfare Division
                       </span>
-                      {currentActivity.dossier && (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                          Official Document Verified
-                        </span>
-                      )}
                     </div>
                     <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
                       {currentActivity.title || currentActivity.name}
                     </h2>
                   </div>
-
-                  {/* Official Dossier Download Button */}
-                  {currentActivity.dossier && (
-                    <div className="flex-shrink-0">
-                      <a
-                        href={currentActivity.dossier.path}
-                        download={currentActivity.dossier.filename}
-                        className="btn btn-primary text-xs sm:text-sm font-bold inline-flex items-center gap-2 shadow-xs hover:shadow-md transition-all"
-                        style={{ textDecoration: 'none' }}
-                      >
-                        <Download className="w-4 h-4 text-[#06101e]" />
-                        <span>{currentActivity.dossier.label || 'Download Official Dossier (.docx)'}</span>
-                      </a>
-                    </div>
-                  )}
                 </div>
 
                 {/* Primary Executive Summary */}
@@ -300,17 +279,6 @@ export default function StudentWelfarePage() {
                   >
                     <span>← View All 12 Welfare Activities</span>
                   </Link>
-
-                  {currentActivity.dossier && (
-                    <a
-                      href={currentActivity.dossier.path}
-                      download={currentActivity.dossier.filename}
-                      className="text-xs font-bold text-navy-900 hover:text-[#854d0e] inline-flex items-center gap-1.5"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      <span>{currentActivity.dossier.filename}</span>
-                    </a>
-                  )}
                 </div>
               </div>
             </div>

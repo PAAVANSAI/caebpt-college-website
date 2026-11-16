@@ -194,16 +194,6 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                         <span>{historyData.campusLocation || "NH-216, Karlapalem Road, Bapatla"}</span>
                       </div>
                       <span>Shifted to Campus: {historyData.shiftedDate || "May 1994"}</span>
-                      <a
-                        href="/documents/about/College_Historical_Background_and_Mandate.docx"
-                        download="College_Historical_Background_and_Mandate.docx"
-                        className="btn btn-outline text-xs font-bold py-1 px-2.5 flex items-center gap-1.5 mt-1 shadow-2xs"
-                        style={{ textDecoration: 'none' }}
-                        title="Download Official Historical Background and Mandate Document (.docx)"
-                      >
-                        <Download className="w-3 h-3 text-[#d4a72c]" />
-                        <span>Download History Dossier (.docx)</span>
-                      </a>
                     </div>
                   </div>
 
