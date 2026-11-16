@@ -1289,24 +1289,212 @@ export const officialStructureData = {
       },
       {
         id: "beas",
-        slug: "basic-engineering-and-allied-sciences",
-        name: "Basic Engineering and Allied Sciences",
+        slug: "basic-engineering-and-applied-sciences",
+        name: "Basic Engineering & Applied Sciences",
         shortCode: "BEAS",
-        about: "The Department of Basic Engineering & Allied Sciences provides bedrock foundations in engineering mechanics, thermodynamics, CAD/CAM computational design, mathematics, computer science, and agricultural economics.",
+        about: "BASIC ENGINEERING & APPLIED SCIENCES is a premier multidisciplinary department of the College of Agricultural Engineering which offers robust, foundational, and applied engineering education as per the ICAR 5th Deans' Committee recommendations to B.Tech Agricultural Engineering students. This is demonstrated by the curriculum with a total load share of 41.75% in terms of credits and 58% in terms of subjects.\n\nStudents are taught fundamental and cutting-edge aspects of Civil Engineering, Mechanical Engineering, Electrical Engineering, Mathematics, Physics, Chemistry, Communication Skills and Personality Development, Entrepreneurship Development and Business Management applicable to Agricultural Engineering which they can directly or indirectly apply in the field after graduating from their alma mater. It also aids in analyzing design and construction aspects of different structures like farm structures, storage sheds, and biogas plants. B.Tech Agri. Engineering students are also taught courses in Hydrology & Environmental Engineering by virtue of which they develop expertise in water resources availability and management. The knowledge acquired from these courses prepares students for prestigious M.Tech programmes in Water Resources, Hydrology, Water Management, Environmental Engineering, and Farm Machinery in addition to direct professional agro-industrial practice.",
+        academicProgrammes: [
+          {
+            code: "Basic Engineering Courses",
+            title: "18 Foundational & Professional Engineering Courses",
+            credits: "Total 47 Credits",
+            description: "Covers Surveying, Engineering Mechanics, Drawing, Fluid Mechanics, Strength of Materials, Workshop Technology, Instrumentation, Computer Programming, Heat & Mass Transfer, Soil Mechanics, Theory of Machines, Electrical Machines, AutoCAD, Machine Design, Thermodynamics, Refrigeration & AC, Structural Design, and Web Applications."
+          },
+          {
+            code: "Applied Sciences Courses",
+            title: "11 Multi-Disciplinary Applied Science Courses",
+            credits: "Total 31 Credits",
+            description: "Covers Engineering Mathematics I, II & III (Matrices & Calculus, Differential Equations, Numerical Analysis & Statistical Methods), Engineering Physics, Engineering Chemistry, Agronomy & Organic Farming, Communication Skills, Environmental Science & Disaster Management, Soil Science, Horticulture & Plant Protection, and Entrepreneurship & Business Management."
+          }
+        ],
+        courseCategories: [
+          {
+            categoryName: "Courses in Basic Engineering",
+            categoryCredits: "Total 18 Courses • 47 Credits",
+            courses: [
+              { sNo: 1, courseNo: "AEBE 161", title: "Surveying and Levelling", credits: "3 (1+2)" },
+              { sNo: 2, courseNo: "AEBE 162", title: "Engineering Mechanics", credits: "3 (2+1)" },
+              { sNo: 3, courseNo: "AEBE 163", title: "Engineering Drawing", credits: "2 (0+2)" },
+              { sNo: 4, courseNo: "AEBE 164", title: "Fluid Mechanics and Open Channel Hydraulics", credits: "3 (2+1)" },
+              { sNo: 5, courseNo: "AEBE 165", title: "Strength of Materials", credits: "2 (1+1)" },
+              { sNo: 6, courseNo: "AEBE 166", title: "Workshop Technology and Practices", credits: "3 (1+2)" },
+              { sNo: 7, courseNo: "AEBE 167", title: "Applied Electronics and Instrumentation", credits: "3 (2+1)" },
+              { sNo: 8, courseNo: "AEBE 168", title: "Computer Programming and Data Structures", credits: "3 (1+2)" },
+              { sNo: 9, courseNo: "AEBE 261", title: "Heat and Mass Transfer", credits: "2 (2+0)" },
+              { sNo: 10, courseNo: "AEBE 262", title: "Soil Mechanics", credits: "2 (1+1)" },
+              { sNo: 11, courseNo: "AEBE 263", title: "Theory of Machines", credits: "2 (2+0)" },
+              { sNo: 12, courseNo: "AEBE 264", title: "Electrical Machines and Power Utilization", credits: "3 (2+1)" },
+              { sNo: 13, courseNo: "AEBE 265", title: "Auto CAD Applications", credits: "2 (0+2)" },
+              { sNo: 14, courseNo: "AEBE 266", title: "Machine Design", credits: "3 (2+1)" },
+              { sNo: 15, courseNo: "AEBE 267", title: "Thermodynamics, Refrigeration and Air Conditioning", credits: "3 (2+1)" },
+              { sNo: 16, courseNo: "AEBE 361", title: "Design of Structures", credits: "2 (1+1)" },
+              { sNo: 17, courseNo: "AEBE 362", title: "Building Construction and Cost Estimation", credits: "2 (2+0)" },
+              { sNo: 18, courseNo: "AEBE 363", title: "Web Designing and Internet Applications", credits: "2 (1+1)" }
+            ]
+          },
+          {
+            categoryName: "Courses in Applied Sciences",
+            categoryCredits: "Total 11 Courses • 31 Credits",
+            courses: [
+              { sNo: 1, courseNo: "AEAS 171", title: "Engineering Mathematics-I (Matrices and Calculus)", credits: "3 (2+1)" },
+              { sNo: 2, courseNo: "AEAS 172", title: "Engineering Physics", credits: "3 (2+1)" },
+              { sNo: 3, courseNo: "AEAS 173", title: "Engineering Chemistry", credits: "3 (2+1)" },
+              { sNo: 4, courseNo: "AEAS 174", title: "Principles of Agronomy and Organic Farming", credits: "3 (2+1)" },
+              { sNo: 5, courseNo: "AEAS 175", title: "Communication Skills and Personality Development", credits: "2 (1+1)" },
+              { sNo: 6, courseNo: "AEAS 176", title: "Engineering Mathematics-II (Differential Equations)", credits: "3 (2+1)" },
+              { sNo: 7, courseNo: "AEAS 177", title: "Environmental Science and Disaster Management", credits: "3 (2+1)" },
+              { sNo: 8, courseNo: "AEAS 178", title: "Principles of Soil Science", credits: "3 (2+1)" },
+              { sNo: 9, courseNo: "AEAS 271", title: "Principles of Horticultural Crops and Plant Protection", credits: "2 (1+1)" },
+              { sNo: 10, courseNo: "AEAS 272", title: "Entrepreneurship Development and Business Management", credits: "3 (2+1)" },
+              { sNo: 11, courseNo: "AEAS 273", title: "Engineering Mathematics-III (Numerical analysis and Statistical methods)", credits: "3 (2+1)" }
+            ]
+          }
+        ],
+        ugCourses: [
+          "AEBE 161: Surveying and Levelling (3 Credits)",
+          "AEBE 162: Engineering Mechanics (3 Credits)",
+          "AEBE 163: Engineering Drawing (2 Credits)",
+          "AEBE 164: Fluid Mechanics and Open Channel Hydraulics (3 Credits)",
+          "AEBE 165: Strength of Materials (2 Credits)",
+          "AEBE 166: Workshop Technology and Practices (3 Credits)",
+          "AEBE 167: Applied Electronics and Instrumentation (3 Credits)",
+          "AEBE 168: Computer Programming and Data Structures (3 Credits)",
+          "AEBE 261: Heat and Mass Transfer (2 Credits)",
+          "AEBE 262: Soil Mechanics (2 Credits)",
+          "AEBE 263: Theory of Machines (2 Credits)",
+          "AEBE 264: Electrical Machines and Power Utilization (3 Credits)",
+          "AEBE 265: Auto CAD Applications (2 Credits)",
+          "AEBE 266: Machine Design (3 Credits)",
+          "AEBE 267: Thermodynamics, Refrigeration and Air Conditioning (3 Credits)",
+          "AEBE 361: Design of Structures (2 Credits)",
+          "AEBE 362: Building Construction and Cost Estimation (2 Credits)",
+          "AEBE 363: Web Designing and Internet Applications (2 Credits)",
+          "AEAS 171: Engineering Mathematics-I - Matrices and Calculus (3 Credits)",
+          "AEAS 172: Engineering Physics (3 Credits)",
+          "AEAS 173: Engineering Chemistry (3 Credits)",
+          "AEAS 174: Principles of Agronomy and Organic Farming (3 Credits)",
+          "AEAS 175: Communication Skills and Personality Development (2 Credits)",
+          "AEAS 176: Engineering Mathematics-II - Differential Equations (3 Credits)",
+          "AEAS 177: Environmental Science and Disaster Management (3 Credits)",
+          "AEAS 178: Principles of Soil Science (3 Credits)",
+          "AEAS 271: Principles of Horticultural Crops and Plant Protection (2 Credits)",
+          "AEAS 272: Entrepreneurship Development and Business Management (3 Credits)",
+          "AEAS 273: Engineering Mathematics-III - Numerical Analysis and Statistical Methods (3 Credits)"
+        ],
         labs: [
-          "CAD/CAM Modeling & Computational Fluid Dynamics (CFD) Centre",
-          "Thermodynamics & Heat Transfer Demonstration Bay",
-          "Engineering Workshop (Fitting, Welding, Carpentry, Smithy)",
-          "Computational Programming & Applied Data Analytics Lab"
+          "Mechanical Workshop & Fabrication Practice Laboratory",
+          "Theory of Machines and Machine Design Laboratory",
+          "Electrical & Electronics Engineering Laboratory",
+          "Engineering Physics & Optics Laboratory",
+          "Engineering Chemistry & Environmental Analysis Laboratory",
+          "CAD/CAM, Auto CAD & Computer Programming Laboratory"
+        ],
+        labEquipments: [
+          {
+            labName: "Mechanical Workshop & Fabrication Laboratory",
+            equipment: "Shaping Machine (18\"), All-geared Lathe Machines with taper turning attachments, CNC Milling Machine, Hydraulic Press with Centrifugal Nut Sheller, Sheet Metal Bending Machine (Heavy-duty), Pedestal Spot Welding Machine, Welding Transformer (600 AMPS air-cooled), Power Hack Saw, Bench Grinders, Hand and Stand Drilling Machines, Carpentry & Fitting Benches."
+          },
+          {
+            labName: "Theory of Machines and Machine Design Laboratory",
+            equipment: "Epicyclic Gear Train Apparatus, Universal Governor Apparatus (Hartnell, Porter, Watt), Cam Analyser & Profile Follower, Diesel Engine Test Bed, Four-stroke & Two-stroke Cut-Section Working Engines, Mechanical Couplings (Oldham, Universal, Flexible Flange), Vibration & Gyroscope Demonstrator."
+          },
+          {
+            labName: "Electrical & Electronics Engineering Laboratory",
+            equipment: "Electronics Lab Apparatus-1 & 2 (Diode, Transistor, Op-Amp & Digital Trainer Kits), Applied Electronics & Instrumentation Benches, Electrical Machine Lab Test Benches (AC/DC Motors, Generators, Transformers), Power Utilization & Harmonic Analyzer Benches, Speed & Torque Measurement Trainers."
+          },
+          {
+            labName: "Engineering Physics & Optics Laboratory",
+            equipment: "Optical Spectrometers, Diffraction Gratings, Dispersive Power of Prism Sets, Photo-Cell & Planck's Constant Experimental Apparatus, Semiconductor Band Gap Setup, Newton's Rings Apparatus, Polarimeters."
+          },
+          {
+            labName: "CAD/CAM & Computer Programming Laboratory",
+            equipment: "High-performance Desktop Workstations, Auto CAD Applications Suite, C/C++ & Python Data Structure Compilation Environments, Web Designing Platforms, Statistical Computing Packages."
+          }
+        ],
+        labPhotos: [
+          {
+            image: "/images/departments/beas_lab_shaping_machine.webp",
+            caption: "Mechanical Workshop: Shaping Machine & Fabrication Facility",
+            subtext: "Precision machining and metal shaping equipment"
+          },
+          {
+            image: "/images/departments/beas_lab_epicyclic_gear.webp",
+            caption: "Theory of Machines: Epicyclic Gear Train & Governor Apparatus",
+            subtext: "Mechanisms, gear dynamics, and governor speed analysis"
+          },
+          {
+            image: "/images/departments/beas_lab_physics_optics.webp",
+            caption: "Engineering Physics Laboratory: Optical Spectrometer Benches",
+            subtext: "Spectrometry, diffraction gratings, and optical analysis setups"
+          },
+          {
+            image: "/images/departments/beas_lab_lathe_cnc.webp",
+            caption: "Machine Tools Lab: Lathe Machines & CNC Milling Facility",
+            subtext: "Hands-on component fabrication and turning operations"
+          },
+          {
+            image: "/images/departments/beas_lab_universal_governor.webp",
+            caption: "Machine Dynamics: Universal Governor & Cam Analysis Rig",
+            subtext: "Governor characteristics and cam follower kinematics"
+          },
+          {
+            image: "/images/departments/beas_lab_electrical_machines.webp",
+            caption: "Electrical Engineering Laboratory: Control Panels & Machine Benches",
+            subtext: "Motor testing, electronics kits, and power utilization"
+          }
+        ],
+        fieldResearchAreas: [
+          "Applied Mechatronics, Sensors and Robotics in Agricultural Automation",
+          "Automotive Electric Vehicle (EV) Powertrains & High-Energy Battery Modeling",
+          "Renewable Energy Systems (Solar PV, Micro-grids & Power Electronics)",
+          "Numerical Modeling in Hydrology & Agricultural Statistical Forecasting",
+          "Curriculum Integration of 5th Deans' Committee Interdisciplinary Mandates"
         ],
         hodAndFaculty: {
-          hodId: "dr-b-anjaneyulu",
-          hodName: "Dr. B. Anjaneyulu",
-          hodDesignation: "Assistant Professor & Head of Department",
-          hodPhoto: "/images/faculty/dr_b_anjaneyulu.webp",
-          hodSpecialization: "Finite Element Analysis (FEA), Mechanical Design & Metallurgy",
+          hodId: "dr-k-lavanya",
+          hodName: "Dr. K. Lavanya",
+          hodDesignation: "Associate Professor & Head of Department",
+          hodPhoto: "/images/faculty/dr_k_lavanya.webp",
+          hodPhone: "9182164437",
+          hodEmail: "k.lavanya@angrau.ac.in",
+          hodSpecialization: "Applied Electronics, Instrumentation, Energy Systems & Agricultural Engineering",
           facultyMembers: [
-            { id: "dr-b-anjaneyulu", name: "Dr. B. Anjaneyulu", designation: "Assistant Professor & Head", photo: "/images/faculty/dr_b_anjaneyulu.webp", qual: "Ph.D. (Mech Engg), M.Tech" }
+            {
+              id: "dr-k-lavanya",
+              name: "Dr. K. Lavanya",
+              designation: "Associate Professor & Head",
+              photo: "/images/faculty/dr_k_lavanya.webp",
+              qual: "Ph.D., M.Tech",
+              phone: "9182164437",
+              email: "k.lavanya@angrau.ac.in"
+            },
+            {
+              id: "er-kvs-kartheek",
+              name: "Er. KVS Kartheek",
+              designation: "Teaching Associate (Mechanical Engineering)",
+              photo: "/images/faculty/er_kvs_kartheek.webp",
+              qual: "Ph.D. (Registered, ANU), M.Tech (Auto Engg), B.Tech (Mech Engg)",
+              phone: "939440255",
+              email: "karthikkvsk@gmail.com"
+            },
+            {
+              id: "sri-g-sesha-reddy",
+              name: "Sri. G. Sesha Reddy",
+              designation: "Teaching Associate (Mathematics)",
+              photo: "/images/faculty/sri_g_sesha_reddy.webp",
+              qual: "M.Sc. (Mathematics), B.Sc. (M.P.C)",
+              phone: "9989806304",
+              email: "sganapam@gmail.com"
+            },
+            {
+              id: "er-n-kishore",
+              name: "Er. N. Kishore",
+              designation: "Teaching Associate (Electrical Engineering)",
+              photo: "/images/faculty/er_n_kishore.webp",
+              qual: "M.Tech (PID Control Systems), B.Tech (EEE)",
+              phone: "8810357088",
+              email: "kishorekumar.noon@gmail.com"
+            }
           ]
         }
       }

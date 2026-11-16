@@ -100,7 +100,7 @@ async function ensureAdminAuth() {
   }
 }
 
-const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_14_v4';
+const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_16_beas_v5';
 
 function sanitizeOfficialStructure(data) {
   if (!data || typeof data !== 'object') return defaultOfficialStructure;
@@ -345,9 +345,11 @@ function sanitizeOfficialStructure(data) {
           !userDepts.some(d => d.id === 'fmpe' && d.hodAndFaculty?.hodName?.includes('Rami Reddy')) ||
           !userDepts.some(d => (d.id === 'apfe' || d.id === 'pfe') && d.hodAndFaculty?.hodName?.includes('Sreenivasula')) ||
           !userDepts.some(d => d.id === 'ree' && d.hodAndFaculty?.hodName?.includes('Vishnu Vardhan')) ||
+          !userDepts.some(d => d.id === 'beas' && d.hodAndFaculty?.hodName?.includes('Lavanya')) ||
           JSON.stringify(userDepts).includes('Placeholder') ||
           JSON.stringify(userDepts).includes('Dr. Ch. Srinivas') ||
           JSON.stringify(userDepts).includes('Dr. M. S. Reddy') ||
+          JSON.stringify(userDepts).includes('Dr. B. Anjaneyulu') ||
           userDepts.some(d => !d.hodAndFaculty || !d.hodAndFaculty.hodName || d.hodAndFaculty.hodName.includes('Placeholder')) ||
           !userDepts.every(d => d.hodAndFaculty?.hodPhoto);
 
@@ -357,7 +359,7 @@ function sanitizeOfficialStructure(data) {
 
         return defaultOfficialStructure.academics.departments.map(defDept => {
           const userDept = userDepts.find(d => d.id === defDept.id || d.slug === defDept.slug);
-          if (!userDept || JSON.stringify(userDept).includes('Placeholder') || JSON.stringify(userDept).includes('Dr. Ch. Srinivas') || JSON.stringify(userDept).includes('Dr. M. S. Reddy')) {
+          if (!userDept || JSON.stringify(userDept).includes('Placeholder') || JSON.stringify(userDept).includes('Dr. Ch. Srinivas') || JSON.stringify(userDept).includes('Dr. M. S. Reddy') || JSON.stringify(userDept).includes('Dr. B. Anjaneyulu')) {
             return defDept;
           }
           const defHod = defDept.hodAndFaculty || {};

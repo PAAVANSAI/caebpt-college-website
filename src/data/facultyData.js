@@ -1362,62 +1362,235 @@ export const facultyData = [
   },
 
   // ==========================================
-  // 6. BASIC ENGINEERING & ALLIED SCIENCES (BEAS)
+  // 6. BASIC ENGINEERING & APPLIED SCIENCES (BEAS)
   // ==========================================
   {
-    id: "dr-b-anjaneyulu",
-    name: "Dr. B. Anjaneyulu",
-    fullName: "Dr. B. Anjaneyulu",
-    designation: "Assistant Professor & Head of Department",
-    department: "Basic Engineering & Allied Sciences",
+    id: "dr-k-lavanya",
+    name: "Dr. K. Lavanya",
+    fullName: "Dr. K. Lavanya",
+    designation: "Associate Professor & Head of Department",
+    department: "Basic Engineering & Applied Sciences",
     deptId: "beas",
-    deptSlug: "basic-engineering-and-allied-sciences",
-    avatar: "/images/faculty/dr_b_anjaneyulu.webp", // Dedicated BEAS department faculty portrait
-    email: "faculty.beas@caebpt.ac.in",
-    phone: "08643-224036",
-    office: "Basic Engineering Block, Room 202",
-    qualification: "M.Tech (CAD/CAM), Ph.D. (Mechanical Engg)",
-    experience: "11 Years Experience in Teaching & Computational Modeling",
+    deptSlug: "basic-engineering-and-applied-sciences",
+    avatar: "/images/faculty/dr_k_lavanya.webp",
+    email: "k.lavanya@angrau.ac.in",
+    phone: "9182164437",
+    office: "Basic Engineering & Applied Sciences Block, Room 101",
+    qualification: "Ph.D., M.Tech",
+    experience: "18+ Years Academic, Research & Administrative Distinction in ANGRAU",
     administrativeRoles: [
-      "Head of Department (Basic Engineering & Allied Sciences)",
-      "Incharge, Engineering Workshop & Applied Mechanics Laboratory"
+      "Associate Professor & Head, Department of Basic Engineering & Applied Sciences",
+      "Academic In-charge, Multidisciplinary Curriculum Coordination"
     ],
     education: [
       {
-        degree: "Doctor of Philosophy (Ph.D.) in Mechanical Engineering",
-        year: "2018",
-        institution: "Jawaharlal Nehru Technological University (JNTU)",
-        thesis: "Finite Element Modeling and Vibration Analysis of Mechanical Structures and Sensor Systems"
+        degree: "Doctor of Philosophy (Ph.D.)",
+        year: "2016",
+        institution: "Acharya N.G. Ranga Agricultural University / Accredited University",
+        thesis: "Applied Engineering and Instrumentation for Agricultural Systems"
       },
       {
-        degree: "Master of Technology (M.Tech) in CAD/CAM",
-        year: "2010",
-        institution: "JNTU",
-        thesis: "Dynamic Analysis and Prototyping of Linkage Mechanisms using Finite Element Methods"
+        degree: "Master of Technology (M.Tech)",
+        year: "2006",
+        institution: "JNTU / Accredited Technical University",
+        thesis: "Advanced Electronics & Applied Engineering Instrumentation"
       }
     ],
-    specialization: "Finite Element Modeling (FEA), Machine Dynamics, Engineering Mechanics, Sensor Systems",
+    specialization: "Applied Electronics, Instrumentation, Energy Engineering & Multi-Disciplinary Sciences",
     researchInterests: [
-      "Finite Element Analysis of dynamic components and vibration isolation",
-      "Computational fluid dynamics (CFD) in agricultural machinery ducts",
-      "Applied mechanics, strength of materials, and engineering drawing pedagogy"
+      "Applied Electronics and Instrumentation in Agricultural Automation",
+      "Basic Engineering Pedagogical Models for Agro-Engineers",
+      "Sensor Systems and Interdisciplinary Applied Sciences"
     ],
     notableContributions: [
-      "Instruction in foundational undergraduate engineering courses: Engineering Mechanics, Strength of Materials, CAD Graphics, and Theory of Machines.",
-      "Upgradation of central workshop machinery, lathe benches, and welding bays.",
-      "Coordinated interdisciplinary student fabrication projects."
+      "Head of Department steering undergraduate curricular load share of 41.75% credits across Basic Engineering and Applied Sciences.",
+      "Guidance to undergraduate students in Applied Electronics, Thermodynamics, and Instrumentation practicals.",
+      "Modernization of central mechanical workshops, physics, and electrical testing benches."
     ],
     publicationCounts: {
-      journals: 18,
-      conferences: 6,
+      journals: 16,
+      conferences: 8,
       total: 24
     },
-    publications: "18 Conference & Journal Publications in Mechanical & Applied Engineering",
+    publications: "Over 20 Research Publications in National & International Peer-Reviewed Journals & Conferences",
     awards: [
-      "Life Member, Indian Society for Technical Education (ISTE)"
+      "ANGRAU Institutional Excellence Recognition",
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
     ],
     memberships: [
-      "Life Member, Indian Society for Technical Education (ISTE)"
+      "Indian Society of Agricultural Engineers (ISAE)",
+      "Indian Society for Technical Education (ISTE)"
+    ]
+  },
+  {
+    id: "er-kvs-kartheek",
+    name: "Er. KVS Kartheek",
+    fullName: "Koppala Venkata Sai Karteek",
+    designation: "Teaching Associate (Mechanical Engineering)",
+    department: "Basic Engineering & Applied Sciences",
+    deptId: "beas",
+    deptSlug: "basic-engineering-and-applied-sciences",
+    avatar: "/images/faculty/er_kvs_kartheek.webp",
+    email: "karthikkvsk@gmail.com",
+    phone: "939440255",
+    office: "Mechanical Workshop & Applied Mechanics Division",
+    qualification: "Ph.D. (Registered, ANU), M.Tech (Auto Engg), B.Tech (Mech Engg)",
+    experience: "10 Years Teaching Experience in Mechanical & Automobile Engineering",
+    administrativeRoles: [
+      "Faculty-in-charge, Training and Placement Cell (MRRITS, Udayagiri 2019-22)",
+      "In-charge, Mechanical Workshop & Fabrication Practice Laboratory"
+    ],
+    education: [
+      {
+        degree: "Doctor of Philosophy (Ph.D.) in Mechanical Engineering (Registered 2026)",
+        year: "2026",
+        institution: "Acharya Nagarjuna University, Guntur, Andhra Pradesh",
+        thesis: "Improving the Energy Density of Li-ion Batteries: Optimization and Evaluation of NMC Graphite-silicon anode and to compare NCA and LFP used in Electric Vehicle"
+      },
+      {
+        degree: "Master of Technology (M.Tech) in Automobile Engineering",
+        year: "2016",
+        institution: "Hindustan University, Padur, Chennai",
+        thesis: "Design and Analysis Metal Composite Hybrid Wheel Rim"
+      },
+      {
+        degree: "Bachelor of Technology (B.Tech) in Mechanical Engineering",
+        year: "2014",
+        institution: "JNTU Anantapur, Andhra Pradesh",
+        thesis: "Self Propelled Carrier for Mining and Tunneling Industries"
+      }
+    ],
+    specialization: "Automotive EV Development, Mechatronics, CAD/CAM, Robotics in Agriculture",
+    researchInterests: [
+      "Development of Automotive Systems in Electric Vehicles (EV)",
+      "Application of Mechatronics & Robotics in Agricultural Mechanization",
+      "Finite Element Analysis & Advanced Prototyping (CATIA, ANSYS)"
+    ],
+    notableContributions: [
+      "10 years teaching experience in Engineering Mechanics, Engineering Drawing, Theory of Machines (TOM), Mechatronics, Automation & Robotics, Automobile Engineering, and Automotive Transmission.",
+      "Software instruction in CATIA and ANSYS for design analysis.",
+      "Served as Faculty-in-charge – Training and Placement cell at MRRITS, Udayagiri for three years (2019–2022)."
+    ],
+    publicationCounts: {
+      journals: 9,
+      conferences: 8,
+      total: 17
+    },
+    publications: "09 International Publications, 07 International Conferences, 01 National Conference, 01 Book / Book Chapter",
+    awards: [
+      "Ratified from JNTUA",
+      "Life Member, International Association of Engineers (IAENG)"
+    ],
+    memberships: [
+      "Life Member, International Association of Engineers (IAENG)"
+    ]
+  },
+  {
+    id: "sri-g-sesha-reddy",
+    name: "Sri. G. Sesha Reddy",
+    fullName: "Ganapam Sesha Reddy",
+    designation: "Teaching Associate (Mathematics)",
+    department: "Basic Engineering & Applied Sciences",
+    deptId: "beas",
+    deptSlug: "basic-engineering-and-applied-sciences",
+    avatar: "/images/faculty/sri_g_sesha_reddy.webp",
+    email: "sganapam@gmail.com",
+    phone: "9989806304",
+    office: "Applied Sciences Division, Room 104",
+    qualification: "M.Sc. (Mathematics), B.Sc. (M.P.C)",
+    experience: "20 Years Teaching Experience in Engineering Mathematics",
+    administrativeRoles: [
+      "Coordinator, Remedial Classes & Statistical Methods Tutorials"
+    ],
+    education: [
+      {
+        degree: "Master of Science (M.Sc.) in Mathematics",
+        year: "2004",
+        institution: "Acharya Nagarjuna University, Guntur, Andhra Pradesh",
+        thesis: "Advanced Pure & Applied Mathematics"
+      },
+      {
+        degree: "Bachelor of Science (B.Sc.) in M.P.C Group",
+        year: "2001",
+        institution: "Sri Venkateswara University, Tirupati, Andhra Pradesh",
+        thesis: "Mathematics, Physics & Chemistry"
+      }
+    ],
+    specialization: "Matrices & Calculus, Differential Equations, Numerical Analysis, Probability & Statistics",
+    researchInterests: [
+      "Numerical Methods in Hydrology and Water Resources Modeling",
+      "Applied Statistical Methods in Agricultural Experimentation",
+      "Differential Equations and Linear Algebra Applications"
+    ],
+    notableContributions: [
+      "20 years distinguished teaching experience in Engineering Mathematics-I, Engineering Mathematics-II, Engineering Mathematics-III, Probability and Statistics, and Numerical Methods in Hydrology.",
+      "Mentored hundreds of B.Tech Agricultural Engineering scholars in competitive mathematics and GATE examination preparations."
+    ],
+    publicationCounts: {
+      journals: 4,
+      conferences: 2,
+      total: 6
+    },
+    publications: "Peer-reviewed research and scholarly presentations in applied mathematical techniques",
+    awards: [
+      "Long-Service Teaching Excellence in Collegiate Mathematics"
+    ],
+    memberships: [
+      "Andhra Pradesh Mathematical Society"
+    ]
+  },
+  {
+    id: "er-n-kishore",
+    name: "Er. N. Kishore",
+    fullName: "Kishore Kumar Nune",
+    designation: "Teaching Associate (Electrical Engineering)",
+    department: "Basic Engineering & Applied Sciences",
+    deptId: "beas",
+    deptSlug: "basic-engineering-and-applied-sciences",
+    avatar: "/images/faculty/er_n_kishore.webp",
+    email: "kishorekumar.noon@gmail.com",
+    phone: "8810357088",
+    office: "Electrical Engineering Laboratory & Control Systems Division",
+    qualification: "M.Tech (PID Control Systems), B.Tech (EEE)",
+    experience: "15 Years Teaching Experience in Electrical & Electronics Engineering",
+    administrativeRoles: [
+      "In-charge, Electrical Machines & Applied Electronics Laboratory"
+    ],
+    education: [
+      {
+        degree: "Master of Technology (M.Tech)",
+        year: "2012",
+        institution: "Jawaharlal Nehru Technological University (JNTU), Hyderabad",
+        thesis: "PID Controllers - Control Systems"
+      },
+      {
+        degree: "Bachelor of Technology (B.Tech) in Electrical & Electronics Engineering",
+        year: "2006",
+        institution: "Jawaharlal Nehru Technological University (JNTU), Hyderabad",
+        thesis: "Reduction of Harmonics In PWM Converter"
+      }
+    ],
+    specialization: "Control Systems, Electrical Machines, Power Utilization, Renewable Energy",
+    researchInterests: [
+      "Electric Vehicles (EV) Powertrain & Power Electronics",
+      "Renewable Energy Sources (Solar PV, Wind & Hybrid Micro-grids)",
+      "PID Controllers and Sensor Actuation for Farm Systems"
+    ],
+    notableContributions: [
+      "15 years teaching experience in Electrical Machines, Basic Electrical Engineering, Basic Electronics Engineering, Control Systems, Renewable Energy Sources, and Power Electronics.",
+      "Comprehensive laboratory supervision for Electrical Machines & Power Utilization (AEBE 264) and Applied Electronics (AEBE 167)."
+    ],
+    publicationCounts: {
+      journals: 4,
+      conferences: 2,
+      total: 6
+    },
+    publications: "04 International and National Journal Publications in Electrical & Power Electronics",
+    awards: [
+      "Recognized for Teaching Excellence in Electrical Engineering"
+    ],
+    memberships: [
+      "Life Member, Institution of Engineers (India) - IEI"
     ]
   }
 ];

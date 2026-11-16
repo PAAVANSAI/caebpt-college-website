@@ -81,17 +81,17 @@ export const departmentsData = [
   },
   {
     id: "beas",
-    name: "Basic Engineering & Allied Sciences",
+    name: "Basic Engineering & Applied Sciences",
     shortCode: "BEAS",
-    headOfDept: "Dr. B. Anjaneyulu",
-    description: "Providing foundational strengths in engineering mechanics, thermodynamics, fluid dynamics, computer programming, and mathematical modeling.",
+    headOfDept: "Dr. K. Lavanya",
+    description: "Offering multidisciplinary education with a 41.75% credit load share in engineering mechanics, surveying, workshop practices, electronics, machine dynamics, and applied mathematical sciences as per ICAR 5th Deans' Committee recommendations.",
     icon: "Cpu",
-    stats: "CAD/CAM Computing Centre • Thermodynamics Lab",
+    stats: "Mechanical Workshop • Theory of Machines Lab • Physics & Electrical Labs",
     keyFocusAreas: [
-      "Computational Fluid Dynamics (CFD)",
-      "CAD/CAM Agricultural Equipment Modeling",
-      "Artificial Intelligence & IoT for Agri-Systems",
-      "Engineering Materials & Metallurgy"
+      "Mechanical Workshop & Fabrication Technologies",
+      "Theory of Machines, Dynamics & Mechanism Analysis",
+      "Electrical Machines, Power Utilization & Electronics",
+      "Applied Mathematics, Physics, Chemistry & Environmental Sciences"
     ]
   }
 ];

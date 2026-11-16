@@ -260,7 +260,44 @@ export default function DepartmentDetailPage() {
                 </div>
               )}
 
-              {currentDept.ugCourses && (
+              {/* Categorized Subject Tables (e.g. Basic Engineering & Applied Sciences) */}
+              {currentDept.courseCategories ? (
+                <div className="space-y-6 pt-2">
+                  {currentDept.courseCategories.map((cat, catIdx) => (
+                    <div key={catIdx} className="space-y-3">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-slate-200 gap-1">
+                        <h4 className="text-xs font-bold text-navy-950 uppercase tracking-wider flex items-center gap-1.5">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                          <span>{cat.categoryName}</span>
+                        </h4>
+                        <span className="badge badge-navy text-[11px] font-bold self-start sm:self-auto">{cat.categoryCredits}</span>
+                      </div>
+                      <div className="overflow-x-auto rounded-xl border border-slate-200">
+                        <table className="w-full text-xs text-left border-collapse">
+                          <thead>
+                            <tr className="bg-slate-100 text-navy-950 border-b border-slate-200">
+                              <th className="py-2.5 px-3 font-bold w-12 text-center">S.No</th>
+                              <th className="py-2.5 px-3 font-bold w-28">Course No.</th>
+                              <th className="py-2.5 px-3 font-bold">Title of the Course</th>
+                              <th className="py-2.5 px-3 font-bold w-28 text-right">Credit Hours</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-slate-100">
+                            {cat.courses.map((course) => (
+                              <tr key={course.courseNo} className="hover:bg-slate-50 transition-colors">
+                                <td className="py-2.5 px-3 text-center text-slate-500 font-mono">{course.sNo}</td>
+                                <td className="py-2.5 px-3 font-mono font-bold text-[#854d0e]">{course.courseNo}</td>
+                                <td className="py-2.5 px-3 font-medium text-slate-800">{course.title}</td>
+                                <td className="py-2.5 px-3 text-right font-bold text-[#0b1a2e]">{course.credits}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : currentDept.ugCourses ? (
                 <div className="space-y-3">
                   <h4 className="text-xs font-bold text-navy-950 uppercase tracking-wider">Undergraduate Subjects Offered:</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -274,7 +311,7 @@ export default function DepartmentDetailPage() {
                     ))}
                   </div>
                 </div>
-              )}
+              ) : null}
 
               {/* Practical Components List */}
               {currentDept.practicalComponents && (
@@ -356,6 +393,34 @@ export default function DepartmentDetailPage() {
                     <span key={swIdx} className="px-2.5 py-1 bg-white border border-slate-200 rounded-lg text-xs font-bold text-[#0b1a2e] shadow-2xs">
                       {sw}
                     </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Laboratory Machinery & Facilities Photo Gallery */}
+            {currentDept.labPhotos && currentDept.labPhotos.length > 0 && (
+              <div className="pt-4 border-t border-slate-100 space-y-4">
+                <h4 className="text-xs font-bold text-navy-950 uppercase tracking-wider flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-[#d4a72c]" />
+                  <span>Laboratory Facilities & Equipment Gallery:</span>
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {currentDept.labPhotos.map((photo, pIdx) => (
+                    <div key={pIdx} className="group rounded-xl overflow-hidden border border-slate-200 bg-slate-50 shadow-2xs hover:shadow-md transition-all">
+                      <div className="aspect-[4/3] overflow-hidden bg-slate-900">
+                        <img
+                          src={photo.image}
+                          alt={photo.caption}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="p-3">
+                        <p className="text-xs font-bold text-[#0b1a2e] leading-snug">{photo.caption}</p>
+                        {photo.subtext && <p className="text-[11px] text-slate-500 mt-1 leading-tight">{photo.subtext}</p>}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
