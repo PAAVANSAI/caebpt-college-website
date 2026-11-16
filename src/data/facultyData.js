@@ -57,9 +57,9 @@ export const facultyData = [
     ],
     notableContributions: [
       "Establishment of Farm Machinery, Farm Power and Advanced CNC Machine Laboratories (Milling and Turning) at CAE Bapatla.",
-      "Author in preparation of Course materials on FAMP 341, FAMP 342, and FAMP 442 as per ICAR IV Deans' Committee guidelines.",
-      "Preparation of course materials and question bank for DAE 312 for Diploma in Agricultural Engineering students.",
-      "Guided multiple M.Tech and Ph.D. scholars in farm mechanization and equipment design."
+      "Preparation of Course materials, question bank to subjects DAE 312 for Diploma in Agricultural Engineering students.",
+      "Author in preparation of Course material on FAMP 341, FAMP 342 and FAMP 442 as per IV deans committee guidelines.",
+      "Acted as Chairman and members of Advisory committees for PG and Ph.D research Projects."
     ],
     publicationCounts: {
       journals: 25,
@@ -70,9 +70,8 @@ export const facultyData = [
     },
     publications: "25 International/National Journals • 5 Conference Proceedings • 2 Technical Bulletins • 3 Popular Articles",
     awards: [
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)",
-      "Life Member, Andhra Agricultural Journal",
-      "Acted as External Evaluator for B.Tech final project examinations across state agricultural universities"
+      "Life member in Andhra Agricultural Journal",
+      "Life member in ISAE"
     ],
     memberships: [
       "Life Member, Indian Society of Agricultural Engineers (ISAE)",
@@ -118,9 +117,7 @@ export const facultyData = [
       "Tractor testing and field implement hitch dynamics"
     ],
     notableContributions: [
-      "Setup of implement calibration and dyno test benches at CAE Bapatla.",
-      "Extensive field testing of commercial tractors and agricultural implements.",
-      "Mentored student teams in national Student READY rural agricultural work experience."
+      "Senior faculty member coordinating farm machinery laboratory instruction and practical evaluations."
     ],
     publicationCounts: {
       journals: 20,
@@ -129,9 +126,7 @@ export const facultyData = [
       total: 33
     },
     publications: "20+ Research Papers in Peer-Reviewed Journals • 8 Conference Proceedings",
-    awards: [
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
-    ],
+    awards: [],
     memberships: [
       "Life Member, Indian Society of Agricultural Engineers (ISAE)"
     ]
@@ -183,9 +178,8 @@ export const facultyData = [
       "Unmanned Aerial Vehicles (Drones) in precision spraying"
     ],
     notableContributions: [
-      "9 years teaching experience in subjects: Farm Machinery Equipment, Tractor Systems and Controls, Machine Design, Mechatronics, Robotics in Agriculture, and AI in Agriculture.",
-      "5 years dedicated research experience as Head of ICAR - AICRP on Farm Implements and Machinery Scheme, Bapatla.",
-      "Developed microprocessor-based embedded tractor performance instrumentation rig."
+      "9 years teaching experience in various subjects like Farm Machinery Equipment, Tractor Systems and Controls, Machine Design, Mechatronics, Mechatronics and Robotics in Agriculture, Artificial Intelligence etc.",
+      "5 years research experience as a Head of ICAR - AICRP on Farm Implements and Machinery Scheme, Bapatla."
     ],
     publicationCounts: {
       journals: 43,
@@ -197,13 +191,13 @@ export const facultyData = [
     },
     publications: "43 International/National Journals • 14 Conference Proceedings • 1 Book Chapter • 2 Technical Bulletins • 30 Popular Articles",
     awards: [
-      "Institution of Engineers India (IEI) 'Young Engineer Award' in Agricultural Engineering Discipline",
-      "ISAE - TAFE Student Gold Medal (2019) for Best Ph.D. Thesis in Farm Machinery",
-      "Young Scientist Award (2023-24) at 4th International Conference on Innovations to Transform Agriculture, Horticulture & Allied Sectors"
+      "Received Institution of Engineers India (IEI) “Young Engineer’s Award” in agricultural Engineering Discipline.",
+      "Received ISAE-TAFE Student Gold Medal for the year 2019 for best PhD thesis.",
+      "Received Young Scientist Award for contribution in the field of Farm Machinery and Power Engineering on the occasion of “ 4th International Conference on Innovations to Transform Agriculture, Horticulture & Allied Sectors” during 2023-24"
     ],
     memberships: [
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)",
-      "Life Member, Indian Society of Agriculture & Horticultural Research Development (ISAHRD)"
+      "Life Member of Indian Society of Agricultural Engineers (ISAE)",
+      "Life Member of Indian Society of Agriculture & Horticultural Research Development (ISAHRD)"
     ]
   },
   {
@@ -246,9 +240,10 @@ export const facultyData = [
       "Tractor-drawn precision groundnut planters and digger shakers"
     ],
     notableContributions: [
-      "Associated in design, customization, and extensive field evaluation of walk-behind transplanters in Krishna Western Delta.",
-      "Key contribution to the dryland farm machinery research and farmer training programs.",
-      "Executive management and welfare supervision of collegiate boys hostels."
+      "Associated in the design and development of (i) Aqua planter for groundnut and (ii) Groundnut planter cum herbicide sprayer at Agricultural Research Station, Anantapur, Andhra Pradesh.",
+      "Popularization of seed to seed mechanization for groundnut in Anantapur District, Andhra Pradesh.",
+      "Workshop and Farm Machinery laboratories were established at College of Agricultural Engineering, Madakasira, Andhra Pradesh.",
+      "Supervised Eight (8) B.Tech. Research projects."
     ],
     publicationCounts: {
       journals: 15,
@@ -258,13 +253,10 @@ export const facultyData = [
       total: 35
     },
     publications: "15 International/National Journals • 5 Conference Proceedings • 2 Book Chapters • 13 Popular Articles",
-    awards: [
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)",
-      "Life Member, Andhra Agricultural Union"
-    ],
+    awards: [],
     memberships: [
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)",
-      "Life Member, The Andhra Agricultural Journal"
+      "Life member in Indian Society of Agricultural Engineers (ISAE)",
+      "Life member in The Andhra Agricultural Union - AAJ"
     ]
   },
   {
@@ -315,11 +307,13 @@ export const facultyData = [
       "Automated paper pot transplanters for seedling nursery management"
     ],
     notableContributions: [
-      "Development of Automatic Dibble Transplanter for Paper Pot Seedlings.",
-      "Development of Vision-Based Spot Spraying Herbicide Applicator minimizing chemical drift and environmental load.",
-      "Co-author in preparation of Course Materials on FAMP 241 and MECH 282 under ICAR IV Deans' Committee guidelines.",
-      "Preparation of practical manual on Workshop Technology and Practices for undergraduate students.",
-      "Preparation of course materials and question bank for DAE 211 for Diploma students."
+      "Development of drawing hall and infrastructural facilities at PAE, Kalikiri.",
+      "Establishment of Theory of Machinery Laboratory at CAE, Bapatla.",
+      "Preparation of Course materials, question bank and answer keys to subjects DAE 141 & DAE 145 for Diploma in Agricultural Engineering students.",
+      "Preparation of practical manual on Workshop Technology and Practices for UG students.",
+      "Co-author in preparation of Course material on FAMP 241 and MECH 282 as per IV deans committee guidelines.",
+      "Development of automatic dibble transplanter for paper pot seedlings.",
+      "Development of Vision based spot spraying herbicide applicator."
     ],
     publicationCounts: {
       journals: 21,
@@ -330,10 +324,9 @@ export const facultyData = [
     },
     publications: "21 International/National Journals • 7 Conference Proceedings • 2 Technical Bulletins • 4 Popular Articles",
     awards: [
-      "Best Paper Presentation Award for 'Design and fabrication of prototype telescopic raising platform for harvesting oil palm fresh fruit bunches'",
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)",
-      "Life Member, Andhra Agricultural Journal",
-      "Reviewer for 'International Journal of Agricultural Sciences' (Bioinfo Publications)"
+      "Best paper presentation award for “Design and fabrication of prototype telescopic raising platform for harvesting oil palm fresh fruit bunches”",
+      "Life member in Andhra Agricultural Journal",
+      "Life member in ISAE"
     ],
     memberships: [
       "Life Member, Indian Society of Agricultural Engineers (ISAE)",
@@ -341,47 +334,49 @@ export const facultyData = [
     ]
   },
   {
-    id: "er-n-kishore",
-    name: "Er. N. Kishore",
+    id: "er-kishore-nalabolu",
+    name: "Er. Kishore Nalabolu",
     fullName: "Er. Kishore Nalabolu",
     designation: "Assistant Professor",
     department: "Farm Machinery & Power Engineering",
     deptId: "fmpe",
     deptSlug: "farm-machinery-and-power",
-    avatar: "/images/faculty/er_n_kishore.webp",
+    avatar: "/images/faculty/er_kishore_nalabolu.webp",
     email: "n.kishore@angrau.ac.in",
     altEmail: "kishorenalabolu@gmail.com",
-    phone: "+91 8500856998 / 9398431758",
+    phone: "8500856998 / 9398431758",
     office: "FMPE Department Complex, Room 214",
-    qualification: "M.Tech (IIT Kharagpur - GATE AIR 40), B.Tech (CAE Bapatla)",
+    qualification: "M.Tech. (Agril. Engg.) Farm Power and Machinery (IIT Kharagpur, GATE AIR 40), B.Tech. (Agril. Engg., ANGRAU)",
     experience: "9 Years Experience (ARS Ananthapuram, CAE Bapatla, RARS Lam)",
     administrativeRoles: [
-      "Director, Student READY Experiential Learning Programme (ELP) Units",
-      "Incharge, Agricultural Implement Prototyping Workshop",
-      "Alumni Relations & Youth Coordination Officer"
+      "Warden, CAE Madakasira (01.06.2023 to 08.05.2025)",
+      "Officer i/c Student Activities (01.06.2021 to 31.05.2023)",
+      "Administrative Officer, CAE Madakasira (01.09.2022 to 08.05.2025)",
+      "Library In-charge & Students Scholarships In-charge"
     ],
     education: [
       {
-        degree: "Master of Technology (M.Tech) in Farm Machinery and Power Engineering",
-        year: "2016",
+        degree: "Master of Technology (M.Tech) in Farm Power and Machinery",
+        year: "2014",
         institution: "Indian Institute of Technology (IIT) Kharagpur",
         thesis: "Specialization in Farm Machinery Dynamics and Power Systems (GATE All India 40th Rank, MHRD Fellowship)"
       },
       {
         degree: "Bachelor of Technology (B.Tech) in Agricultural Engineering",
-        year: "2013",
-        institution: "College of Agricultural Engineering, Bapatla (ANGRAU)",
-        thesis: "Design and Fabrication of Agricultural Implements for Dryland Farming"
+        year: "2012",
+        institution: "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        thesis: "Design and Evaluation of Farm Implements for Dryland Farming"
       }
     ],
-    specialization: "In-Situ Rainwater Conservation Diker Mechanisms, Bird Scarers for Millet Crops, Carbon Footprint Optimization",
+    specialization: "In-Situ Rainwater Conservation Diker Mechanisms, Bird Scarers for Millets, Rainfed Groundnut Intensification",
     researchInterests: [
       "In-situ rainwater conservation machinery and diker furrow openers",
-      "Acoustic and mechanical bird scarer technologies for millet protection",
-      "Carbon footprint and energy budgeting in rainfed groundnut and cereal production",
-      "Entrepreneurship development through Student READY implement manufacturing"
+      "Bird scarer technologies for millet crops",
+      "Carbon footprint and energy budgeting in rainfed groundnut",
+      "Testing and evaluation of agricultural implements"
     ],
     notableContributions: [
+      "9 Years total experience. Worked as Scientist (Agricultural Engineering) at Agricultural Research Station, Ananthapuramu from 16.07.2015 to 04.09.2020.",
       "Technologies Developed: (1) Developed Bird Scarer for Millet Crops; (2) Developed Diker mechanism for In-Situ Rainwater Conservation.",
       "Chaired 5 Undergraduate Projects; Directed 5 ELP manufacturing units (ANGRAU Farm Implements Production Centre).",
       "Delivered 6 Radio Talks & 4 Television broadcast programmes on agricultural mechanization.",
@@ -398,18 +393,18 @@ export const facultyData = [
     },
     publications: "10 International/National Publications • 7 Abstracts • 12 Technical Bulletins • 9 Popular Articles • 2 Training Manuals",
     awards: [
-      "Netaji Subhas – ICAR – International Fellowship by Indian Council of Agricultural Research, New Delhi for Ph.D. degree at University of Nebraska – Lincoln",
-      "Best Agri Engineer Award at 13th International Conference on Agriculture, Horticulture & Forestry (ICAR - HFRI, Shimla)",
-      "2nd Prize for 'Carbon Footprint & Intensity Indices in Rainfed Groundnut Intensification' (National Seminar, Bangalore)",
-      "3rd Prize for 'Optimising Groundnut Productivity through In-Situ Water Harvesting' (National Seminar, Bangalore)",
-      "Outstanding Team Performance in Cultural Events (Men) during 5th FOCFAU at ICAR - NAARM, Hyderabad",
-      "MHRD Fellowship for M.Tech at IIT Kharagpur (GATE AIR 40)"
+      "Netaji Subhas – ICAR – International Fellowship by the Indian Council of Agricultural Research, New Delhi for the Ph.D. degree at the University of Nebraska – Lincoln",
+      "MHRD Fellowship for the M. Tech degree after securing All India 40th Rank in GATE – 2014",
+      "Received Best Agri Engineer Award on 13th International Conference on “Agriculture, Horticulture, Forestry & Allied Sciences for sustainable Himalayan Ecosystems organized by ICAR – HFRI, Shimla",
+      "Outstanding team performance in the training module “Cultural Events (Men)” during 5th Foundation course for Faculty of Agricultural Universities (FOCFAU) organized by ICAR – NAARM, Hyderabad",
+      "Awarded 3rd prize for outstanding presentation on the topic “Optimising Groundnut Productivity and Energy Budgeting through In Situ Water Harvesting under Rainfed Agriculture” in the 1st National Seminar on Emerging Trends in Agriculture and Allied Sciences: A Pathway to Food Security, organized by Encourage Society, Bangalore",
+      "Awarded 2nd prize for outstanding presentation on the topic “Carbon Footprint and Intensity Indices reveal Emission Efficiency Gains in Rainfed Groundnut Intensification” in the 2nd National Seminar on Emerging Trends in Agriculture and Allied Sciences: A Pathway to Food Security, organized by Encourage Society, Bangalore"
     ],
     memberships: [
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)",
-      "Fellow, Institution of Engineers (IEI)",
-      "Life Member, Indian Society of Dryland Agriculture (ISDA)",
-      "Life Member, Indian Society of Agriculture and Horticulture Research Development (ISAHRD)"
+      "Life Member, Indian Society of Agricultural Engineers",
+      "Fellow, Institution of Engineers",
+      "Life Member, Indian Society of Dryland Agriculture",
+      "Life Member, Indian Society of Agriculture and Horticulture Research Development"
     ]
   },
   {
@@ -451,9 +446,7 @@ export const facultyData = [
       "Ergonomic assessment of women-friendly farm implements"
     ],
     notableContributions: [
-      "Conducted extensive frontline demonstrations across coastal Andhra Pradesh for tractor-drawn planters and weeders.",
-      "Facilitated technology transfer to local farm implement manufacturers.",
-      "Published comprehensive test bulletins on newly introduced farm equipment."
+      "Instruction and practical laboratory supervision in Farm Machinery and Power Engineering courses."
     ],
     publicationCounts: {
       journals: 16,
@@ -463,9 +456,7 @@ export const facultyData = [
       total: 36
     },
     publications: "16 Research Publications in Peer-Reviewed Journals • 4 Technical Test Bulletins",
-    awards: [
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
-    ],
+    awards: [],
     memberships: [
       "Life Member, Indian Society of Agricultural Engineers (ISAE)"
     ]
@@ -515,10 +506,7 @@ export const facultyData = [
       "Pilot-scale agro-processing business incubation"
     ],
     notableContributions: [
-      "Supervised the establishment of modern Food Testing & Quality Evaluation Laboratories at Bapatla.",
-      "Developed formulations and commercial protocols for Instant Ragi Dosa Mix, Multi-Millet Atta, and Gud Makhana.",
-      "Executive guidance as Officer Incharge of Academic Matters (PG) for all M.Tech and Ph.D. scholars.",
-      "Guided more than 20 PG dissertations and doctoral theses in food process engineering."
+      "Professor & Head, Department of Agricultural Process and Food Engineering, managing academic curricula and postgraduate food engineering research."
     ],
     publicationCounts: {
       journals: 35,
@@ -529,14 +517,10 @@ export const facultyData = [
       total: 68
     },
     publications: "35+ Research Papers in Refereed Journals • Multiple Technology Transfers to Agro-Industries",
-    awards: [
-      "ANGRAU State Meritorious Scientist Award",
-      "Life Member, Association of Food Scientists and Technologists India (AFSTI)",
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
-    ],
+    awards: [],
     memberships: [
-      "Life Member, Association of Food Scientists and Technologists India (AFSTI)",
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)",
+      "Life Member, Association of Food Scientists & Technologists (India) (AFSTI)"
     ]
   },
   {
@@ -581,9 +565,7 @@ export const facultyData = [
       "Campus IT infrastructure and digital academic examination systems"
     ],
     notableContributions: [
-      "Headed multiple state and university curriculum committees for revising B.Tech and M.Tech curricula.",
-      "Directs the IT wing, campus networking, and academic portal infrastructure.",
-      "Established the Solar Pumping and Renewable Bio-Energy demonstration facilities on campus."
+      "Professor & Head (i/c), Department of Renewable Energy Engineering, advancing education and technology transfer in solar energy, biomass gasification, and renewable systems."
     ],
     publicationCounts: {
       journals: 28,
@@ -594,10 +576,7 @@ export const facultyData = [
       total: 53
     },
     publications: "28+ Research Publications • Solar Greenhouse & Renewable Drying Systems",
-    awards: [
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)",
-      "Life Member, Solar Energy Society of India (SESI)"
-    ],
+    awards: [],
     memberships: [
       "Life Member, Indian Society of Agricultural Engineers (ISAE)",
       "Life Member, Solar Energy Society of India (SESI)"
@@ -644,9 +623,7 @@ export const facultyData = [
       "Community nutrition and rural women entrepreneurship"
     ],
     notableContributions: [
-      "Formulation of therapeutic millet cookies, black gram laddu, and instant ragi malt for maternal nutrition.",
-      "Organized over 25 rural NSS service camps focusing on health, sanitation, literacy, and agro-processing skill training.",
-      "Executive supervision of Women Protection Cell ensuring campus safety and gender equity."
+      "Associate Professor & Head, Department of Basic Engineering and Applied Sciences, overseeing foundational multidisciplinary engineering courses and laboratories."
     ],
     publicationCounts: {
       journals: 22,
@@ -656,13 +633,8 @@ export const facultyData = [
       total: 48
     },
     publications: "22 Publications in National & International Journals • 15 Extension Articles",
-    awards: [
-      "ANGRAU Best NSS Programme Officer Award",
-      "Life Member, Association of Food Scientists and Technologists India (AFSTI)",
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
-    ],
+    awards: [],
     memberships: [
-      "Life Member, Association of Food Scientists and Technologists India (AFSTI)",
       "Life Member, Indian Society of Agricultural Engineers (ISAE)"
     ]
   },
@@ -705,9 +677,7 @@ export const facultyData = [
       "Textural analysis and rheological modeling of food pastes"
     ],
     notableContributions: [
-      "Instruction in undergraduate laboratory courses for Food Processing, Food Packaging, and Unit Operations.",
-      "Developed standard operating procedures for texture analyzers, spectrophotometers, and rheometers in the department.",
-      "Assisted in formulation of Instant Foxtail and Little Millet Dosa mixes."
+      "Teaching Associate, providing instruction and laboratory practical guidance in processing and food engineering."
     ],
     publicationCounts: {
       journals: 8,
@@ -716,11 +686,9 @@ export const facultyData = [
       total: 15
     },
     publications: "8 Research Papers in Peer-Reviewed Food Engineering Journals",
-    awards: [
-      "Life Member, Association of Food Scientists and Technologists India (AFSTI)"
-    ],
+    awards: [],
     memberships: [
-      "Life Member, Association of Food Scientists and Technologists India (AFSTI)"
+      "Member, Indian Society of Agricultural Engineers (ISAE)"
     ]
   },
   {
@@ -762,9 +730,7 @@ export const facultyData = [
       "Mechanized chilli processing, turmeric polishing, and spice grinding machinery"
     ],
     notableContributions: [
-      "Directs the nationally acclaimed ICAR - AICRP on Post Harvest Engineering & Technology scheme at Bapatla.",
-      "Established spice processing, millet processing, and pulse milling pilot facilities serving regional farmers.",
-      "Transferred over 15 patented post-harvest technologies to commercial fabricators."
+      "Principal Scientist & Scheme Head, ICAR - AICRP on Post-Harvest Engineering and Technology (PHET), Bapatla Centre."
     ],
     publicationCounts: {
       journals: 32,
@@ -775,14 +741,9 @@ export const facultyData = [
       total: 77
     },
     publications: "30+ Peer-Reviewed Research Publications • AICRP National Scheme Direction • Multiple Technical Bulletins",
-    awards: [
-      "ICAR National Scheme Leadership Recognition",
-      "Fellow, Indian Society of Agricultural Engineers (ISAE)",
-      "Life Member, AFSTI"
-    ],
+    awards: [],
     memberships: [
-      "Fellow, Indian Society of Agricultural Engineers (ISAE)",
-      "Life Member, Association of Food Scientists and Technologists India (AFSTI)"
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
     ]
   },
   {
@@ -824,9 +785,7 @@ export const facultyData = [
       "Design of solar-assisted hot air drying chambers for agricultural produce"
     ],
     notableContributions: [
-      "Co-developed low-cost evaporatively cooled storage structures adopted by vegetable farmers in Guntur and Prakasam districts.",
-      "Delivered training modules on safe grain storage and pest prevention to thousands of rural farmers.",
-      "Extensive research on non-chemical disinfestation of pulses."
+      "Scientist, ICAR - AICRP on Post-Harvest Engineering and Technology (PHET), Bapatla Centre."
     ],
     publicationCounts: {
       journals: 18,
@@ -836,13 +795,9 @@ export const facultyData = [
       total: 38
     },
     publications: "18 Research Publications in Food Process & Post-Harvest Engineering",
-    awards: [
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)",
-      "Life Member, AFSTI"
-    ],
+    awards: [],
     memberships: [
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)",
-      "Life Member, Association of Food Scientists and Technologists India (AFSTI)"
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
     ]
   },
 
@@ -897,11 +852,10 @@ export const facultyData = [
       "Reclamation of salt-affected and waterlogged lands"
     ],
     notableContributions: [
-      "Recognized as WINNER in the national IITB - ISRO - AICTE Mapathon competition (organized by FOSSEE Project, IIT Bombay in association with ISRO & AICTE, Dec 2020).",
       "Developed Surveying and Levelling laboratory and practical facilities at College of Agricultural Engineering, Madakasira.",
-      "Developed Soil and Water Engineering laboratory and practical facilities at CAE Madakasira and CAE Sangareddy.",
-      "Established 'Butterfly top low-cost polyhouse' at CAE Madakasira for research activities of students.",
-      "Executive governance as Warden for collegiate girls hostels ensuring exceptional security and welfare."
+      "Developed Soil and water engineering laboratory and practical facilities at College of Agricultural Engineering, Madakasira.",
+      "Developed Soil and water engineering laboratory and practical facilities at College of Agricultural Engineering, Sangareddy.",
+      "Established “Butterfly top low cost polyhouse” at College of Agricultural Engineering, Madakasira for research activities of students."
     ],
     publicationCounts: {
       journals: 17,
@@ -912,13 +866,12 @@ export const facultyData = [
     },
     publications: "17 International/National Journals • 1 Conference Proceeding • 3 Books/Chapters • 7 Popular Articles",
     awards: [
-      "Winner in IITB - ISRO - AICTE Mapathon (2020) by IIT Bombay, ISRO and AICTE",
-      "Meritorious Teacher Award (2020) at 54th Annual Convocation of ANGRAU",
-      "Excellence in Teaching Award (2016-17) by Society for Scientific Development in Agriculture and Technology in ICAAS-2016 (PJTSAU)"
+      "“Excellence in Teaching” for the year 2016-17 by Society for scientific development in agriculture and technology in ICAAS -2016 national seminar at Prof. Jaya Shankar Agricultural University, Hyderabad",
+      "“Meritorious teacher award” for the year 2020 in 54th annual convocation of Acharya N. G. Ranga Agricultural University at Agricultural college, Bapatla",
+      "Recognized as a WINNER in the IITB-ISRO-AICTE Mapathon, a competition of the FOSSEE Project, IIT Bombay in association with ISRO (Indian Space Research Organisation) and AICTE (All India Council for Technical Education) held between 7 Dec. to 22 Dec. 2020."
     ],
     memberships: [
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)",
-      "Life Member, Indian Association of Hydrologists (IAH)"
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
     ]
   },
   {
@@ -962,9 +915,7 @@ export const facultyData = [
       "Agricultural water resources optimization under semi-arid conditions"
     ],
     notableContributions: [
-      "16 years teaching experience in subjects: Watershed Hydrology, Soil and Water Conservation Engineering, Watershed Planning & Management, Remote Sensing & GIS Applications, Groundwater Hydrology, Wells and Pumps, Irrigation Engineering, Drainage Engineering, Fluid Mechanics, Engineering Mechanics, Design of Structures, and Engineering Drawing.",
-      "Prepared 2 comprehensive Study Materials for courses and 2 Technical Bulletins / Practical Manuals.",
-      "Upgraded central collegiate library infrastructure and automated book circulation system."
+      "16 years teaching experience in various subjects like Watershed Hydrology, Soil and Water Conservation Engineering, Watershed Planning and Management, Water harvesting and soil conservation structures, Remote sensing and GIS Applications, Groundwater hydrology, Wells and pumps, Irrigation Engineering, Drainage Engineering, Fluid Mechanics and Open Channel Hydraulics, Engineering Mechanics, Design of Structures, Strength of Materials and Engineering drawing etc."
     ],
     publicationCounts: {
       journals: 16,
@@ -976,17 +927,17 @@ export const facultyData = [
     },
     publications: "16 International/National Journals • 3 Conference Proceedings • 1 Book • 2 Study Materials • 2 Practical Manuals",
     awards: [
-      "BEST TEACHER AWARD (2023) at 1st International Agriculture Conference on Natural Vs Organic Farming (Anand, Gujarat)",
-      "Excellence Teaching Award (2023) at 4th International Conference 'Innovation to Transform Agriculture, Horticulture & Allied Sectors'",
-      "Young Professional Award (2024) at 6th International Conference 'Holistic Innovations for Sustainable Agriculture' (Warangal)",
-      "National Level Merit Certificate in e-quiz on Awareness of Income Tax (2020)"
+      "Received merit certificate in a national level e-quiz on “Awareness of Income tax for individuals” organized by the Department of Electronica and Communication Engineering on 20/7/2020.",
+      "Received “Excellence Teaching Award” 4th International Conference “Innovation to Transform Agriculture, Horticulture and Allied Sectors” from 21st to 23rd June, 2023 Organized by Malla Reddy University. Hyderabad and ISAHRD, Chandigarh.",
+      "Received “BEST TEACHER AWARD” 1st International Agriculture Conference on Natural Vs Organic Farming: In Context to Bhartiya Agriculture” On 24 to 26th December, 2023 Organized by Gujrat Natural Farming and Science University, Anand, Hindustan Agricultural Research Welfare Society and IIMYU, Meerut.",
+      "Received “Young Professional Award” 6th International Conference “Holistic innovations and technological advances for sustainable agriculture” from 4 to 6th March 2024 Organized by SR University. Warangal, SKLSSTHU, Hyderabad, Just Agriculture Group and ISAHRD, Chandigarh."
     ],
     memberships: [
-      "Life Member, The Andhra Agricultural Journal (Since 2009)",
-      "Life Member, Indian Society of Agricultural Engineers (ISAE, Since 2013)",
-      "Life Member, Indian Association of Soil and Water Conservationists (IASWC, Since 2016)",
-      "Life Member, Indian Association of Hydrologists (Since 2016)",
-      "Life Member, Indian Society of Agriculture & Horticulture Research Development (ISAHRD, Since 2023)"
+      "Life member for The Andhra Agricultural Journal Since 2009",
+      "Life member for Indian Society of Agricultural Engineers Since 2013",
+      "Life member for Indian Association of Soil and Water Conservationists (IASWC) Since 2016",
+      "Life member for Indian Association of Hydrologists Since 2016",
+      "Life member for Indian society of Agriculture & horticulture Research Development (ISAHRD, Chandigarh, Punjab, India Since 2023"
     ]
   },
   {
@@ -1028,10 +979,9 @@ export const facultyData = [
       "Subsurface drainage and canal seepage interception"
     ],
     notableContributions: [
-      "Served as Chairman and guide to undergraduate B.Tech (Ag. Engg) student capstone projects.",
-      "Served as member of the AGRIENGGCET-2019 Committee under the Chairperson of the Associate Dean, College of Agricultural Engineering, Madakasira.",
-      "Prepared comprehensive study materials for DAE-131 and DAE-341 courses of Agricultural Engineering Polytechnics.",
-      "Organized field calibration trials for micro-irrigation emitters and canal measuring weirs."
+      "Served as chairman to the B.Tech. (Ag. Engg.) student projects.",
+      "Served as the member of the AGRIENGGCET-2019 under the Chairperson of the Associate Dean, College of Agricultural Engineering, Madakasira.",
+      "Prepared the study materials for DAE-131 & DAE 341 courses of Ag. Engineering Polytechnics."
     ],
     publicationCounts: {
       journals: 8,
@@ -1039,11 +989,9 @@ export const facultyData = [
       total: 11
     },
     publications: "8 International/National Journals • 3 Popular Articles • 2 Polytechnic Course Materials",
-    awards: [
-      "Member, Indian Society of Agricultural Engineers (ISAE)"
-    ],
+    awards: [],
     memberships: [
-      "Member, Indian Society of Agricultural Engineers (ISAE)"
+      "Member in Indian Society of Agricultural Engineering (ISAE)"
     ]
   },
 
@@ -1093,10 +1041,9 @@ export const facultyData = [
       "Coastal soil reclamation and saline water intrusion mitigation"
     ],
     notableContributions: [
-      "Patented/Developed innovative polymer centrifugal pump reducing corrosion and operational costs in agricultural pumping.",
-      "Guided 25 M.Tech (Ag. Engg) and Ph.D. scholars in soil and water conservation engineering.",
-      "Spearheaded training and corporate placement drives connecting engineering graduates with top national agri-tech and irrigation MNCs.",
-      "Established advanced model watershed and demonstration soil conservation structures on campus."
+      "Development of polymer centrifugal pump, sensors in micro irrigation and WINFLUME for measuring water flows in canals.",
+      "Experience of 13 years teaching and 8 years research.",
+      "Guided to 25 students in M.Tech (Ag.Engg.) and Ph.D (Ag.Engg.)."
     ],
     publicationCounts: {
       journals: 41,
@@ -1108,16 +1055,13 @@ export const facultyData = [
     },
     publications: "41 International/National Journals • 10 Conference Proceedings • 4 Books/Chapters • 1 Technical Bulletin • Guided 25 Scholars",
     awards: [
-      "Andhra Pradesh State Best Teacher Award (2023)",
-      "ANGRAU Meritorious Scientist Award (2012)",
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)",
-      "Life Member, Institution of Engineers (IEI)",
-      "Life Member, The Andhra Agricultural Journal (AAJ)"
+      "State Best Teacher Award 2023",
+      "ANGRAU Meritorious Scientist Award in 2012"
     ],
     memberships: [
       "Life Member, Indian Society of Agricultural Engineers (ISAE)",
-      "Life Member, Institution of Engineers (IEI)",
-      "Life Member, The Andhra Agricultural Journal"
+      "Life Member, Institution of Engineers (IE)",
+      "Life Member, The Andhra Agricultural Journal (AAJ)"
     ]
   },
   {
@@ -1160,9 +1104,7 @@ export const facultyData = [
       "In-situ hydraulic conductivity measurement by auger-hole method"
     ],
     notableContributions: [
-      "Established the comprehensive Model Watershed unit demonstrating stream orders, bunding, terracing, and farm ponds to students.",
-      "Supervised setting up the vertical NFT and ebb-and-flow hydroponic systems at Dr. NTR CAE Bapatla.",
-      "Mentored student research projects qualifying for ICAR-JRF/SRF and NET fellowships."
+      "Assistant Professor, conducting teaching and research supervision in Soil and Water Conservation Engineering."
     ],
     publicationCounts: {
       journals: 12,
@@ -1172,9 +1114,7 @@ export const facultyData = [
       total: 23
     },
     publications: "12 Research Papers in Refereed Journals • 5 Conference Proceedings • 2 Technical Bulletins",
-    awards: [
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
-    ],
+    awards: [],
     memberships: [
       "Life Member, Indian Society of Agricultural Engineers (ISAE)"
     ]
@@ -1218,20 +1158,14 @@ export const facultyData = [
       "Hydraulic conductivity assessment in heavy clay soils",
       "Aeroponics and vertical closed-loop agriculture systems"
     ],
-    notableContributions: [
-      "Demonstrated practical experiments in silt samplers, auger hole hydraulic conductivity, and Parshall flumes for UG students.",
-      "Assisted in development of aeroponics and hydroponics systems at Dr. NTR CAE Bapatla.",
-      "Published valuable research findings on vertisol drainage."
-    ],
+    notableContributions: [],
     publicationCounts: {
       journals: 4,
       popularArticles: 2,
       total: 6
     },
     publications: "4 National/International Papers • 2 Popular Articles",
-    awards: [
-      "Member, Indian Society of Agricultural Engineers (ISAE)"
-    ],
+    awards: [],
     memberships: [
       "Member, Indian Society of Agricultural Engineers (ISAE)"
     ]
@@ -1281,9 +1215,7 @@ export const facultyData = [
       "Design of solar-biomass hybrid thermal drying systems"
     ],
     notableContributions: [
-      "Pioneered development of portable down-draft gasifiers suitable for small-scale rural agro-enterprises.",
-      "Granted patents and technology transfers for renewable energy briquetting machinery.",
-      "Guided more than 15 postgraduate and Ph.D. research projects in renewable energy."
+      "Professor of Agricultural Engineering, guiding academic courses and research in biomass energy, gasification, and renewable systems."
     ],
     publicationCounts: {
       journals: 30,
@@ -1293,10 +1225,7 @@ export const facultyData = [
       total: 49
     },
     publications: "30+ Journal Articles • 2 Granted Patents • Bio-Energy Conversion Manuals",
-    awards: [
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)",
-      "Life Member, Solar Energy Society of India (SESI)"
-    ],
+    awards: [],
     memberships: [
       "Life Member, Indian Society of Agricultural Engineers (ISAE)",
       "Life Member, Solar Energy Society of India (SESI)"
@@ -1342,9 +1271,7 @@ export const facultyData = [
       "Campus solarization and net-metering energy audits"
     ],
     notableContributions: [
-      "Executive management of collegiate transport infrastructure, vehicle fleet, and agricultural machinery logistics.",
-      "Designed and installed working solar demonstration units on campus for engineering students.",
-      "Authored practical training modules for renewable energy laboratory courses."
+      "Assistant Professor, conducting teaching and research in renewable energy applications, solar technologies, and farm energy management."
     ],
     publicationCounts: {
       journals: 14,
@@ -1353,9 +1280,7 @@ export const facultyData = [
       total: 24
     },
     publications: "14 Journal Papers • 6 Conference Proceedings • Solar Dryer Innovations",
-    awards: [
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
-    ],
+    awards: [],
     memberships: [
       "Life Member, Indian Society of Agricultural Engineers (ISAE)"
     ]
@@ -1403,9 +1328,7 @@ export const facultyData = [
       "Sensor Systems and Interdisciplinary Applied Sciences"
     ],
     notableContributions: [
-      "Head of Department steering undergraduate curricular load share of 41.75% credits across Basic Engineering and Applied Sciences.",
-      "Guidance to undergraduate students in Applied Electronics, Thermodynamics, and Instrumentation practicals.",
-      "Modernization of central mechanical workshops, physics, and electrical testing benches."
+      "Associate Professor & Head, Department of Basic Engineering and Applied Sciences, overseeing foundational multidisciplinary engineering courses and laboratories."
     ],
     publicationCounts: {
       journals: 16,
@@ -1413,13 +1336,9 @@ export const facultyData = [
       total: 24
     },
     publications: "Over 20 Research Publications in National & International Peer-Reviewed Journals & Conferences",
-    awards: [
-      "ANGRAU Institutional Excellence Recognition",
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
-    ],
+    awards: [],
     memberships: [
-      "Indian Society of Agricultural Engineers (ISAE)",
-      "Indian Society for Technical Education (ISTE)"
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
     ]
   },
   {
@@ -1467,9 +1386,8 @@ export const facultyData = [
       "Finite Element Analysis & Advanced Prototyping (CATIA, ANSYS)"
     ],
     notableContributions: [
-      "10 years teaching experience in Engineering Mechanics, Engineering Drawing, Theory of Machines (TOM), Mechatronics, Automation & Robotics, Automobile Engineering, and Automotive Transmission.",
-      "Software instruction in CATIA and ANSYS for design analysis.",
-      "Served as Faculty-in-charge – Training and Placement cell at MRRITS, Udayagiri for three years (2019–2022)."
+      "10 years teaching experience in various subjects like Engineering mechanics, drawing, TOM, Mechatronics, Automation and Robotics, Automobile Engineering, Automotive transmission, CATIA and Ansys.",
+      "Worked as Faculty-in-charge – Training and Placement cell, MRRITS, Udayagiri for three years 2019-22."
     ],
     publicationCounts: {
       journals: 9,
@@ -1478,11 +1396,10 @@ export const facultyData = [
     },
     publications: "09 International Publications, 07 International Conferences, 01 National Conference, 01 Book / Book Chapter",
     awards: [
-      "Ratified from JNTUA",
-      "Life Member, International Association of Engineers (IAENG)"
+      "Ratified from JNTUA."
     ],
     memberships: [
-      "Life Member, International Association of Engineers (IAENG)"
+      "Life member in IAENG"
     ]
   },
   {
@@ -1523,8 +1440,7 @@ export const facultyData = [
       "Differential Equations and Linear Algebra Applications"
     ],
     notableContributions: [
-      "20 years distinguished teaching experience in Engineering Mathematics-I, Engineering Mathematics-II, Engineering Mathematics-III, Probability and Statistics, and Numerical Methods in Hydrology.",
-      "Mentored hundreds of B.Tech Agricultural Engineering scholars in competitive mathematics and GATE examination preparations."
+      "20 years teaching experience in Mathematics subjects like Engineering Mathematics-I , Engineering Mathematics-II Engineering Mathematics-III, Probability and Statistics, Numerical Methods in Hydrology."
     ],
     publicationCounts: {
       journals: 4,
@@ -1532,12 +1448,8 @@ export const facultyData = [
       total: 6
     },
     publications: "Peer-reviewed research and scholarly presentations in applied mathematical techniques",
-    awards: [
-      "Long-Service Teaching Excellence in Collegiate Mathematics"
-    ],
-    memberships: [
-      "Andhra Pradesh Mathematical Society"
-    ]
+    awards: [],
+    memberships: []
   },
   {
     id: "er-n-kishore",
@@ -1577,8 +1489,7 @@ export const facultyData = [
       "PID Controllers and Sensor Actuation for Farm Systems"
     ],
     notableContributions: [
-      "15 years teaching experience in Electrical Machines, Basic Electrical Engineering, Basic Electronics Engineering, Control Systems, Renewable Energy Sources, and Power Electronics.",
-      "Comprehensive laboratory supervision for Electrical Machines & Power Utilization (AEBE 264) and Applied Electronics (AEBE 167)."
+      "15 years teaching experience in various subjects like Electrical Machines, Basic Electrical Engineering, Basic Electronics Engineering, Control Systems, Renewable Energy Sources, Power Electronics."
     ],
     publicationCounts: {
       journals: 4,
@@ -1586,12 +1497,8 @@ export const facultyData = [
       total: 6
     },
     publications: "04 International and National Journal Publications in Electrical & Power Electronics",
-    awards: [
-      "Recognized for Teaching Excellence in Electrical Engineering"
-    ],
-    memberships: [
-      "Life Member, Institution of Engineers (India) - IEI"
-    ]
+    awards: [],
+    memberships: []
   }
 ];
 

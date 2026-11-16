@@ -832,10 +832,10 @@ export const officialStructureData = {
               specialization: "CAD/CAM Design, Deep Learning & Computer Vision in Precision Farming, Automatic Transplanters & Spot Spraying"
             },
             {
-              id: "er-n-kishore",
-              name: "Er. N. Kishore",
+              id: "er-kishore-nalabolu",
+              name: "Er. Kishore Nalabolu",
               designation: "Assistant Professor",
-              photo: "/images/faculty/er_n_kishore.webp",
+              photo: "/images/faculty/er_kishore_nalabolu.webp",
               phone: "8500856998 / 9398431758",
               email: "n.kishore@angrau.ac.in",
               altEmail: "kishorenalabolu@gmail.com",
