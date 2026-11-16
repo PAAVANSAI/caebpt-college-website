@@ -414,8 +414,8 @@ export default function AcademicsPage({ onSelectProgram }) {
             <div className="space-y-10 animate-fadeIn">
               {/* Institutional Overview Header Card */}
               <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-100">
-                  <div className="space-y-2 max-w-3xl">
+                <div className="pb-6 border-b border-slate-100">
+                  <div className="space-y-2 max-w-4xl">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fdf5df] border border-[#fae4a4] text-xs font-bold text-[#854d0e]">
                       <GraduationCap className="w-4 h-4 text-[#d4a72c]" />
                       <span>ICAR VI Deans' Committee Approved Curriculum (2024–25)</span>
@@ -426,30 +426,6 @@ export default function AcademicsPage({ onSelectProgram }) {
                     <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                       4-Year Full-Time Professional Degree Program designed to impart state-of-the-art engineering competencies across farm mechanization, irrigation automation, post-harvest agro-processing, and renewable energy technologies.
                     </p>
-                  </div>
-                  <div className="flex flex-wrap lg:flex-col gap-3 flex-shrink-0">
-                    <a
-                      href="/documents/academics/ICAR_VI_Deans_Committee_BTech_Curriculum.pdf"
-                      download="ICAR_VI_Deans_Committee_BTech_Curriculum.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-navy text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
-                      style={{ textDecoration: 'none' }}
-                      title="Download Official ICAR VI Deans' Committee B.Tech Curriculum PDF"
-                    >
-                      <Download className="w-4 h-4 text-[#f5c84c]" />
-                      <span>ICAR VI Deans' Syllabus (.pdf)</span>
-                    </a>
-                    <a
-                      href="/documents/academics/ANGRAU_UG_Courses_Curriculum.docx"
-                      download="ANGRAU_UG_Courses_Curriculum.docx"
-                      className="btn btn-outline text-xs font-bold py-2.5 px-4 flex items-center gap-2 whitespace-nowrap shadow-xs"
-                      style={{ textDecoration: 'none' }}
-                      title="Download Official ANGRAU UG Courses Curriculum Document (.docx)"
-                    >
-                      <Download className="w-4 h-4 text-[#d4a72c]" />
-                      <span>UG Courses (.docx)</span>
-                    </a>
                   </div>
                 </div>
 
