@@ -28,7 +28,8 @@ const DEFAULT_HERO_SLIDES = [
   {
     image: "/images/hero/slide_5_statue.jpg",
     title: "College Entrance & Institutional Memorial",
-    alt: "Golden bust statue and entrance of Dr NTR CAE Bapatla"
+    alt: "Golden bust statue and entrance of Dr NTR CAE Bapatla",
+    fit: "contain"
   },
   {
     image: "/images/hero/slide_6_signboard.jpg",
@@ -122,6 +123,7 @@ export default function Hero() {
           /* Multi-image Sliding Carousel with Crystal-Clear Visibility */
           slides.map((slide, idx) => {
             const isActive = idx === currentSlide;
+            const isContain = slide.fit === 'contain' || (slide.image && slide.image.includes('slide_5'));
             return (
               <div
                 key={slide.image || idx}
@@ -129,14 +131,34 @@ export default function Hero() {
                   isActive ? 'opacity-100 z-[1]' : 'opacity-0 z-0 pointer-events-none'
                 }`}
               >
-                <img
-                  src={slide.image}
-                  alt={slide.alt || "Campus view at Dr NTR CAE Bapatla"}
-                  className="w-full h-full object-cover object-center"
-                  loading={idx === 0 ? "eager" : "lazy"}
-                  fetchpriority={idx === 0 ? "high" : "low"}
-                  decoding="async"
-                />
+                {isContain ? (
+                  <div className="w-full h-full relative flex items-center justify-center overflow-hidden bg-[#06101e]">
+                    {/* Ambient backdrop so wide screens blend naturally without harsh black bars */}
+                    <img
+                      src={slide.image}
+                      alt=""
+                      aria-hidden="true"
+                      className="absolute inset-0 w-full h-full object-cover filter blur-2xl scale-125 opacity-30 pointer-events-none"
+                    />
+                    {/* Natural un-enlarged, uncropped full photo */}
+                    <img
+                      src={slide.image}
+                      alt={slide.alt || "Campus view at Dr NTR CAE Bapatla"}
+                      className="relative z-[1] max-h-full max-w-full object-contain object-center drop-shadow-[0_10px_35px_rgba(0,0,0,0.85)]"
+                      loading={idx === 0 ? "eager" : "lazy"}
+                      decoding="async"
+                    />
+                  </div>
+                ) : (
+                  <img
+                    src={slide.image}
+                    alt={slide.alt || "Campus view at Dr NTR CAE Bapatla"}
+                    className="w-full h-full object-cover object-center"
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    fetchpriority={idx === 0 ? "high" : "low"}
+                    decoding="async"
+                  />
+                )}
               </div>
             );
           })
