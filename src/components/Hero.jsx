@@ -53,7 +53,6 @@ export default function Hero() {
     : DEFAULT_HERO_SLIDES;
 
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -63,13 +62,14 @@ export default function Hero() {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   }, [slides.length]);
 
+  // Guaranteed continuous auto-sliding every 4 seconds without stopping on hover
   useEffect(() => {
-    if (isPaused || slides.length <= 1) return;
+    if (slides.length <= 1) return;
     const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
     return () => clearInterval(interval);
-  }, [isPaused, nextSlide, slides.length]);
+  }, [slides.length]);
 
   // Helper to extract YouTube Video ID for background streaming (if video is enabled)
   const getYouTubeId = (url) => {
@@ -85,8 +85,6 @@ export default function Hero() {
     <section
       id="home"
       className="relative bg-[#06101e] text-white overflow-hidden min-h-[calc(100vh-185px)] lg:min-h-[calc(100vh-188px)] flex items-start"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Background Campus Media: Sliding Carousel or Video */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -121,22 +119,20 @@ export default function Hero() {
             </video>
           )
         ) : (
-          /* Multi-image Sliding Carousel with Gentle Ken-Burns Zoom */
+          /* Multi-image Sliding Carousel with Crystal-Clear Visibility */
           slides.map((slide, idx) => {
             const isActive = idx === currentSlide;
             return (
               <div
                 key={slide.image || idx}
-                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
                   isActive ? 'opacity-100 z-[1]' : 'opacity-0 z-0 pointer-events-none'
                 }`}
               >
                 <img
                   src={slide.image}
                   alt={slide.alt || "Campus view at Dr NTR CAE Bapatla"}
-                  className={`w-full h-full object-cover object-center transform transition-transform duration-[7000ms] ease-out ${
-                    isActive ? 'scale-105' : 'scale-100'
-                  }`}
+                  className="w-full h-full object-cover object-center"
                   loading={idx === 0 ? "eager" : "lazy"}
                   fetchpriority={idx === 0 ? "high" : "low"}
                   decoding="async"
@@ -146,23 +142,13 @@ export default function Hero() {
           })
         )}
 
-        {/* Amrita-Inspired Deep Cinematic Gradient Scrim (Vignette) */}
+        {/* Minimal, Top-Focused Gradient: Keeps images bright and clear while ensuring headline readability */}
         <div
           className="absolute inset-0 z-[2] pointer-events-none"
           style={{
             background: `
-              linear-gradient(to right, rgba(6, 16, 30, 0.88) 0%, rgba(6, 16, 30, 0.55) 50%, rgba(6, 16, 30, 0.40) 80%, rgba(6, 16, 30, 0.35) 100%),
-              linear-gradient(180deg, rgba(6, 16, 30, 0.80) 0%, rgba(6, 16, 30, 0.35) 40%, transparent 65%, rgba(6, 16, 30, 0.85) 100%)
+              linear-gradient(180deg, rgba(6, 16, 30, 0.75) 0%, rgba(6, 16, 30, 0.35) 22%, transparent 45%, rgba(6, 16, 30, 0.45) 100%)
             `
-          }}
-        />
-
-        {/* Subtle grid pattern overlay */}
-        <div
-          className="absolute inset-0 z-[3] opacity-10 pointer-events-none"
-          style={{
-            backgroundImage: 'radial-gradient(circle at 25px 25px, rgba(212, 167, 44, 0.4) 2%, transparent 0%), radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.2) 2%, transparent 0%)',
-            backgroundSize: '100px 100px'
           }}
         />
       </div>
