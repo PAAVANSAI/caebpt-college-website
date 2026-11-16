@@ -128,7 +128,7 @@ export default function AdministrationPage() {
                     <Shield className="w-4 h-4 text-[#d4a72c]" />
                     <span>Vice-Chancellor's Governance Mandate</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic border-l-4 border-[#d4a72c] pl-4">
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic border-l-4 border-[#d4a72c] pl-4 text-justify" style={{ textAlign: 'justify' }}>
                     "{administration?.viceChancellor?.message || officialStructureData.administration.viceChancellor.message}"
                   </p>
                 </div>
@@ -261,7 +261,7 @@ export default function AdministrationPage() {
                     <Building className="w-4 h-4 text-[#d4a72c]" />
                     <span>Executive Biography & Responsibilities</span>
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed text-justify" style={{ textAlign: 'justify' }}>
                     {administration?.associateDean?.biography || officialStructureData.administration.associateDean.biography}
                   </p>
                 </div>

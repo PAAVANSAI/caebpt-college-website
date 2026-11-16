@@ -192,12 +192,12 @@ export default function HomePage({ onSelectProgram, onSelectNotice }) {
                   </div>
                 </div>
 
-                <div className="text-xs sm:text-sm text-slate-700 leading-relaxed space-y-3.5 font-normal not-italic">
+                <div className="text-xs sm:text-sm text-slate-700 leading-relaxed space-y-3.5 font-normal not-italic text-justify" style={{ textAlign: 'justify' }}>
                   {(Array.isArray(deanMessage?.content)
                     ? deanMessage.content
                     : [deanMessage?.content || deanMessage?.message || officialStructureData.messages.dean.content[0]]
                   ).map((p, idx) => (
-                    <p key={idx}>{p}</p>
+                    <p key={idx} className="text-justify" style={{ textAlign: 'justify' }}>{p}</p>
                   ))}
                 </div>
 
@@ -250,12 +250,12 @@ export default function HomePage({ onSelectProgram, onSelectNotice }) {
                   </div>
                 </div>
 
-                <div className="text-xs sm:text-sm text-slate-700 leading-relaxed space-y-3.5 font-normal not-italic">
+                <div className="text-xs sm:text-sm text-slate-700 leading-relaxed space-y-3.5 font-normal not-italic text-justify" style={{ textAlign: 'justify' }}>
                   {(Array.isArray(assocDeanMessage?.content)
                     ? assocDeanMessage.content
                     : [assocDeanMessage?.content || assocDeanMessage?.message || officialStructureData.messages.associateDean.content[0]]
                   ).map((p, idx) => (
-                    <p key={idx}>{p}</p>
+                    <p key={idx} className="text-justify" style={{ textAlign: 'justify' }}>{p}</p>
                   ))}
                 </div>
 
