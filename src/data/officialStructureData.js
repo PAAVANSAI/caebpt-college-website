@@ -786,9 +786,8 @@ export const officialStructureData = {
           hodEmail: "kvs.ramireddy@angrau.ac.in",
           hodAltEmail: "ksubbaramireddy@gmail.com",
           hodQualifications: "Ph.D. (FMPE, ANGRAU 2017), M.Tech (FMPE, MPKV Rahuri 1998), B.Tech (Ag. Engg, ANGRAU 1994)",
-          hodSpecialization: "Precision Farming Technologies, Machinery Instrumentation, Tractor Rotary Weeders & Axial Sprayers",
-          hodExperience: "30 Years Academic & Research Distinction; Established Farm Machinery, Farm Power & CNC Labs; 25 Journal Papers",
-          hodAwards: "Life Member in Indian Society of Agricultural Engineers (ISAE) & Andhra Agricultural Journal",
+          hodSpecialization: "Precision farming technologies and instrumentation involved in agricultural machinery development",
+          hodAwards: "Life member in Andhra Agricultural Journal, Life member in ISAE",
           facultyMembers: [
             {
               id: "dr-b-hari-babu",
@@ -808,7 +807,7 @@ export const officialStructureData = {
               phone: "9177522213",
               email: "a.ashokkumar@angrau.ac.in",
               qual: "Ph.D. (IIT Kharagpur 2017), M.Tech (IIT Kharagpur 2011), B.Tech (ANGRAU 2009)",
-              specialization: "Mechatronics, Electronics & Robotics in Agriculture, Embedded Tractor Performance Systems; IEI Young Engineer Award, ISAE-TAFE Gold Medal"
+              specialization: "Mechatronics, Application of Electronics in Agriculture, Robotics in Agriculture"
             },
             {
               id: "dr-d-vijay-kumar",
@@ -818,7 +817,7 @@ export const officialStructureData = {
               phone: "9492686634",
               email: "d.vijayakumar@angrau.ac.in",
               qual: "M.Tech (FMPE, ANGRAU 2010), B.Tech (Ag. Engg, ANGRAU 2006)",
-              specialization: "Farm Mechanization in Dryland Agriculture, Conservation Straw Management, Rice Transplanters & Groundnut Planters"
+              specialization: "Farm Machinery and Power"
             },
             {
               id: "dr-b-raj-kiran",
@@ -829,7 +828,7 @@ export const officialStructureData = {
               email: "b.rajkiran@angrau.ac.in",
               altEmail: "raj.be018@gmail.com",
               qual: "Ph.D. (ANGRAU 2022), M.Tech (IIT Kharagpur 2010), B.Tech (ANGRAU 2008)",
-              specialization: "CAD/CAM Design, Deep Learning & Computer Vision in Precision Farming, Automatic Transplanters & Spot Spraying"
+              specialization: "Design of Agricultural and Horticultural machinery, Image Processing and Deep Learning applications in precision agriculture"
             },
             {
               id: "er-kishore-nalabolu",
@@ -840,7 +839,7 @@ export const officialStructureData = {
               email: "n.kishore@angrau.ac.in",
               altEmail: "kishorenalabolu@gmail.com",
               qual: "M.Tech (IIT Kharagpur - GATE AIR 40), B.Tech (CAE Bapatla)",
-              specialization: "In-Situ Rainwater Conservation Diker Mechanisms, Bird Scarers for Millets; Netaji Subhas-ICAR International Fellow (Univ. of Nebraska)"
+              specialization: "In-Situ Rainwater Conservation Diker Mechanisms, Bird Scarers for Millets"
             },
             {
               id: "dr-g-veera-prasad",
@@ -924,9 +923,8 @@ export const officialStructureData = {
           hodPhone: "9848572321 / 7702366113",
           hodEmail: "g.ravibabu@angrau.ac.in",
           hodAltEmail: "caemdks@gmail.com",
-          hodSpecialization: "Surface & Ground Water Management, Micro-Irrigation, Canal & Coastal Water Reclamation",
-          hodAwards: "State Best Teacher Award (2023), ANGRAU Meritorious Scientist Award (2012)",
-          hodExperience: "13 Years Teaching & 8 Years Research Experience; Guided 25 M.Tech & Ph.D. scholars; 41 Journal Papers",
+          hodSpecialization: "Surface and ground water Management including coastal water management, Micro Irrigation Management, canal and Coastal Water management",
+          hodAwards: "ANGRAU Meritorious Scientist Award in 2012, State Best Teacher Award 2023",
           facultyMembers: [
             {
               id: "dr-d-sai-gangadhara-rao",
@@ -947,7 +945,7 @@ export const officialStructureData = {
               phone: "9490321440",
               email: "m.karunya@angrau.ac.in",
               altEmail: "karunya08cae@gmail.com",
-              specialization: "Irrigation & Drainage Systems, Mole Drainage Technology in Waterlogged Soils"
+              specialization: "Irrigation and Drainage Systems"
             }
           ]
         }
@@ -1001,9 +999,9 @@ export const officialStructureData = {
           hodPhone: "9533877666",
           hodEmail: "k.krupavathi@angrau.ac.in",
           hodAltEmail: "krupareddy572@gmail.com",
-          hodSpecialization: "Remote Sensing & GIS, Automation in Irrigation, Geomatics Water-Yield Modeling",
+          hodSpecialization: "Remote sensing and GIS Automation in Irrigation",
           hodQualifications: "Ph.D. (Soil & Water Engg, ANGRAU 2019), M.Tech (Soil & Water Engg, ANGRAU 2008), B.Tech (Ag. Engg, ANGRAU 2004)",
-          hodAwards: "WINNER in IITB-ISRO-AICTE Mapathon (2020), ANGRAU Meritorious Teacher Award (2020), Excellence in Teaching Award (2016-17); 17 Journal Papers",
+          hodAwards: "“Excellence in Teaching” (2016-17), “Meritorious teacher award” (2020), WINNER in IITB-ISRO-AICTE Mapathon (2020)",
           facultyMembers: [
             {
               id: "dr-n-ashok-kumar",
@@ -1013,7 +1011,7 @@ export const officialStructureData = {
               qual: "Ph.D. (Soil & Water Engg, ANGRAU 2021), M.Tech (UAS Dharwad 2006)",
               phone: "8555014523 / 8099479129",
               email: "n.ashokkumar@angrau.ac.in",
-              specialization: "Irrigation & Drainage Engg, Groundwater Modeling, Remote Sensing & GIS; Best Teacher Award (2023), Excellence Teaching Award (2023), Young Professional Award (2024)"
+              specialization: "Irrigation and Drainage Engineering, Application of groundwater models, Land and water management, Watershed management, soil and water conservation, Remote Sensing and GIS"
             },
             {
               id: "er-ch-ratna-raju",
@@ -1023,7 +1021,7 @@ export const officialStructureData = {
               qual: "M.Tech (Soil & Water Engg 2011), B.Tech (Ag. Engg 2009)",
               phone: "7337567544",
               email: "Ch.ratnaraju@angrau.ac.in",
-              specialization: "Canal Water Scheduling, Irrigation Water Management"
+              specialization: "Soil and Water Conservation Engineering"
             }
           ]
         }

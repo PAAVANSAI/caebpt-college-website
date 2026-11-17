@@ -100,7 +100,7 @@ async function ensureAdminAuth() {
   }
 }
 
-const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_16_beas_v5';
+const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_17_clean_v7';
 
 function sanitizeOfficialStructure(data) {
   if (!data || typeof data !== 'object') return defaultOfficialStructure;
@@ -350,6 +350,8 @@ function sanitizeOfficialStructure(data) {
           JSON.stringify(userDepts).includes('Dr. Ch. Srinivas') ||
           JSON.stringify(userDepts).includes('Dr. M. S. Reddy') ||
           JSON.stringify(userDepts).includes('Dr. B. Anjaneyulu') ||
+          JSON.stringify(userDepts).includes('30 Years Academic') ||
+          JSON.stringify(userDepts).includes('41 Journal Papers') ||
           userDepts.some(d => !d.hodAndFaculty || !d.hodAndFaculty.hodName || d.hodAndFaculty.hodName.includes('Placeholder')) ||
           !userDepts.every(d => d.hodAndFaculty?.hodPhoto);
 

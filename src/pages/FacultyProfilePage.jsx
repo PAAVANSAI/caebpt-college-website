@@ -271,7 +271,7 @@ export default function FacultyProfilePage() {
                     <span>Academic & Professional Profile</span>
                   </h3>
                   <p className="text-slate-700 text-sm leading-relaxed">
-                    {faculty.name} serves as {faculty.designation} in the Department of {faculty.department} at Dr. NTR College of Agricultural Engineering, Bapatla (ANGRAU). With {faculty.experience}, they contribute actively to undergraduate, postgraduate, and doctoral curricula, agricultural research projects, and university administration.
+                    {faculty.name} serves as {faculty.designation} in the Department of {faculty.department} at Dr. NTR College of Agricultural Engineering, Bapatla (ANGRAU).{faculty.experience ? ` With ${faculty.experience}, they contribute actively to undergraduate, postgraduate, and doctoral curricula, agricultural research projects, and university administration.` : ` They contribute actively to undergraduate, postgraduate, and doctoral curricula, agricultural research projects, and university administration.`}
                   </p>
                 </div>
 

@@ -22,11 +22,10 @@ export const facultyData = [
     phone: "9490845917",
     office: "FMPE Department Complex, Room 204",
     qualification: "Ph.D. (FMPE, ANGRAU 2017), M.Tech (MPKV Rahuri 1998), B.Tech (ANGRAU 1994)",
-    experience: "30 Years Academic & Research Distinction",
+    experience: "",
     administrativeRoles: [
       "Head of Department (FMPE)",
-      "NSS Programme Officer - I",
-      "Chairman & Member of Advisory Committees for PG and Ph.D. Research"
+      "Acted as Chairman and members of Advisory committees for PG and Ph.D research Projects"
     ],
     education: [
       {
@@ -48,12 +47,9 @@ export const facultyData = [
         thesis: "Drying of raw and ripe banana equipment and product development"
       }
     ],
-    specialization: "Precision Farming Technologies, Machinery Instrumentation, Tractor Rotary Weeders & Axial Sprayers",
+    specialization: "Precision farming technologies and instrumentation involved in agricultural machinery development",
     researchInterests: [
-      "Precision farming technologies and sensor instrumentation in farm machinery",
-      "Design and prototyping of tractor-drawn intercultural weeders",
-      "Air-assisted and axial flow orchard spraying systems",
-      "Ergonomics and drudgery reduction in field operations"
+      "Precision farming technologies and instrumentation involved in agricultural machinery development"
     ],
     notableContributions: [
       "Establishment of Farm Machinery, Farm Power and Advanced CNC Machine Laboratories (Milling and Turning) at CAE Bapatla.",
@@ -61,13 +57,7 @@ export const facultyData = [
       "Author in preparation of Course material on FAMP 341, FAMP 342 and FAMP 442 as per IV deans committee guidelines.",
       "Acted as Chairman and members of Advisory committees for PG and Ph.D research Projects."
     ],
-    publicationCounts: {
-      journals: 25,
-      conferences: 5,
-      technicalBulletins: 2,
-      popularArticles: 3,
-      total: 35
-    },
+    publicationCounts: {"journals": 25, "conferences": 5, "technicalBulletins": 2, "popularArticles": 3, "total": 35},
     publications: "25 International/National Journals • 5 Conference Proceedings • 2 Technical Bulletins • 3 Popular Articles",
     awards: [
       "Life member in Andhra Agricultural Journal",
@@ -91,11 +81,8 @@ export const facultyData = [
     phone: "9182780358",
     office: "FMPE Department Complex, Room 206",
     qualification: "Ph.D. (Agricultural Engineering), M.Tech (FMPE)",
-    experience: "18+ Years Academic & Research Distinction",
-    administrativeRoles: [
-      "Senior Faculty Member & UG/PG Academic Advisor",
-      "Farm Machinery Testing & Calibration Supervisor"
-    ],
+    experience: "",
+    administrativeRoles: [],
     education: [
       {
         degree: "Doctor of Philosophy (Ph.D.) in Agricultural Engineering",
@@ -110,11 +97,9 @@ export const facultyData = [
         thesis: "Performance Evaluation of Tractor-Drawn Seed-cum-Fertilizer Drills"
       }
     ],
-    specialization: "Farm Machinery Design, Machine Dynamics, Testing & Evaluation of Agricultural Machinery",
+    specialization: "Farm Machinery and Power Engineering",
     researchInterests: [
-      "Design optimization of secondary tillage machinery",
-      "Precision metering mechanisms for small seeds and pulses",
-      "Tractor testing and field implement hitch dynamics"
+      "Farm Machinery and Power Engineering"
     ],
     notableContributions: [
       "Senior faculty member coordinating farm machinery laboratory instruction and practical evaluations."
@@ -144,11 +129,9 @@ export const facultyData = [
     phone: "9177522213",
     office: "FMPE Department Complex, Room 208",
     qualification: "Ph.D. (IIT Kharagpur 2017), M.Tech (IIT Kharagpur 2011), B.Tech (ANGRAU 2009)",
-    experience: "9 Years Teaching & 5 Years Research Experience",
+    experience: "9 years teaching experience & 5 years research experience",
     administrativeRoles: [
-      "Officer Incharge of Student Affairs (OSA)",
-      "Former Head, ICAR - AICRP on Farm Implements & Machinery Scheme, Bapatla",
-      "Coordinator for Technical & Cultural Student Events"
+      "Former Head of ICAR - AICRP on Farm Implements and Machinery Scheme, Bapatla"
     ],
     education: [
       {
@@ -170,26 +153,18 @@ export const facultyData = [
         thesis: "Ergonomical Evaluation of Manually Operated Weeders in Wet Land Condition"
       }
     ],
-    specialization: "Mechatronics, Application of Electronics in Agriculture, Robotics in Agriculture, Embedded Tractor Performance Systems",
+    specialization: "Mechatronics, Application of Electronics in Agriculture, Robotics in Agriculture",
     researchInterests: [
-      "Mechatronics and IoT instrumentation in farm tractors and implements",
-      "Robotics and Artificial Intelligence applications in agriculture",
-      "Sensor-based embedded systems for digital weight transfer and slip monitoring",
-      "Unmanned Aerial Vehicles (Drones) in precision spraying"
+      "Mechatronics",
+      "Application of Electronics in Agriculture",
+      "Robotics in Agriculture"
     ],
     notableContributions: [
       "9 years teaching experience in various subjects like Farm Machinery Equipment, Tractor Systems and Controls, Machine Design, Mechatronics, Mechatronics and Robotics in Agriculture, Artificial Intelligence etc.",
       "5 years research experience as a Head of ICAR - AICRP on Farm Implements and Machinery Scheme, Bapatla."
     ],
-    publicationCounts: {
-      journals: 43,
-      conferences: 14,
-      books: 1,
-      technicalBulletins: 2,
-      popularArticles: 30,
-      total: 90
-    },
-    publications: "43 International/National Journals • 14 Conference Proceedings • 1 Book Chapter • 2 Technical Bulletins • 30 Popular Articles",
+    publicationCounts: {"journals": 43, "conferences": 14, "books": 1, "technicalBulletins": 2, "popularArticles": 30, "total": 90},
+    publications: "43 International/National Journals • 14 Conference Proceedings • 1 Book / Book Chapter • 2 Technical Bulletins • 30 Popular Articles",
     awards: [
       "Received Institution of Engineers India (IEI) “Young Engineer’s Award” in agricultural Engineering Discipline.",
       "Received ISAE-TAFE Student Gold Medal for the year 2019 for best PhD thesis.",
@@ -213,12 +188,8 @@ export const facultyData = [
     phone: "9492686634",
     office: "FMPE Department Complex, Room 210",
     qualification: "M.Tech (FMPE, ANGRAU 2010), B.Tech (Ag. Engg, ANGRAU 2006)",
-    experience: "14+ Years Teaching & Field Research Experience",
-    administrativeRoles: [
-      "Warden (Boys Hostels)",
-      "Labour Incharge, Dr. NTR CAE Bapatla",
-      "Coordinator for Campus Field Trials"
-    ],
+    experience: "",
+    administrativeRoles: [],
     education: [
       {
         degree: "Master of Technology (M.Tech) in Farm Machinery and Power",
@@ -233,11 +204,9 @@ export const facultyData = [
         thesis: "Studies on Blanching of Banana, Carrot and Potato"
       }
     ],
-    specialization: "Farm Mechanization in Dryland Agriculture, Conservation Straw Management, Rice Transplanters & Groundnut Planters",
+    specialization: "Farm Machinery and Power",
     researchInterests: [
-      "Conservation agriculture machinery and paddy straw management",
-      "Paddy transplanting mechanization in deltaic agro-climatic zones",
-      "Tractor-drawn precision groundnut planters and digger shakers"
+      "Farm Machinery and Power"
     ],
     notableContributions: [
       "Associated in the design and development of (i) Aqua planter for groundnut and (ii) Groundnut planter cum herbicide sprayer at Agricultural Research Station, Anantapur, Andhra Pradesh.",
@@ -273,12 +242,8 @@ export const facultyData = [
     phone: "8500220340 / 9177345631",
     office: "FMPE Theory of Machinery Lab, Room 212",
     qualification: "Ph.D. (ANGRAU 2022), M.Tech (IIT Kharagpur 2010), B.Tech (ANGRAU 2008)",
-    experience: "14 Years Academic & Research Distinction",
-    administrativeRoles: [
-      "SC / ST Cell Incharge, Dr. NTR CAE Bapatla",
-      "Incharge, Computer Aided Design (CAD/CAM) Lab",
-      "Member of Advisory Committees for PG Research"
-    ],
+    experience: "",
+    administrativeRoles: [],
     education: [
       {
         degree: "Doctor of Philosophy (Ph.D.) in Farm Machinery and Power Engineering",
@@ -299,12 +264,10 @@ export const facultyData = [
         thesis: "Ergonomic and Technical Evaluation of Small Farm Implements"
       }
     ],
-    specialization: "CAD/CAM Design, Deep Learning & Computer Vision in Precision Farming, Automatic Transplanters, Vision-Based Spot Spraying",
+    specialization: "Design of Agricultural and Horticultural machinery, Image Processing and Deep Learning applications in precision agriculture",
     researchInterests: [
-      "Design of agricultural and horticultural machinery using CAD/CAM/FEA tools",
-      "Image processing and Deep Learning algorithms for precision agriculture",
-      "Machine vision-based spot herbicide sprayers for selective chemical application",
-      "Automated paper pot transplanters for seedling nursery management"
+      "Design of Agricultural and Horticultural machinery",
+      "Image Processing and Deep Learning applications in precision agriculture"
     ],
     notableContributions: [
       "Development of drawing hall and infrastructural facilities at PAE, Kalikiri.",
@@ -347,7 +310,7 @@ export const facultyData = [
     phone: "8500856998 / 9398431758",
     office: "FMPE Department Complex, Room 214",
     qualification: "M.Tech. (Agril. Engg.) Farm Power and Machinery (IIT Kharagpur, GATE AIR 40), B.Tech. (Agril. Engg., ANGRAU)",
-    experience: "9 Years Experience (ARS Ananthapuram, CAE Bapatla, RARS Lam)",
+    experience: "9 Years (Scientist at ARS Ananthapuramu from 16.07.2015 to 04.09.2020)",
     administrativeRoles: [
       "Warden, CAE Madakasira (01.06.2023 to 08.05.2025)",
       "Officer i/c Student Activities (01.06.2021 to 31.05.2023)",
@@ -368,11 +331,10 @@ export const facultyData = [
         thesis: "Design and Evaluation of Farm Implements for Dryland Farming"
       }
     ],
-    specialization: "In-Situ Rainwater Conservation Diker Mechanisms, Bird Scarers for Millets, Rainfed Groundnut Intensification",
+    specialization: "In-Situ Rainwater Conservation Diker Mechanisms, Bird Scarers for Millets",
     researchInterests: [
       "In-situ rainwater conservation machinery and diker furrow openers",
       "Bird scarer technologies for millet crops",
-      "Carbon footprint and energy budgeting in rainfed groundnut",
       "Testing and evaluation of agricultural implements"
     ],
     notableContributions: [
@@ -420,10 +382,9 @@ export const facultyData = [
     phone: "9492686634",
     office: "AICRP on FIM Building, Dr. NTR CAE Bapatla",
     qualification: "Ph.D. (Farm Machinery & Power Engineering), M.Tech (FMPE)",
-    experience: "12+ Years Research, Implement Testing & Field Demonstration",
+    experience: "",
     administrativeRoles: [
-      "Co-Principal Investigator, ICAR-AICRP on Farm Implements & Machinery Scheme",
-      "State Implement Testing Coordinator"
+      "Assistant Professor (AICRP on FIM)"
     ],
     education: [
       {
@@ -439,11 +400,9 @@ export const facultyData = [
         thesis: "Mechanization of Transplanting and Intercultural Operations in Paddy"
       }
     ],
-    specialization: "Farm Implements & Machinery Scheme, Field Performance Testing & Evaluation, Frontline Demonstrations",
+    specialization: "Farm Implements & Machinery Scheme, Field Performance Testing & Evaluation",
     researchInterests: [
-      "Custom hiring centre machinery validation and performance economics",
-      "Tillage implement optimization for black cotton soils",
-      "Ergonomic assessment of women-friendly farm implements"
+      "Farm Implements & Machinery Scheme, Field Performance Testing & Evaluation"
     ],
     notableContributions: [
       "Instruction and practical laboratory supervision in Farm Machinery and Power Engineering courses."
@@ -478,11 +437,9 @@ export const facultyData = [
     phone: "9618800819",
     office: "Processing & Food Technology Complex, Room 301",
     qualification: "Ph.D. (Processing & Food Engineering), M.Tech (Ag. Engg)",
-    experience: "25+ Years Academic, Research & Institutional Governance",
+    experience: "",
     administrativeRoles: [
-      "Head of Department (Processing & Food Engineering)",
-      "Officer Incharge of Academic Matters (Postgraduate - OAM PG)",
-      "Chairman, Board of Studies in Food Engineering"
+      "Head of Department (Processing & Food Engineering)"
     ],
     education: [
       {
@@ -498,12 +455,9 @@ export const facultyData = [
         thesis: "Design and Thermal Analysis of Solar Grain Dryers"
       }
     ],
-    specialization: "Food Process Engineering, Grain Drying & Milling Technology, Storage Structures, Value Addition to Millets and Pulses",
+    specialization: "Agricultural Process and Food Engineering",
     researchInterests: [
-      "Grain storage structures and hermetic preservation systems",
-      "Novel drying technologies for agricultural and horticultural produce",
-      "Primary processing, puffing, and extrusion of minor millets",
-      "Pilot-scale agro-processing business incubation"
+      "Agricultural Process and Food Engineering"
     ],
     notableContributions: [
       "Professor & Head, Department of Agricultural Process and Food Engineering, managing academic curricula and postgraduate food engineering research."
@@ -536,12 +490,9 @@ export const facultyData = [
     phone: "9440363112",
     office: "Renewable Energy Engineering Annex, Room 101",
     qualification: "Ph.D. (Agricultural Engineering), M.Tech (Ag. Engg)",
-    experience: "20+ Years Academic, Research & IT Leadership",
+    experience: "",
     administrativeRoles: [
-      "Professor & Head Incharge, Department of Renewable Energy Engineering",
-      "Officer Incharge of Academic Matters (Undergraduate - OAM UG)",
-      "IT Wing Incharge, Dr. NTR CAE Bapatla",
-      "Convener, University Collegiate Admission Coordination Committee"
+      "Professor & Head Incharge, Department of Renewable Energy Engineering"
     ],
     education: [
       {
@@ -557,12 +508,9 @@ export const facultyData = [
         thesis: "Design and Optimization of Biomass Gasifier Systems for Agro-Processing Units"
       }
     ],
-    specialization: "Solar PV Pumping, Solar Greenhouses & Drying Systems, Agro-Energy Systems, Biomass Gasification, Food Drying Kinetics",
+    specialization: "Renewable Energy Engineering",
     researchInterests: [
-      "Solar photovoltaic water pumping systems and array sizing",
-      "Biomass characterization, briquetting, and fluidized bed gasification",
-      "Solar greenhouse tunnel dryers for spices and commercial crops",
-      "Campus IT infrastructure and digital academic examination systems"
+      "Renewable Energy Engineering"
     ],
     notableContributions: [
       "Professor & Head (i/c), Department of Renewable Energy Engineering, advancing education and technology transfer in solar energy, biomass gasification, and renewable systems."
@@ -595,11 +543,9 @@ export const facultyData = [
     phone: "9182164437 / 9295350600",
     office: "Processing & Food Tech Complex, Room 303",
     qualification: "Ph.D. (Food Process Engineering), M.Tech (Ag. Engg)",
-    experience: "16+ Years Experience in Teaching, Extension & Student Welfare",
+    experience: "",
     administrativeRoles: [
-      "NSS Programme Officer - II",
-      "Incharge, Women Protection Cell (WPC), Dr. NTR CAE Bapatla",
-      "Faculty Counselor for Girl Students"
+      "Associate Professor & Head of Department (BEAS)"
     ],
     education: [
       {
@@ -615,12 +561,9 @@ export const facultyData = [
         thesis: "Thermal Processing and Storage Stability of Ready-to-Serve Beverages"
       }
     ],
-    specialization: "Novel Food Processing Technologies, Fruit & Vegetable Preservation, Functional Beverages, Quality Control & Packaging",
+    specialization: "Basic Engineering & Applied Sciences",
     researchInterests: [
-      "Osmotic dehydration and hurdle technology for fruits and vegetables",
-      "Formulation and shelf-life extension of probiotic functional beverages",
-      "Active and intelligent food packaging films from biopolymers",
-      "Community nutrition and rural women entrepreneurship"
+      "Basic Engineering & Applied Sciences"
     ],
     notableContributions: [
       "Associate Professor & Head, Department of Basic Engineering and Applied Sciences, overseeing foundational multidisciplinary engineering courses and laboratories."
@@ -651,11 +594,8 @@ export const facultyData = [
     phone: "9866486926",
     office: "Processing & Food Tech Complex, Room 305",
     qualification: "Ph.D. (Food Engineering), M.Tech (Food Process Engg)",
-    experience: "5+ Years Academic & Research Mentorship",
-    administrativeRoles: [
-      "Laboratory Incharge, Food Quality Testing Lab",
-      "Coordinator for Experiential Learning Pilot Plants"
-    ],
+    experience: "",
+    administrativeRoles: [],
     education: [
       {
         degree: "Doctor of Philosophy (Ph.D.) in Food Engineering",
@@ -670,11 +610,9 @@ export const facultyData = [
         thesis: "Sensory and Rheological Evaluation of Ready-to-Cook Grain Formulations"
       }
     ],
-    specialization: "Functional Foods, Extrusion Processing, Sensory Evaluation, Value Addition of Traditional Food Grains",
+    specialization: "Processing and Food Engineering",
     researchInterests: [
-      "Twin-screw extrusion processing of millets and pulse blends",
-      "Sensory profiling and consumer acceptance modeling of fortified foods",
-      "Textural analysis and rheological modeling of food pastes"
+      "Processing and Food Engineering"
     ],
     notableContributions: [
       "Teaching Associate, providing instruction and laboratory practical guidance in processing and food engineering."
@@ -704,10 +642,9 @@ export const facultyData = [
     phone: "9949906751",
     office: "AICRP on PHET Scheme Facility, Dr. NTR CAE Bapatla",
     qualification: "Ph.D. (Post Harvest Engineering), M.Tech (Ag. Process Engg)",
-    experience: "22+ Years Research, Scheme Direction & Project Leadership",
+    experience: "",
     administrativeRoles: [
-      "Principal Scientist & Head, ICAR-AICRP on Post Harvest Engineering & Technology (PHET), Bapatla Centre",
-      "Member of State Technical Advisory Committee on Agro-Processing"
+      "Principal Scientist & Head, ICAR-AICRP on Post Harvest Engineering & Technology (PHET), Bapatla Centre"
     ],
     education: [
       {
@@ -723,11 +660,9 @@ export const facultyData = [
         thesis: "Studies on Mechanical Dehulling and Milling of Grain Legumes"
       }
     ],
-    specialization: "AICRP on Post Harvest Engineering & Technology, Value Addition Machinery, Commercial Pilot Plants, Agro-Processing Centers",
+    specialization: "Post-Harvest Engineering & Technology",
     researchInterests: [
-      "Commercial pilot plant development for value addition to horticultural crops",
-      "Technology commercialization and rural entrepreneurship through agro-processing centres (APCs)",
-      "Mechanized chilli processing, turmeric polishing, and spice grinding machinery"
+      "Post-Harvest Engineering & Technology"
     ],
     notableContributions: [
       "Principal Scientist & Scheme Head, ICAR - AICRP on Post-Harvest Engineering and Technology (PHET), Bapatla Centre."
@@ -759,10 +694,9 @@ export const facultyData = [
     phone: "9177101614",
     office: "AICRP on PHET Scheme Facility, Dr. NTR CAE Bapatla",
     qualification: "Ph.D. (Agricultural Process Engineering), M.Tech",
-    experience: "15+ Years Research & Field Implementation",
+    experience: "",
     administrativeRoles: [
-      "Scientist, ICAR - AICRP on PHET Bapatla Centre",
-      "Field Testing & Technology Transfer Coordinator"
+      "Scientist, ICAR - AICRP on PHET Bapatla Centre"
     ],
     education: [
       {
@@ -778,11 +712,9 @@ export const facultyData = [
         thesis: "Design of Low-Cost Evaporative Cool Chambers for Vegetables"
       }
     ],
-    specialization: "Post-Harvest Operations, Loss Minimization, Primary Processing Equipment, Storage Engineering",
+    specialization: "Post-Harvest Engineering & Technology",
     researchInterests: [
-      "Controlled atmosphere and hermetic storage structures for seed protection",
-      "Post-harvest loss assessment protocols in coastal farm clusters",
-      "Design of solar-assisted hot air drying chambers for agricultural produce"
+      "Post-Harvest Engineering & Technology"
     ],
     notableContributions: [
       "Scientist, ICAR - AICRP on Post-Harvest Engineering and Technology (PHET), Bapatla Centre."
@@ -818,11 +750,9 @@ export const facultyData = [
     phone: "9533877666",
     office: "Irrigation & Drainage Department Wing, Room 102",
     qualification: "Ph.D. (Soil and Water Engg, ANGRAU 2019), M.Tech (ANGRAU 2008), B.Tech (ANGRAU 2004)",
-    experience: "15+ Years Academic, Research & Hostel Administration",
+    experience: "",
     administrativeRoles: [
-      "Head of Department (Irrigation & Drainage Engineering)",
-      "Warden (Girls Hostels), Dr. NTR CAE Bapatla",
-      "Member of Advisory Committees for PG Research"
+      "Associate Professor & Head of Department (IDE)"
     ],
     education: [
       {
@@ -844,12 +774,10 @@ export const facultyData = [
         thesis: "PERFORMANCE EVALUATION OF METAL ROAD RING FOR TRACTOR CAGE WHEELS ON DIFFERENT ROADS"
       }
     ],
-    specialization: "Remote Sensing and GIS, Automation in Irrigation, Geomatics Water-Yield Response Modeling, Hydraulic Flumes",
+    specialization: "Remote sensing and GIS, Automation in Irrigation",
     researchInterests: [
-      "Remote sensing and GIS applications for canal and groundwater management",
-      "Sensor automation in drip and micro-irrigation scheduling",
-      "Critical flow contraction flumes and open-channel hydraulics",
-      "Reclamation of salt-affected and waterlogged lands"
+      "Remote sensing and GIS",
+      "Automation in Irrigation"
     ],
     notableContributions: [
       "Developed Surveying and Levelling laboratory and practical facilities at College of Agricultural Engineering, Madakasira.",
@@ -857,14 +785,8 @@ export const facultyData = [
       "Developed Soil and water engineering laboratory and practical facilities at College of Agricultural Engineering, Sangareddy.",
       "Established “Butterfly top low cost polyhouse” at College of Agricultural Engineering, Madakasira for research activities of students."
     ],
-    publicationCounts: {
-      journals: 17,
-      conferences: 1,
-      books: 3,
-      popularArticles: 7,
-      total: 28
-    },
-    publications: "17 International/National Journals • 1 Conference Proceeding • 3 Books/Chapters • 7 Popular Articles",
+    publicationCounts: {"journals": 17, "conferences": 1, "books": 3, "popularArticles": 7, "total": 28},
+    publications: "17 International/National Journals • 1 Conference Proceeding • 3 Books/Book Chapters • 7 Popular Articles",
     awards: [
       "“Excellence in Teaching” for the year 2016-17 by Society for scientific development in agriculture and technology in ICAAS -2016 national seminar at Prof. Jaya Shankar Agricultural University, Hyderabad",
       "“Meritorious teacher award” for the year 2020 in 54th annual convocation of Acharya N. G. Ranga Agricultural University at Agricultural college, Bapatla",
@@ -887,12 +809,8 @@ export const facultyData = [
     phone: "8555014523 / 8099479129",
     office: "IDE Department Wing, Room 104",
     qualification: "Ph.D. (Soil & Water Engg, ANGRAU 2021), M.Tech (UAS Dharwad 2006)",
-    experience: "16 Years Teaching & Research Distinction",
-    administrativeRoles: [
-      "Additional Officer Incharge of Academic Matters (UG - Additional OAM)",
-      "Library Incharge, Dr. NTR CAE Bapatla",
-      "Nodal Officer for Student Scholarship Portals"
-    ],
+    experience: "16 years teaching experience",
+    administrativeRoles: [],
     education: [
       {
         degree: "Doctor of Philosophy (Ph.D.) in Soil and Water Engineering",
@@ -907,25 +825,20 @@ export const facultyData = [
         thesis: "Prioritization of subwatersheds based on geomorphological characteristics of Ag2 watershed in Krishna River Subcatchment (Karnataka)"
       }
     ],
-    specialization: "Irrigation and Drainage Engineering, Application of Groundwater Models, Land and Water Management, Remote Sensing & GIS",
+    specialization: "Irrigation and Drainage Engineering, Application of groundwater models, Land and water management, Watershed management, soil and water conservation, Remote Sensing and GIS",
     researchInterests: [
-      "Irrigation and Drainage Engineering, groundwater numerical modeling (MODFLOW)",
-      "Geomorphological prioritization of watersheds using satellite data",
-      "Fluid mechanics and open-channel hydraulics",
-      "Agricultural water resources optimization under semi-arid conditions"
+      "Irrigation and Drainage Engineering",
+      "Application of groundwater models",
+      "Land and water management",
+      "Watershed management",
+      "Soil and water conservation",
+      "Remote Sensing and GIS"
     ],
     notableContributions: [
       "16 years teaching experience in various subjects like Watershed Hydrology, Soil and Water Conservation Engineering, Watershed Planning and Management, Water harvesting and soil conservation structures, Remote sensing and GIS Applications, Groundwater hydrology, Wells and pumps, Irrigation Engineering, Drainage Engineering, Fluid Mechanics and Open Channel Hydraulics, Engineering Mechanics, Design of Structures, Strength of Materials and Engineering drawing etc."
     ],
-    publicationCounts: {
-      journals: 16,
-      conferences: 3,
-      books: 1,
-      studyMaterials: 2,
-      technicalBulletins: 2,
-      total: 24
-    },
-    publications: "16 International/National Journals • 3 Conference Proceedings • 1 Book • 2 Study Materials • 2 Practical Manuals",
+    publicationCounts: {"journals": 16, "conferences": 3, "books": 1, "studyMaterials": 2, "technicalBulletins": 2, "total": 24},
+    publications: "16 International/National Journals • 3 Conference Proceedings • 1 Book / Book Chapter • 2 Study Materials • 2 Practical Manuals",
     awards: [
       "Received merit certificate in a national level e-quiz on “Awareness of Income tax for individuals” organized by the Department of Electronica and Communication Engineering on 20/7/2020.",
       "Received “Excellence Teaching Award” 4th International Conference “Innovation to Transform Agriculture, Horticulture and Allied Sectors” from 21st to 23rd June, 2023 Organized by Malla Reddy University. Hyderabad and ISAHRD, Chandigarh.",
@@ -953,10 +866,9 @@ export const facultyData = [
     phone: "7337567544",
     office: "IDE Department Wing, Room 106",
     qualification: "M.Tech (Soil & Water Engg, ANGRAU 2011), B.Tech (Ag. Engg, ANGRAU 2009)",
-    experience: "12+ Years Academic & Mentorship Experience",
+    experience: "",
     administrativeRoles: [
-      "Incharge, Wells & Pumps Laboratory",
-      "Member, AGRIENGGCET Polytechnic Entrance Examination Committee"
+      "Member, AGRIENGGCET-2019 Committee"
     ],
     education: [
       {
@@ -972,11 +884,9 @@ export const facultyData = [
         thesis: "Studies on Critical Flow Conditions in Semi-Circular Crested Weirs"
       }
     ],
-    specialization: "Watershed Management, Irrigation Water Indenting and Scheduling, Critical Flow Weirs, Hydraulic Flumes",
+    specialization: "Soil and Water Conservation Engineering",
     researchInterests: [
-      "Crop water requirement indenting and digital canal scheduling",
-      "Hydraulic flumes and water flow measurement structures in irrigation canals",
-      "Subsurface drainage and canal seepage interception"
+      "Soil and Water Conservation Engineering"
     ],
     notableContributions: [
       "Served as chairman to the B.Tech. (Ag. Engg.) student projects.",
@@ -1012,12 +922,10 @@ export const facultyData = [
     phone: "9848572321 / 7702366113",
     office: "SWCE Department Complex, Room 112",
     qualification: "Ph.D. (Soil & Water Conservation Engg), M.Tech (Ag. Engg)",
-    experience: "13 Years Teaching & 8 Years Research Distinction",
+    experience: "13 years teaching and 8 years research experience",
     administrativeRoles: [
-      "Head of Department (Soil & Water Conservation Engineering)",
-      "Training & Placement Officer (TPO), Dr. NTR CAE Bapatla",
-      "Former Associate Dean, CAE Madakasira",
-      "Chairman & Guide for 25 M.Tech & Ph.D. Scholars"
+      "Head of Department (SWCE)",
+      "Associate Dean"
     ],
     education: [
       {
@@ -1033,27 +941,19 @@ export const facultyData = [
         thesis: "Canal Flow Measurement and Hydraulic Modeling using WINFLUME"
       }
     ],
-    specialization: "Surface & Ground Water Management, Micro Irrigation, Reclamation Activities, Canal and Coastal Water Management, WINFLUME Modeling",
+    specialization: "Surface and ground water Management including coastal water management, Micro Irrigation Management, canal and Coastal Water management",
     researchInterests: [
-      "Development of energy-efficient polymer centrifugal pumps",
-      "Sensors in micro-irrigation automation and precision fertigation",
-      "WINFLUME modeling for accurate water flow measurement in canals",
-      "Coastal soil reclamation and saline water intrusion mitigation"
+      "Surface and ground water Management including coastal water management",
+      "Micro Irrigation Management",
+      "Canal and Coastal Water management"
     ],
     notableContributions: [
       "Development of polymer centrifugal pump, sensors in micro irrigation and WINFLUME for measuring water flows in canals.",
       "Experience of 13 years teaching and 8 years research.",
       "Guided to 25 students in M.Tech (Ag.Engg.) and Ph.D (Ag.Engg.)."
     ],
-    publicationCounts: {
-      journals: 41,
-      conferences: 10,
-      books: 4,
-      technicalBulletins: 1,
-      popularArticles: 5,
-      total: 61
-    },
-    publications: "41 International/National Journals • 10 Conference Proceedings • 4 Books/Chapters • 1 Technical Bulletin • Guided 25 Scholars",
+    publicationCounts: {"journals": 41, "total": 41},
+    publications: "41 Research Publications",
     awards: [
       "State Best Teacher Award 2023",
       "ANGRAU Meritorious Scientist Award in 2012"
@@ -1077,11 +977,8 @@ export const facultyData = [
     phone: "8500087345",
     office: "SWCE Department Complex, Room 114",
     qualification: "Ph.D. (Soil & Water Conservation Engineering), M.Tech (SWCE)",
-    experience: "10+ Years Academic, Research & Watershed Modeling",
-    administrativeRoles: [
-      "Incharge, Hydroponics & Aeroponics Research Facility",
-      "Faculty Advisor for Model Watershed Demonstrations"
-    ],
+    experience: "",
+    administrativeRoles: [],
     education: [
       {
         degree: "Doctor of Philosophy (Ph.D.) in Soil and Water Conservation Engineering",
@@ -1096,12 +993,9 @@ export const facultyData = [
         thesis: "Design and Silt Trapping Efficiency of Vegetative Filter Strips and Gully Plugs"
       }
     ],
-    specialization: "Watershed Modeling, Soil Erosion Control Structures, Rainwater Harvesting, Subsurface Drainage, Hydroponics",
+    specialization: "Soil and Water Conservation Engineering",
     researchInterests: [
-      "Soil erosion modeling using SWAT and USLE in agricultural watersheds",
-      "Silt sampler calibration and automated runoff measuring stage-level recorders",
-      "Soilless cultivation: vertical and linear nutrient film technique (NFT) hydroponics",
-      "In-situ hydraulic conductivity measurement by auger-hole method"
+      "Soil and Water Conservation Engineering"
     ],
     notableContributions: [
       "Assistant Professor, conducting teaching and research supervision in Soil and Water Conservation Engineering."
@@ -1133,11 +1027,8 @@ export const facultyData = [
     phone: "9490321440",
     office: "SWCE Department Complex, Room 116",
     qualification: "M.Tech (SWCE, ANGRAU 2015), B.Tech (Ag. Engg, ANGRAU 2012)",
-    experience: "8 Years Academic & Field Research Distinction",
-    administrativeRoles: [
-      "Incharge, Soil & Water Conservation Engineering Laboratory",
-      "Faculty Coordinator for Undergraduate Practical Classes"
-    ],
+    experience: "",
+    administrativeRoles: [],
     education: [
       {
         degree: "Master of Technology (M.Tech) in Soil and Water Conservation Engineering",
@@ -1152,11 +1043,9 @@ export const facultyData = [
         thesis: "Design of Low-Cost Rainwater Harvesting Structures in Rural Catchments"
       }
     ],
-    specialization: "Irrigation & Drainage Systems, Mole Drainage Technology in Waterlogged Soils, Soil Erosion Modeling",
+    specialization: "Irrigation and Drainage Systems",
     researchInterests: [
-      "Mole drainage technology for mitigating waterlogging and secondary salinization",
-      "Hydraulic conductivity assessment in heavy clay soils",
-      "Aeroponics and vertical closed-loop agriculture systems"
+      "Irrigation and Drainage Systems"
     ],
     notableContributions: [],
     publicationCounts: {
@@ -1187,12 +1076,8 @@ export const facultyData = [
     phone: "9441936374",
     office: "Renewable Energy Engineering Annex, Room 103",
     qualification: "Ph.D. (Agricultural Engineering), M.Tech (Ag. Engg)",
-    experience: "22 Years Academic, Research & Renewable Energy Leadership",
-    administrativeRoles: [
-      "Senior Professor & Research Guide",
-      "Incharge, Biomass Gasification & Thermal Energy Lab",
-      "Chairman of Advisory Committees for Doctoral Dissertations"
-    ],
+    experience: "",
+    administrativeRoles: [],
     education: [
       {
         degree: "Doctor of Philosophy (Ph.D.) in Agricultural Engineering",
@@ -1207,12 +1092,9 @@ export const facultyData = [
         thesis: "Studies on Down-Draft Gasifiers using Cotton Stalks and Crop Wastes"
       }
     ],
-    specialization: "Biomass Gasification, Briquetting of Crop Residues, Biofuel Production, Renewable Thermal Applications",
+    specialization: "Renewable Energy Engineering",
     researchInterests: [
-      "Biomass characterization and high-density briquetting of cotton stalks and paddy husk",
-      "Thermochemical conversion of agro-industrial byproducts via down-draft gasification",
-      "Transesterification protocols for non-edible oils into biodiesel",
-      "Design of solar-biomass hybrid thermal drying systems"
+      "Renewable Energy Engineering"
     ],
     notableContributions: [
       "Professor of Agricultural Engineering, guiding academic courses and research in biomass energy, gasification, and renewable systems."
@@ -1244,11 +1126,8 @@ export const facultyData = [
     phone: "8374647499",
     office: "Renewable Energy Engineering Annex, Room 105",
     qualification: "Ph.D. (Renewable Energy / Ag. Engg), M.Tech (REE)",
-    experience: "10+ Years Academic, Research & Institutional Fleet Incharge",
-    administrativeRoles: [
-      "Transport Incharge, Dr. NTR CAE Bapatla",
-      "Incharge, Solar Photovoltaic Pumping & Testing Station"
-    ],
+    experience: "",
+    administrativeRoles: [],
     education: [
       {
         degree: "Doctor of Philosophy (Ph.D.) in Renewable Energy Engineering",
@@ -1263,12 +1142,9 @@ export const facultyData = [
         thesis: "Performance Evaluation of Solar Greenhouse Tunnel Dryers for High-Value Spices"
       }
     ],
-    specialization: "Bio-Energy Systems, Solar Photovoltaic System Design, Solar Drying, Transesterification & Bio-Diesel",
+    specialization: "Renewable Energy Engineering",
     researchInterests: [
-      "Solar photovoltaic water pumping system optimization and MPPT controllers",
-      "Solar tunnel dryers and forced-convection hybrid drying systems",
-      "Bio-diesel extraction from pongamia and neem seeds",
-      "Campus solarization and net-metering energy audits"
+      "Renewable Energy Engineering"
     ],
     notableContributions: [
       "Assistant Professor, conducting teaching and research in renewable energy applications, solar technologies, and farm energy management."
@@ -1302,10 +1178,9 @@ export const facultyData = [
     phone: "9182164437",
     office: "Basic Engineering & Applied Sciences Block, Room 101",
     qualification: "Ph.D., M.Tech",
-    experience: "18+ Years Academic, Research & Administrative Distinction in ANGRAU",
+    experience: "",
     administrativeRoles: [
-      "Associate Professor & Head, Department of Basic Engineering & Applied Sciences",
-      "Academic In-charge, Multidisciplinary Curriculum Coordination"
+      "Associate Professor & Head of Department (BEAS)"
     ],
     education: [
       {
@@ -1321,11 +1196,9 @@ export const facultyData = [
         thesis: "Advanced Electronics & Applied Engineering Instrumentation"
       }
     ],
-    specialization: "Applied Electronics, Instrumentation, Energy Engineering & Multi-Disciplinary Sciences",
+    specialization: "Basic Engineering & Applied Sciences",
     researchInterests: [
-      "Applied Electronics and Instrumentation in Agricultural Automation",
-      "Basic Engineering Pedagogical Models for Agro-Engineers",
-      "Sensor Systems and Interdisciplinary Applied Sciences"
+      "Basic Engineering & Applied Sciences"
     ],
     notableContributions: [
       "Associate Professor & Head, Department of Basic Engineering and Applied Sciences, overseeing foundational multidisciplinary engineering courses and laboratories."
@@ -1354,10 +1227,9 @@ export const facultyData = [
     phone: "939440255",
     office: "Mechanical Workshop & Applied Mechanics Division",
     qualification: "Ph.D. (Registered, ANU), M.Tech (Auto Engg), B.Tech (Mech Engg)",
-    experience: "10 Years Teaching Experience in Mechanical & Automobile Engineering",
+    experience: "10 years teaching experience",
     administrativeRoles: [
-      "Faculty-in-charge, Training and Placement Cell (MRRITS, Udayagiri 2019-22)",
-      "In-charge, Mechanical Workshop & Fabrication Practice Laboratory"
+      "Faculty-in-charge, Training and Placement Cell (MRRITS, Udayagiri 2019-22)"
     ],
     education: [
       {
@@ -1379,22 +1251,18 @@ export const facultyData = [
         thesis: "Self Propelled Carrier for Mining and Tunneling Industries"
       }
     ],
-    specialization: "Automotive EV Development, Mechatronics, CAD/CAM, Robotics in Agriculture",
+    specialization: "Development of Automotive in EV, Application of Mechatronics in the field, Application of Robotics in the field",
     researchInterests: [
-      "Development of Automotive Systems in Electric Vehicles (EV)",
-      "Application of Mechatronics & Robotics in Agricultural Mechanization",
-      "Finite Element Analysis & Advanced Prototyping (CATIA, ANSYS)"
+      "Development of Automotive in EV",
+      "Application of Mechatronics in the field",
+      "Application of Robotics in the field"
     ],
     notableContributions: [
       "10 years teaching experience in various subjects like Engineering mechanics, drawing, TOM, Mechatronics, Automation and Robotics, Automobile Engineering, Automotive transmission, CATIA and Ansys.",
       "Worked as Faculty-in-charge – Training and Placement cell, MRRITS, Udayagiri for three years 2019-22."
     ],
-    publicationCounts: {
-      journals: 9,
-      conferences: 8,
-      total: 17
-    },
-    publications: "09 International Publications, 07 International Conferences, 01 National Conference, 01 Book / Book Chapter",
+    publicationCounts: {"journals": 9, "conferences": 8, "books": 1, "total": 18},
+    publications: "9 International Publications • 7 International Conferences • 1 National Conference • 1 Book / Book Chapter",
     awards: [
       "Ratified from JNTUA."
     ],
@@ -1415,10 +1283,8 @@ export const facultyData = [
     phone: "9989806304",
     office: "Applied Sciences Division, Room 104",
     qualification: "M.Sc. (Mathematics), B.Sc. (M.P.C)",
-    experience: "20 Years Teaching Experience in Engineering Mathematics",
-    administrativeRoles: [
-      "Coordinator, Remedial Classes & Statistical Methods Tutorials"
-    ],
+    experience: "20 years teaching experience",
+    administrativeRoles: [],
     education: [
       {
         degree: "Master of Science (M.Sc.) in Mathematics",
@@ -1433,11 +1299,11 @@ export const facultyData = [
         thesis: "Mathematics, Physics & Chemistry"
       }
     ],
-    specialization: "Matrices & Calculus, Differential Equations, Numerical Analysis, Probability & Statistics",
+    specialization: "Engineering Mathematics, Probability and Statistics, Numerical Methods in Hydrology",
     researchInterests: [
-      "Numerical Methods in Hydrology and Water Resources Modeling",
-      "Applied Statistical Methods in Agricultural Experimentation",
-      "Differential Equations and Linear Algebra Applications"
+      "Engineering Mathematics",
+      "Probability and Statistics",
+      "Numerical Methods in Hydrology"
     ],
     notableContributions: [
       "20 years teaching experience in Mathematics subjects like Engineering Mathematics-I , Engineering Mathematics-II Engineering Mathematics-III, Probability and Statistics, Numerical Methods in Hydrology."
@@ -1464,10 +1330,8 @@ export const facultyData = [
     phone: "8810357088",
     office: "Electrical Engineering Laboratory & Control Systems Division",
     qualification: "M.Tech (PID Control Systems), B.Tech (EEE)",
-    experience: "15 Years Teaching Experience in Electrical & Electronics Engineering",
-    administrativeRoles: [
-      "In-charge, Electrical Machines & Applied Electronics Laboratory"
-    ],
+    experience: "15 years teaching experience",
+    administrativeRoles: [],
     education: [
       {
         degree: "Master of Technology (M.Tech)",
@@ -1482,21 +1346,16 @@ export const facultyData = [
         thesis: "Reduction of Harmonics In PWM Converter"
       }
     ],
-    specialization: "Control Systems, Electrical Machines, Power Utilization, Renewable Energy",
+    specialization: "Electrical Vehicles, Renewable Energy sources",
     researchInterests: [
-      "Electric Vehicles (EV) Powertrain & Power Electronics",
-      "Renewable Energy Sources (Solar PV, Wind & Hybrid Micro-grids)",
-      "PID Controllers and Sensor Actuation for Farm Systems"
+      "Electrical Vehicles",
+      "Renewable Energy sources"
     ],
     notableContributions: [
       "15 years teaching experience in various subjects like Electrical Machines, Basic Electrical Engineering, Basic Electronics Engineering, Control Systems, Renewable Energy Sources, Power Electronics."
     ],
-    publicationCounts: {
-      journals: 4,
-      conferences: 2,
-      total: 6
-    },
-    publications: "04 International and National Journal Publications in Electrical & Power Electronics",
+    publicationCounts: {"journals": 4, "total": 4},
+    publications: "4 International/National Journals",
     awards: [],
     memberships: []
   }
