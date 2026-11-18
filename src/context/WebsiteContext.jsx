@@ -100,7 +100,7 @@ async function ensureAdminAuth() {
   }
 }
 
-const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_18_strict_v8';
+const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_18_accred_v9';
 
 function sanitizeOfficialStructure(data) {
   if (!data || typeof data !== 'object') return defaultOfficialStructure;

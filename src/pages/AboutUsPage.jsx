@@ -615,7 +615,7 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <span className="badge badge-gold text-xs font-bold uppercase tracking-wider">
-                      ICAR Cycle 2021–2026
+                      ICAR Cycle {accredData?.cycle || "2026–2031 (Grade 'A')"}
                     </span>
                     <span className="badge badge-navy text-xs font-bold uppercase tracking-wider">
                       NAEAB Accredited
@@ -889,7 +889,7 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                   NH-216, Karlapalem Road, Bapatla – 522 101, Bapatla District, Andhra Pradesh
                 </p>
                 <div className="flex items-center justify-center gap-2 pt-1 text-[11px] font-bold text-[#b88e22]">
-                  <span>ICAR Accredited (Cycle 2021–2026)</span>
+                  <span>{selectedDoc.cycle ? `ICAR Accredited (${selectedDoc.cycle})` : selectedDoc.grade ? `ICAR Accredited (${selectedDoc.grade})` : "ICAR Accredited (Cycle 2026–2031 • Grade 'A')"}</span>
                   <span>•</span>
                   <span>Domain: caebpt.ac.in</span>
                 </div>
@@ -933,7 +933,7 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                       <span>Accredited Programmes for Dr. NTRCAE Bapatla (Annexure-I, Item 6)</span>
                     </h5>
                     <span className="badge bg-emerald-100 text-emerald-800 border-emerald-300 text-[10px] font-bold">
-                      Grade 'B' (Score: 2.92) • Valid 2021–2026
+                      {selectedDoc.grade ? `${selectedDoc.grade} • Valid ${selectedDoc.validity || selectedDoc.date}` : "Grade 'A' (Score: 3.01) • Valid 2026–2031"}
                     </span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 text-xs text-slate-800">
