@@ -21,7 +21,7 @@ export default function Faculty() {
     const matchesDept = selectedDept === 'All' || member.deptId === selectedDept;
     const matchesSearch =
       member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      member.specialization.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (member.specialization || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
       member.department.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesDept && matchesSearch;
   });
@@ -115,21 +115,27 @@ export default function Faculty() {
                   </div>
 
                   {/* Qualifications & Specialization */}
-                  <div className="space-y-2 text-xs text-slate-600 bg-slate-50 p-3 rounded-lg border border-slate-100 mb-3">
-                    <div>
-                      <span className="text-[10px] font-bold uppercase text-slate-400 block">
-                        Qualifications
-                      </span>
-                      <span className="font-medium text-slate-800 line-clamp-2">{member.qualification}</span>
-                    </div>
+                  {(member.qualification || member.specialization) && (
+                    <div className="space-y-2 text-xs text-slate-600 bg-slate-50 p-3 rounded-lg border border-slate-100 mb-3">
+                      {member.qualification && (
+                        <div>
+                          <span className="text-[10px] font-bold uppercase text-slate-400 block">
+                            Qualifications
+                          </span>
+                          <span className="font-medium text-slate-800 line-clamp-2">{member.qualification}</span>
+                        </div>
+                      )}
 
-                    <div>
-                      <span className="text-[10px] font-bold uppercase text-slate-400 block">
-                        Research Focus
-                      </span>
-                      <span className="text-slate-700 leading-tight block line-clamp-2">{member.specialization}</span>
+                      {member.specialization && (
+                        <div>
+                          <span className="text-[10px] font-bold uppercase text-slate-400 block">
+                            Research Focus
+                          </span>
+                          <span className="text-slate-700 leading-tight block line-clamp-2">{member.specialization}</span>
+                        </div>
+                      )}
                     </div>
-                  </div>
+                  )}
 
                   {/* Contact & Room Details */}
                   <div className="pt-2 border-t border-slate-100 text-[11px] text-slate-500 space-y-1">

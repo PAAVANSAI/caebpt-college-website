@@ -276,15 +276,17 @@ export default function FacultyProfilePage() {
                 </div>
 
                 {/* Thrust Areas / Specialization */}
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-                  <h4 className="text-xs font-bold text-navy-950 uppercase tracking-wider flex items-center gap-1.5">
-                    <Compass className="w-4 h-4 text-[#d4a72c]" />
-                    <span>Specialization & Core Thrust Areas</span>
-                  </h4>
-                  <p className="text-sm font-semibold text-slate-800 leading-snug">
-                    {faculty.specialization}
-                  </p>
-                </div>
+                {faculty.specialization && (
+                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                    <h4 className="text-xs font-bold text-navy-950 uppercase tracking-wider flex items-center gap-1.5">
+                      <Compass className="w-4 h-4 text-[#d4a72c]" />
+                      <span>Specialization & Core Thrust Areas</span>
+                    </h4>
+                    <p className="text-sm font-semibold text-slate-800 leading-snug">
+                      {faculty.specialization}
+                    </p>
+                  </div>
+                )}
 
                 {/* Research Interests List */}
                 {faculty.researchInterests && faculty.researchInterests.length > 0 && (
@@ -442,17 +444,21 @@ export default function FacultyProfilePage() {
                   <p className="text-xs text-slate-500">Peer-reviewed journals, national/international conferences, books, and extension publications.</p>
                 </div>
 
-                <div className="p-5 bg-gradient-to-r from-navy-50 to-slate-50 rounded-2xl border border-slate-200 space-y-3">
-                  <div className="flex items-center gap-2 text-xs font-extrabold text-navy-900 uppercase tracking-wider">
-                    <FileText className="w-4 h-4 text-[#d4a72c]" />
-                    <span>Publications Summary</span>
+                {faculty.publications ? (
+                  <div className="p-5 bg-gradient-to-r from-navy-50 to-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                    <div className="flex items-center gap-2 text-xs font-extrabold text-navy-900 uppercase tracking-wider">
+                      <FileText className="w-4 h-4 text-[#d4a72c]" />
+                      <span>Publications Summary</span>
+                    </div>
+                    <p className="text-sm font-semibold text-navy-950 leading-relaxed">
+                      {faculty.publications}
+                    </p>
                   </div>
-                  <p className="text-sm font-semibold text-navy-950 leading-relaxed">
-                    {faculty.publications}
-                  </p>
-                </div>
+                ) : (
+                  <p className="text-xs text-slate-500 italic">No specific research publications listed in current official profile dossier.</p>
+                )}
 
-                {faculty.publicationCounts && (
+                {faculty.publicationCounts && faculty.publicationCounts.total > 0 && (
                   <div className="overflow-x-auto rounded-xl border border-slate-200">
                     <table className="w-full text-xs text-left border-collapse">
                       <thead className="bg-slate-100 text-navy-950">

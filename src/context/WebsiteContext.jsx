@@ -100,7 +100,7 @@ async function ensureAdminAuth() {
   }
 }
 
-const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_17_clean_v7';
+const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_18_strict_v8';
 
 function sanitizeOfficialStructure(data) {
   if (!data || typeof data !== 'object') return defaultOfficialStructure;
@@ -352,6 +352,9 @@ function sanitizeOfficialStructure(data) {
           JSON.stringify(userDepts).includes('Dr. B. Anjaneyulu') ||
           JSON.stringify(userDepts).includes('30 Years Academic') ||
           JSON.stringify(userDepts).includes('41 Journal Papers') ||
+          JSON.stringify(userDepts).includes('Room 204') ||
+          JSON.stringify(userDepts).includes('Room 301') ||
+          JSON.stringify(userDepts).includes('Grain Drying & Milling Technology') ||
           userDepts.some(d => !d.hodAndFaculty || !d.hodAndFaculty.hodName || d.hodAndFaculty.hodName.includes('Placeholder')) ||
           !userDepts.every(d => d.hodAndFaculty?.hodPhoto);
 
@@ -507,6 +510,11 @@ export function WebsiteProvider({ children }) {
         JSON.stringify(parsed).includes('Placeholder') ||
         JSON.stringify(parsed).includes('Dr. Ch. Srinivas') ||
         JSON.stringify(parsed).includes('Dr. M. S. Reddy') ||
+        JSON.stringify(parsed).includes('Room 204') ||
+        JSON.stringify(parsed).includes('Room 206') ||
+        JSON.stringify(parsed).includes('30 Years Academic') ||
+        JSON.stringify(parsed).includes('Optimization of Rotary Tiller') ||
+        JSON.stringify(parsed).includes('Continuous Fluidized Bed Dryer') ||
         !parsed.some(f => f.name?.includes('Krupavathi')) ||
         !parsed.some(f => f.name?.includes('Vishnu Vardhan')) ||
         !parsed.some(f => f.name?.includes('Rami Reddy')) ||

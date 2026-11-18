@@ -797,7 +797,7 @@ export const officialStructureData = {
               phone: "9182780358",
               email: "b.haribabu@angrau.ac.in",
               qual: "Ph.D. (Agricultural Engineering)",
-              specialization: "Farm Machinery Design, Testing & Evaluation"
+              specialization: "Farm Machinery and Power Engineering"
             },
             {
               id: "dr-a-ashok-kumar",
@@ -849,7 +849,7 @@ export const officialStructureData = {
               phone: "9492686634",
               email: "g.veeraprasad@angrau.ac.in",
               qual: "Ph.D. (Farm Machinery & Power Engineering)",
-              specialization: "Farm Implements & Machinery Scheme, Field Performance Testing & Evaluation"
+              specialization: "Farm Machinery and Power Engineering"
             }
           ]
         }
@@ -934,7 +934,7 @@ export const officialStructureData = {
               qual: "Ph.D. (Soil & Water Conservation Engg)",
               phone: "8500087345",
               email: "d.saigangadhararao@angrau.ac.in",
-              specialization: "Soil & Water Conservation, Watershed Hydrology"
+              specialization: "Soil and Water Conservation Engineering"
             },
             {
               id: "er-m-karunya",
@@ -1105,8 +1105,7 @@ export const officialStructureData = {
           hodPhoto: "/images/faculty/dr_b_sreenivasula_reddy.webp",
           hodPhone: "9618800819",
           hodEmail: "b.sreenivasulareddy@angrau.ac.in",
-          hodQualifications: "Ph.D. (Processing & Food Engineering)",
-          hodSpecialization: "Food Process Engineering, Grain Drying & Milling Technology, Storage Structures",
+          hodSpecialization: "Agricultural Process and Food Engineering",
           facultyMembers: [
             {
               id: "dr-s-vishnu-vardhan",
@@ -1114,9 +1113,7 @@ export const officialStructureData = {
               designation: "Professor",
               photo: "/images/faculty/dr_s_vishnu_vardhan.webp",
               phone: "9440363112",
-              email: "vishnuvardhans@angrau.ac.in",
-              qual: "Ph.D. (Agricultural Engineering)",
-              specialization: "Renewable Energy Applications in Food Processing, Solar Dehydration & Biomass Systems"
+              email: "vishnuvardhans@angrau.ac.in"
             },
             {
               id: "dr-k-lavanya",
@@ -1124,9 +1121,7 @@ export const officialStructureData = {
               designation: "Associate Professor",
               photo: "/images/faculty/dr_k_lavanya.webp",
               phone: "9182164437",
-              email: "k.lavanya@angrau.ac.in",
-              qual: "Ph.D. (Food Process Engineering)",
-              specialization: "Novel Food Processing Technologies, Fruit & Vegetable Preservation"
+              email: "k.lavanya@angrau.ac.in"
             },
             {
               id: "dr-b-pravallika",
@@ -1134,9 +1129,7 @@ export const officialStructureData = {
               designation: "Teaching Associate",
               photo: "/images/faculty/dr_b_pravallika.webp",
               phone: "9866486926",
-              email: "pravallikabogala@gmail.com",
-              qual: "Ph.D. (Food Engineering)",
-              specialization: "Functional Foods, Extrusion Processing & Sensory Evaluation"
+              email: "pravallikabogala@gmail.com"
             },
             {
               id: "dr-dd-smith",
@@ -1144,9 +1137,7 @@ export const officialStructureData = {
               designation: "Principal Scientist & Head (AICRP on PHET)",
               photo: "/images/faculty/dr_dd_smith.webp",
               phone: "9949906751",
-              email: "dd.smith@angrau.ac.in",
-              qual: "Ph.D. (Post Harvest Engineering)",
-              specialization: "AICRP on Post Harvest Engineering & Technology, Value Addition Machinery & Pilot Plants"
+              email: "dd.smith@angrau.ac.in"
             },
             {
               id: "dr-v-vasudeva-rao",
@@ -1154,9 +1145,7 @@ export const officialStructureData = {
               designation: "Scientist (AICRP on PHET)",
               photo: "/images/faculty/dr_v_vasudeva_rao.webp",
               phone: "9177101614",
-              email: "v.vasudevarao@angrau.ac.in",
-              qual: "Ph.D. (Agricultural Process Engineering)",
-              specialization: "Post-Harvest Operations, Loss Minimization & Primary Processing Equipment"
+              email: "v.vasudevarao@angrau.ac.in"
             }
           ]
         }
@@ -1260,27 +1249,23 @@ export const officialStructureData = {
           hodPhoto: "/images/faculty/dr_s_vishnu_vardhan.webp",
           hodPhone: "9440363112",
           hodEmail: "vishnuvardhans@angrau.ac.in",
-          hodSpecialization: "Solar Energy Systems, Renewable Energy Engineering, Agro-Energy Applications",
+          hodSpecialization: "Renewable Energy Engineering",
           facultyMembers: [
             {
               id: "dr-b-john-wesley",
               name: "Dr. B. John Wesley",
               designation: "Professor",
               photo: "/images/faculty/dr_b_john_wesley.webp",
-              qual: "Ph.D. (Agricultural Engineering)",
               phone: "9441936374",
-              email: "b.johnwesley@angrau.ac.in",
-              specialization: "Biomass Gasification, Post-Harvest Renewable Systems"
+              email: "b.johnwesley@angrau.ac.in"
             },
             {
               id: "dr-a-srinivasa-rao",
               name: "Dr. A. Srinivasa Rao",
               designation: "Assistant Professor",
               photo: "/images/faculty/dr_a_srinivasa_rao.webp",
-              qual: "Ph.D. (Renewable Energy / Ag. Engg)",
               phone: "8374647499",
-              email: "Arudra.srinivasarao@angrau.ac.in",
-              specialization: "Bio-Energy Systems, Solar Photovoltaic Applications"
+              email: "Arudra.srinivasarao@angrau.ac.in"
             }
           ]
         }
@@ -1455,14 +1440,13 @@ export const officialStructureData = {
           hodPhoto: "/images/faculty/dr_k_lavanya.webp",
           hodPhone: "9182164437",
           hodEmail: "k.lavanya@angrau.ac.in",
-          hodSpecialization: "Applied Electronics, Instrumentation, Energy Systems & Agricultural Engineering",
+          hodSpecialization: "Basic Engineering & Applied Sciences",
           facultyMembers: [
             {
               id: "dr-k-lavanya",
               name: "Dr. K. Lavanya",
               designation: "Associate Professor & Head",
               photo: "/images/faculty/dr_k_lavanya.webp",
-              qual: "Ph.D., M.Tech",
               phone: "9182164437",
               email: "k.lavanya@angrau.ac.in"
             },
@@ -1471,27 +1455,27 @@ export const officialStructureData = {
               name: "Er. KVS Kartheek",
               designation: "Teaching Associate (Mechanical Engineering)",
               photo: "/images/faculty/er_kvs_kartheek.webp",
-              qual: "Ph.D. (Registered, ANU), M.Tech (Auto Engg), B.Tech (Mech Engg)",
               phone: "939440255",
-              email: "karthikkvsk@gmail.com"
+              email: "karthikkvsk@gmail.com",
+              specialization: "Development of Automotive in EV, Application of Mechatronics in the field, Application of Robotics in the field"
             },
             {
               id: "sri-g-sesha-reddy",
               name: "Sri. G. Sesha Reddy",
               designation: "Teaching Associate (Mathematics)",
               photo: "/images/faculty/sri_g_sesha_reddy.webp",
-              qual: "M.Sc. (Mathematics), B.Sc. (M.P.C)",
               phone: "9989806304",
-              email: "sganapam@gmail.com"
+              email: "sganapam@gmail.com",
+              specialization: "Engineering Mathematics, Probability and Statistics, Numerical Methods in Hydrology"
             },
             {
               id: "er-n-kishore",
               name: "Er. N. Kishore",
               designation: "Teaching Associate (Electrical Engineering)",
               photo: "/images/faculty/er_n_kishore.webp",
-              qual: "M.Tech (PID Control Systems), B.Tech (EEE)",
               phone: "8810357088",
-              email: "kishorekumar.noon@gmail.com"
+              email: "kishorekumar.noon@gmail.com",
+              specialization: "Electrical Vehicles, Renewable Energy sources"
             }
           ]
         }
