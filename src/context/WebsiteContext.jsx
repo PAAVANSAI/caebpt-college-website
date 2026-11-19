@@ -100,7 +100,7 @@ async function ensureAdminAuth() {
   }
 }
 
-const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_18_accred_v9';
+const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_19_faculty_sync_v10';
 
 function sanitizeOfficialStructure(data) {
   if (!data || typeof data !== 'object') return defaultOfficialStructure;
@@ -125,7 +125,7 @@ function sanitizeOfficialStructure(data) {
   // Safe Accreditation object
   const defaultDocs = defaultOfficialStructure.aboutUs.accreditation.documents || [];
   const defaultDocsMap = new Map(defaultDocs.map(d => [d.id, d]));
-  
+
   let mergedDocs = defaultDocs;
   if (Array.isArray(data.aboutUs?.accreditation?.documents) && data.aboutUs.accreditation.documents.length > 0) {
     const existingIds = new Set(data.aboutUs.accreditation.documents.map(d => d.id));
@@ -199,10 +199,10 @@ function sanitizeOfficialStructure(data) {
     content: (isDeanPlaceholder || !data.messages?.dean?.content)
       ? defaultOfficialStructure.messages.dean.content
       : Array.isArray(data.messages.dean.content)
-      ? data.messages.dean.content
-      : data.messages.dean.message
-      ? [data.messages.dean.message]
-      : defaultOfficialStructure.messages.dean.content
+        ? data.messages.dean.content
+        : data.messages.dean.message
+          ? [data.messages.dean.message]
+          : defaultOfficialStructure.messages.dean.content
   };
 
   // Safe Associate Dean Message
@@ -225,10 +225,10 @@ function sanitizeOfficialStructure(data) {
     content: (isAssocDeanPlaceholder || !data.messages?.associateDean?.content)
       ? defaultOfficialStructure.messages.associateDean.content
       : Array.isArray(data.messages.associateDean.content)
-      ? data.messages.associateDean.content
-      : data.messages.associateDean.message
-      ? [data.messages.associateDean.message]
-      : defaultOfficialStructure.messages.associateDean.content
+        ? data.messages.associateDean.content
+        : data.messages.associateDean.message
+          ? [data.messages.associateDean.message]
+          : defaultOfficialStructure.messages.associateDean.content
   };
 
   // Safe Administration
@@ -244,9 +244,9 @@ function sanitizeOfficialStructure(data) {
     viceChancellor: isVcStale || !data.administration?.viceChancellor
       ? defaultOfficialStructure.administration.viceChancellor
       : {
-          ...defaultOfficialStructure.administration.viceChancellor,
-          ...(data.administration?.viceChancellor || data.administration?.vc || {})
-        },
+        ...defaultOfficialStructure.administration.viceChancellor,
+        ...(data.administration?.viceChancellor || data.administration?.vc || {})
+      },
     deansOfFaculty: {
       ...defaultOfficialStructure.administration.deansOfFaculty,
       ...(data.administration?.deansOfFaculty || {}),
@@ -255,16 +255,16 @@ function sanitizeOfficialStructure(data) {
     associateDean: isAssocDeanStale || !data.administration?.associateDean
       ? defaultOfficialStructure.administration.associateDean
       : {
-          ...defaultOfficialStructure.administration.associateDean,
-          ...(data.administration?.associateDean || {})
-        },
+        ...defaultOfficialStructure.administration.associateDean,
+        ...(data.administration?.associateDean || {})
+      },
     supportingStaff: isStaffStale || !data.administration?.supportingStaff
       ? defaultOfficialStructure.administration.supportingStaff
       : {
-          ...defaultOfficialStructure.administration.supportingStaff,
-          ...(data.administration?.supportingStaff || {}),
-          staffList: defaultOfficialStructure.administration.supportingStaff.staffList
-        }
+        ...defaultOfficialStructure.administration.supportingStaff,
+        ...(data.administration?.supportingStaff || {}),
+        staffList: defaultOfficialStructure.administration.supportingStaff.staffList
+      }
   };
 
   const isHeroHighlightsStale = !Array.isArray(data.hero?.highlights) ||
@@ -420,19 +420,19 @@ function sanitizeOfficialStructure(data) {
     galleries: {
       photos: Array.isArray(data.galleries?.photos)
         ? data.galleries.photos.map((p, idx) => ({
-            ...p,
-            image: (p.image && !p.image.includes('unsplash.com'))
-              ? p.image
-              : (defaultOfficialStructure.galleries.photos[idx]?.image || `/images/gallery/photo_${(idx % 6) + 1}.webp`)
-          }))
+          ...p,
+          image: (p.image && !p.image.includes('unsplash.com'))
+            ? p.image
+            : (defaultOfficialStructure.galleries.photos[idx]?.image || `/images/gallery/photo_${(idx % 6) + 1}.webp`)
+        }))
         : defaultOfficialStructure.galleries.photos,
       videos: Array.isArray(data.galleries?.videos)
         ? data.galleries.videos.map((v, idx) => ({
-            ...v,
-            thumbnail: (v.thumbnail && !v.thumbnail.includes('unsplash.com'))
-              ? v.thumbnail
-              : (defaultOfficialStructure.galleries.videos[idx]?.thumbnail || `/images/gallery/video_thumb_${(idx % 3) + 1}.webp`)
-          }))
+          ...v,
+          thumbnail: (v.thumbnail && !v.thumbnail.includes('unsplash.com'))
+            ? v.thumbnail
+            : (defaultOfficialStructure.galleries.videos[idx]?.thumbnail || `/images/gallery/video_thumb_${(idx % 3) + 1}.webp`)
+        }))
         : defaultOfficialStructure.galleries.videos
     },
     aboutUs: {
@@ -713,9 +713,9 @@ export function WebsiteProvider({ children }) {
             setNotices(data.list);
           }
         }
-      }, () => {});
+      }, () => { });
       return () => unsubscribe();
-    } catch (e) {}
+    } catch (e) { }
   }, []);
 
   // 5. Realtime Faculty Sync
@@ -729,9 +729,9 @@ export function WebsiteProvider({ children }) {
             setFaculty(data.list);
           }
         }
-      }, () => {});
+      }, () => { });
       return () => unsubscribe();
-    } catch (e) {}
+    } catch (e) { }
   }, []);
 
   // 6. Realtime Programs Sync
@@ -745,9 +745,9 @@ export function WebsiteProvider({ children }) {
             setPrograms(data.list);
           }
         }
-      }, () => {});
+      }, () => { });
       return () => unsubscribe();
-    } catch (e) {}
+    } catch (e) { }
   }, []);
 
   // 7. Realtime Facilities Sync
@@ -761,9 +761,9 @@ export function WebsiteProvider({ children }) {
             setFacilities(data.list);
           }
         }
-      }, () => {});
+      }, () => { });
       return () => unsubscribe();
-    } catch (e) {}
+    } catch (e) { }
   }, []);
 
   // 8. Realtime Departments Sync
@@ -777,9 +777,9 @@ export function WebsiteProvider({ children }) {
             setDepartments(data.list);
           }
         }
-      }, () => {});
+      }, () => { });
       return () => unsubscribe();
-    } catch (e) {}
+    } catch (e) { }
   }, []);
 
   // 9. Realtime Gallery Sync
@@ -797,9 +797,9 @@ export function WebsiteProvider({ children }) {
             }));
           }
         }
-      }, () => {});
+      }, () => { });
       return () => unsubscribe();
-    } catch (e) {}
+    } catch (e) { }
   }, []);
 
   // 10. Realtime Pageviews Tracking & Analytics Sync
@@ -809,7 +809,7 @@ export function WebsiteProvider({ children }) {
       setDoc(statsRef, {
         todayViews: increment(1),
         lastActive: new Date().toISOString()
-      }, { merge: true }).catch(() => {});
+      }, { merge: true }).catch(() => { });
 
       const unsubscribe = onSnapshot(statsRef, (docSnap) => {
         if (docSnap.exists()) {
@@ -820,7 +820,7 @@ export function WebsiteProvider({ children }) {
             serverHealth: "99.99% (Google Cloud)"
           }));
         }
-      }, () => {});
+      }, () => { });
       return () => unsubscribe();
     } catch (e) {
       console.warn('Traffic stats error:', e);
@@ -837,7 +837,7 @@ export function WebsiteProvider({ children }) {
       const next = updater(prev);
       try {
         localStorage.setItem('caebpt_official_structure', JSON.stringify(next));
-      } catch {}
+      } catch { }
       (async () => {
         try {
           await ensureAdminAuth();
@@ -1126,7 +1126,7 @@ export function WebsiteProvider({ children }) {
     setEnquiries((prev) => [newEnq, ...prev]);
     try {
       const cleaned = safeFirestoreData(newEnq);
-      setDoc(doc(db, 'enquiries', newEnq.id), cleaned).catch(() => {});
+      setDoc(doc(db, 'enquiries', newEnq.id), cleaned).catch(() => { });
     } catch (err) {
       console.warn('Enquiry write notice:', err.message);
     }
@@ -1135,7 +1135,7 @@ export function WebsiteProvider({ children }) {
   const updateEnquiryStatus = (id, status) => {
     setEnquiries((prev) => prev.map((e) => (e.id === id ? { ...e, status } : e)));
     try {
-      setDoc(doc(db, 'enquiries', id), { status }, { merge: true }).catch(() => {});
+      setDoc(doc(db, 'enquiries', id), { status }, { merge: true }).catch(() => { });
     } catch (err) {
       console.warn('Enquiry status write notice:', err.message);
     }
@@ -1144,8 +1144,8 @@ export function WebsiteProvider({ children }) {
   const deleteEnquiry = (id) => {
     setEnquiries((prev) => prev.filter((e) => e.id !== id));
     try {
-      deleteDoc(doc(db, 'enquiries', id)).catch(() => {});
-    } catch {}
+      deleteDoc(doc(db, 'enquiries', id)).catch(() => { });
+    } catch { }
   };
 
   // 12. Site Settings
@@ -1154,7 +1154,7 @@ export function WebsiteProvider({ children }) {
       const next = { ...prev, ...updated };
       try {
         localStorage.setItem('caebpt_site_settings', JSON.stringify(next));
-      } catch {}
+      } catch { }
       (async () => {
         try {
           await ensureAdminAuth();

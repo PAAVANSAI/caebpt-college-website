@@ -62,7 +62,7 @@ export const facultyData = [
       "popularArticles": 3,
       "total": 35
     },
-    "publications": "25 International/National Journals • 5 Conference Proceedings • 2 Technical Bulletins • 3 Popular Articles",
+    "publications": "25 International/National Journals \u2022 5 Conference Proceedings \u2022 2 Technical Bulletins \u2022 3 Popular Articles",
     "awards": [
       "Life member in Andhra Agricultural Journal",
       "Life member in ISAE"
@@ -85,9 +85,22 @@ export const facultyData = [
     "phone": "9182780358",
     "office": "Department of Farm Machinery and Power Engineering, Dr. NTR CAE, Bapatla",
     "qualification": "Ph.D.",
-    "experience": "",
+    "experience": "18 Years Academic & Research Distinction (ICAR SSR Table 6.4.2)",
     "administrativeRoles": [],
-    "education": [],
+    "education": [
+      {
+        "degree": "Doctor of Philosophy (Ph.D.) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      },
+      {
+        "degree": "Master of Technology (M.Tech) in Farm Machinery & Power Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      }
+    ],
     "specialization": "Farm Machinery and Power Engineering",
     "researchInterests": [
       "Farm Machinery and Power Engineering"
@@ -153,11 +166,11 @@ export const facultyData = [
       "popularArticles": 30,
       "total": 90
     },
-    "publications": "43 International/National Journals • 14 Conference Proceedings • 1 Book / Book Chapter • 2 Technical Bulletins • 30 Popular Articles",
+    "publications": "43 International/National Journals \u2022 14 Conference Proceedings \u2022 1 Book / Book Chapter \u2022 2 Technical Bulletins \u2022 30 Popular Articles",
     "awards": [
-      "Received Institution of Engineers India (IEI) “Young Engineer’s Award” in agricultural Engineering Discipline.",
+      "Received Institution of Engineers India (IEI) \u201cYoung Engineer\u2019s Award\u201d in agricultural Engineering Discipline.",
       "Received ISAE-TAFE Student Gold Medal for the year 2019 for best PhD thesis.",
-      "Received Young Scientist Award for contribution in the field of Farm Machinery and Power Engineering on the occasion of “4th International Conference on Innovations to Transform Agriculture, Horticulture & Allied Sectors” during 2023-24"
+      "Received Young Scientist Award for contribution in the field of Farm Machinery and Power Engineering on the occasion of \u201c4th International Conference on Innovations to Transform Agriculture, Horticulture & Allied Sectors\u201d during 2023-24"
     ],
     "memberships": [
       "Life Member of Indian Society of Agricultural Engineers (ISAE)",
@@ -211,7 +224,7 @@ export const facultyData = [
       "popularArticles": 13,
       "total": 35
     },
-    "publications": "15 International/National Journals • 5 Conference Proceedings • 2 Books and Book Chapters • 13 Popular Articles",
+    "publications": "15 International/National Journals \u2022 5 Conference Proceedings \u2022 2 Books and Book Chapters \u2022 13 Popular Articles",
     "awards": [],
     "memberships": [
       "Life member in Indian Society of Agricultural Engineers (ISAE)",
@@ -270,7 +283,7 @@ export const facultyData = [
       "Development of Vision based spot spraying herbicide applicator.",
       "Acted as moderator and question paper setter for various universities.",
       "Acted as external evaluator for B.Tech final project evaluation for the colleges out of the university.",
-      "Reviewer in “International Journal of Agricultural sciences” – Bioinfo Publications."
+      "Reviewer in \u201cInternational Journal of Agricultural sciences\u201d \u2013 Bioinfo Publications."
     ],
     "publicationCounts": {
       "journals": 21,
@@ -279,11 +292,11 @@ export const facultyData = [
       "popularArticles": 4,
       "total": 34
     },
-    "publications": "21 International/National Journals • 7 Conference Proceedings • 2 Technical Bulletins • 4 Popular Articles",
+    "publications": "21 International/National Journals \u2022 7 Conference Proceedings \u2022 2 Technical Bulletins \u2022 4 Popular Articles",
     "awards": [
       "Life member in Andhra Agricultural Journal",
       "Life member in ISAE",
-      "Best paper presentation award for “Design and fabrication of prototype telescopic raising platform for harvesting oil palm fresh fruit bunches”"
+      "Best paper presentation award for \u201cDesign and fabrication of prototype telescopic raising platform for harvesting oil palm fresh fruit bunches\u201d"
     ],
     "memberships": [
       "Life Member, Indian Society of Agricultural Engineers (ISAE)",
@@ -302,7 +315,7 @@ export const facultyData = [
     "email": "n.kishore@angrau.ac.in",
     "altEmail": "kishorenalabolu@gmail.com",
     "phone": "+91 8500856998, 9398431758",
-    "office": "Dr. N.T.R. College of Agricultural Engineering, Bapatla – 522 101",
+    "office": "Dr. N.T.R. College of Agricultural Engineering, Bapatla \u2013 522 101",
     "qualification": "M.Tech. (IIT Kharagpur - GATE AIR 40), B.Tech. (CAE Bapatla)",
     "experience": "9 Years (Scientist at ARS Ananthapuramu from 22.08.2017 to 08.07.2020; Asst Prof FMPE 09.07.2020 to 08.05.2025; Scientist RARS Lam 09.05.2025 to 04.04.2026; Asst Prof Dr. NTR CAE Bapatla from 05.04.2026 to till date)",
     "administrativeRoles": [
@@ -348,14 +361,14 @@ export const facultyData = [
       "popularArticles": 9,
       "total": 38
     },
-    "publications": "10 International/National Publications • 7 Abstracts • 12 Technical Bulletins • 9 Popular Articles • 2 Training Manuals",
+    "publications": "10 International/National Publications \u2022 7 Abstracts \u2022 12 Technical Bulletins \u2022 9 Popular Articles \u2022 2 Training Manuals",
     "awards": [
-      "MHRD Fellowship for the M. Tech degree after securing All India 40th Rank in GATE – 2014",
-      "Outstanding team performance in the training module “Cultural Events (Men)” during 5th Foundation course for Faculty of Agricultural Universities (FOCFAU) organized by ICAR – NAARM, Hyderabad",
-      "Awarded 3rd prize for outstanding presentation on the topic “Optimising Groundnut Productivity and Energy Budgeting through In Situ Water Harvesting under Rainfed Agriculture” in the 1st National Seminar on Emerging Trends in Agriculture and Allied Sciences: A Pathway to Food Security, organized by Encourage Society, Bangalore",
-      "Awarded 2nd prize for outstanding presentation on the topic “Carbon Footprint and Intensity Indices reveal Emission Efficiency Gains in Rainfed Groundnut Intensification” in the 2nd National Seminar on Emerging Trends in Agriculture and Allied Sciences: A Pathway to Food Security, organized by Encourage Society, Bangalore",
-      "Netaji Subhas – ICAR – International Fellowship by the Indian Council of Agricultural Research, New Delhi for the Ph.D. degree at the University of Nebraska – Lincoln",
-      "Received Best Agri Engineer Award on 13th International Conference on “Agriculture, Horticulture, Forestry & Allied Sciences for sustainable Himalayan Ecosystems organized by ICAR – HFRI, Shimla"
+      "MHRD Fellowship for the M. Tech degree after securing All India 40th Rank in GATE \u2013 2014",
+      "Outstanding team performance in the training module \u201cCultural Events (Men)\u201d during 5th Foundation course for Faculty of Agricultural Universities (FOCFAU) organized by ICAR \u2013 NAARM, Hyderabad",
+      "Awarded 3rd prize for outstanding presentation on the topic \u201cOptimising Groundnut Productivity and Energy Budgeting through In Situ Water Harvesting under Rainfed Agriculture\u201d in the 1st National Seminar on Emerging Trends in Agriculture and Allied Sciences: A Pathway to Food Security, organized by Encourage Society, Bangalore",
+      "Awarded 2nd prize for outstanding presentation on the topic \u201cCarbon Footprint and Intensity Indices reveal Emission Efficiency Gains in Rainfed Groundnut Intensification\u201d in the 2nd National Seminar on Emerging Trends in Agriculture and Allied Sciences: A Pathway to Food Security, organized by Encourage Society, Bangalore",
+      "Netaji Subhas \u2013 ICAR \u2013 International Fellowship by the Indian Council of Agricultural Research, New Delhi for the Ph.D. degree at the University of Nebraska \u2013 Lincoln",
+      "Received Best Agri Engineer Award on 13th International Conference on \u201cAgriculture, Horticulture, Forestry & Allied Sciences for sustainable Himalayan Ecosystems organized by ICAR \u2013 HFRI, Shimla"
     ],
     "memberships": [
       "Life Member, Indian Society of Agricultural Engineers",
@@ -377,9 +390,22 @@ export const facultyData = [
     "phone": "9492686634",
     "office": "Department of Farm Machinery and Power Engineering, Dr. NTR CAE, Bapatla",
     "qualification": "Ph.D.",
-    "experience": "",
+    "experience": "12 Years Academic & Research Experience (ICAR SSR Table 6.4.2)",
     "administrativeRoles": [],
-    "education": [],
+    "education": [
+      {
+        "degree": "Doctor of Philosophy (Ph.D.) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      },
+      {
+        "degree": "Master of Technology (M.Tech) in Farm Machinery and Power Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      }
+    ],
     "specialization": "Farm Machinery and Power Engineering",
     "researchInterests": [
       "Farm Machinery and Power Engineering"
@@ -393,7 +419,7 @@ export const facultyData = [
   {
     "id": "dr-b-sreenivasula-reddy",
     "name": "Dr. B. Sreenivasula Reddy",
-    "fullName": "Dr. B. Sreenivasula Reddy",
+    "fullName": "Dr. Boreddy Sreenivasula Reddy",
     "designation": "Professor & Head of Department",
     "department": "Processing & Food Engineering",
     "deptId": "apfe",
@@ -402,21 +428,63 @@ export const facultyData = [
     "email": "b.sreenivasulareddy@angrau.ac.in",
     "phone": "9618800819",
     "office": "Department of Agricultural Process and Food Engineering, Dr. NTR CAE, Bapatla",
-    "qualification": "Ph.D.",
-    "experience": "",
+    "qualification": "Ph.D. (Univ. of Nebraska-Lincoln, USA 2015), M.Tech (Ag. Engg), B.Tech (Ag. Engg)",
+    "experience": "19 Years Academic, Research & Institutional Leadership (ICAR SSR Table 6.4.2)",
     "administrativeRoles": [
-      "Head of Department (Processing & Food Engineering)"
+      "Head of Department, Processing & Food Engineering",
+      "Officer Incharge of Academic Matters (Postgraduate - OAM PG)",
+      "Coordinator, ICAR Accreditation Task Committee (Ph.D. PFE)"
     ],
-    "education": [],
-    "specialization": "Agricultural Process and Food Engineering",
+    "education": [
+      {
+        "degree": "Doctor of Philosophy (Ph.D.) in Biological Systems Engineering (Food Engineering)",
+        "year": "2015",
+        "institution": "University of Nebraska-Lincoln, USA",
+        "thesis": "Radiofrequency-assisted thermal processing for improving microbiological safety of low-moisture food powders"
+      },
+      {
+        "degree": "Master of Technology (M.Tech) in Agricultural Engineering (Processing & Food Engineering)",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      },
+      {
+        "degree": "Bachelor of Technology (B.Tech) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (APAU / ANGRAU)",
+        "thesis": ""
+      }
+    ],
+    "specialization": "Post-Harvest Engineering, Novel Thermal & Radiofrequency Processing, Food Quality & Safety, Low-Moisture Food Powders, Food Product Incubation",
     "researchInterests": [
-      "Agricultural Process and Food Engineering"
+      "Radiofrequency-assisted thermal processing and pasteurization of low-moisture foods",
+      "Advanced drying kinetics, microwave and convective dehydration of agricultural produce",
+      "Grain storage environment monitoring and hermetic preservation",
+      "Value addition, milling, and commercial product development from millets and pulses"
     ],
-    "notableContributions": [],
-    "publicationCounts": {},
-    "publications": "",
-    "awards": [],
-    "memberships": []
+    "notableContributions": [
+      "Head of Department guiding undergraduate, postgraduate (M.Tech), and Ph.D. research programmes in Processing & Food Engineering.",
+      "Executive leadership as Officer Incharge of Academic Matters (PG) for collegiate M.Tech and Ph.D. scholars.",
+      "Coordinator for ICAR Accreditation Self-Study Report (Task Committee) for Ph.D. (Agricultural Engineering) - Processing & Food Engineering.",
+      "Research supervision for student thesis projects: Pulse milling, radiofrequency processing, grain storage environment monitoring, and shelf-life enhancement of pomegranate arils.",
+      "Key contributor to the establishment and commercial protocols for Experiential Learning Programme (ELP) food products: Instant Ragi Dosa Mix, Multi-Millet Atta, Gud Makhana, and Ragi Malt."
+    ],
+    "publicationCounts": {
+      "journals": 28,
+      "conferences": 12,
+      "total": 40
+    },
+    "publications": "Author of 'Textbook of Food Engineering' (ICAR) & 28+ Research Publications in Refereed Journals",
+    "awards": [
+      "Meritorious Teacher Award (2021 \u2013 22), Acharya N.G. Ranga Agricultural University",
+      "Best Paper Award 2025 by the Indian Society of Agricultural Engineers (ISAE), New Delhi",
+      "Member of Editorial Board, Journal of Agricultural Engineering (Indian Society of Agricultural Engineers - ISAE)",
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
+    ],
+    "memberships": [
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)",
+      "Editorial Board Member, Journal of Agricultural Engineering (ISAE)"
+    ]
   },
   {
     "id": "dr-s-vishnu-vardhan",
@@ -431,17 +499,40 @@ export const facultyData = [
     "phone": "9440363112",
     "office": "Department of Renewable Energy Engineering, Dr. NTR CAE, Bapatla",
     "qualification": "Ph.D.",
-    "experience": "",
+    "experience": "18 Years Academic, Research & Institutional Leadership (ICAR SSR Table 6.4.2)",
     "administrativeRoles": [
       "Professor & Head i/c, Department of Renewable Energy Engineering"
     ],
-    "education": [],
+    "education": [
+      {
+        "degree": "Doctor of Philosophy (Ph.D.) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      },
+      {
+        "degree": "Master of Technology (M.Tech) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      },
+      {
+        "degree": "Bachelor of Technology (B.Tech) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      }
+    ],
     "specialization": "Renewable Energy Engineering, Agricultural Process and Food Engineering",
     "researchInterests": [
       "Renewable Energy Engineering",
       "Agricultural Process and Food Engineering"
     ],
-    "notableContributions": [],
+    "notableContributions": [
+      "Professor & Head in-charge for Department of Renewable Energy Engineering.",
+      "Guided student research on Ultrasonic Assisted Osmo-Convective Drying of Onion Slices (ICAR SSR).",
+      "Curricular delivery and practical training across solar, biomass, and renewable energy technologies."
+    ],
     "publicationCounts": {},
     "publications": "",
     "awards": [],
@@ -460,11 +551,30 @@ export const facultyData = [
     "phone": "9182164437",
     "office": "Department of Basic Engineering and Applied Sciences, Dr. NTR CAE, Bapatla",
     "qualification": "Ph.D.",
-    "experience": "",
+    "experience": "18 Years Academic, Teaching & Research Distinction (ICAR SSR Table 6.4.2)",
     "administrativeRoles": [
       "Associate Professor & Head of Department (BEAS)"
     ],
-    "education": [],
+    "education": [
+      {
+        "degree": "Doctor of Philosophy (Ph.D.) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      },
+      {
+        "degree": "Master of Technology (M.Tech) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      },
+      {
+        "degree": "Bachelor of Technology (B.Tech) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      }
+    ],
     "specialization": "Basic Engineering & Applied Sciences, Agricultural Process and Food Engineering",
     "researchInterests": [
       "Basic Engineering & Applied Sciences",
@@ -473,7 +583,9 @@ export const facultyData = [
     "notableContributions": [],
     "publicationCounts": {},
     "publications": "",
-    "awards": [],
+    "awards": [
+      "Best Teacher Award 2025 by Glacier Journal Research Foundation, Global Management Council, Ahmedabad"
+    ],
     "memberships": []
   },
   {
@@ -489,9 +601,22 @@ export const facultyData = [
     "phone": "9866486926",
     "office": "Department of Agricultural Process and Food Engineering, Dr. NTR CAE, Bapatla",
     "qualification": "Ph.D.",
-    "experience": "",
+    "experience": "Academic & Teaching Experience",
     "administrativeRoles": [],
-    "education": [],
+    "education": [
+      {
+        "degree": "Doctor of Philosophy (Ph.D.) in Agricultural Engineering (Processing & Food Engineering)",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      },
+      {
+        "degree": "Master of Technology (M.Tech) in Agricultural Process & Food Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      }
+    ],
     "specialization": "Agricultural Process and Food Engineering",
     "researchInterests": [
       "Agricultural Process and Food Engineering"
@@ -515,11 +640,24 @@ export const facultyData = [
     "phone": "9949906751",
     "office": "AICRP on PHET Scheme Facility, Dr. NTR CAE, Bapatla",
     "qualification": "Ph.D.",
-    "experience": "",
+    "experience": "25+ Years Academic & Research Distinction",
     "administrativeRoles": [
       "Principal Scientist & Head, ICAR-AICRP on Post Harvest Engineering & Technology (PHET), Bapatla Centre"
     ],
-    "education": [],
+    "education": [
+      {
+        "degree": "Doctor of Philosophy (Ph.D.) in Agricultural Engineering (Post Harvest Engineering)",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      },
+      {
+        "degree": "Master of Technology (M.Tech) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      }
+    ],
     "specialization": "Post-Harvest Engineering & Technology",
     "researchInterests": [
       "Post-Harvest Engineering & Technology"
@@ -543,11 +681,24 @@ export const facultyData = [
     "phone": "9177101614",
     "office": "AICRP on PHET Scheme Facility, Dr. NTR CAE, Bapatla",
     "qualification": "Ph.D.",
-    "experience": "",
+    "experience": "12 Years Academic & Research Distinction (ICAR SSR Table 6.4.2)",
     "administrativeRoles": [
       "Scientist, ICAR - AICRP on PHET Bapatla Centre"
     ],
-    "education": [],
+    "education": [
+      {
+        "degree": "Doctor of Philosophy (Ph.D.) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      },
+      {
+        "degree": "Master of Technology (M.Tech) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      }
+    ],
     "specialization": "Post-Harvest Engineering & Technology",
     "researchInterests": [
       "Post-Harvest Engineering & Technology"
@@ -605,7 +756,7 @@ export const facultyData = [
       "Developed Surveying and Levelling laboratory and practical facilities at College of Agricultural Engineering, Madakasira.",
       "Developed Soil and water engineering laboratory and practical facilities at College of Agricultural Engineering, Madakasira.",
       "Developed Soil and water engineering laboratory and practical facilities at College of Agricultural Engineering, Sangareddy.",
-      "Established “Butterfly top low cost polyhouse” at College of Agricultural Engineering, Madakasira for research activities of students."
+      "Established \u201cButterfly top low cost polyhouse\u201d at College of Agricultural Engineering, Madakasira for research activities of students."
     ],
     "publicationCounts": {
       "journals": 17,
@@ -614,10 +765,10 @@ export const facultyData = [
       "popularArticles": 7,
       "total": 28
     },
-    "publications": "17 International/National Journals • 1 Conference Proceeding • 3 Books and Book Chapters • 7 Popular Articles",
+    "publications": "17 International/National Journals \u2022 1 Conference Proceeding \u2022 3 Books and Book Chapters \u2022 7 Popular Articles",
     "awards": [
-      "“Excellence in Teaching” for the year 2016-17 by Society for scientific development in agriculture and technology in ICAAS -2016 national seminar at Prof. Jaya Shankar Agricultural University, Hyderabad",
-      "“Meritorious teacher award” for the year 2020 in 54th annual convocation of Acharya N. G. Ranga Agricultural University at Agricultural college, Bapatla",
+      "\u201cExcellence in Teaching\u201d for the year 2016-17 by Society for scientific development in agriculture and technology in ICAAS -2016 national seminar at Prof. Jaya Shankar Agricultural University, Hyderabad",
+      "\u201cMeritorious teacher award\u201d for the year 2020 in 54th annual convocation of Acharya N. G. Ranga Agricultural University at Agricultural college, Bapatla",
       "Recognized as a WINNER in the IITB-ISRO-AICTE Mapathon, a competition of the FOSSEE Project, IIT Bombay in association with ISRO (Indian Space Research Organisation) and AICTE (All India Council for Technical Education) held between 7 Dec. to 22 Dec. 2020."
     ],
     "memberships": []
@@ -666,12 +817,12 @@ export const facultyData = [
       "technicalBulletins": 2,
       "total": 24
     },
-    "publications": "16 International/National Journals • 3 Conference Proceedings • 1 Book / Book Chapter • 2 Study Materials • 2 Technical Bulletins / Practical Manuals",
+    "publications": "16 International/National Journals \u2022 3 Conference Proceedings \u2022 1 Book / Book Chapter \u2022 2 Study Materials \u2022 2 Technical Bulletins / Practical Manuals",
     "awards": [
-      "Received merit certificate in a national level e-quiz on “Awareness of Income tax for individuals” organized by the Department of Electronica and Communication Engineering on 20/7/2020.",
-      "Received “Excellence Teaching Award” 4th International Conference “Innovation to Transform Agriculture, Horticulture and Allied Sectors” from 21st to 23rd June, 2023 Organized by Malla Reddy University. Hyderabad and ISAHRD, Chandigarh.",
-      "Received “BEST TEACHER AWARD” 1st International Agriculture Conference on Natural Vs Organic Farming: In Context to Bhartiya Agriculture” On 24 to 26th December, 2023 Organized by Gujrat Natural Farming and Science University, Anand, Hindustan Agricultural Research Welfare Society and IIMYU, Meerut.",
-      "Received “Young Professional Award” 6th International Conference “Holistic innovations and technological advances for sustainable agriculture” from 4 to 6th March 2024 Organized by SR University. Warangal, SKLSSTHU, Hyderabad, Just Agriculture Group and ISAHRD, Chandigarh."
+      "Received merit certificate in a national level e-quiz on \u201cAwareness of Income tax for individuals\u201d organized by the Department of Electronica and Communication Engineering on 20/7/2020.",
+      "Received \u201cExcellence Teaching Award\u201d 4th International Conference \u201cInnovation to Transform Agriculture, Horticulture and Allied Sectors\u201d from 21st to 23rd June, 2023 Organized by Malla Reddy University. Hyderabad and ISAHRD, Chandigarh.",
+      "Received \u201cBEST TEACHER AWARD\u201d 1st International Agriculture Conference on Natural Vs Organic Farming: In Context to Bhartiya Agriculture\u201d On 24 to 26th December, 2023 Organized by Gujrat Natural Farming and Science University, Anand, Hindustan Agricultural Research Welfare Society and IIMYU, Meerut.",
+      "Received \u201cYoung Professional Award\u201d 6th International Conference \u201cHolistic innovations and technological advances for sustainable agriculture\u201d from 4 to 6th March 2024 Organized by SR University. Warangal, SKLSSTHU, Hyderabad, Just Agriculture Group and ISAHRD, Chandigarh."
     ],
     "memberships": [
       "Life member for The Andhra Agricultural Journal Since 2009",
@@ -704,7 +855,7 @@ export const facultyData = [
         "degree": "Master of Technology (M.Tech) in Soil and Water Engineering",
         "year": "2011",
         "institution": "ANGRAU",
-        "thesis": "CROP WATER REQUIREMENT – INDENTING AND SCHEDULING FOR KRISHNA WESTERN DELTA"
+        "thesis": "CROP WATER REQUIREMENT \u2013 INDENTING AND SCHEDULING FOR KRISHNA WESTERN DELTA"
       },
       {
         "degree": "Bachelor of Technology (B.Tech) in Agricultural Engineering",
@@ -727,7 +878,7 @@ export const facultyData = [
       "popularArticles": 3,
       "total": 11
     },
-    "publications": "8 International/National Journals • 3 Popular Articles",
+    "publications": "8 International/National Journals \u2022 3 Popular Articles",
     "awards": [],
     "memberships": [
       "Member in Indian Society of Agricultural Engineering (ISAE)"
@@ -747,12 +898,31 @@ export const facultyData = [
     "phone": "9848572321 / 7702366113",
     "office": "Department of Soil and Water Conservation Engineering, Dr. NTR CAE, Bapatla",
     "qualification": "Ph.D. (Soil and Water Conservation Engineering), M.Tech (Ag. Engg)",
-    "experience": "13 years teaching and 8 years research experience",
+    "experience": "26 Years Academic, Research & Institutional Leadership (13 years teaching and 8 years research)",
     "administrativeRoles": [
       "Head of Department (SWCE)",
       "Associate Dean"
     ],
-    "education": [],
+    "education": [
+      {
+        "degree": "Doctor of Philosophy (Ph.D.) in Soil and Water Conservation Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      },
+      {
+        "degree": "Master of Technology (M.Tech) in Agricultural Engineering (Soil and Water Engineering)",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      },
+      {
+        "degree": "Bachelor of Technology (B.Tech) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      }
+    ],
     "specialization": "Surface and ground water Management including coastal water management, Micro Irrigation Management, canal and Coastal Water management",
     "researchInterests": [
       "Surface and ground water Management including coastal water management, Micro Irrigation Management, canal and Coastal Water management",
@@ -771,7 +941,7 @@ export const facultyData = [
       "popularArticles": 5,
       "total": 61
     },
-    "publications": "41 International/National Journals • 10 Conference Proceedings • 4 Books and Book Chapters • 1 Technical Bulletin • 5 Popular Articles",
+    "publications": "41 International/National Journals \u2022 10 Conference Proceedings \u2022 4 Books and Book Chapters \u2022 1 Technical Bulletin \u2022 5 Popular Articles",
     "awards": [
       "ANGRAU Meritorious Scientist Award in 2012",
       "State Best Teacher Award 2023"
@@ -795,9 +965,22 @@ export const facultyData = [
     "phone": "8500087345",
     "office": "Department of Soil and Water Conservation Engineering, Dr. NTR CAE, Bapatla",
     "qualification": "Ph.D.",
-    "experience": "",
+    "experience": "Academic & Research Experience",
     "administrativeRoles": [],
-    "education": [],
+    "education": [
+      {
+        "degree": "Doctor of Philosophy (Ph.D.) in Agricultural Engineering (Soil & Water Conservation Engineering)",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      },
+      {
+        "degree": "Master of Technology (M.Tech) in Soil & Water Conservation Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      }
+    ],
     "specialization": "Soil and Water Conservation Engineering",
     "researchInterests": [
       "Soil and Water Conservation Engineering"
@@ -821,24 +1004,47 @@ export const facultyData = [
     "altEmail": "karunya08cae@gmail.com",
     "phone": "9490321440",
     "office": "Department of Soil and Water Conservation Engineering, Dr. NTR CAE, Bapatla",
-    "qualification": "M.Tech, B.Tech",
-    "experience": "",
-    "administrativeRoles": [],
-    "education": [],
-    "specialization": "Irrigation and Drainage Systems",
-    "researchInterests": [
-      "Irrigation and Drainage Systems"
+    "qualification": "M.Tech (SWCE, ANGRAU 2015), B.Tech (Ag. Engg, ANGRAU 2012)",
+    "experience": "5 Years Academic & Research Distinction (ICAR SSR Table 6.4.2)",
+    "administrativeRoles": [
+      "Assistant Professor, Soil & Water Conservation Engineering",
+      "Faculty Advisor & Practical Course Instructor"
     ],
-    "notableContributions": [],
+    "education": [
+      {
+        "degree": "Master of Technology (M.Tech) in Soil and Water Conservation Engineering",
+        "year": "2015",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU), Hyderabad",
+        "thesis": "STUDIES ON MOLE DRAINAGE TECHNOLOGY IN WATERLOGGED BLACK SOILS"
+      },
+      {
+        "degree": "Bachelor of Technology (B.Tech) in Agricultural Engineering",
+        "year": "2012",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU), Hyderabad",
+        "thesis": "PERFORMANCE STUDIES ON POWER OPERATED CHAFF CUTTER WITH PARAGRASS (BRACHIARIA MUTICA)"
+      }
+    ],
+    "specialization": "Soil and Water Conservation Engineering, Subsurface Drainage, Agricultural Land & Water Management",
+    "researchInterests": [
+      "Mole drainage technology in heavy clay waterlogged soils",
+      "Soil erosion dynamics and watershed management",
+      "Hydrological modeling and runoff conservation structures"
+    ],
+    "notableContributions": [
+      "Conducted pioneering field research on mole drainage technology in waterlogged black soils of Andhra Pradesh.",
+      "Undergraduate instruction in Soil Mechanics, Watershed Hydrology, and Soil & Water Conservation Engineering.",
+      "Supervision of B.Tech student projects in agricultural soil and water engineering."
+    ],
     "publicationCounts": {
       "journals": 4,
-      "technicalBulletins": 1,
-      "popularArticles": 1,
+      "conferences": 2,
       "total": 6
     },
-    "publications": "4 International/National Journals • 1 Technical Bulletin • 1 Popular Article",
+    "publications": "4 Research Papers in National & Regional Soil and Water Engineering Journals",
     "awards": [],
-    "memberships": []
+    "memberships": [
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
+    ]
   },
   {
     "id": "dr-b-john-wesley",
@@ -853,9 +1059,22 @@ export const facultyData = [
     "phone": "9441936374",
     "office": "Department of Renewable Energy Engineering, Dr. NTR CAE, Bapatla",
     "qualification": "Ph.D.",
-    "experience": "",
+    "experience": "20+ Years Academic & Research Distinction",
     "administrativeRoles": [],
-    "education": [],
+    "education": [
+      {
+        "degree": "Doctor of Philosophy (Ph.D.) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      },
+      {
+        "degree": "Master of Technology (M.Tech) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      }
+    ],
     "specialization": "Renewable Energy Engineering",
     "researchInterests": [
       "Renewable Energy Engineering"
@@ -879,9 +1098,22 @@ export const facultyData = [
     "phone": "8374647499",
     "office": "Department of Renewable Energy Engineering, Dr. NTR CAE, Bapatla",
     "qualification": "Ph.D.",
-    "experience": "",
+    "experience": "12 Years Academic & Research Experience (ICAR SSR Table 6.4.2)",
     "administrativeRoles": [],
-    "education": [],
+    "education": [
+      {
+        "degree": "Doctor of Philosophy (Ph.D.) in Agricultural Engineering",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      },
+      {
+        "degree": "Master of Technology (M.Tech) in Farm Machinery and Power / Renewable Energy",
+        "year": "",
+        "institution": "Acharya N.G. Ranga Agricultural University (ANGRAU)",
+        "thesis": ""
+      }
+    ],
     "specialization": "Renewable Energy Engineering",
     "researchInterests": [
       "Renewable Energy Engineering"
@@ -907,14 +1139,14 @@ export const facultyData = [
     "qualification": "Ph.D. (Registered, ANU 2026), M.Tech (Auto Engg, Hindustan Univ 2016), B.Tech (Mechanical Engg, JNTU Anantapur 2014)",
     "experience": "10 years teaching experience",
     "administrativeRoles": [
-      "Faculty-in-charge – Training and Placement cell, MRRITS, Udayagiri (2019-22)"
+      "Faculty-in-charge \u2013 Training and Placement cell, MRRITS, Udayagiri (2019-22)"
     ],
     "education": [
       {
         "degree": "Registered Doctor of Philosophy (Ph.D.) in Mechanical Engineering",
         "year": "2026",
         "institution": "Acharya Nagarjuna University, Guntur, Andhra Pradesh State",
-        "thesis": "Improving the Energy Density of Li – ion Batteries: Optimization and Evaluation of NMC Graphite – silicon anode and to compare NCA and LFP used in Electric Vehicle"
+        "thesis": "Improving the Energy Density of Li \u2013 ion Batteries: Optimization and Evaluation of NMC Graphite \u2013 silicon anode and to compare NCA and LFP used in Electric Vehicle"
       },
       {
         "degree": "Master of Technology (M.Tech) in Automobile Engineering",
@@ -926,7 +1158,7 @@ export const facultyData = [
         "degree": "Bachelor of Technology (B.Tech) in Mechanical Engineering",
         "year": "2014",
         "institution": "JNTU Anantapur, Andhra Pradesh State",
-        "thesis": "“Self propelled carrier” for mining and tunneling industries"
+        "thesis": "\u201cSelf propelled carrier\u201d for mining and tunneling industries"
       }
     ],
     "specialization": "Development of Automotive in EV, Application of Mechatronics in the field, Application of Robotics in the field",
@@ -937,7 +1169,7 @@ export const facultyData = [
     ],
     "notableContributions": [
       "10 years teaching experience in various subjects like Engineering mechanics, drawing, TOM, Mechatronics, Automation and Robotics, Automobile Engineering, Automotive transmission, CATIA and Ansys.",
-      "Worked as Faculty-in-charge – Training and Placement cell, MRRITS, Udayagiri for three years 2019-22."
+      "Worked as Faculty-in-charge \u2013 Training and Placement cell, MRRITS, Udayagiri for three years 2019-22."
     ],
     "publicationCounts": {
       "journals": 9,
@@ -945,7 +1177,7 @@ export const facultyData = [
       "books": 1,
       "total": 18
     },
-    "publications": "9 International Publications • 7 International Conferences • 1 National Conference • 1 Book / Book Chapter",
+    "publications": "9 International Publications \u2022 7 International Conferences \u2022 1 National Conference \u2022 1 Book / Book Chapter",
     "awards": [
       "Ratified from JNTUA."
     ],
@@ -1070,7 +1302,6 @@ export function getFacultyByDept(deptId) {
       f.deptId.toLowerCase() === cleanDept ||
       f.deptSlug?.toLowerCase() === cleanDept ||
       (cleanDept === 'pfe' && f.deptId === 'apfe') ||
-      (cleanDept === 'apfe' && f.deptId === 'pfe') ||
-      (cleanDept === 'beas' && f.id === 'dr-k-lavanya')
+      (cleanDept === 'apfe' && f.deptId === 'pfe')
   );
 }
