@@ -18,6 +18,7 @@ import {
   antiPlagiarismPolicyData
 } from '../data/academicsCatalogData';
 import PgFormModal from '../components/PgFormModal';
+import StudentAchievements from '../components/StudentAchievements';
 import {
   BookOpen,
   GraduationCap,
@@ -34,6 +35,7 @@ import {
   ArrowRight,
   ChevronRight,
   Award,
+  Trophy,
   Download,
   Calendar,
   Clock,
@@ -69,6 +71,7 @@ export default function AcademicsPage({ onSelectProgram }) {
     if (path.includes('/pg-guidelines')) return 'pg-guidelines';
     if (path.includes('/thesis-guidelines')) return 'thesis-guidelines';
     if (path.includes('/anti-plagiarism-policy')) return 'anti-plagiarism-policy';
+    if (path.includes('/student-achievements') || path.includes('/achievements') || path.includes('/gate-toppers')) return 'student-achievements';
     if (path.includes('/courses')) return 'ug-courses';
     const q = searchParams.get('tab') || searchParams.get('view');
     if (q) return q;
@@ -130,6 +133,7 @@ export default function AcademicsPage({ onSelectProgram }) {
     { key: 'pg-guidelines', label: 'PG Guidelines', icon: Scroll },
     { key: 'thesis-guidelines', label: 'Thesis Guidelines', icon: BookMarked },
     { key: 'anti-plagiarism-policy', label: 'Anti-Plagiarism Policy', icon: ShieldCheck },
+    { key: 'student-achievements', label: 'Student Achievements & Exams', icon: Trophy },
   ];
 
   // Current semester course list with search
@@ -2338,6 +2342,13 @@ export default function AcademicsPage({ onSelectProgram }) {
                   </div>
                 </div>
               </div>
+            </div>
+          )}
+
+          {/* TAB: STUDENT ACHIEVEMENTS & NATIONAL COMPETITIVE EXAM ACHIEVERS */}
+          {activeTab === 'student-achievements' && (
+            <div className="animate-fadeIn">
+              <StudentAchievements />
             </div>
           )}
 

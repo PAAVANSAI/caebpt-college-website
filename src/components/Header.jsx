@@ -83,6 +83,7 @@ export default function Header() {
         { label: 'Vision and Mandate', path: '/about?tab=vision-mandate' },
         { label: 'Organizational Structure', path: '/about?tab=org-structure' },
         { label: 'Status of Accreditation', path: '/about?tab=accreditation' },
+        { label: 'Awards & Honours', path: '/about?tab=awards' },
       ],
     },
     {
@@ -114,6 +115,7 @@ export default function Header() {
         { label: 'UG COURSES', path: '/academics/ug-courses' },
         { label: 'PG COURSES', path: '/academics/pg-courses' },
         { label: 'PH.D COURSES', path: '/academics/phd-courses' },
+        { label: 'STUDENT ACHIEVEMENTS & EXAMS', path: '/academics/student-achievements' },
         { label: 'EXAMINATION', path: '/academics/examination' },
         { label: 'UG GUIDELINES', path: '/academics/ug-guidelines' },
         { label: 'PG GUIDELINES', path: '/academics/pg-guidelines' },
@@ -134,7 +136,7 @@ export default function Header() {
         path: `/student-welfare/${w.slug}`,
       })),
     },
-    { label: 'Publications', path: '/publications' },
+    { label: 'Patents & Publications', path: '/publications' },
     { label: 'Contact Us', path: '/contact' },
   ];
 

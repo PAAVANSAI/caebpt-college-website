@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PageBanner from '../components/PageBanner';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
-import { BookOpen, FileText, Download, Calendar, Users, Award } from 'lucide-react';
+import { BookOpen, FileText, Download, Calendar, Users, Award, ShieldCheck, Sparkles } from 'lucide-react';
+import PatentsSection from '../components/PatentsSection';
 
 export default function PublicationsPage() {
   const { officialStructure } = useWebsite();
   const publications = officialStructure?.publications || officialStructureData.publications;
+  const [activeTab, setActiveTab] = useState('patents'); // 'patents' or 'publications'
 
   const handleDownloadDoc = (item) => {
     const win = window.open('', '_blank');
@@ -64,58 +66,89 @@ export default function PublicationsPage() {
   return (
     <div>
       <PageBanner
-        title="College Publications & Research Bulletins"
-        subtitle="Technical research bulletins, extension handbooks, monographs, and annual institutional publications produced by faculty and scholars."
-        tag="Scholarly Publications"
-        breadcrumb={[{ name: "Publications" }]}
+        title="Patents, Innovations & Research Publications"
+        subtitle="Government of India granted patents, registered industrial designs, technical research bulletins, and scholarly monographs produced by faculty and scholars."
+        tag="Research & Intellectual Property"
+        breadcrumb={[{ name: "Patents & Publications" }]}
       />
 
       <section className="section-padding bg-slate-50 border-b border-slate-200">
-        <div className="container max-w-5xl mx-auto space-y-8">
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
-            <h2 className="font-heading text-xl sm:text-2xl font-extrabold text-navy-950 mb-2">
-              {publications.title}
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mb-6">
-              {publications.description}
-            </p>
+        <div className="container max-w-6xl mx-auto space-y-8">
+          {/* Submenu Filter Tabs */}
+          <div className="filter-tabs-wrapper flex items-center justify-center gap-2">
+            <button
+              type="button"
+              onClick={() => setActiveTab('patents')}
+              className={`filter-tab text-xs sm:text-sm font-bold flex items-center gap-2 ${
+                activeTab === 'patents' ? 'active' : ''
+              }`}
+            >
+              <ShieldCheck className={`w-4 h-4 ${activeTab === 'patents' ? 'text-[#f5c84c]' : 'text-slate-700'}`} />
+              <span>Patents & Registered Designs</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('publications')}
+              className={`filter-tab text-xs sm:text-sm font-bold flex items-center gap-2 ${
+                activeTab === 'publications' ? 'active' : ''
+              }`}
+            >
+              <BookOpen className={`w-4 h-4 ${activeTab === 'publications' ? 'text-[#f5c84c]' : 'text-slate-700'}`} />
+              <span>Research Monographs & Bulletins</span>
+            </button>
+          </div>
 
-            <div className="space-y-4">
-              {publications.list.map((item) => (
-                <div
-                  key={item.id}
-                  className="p-5 bg-slate-50 border border-slate-200 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
-                >
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                      <span className="badge badge-navy text-[10px] font-bold">{item.type}</span>
-                      <span className="text-xs text-slate-400 font-medium">Year: {item.year}</span>
-                      <span className="text-xs text-slate-500 font-semibold">• Dept: {item.department}</span>
+          {/* TAB 1: PATENTS & REGISTERED DESIGNS */}
+          {activeTab === 'patents' && (
+            <PatentsSection />
+          )}
+
+          {/* TAB 2: RESEARCH PUBLICATIONS & MONOGRAPHS */}
+          {activeTab === 'publications' && (
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+              <h2 className="font-heading text-xl sm:text-2xl font-extrabold text-navy-950 mb-2">
+                {publications.title}
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 mb-6">
+                {publications.description}
+              </p>
+
+              <div className="space-y-4">
+                {publications.list.map((item) => (
+                  <div
+                    key={item.id}
+                    className="p-5 bg-slate-50 border border-slate-200 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+                  >
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                        <span className="badge badge-navy text-[10px] font-bold">{item.type}</span>
+                        <span className="text-xs text-slate-400 font-medium">Year: {item.year}</span>
+                        <span className="text-xs text-slate-500 font-semibold">• Dept: {item.department}</span>
+                      </div>
+
+                      <h3 className="font-bold text-navy-950 text-base leading-snug">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs text-slate-600 mt-1">
+                        <strong>Authors:</strong> {item.authors}
+                      </p>
                     </div>
 
-                    <h3 className="font-bold text-navy-950 text-base leading-snug">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-slate-600 mt-1">
-                      <strong>Authors:</strong> {item.authors}
-                    </p>
+                    <button
+                      type="button"
+                      onClick={() => handleDownloadDoc(item)}
+                      className="btn btn-outline btn-sm text-xs flex items-center gap-1.5 flex-shrink-0 hover:bg-[#0b1a2e] hover:text-white transition-colors"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>View / Print PDF</span>
+                    </button>
                   </div>
-
-                  <button
-                    type="button"
-                    onClick={() => handleDownloadDoc(item)}
-                    className="btn btn-outline btn-sm text-xs flex items-center gap-1.5 flex-shrink-0 hover:bg-[#0b1a2e] hover:text-white transition-colors"
-                  >
-                    <Download className="w-3.5 h-3.5" />
-                    <span>View / Print PDF</span>
-                  </button>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
     </div>
   );
 }
-

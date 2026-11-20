@@ -3,12 +3,14 @@ import { useSearchParams } from 'react-router-dom';
 import PageBanner from '../components/PageBanner';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
+import FacultyAwardsSection from '../components/FacultyAwardsSection';
 import {
   History,
   Target,
   Compass,
   Layers,
   Award,
+  Trophy,
   CheckCircle2,
   Calendar,
   ShieldCheck,
@@ -132,6 +134,7 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
     { key: 'vision-mandate', label: 'Vision and Mandate', icon: Target },
     { key: 'org-structure', label: 'Organizational Structure', icon: Layers },
     { key: 'accreditation', label: 'Status of Accreditation', icon: Award },
+    { key: 'awards', label: 'Awards & Honours', icon: Trophy },
   ];
 
   return (
@@ -780,6 +783,13 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                   </span>
                 </div>
               </div>
+            )}
+
+            {/* ═══════════════════════════════════════════════════════════════
+                TAB 5: AWARDS & HONOURS (INSTITUTIONAL & FACULTY DISTINCTIONS)
+            ═══════════════════════════════════════════════════════════════ */}
+            {activeTab === 'awards' && (
+              <FacultyAwardsSection />
             )}
           </div>
         </div>

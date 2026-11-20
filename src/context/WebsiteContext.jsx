@@ -100,7 +100,7 @@ async function ensureAdminAuth() {
   }
 }
 
-const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_19_faculty_sync_v10';
+const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_20_patents_awards_v11';
 
 function sanitizeOfficialStructure(data) {
   if (!data || typeof data !== 'object') return defaultOfficialStructure;

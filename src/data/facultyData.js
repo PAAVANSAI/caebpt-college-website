@@ -65,7 +65,8 @@ export const facultyData = [
     "publications": "25 International/National Journals \u2022 5 Conference Proceedings \u2022 2 Technical Bulletins \u2022 3 Popular Articles",
     "awards": [
       "Life member in Andhra Agricultural Journal",
-      "Life member in ISAE"
+      "Life member in ISAE",
+      "Automated Smart Spraying Device Suitable for Field Crops (Design No. 496306-001, 2026)"
     ],
     "memberships": [
       "Life member in Andhra Agricultural Journal",
@@ -170,7 +171,9 @@ export const facultyData = [
     "awards": [
       "Received Institution of Engineers India (IEI) \u201cYoung Engineer\u2019s Award\u201d in agricultural Engineering Discipline.",
       "Received ISAE-TAFE Student Gold Medal for the year 2019 for best PhD thesis.",
-      "Received Young Scientist Award for contribution in the field of Farm Machinery and Power Engineering on the occasion of \u201c4th International Conference on Innovations to Transform Agriculture, Horticulture & Allied Sectors\u201d during 2023-24"
+      "Received Young Scientist Award for contribution in the field of Farm Machinery and Power Engineering on the occasion of \u201c4th International Conference on Innovations to Transform Agriculture, Horticulture & Allied Sectors\u201d during 2023-24",
+      "Automated Smart Spraying Device Suitable for Field Crops (Design No. 496306-001, 2026)",
+      "Self-Propelled Single Row Cotton Picker (Design No. 471993-001, 2026)"
     ],
     "memberships": [
       "Life Member of Indian Society of Agricultural Engineers (ISAE)",
@@ -363,6 +366,8 @@ export const facultyData = [
     },
     "publications": "10 International/National Publications \u2022 7 Abstracts \u2022 12 Technical Bulletins \u2022 9 Popular Articles \u2022 2 Training Manuals",
     "awards": [
+      "Netaji Subhas \u2013 ICAR International Fellowship-2025 for doctoral research at University of Nebraska\u2013Lincoln",
+      "Best Agri Engineer Award from ICFRE\u2013HFRI, Shimla & ISAHARD Society, New Delhi (2025)",
       "MHRD Fellowship for the M. Tech degree after securing All India 40th Rank in GATE \u2013 2014",
       "Outstanding team performance in the training module \u201cCultural Events (Men)\u201d during 5th Foundation course for Faculty of Agricultural Universities (FOCFAU) organized by ICAR \u2013 NAARM, Hyderabad",
       "Awarded 3rd prize for outstanding presentation on the topic \u201cOptimising Groundnut Productivity and Energy Budgeting through In Situ Water Harvesting under Rainfed Agriculture\u201d in the 1st National Seminar on Emerging Trends in Agriculture and Allied Sciences: A Pathway to Food Security, organized by Encourage Society, Bangalore",
@@ -476,10 +481,12 @@ export const facultyData = [
     },
     "publications": "Author of 'Textbook of Food Engineering' (ICAR) & 28+ Research Publications in Refereed Journals",
     "awards": [
+      "State Best Teacher Award 2026 by the Government of Andhra Pradesh",
       "Meritorious Teacher Award (2021 \u2013 22), Acharya N.G. Ranga Agricultural University",
       "Best Paper Award 2025 by the Indian Society of Agricultural Engineers (ISAE), New Delhi",
       "Member of Editorial Board, Journal of Agricultural Engineering (Indian Society of Agricultural Engineers - ISAE)",
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)",
+      "Patent on Auger Dosing System (Design No. 500072-001, 2026)"
     ],
     "memberships": [
       "Life Member, Indian Society of Agricultural Engineers (ISAE)",
@@ -535,7 +542,12 @@ export const facultyData = [
     ],
     "publicationCounts": {},
     "publications": "",
-    "awards": [],
+    "awards": [
+      "\u201cState Best Teacher\u201d for the year 2024 for Meritorious Service at State Level by Government of Andhra Pradesh",
+      "ISAE Commendation Medal 2026 (60th Annual Convention, SKUAST-K Srinagar)",
+      "Indian Design Patent on \u201cMechanical dried chillies compaction cum bagging unit\u201d (Design No. 403517-001, 2024)",
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
+    ],
     "memberships": []
   },
   {
@@ -584,7 +596,9 @@ export const facultyData = [
     "publicationCounts": {},
     "publications": "",
     "awards": [
-      "Best Teacher Award 2025 by Glacier Journal Research Foundation, Global Management Council, Ahmedabad"
+      "Meritorious Teacher Award (Agricultural Engineering & Technology) 2023-24 by ANGRAU",
+      "Best Teacher Award 2025 by Glacier Journal Research Foundation, Global Management Council, Ahmedabad",
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
     ],
     "memberships": []
   },
@@ -706,7 +720,10 @@ export const facultyData = [
     "notableContributions": [],
     "publicationCounts": {},
     "publications": "",
-    "awards": [],
+    "awards": [
+      "Patent on Chilli Compaction-Cum-Bagging Unit (Design No. 403517-001, 2024)",
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
+    ],
     "memberships": []
   },
   {
@@ -767,9 +784,10 @@ export const facultyData = [
     },
     "publications": "17 International/National Journals \u2022 1 Conference Proceeding \u2022 3 Books and Book Chapters \u2022 7 Popular Articles",
     "awards": [
-      "\u201cExcellence in Teaching\u201d for the year 2016-17 by Society for scientific development in agriculture and technology in ICAAS -2016 national seminar at Prof. Jaya Shankar Agricultural University, Hyderabad",
-      "\u201cMeritorious teacher award\u201d for the year 2020 in 54th annual convocation of Acharya N. G. Ranga Agricultural University at Agricultural college, Bapatla",
-      "Recognized as a WINNER in the IITB-ISRO-AICTE Mapathon, a competition of the FOSSEE Project, IIT Bombay in association with ISRO (Indian Space Research Organisation) and AICTE (All India Council for Technical Education) held between 7 Dec. to 22 Dec. 2020."
+      "\u201cOutstanding Women Researcher in Hydroponics\u201d by Venus International Foundation, Chennai (2025)",
+      "Best oral presentation award in 2nd National Seminar on Emerging Trends in Agriculture and Allied Sciences (2025)",
+      "Meritorious Teacher Award (Agricultural Engineering & Technology) 2022-23 by ANGRAU",
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
     ],
     "memberships": []
   },
@@ -943,6 +961,7 @@ export const facultyData = [
     },
     "publications": "41 International/National Journals \u2022 10 Conference Proceedings \u2022 4 Books and Book Chapters \u2022 1 Technical Bulletin \u2022 5 Popular Articles",
     "awards": [
+      "\u201cState Best Teacher\u201d for the year 2023 by Government of Andhra Pradesh",
       "ANGRAU Meritorious Scientist Award in 2012",
       "State Best Teacher Award 2023"
     ],
@@ -1082,7 +1101,10 @@ export const facultyData = [
     "notableContributions": [],
     "publicationCounts": {},
     "publications": "",
-    "awards": [],
+    "awards": [
+      "Indian Design Patent on \u201cMechanical dried chillies compaction cum bagging unit\u201d (Design No. 403517-001, 2024)",
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
+    ],
     "memberships": []
   },
   {
@@ -1121,7 +1143,10 @@ export const facultyData = [
     "notableContributions": [],
     "publicationCounts": {},
     "publications": "",
-    "awards": [],
+    "awards": [
+      "Meritorious Teacher Award for the year 2023 from ANGRAU during 57th Annual Convocation (awarded 2025)",
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
+    ],
     "memberships": []
   },
   {
