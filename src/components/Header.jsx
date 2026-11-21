@@ -137,6 +137,17 @@ export default function Header() {
       })),
     },
     { label: 'Patents & Publications', path: '/publications' },
+    {
+      label: 'Awards and Honors',
+      path: '/awards',
+      submenus: [
+        { label: 'All Distinctions', path: '/awards?section=all' },
+        { label: 'State Best Teacher Awards', path: '/awards?section=state-best' },
+        { label: 'ANGRAU Meritorious Teachers', path: '/awards?section=meritorious' },
+        { label: 'National & Global Distinctions', path: '/awards?section=national' },
+        { label: 'Table 29: Complete Register', path: '/awards?section=table29' },
+      ],
+    },
     { label: 'Contact Us', path: '/contact' },
   ];
 

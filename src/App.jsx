@@ -40,6 +40,7 @@ const DepartmentsPage = lazyWithRetry(() => import('./pages/DepartmentsPage'));
 const DepartmentDetailPage = lazyWithRetry(() => import('./pages/DepartmentDetailPage'));
 const StudentWelfarePage = lazyWithRetry(() => import('./pages/StudentWelfarePage'));
 const PublicationsPage = lazyWithRetry(() => import('./pages/PublicationsPage'));
+const AwardsPage = lazyWithRetry(() => import('./pages/AwardsPage'));
 const ContactPage = lazyWithRetry(() => import('./pages/ContactPage'));
 const NoticesPage = lazyWithRetry(() => import('./pages/NoticesPage'));
 const FacultyPage = lazyWithRetry(() => import('./pages/FacultyPage'));
@@ -166,8 +167,10 @@ function AppContent() {
               <Route path="/student-welfare" element={<StudentWelfarePage />} />
               <Route path="/student-welfare/:activitySlug" element={<StudentWelfarePage />} />
 
-              {/* F. PUBLICATIONS / OTHER MAIN LINKS */}
+              {/* F. PUBLICATIONS, AWARDS / OTHER MAIN LINKS */}
               <Route path="/publications" element={<PublicationsPage />} />
+              <Route path="/awards" element={<AwardsPage />} />
+              <Route path="/awards-and-honors" element={<AwardsPage />} />
               <Route
                 path="/contact"
                 element={<ContactPage />}

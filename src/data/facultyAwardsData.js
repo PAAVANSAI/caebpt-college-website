@@ -202,3 +202,72 @@ export const stateBestTeachersGallery = [
     description: "Presented by the Government of Andhra Pradesh for pioneering research in novel food processing, postgraduate guidance, and institutional distinction."
   }
 ];
+
+export const meritoriousTeachersGallery = [
+  {
+    year: "2021",
+    recipient: "Dr. M. Sardar Baig",
+    role: "Professor (Processing & Food Engineering)",
+    honor: "ANGRAU Meritorious Teacher Award 2021",
+    convocation: "Conferred on Tuesday, 10th August 2021",
+    image: "/images/faculty_awards/meritorious_teacher_2021_dr_m_sardar_baig.png",
+    description: "Awarded during the Annual Convocation of Acharya N.G. Ranga Agricultural University for outstanding teaching performance and student mentorship in food processing engineering."
+  },
+  {
+    year: "2022",
+    recipient: "Dr. Rega Ganesh Babu",
+    role: "Assistant Professor (Irrigation & Drainage Engineering)",
+    honor: "ANGRAU Meritorious Teacher Award 2022",
+    convocation: "52nd and 53rd Combined Convocation",
+    image: "/images/faculty_awards/meritorious_teacher_2022_dr_r_ganesh_babu.png",
+    description: "Awarded during the 52nd & 53rd Combined Convocation of ANGRAU by the Hon'ble Governor of Andhra Pradesh and Vice-Chancellor in Agricultural Engineering & Technology."
+  },
+  {
+    year: "2023",
+    recipient: "Dr. K. Krupavathi",
+    role: "Assistant Professor (Irrigation & Drainage Engineering)",
+    honor: "ANGRAU Meritorious Teacher Award 2023",
+    convocation: "Annual Convocation Ceremony",
+    image: "/images/faculty_awards/meritorious_teacher_2023_dr_k_krupavathi.jpg",
+    description: "Conferred during the Annual Convocation of ANGRAU in Agricultural Engineering & Technology for exemplary contributions to undergraduate and postgraduate instruction."
+  },
+  {
+    year: "2024",
+    recipient: "Dr. K. Lavanya",
+    role: "Assistant Professor (Processing & Food Engineering)",
+    honor: "ANGRAU Meritorious Teacher Award 2024",
+    convocation: "56th Annual Convocation",
+    image: "/images/faculty_awards/meritorious_teacher_2024_dr_k_lavanya.png",
+    description: "Presented at the 56th Annual Convocation of ANGRAU by the Hon'ble Governor and Vice-Chancellor for teaching excellence in Agricultural Engineering & Technology."
+  },
+  {
+    year: "2025",
+    recipient: "Dr. A. Srinivasa Rao",
+    role: "Assistant Professor (Renewable Energy Engineering)",
+    honor: "ANGRAU Meritorious Teacher Award",
+    convocation: "57th Annual Convocation (19th June 2025)",
+    image: "/images/faculty_awards/meritorious_teacher_2025_dr_a_srinivasa_rao.png",
+    description: "Conferred for the year 2023 by Vice-Chancellor Dr. A. Vishnuvardhan Reddy and dignitaries at the 57th Annual Convocation of ANGRAU for distinction in renewable energy education."
+  }
+];
+
+export const nationalHonorsGallery = [
+  {
+    year: "2026",
+    recipient: "Dr. S. Vishnu Vardhan",
+    role: "Professor, Dept. of Processing & Food Engineering",
+    honor: "ISAE Commendation Medal 2026",
+    organization: "Indian Society of Agricultural Engineers (ISAE)",
+    image: "/images/faculty_awards/isae_commendation_medal_2026_dr_s_vishnu_vardhan.png",
+    description: "Received during 60th Annual Convention and International Symposium on 'Artificial Intelligence and Robotic Application in Gen-Z Farming' held at SKUAST-K Srinagar during 5-7 October, 2026."
+  },
+  {
+    year: "2025",
+    recipient: "Dr. N. Kishore",
+    role: "Assistant Professor (Farm Machinery & Power Engineering)",
+    honor: "Award of Netaji Subhas International Fellowship 2025",
+    organization: "Agricultural Education Division, Indian Council of Agricultural Research (ICAR), New Delhi",
+    image: "/images/faculty_awards/netaji_subhas_fellowship_2025_dr_n_kishore.jpg",
+    description: "Conferred by the Indian Council of Agricultural Research (ICAR) to pursue international Ph.D. research at the University of Nebraska–Lincoln, USA."
+  }
+];
