@@ -320,31 +320,33 @@ export default function Header() {
         }`}
       >
         <div className="w-full max-w-[1400px] mx-auto px-3 sm:px-6 flex items-center justify-between">
-          {/* Scrolled Compact Brand (Fades in smoothly on scroll without changing layout width) - Desktop only */}
-          <div className="hidden lg:flex w-[180px] xl:w-[220px] items-center flex-shrink-0">
-            <Link
-              to="/"
-              className={`flex items-center gap-2 whitespace-nowrap group transition-fade-slide ${
-                isScrolled
-                  ? 'opacity-100 translate-y-0 pointer-events-auto'
-                  : 'opacity-0 -translate-y-1.5 pointer-events-none'
-              }`}
-              style={{ textDecoration: 'none' }}
-            >
-              <CollegeEmblem size={30} className="w-7 h-7 flex-shrink-0" />
-              <div className="flex flex-col">
-                <span className="font-heading font-extrabold text-[#0b1a2e] text-xs sm:text-sm tracking-tight leading-none">
-                  CAE Bapatla
-                </span>
-                <span className="text-[10px] text-[#ecc75f] font-bold tracking-wider uppercase leading-tight mt-0.5">
-                  ANGRAU
-                </span>
-              </div>
-            </Link>
-          </div>
+          {/* Scrolled Compact Brand - Desktop only: Appears only when scrolled down, occupying 0px when at top */}
+          {isScrolled && (
+            <div className="hidden lg:flex items-center flex-shrink-0 mr-2 xl:mr-4 animate-fadeIn">
+              <Link
+                to="/"
+                className="flex items-center gap-2 whitespace-nowrap group"
+                style={{ textDecoration: 'none' }}
+              >
+                <CollegeEmblem size={28} className="w-7 h-7 flex-shrink-0" />
+                <div className="flex flex-col">
+                  <span className="font-heading font-extrabold text-[#0b1a2e] text-xs sm:text-sm tracking-tight leading-none">
+                    CAE Bapatla
+                  </span>
+                  <span className="text-[10px] text-[#ecc75f] font-bold tracking-wider uppercase leading-tight mt-0.5">
+                    ANGRAU
+                  </span>
+                </div>
+              </Link>
+            </div>
+          )}
 
-          {/* Centered Desktop Menu Items (Rock-solid centered position) */}
-          <ul className="hidden lg:flex items-center justify-center flex-1 gap-1 xl:gap-2 py-0.5 list-none m-0 p-0">
+          {/* Desktop Menu Items: Centered with balanced spacing */}
+          <ul
+            className={`hidden lg:flex items-center ${
+              isScrolled ? 'justify-end xl:justify-center' : 'justify-center'
+            } flex-1 gap-0.5 lg:gap-1 xl:gap-2 py-0.5 list-none m-0 p-0`}
+          >
             {menuItems.map((item, idx) => {
               const hasSubmenus = item.submenus && item.submenus.length > 0;
               const isDropdownOpen = openDropdown === item.label;
@@ -352,7 +354,7 @@ export default function Header() {
                 item.path === '/'
                   ? location.pathname === '/'
                   : location.pathname.startsWith(item.path);
-              const isRightAligned = idx >= 4;
+              const isRightAligned = idx >= 5;
 
               return (
                 <li
@@ -366,7 +368,7 @@ export default function Header() {
                       to={item.path}
                       end={item.path === '/'}
                       className={({ isActive: isLinkActive }) =>
-                        `px-3 xl:px-3.5 py-1.5 rounded-lg text-xs xl:text-sm font-bold tracking-tight transition-all duration-150 flex items-center gap-1 whitespace-nowrap ${
+                        `px-2.5 lg:px-2.5 xl:px-3.5 py-1.5 rounded-lg text-xs xl:text-[13.5px] font-bold tracking-tight transition-all duration-150 flex items-center gap-1 whitespace-nowrap ${
                           isLinkActive || (isActive && item.path !== '/')
                             ? 'text-[#0b1a2e] bg-[#fdf5df] border border-[#fae4a4] shadow-2xs font-extrabold'
                             : 'text-slate-700 hover:text-[#0b1a2e] hover:bg-slate-100/70'
@@ -513,6 +515,21 @@ export default function Header() {
               );
             })}
           </ul>
+
+          {/* Scrolled Right Quick Actions - Appears only when scrolled to keep navbar balanced */}
+          {isScrolled && (
+            <div className="hidden xl:flex items-center gap-2 flex-shrink-0 ml-2 xl:ml-4 animate-fadeIn">
+              <Link
+                to="/admin"
+                className="flex items-center gap-1 bg-[#d4a72c] hover:bg-[#ecc75f] text-[#06101e] px-2.5 py-1 rounded-md text-[11px] font-extrabold transition-all shadow-xs"
+                title="Admin Portal"
+                style={{ textDecoration: 'none' }}
+              >
+                <Shield className="w-3 h-3 text-[#06101e]" />
+                <span>Admin</span>
+              </Link>
+            </div>
+          )}
 
           {/* Unified Sticky Mobile Header Bar */}
           <div className="lg:hidden flex items-center justify-between w-full py-1 gap-2">

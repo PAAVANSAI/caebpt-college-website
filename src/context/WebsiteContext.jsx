@@ -100,7 +100,7 @@ async function ensureAdminAuth() {
   }
 }
 
-const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_21_awards_page_v12';
+const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_21_navbar_alignment_v13';
 
 function sanitizeOfficialStructure(data) {
   if (!data || typeof data !== 'object') return defaultOfficialStructure;
