@@ -60,7 +60,7 @@ function hasAuthenticatedAdmin() {
   return Boolean(auth.currentUser);
 }
 
-const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_25_security_hardened_v14';
+const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_25_qa_verified_v15';
 
 function sanitizeOfficialStructure(data) {
   if (!data || typeof data !== 'object') return defaultOfficialStructure;
@@ -110,8 +110,10 @@ function sanitizeOfficialStructure(data) {
 
     // Ensure the primary ICAR Accreditation Order is ALWAYS at position 1, followed by other statutory documents
     mergedDocs = [...missingDefaults, ...updatedUserDocs].sort((a, b) => {
-      if (a.id === 'icar-accreditation-order') return -1;
-      if (b.id === 'icar-accreditation-order') return 1;
+      const aPrimary = a.isPrimaryOrder || a.id === 'icar-accreditation-order-2026-2031' || a.id === 'icar-accreditation-order';
+      const bPrimary = b.isPrimaryOrder || b.id === 'icar-accreditation-order-2026-2031' || b.id === 'icar-accreditation-order';
+      if (aPrimary && !bPrimary) return -1;
+      if (bPrimary && !aPrimary) return 1;
       return (a.order || 0) - (b.order || 0);
     }).map((doc, idx) => ({
       ...doc,
@@ -223,7 +225,9 @@ function sanitizeOfficialStructure(data) {
       : {
         ...defaultOfficialStructure.administration.supportingStaff,
         ...(data.administration?.supportingStaff || {}),
-        staffList: defaultOfficialStructure.administration.supportingStaff.staffList
+        staffList: Array.isArray(data.administration?.supportingStaff?.staffList) && data.administration.supportingStaff.staffList.length >= 10
+          ? data.administration.supportingStaff.staffList
+          : defaultOfficialStructure.administration.supportingStaff.staffList
       }
   };
 
@@ -328,31 +332,34 @@ function sanitizeOfficialStructure(data) {
             return defDept;
           }
           const defHod = defDept.hodAndFaculty || {};
+          const userHod = userDept.hodAndFaculty || {};
+          const userMembers = Array.isArray(userHod.facultyMembers) && userHod.facultyMembers.length > 0
+            ? userHod.facultyMembers.map((uMem) => {
+                const defMem = (defHod.facultyMembers || []).find((m) => m.id === uMem.id || m.name?.toLowerCase() === uMem.name?.toLowerCase()) || {};
+                return {
+                  ...defMem,
+                  ...uMem,
+                  photo: uMem.photo || defMem.photo
+                };
+              })
+            : defHod.facultyMembers || [];
+
           return {
             ...defDept,
             ...userDept,
             hodAndFaculty: {
               ...defHod,
-              hodId: defHod.hodId,
-              hodName: defHod.hodName,
-              hodDesignation: defHod.hodDesignation,
-              hodPhoto: defHod.hodPhoto,
-              hodPhone: defHod.hodPhone,
-              hodEmail: defHod.hodEmail,
-              hodSpecialization: defHod.hodSpecialization,
-              hodAwards: defHod.hodAwards,
-              hodExperience: defHod.hodExperience,
-              facultyMembers: (defHod.facultyMembers || []).map((defMember) => ({
-                ...defMember,
-                id: defMember.id,
-                name: defMember.name,
-                designation: defMember.designation,
-                photo: defMember.photo,
-                qual: defMember.qual,
-                phone: defMember.phone,
-                email: defMember.email,
-                specialization: defMember.specialization
-              }))
+              ...userHod,
+              hodId: userHod.hodId || defHod.hodId,
+              hodName: userHod.hodName || defHod.hodName,
+              hodDesignation: userHod.hodDesignation || defHod.hodDesignation,
+              hodPhoto: userHod.hodPhoto || defHod.hodPhoto,
+              hodPhone: userHod.hodPhone || defHod.hodPhone,
+              hodEmail: userHod.hodEmail || defHod.hodEmail,
+              hodSpecialization: userHod.hodSpecialization || defHod.hodSpecialization,
+              hodAwards: userHod.hodAwards || defHod.hodAwards,
+              hodExperience: userHod.hodExperience || defHod.hodExperience,
+              facultyMembers: userMembers
             }
           };
         });
@@ -366,13 +373,13 @@ function sanitizeOfficialStructure(data) {
       return {
         ...defW,
         ...(userW || {}),
-        fullNarrative: defW.fullNarrative,
-        gallery: defW.gallery,
-        tables: defW.tables,
-        dossier: defW.dossier,
-        keyStatistics: defW.keyStatistics,
-        sections: defW.sections,
-        features: (userW?.features && userW.features.length >= defW.features.length)
+        fullNarrative: (Array.isArray(userW?.fullNarrative) && userW.fullNarrative.length > 0) ? userW.fullNarrative : defW.fullNarrative,
+        gallery: (Array.isArray(userW?.gallery) && userW.gallery.length > 0) ? userW.gallery : defW.gallery,
+        tables: (Array.isArray(userW?.tables) && userW.tables.length > 0) ? userW.tables : defW.tables,
+        dossier: userW?.dossier || defW.dossier,
+        keyStatistics: (Array.isArray(userW?.keyStatistics) && userW.keyStatistics.length > 0) ? userW.keyStatistics : defW.keyStatistics,
+        sections: userW?.sections || defW.sections,
+        features: (Array.isArray(userW?.features) && userW.features.length >= defW.features.length)
           ? userW.features
           : defW.features
       };
@@ -551,7 +558,7 @@ export function WebsiteProvider({ children }) {
     const saved = localStorage.getItem('caebpt_site_settings');
     const defaults = {
       emergencyBannerActive: true,
-      emergencyBannerText: "AP EAPCET & ICAR AIEEA 2025–26 Counseling Window: Official B.Tech (Agri Engg) admissions guidelines and verification schedules are active.",
+      emergencyBannerText: "AP EAPCET & ICAR AIEEA Counseling Window: Official B.Tech (Agri Engg) admissions guidelines and verification schedules are active.",
       maintenanceMode: false,
       rateLimitingActive: false,
       publicAdmissionsOpen: true,
@@ -601,6 +608,14 @@ export function WebsiteProvider({ children }) {
   useEffect(() => {
     localStorage.setItem('caebpt_site_settings', JSON.stringify(siteSettings));
   }, [siteSettings]);
+
+  useEffect(() => {
+    localStorage.setItem('caebpt_departments', JSON.stringify(departments));
+  }, [departments]);
+
+  useEffect(() => {
+    localStorage.setItem('caebpt_gallery', JSON.stringify(gallery));
+  }, [gallery]);
 
   // ── FIREBASE REALTIME LISTENERS ──────────────────────────────
   // 1. Realtime Site Settings Sync
@@ -757,12 +772,8 @@ export function WebsiteProvider({ children }) {
       const unsubscribe = onSnapshot(docRef, (docSnap) => {
         if (docSnap.exists()) {
           const data = docSnap.data();
-          if (data.photos || data.videos) {
-            setGallery((prev) => ({
-              ...prev,
-              photos: Array.isArray(data.photos) && data.photos.length > 0 ? data.photos : prev.photos,
-              videos: Array.isArray(data.videos) && data.videos.length > 0 ? data.videos : prev.videos
-            }));
+          if (Array.isArray(data.list) && data.list.length > 0) {
+            setGallery(data.list);
           }
         }
       }, () => { });
@@ -889,11 +900,12 @@ export function WebsiteProvider({ children }) {
 
   // 5. Galleries (Photos & Videos)
   const addGalleryPhoto = (photo) => {
+    const resolvedSrc = photo.image || photo.url || '/images/gallery/photo_1.webp';
     persistStructure((prev) => ({
       ...prev,
       galleries: {
         ...prev.galleries,
-        photos: [{ ...photo, id: `photo-${Date.now()}` }, ...prev.galleries.photos]
+        photos: [{ ...photo, image: resolvedSrc, url: resolvedSrc, id: `photo-${Date.now()}` }, ...(prev.galleries?.photos || [])]
       }
     }));
   };
@@ -1063,17 +1075,31 @@ export function WebsiteProvider({ children }) {
 
   // 10. Publications
   const addPublication = (pub) => {
-    persistStructure((prev) => ({
-      ...prev,
-      publications: [{ ...pub, id: `pub-${Date.now()}` }, ...prev.publications]
-    }));
+    persistStructure((prev) => {
+      const currentPubs = prev.publications || defaultOfficialStructure.publications;
+      const currentList = Array.isArray(currentPubs.list) ? currentPubs.list : [];
+      return {
+        ...prev,
+        publications: {
+          ...currentPubs,
+          list: [{ ...pub, id: `pub-${Date.now()}` }, ...currentList]
+        }
+      };
+    });
   };
 
   const deletePublication = (id) => {
-    persistStructure((prev) => ({
-      ...prev,
-      publications: prev.publications.filter((p) => p.id !== id)
-    }));
+    persistStructure((prev) => {
+      const currentPubs = prev.publications || defaultOfficialStructure.publications;
+      const currentList = Array.isArray(currentPubs.list) ? currentPubs.list : [];
+      return {
+        ...prev,
+        publications: {
+          ...currentPubs,
+          list: currentList.filter((p) => p.id !== id)
+        }
+      };
+    });
   };
 
   // 11. Firebase Storage — upload file and return download URL (Admin only)
@@ -1164,7 +1190,7 @@ export function WebsiteProvider({ children }) {
     setEnquiries(initialEnquiries);
     setSiteSettings({
       emergencyBannerActive: true,
-      emergencyBannerText: "AP EAPCET & ICAR AIEEA 2025–26 Counseling Window: Official B.Tech (Agri Engg) admissions guidelines and verification schedules are active.",
+      emergencyBannerText: "AP EAPCET & ICAR AIEEA Counseling Window: Official B.Tech (Agri Engg) admissions guidelines and verification schedules are active.",
       maintenanceMode: false,
       rateLimitingActive: false,
       publicAdmissionsOpen: true,

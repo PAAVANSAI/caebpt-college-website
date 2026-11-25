@@ -64,27 +64,34 @@ export default function DepartmentDetailPage() {
     (defHod.hodName && f.name?.toLowerCase() === defHod.hodName?.toLowerCase()) ||
     (defHod.hodName && f.fullName?.toLowerCase() === defHod.hodName?.toLowerCase())
   );
-  const resolvedHodPhoto = defHod.hodPhoto || hodFacultyProfile?.avatar || DEFAULT_AVATAR;
-  const resolvedHodId = defHod.hodId || hodFacultyProfile?.id || (defHod.hodName ? defHod.hodName.toLowerCase().replace(/[^a-z0-9]+/g, '-') : null);
+  const resolvedHodPhoto = userHod.hodPhoto || defHod.hodPhoto || hodFacultyProfile?.avatar || DEFAULT_AVATAR;
+  const resolvedHodId = userHod.hodId || defHod.hodId || hodFacultyProfile?.id || (defHod.hodName ? defHod.hodName.toLowerCase().replace(/[^a-z0-9]+/g, '-') : null);
 
-  const resolvedFacultyMembers = (defHod.facultyMembers || []).map((defFac) => {
-    const userFac = (userHod.facultyMembers || []).find(
-      (m) => m.id === defFac.id || m.name?.toLowerCase() === defFac.name?.toLowerCase()
-    );
-    const facultyProfile = facultyData.find(f => 
-      f.id === defFac.id || 
-      f.name?.toLowerCase() === defFac.name?.toLowerCase() ||
-      f.fullName?.toLowerCase() === defFac.name?.toLowerCase()
-    );
-    const authenticPhoto = defFac.photo || facultyProfile?.avatar || DEFAULT_AVATAR;
-    const canonicalId = defFac.id || facultyProfile?.id || defFac.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    return {
-      ...defFac,
-      ...(userFac || {}),
-      id: canonicalId,
-      photo: authenticPhoto
-    };
-  });
+  const rawFacultyList =
+    Array.isArray(userHod.facultyMembers) && userHod.facultyMembers.length > 0
+      ? userHod.facultyMembers
+      : defHod.facultyMembers || [];
+
+  const resolvedFacultyMembers = rawFacultyList
+    .filter((fac) => !resolvedHodId || fac.id !== resolvedHodId)
+    .map((fac) => {
+      const defFac = (defHod.facultyMembers || []).find(
+        (m) => m.id === fac.id || m.name?.toLowerCase() === fac.name?.toLowerCase()
+      ) || {};
+      const facultyProfile = facultyData.find(f =>
+        f.id === fac.id ||
+        f.name?.toLowerCase() === fac.name?.toLowerCase() ||
+        f.fullName?.toLowerCase() === fac.name?.toLowerCase()
+      );
+      const authenticPhoto = fac.photo || defFac.photo || facultyProfile?.avatar || DEFAULT_AVATAR;
+      const canonicalId = fac.id || defFac.id || facultyProfile?.id || fac.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      return {
+        ...defFac,
+        ...fac,
+        id: canonicalId,
+        photo: authenticPhoto
+      };
+    });
 
   const currentDept = {
     ...officialDept,
@@ -93,12 +100,12 @@ export default function DepartmentDetailPage() {
       ...defHod,
       ...userHod,
       hodId: resolvedHodId,
-      hodName: defHod.hodName || userHod.hodName,
-      hodDesignation: defHod.hodDesignation || userHod.hodDesignation,
+      hodName: userHod.hodName || defHod.hodName,
+      hodDesignation: userHod.hodDesignation || defHod.hodDesignation,
       hodPhoto: resolvedHodPhoto,
-      hodPhone: defHod.hodPhone || userHod.hodPhone,
-      hodEmail: defHod.hodEmail || userHod.hodEmail,
-      hodSpecialization: defHod.hodSpecialization || userHod.hodSpecialization,
+      hodPhone: userHod.hodPhone || defHod.hodPhone,
+      hodEmail: userHod.hodEmail || defHod.hodEmail,
+      hodSpecialization: userHod.hodSpecialization || defHod.hodSpecialization,
       facultyMembers: resolvedFacultyMembers
     }
   };
@@ -144,9 +151,39 @@ export default function DepartmentDetailPage() {
             <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-navy-950">
               About the Department
             </h2>
-            <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-700 text-sm sm:text-base leading-relaxed whitespace-pre-line">
               {currentDept.about}
             </p>
+
+            {/* Postgraduate Initiation / History Highlights if present */}
+            {currentDept.pgHistory && (
+              <div className="p-4 bg-blue-50/60 rounded-xl border border-blue-200/70 text-xs text-slate-700 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {currentDept.pgHistory.mtechStarted && (
+                  <div>
+                    <span className="text-[10px] font-bold uppercase text-slate-500 block">M.Tech Started</span>
+                    <strong className="text-navy-950">{currentDept.pgHistory.mtechStarted}</strong>
+                  </div>
+                )}
+                {currentDept.pgHistory.mtechStipend && (
+                  <div>
+                    <span className="text-[10px] font-bold uppercase text-slate-500 block">M.Tech Stipend</span>
+                    <strong className="text-navy-950">{currentDept.pgHistory.mtechStipend}</strong>
+                  </div>
+                )}
+                {currentDept.pgHistory.phdStarted && (
+                  <div>
+                    <span className="text-[10px] font-bold uppercase text-slate-500 block">Ph.D. Started</span>
+                    <strong className="text-navy-950">{currentDept.pgHistory.phdStarted}</strong>
+                  </div>
+                )}
+                {currentDept.pgHistory.phdStipend && (
+                  <div>
+                    <span className="text-[10px] font-bold uppercase text-slate-500 block">Ph.D. Stipend</span>
+                    <strong className="text-navy-950">{currentDept.pgHistory.phdStipend}</strong>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Vision & Mission if present */}
             {currentDept.vision && (
@@ -394,6 +431,65 @@ export default function DepartmentDetailPage() {
                   </div>
                 ))}
               </div>
+
+              {/* Special Units, ELP Unit & Field Demonstrations if present */}
+              {(currentDept.elpUnit || currentDept.specialUnits || currentDept.demoFacilities || currentDept.entrepreneurshipAreas) && (
+                <div className="pt-4 border-t border-slate-100 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                  {currentDept.elpUnit && (
+                    <div className="p-4 bg-amber-50/70 rounded-xl border border-amber-200/80 space-y-2 md:col-span-2">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <strong className="text-sm font-extrabold text-navy-950">{currentDept.elpUnit.title}</strong>
+                        {currentDept.elpUnit.fssaiLicense && (
+                          <span className="badge badge-gold text-[10px] font-bold">FSSAI Lic: {currentDept.elpUnit.fssaiLicense}</span>
+                        )}
+                      </div>
+                      <p className="text-slate-700 leading-relaxed">{currentDept.elpUnit.description}</p>
+                      {Array.isArray(currentDept.elpUnit.products) && (
+                        <div className="flex flex-wrap gap-1.5 pt-1">
+                          {currentDept.elpUnit.products.map((prod, idx) => (
+                            <span key={idx} className="px-2 py-0.5 bg-white border border-amber-200 rounded text-[11px] font-semibold text-amber-950">
+                              {prod}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {Array.isArray(currentDept.demoFacilities) && currentDept.demoFacilities.length > 0 && (
+                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                      <strong className="text-xs font-bold uppercase tracking-wider text-navy-950 block">Field Demonstration Units</strong>
+                      <ul className="space-y-1 text-slate-700">
+                        {currentDept.demoFacilities.map((d, idx) => (
+                          <li key={idx} className="flex items-start gap-1.5"><span className="text-[#854d0e] font-bold">•</span><span>{d}</span></li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {Array.isArray(currentDept.entrepreneurshipAreas) && currentDept.entrepreneurshipAreas.length > 0 && (
+                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                      <strong className="text-xs font-bold uppercase tracking-wider text-navy-950 block">Entrepreneurship & Tech Transfer</strong>
+                      <ul className="space-y-1 text-slate-700">
+                        {currentDept.entrepreneurshipAreas.map((e, idx) => (
+                          <li key={idx} className="flex items-start gap-1.5"><span className="text-[#854d0e] font-bold">•</span><span>{e}</span></li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {Array.isArray(currentDept.specialUnits) && currentDept.specialUnits.length > 0 && (
+                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2 md:col-span-2">
+                      <strong className="text-xs font-bold uppercase tracking-wider text-navy-950 block">Specialized Departmental Centres & Units</strong>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-slate-700">
+                        {currentDept.specialUnits.map((u, idx) => (
+                          <div key={idx} className="flex items-start gap-1.5"><span className="text-[#d4a72c] font-bold">•</span><span>{u}</span></div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
 

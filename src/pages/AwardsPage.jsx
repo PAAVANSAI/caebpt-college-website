@@ -49,12 +49,13 @@ export default function AwardsPage() {
     setSearchParams({ section: tabKey });
   };
 
-  const years = ['All', '2026-27', '2025 – 26', '2024 – 25', '2023 – 24', '2022 – 23', '2021 – 22', '2020 – 21'];
+  const years = ['All', '2026 – 27', '2025 – 26', '2024 – 25', '2023 – 24', '2022 – 23', '2021 – 22', '2020 – 21'];
+  const normalizeYear = (val) => String(val || '').replace(/[\s–—-]+/g, '').trim();
 
   const filteredAwards = facultyAwardsData.filter((item) => {
     const matchYear =
       filterYear === 'All' ||
-      item.year.includes(filterYear.split(' ')[0]);
+      normalizeYear(item.year) === normalizeYear(filterYear);
 
     const query = searchQuery.toLowerCase().trim();
     const matchSearch =
@@ -101,7 +102,7 @@ export default function AwardsPage() {
               <div className="w-9 h-9 mx-auto mb-2 rounded-xl bg-blue-500/10 flex items-center justify-center text-[#0b1a2e]">
                 <Medal className="w-5 h-5" />
               </div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-[#0b1a2e]">5</div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-[#0b1a2e]">6</div>
               <div className="text-[11px] font-bold uppercase tracking-wider text-slate-700 mt-0.5">
                 Meritorious Teachers
               </div>
@@ -134,7 +135,7 @@ export default function AwardsPage() {
               <div className="w-9 h-9 mx-auto mb-2 rounded-xl bg-[#d4a72c]/20 flex items-center justify-center text-[#f5c84c]">
                 <Sparkles className="w-5 h-5" />
               </div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-[#f5c84c]">20+</div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-[#f5c84c]">{facultyAwardsData.length}</div>
               <div className="text-[11px] font-bold uppercase tracking-wider text-slate-200 mt-0.5">
                 Total Accolades
               </div>

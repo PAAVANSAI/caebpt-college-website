@@ -1,15 +1,18 @@
 import React, { useState, useMemo } from 'react';
 import { Bell, Calendar, ArrowRight, FileText, AlertCircle, Sparkles, Search, X } from 'lucide-react';
-import { noticesData } from '../data/noticesData';
+import { noticesData as defaultNoticesData } from '../data/noticesData';
+import { useWebsite } from '../context/WebsiteContext';
 
 export default function Notices({ onSelectNotice }) {
+  const { notices: contextNotices } = useWebsite();
+  const noticesList = Array.isArray(contextNotices) && contextNotices.length > 0 ? contextNotices : defaultNoticesData;
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
   const categories = ['All', 'Examinations', 'Admissions', 'Academic', 'Events', 'Tenders'];
 
   const filteredNotices = useMemo(() => {
-    return noticesData.filter((n) => {
+    return noticesList.filter((n) => {
       const matchesCategory = selectedCategory === 'All' || n.category === selectedCategory;
       const query = searchQuery.toLowerCase().trim();
       const matchesSearch =
@@ -20,7 +23,7 @@ export default function Notices({ onSelectNotice }) {
         (n.date && n.date.toLowerCase().includes(query));
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [noticesList, selectedCategory, searchQuery]);
 
   return (
     <section id="notices" className="section-padding bg-white border-b border-slate-200">

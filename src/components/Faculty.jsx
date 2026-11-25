@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Users, Mail, BookOpen, Award, Search, GraduationCap, MapPin, ChevronRight, Phone } from 'lucide-react';
-import { facultyData } from '../data/facultyData';
+import { facultyData as defaultFacultyData } from '../data/facultyData';
+import { useWebsite } from '../context/WebsiteContext';
 
 export default function Faculty() {
+  const { faculty: contextFaculty } = useWebsite();
+  const facultyList = Array.isArray(contextFaculty) && contextFaculty.length > 0 ? contextFaculty : defaultFacultyData;
   const [selectedDept, setSelectedDept] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -17,7 +20,7 @@ export default function Faculty() {
     { label: 'Basic Engg (BEAS)', value: 'beas' },
   ];
 
-  const filteredFaculty = facultyData.filter((member) => {
+  const filteredFaculty = facultyList.filter((member) => {
     const matchesDept = selectedDept === 'All' || member.deptId === selectedDept;
     const matchesSearch =
       member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||

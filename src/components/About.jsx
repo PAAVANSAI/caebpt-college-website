@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Target, Compass, BookOpenCheck, ShieldCheck, Quote, History, Award, CheckCircle2 } from 'lucide-react';
-import { collegeInfo } from '../data/collegeInfo';
+import { collegeInfo as defaultCollegeInfo } from '../data/collegeInfo';
+import { useWebsite } from '../context/WebsiteContext';
 
 export default function About() {
+  const { collegeInfo: contextCollegeInfo } = useWebsite();
+  const collegeInfo = contextCollegeInfo || defaultCollegeInfo;
   const [activeTab, setActiveTab] = useState('vision-mission');
 
   return (
@@ -197,9 +200,9 @@ export default function About() {
                 <div className="mt-5 pt-4 border-t border-slate-200 flex items-center justify-between">
                   <div>
                     <span className="font-heading italic text-navy-900 font-bold block text-sm">
-                      K. S. Rao
+                      {collegeInfo.principalMessage?.name || 'Dr. Mogal Sardar Baig'}
                     </span>
-                    <span className="text-[11px] text-slate-500">Associate Dean & Professor</span>
+                    <span className="text-[11px] text-slate-500">{collegeInfo.principalMessage?.designation || 'Associate Dean & Professor'}</span>
                   </div>
                   <div className="badge badge-navy text-[10px]">
                     CAE Bapatla

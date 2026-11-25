@@ -425,7 +425,7 @@ export default function Header() {
                                     <div className="min-w-[290px] max-w-[340px] bg-white border border-slate-200 rounded-xl shadow-2xl py-2 px-1 ring-1 ring-black/5">
                                       <div className="px-3 py-1 mb-1 text-[10px] font-bold uppercase tracking-wider text-[#854d0e] border-b border-slate-100 flex items-center justify-between">
                                         <span>Select Department</span>
-                                        <span className="text-[9px] text-slate-400 font-normal">5 units</span>
+                                        <span className="text-[9px] text-slate-400 font-normal">{sub.childrenList.length} units</span>
                                       </div>
                                       <div className="space-y-0.5">
                                         {sub.childrenList.map((dept, dIdx) => (

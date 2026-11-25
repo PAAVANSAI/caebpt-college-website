@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import PageBanner from '../components/PageBanner';
-import { facultyData, getFacultyById, getFacultyByDept } from '../data/facultyData';
+import { facultyData as defaultFacultyData, getFacultyByDept } from '../data/facultyData';
+import { useWebsite } from '../context/WebsiteContext';
 import {
   GraduationCap,
   Award,
@@ -26,11 +27,14 @@ import {
 export default function FacultyProfilePage() {
   const { facultyId, deptSlug } = useParams();
   const navigate = useNavigate();
+  const { faculty: contextFaculty } = useWebsite();
   const [activeTab, setActiveTab] = useState('overview');
   const [copied, setCopied] = useState(false);
 
-  // Match faculty member
-  const faculty = getFacultyById(facultyId) || facultyData.find(f => f.id.includes(facultyId?.toLowerCase() || ''));
+  const facultyList = Array.isArray(contextFaculty) && contextFaculty.length > 0 ? contextFaculty : defaultFacultyData;
+  const faculty =
+    facultyList.find(f => f.id === facultyId) ||
+    facultyList.find(f => f.id.includes(facultyId?.toLowerCase() || ''));
 
   if (!faculty) {
     return (
@@ -57,7 +61,7 @@ export default function FacultyProfilePage() {
   }
 
   // Get department colleagues
-  const colleagues = getFacultyByDept(faculty.deptId).filter(f => f.id !== faculty.id);
+  const colleagues = facultyList.filter(f => f.deptId === faculty.deptId && f.id !== faculty.id);
 
   const handleShare = () => {
     if (navigator.clipboard) {
@@ -199,7 +203,7 @@ export default function FacultyProfilePage() {
                 )}
                 {faculty.phone && (
                   <a
-                    href={`tel:${faculty.phone.split('/')[0].trim().replace(/\s+/g, '')}`}
+                    href={`tel:${faculty.phone.split(/[/,]/)[0].trim().replace(/\s+/g, '')}`}
                     className="inline-flex items-center gap-1.5 font-semibold text-slate-700 hover:text-navy-950"
                     style={{ textDecoration: 'none' }}
                   >
@@ -340,12 +344,12 @@ export default function FacultyProfilePage() {
                         <span className="text-[10px] font-bold text-slate-600 uppercase">Journal Papers</span>
                       </div>
                       <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                        <span className="text-2xl font-extrabold text-navy-950 block">{faculty.publicationCounts.conferences || 0}</span>
-                        <span className="text-[10px] font-bold text-slate-600 uppercase">Conferences</span>
+                        <span className="text-2xl font-extrabold text-navy-950 block">{faculty.publicationCounts.conferences || faculty.publicationCounts.abstracts || 0}</span>
+                        <span className="text-[10px] font-bold text-slate-600 uppercase">{faculty.publicationCounts.abstracts ? 'Abstracts' : 'Conferences'}</span>
                       </div>
                       <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                        <span className="text-2xl font-extrabold text-navy-950 block">{faculty.publicationCounts.technicalBulletins || faculty.publicationCounts.popularArticles || 0}</span>
-                        <span className="text-[10px] font-bold text-slate-600 uppercase">Bulletins / Articles</span>
+                        <span className="text-2xl font-extrabold text-navy-950 block">{(faculty.publicationCounts.technicalBulletins || 0) + (faculty.publicationCounts.popularArticles || 0)}</span>
+                        <span className="text-[10px] font-bold text-slate-600 uppercase">Bulletins & Articles</span>
                       </div>
                       <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl">
                         <span className="text-2xl font-extrabold text-emerald-700 block">{faculty.publicationCounts.total || 0}+</span>
@@ -497,6 +501,20 @@ export default function FacultyProfilePage() {
                             <td className="py-2.5 px-4 text-slate-600">Official Standards and Test Reports</td>
                           </tr>
                         )}
+                        {faculty.publicationCounts.abstracts > 0 && (
+                          <tr>
+                            <td className="py-2.5 px-4 font-medium text-slate-700">Symposia Abstracts</td>
+                            <td className="py-2.5 px-4 font-extrabold text-navy-950 text-center">{faculty.publicationCounts.abstracts}</td>
+                            <td className="py-2.5 px-4 text-slate-600">Published Conference Abstracts</td>
+                          </tr>
+                        )}
+                        {faculty.publicationCounts.studyMaterials > 0 && (
+                          <tr>
+                            <td className="py-2.5 px-4 font-medium text-slate-700">Course Study Materials</td>
+                            <td className="py-2.5 px-4 font-extrabold text-navy-950 text-center">{faculty.publicationCounts.studyMaterials}</td>
+                            <td className="py-2.5 px-4 text-slate-600">Prepared Academic Instruction Materials</td>
+                          </tr>
+                        )}
                         {faculty.publicationCounts.popularArticles > 0 && (
                           <tr>
                             <td className="py-2.5 px-4 font-medium text-slate-700">Popular Extension Articles</td>
@@ -572,7 +590,9 @@ export default function FacultyProfilePage() {
                 Department of {faculty.department}
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Constituent academic division of Dr. NTR College of Agricultural Engineering, Bapatla, offering accredited B.Tech, M.Tech, and Ph.D. degree programmes.
+                {['fmpe', 'swce', 'apfe', 'pfe'].includes((faculty.deptId || '').toLowerCase())
+                  ? 'Constituent academic division of Dr. NTR College of Agricultural Engineering, Bapatla, supporting B.Tech., M.Tech., and Ph.D. programmes.'
+                  : 'Constituent academic division of Dr. NTR College of Agricultural Engineering, Bapatla, supporting the B.Tech. (Agricultural Engineering) programme.'}
               </p>
               <Link
                 to={`/departments/${faculty.deptSlug || faculty.deptId}`}
@@ -647,7 +667,7 @@ export default function FacultyProfilePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="w-3.5 h-3.5 text-[#fae4a4]" />
-                  <span>08643-224036 / 9985589428</span>
+                  <span>+91 8643 224025 / 9985589428</span>
                 </div>
               </div>
             </div>

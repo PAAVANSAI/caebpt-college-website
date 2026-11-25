@@ -7,84 +7,84 @@
 export const galleryData = [
   {
     id: "gal-1",
-    title: "Main Academic Administrative Wing",
+    title: "Main Academic Campus & Visvesvaraya Bhavan",
     category: "Campus",
-    caption: "The front view of the college administrative block surrounded by lush green foliage.",
-    date: "Academic Year 2024",
-    image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80",
-    thumbnail: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80"
+    caption: "Dr. NTR College of Agricultural Engineering campus on NH-216, Bapatla.",
+    date: "Campus View",
+    image: "/images/campus_hero.jpg",
+    thumbnail: "/images/campus_hero.jpg"
   },
   {
     id: "gal-2",
-    title: "Tractor & Farm Implements Demonstration",
+    title: "Farm Power & Implements Field Testing Yard",
     category: "Fieldwork",
-    caption: "Students conducting field trials with high-capacity tractor-mounted agricultural implements.",
+    caption: "Agricultural machinery, tractor implements, and field equipment testing station.",
     date: "Field Training",
-    image: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1200&q=80",
-    thumbnail: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=600&q=80"
+    image: "/images/hero/slide_4_implements_yard.jpg",
+    thumbnail: "/images/hero/slide_4_implements_yard.jpg"
   },
   {
     id: "gal-3",
-    title: "Food Processing Technology Laboratory",
+    title: "Processing & Food Engineering Laboratory",
     category: "Labs",
-    caption: "Post-graduate scholars operating food extrusion and preservation equipment in the pilot plant.",
+    caption: "Post-harvest drying, analytical testing, and pilot extrusion units in PFE.",
     date: "Laboratory Session",
-    image: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=1200&q=80",
-    thumbnail: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=600&q=80"
+    image: "/images/departments/pfe/image1.png",
+    thumbnail: "/images/departments/pfe/image1.png"
   },
   {
     id: "gal-4",
-    title: "Modern Central Library Reading Hall",
+    title: "Central Academic Library Reading Hall",
     category: "Campus",
-    caption: "Students and researchers utilizing digital databases and technical literature in the quiet reading hall.",
+    caption: "Students utilizing reading halls, newspapers, and technical volumes in the Central Library.",
     date: "Campus Facilities",
-    image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1200&q=80",
-    thumbnail: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80"
+    image: "/images/welfare/library_reading_section.webp",
+    thumbnail: "/images/welfare/library_reading_section.webp"
   },
   {
     id: "gal-5",
-    title: "Soil & Water Engineering Hydraulic Flume",
+    title: "Soil & Water Hydraulics Flume Laboratory",
     category: "Labs",
-    caption: "Experimental investigation of open-channel flow hydraulics and sediment transport modeling.",
+    caption: "Open-channel flow hydraulics and soil-water conservation experimental testing.",
     date: "Hydraulics Lab",
-    image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80",
-    thumbnail: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80"
+    image: "/images/gallery/photo_5.webp",
+    thumbnail: "/images/gallery/photo_5.webp"
   },
   {
     id: "gal-6",
-    title: "Annual Technical Symposium & Project Expo",
+    title: "Student Technical Exhibition & Prototype Expo",
     category: "Events",
-    caption: "Student engineering innovators presenting automated agro-drone prototypes to visiting dignitaries.",
-    date: "Annual Tech Fest",
-    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80",
-    thumbnail: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80"
+    caption: "Student innovators presenting agricultural engineering prototypes and models.",
+    date: "Campus Showcase",
+    image: "/images/gallery/photo_6.webp",
+    thumbnail: "/images/gallery/photo_6.webp"
   },
   {
     id: "gal-7",
-    title: "Precision Drone Aerial Survey Practicum",
+    title: "Field Surveying & Topographic Levelling Practice",
     category: "Fieldwork",
-    caption: "Demonstration of multispectral agricultural sensors on autonomous aerial vehicles for crop health indexing.",
-    date: "Precision Farming Workshop",
-    image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80",
-    thumbnail: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=600&q=80"
+    caption: "Undergraduate students conducting leveling and field surveying practicals.",
+    date: "Field Practicum",
+    image: "/images/hero/slide_2_surveying.jpg",
+    thumbnail: "/images/hero/slide_2_surveying.jpg"
   },
   {
     id: "gal-8",
-    title: "CAD & Computational Simulation Suite",
+    title: "CNC Milling & Machine Workshop Complex",
     category: "Labs",
-    caption: "Final year students designing 3D components for solar seed drill prototypes on CAD workstations.",
-    date: "Simulation Lab",
-    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
-    thumbnail: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80"
+    caption: "Lathe machines and CNC milling equipment for precision prototype fabrication.",
+    date: "Workshop Lab",
+    image: "/images/departments/beas_lab_lathe_cnc.webp",
+    thumbnail: "/images/departments/beas_lab_lathe_cnc.webp"
   },
   {
     id: "gal-9",
-    title: "Graduation Convocation Ceremony",
+    title: "NCC Cadets Foot Drill & Parade Ground",
     category: "Events",
-    caption: "Distinguished graduates receiving professional engineering degrees during the annual convocation.",
-    date: "Convocation",
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
-    thumbnail: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80"
+    caption: "Students participating in NCC Unit 115-C institutional parade and training.",
+    date: "Campus Life",
+    image: "/images/welfare/ncc_parade_foot_drill.webp",
+    thumbnail: "/images/welfare/ncc_parade_foot_drill.webp"
   }
 ];
 

@@ -310,7 +310,7 @@ export default function StudentWelfarePage() {
                   <span className="text-xs font-bold text-slate-500">Boys Hostels Capacity</span>
                 </div>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200/60">
-                  <span className="block text-xl sm:text-2xl font-black text-[#0b1a2e]">36+</span>
+                  <span className="block text-xl sm:text-2xl font-black text-[#0b1a2e]">44</span>
                   <span className="text-xs font-bold text-slate-500">Recruiting Partners</span>
                 </div>
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200/60">

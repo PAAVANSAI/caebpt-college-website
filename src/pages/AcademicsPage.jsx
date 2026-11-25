@@ -225,7 +225,7 @@ export default function AcademicsPage({ onSelectProgram }) {
                   <span>Important Criteria for 40% Farmers' Quota (Form-I & Form-II)</span>
                 </div>
                 <p className="text-xs text-amber-950 leading-relaxed">
-                  Candidates claiming reservation under the 40% Farmers' Quota in B.Tech (Agri Engg) must have studied for a minimum period of 4 years in schools situated in Non-Municipal areas (Form-I certificate issued by Headmaster), and the candidate or parent must own a minimum of 1.00 acre of cultivable agricultural land (Form-II certified by the Tahsildar / VRO).
+                  Candidates claiming reservation under the 40% Farmers' Quota in B.Tech (Agri Engg) must own a minimum of 1.00 acre of cultivable agricultural land either in the name of the candidate or parent (Form-I certified by the MRO / Tahsildar), and must have studied for a minimum period of 4 years in schools situated in Non-Municipal areas (Form-II certificate issued by the Head of Institution).
                 </p>
               </div>
 
@@ -788,7 +788,7 @@ export default function AcademicsPage({ onSelectProgram }) {
                       Doctor of Philosophy [Ph.D. (Ag. Engg.)]
                     </h2>
                     <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      3-Year advanced doctoral program featuring 100 total credits (25 coursework + 75 research dissertation), patentable engineering innovations, and rigorous peer-reviewed NAAS publications.
+                      3-Year advanced doctoral program featuring a minimum of 75 credits under ANGRAU PG Regulations (28 coursework + 2 doctoral seminar + 45 research dissertation, plus 6 compulsory non-credit courses), patentable engineering innovations, and peer-reviewed NAAS publications.
                     </p>
                   </div>
                 </div>
@@ -800,7 +800,7 @@ export default function AcademicsPage({ onSelectProgram }) {
                   </div>
                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
                     <span className="text-[11px] font-bold text-slate-500 uppercase block mb-1">Doctoral Credits</span>
-                    <strong className="text-base sm:text-lg font-extrabold text-[#854d0e]">100 Credits</strong>
+                    <strong className="text-base sm:text-lg font-extrabold text-[#854d0e]">75 Credits Min.</strong>
                   </div>
                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 col-span-2 sm:col-span-1">
                     <span className="text-[11px] font-bold text-slate-500 uppercase block mb-1">Annual Intake</span>

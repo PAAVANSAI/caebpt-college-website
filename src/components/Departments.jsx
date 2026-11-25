@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Layers, Tractor, Droplets, UtensilsCrossed, SunMedium, Cpu, CheckCircle2, User, ArrowRight } from 'lucide-react';
-import { departmentsData } from '../data/academicsData';
+import { departmentsData as defaultDepartmentsData } from '../data/academicsData';
+import { useWebsite } from '../context/WebsiteContext';
 
 const iconMap = {
   Tractor: Tractor,
@@ -12,6 +13,8 @@ const iconMap = {
 };
 
 export default function Departments() {
+  const { departments: contextDepartments } = useWebsite();
+  const departmentsList = Array.isArray(contextDepartments) && contextDepartments.length > 0 ? contextDepartments : defaultDepartmentsData;
   return (
     <section id="departments" className="section-padding bg-white border-b border-slate-200">
       <div className="container">
@@ -32,7 +35,7 @@ export default function Departments() {
 
         {/* Departments Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {departmentsData.map((dept) => {
+          {departmentsList.map((dept) => {
             const IconComponent = iconMap[dept.icon] || Layers;
             return (
               <div

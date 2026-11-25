@@ -17,9 +17,9 @@ export const collegeInfo = {
     phone: "+91 8643 224025",
     altPhone: "+91 8643 224026",
     admissionsHelpline: "+91 8643 224025 (Admissions Cell)",
-    email: "associate.dean@caebpt.ac.in",
-    admissionsEmail: "admissions@caebpt.ac.in",
-    examEmail: "exams@caebpt.ac.in",
+    email: "ad.caebpt@angrau.ac.in",
+    admissionsEmail: "oam.caebpt@angrau.ac.in",
+    examEmail: "oam.caebpt@angrau.ac.in",
     officeHours: "Monday to Saturday: 9:00 AM – 5:00 PM (2nd Saturdays & Public Holidays Closed)",
     address: {
       line1: "Dr. NTR College of Agricultural Engineering",
@@ -45,13 +45,13 @@ export const collegeInfo = {
     "To serve the farming community and enhance their quality of life through excellence in education, research, development and transfer of agricultural technologies."
   ],
 
-  history: "Acharya N.G. Ranga Agricultural University (earlier APAU) started a 4-year B.Tech (Agril. Engg.) Degree Programme in 1983-84. The college was shifted to its new campus on NH-216 in Karlapalem road in May 1994, with foundation stone laid on 24-02-1988 by Dr. N.T. Rama Rao. The college was the only institution offering B.Tech (Agril. Engg.) in Andhra Pradesh till 2008. Accredited by ICAR (latest 2021-2026), the 25-acre campus has produced 1,046 graduate engineers across 6 specialized departments.",
+  history: "Acharya N.G. Ranga Agricultural University (earlier APAU) started a 4-year B.Tech (Agril. Engg.) Degree Programme in 1983-84. The college was shifted to its new campus on NH-216 in Karlapalem road in May 1994, with foundation stone laid on 24-02-1988 by Dr. N.T. Rama Rao. The college was the only institution offering B.Tech (Agril. Engg.) in Andhra Pradesh till 2008. Accredited by ICAR (2026–2031, NAEAB Grade 'A', Score 3.01), the 25-acre campus has produced 1,046 graduate engineers across 6 specialized departments.",
 
   principalMessage: {
-    name: "Dr. B. John Wesley, Ph.D.",
+    name: "Dr. Mogal Sardar Baig",
     designation: "Associate Dean & Professor",
-    qualification: "M.Tech, Ph.D. (Agricultural Processing)",
-    photo: "/images/avatars/dr_ks_rao.webp",
+    qualification: "Associate Dean, CAE Bapatla",
+    photo: "/images/administration/dr_mogal_sardar_baig.webp",
     messageText: "Dr. NTR College of Agricultural Engineering, Bapatla had a humble beginning in the year 1983 in the premises of Agricultural College, Bapatla in the then Department of Agricultural Engineering. Now, it is grown into a sprawling area of lush green land on Bapatla-Karlapalem Road on NH 216, comprising of two main buildings, four student residential hostels, a workshop complex, a library building, research fields, green houses, etc. with all facilities to excel in agricultural engineering. The College has thrived to emerge as one of the best destinations in India for pursuing bachelor and post-graduate studies in field of Agricultural Engineering. This College has become the launch pad for the students to rise and come out in flying colours in their careers in all the facets of Engineering, Technology, and Management."
   },
 
@@ -59,7 +59,7 @@ export const collegeInfo = {
     { label: "Core Academic Departments", value: "6", subtitle: "Specialized Disciplines", note: "Verified" },
     { label: "Graduated Engineers to Date", value: "1,046", subtitle: "B.Tech Alumni Serving Globally", note: "Verified" },
     { label: "Lush Campus Acreage", value: "25 Acres", subtitle: "9.51 Hectares on NH-216", note: "Verified" },
-    { label: "ICAR Accreditation Cycle", value: "2021–26", subtitle: "Accredited by ICAR, New Delhi", note: "Verified" }
+    { label: "ICAR Accreditation Cycle", value: "2026–31", subtitle: "NAEAB Grade 'A' (Score 3.01)", note: "Verified" }
   ]
 };
 

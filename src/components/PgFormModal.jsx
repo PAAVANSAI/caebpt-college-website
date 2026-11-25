@@ -175,7 +175,7 @@ export default function PgFormModal({ form, onClose }) {
             {/* Dynamic Official Section Content Tailored to the Selected Form */}
             <div className="my-5 font-sans">
               {/* PG-1: CONSTITUTION OF ADVISORY COMMITTEE */}
-              {(form.form.includes('PG Form 1') && !form.form.includes('1-A')) && (
+              {form.form === 'PG Form 1' && (
                 <div className="space-y-4">
                   <p className="text-[11px] italic text-slate-700">
                     Note: Advisory Committee (M.Sc./M.Tech: 2 from major field + 1 from minor field; Ph.D.: 2 from major field + 1 from minor field + 1 from supporting field. If extra members are needed, request with proper justification should be sent to Dean PGS).
@@ -325,7 +325,7 @@ export default function PgFormModal({ form, onClose }) {
               )}
 
               {/* DEFAULT STRUCTURED SECTION FOR OTHER FORMS */}
-              {!form.form.includes('PG Form 1') && !form.form.includes('PG Form 2') && !form.form.includes('PG Form 3') && (
+              {!['PG Form 1', 'PG Form 1-A', 'PG Form 2', 'PG Form 2-A', 'PG Form 3', 'PG Form 3-A'].includes(form.form) && (
                 <div className="space-y-4">
                   <div className="p-3 bg-slate-50 border border-slate-300 rounded space-y-1.5">
                     <div className="font-bold text-black text-xs uppercase tracking-wide">

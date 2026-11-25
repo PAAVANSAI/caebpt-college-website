@@ -227,9 +227,9 @@ export const consolidatedAllBranchesTable = {
       breakdown: [
         { label: "Regular Research Intake", val: 2 },
         { label: "ICAR Fellowship Quota", val: "+20%" },
-        { label: "In-service Faculty (ANGRAU)", val: 1 }
+        { label: "In-service Faculty (ANGRAU)", val: "1 (Altogether)" }
       ],
-      breakdownText: "2 Regular + 20% ICAR Fellowship + 1 In-service Faculty Seat",
+      breakdownText: "2 Regular + 20% ICAR Fellowship (+ 1 shared In-service ANGRAU faculty seat altogether across Ph.D.)",
       totalIntake: "2",
       totalIntakeNumber: 2,
       admissionChannel: "ICAR AICE-JRF/SRF (Ph.D.) Entrance Score & Viva-Voce"
@@ -244,9 +244,9 @@ export const consolidatedAllBranchesTable = {
       breakdown: [
         { label: "Regular Research Intake", val: 1 },
         { label: "ICAR Fellowship Quota", val: "+20%" },
-        { label: "In-service Faculty (ANGRAU)", val: 1 }
+        { label: "In-service Faculty (ANGRAU)", val: "1 (Altogether)" }
       ],
-      breakdownText: "1 Regular + 20% ICAR Fellowship + 1 In-service Faculty Seat",
+      breakdownText: "1 Regular + 20% ICAR Fellowship (+ 1 shared In-service ANGRAU faculty seat altogether across Ph.D.)",
       totalIntake: "1",
       totalIntakeNumber: 1,
       admissionChannel: "ICAR AICE-JRF/SRF (Ph.D.) Entrance Score & Viva-Voce"
@@ -261,9 +261,9 @@ export const consolidatedAllBranchesTable = {
       breakdown: [
         { label: "Regular Research Intake", val: 1 },
         { label: "ICAR Fellowship Quota", val: "+20%" },
-        { label: "In-service Faculty (ANGRAU)", val: 1 }
+        { label: "In-service Faculty (ANGRAU)", val: "1 (Altogether)" }
       ],
-      breakdownText: "1 Regular + 20% ICAR Fellowship + 1 In-service Faculty Seat",
+      breakdownText: "1 Regular + 20% ICAR Fellowship (+ 1 shared In-service ANGRAU faculty seat altogether across Ph.D.)",
       totalIntake: "1",
       totalIntakeNumber: 1,
       admissionChannel: "ICAR AICE-JRF/SRF (Ph.D.) Entrance Score & Viva-Voce"
@@ -406,11 +406,11 @@ export const programsData = [
     name: "Ph.D. in Farm Machinery and Power Engineering",
     duration: "3 Years (6 Semesters)",
     intake: "2 Seats / Year",
-    intakeBreakdown: "2 Regular Research Seats + 20% ICAR SRF Quota with Fellowship + 1 In-service ANGRAU faculty seat",
+    intakeBreakdown: "2 Regular Research Seats + 20% ICAR SRF Quota with Fellowship (+ 1 In-service ANGRAU faculty seat altogether across Ph.D.)",
     intakeTable: [
       { category: "Regular Research Intake", seats: 2, note: "ICAR SRF + Interview merit" },
       { category: "ICAR Fellowship Quota", seats: "+ 20%", note: "Over and above with fellowship" },
-      { category: "In-Service ANGRAU Faculty", seats: "1 Seat", note: "For in-service university faculty" }
+      { category: "In-Service ANGRAU Faculty", seats: "1 (Altogether)", note: "Shared across Ph.D. disciplines" }
     ],
     eligibility: "M.Tech. in Farm Machinery & Power Engineering with qualifying ICAR SRF entrance examination ranking and interview performance.",
     admissionProcess: "National entrance examination (SRF) conducted by ICAR and interview performance as per state reservation policy, plus ICAR fellowship quota.",
@@ -435,11 +435,11 @@ export const programsData = [
     name: "Ph.D. in Processing and Food Engineering",
     duration: "3 Years (6 Semesters)",
     intake: "1 Seat / Year",
-    intakeBreakdown: "1 Regular Research Seat + 20% ICAR SRF Quota with Fellowship + 1 In-service ANGRAU faculty seat",
+    intakeBreakdown: "1 Regular Research Seat + 20% ICAR SRF Quota with Fellowship (+ 1 In-service ANGRAU faculty seat altogether across Ph.D.)",
     intakeTable: [
       { category: "Regular Research Intake", seats: 1, note: "ICAR SRF + Interview merit" },
       { category: "ICAR Fellowship Quota", seats: "+ 20%", note: "Over and above with fellowship" },
-      { category: "In-Service ANGRAU Faculty", seats: "1 Seat", note: "For in-service university faculty" }
+      { category: "In-Service ANGRAU Faculty", seats: "1 (Altogether)", note: "Shared across Ph.D. disciplines" }
     ],
     eligibility: "M.Tech. in Processing and Food Engineering / Agricultural Process Engineering with ICAR SRF ranking and interview.",
     admissionProcess: "ICAR SRF entrance examination and interview as per state reservation policy, plus ICAR fellowship quota.",
@@ -464,11 +464,11 @@ export const programsData = [
     name: "Ph.D. in Soil and Water Engineering",
     duration: "3 Years (6 Semesters)",
     intake: "1 Seat / Year",
-    intakeBreakdown: "1 Regular Research Seat + 20% ICAR SRF Quota with Fellowship + 1 In-service ANGRAU faculty seat",
+    intakeBreakdown: "1 Regular Research Seat + 20% ICAR SRF Quota with Fellowship (+ 1 In-service ANGRAU faculty seat altogether across Ph.D.)",
     intakeTable: [
       { category: "Regular Research Intake", seats: 1, note: "ICAR SRF + Interview merit" },
       { category: "ICAR Fellowship Quota", seats: "+ 20%", note: "Over and above with fellowship" },
-      { category: "In-Service ANGRAU Faculty", seats: "1 Seat", note: "For in-service university faculty" }
+      { category: "In-Service ANGRAU Faculty", seats: "1 (Altogether)", note: "Shared across Ph.D. disciplines" }
     ],
     eligibility: "M.Tech. in Soil and Water Engineering / Conservation with ICAR SRF ranking and interview.",
     admissionProcess: "ICAR SRF entrance examination and interview as per state reservation policy, plus ICAR fellowship quota.",

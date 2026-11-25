@@ -171,7 +171,7 @@ export const facultyAwardsData = [
     recipient: "A. Jahnavi Rani & Mani Ratnam",
     designation: "3rd Year B.Tech (Ag. Engg.) Students",
     award: "Best Oral Presentation Award for “Design and Development of Battery Operated Weeder for Sugarcane Cultivation”",
-    organization: "National Agricultural Engineering Convention",
+    organization: "",
     category: "student-award"
   }
 ];

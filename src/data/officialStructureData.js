@@ -27,7 +27,7 @@ export const officialStructureData = {
       { count: "6", label: "Core Academic Departments", note: "Specialized Disciplines" },
       { count: "1,046", label: "Total Graduates", note: "Graduated Agro-Engineers" },
       { count: "25", label: "Campus Green Acreage", note: "9.51 Hectares on NH-216" },
-      { count: "2021–26", label: "ICAR Accreditation", note: "National NAEAB Cycle" },
+      { count: "2026–31", label: "ICAR Accreditation", note: "NAEAB Grade 'A' (3.01)" },
     ]
   },
 
@@ -210,8 +210,8 @@ export const officialStructureData = {
         title: "Campus Virtual Tour: College of Agricultural Engineering, Bapatla",
         duration: "04:32",
         thumbnail: "/images/gallery/video_thumb_1.webp",
-        description: "An overview of the 50-acre academic campus, research trial fields, modern laboratories, and student hostels.",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        description: "An overview of the 25-acre academic campus, research trial fields, modern laboratories, and student hostels.",
+        videoUrl: ""
       },
       {
         id: "v-2",
@@ -219,7 +219,7 @@ export const officialStructureData = {
         duration: "03:15",
         thumbnail: "/images/gallery/video_thumb_2.webp",
         description: "Demonstration of laser land levelers, high-clearance tractor sprayers, and seed drills at the testing track.",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        videoUrl: ""
       },
       {
         id: "v-3",
@@ -227,7 +227,7 @@ export const officialStructureData = {
         duration: "02:45",
         thumbnail: "/images/gallery/video_thumb_3.webp",
         description: "Hydraulic laboratory flume experiments and automated sensor-based drip emission monitoring.",
-        videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        videoUrl: ""
       }
     ]
   },
@@ -349,6 +349,7 @@ export const officialStructureData = {
           fileUrl: "/documents/accreditation/ICAR_Accreditation_Notification_2026_2031.pdf",
           fileSize: "1.9 MB",
           isPrimaryOrder: true,
+          annexureLabel: "Annexure I 'A', Item 2.9.2.5",
           approvedPrograms: [
             "B.Tech. (Agricultural Engineering)",
             "M. Tech. (Ag. Engg.) Farm Machinery and Power Engineering",
@@ -374,6 +375,7 @@ export const officialStructureData = {
           docName: "ICAR_Accreditation_Notification_2021_2026.pdf",
           fileUrl: "/documents/accreditation/ICAR_Accreditation_Notification_2021_2026.pdf",
           fileSize: "2.1 MB",
+          annexureLabel: "Annexure-I, Item 6",
           approvedPrograms: [
             "B.Tech (Agricultural Engineering)",
             "M.Tech Farm Machinery and Power Engineering",
@@ -386,7 +388,7 @@ export const officialStructureData = {
         },
         {
           id: "gazette",
-          order: 2,
+          order: 3,
           tag: "<GAZETTE NOTIFICATION>",
           title: "GAZETTE NOTIFICATION",
           refNo: "GO-MS-AGRI-ANGRAU-DRNTRCAE",
@@ -400,7 +402,7 @@ export const officialStructureData = {
         },
         {
           id: "ssr-college",
-          order: 3,
+          order: 4,
           tag: "<SELF STUDY REPORT OF COLLEGE>",
           title: "SELF STUDY REPORT OF COLLEGE",
           refNo: "ICAR/NAEAB/SSR/COLLEGE/2021-26",
@@ -414,7 +416,7 @@ export const officialStructureData = {
         },
         {
           id: "ssr-btech",
-          order: 4,
+          order: 5,
           tag: "<SELF STUDY REPORT OF B.TECH (AG ENGG)>",
           title: "SELF STUDY REPORT OF B.TECH (AG ENGG)",
           refNo: "ICAR/SSR/BTECH-AGENGG/2021-26",
@@ -428,7 +430,7 @@ export const officialStructureData = {
         },
         {
           id: "ssr-mtech",
-          order: 5,
+          order: 6,
           tag: "<SELF STUDY REPORT OF M.TECH (AG ENGG)>",
           title: "SELF STUDY REPORT OF M.TECH (AG ENGG)",
           refNo: "ICAR/SSR/MTECH-AGENGG/2021-26",
@@ -442,7 +444,7 @@ export const officialStructureData = {
         },
         {
           id: "ssr-phd",
-          order: 6,
+          order: 7,
           tag: "<SELF STUDY OF PH.D. (AG ENGG)>",
           title: "SELF STUDY OF PH.D. (AG ENGG)",
           refNo: "ICAR/SSR/PHD-AGENGG/2021-26",
@@ -945,7 +947,7 @@ export const officialStructureData = {
         hodAndFaculty: {
           hodId: "dr-g-ravi-babu",
           hodName: "Dr. G. Ravi Babu",
-          hodDesignation: "Professor & Head of Department (Associate Dean)",
+          hodDesignation: "Professor & Head of Department",
           hodPhoto: "/images/faculty/dr_g_ravibabu.webp",
           hodPhone: "9848572321 / 7702366113",
           hodEmail: "g.ravibabu@angrau.ac.in",
@@ -1048,7 +1050,7 @@ export const officialStructureData = {
               qual: "M.Tech (Soil & Water Engg 2011), B.Tech (Ag. Engg 2009)",
               phone: "7337567544",
               email: "Ch.ratnaraju@angrau.ac.in",
-              specialization: "Soil and Water Conservation Engineering"
+              specialization: "Watershed Management and Irrigation Water Management"
             }
           ]
         }
@@ -1307,7 +1309,7 @@ export const officialStructureData = {
           {
             code: "Basic Engineering Courses",
             title: "18 Foundational & Professional Engineering Courses",
-            credits: "Total 47 Credits",
+            credits: "Total 45 Credits",
             description: "Covers Surveying, Engineering Mechanics, Drawing, Fluid Mechanics, Strength of Materials, Workshop Technology, Instrumentation, Computer Programming, Heat & Mass Transfer, Soil Mechanics, Theory of Machines, Electrical Machines, AutoCAD, Machine Design, Thermodynamics, Refrigeration & AC, Structural Design, and Web Applications."
           },
           {
@@ -1320,7 +1322,7 @@ export const officialStructureData = {
         courseCategories: [
           {
             categoryName: "Courses in Basic Engineering",
-            categoryCredits: "Total 18 Courses • 47 Credits",
+            categoryCredits: "Total 18 Courses • 45 Credits",
             courses: [
               { sNo: 1, courseNo: "AEBE 161", title: "Surveying and Levelling", credits: "3 (1+2)" },
               { sNo: 2, courseNo: "AEBE 162", title: "Engineering Mechanics", credits: "3 (2+1)" },
@@ -1451,6 +1453,11 @@ export const officialStructureData = {
             image: "/images/departments/beas_lab_electrical_machines.webp",
             caption: "Electrical Engineering Laboratory: Control Panels & Machine Benches",
             subtext: "Motor testing, electronics kits, and power utilization"
+          },
+          {
+            image: "/images/departments/beas_lab_hydraulic_press.webp",
+            caption: "Mechanical Workshop: Hydraulic Press & Centrifugal Nut Sheller",
+            subtext: "Applied mechanics testing and fabrication equipment"
           }
         ],
         fieldResearchAreas: [
@@ -1469,14 +1476,6 @@ export const officialStructureData = {
           hodEmail: "k.lavanya@angrau.ac.in",
           hodSpecialization: "Basic Engineering & Applied Sciences",
           facultyMembers: [
-            {
-              id: "dr-k-lavanya",
-              name: "Dr. K. Lavanya",
-              designation: "Associate Professor & Head",
-              photo: "/images/faculty/dr_k_lavanya.webp",
-              phone: "9182164437",
-              email: "k.lavanya@angrau.ac.in"
-            },
             {
               id: "er-kvs-kartheek",
               name: "Er. KVS Kartheek",
@@ -1983,7 +1982,7 @@ export const officialStructureData = {
         "slug": "placement-cell",
         "name": "Placement Cell",
         "title": "Career Development Cell & Campus Placement Bureau",
-        "summary": "Fostering professional excellence, industry certifications (IBM, CISCO, Infosys), aptitude mastery, and top corporate placements across 36+ recruiting titans, alongside stellar achievements in GATE (AIR 2, 4, 15, 16) and ARS/ICAR examinations.",
+        "summary": "Fostering professional excellence, industry certifications (IBM, CISCO, Infosys), aptitude mastery, and top corporate placements across 44 recruiting partners, alongside stellar achievements in GATE (AIR 2, 4, 8, 15, 16) and ARS/ICAR examinations.",
         "dossier": {
             "path": "/documents/welfare/07_Career_Development_and_Placement_Cell_Profile.docx",
             "filename": "07_Career_Development_and_Placement_Cell_Profile.docx",
@@ -1991,8 +1990,8 @@ export const officialStructureData = {
         },
         "keyStatistics": [
             {
-                "label": "Recruiting Titans",
-                "value": "36+ Leading Companies",
+                "label": "Recruiting Partners",
+                "value": "44 Leading Companies",
                 "icon": "Briefcase"
             },
             {
@@ -2002,7 +2001,7 @@ export const officialStructureData = {
             },
             {
                 "label": "GATE National Ranks",
-                "value": "AIR 2, 4, 15, 16, 23, 27, 29, 31, 56",
+                "value": "AIR 2, 4, 8, 15, 16, 23, 27, 29, 31, 56",
                 "icon": "Award"
             },
             {
@@ -2033,12 +2032,12 @@ export const officialStructureData = {
         "gallery": [
             {
                 "url": "/images/welfare/placement_national_exam_achievers.webp",
-                "caption": "Student Performance in National Exams: GATE Toppers (AIR 2, 4, 15, 16) & ARS / ICAR SRF/JRF Achievers",
+                "caption": "Student Performance in National Exams: GATE Toppers (AIR 2, 4, 8, 15, 16) & ARS / ICAR SRF/JRF Achievers",
                 "alt": "GATE Toppers and National Exam Achievers"
             },
             {
                 "url": "/images/welfare/placement_recruiting_partners.webp",
-                "caption": "Student Placement Profile \u2013 36+ Corporate Recruiting Partners (John Deere, Mahindra, TAFE, Sonalika, Kubota, CNH, Netafim)",
+                "caption": "Student Placement Profile \u2013 44 Corporate Recruiting Partners (John Deere, Mahindra, TAFE, Sonalika, Kubota, CNH, Netafim)",
                 "alt": "Recruiting Partners"
             },
             {
@@ -2055,8 +2054,8 @@ export const officialStructureData = {
         "features": [
             "Dedicated Career Development Cell coordinating campus recruitments, corporate tie-ups, and career counselling",
             "Prestigious global technology partnerships: IBM Java & DB2 Certifications, CISCO Network Certification, Infosys Campus Connect",
-            "Stellar national exam track record: GATE AIR 2, 4, 15, 16, 23, 27, 29, 31, 56; ARS & ICAR SRF/JRF AIRs 17, 18, 48",
-            "36+ Top Recruiting Partners including John Deere, Mahindra, TAFE, Sonalika, Escorts, Kubota, CNH, New Holland, Netafim, and Adani",
+            "Stellar national exam track record: GATE AIR 2, 4, 8, 15, 16, 23, 27, 29, 31, 56; ARS & ICAR SRF/JRF AIRs 17, 18, 48",
+            "44 Top Recruiting Partners including John Deere, Mahindra, TAFE, Sonalika, Escorts, Kubota, CNH, New Holland, Netafim, and Adani",
             "6-Month hands-on Student READY, Experiential Learning Programme (ELP), and In-Plant Training across prominent agro-industries",
             "Comprehensive multi-semester training modules in Soft Skills, Video Profiling, Quantitative Aptitude, and Verbal Logic",
             "Rigorous company-specific mock tests, aptitude drills, technical interview coaching, and resume building workshops",
@@ -2195,17 +2194,17 @@ export const officialStructureData = {
             },
             {
                 "label": "Associate Dean",
-                "value": "9949906751",
+                "value": "9985589428",
                 "icon": "Phone"
             },
             {
                 "label": "OSA Convener",
-                "value": "9533877666",
+                "value": "9177522213",
                 "icon": "Phone"
             },
             {
                 "label": "Hostel Wardens",
-                "value": "Boys: 9618800819 | Girls: 9295350600",
+                "value": "Boys: 9492686634 | Girls: 9533877666",
                 "icon": "Phone"
             },
             {
@@ -2252,25 +2251,25 @@ export const officialStructureData = {
                     [
                         "Associate Dean",
                         "Dr. Mogal Sardar Baig",
-                        "9949906751",
+                        "9985589428",
                         "Executive Head of the College & Institutional Disciplinary Authority"
                     ],
                     [
                         "Officer In-Charge of Student Activities (OSA)",
-                        "Faculty Convener",
-                        "9533877666",
+                        "Dr. A. Ashok Kumar",
+                        "9177522213",
                         "Cell Convener, overall student welfare & grievance investigation"
                     ],
                     [
                         "Hostel Warden (Boys Hostels)",
-                        "Senior Male Faculty Warden",
-                        "9618800819",
+                        "Dr. D. Vijay Kumar",
+                        "9492686634",
                         "Day & night discipline oversight in Boys Hostels"
                     ],
                     [
                         "Hostel Warden (Girls Hostels)",
-                        "Senior Female Faculty Warden",
-                        "9295350600",
+                        "Dr. K. Krupavathi",
+                        "9533877666",
                         "Residential safety, mentoring & security in Girls Hostels"
                     ],
                     [

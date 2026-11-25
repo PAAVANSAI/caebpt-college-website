@@ -15,7 +15,7 @@ export default function NoticeTicker({ onSelectNotice }) {
 
   const activeNotice = (Array.isArray(bulletinList) && bulletinList.length > 0)
     ? (bulletinList[currentIndex] || bulletinList[0])
-    : { title: "Academic Admissions open for 2025-26", date: "Oct 2025", isNew: true };
+    : { title: "Academic Admissions & Counseling Guidelines Active", date: "Official Notice", isNew: true };
 
   const handleNext = () => {
     if (Array.isArray(bulletinList) && bulletinList.length > 0) {

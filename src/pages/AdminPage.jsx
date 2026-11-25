@@ -391,13 +391,13 @@ export default function AdminPage() {
   const [newPhotoForm, setNewPhotoForm] = useState({
     title: '',
     category: 'Campus & Infrastructure',
-    url: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=80'
+    url: '/images/gallery/photo_1.webp'
   });
   const [newVideoForm, setNewVideoForm] = useState({
     title: '',
-    url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    url: '',
     duration: '04:15',
-    thumbnail: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80'
+    thumbnail: '/images/gallery/video_thumb_1.webp'
   });
 
   // 8. About Us state
@@ -416,7 +416,7 @@ export default function AdminPage() {
     title: '',
     refNo: '',
     type: 'Institutional Self Study Report (SSR)',
-    date: 'Cycle 2021–2026',
+    date: 'Cycle 2026–2031',
     authority: 'Internal Quality Assurance Cell & Associate Dean',
     summary: '',
     docName: '',
@@ -2228,6 +2228,7 @@ export default function AdminPage() {
                           ...(activeDept.hodAndFaculty || {}),
                           hodName: deptForm.hodName,
                           hodDesignation: deptForm.hodDesignation,
+                          hodEmail: deptForm.hodEmail || activeDept.hodAndFaculty?.hodEmail || '',
                           hodSpecialization: deptForm.hodSpecialization || activeDept.hodAndFaculty?.hodSpecialization || ''
                         }
                       });
@@ -2344,7 +2345,7 @@ export default function AdminPage() {
                   >
                     <div>
                       <span className="font-bold text-slate-900">{staff.role}</span>
-                      <p className="text-[11px] text-slate-500 mt-0.5">{staff.name} • {staff.qualification}</p>
+                      <p className="text-[11px] text-slate-500 mt-0.5">{staff.name} • {staff.designation || staff.qualification || staff.email}</p>
                     </div>
                     <span className="badge badge-gold text-[10px] py-0.5 px-2">{staff.phone}</span>
                   </div>
@@ -2525,7 +2526,7 @@ export default function AdminPage() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {(currentStructure.galleries?.photos || []).map((photo) => (
                   <div key={photo.id} className="relative group rounded-xl overflow-hidden border border-slate-200">
-                    <img src={photo.url} alt={photo.title} className="w-full h-28 object-cover" />
+                    <img src={photo.url || photo.image} alt={photo.title} className="w-full h-28 object-cover" />
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-2 flex flex-col justify-between text-white text-[11px]">
                       <span className="font-semibold line-clamp-2">{photo.title}</span>
                       <button

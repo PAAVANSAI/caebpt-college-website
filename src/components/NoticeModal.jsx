@@ -110,39 +110,43 @@ export default function NoticeModal({ notice, onClose }) {
         <div className="p-6 space-y-5 flex-1 overflow-y-auto modal-body-scroll">
           {/* Body */}
           <div className="text-slate-700 text-sm leading-relaxed space-y-3">
-            <p className="font-semibold text-navy-950">
-              {notice.summary}
-            </p>
-            <p>
-              {notice.content}
-            </p>
+            {notice.summary && (
+              <p className="font-semibold text-navy-950">
+                {notice.summary}
+              </p>
+            )}
+            {notice.content && (
+              <p>{notice.content}</p>
+            )}
           </div>
 
-          {/* Attachment Box (Responsive) */}
-          <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <div className="p-2.5 bg-red-100 text-red-700 rounded-lg flex-shrink-0">
-                <FileText className="w-5 h-5" />
+          {/* Attachment Box (Only when attachment exists) */}
+          {notice.attachmentName && (
+            <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 bg-red-100 text-red-700 rounded-lg flex-shrink-0">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <div className="min-w-0">
+                  <span className="font-semibold text-slate-900 text-xs sm:text-sm block truncate">
+                    {notice.attachmentName}
+                  </span>
+                  <span className="text-[11px] text-slate-500">
+                    Official PDF Document{notice.attachmentSize ? ` • ${notice.attachmentSize}` : ''}
+                  </span>
+                </div>
               </div>
-              <div className="min-w-0">
-                <span className="font-semibold text-slate-900 text-xs sm:text-sm block truncate">
-                  {notice.attachmentName}
-                </span>
-                <span className="text-[11px] text-slate-500">
-                  Official PDF Document • {notice.attachmentSize}
-                </span>
-              </div>
+
+              <button
+                type="button"
+                onClick={handleDownloadCircular}
+                className="btn btn-navy btn-sm text-xs flex items-center gap-1.5 w-full sm:w-auto justify-center"
+              >
+                <Download className="w-3.5 h-3.5 text-[#f5c84c]" />
+                <span>View / Download PDF</span>
+              </button>
             </div>
-
-            <button
-              type="button"
-              onClick={handleDownloadCircular}
-              className="btn btn-navy btn-sm text-xs flex items-center gap-1.5 w-full sm:w-auto justify-center"
-            >
-              <Download className="w-3.5 h-3.5 text-[#f5c84c]" />
-              <span>View / Download PDF</span>
-            </button>
-          </div>
+          )}
         </div>
 
         {/* Footer */}

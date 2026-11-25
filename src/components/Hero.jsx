@@ -223,11 +223,11 @@ export default function Hero() {
 
           {/* Guaranteed Strict Single-Line Typography */}
           <h1 className="font-heading text-[clamp(1.15rem,2.9vw,2.95rem)] font-black text-white tracking-tight leading-none whitespace-nowrap overflow-hidden text-ellipsis drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
-            Excellence in{' '}
+            {hero.titleMain || 'Excellence in'}{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ecc75f] via-[#fae4a4] to-[#ecc75f]">
-              Agricultural Engineering
+              {hero.titleAccent || 'Agricultural Engineering'}
             </span>{' '}
-            & Technology
+            {hero.titleSuffix || '& Technology'}
           </h1>
         </div>
       </div>

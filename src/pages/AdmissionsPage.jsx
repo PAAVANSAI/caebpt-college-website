@@ -44,7 +44,7 @@ export default function AdmissionsPage() {
   const faqs = [
     {
       q: "What is the primary entrance qualification and seat distribution for B.Tech in Agricultural Engineering?",
-      a: "Admissions into First Year B. Tech. (Agricultural Engineering) are conducted through the state-level AP EAPCET (formerly EAMCET) through centralized counseling by APSCHE, Government of Andhra Pradesh (G.O.Ms.No.184, dt 20-08-1993). Out of 60 approved base seats, 60% (36 seats) are filled through the AP EAPCET Convener quota on merit and reservation norms, and 40% (24 seats) are allotted under the Farmers' Quota. Additionally, 20% supernumerary seats (12 seats) are filled via ICAR-CUET (UG) and 15% (9 seats) for Diploma holders via AP ECET, totaling 88 seats per year."
+      a: "Admissions into First Year B. Tech. (Agricultural Engineering) are conducted through the state-level AP EAPCET (formerly EAMCET) through centralized counseling by APSCHE, Government of Andhra Pradesh (G.O.Ms.No.184, dt 20-08-1993). Out of 60 approved base seats, 60% (36 seats) are filled through the AP EAPCET Convener quota on merit and reservation norms, and 40% (24 seats) are allotted under the Farmers' Quota. Over and above regular seats, 20% supernumerary seats (12 seats) are filled via ICAR-CUET (UG), 10% under EWS quota (6 seats), and 15% (9 seats) for Diploma holders via AP ECET, with Official UG Table 1 listing a total sanctioned capacity of 88 seats per year (61 + 12 + 6 + 9)."
     },
     {
       q: "What are the age limits prescribed for B.Tech. admission?",
@@ -79,7 +79,7 @@ export default function AdmissionsPage() {
   return (
     <div>
       <PageBanner
-        title="Admissions & Counseling Portal (2025–2026)"
+        title="Admissions & Counseling Portal"
         subtitle="Begin your engineering journey at Dr. NTR College of Agricultural Engineering, Bapatla (ANGRAU). Explore statutory admission policies, reservation norms, seat matrices, and application procedures."
         tag="Student Admissions"
         breadcrumb={[{ name: "Admissions" }]}

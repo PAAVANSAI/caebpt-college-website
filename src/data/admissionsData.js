@@ -9,11 +9,12 @@ export const admissionCriteriaUG = {
   entranceExam: "Andhra Pradesh Engineering, Agriculture and Pharmacy Common Entrance Test (AP EAPCET) / EAMCET",
   statutoryOrder: "G.O.Ms.No.184, dated 20-08-1993 of Education (E.C.2) Department",
   counselingAuthority: "Centralized Counseling System by Andhra Pradesh State Council of Higher Education (APSCHE)",
-  intakeSummary: "60 Approved Base Seats + 20% Supernumerary ICAR Quota + 15% Lateral Entry (88 Total Seats)",
+  intakeSummary: "60 Approved Base Seats (Convener & Farmers') + 20% ICAR Quota + 10% EWS Quota + 15% Lateral Entry (88 Sanctioned Annual Seats per Table 1)",
   quotaBreakdown: [
     { quota: "Convener Quota (AP EAPCET)", pct: "60%", seats: 36, basis: "Merit and state statutory reservation" },
     { quota: "Farmers' Quota", pct: "40%", seats: 24, basis: "Policies and reservation guidelines of Govt. of Andhra Pradesh for agrarian families" },
     { quota: "ICAR Quota (Supernumerary)", pct: "20%", seats: 12, basis: "Nominated by ICAR New Delhi through CUET / AIEEA-UG at National Level" },
+    { quota: "EWS Quota (Economically Weaker Sections)", pct: "10%", seats: 6, basis: "State Economically Weaker Sections reservation (Official UG Table 1 includes 61 base + 12 + 6 + 9 = 88)" },
     { quota: "Lateral Entry (AP ECET)", pct: "15%", seats: 9, basis: "Direct 2nd Year admission for 3-Year Diploma in Agri Engg holders" }
   ],
   ageCriteria: {

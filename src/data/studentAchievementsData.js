@@ -23,7 +23,7 @@ export const nationalExamsPerformanceData = {
   columns: ["Year", "JRF", "SRF", "NET", "ARS", "GATE", "Management", "Others*", "Total"],
   rows: [
     { year: "2021-22", jrf: 4, srf: "-", net: "-", ars: "-", gate: 9, management: 3, others: 1, total: 17 },
-    { year: "2022-23", jrf: 5, srf: "-", net: 3, ars: 3, gate: 5, management: 3, others: 2, total: 18 },
+    { year: "2022-23", jrf: 5, srf: "-", net: 3, ars: 3, gate: 5, management: 3, others: 2, total: 21 },
     { year: "2023-24", jrf: 4, srf: "-", net: "-", ars: "-", gate: 3, management: 5, others: 1, total: 13 },
     { year: "2024-25", jrf: 4, srf: 2, net: "-", ars: "-", gate: 5, management: "-", others: 4, total: 15 },
     { year: "2025-26", jrf: "-", srf: "-", net: "-", ars: "-", gate: 13, management: 4, others: "-", total: 17 }

@@ -11,7 +11,7 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const currentYear = 2025;
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-[#06101e] text-slate-300 border-t-2 border-[#b88e22]">
@@ -85,7 +85,7 @@ export default function Footer() {
               {(Array.isArray(departments) ? departments : []).map((d) => (
                 <li key={d.id}>
                   <Link
-                    to="/academics/departments"
+                    to={`/academics/departments/${d.id}`}
                     className="text-slate-400 hover:text-[#ecc75f] transition-colors flex items-center gap-1.5"
                     style={{ textDecoration: 'none' }}
                   >
@@ -111,7 +111,7 @@ export default function Footer() {
             <address className="not-italic text-xs text-slate-400 space-y-2.5">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-[#ecc75f] flex-shrink-0 mt-0.5" />
-                <span>Agricultural College Campus, Bapatla, AP - 522101</span>
+                <span>NH-216, Karlapalem Road, Bapatla, AP - 522101</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-[#ecc75f] flex-shrink-0" />
@@ -119,7 +119,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#ecc75f] flex-shrink-0" />
-                <span className="truncate">{collegeInfo?.contact?.email || 'principal.cae@caebpt.ac.in'}</span>
+                <span className="truncate">{collegeInfo?.contact?.email || 'ad.caebpt@angrau.ac.in'}</span>
               </div>
             </address>
           </div>

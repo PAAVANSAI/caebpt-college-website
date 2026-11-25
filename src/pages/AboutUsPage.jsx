@@ -712,7 +712,7 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                             <div className="pt-2.5 border-t border-amber-200/80 mt-2.5 space-y-1.5">
                               <span className="text-[11px] font-bold text-navy-950 flex items-center gap-1">
                                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                                <span>Accredited Programmes Approved by ICAR (Annexure-I, Item 6):</span>
+                                <span>Accredited Programmes Approved by ICAR ({doc.annexureLabel || "Approved Academic Programmes"}):</span>
                               </span>
                               <div className="flex flex-wrap gap-1.5 pt-0.5">
                                 {doc.approvedPrograms.map((prog, pIdx) => (

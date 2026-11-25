@@ -1,8 +1,11 @@
 import React from 'react';
 import { MapPin, Phone, Mail, Clock, Send, Globe, Navigation, ExternalLink } from 'lucide-react';
-import { collegeInfo } from '../data/collegeInfo';
+import { collegeInfo as defaultCollegeInfo } from '../data/collegeInfo';
+import { useWebsite } from '../context/WebsiteContext';
 
 export default function Contact() {
+  const { collegeInfo: contextCollegeInfo } = useWebsite();
+  const collegeInfo = contextCollegeInfo || defaultCollegeInfo;
   return (
     <section id="contact" className="section-padding bg-white border-b border-slate-200">
       <div className="container">
@@ -147,7 +150,7 @@ export default function Contact() {
 
             {/* Map Caption */}
             <div className="p-4 bg-white border-t border-slate-200 text-xs text-slate-600 flex flex-wrap items-center justify-between gap-2">
-              <span>Located within the lush Agricultural College Campus at Bapatla, Andhra Pradesh.</span>
+              <span>Located on NH-216, Karlapalem Road, Bapatla, Andhra Pradesh.</span>
               <span className="badge badge-navy text-[10px]">PIN: 522101</span>
             </div>
           </div>

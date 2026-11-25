@@ -84,13 +84,27 @@ export default function PatentsSection() {
 
               {/* Patent Technical Info */}
               <div className="bg-slate-50 rounded-xl p-3.5 border border-slate-200/80 text-xs space-y-2">
-                <div className="flex items-center justify-between text-slate-600">
+                <div className="flex items-center justify-between text-slate-600 gap-2">
                   <span className="font-semibold text-slate-700">Type / Classification:</span>
-                  <span className="font-bold text-navy-950">{patent.patentType} {patent.class ? `(Class ${patent.class})` : ''}</span>
+                  <span className="font-bold text-navy-950 text-right">{patent.patentType} {patent.class ? `(Class ${patent.class})` : ''}</span>
                 </div>
+                {patent.department && (
+                  <div className="flex items-center justify-between text-slate-600 gap-2">
+                    <span className="font-semibold text-slate-700">Department:</span>
+                    <span className="font-medium text-right">{patent.department}</span>
+                  </div>
+                )}
+                {patent.applicationNo && (
+                  <div className="flex items-center justify-between text-slate-600 gap-2">
+                    <span className="font-semibold text-slate-700">Application No.:</span>
+                    <span className="font-mono font-semibold text-navy-950">{patent.applicationNo}</span>
+                  </div>
+                )}
                 {patent.filingDate && (
-                  <div className="flex items-center justify-between text-slate-600">
-                    <span className="font-semibold text-slate-700">Filing / Reciprocity Date:</span>
+                  <div className="flex items-center justify-between text-slate-600 gap-2">
+                    <span className="font-semibold text-slate-700">
+                      {patent.designNo ? 'Registration / Reciprocity Date:' : 'Filing Date:'}
+                    </span>
                     <span>{patent.filingDate}</span>
                   </div>
                 )}

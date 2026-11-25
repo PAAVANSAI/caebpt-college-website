@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { Image as ImageIcon, ZoomIn, Calendar, Sparkles } from 'lucide-react';
-import { galleryData } from '../data/galleryData';
+import { galleryData as defaultGalleryData } from '../data/galleryData';
+import { useWebsite } from '../context/WebsiteContext';
 import Lightbox from './Lightbox';
 
 export default function Gallery() {
+  const { gallery: contextGallery } = useWebsite();
+  const galleryList = Array.isArray(contextGallery) && contextGallery.length > 0 ? contextGallery : defaultGalleryData;
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [activeLightboxIndex, setActiveLightboxIndex] = useState(null);
 
   const categories = ['All', 'Campus', 'Labs', 'Fieldwork', 'Events'];
 
   const filteredGallery = selectedCategory === 'All'
-    ? galleryData
-    : galleryData.filter((item) => item.category === selectedCategory);
+    ? galleryList
+    : galleryList.filter((item) => item.category === selectedCategory);
 
   const handleOpenLightbox = (index) => {
     setActiveLightboxIndex(index);
@@ -76,7 +79,7 @@ export default function Gallery() {
               {/* Image with zoom effect */}
               <div className="relative h-64 overflow-hidden bg-slate-200">
                 <img
-                  src={item.thumbnail}
+                  src={item.thumbnail || item.image || item.url}
                   alt={item.title}
                   className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
                   loading="lazy"

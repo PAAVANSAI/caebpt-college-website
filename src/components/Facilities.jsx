@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { Building2, CheckCircle2, Sparkles } from 'lucide-react';
-import { facilitiesData } from '../data/facilitiesData';
+import { facilitiesData as defaultFacilitiesData } from '../data/facilitiesData';
+import { useWebsite } from '../context/WebsiteContext';
 
 export default function Facilities() {
+  const { facilities: contextFacilities } = useWebsite();
+  const facilitiesList = Array.isArray(contextFacilities) && contextFacilities.length > 0 ? contextFacilities : defaultFacilitiesData;
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categories = ['All', 'Engineering Labs', 'Academic Infrastructure', 'Processing & R&D', 'Student Amenities'];
 
   const filteredFacilities = selectedCategory === 'All'
-    ? facilitiesData
-    : facilitiesData.filter((f) => f.category === selectedCategory);
+    ? facilitiesList
+    : facilitiesList.filter((f) => f.category === selectedCategory);
 
   return (
     <section id="facilities" className="section-padding bg-white border-b border-slate-200">

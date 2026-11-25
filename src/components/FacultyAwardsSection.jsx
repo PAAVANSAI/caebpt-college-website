@@ -20,11 +20,12 @@ export default function FacultyAwardsSection() {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [filterYear, setFilterYear] = useState('All');
 
-  const years = ['All', '2026-27', '2025 – 26', '2024 – 25', '2023 – 24', '2022 – 23', '2021 – 22', '2020 – 21'];
+  const years = ['All', '2026 – 27', '2025 – 26', '2024 – 25', '2023 – 24', '2022 – 23', '2021 – 22', '2020 – 21'];
+  const normalizeYear = (val) => String(val || '').replace(/[\s–—-]+/g, '').trim();
 
   const filteredAwards = filterYear === 'All'
     ? facultyAwardsData
-    : facultyAwardsData.filter(a => a.year.includes(filterYear.split(' ')[0]));
+    : facultyAwardsData.filter(a => normalizeYear(a.year) === normalizeYear(filterYear));
 
   return (
     <div className="space-y-10 sm:space-y-12">

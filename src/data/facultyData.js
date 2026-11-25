@@ -367,13 +367,11 @@ export const facultyData = [
     "publications": "10 International/National Publications \u2022 7 Abstracts \u2022 12 Technical Bulletins \u2022 9 Popular Articles \u2022 2 Training Manuals",
     "awards": [
       "Netaji Subhas \u2013 ICAR International Fellowship-2025 for doctoral research at University of Nebraska\u2013Lincoln",
-      "Best Agri Engineer Award from ICFRE\u2013HFRI, Shimla & ISAHARD Society, New Delhi (2025)",
+      "Best Agri Engineer Award at 13th International Conference on \u201cAgriculture, Horticulture, Forestry & Allied Sciences for Sustainable Himalayan Ecosystems\u201d organized by ICAR\u2013HFRI, Shimla, NMPB & ISAHRD",
       "MHRD Fellowship for the M. Tech degree after securing All India 40th Rank in GATE \u2013 2014",
       "Outstanding team performance in the training module \u201cCultural Events (Men)\u201d during 5th Foundation course for Faculty of Agricultural Universities (FOCFAU) organized by ICAR \u2013 NAARM, Hyderabad",
       "Awarded 3rd prize for outstanding presentation on the topic \u201cOptimising Groundnut Productivity and Energy Budgeting through In Situ Water Harvesting under Rainfed Agriculture\u201d in the 1st National Seminar on Emerging Trends in Agriculture and Allied Sciences: A Pathway to Food Security, organized by Encourage Society, Bangalore",
-      "Awarded 2nd prize for outstanding presentation on the topic \u201cCarbon Footprint and Intensity Indices reveal Emission Efficiency Gains in Rainfed Groundnut Intensification\u201d in the 2nd National Seminar on Emerging Trends in Agriculture and Allied Sciences: A Pathway to Food Security, organized by Encourage Society, Bangalore",
-      "Netaji Subhas \u2013 ICAR \u2013 International Fellowship by the Indian Council of Agricultural Research, New Delhi for the Ph.D. degree at the University of Nebraska \u2013 Lincoln",
-      "Received Best Agri Engineer Award on 13th International Conference on \u201cAgriculture, Horticulture, Forestry & Allied Sciences for sustainable Himalayan Ecosystems organized by ICAR \u2013 HFRI, Shimla"
+      "Awarded 2nd prize for outstanding presentation on the topic \u201cCarbon Footprint and Intensity Indices reveal Emission Efficiency Gains in Rainfed Groundnut Intensification\u201d in the 2nd National Seminar on Emerging Trends in Agriculture and Allied Sciences: A Pathway to Food Security, organized by Encourage Society, Bangalore"
     ],
     "memberships": [
       "Life Member, Indian Society of Agricultural Engineers",
@@ -764,7 +762,7 @@ export const facultyData = [
         "thesis": "PERFORMANCE EVALUATION OF METAL ROAD RING FOR TRACTOR CAGE WHEELS ON DIFFERENT ROADS"
       }
     ],
-    "specialization": "Remote sensing and GIS Automation in Irrigation",
+    "specialization": "Remote sensing and GIS; Automation in Irrigation",
     "researchInterests": [
       "Remote sensing and GIS",
       "Automation in Irrigation"
@@ -787,9 +785,11 @@ export const facultyData = [
       "\u201cOutstanding Women Researcher in Hydroponics\u201d by Venus International Foundation, Chennai (2025)",
       "Best oral presentation award in 2nd National Seminar on Emerging Trends in Agriculture and Allied Sciences (2025)",
       "Meritorious Teacher Award (Agricultural Engineering & Technology) 2022-23 by ANGRAU",
-      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
+      "\u201cExcellence in Teaching\u201d for the year 2016-17 by Society for Scientific Development in Agriculture and Technology (ICAAS-2016), PJTSAU, Hyderabad"
     ],
-    "memberships": []
+    "memberships": [
+      "Life Member, Indian Society of Agricultural Engineers (ISAE)"
+    ]
   },
   {
     "id": "dr-n-ashok-kumar",
@@ -906,20 +906,20 @@ export const facultyData = [
     "id": "dr-g-ravi-babu",
     "name": "Dr. G. Ravi Babu",
     "fullName": "Dr. G. Ravi Babu",
-    "designation": "Professor & Head (Associate Dean)",
+    "designation": "Professor & Head",
     "department": "Soil & Water Conservation Engineering",
     "deptId": "swce",
     "deptSlug": "soil-and-water-conservation",
-    "avatar": "/images/faculty/dr_g_ravi_babu.webp",
+    "avatar": "/images/faculty/dr_g_ravibabu.webp",
     "email": "g.ravibabu@angrau.ac.in",
     "altEmail": "caemdks@gmail.com",
     "phone": "9848572321 / 7702366113",
     "office": "Department of Soil and Water Conservation Engineering, Dr. NTR CAE, Bapatla",
     "qualification": "Ph.D. (Soil and Water Conservation Engineering), M.Tech (Ag. Engg)",
-    "experience": "26 Years Academic, Research & Institutional Leadership (13 years teaching and 8 years research)",
+    "experience": "21 Years (13 years teaching and 8 years research)",
     "administrativeRoles": [
       "Head of Department (SWCE)",
-      "Associate Dean"
+      "Training and Placement Officer"
     ],
     "education": [
       {
@@ -962,8 +962,7 @@ export const facultyData = [
     "publications": "41 International/National Journals \u2022 10 Conference Proceedings \u2022 4 Books and Book Chapters \u2022 1 Technical Bulletin \u2022 5 Popular Articles",
     "awards": [
       "\u201cState Best Teacher\u201d for the year 2023 by Government of Andhra Pradesh",
-      "ANGRAU Meritorious Scientist Award in 2012",
-      "State Best Teacher Award 2023"
+      "ANGRAU Meritorious Scientist Award in 2012"
     ],
     "memberships": [
       "Life Member ISAE",
@@ -1056,10 +1055,10 @@ export const facultyData = [
     ],
     "publicationCounts": {
       "journals": 4,
-      "conferences": 2,
+      "popularArticles": 2,
       "total": 6
     },
-    "publications": "4 Research Papers in National & Regional Soil and Water Engineering Journals",
+    "publications": "4 International/National Journals • 2 Popular Articles",
     "awards": [],
     "memberships": [
       "Life Member, Indian Society of Agricultural Engineers (ISAE)"

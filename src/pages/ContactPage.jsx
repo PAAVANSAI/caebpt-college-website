@@ -44,22 +44,40 @@ export default function ContactPage() {
               </thead>
               <tbody className="divide-y divide-slate-200 text-slate-700">
                 <tr className="hover:bg-slate-50">
-                  <td className="py-3 px-4 font-semibold text-navy-950">Dean / Principal Office</td>
-                  <td className="py-3 px-4">Dr. K. S. Rao</td>
-                  <td className="py-3 px-4">+91 8643 224025</td>
-                  <td className="py-3 px-4 text-slate-500">principal.cae@caebpt.ac.in</td>
+                  <td className="py-3 px-4 font-semibold text-navy-950">Associate Dean Office</td>
+                  <td className="py-3 px-4">Dr. Mogal Sardar Baig</td>
+                  <td className="py-3 px-4">+91 99855 89428</td>
+                  <td className="py-3 px-4 text-slate-500">ad.caebpt@angrau.ac.in</td>
                 </tr>
                 <tr className="hover:bg-slate-50">
-                  <td className="py-3 px-4 font-semibold text-navy-950">Academic & Exam Branch</td>
-                  <td className="py-3 px-4">Controller of Exams</td>
-                  <td className="py-3 px-4">+91 8643 224026</td>
-                  <td className="py-3 px-4 text-slate-500">exams@caebpt.ac.in</td>
+                  <td className="py-3 px-4 font-semibold text-navy-950">Academic Branch (UG & IT)</td>
+                  <td className="py-3 px-4">Dr. S. Vishnu Vardhan</td>
+                  <td className="py-3 px-4">+91 94403 63112</td>
+                  <td className="py-3 px-4 text-slate-500">oam.caebpt@angrau.ac.in</td>
                 </tr>
                 <tr className="hover:bg-slate-50">
-                  <td className="py-3 px-4 font-semibold text-navy-950">Farm Machinery & Power</td>
-                  <td className="py-3 px-4">Dr. P. V. Ramana</td>
-                  <td className="py-3 px-4">+91 8643 224027</td>
-                  <td className="py-3 px-4 text-slate-500">head.fmpe@caebpt.ac.in</td>
+                  <td className="py-3 px-4 font-semibold text-navy-950">Academic Branch (PG)</td>
+                  <td className="py-3 px-4">Dr. B. Sreenivasula Reddy</td>
+                  <td className="py-3 px-4">+91 96188 00819</td>
+                  <td className="py-3 px-4 text-slate-500">oampg.caebpt@angrau.ac.in</td>
+                </tr>
+                <tr className="hover:bg-slate-50">
+                  <td className="py-3 px-4 font-semibold text-navy-950">Farm Machinery & Power Engg.</td>
+                  <td className="py-3 px-4">Dr. K. V. S. Rami Reddy</td>
+                  <td className="py-3 px-4">+91 94908 45917</td>
+                  <td className="py-3 px-4 text-slate-500">kvs.ramireddy@angrau.ac.in</td>
+                </tr>
+                <tr className="hover:bg-slate-50">
+                  <td className="py-3 px-4 font-semibold text-navy-950">Processing & Food Engg.</td>
+                  <td className="py-3 px-4">Dr. B. Sreenivasula Reddy</td>
+                  <td className="py-3 px-4">+91 96188 00819</td>
+                  <td className="py-3 px-4 text-slate-500">b.sreenivasulareddy@angrau.ac.in</td>
+                </tr>
+                <tr className="hover:bg-slate-50">
+                  <td className="py-3 px-4 font-semibold text-navy-950">Irrigation & Drainage Engg.</td>
+                  <td className="py-3 px-4">Dr. K. Krupavathi</td>
+                  <td className="py-3 px-4">+91 95338 77666</td>
+                  <td className="py-3 px-4 text-slate-500">k.krupavathi@angrau.ac.in</td>
                 </tr>
                 <tr className="hover:bg-slate-50">
                   <td className="py-3 px-4 font-semibold text-navy-950">Soil & Water Conservation</td>
@@ -68,22 +86,22 @@ export default function ContactPage() {
                   <td className="py-3 px-4 text-slate-500">g.ravibabu@angrau.ac.in</td>
                 </tr>
                 <tr className="hover:bg-slate-50">
-                  <td className="py-3 px-4 font-semibold text-navy-950">Irrigation & Drainage</td>
-                  <td className="py-3 px-4">Dr. (Mrs.) K. Krupavathi</td>
-                  <td className="py-3 px-4">+91 95338 77666</td>
-                  <td className="py-3 px-4 text-slate-500">k.krupavathi@angrau.ac.in</td>
-                </tr>
-                <tr className="hover:bg-slate-50">
                   <td className="py-3 px-4 font-semibold text-navy-950">Renewable Energy Engg.</td>
                   <td className="py-3 px-4">Dr. S. Vishnu Vardhan</td>
                   <td className="py-3 px-4">+91 94403 63112</td>
                   <td className="py-3 px-4 text-slate-500">vishnuvardhans@angrau.ac.in</td>
                 </tr>
                 <tr className="hover:bg-slate-50">
+                  <td className="py-3 px-4 font-semibold text-navy-950">Basic Engg. & Applied Sciences</td>
+                  <td className="py-3 px-4">Dr. K. Lavanya</td>
+                  <td className="py-3 px-4">+91 91821 64437</td>
+                  <td className="py-3 px-4 text-slate-500">k.lavanya@angrau.ac.in</td>
+                </tr>
+                <tr className="hover:bg-slate-50">
                   <td className="py-3 px-4 font-semibold text-navy-950">Central Library In-Charge</td>
-                  <td className="py-3 px-4">Librarian Office</td>
-                  <td className="py-3 px-4">+91 8643 224029</td>
-                  <td className="py-3 px-4 text-slate-500">library@caebpt.ac.in</td>
+                  <td className="py-3 px-4">Dr. N. Ashok Kumar</td>
+                  <td className="py-3 px-4">+91 80994 79129</td>
+                  <td className="py-3 px-4 text-slate-500">lib.caebpt@angrau.ac.in</td>
                 </tr>
               </tbody>
             </table>

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import PageBanner from '../components/PageBanner';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
@@ -8,8 +9,22 @@ import { escapeHtml } from '../utils/security';
 
 export default function PublicationsPage() {
   const { officialStructure } = useWebsite();
+  const [searchParams, setSearchParams] = useSearchParams();
   const publications = officialStructure?.publications || officialStructureData.publications;
-  const [activeTab, setActiveTab] = useState('patents'); // 'patents' or 'publications'
+  const tabParam = searchParams.get('tab');
+  const [activeTab, setActiveTab] = useState(tabParam === 'publications' ? 'publications' : 'patents'); // 'patents' or 'publications'
+
+  useEffect(() => {
+    const param = searchParams.get('tab');
+    if (param === 'patents' || param === 'publications') {
+      setActiveTab(param);
+    }
+  }, [searchParams]);
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    setSearchParams({ tab });
+  };
 
   const handleDownloadDoc = (item) => {
     const win = window.open('', '_blank');
@@ -87,7 +102,7 @@ export default function PublicationsPage() {
           <div className="filter-tabs-wrapper flex items-center justify-center gap-2">
             <button
               type="button"
-              onClick={() => setActiveTab('patents')}
+              onClick={() => handleTabChange('patents')}
               className={`filter-tab text-xs sm:text-sm font-bold flex items-center gap-2 ${
                 activeTab === 'patents' ? 'active' : ''
               }`}
@@ -97,7 +112,7 @@ export default function PublicationsPage() {
             </button>
             <button
               type="button"
-              onClick={() => setActiveTab('publications')}
+              onClick={() => handleTabChange('publications')}
               className={`filter-tab text-xs sm:text-sm font-bold flex items-center gap-2 ${
                 activeTab === 'publications' ? 'active' : ''
               }`}

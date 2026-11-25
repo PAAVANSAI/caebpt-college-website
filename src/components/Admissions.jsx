@@ -12,7 +12,7 @@ import {
   User,
   BookOpen
 } from 'lucide-react';
-import { collegeInfo } from '../data/collegeInfo';
+import { collegeInfo as defaultCollegeInfo } from '../data/collegeInfo';
 import { useWebsite } from '../context/WebsiteContext';
 
 export const officialDepartmentAndCourseOptions = [
@@ -94,7 +94,8 @@ export const normalizeProgramOrDept = (val) => {
 };
 
 export default function Admissions({ initialCourse = '', isModal = false, onClose = () => {} }) {
-  const { addEnquiry, siteSettings } = useWebsite();
+  const { addEnquiry, siteSettings, collegeInfo: contextCollegeInfo } = useWebsite();
+  const collegeInfo = contextCollegeInfo || defaultCollegeInfo;
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -540,7 +541,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
                   Admissions Application Form
                 </h3>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  Academic Year 2025–2026 Admissions Session
+                  Official Admissions Enquiry Portal
                 </p>
               </div>
 
@@ -592,25 +593,25 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
             <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs">
               <h4 className="font-bold text-navy-950 text-xs uppercase tracking-wider mb-4 flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-[#d4a72c]" />
-                <span>Admission Timeline (Sample Schedule)</span>
+                <span>Indicative Counseling Milestones</span>
               </h4>
 
               <div className="space-y-3 text-xs">
                 <div className="flex items-center justify-between pb-2 border-b border-slate-100">
                   <span className="text-slate-600">Application Window Opens:</span>
-                  <span className="font-bold text-navy-900">June 2025</span>
+                  <span className="font-bold text-navy-900">APSCHE Notification</span>
                 </div>
                 <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-                  <span className="text-slate-600">State Entrance Results:</span>
-                  <span className="font-bold text-navy-900">July 2025</span>
+                  <span className="text-slate-600">Entrance Rankings:</span>
+                  <span className="font-bold text-navy-900">AP EAPCET / ICAR AIEEA</span>
                 </div>
                 <div className="flex items-center justify-between pb-2 border-b border-slate-100">
                   <span className="text-slate-600">Counseling & Verification:</span>
-                  <span className="font-bold text-navy-900">August 2025</span>
+                  <span className="font-bold text-navy-900">University Schedule</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-600">Commencement of Classes:</span>
-                  <span className="font-bold text-navy-900">September 2025</span>
+                  <span className="text-slate-600">Academic Calendar Issued:</span>
+                  <span className="font-bold text-navy-900">Within 10 Days of Reg.</span>
                 </div>
               </div>
             </div>

@@ -273,7 +273,7 @@ export const phdProgramData = {
   degreeName: "Doctor of Philosophy [Ph.D. (Ag. Engg.)]",
   standard: "ICAR National Doctoral Framework & ANGRAU Regulations",
   duration: "3 Years (6 Semesters - extendable up to 5 Years)",
-  totalCredits: "100 Credits (Coursework: 25, Doctoral Seminar: 4, Research Dissertation: 75)",
+  totalCredits: "75 Credits Minimum (15 Major + 8 Minor + 5 Supporting + 2 Seminar + 45 Research + 6 Compulsory Non-Credit)",
   branches: [
     {
       code: "PHD-FMPE",
@@ -410,13 +410,13 @@ export const examinationRegulationsData = {
   // Grading System (OGPA)
   gradingSystem: {
     scale: "10.00 Point Scale (OGPA - Overall Grade Point Average)",
-    passingGradePoint: "5.00 out of 10.00 for UG; 6.00 out of 10.00 for PG courses (OGPA 6.50 for qualifying/degree).",
+    passingGradePoint: "5.00 out of 10.00 for UG; 6.00 out of 10.00 for PG courses (6.50 OGPA for qualifying / degree award).",
     classifications: [
-      { ogpa: "8.50 – 10.00", classification: "First Class with Distinction", honors: "Eligible for University Gold Medals & Merit Certificates" },
-      { ogpa: "7.00 – 8.49", classification: "First Class", honors: "Standard Professional First Division" },
-      { ogpa: "6.00 – 6.99", classification: "Second Class", honors: "Satisfactory Degree Completion" },
-      { ogpa: "5.00 – 5.99", classification: "Pass Division (UG Only)", honors: "Minimum UG Passing Standard" },
-      { ogpa: "Below 5.00 (UG) / Below 6.00 (PG)", classification: "Fail / Re-appear", honors: "Must clear course in supplementary examination" }
+      { ogpa: "≥ 8.00 (UG) / ≥ 8.50 (PG)", classification: "First Class with Distinction", honors: "Eligible for University Gold Medals & Merit Certificates" },
+      { ogpa: "7.00 – 7.99 (UG) / 8.00 – 8.49 (PG)", classification: "First Class", honors: "Standard Professional First Division" },
+      { ogpa: "6.00 – 6.99 (UG) / 6.50 – 7.99 (PG)", classification: "Second Class", honors: "Satisfactory Degree Completion" },
+      { ogpa: "5.00 – 5.99 (UG Only)", classification: "Pass Division (UG Only)", honors: "Minimum UG Passing Standard" },
+      { ogpa: "< 5.00 (UG) / < 6.00 (PG Course) / < 6.50 (PG Degree)", classification: "Fail / Ineligible for PG Degree", honors: "Must clear course or elevate OGPA per regulations" }
     ]
   },
 
