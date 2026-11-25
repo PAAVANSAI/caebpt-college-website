@@ -29,8 +29,7 @@ const DEFAULT_HERO_SLIDES = [
   {
     image: "/images/hero/slide_5_statue.jpg",
     title: "College Entrance & Institutional Memorial",
-    alt: "Golden bust statue and entrance of Dr NTR CAE Bapatla",
-    fit: "contain"
+    alt: "Golden bust statue and entrance of Dr NTR CAE Bapatla"
   },
   {
     image: "/images/hero/slide_6_signboard.jpg",
@@ -86,7 +85,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative bg-[#06101e] text-white overflow-hidden min-h-[calc(100vh-185px)] lg:min-h-[calc(100vh-188px)] flex items-start"
+      className="relative bg-[#06101e] text-white overflow-hidden w-full min-h-[250px] aspect-[16/9] sm:aspect-[2/1] lg:aspect-[20/9] max-h-[864px] flex items-start"
     >
       {/* Background Campus Media: Sliding Carousel or Video */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -124,7 +123,7 @@ export default function Hero() {
           /* Multi-image Sliding Carousel with Crystal-Clear Visibility */
           slides.map((slide, idx) => {
             const isActive = idx === currentSlide;
-            const isContain = slide.fit === 'contain' || (slide.image && slide.image.includes('slide_5'));
+            const isContain = slide.fit === 'contain';
             return (
               <div
                 key={slide.image || idx}
