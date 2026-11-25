@@ -4,6 +4,15 @@ import { auth } from '../lib/firebase';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
 import {
+  sanitizeUrl,
+  sanitizeCsvCell,
+  validateUploadFile,
+  ALLOWED_IMAGE_MIME_TYPES,
+  ALLOWED_IMAGE_EXTENSIONS,
+  ALLOWED_DOC_MIME_TYPES,
+  ALLOWED_DOC_EXTENSIONS
+} from '../utils/security';
+import {
   ShieldCheck,
   Activity,
   Globe,
@@ -87,17 +96,13 @@ export default function AdminPage() {
 
   // Persist login across page refreshes via Firebase Auth session
   useEffect(() => {
+    try {
+      sessionStorage.removeItem('caebpt_admin_logged_in');
+    } catch { }
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setIsAuthenticated(!!user);
+      setIsAuthenticated(Boolean(user));
       setAuthLoading(false);
     });
-    // Restore session if admin passcode was previously authenticated
-    const savedAdmin = sessionStorage.getItem('caebpt_admin_logged_in');
-    if (savedAdmin === 'true' && !auth.currentUser) {
-      signInWithEmailAndPassword(auth, 'admin@caebpt.ac.in', 'caebpt2025')
-        .then(() => setIsAuthenticated(true))
-        .catch(() => {});
-    }
     return () => unsubscribe();
   }, []);
 
@@ -111,11 +116,11 @@ export default function AdminPage() {
     setTimeout(() => setToastMessage(''), 3500);
   };
 
-  // Login handler — Firebase Authentication with Resilient Administrative Fallback
+  // Login handler — Strict Firebase Authentication
   const handleLogin = async (e) => {
     if (e) e.preventDefault();
     const rawEmail = emailInput.trim().toLowerCase();
-    const pass = passwordInput.trim();
+    const pass = passwordInput;
 
     if (!rawEmail || !pass) {
       setAuthError('Please enter both email and password.');
@@ -127,46 +132,32 @@ export default function AdminPage() {
 
     try {
       await signInWithEmailAndPassword(auth, email, pass);
-      sessionStorage.setItem('caebpt_admin_logged_in', 'true');
       setIsAuthenticated(true);
-      triggerToast('Signed in as CAE Bapatla Chief Administrator');
-      return;
+      setPasswordInput('');
+      triggerToast('Signed in as CAE Bapatla Administrator');
     } catch (err) {
-      // Administrative fallback: authenticate with verified admin user
-      if (
-        pass === 'caebpt2025' || pass === 'admin' || pass === 'caebpt@2025' || pass === 'caebpt.admin'
-      ) {
-        try {
-          await signInWithEmailAndPassword(auth, 'admin@caebpt.ac.in', 'caebpt2025');
-        } catch (innerErr) {
-          console.warn('Firebase admin sign-in notice:', innerErr);
-        }
-        sessionStorage.setItem('caebpt_admin_logged_in', 'true');
-        setIsAuthenticated(true);
-        triggerToast('Signed in as CAE Bapatla Administrator');
-        return;
-      }
-
       const code = err?.code || '';
       if (code === 'auth/user-not-found' || code === 'auth/wrong-password' || code === 'auth/invalid-credential') {
-        setAuthError('Invalid email or password. Authorized administrator passcode: caebpt2025');
+        setAuthError('Invalid email or password.');
       } else if (code === 'auth/too-many-requests') {
-        setAuthError('Too many failed attempts. Please try again later.');
+        setAuthError('Too many failed login attempts. Please try again later.');
       } else if (code === 'auth/invalid-email') {
         setAuthError('Please enter a valid email address.');
       } else {
-        setAuthError('Sign-in failed. Check your network or authenticate using passcode caebpt2025.');
+        setAuthError('Authentication failed. Please verify your credentials and network connection.');
       }
     }
   };
 
   // Logout handler — Firebase sign out
   const handleLogout = async () => {
-    sessionStorage.removeItem('caebpt_admin_logged_in');
+    try {
+      sessionStorage.removeItem('caebpt_admin_logged_in');
+    } catch { }
     try {
       await signOut(auth);
     } catch {
-      // ignore local fallback
+      // ignore sign-out error
     }
     setIsAuthenticated(false);
     setEmailInput('');
@@ -459,27 +450,31 @@ export default function AdminPage() {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const MAX_SIZE = 50 * 1024 * 1024; // 50 MB via Firebase Storage
-    if (file.size > MAX_SIZE) {
-      alert('Selected file exceeds 50 MB. Please use a smaller file or provide an external link.');
+    const validation = validateUploadFile(file, {
+      allowedMimes: ALLOWED_DOC_MIME_TYPES,
+      allowedExtensions: ALLOWED_DOC_EXTENSIONS,
+      maxSizeBytes: 50 * 1024 * 1024
+    });
+    if (!validation.valid) {
+      alert(validation.error);
       return;
     }
 
     setDocUploading(true);
-    triggerToast(`Uploading "${file.name}" to secure cloud storage…`);
+    triggerToast(`Uploading "${validation.safeName}" to secure cloud storage…`);
     try {
-      const path = `documents/${Date.now()}_${file.name}`;
+      const path = `documents/${Date.now()}_${validation.safeName}`;
       const downloadUrl = await uploadFileToStorage(file, path);
       setDocForm((prev) => ({
         ...prev,
         fileUrl: downloadUrl,
         fileData: '',   // clear base64 — no longer needed
-        docName: file.name,
+        docName: validation.safeName,
         fileSize: file.size > 1024 * 1024
           ? (file.size / (1024 * 1024)).toFixed(1) + ' MB'
           : (file.size / 1024).toFixed(1) + ' KB'
       }));
-      triggerToast(`✅ "${file.name}" uploaded to Firebase Storage!`);
+      triggerToast(`✅ "${validation.safeName}" uploaded to Firebase Storage!`);
     } catch (err) {
       alert(`Upload failed: ${err.message}. Please check Firebase Storage rules.`);
     } finally {
@@ -491,27 +486,37 @@ export default function AdminPage() {
 
   const uploadImageFile = async (file, onComplete) => {
     if (!file) return;
-    if (!file.type.startsWith('image/')) {
-      alert('Please select a valid image file (JPG, PNG, WebP).');
+    const validation = validateUploadFile(file, {
+      allowedMimes: ALLOWED_IMAGE_MIME_TYPES,
+      allowedExtensions: ALLOWED_IMAGE_EXTENSIONS,
+      maxSizeBytes: 10 * 1024 * 1024
+    });
+    if (!validation.valid) {
+      alert(`${validation.error} Allowed image formats: JPG, PNG, WebP, GIF.`);
       return;
     }
 
     setImageUploading(true);
-    triggerToast(`Processing "${file.name}"...`);
+    triggerToast(`Processing "${validation.safeName}"...`);
 
     try {
-      const storagePath = `uploads/${Date.now()}_${file.name}`;
+      const storagePath = `uploads/${Date.now()}_${validation.safeName}`;
       const downloadUrl = await uploadFileToStorage(file, storagePath);
       onComplete(downloadUrl);
-      triggerToast(`✅ "${file.name}" uploaded to cloud storage!`);
+      triggerToast(`✅ "${validation.safeName}" uploaded to cloud storage!`);
       setImageUploading(false);
       return;
     } catch {
+      if (file.size > 2 * 1024 * 1024) {
+        alert('Offline fallback only supports images up to 2 MB.');
+        setImageUploading(false);
+        return;
+      }
       // Offline / Local fallback: Base64 data URL
       const reader = new FileReader();
       reader.onload = (event) => {
         onComplete(event.target.result);
-        triggerToast(`✅ "${file.name}" loaded from your laptop!`);
+        triggerToast(`✅ "${validation.safeName}" loaded locally!`);
         setImageUploading(false);
       };
       reader.onerror = () => {
@@ -564,12 +569,21 @@ export default function AdminPage() {
       return;
     }
 
+    if (docForm.fileUrl && docForm.fileUrl.trim()) {
+      const safeFileUrl = sanitizeUrl(docForm.fileUrl, { fallback: '' });
+      if (!safeFileUrl) {
+        alert('Please enter a valid http(s):// or relative / document URL.');
+        return;
+      }
+    }
+
     let cleanTag = docForm.tag.trim();
     if (!cleanTag.startsWith('<')) cleanTag = '<' + cleanTag;
     if (!cleanTag.endsWith('>')) cleanTag = cleanTag + '>';
 
     const docPayload = {
       ...docForm,
+      fileUrl: docForm.fileUrl ? sanitizeUrl(docForm.fileUrl, { fallback: '' }) : '',
       tag: cleanTag.toUpperCase(),
       docName: docForm.docName || `${docForm.title.trim().replace(/\s+/g, '_')}.pdf`
     };
@@ -615,7 +629,7 @@ export default function AdminPage() {
     }
   };
 
-  // CSV Export for Enquiries
+  // CSV Export for Enquiries (neutralizes spreadsheet formula injection)
   const exportEnquiriesCSV = () => {
     if (!enquiries || enquiries.length === 0) {
       triggerToast('No student applications to export.');
@@ -623,24 +637,26 @@ export default function AdminPage() {
     }
     const headers = ['ID', 'Date', 'Full Name', 'Phone', 'Email', 'Program / Course', 'City / Native', 'Status', 'Queries'];
     const rows = enquiries.map((e) => [
-      `"${e.id}"`,
-      `"${e.date || ''}"`,
-      `"${(e.fullName || '').replace(/"/g, '""')}"`,
-      `"${e.phone || ''}"`,
-      `"${e.email || ''}"`,
-      `"${(e.course || '').replace(/"/g, '""')}"`,
-      `"${(e.city || '').replace(/"/g, '""')}"`,
-      `"${e.status || 'New'}"`,
-      `"${(e.message || '').replace(/"/g, '""')}"`
+      sanitizeCsvCell(e.id),
+      sanitizeCsvCell(e.date || ''),
+      sanitizeCsvCell(e.fullName || ''),
+      sanitizeCsvCell(e.phone || ''),
+      sanitizeCsvCell(e.email || ''),
+      sanitizeCsvCell(e.course || ''),
+      sanitizeCsvCell(e.city || ''),
+      sanitizeCsvCell(e.status || 'New'),
+      sanitizeCsvCell(e.message || '')
     ]);
-    const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map((r) => r.join(','))].join('\n');
-    const encodedUri = encodeURI(csvContent);
+    const csvString = [headers.map(sanitizeCsvCell).join(','), ...rows.map((r) => r.join(','))].join('\n');
+    const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
-    link.setAttribute('href', encodedUri);
+    link.href = url;
     link.setAttribute('download', `CAE_Bapatla_Admissions_${new Date().toISOString().split('T')[0]}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    URL.revokeObjectURL(url);
     triggerToast('Student applications exported to CSV successfully.');
   };
 
@@ -686,7 +702,7 @@ export default function AdminPage() {
                 type="email"
                 value={emailInput}
                 onChange={(e) => setEmailInput(e.target.value)}
-                placeholder="admin@caebpt.ac.in"
+                placeholder="Enter administrator email"
                 autoComplete="email"
                 className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm text-slate-900 focus:bg-white focus:border-[#0b1a2e] focus:ring-2 focus:ring-[#0b1a2e]/10 transition-all"
               />
@@ -1191,7 +1207,7 @@ export default function AdminPage() {
                   collegeShortName: identityForm.collegeShortName || "CAE Bapatla",
                   domain: identityForm.domain || "caebpt.ac.in",
                   estd: identityForm.estd || "1983",
-                  angrauUrl: identityForm.angrauUrl || "https://angrau.ac.in",
+                  angrauUrl: sanitizeUrl(identityForm.angrauUrl, { fallback: "https://angrau.ac.in" }),
                   headerSettings: {
                     showTopUtilityBar: Boolean(identityForm.showTopUtilityBar),
                     showUniversityBanner: Boolean(identityForm.showUniversityBanner)
@@ -2916,7 +2932,7 @@ export default function AdminPage() {
                               {doc.subReports.map((sub, sIdx) => (
                                 <a
                                   key={sIdx}
-                                  href={sub.fileUrl}
+                                  href={sanitizeUrl(sub.fileUrl)}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="px-2 py-0.5 bg-white border border-slate-300 hover:border-[#d4a72c] rounded text-[10px] font-bold text-navy-950 flex items-center gap-1 shadow-2xs"
@@ -3282,7 +3298,7 @@ export default function AdminPage() {
                       <span>Official PDF: <span className="font-mono text-slate-600">{previewDocModal.fileUrl}</span></span>
                       <div className="flex items-center gap-1.5">
                         <a
-                          href={previewDocModal.fileUrl}
+                          href={sanitizeUrl(previewDocModal.fileUrl)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="px-2.5 py-1 bg-navy-950 text-white rounded text-[11px] font-bold hover:bg-navy-900 flex items-center gap-1"
@@ -3291,7 +3307,7 @@ export default function AdminPage() {
                           <span>Open PDF</span>
                         </a>
                         <a
-                          href={previewDocModal.fileUrl}
+                          href={sanitizeUrl(previewDocModal.fileUrl)}
                           download={previewDocModal.docName}
                           className="px-2.5 py-1 bg-[#d4a72c] text-navy-950 rounded text-[11px] font-bold hover:bg-[#b88f22] flex items-center gap-1"
                         >
@@ -3311,7 +3327,7 @@ export default function AdminPage() {
                           <span className="font-bold text-navy-950 block text-[11px]">{sub.shortName || sub.discipline}</span>
                           <span className="text-[10px] text-slate-500 font-mono block mb-1">{sub.fileSize}</span>
                           <a
-                            href={sub.fileUrl}
+                            href={sanitizeUrl(sub.fileUrl)}
                             download={sub.docName}
                             className="inline-flex items-center justify-center gap-1 px-2 py-0.5 bg-[#d4a72c] text-navy-950 font-bold rounded text-[10px]"
                           >

@@ -3,6 +3,7 @@ import { Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
 import { collegeInfo as defaultCollegeInfo } from '../data/collegeInfo';
+import { sanitizeUrl } from '../utils/security';
 
 const DEFAULT_HERO_SLIDES = [
   {
@@ -110,8 +111,8 @@ export default function Hero() {
               poster={slides[0]?.image || "/images/hero/slide_1_workshop.jpg"}
               className="w-full h-full object-cover object-center scale-105 filter blur-[1.5px]"
             >
-              <source src={hero.bgVideo} type="video/mp4" />
-              <source src={hero.bgVideo} type="video/webm" />
+              <source src={sanitizeUrl(hero.bgVideo, { fallback: '' })} type="video/mp4" />
+              <source src={sanitizeUrl(hero.bgVideo, { fallback: '' })} type="video/webm" />
               <img
                 src={slides[0]?.image || "/images/hero/slide_1_workshop.jpg"}
                 alt="Dr NTR College of Agricultural Engineering, Bapatla Campus"

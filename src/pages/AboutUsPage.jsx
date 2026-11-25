@@ -4,6 +4,7 @@ import PageBanner from '../components/PageBanner';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
 import FacultyAwardsSection from '../components/FacultyAwardsSection';
+import { sanitizeUrl } from '../utils/security';
 import {
   History,
   Target,
@@ -68,8 +69,10 @@ export default function AboutUsPage() {
 
   const handleDownloadDocument = (doc) => {
     if (doc.fileData) {
+      const safeDataUrl = sanitizeUrl(doc.fileData, { allowDataPdf: true, allowDataImages: true, fallback: '' });
+      if (!safeDataUrl) return;
       const link = document.createElement('a');
-      link.href = doc.fileData;
+      link.href = safeDataUrl;
       link.download = doc.docName || `${doc.title.replace(/\s+/g, '_')}.pdf`;
       document.body.appendChild(link);
       link.click();
@@ -77,8 +80,10 @@ export default function AboutUsPage() {
       return;
     }
     if (doc.fileUrl) {
+      const safeFileUrl = sanitizeUrl(doc.fileUrl, { fallback: '' });
+      if (!safeFileUrl) return;
       const link = document.createElement('a');
-      link.href = doc.fileUrl;
+      link.href = safeFileUrl;
       link.download = doc.docName || `${doc.title.replace(/\s+/g, '_')}.pdf`;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
@@ -733,7 +738,7 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                                 {doc.subReports.map((sub, sIdx) => (
                                   <a
                                     key={sIdx}
-                                    href={sub.fileUrl}
+                                    href={sanitizeUrl(sub.fileUrl)}
                                     download={sub.docName}
                                     className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-gold-50/80 border border-slate-300 hover:border-[#d4a72c] rounded-lg text-xs font-bold text-navy-950 transition-colors shadow-2xs"
                                     title={`Download ${sub.discipline} (${sub.fileSize})`}
@@ -976,7 +981,7 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                         </div>
                         <div className="flex items-center gap-1.5 pt-1">
                           <a
-                            href={sub.fileUrl}
+                            href={sanitizeUrl(sub.fileUrl)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1 text-center py-1.5 px-2 bg-slate-100 hover:bg-slate-200 text-navy-950 font-bold rounded text-[11px] transition-colors"
@@ -984,7 +989,7 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                             Open Tab
                           </a>
                           <a
-                            href={sub.fileUrl}
+                            href={sanitizeUrl(sub.fileUrl)}
                             download={sub.docName}
                             className="flex-1 text-center py-1.5 px-2 bg-[#d4a72c] hover:bg-[#b88f22] text-navy-950 font-bold rounded text-[11px] transition-colors flex items-center justify-center gap-1"
                           >
@@ -999,7 +1004,7 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
               )}
 
               {/* Interactive PDF Document Viewer */}
-              {selectedDoc.fileUrl && (
+              {selectedDoc.fileUrl && sanitizeUrl(selectedDoc.fileUrl, { fallback: '' }) && (
                 <div className="space-y-2">
                   <div className="flex items-center justify-between gap-2">
                     <h5 className="font-bold text-xs uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
@@ -1007,7 +1012,7 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                       <span>Document Viewer ({selectedDoc.docName})</span>
                     </h5>
                     <a
-                      href={selectedDoc.fileUrl}
+                      href={sanitizeUrl(selectedDoc.fileUrl)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[11px] font-bold text-navy-950 hover:text-gold-600 flex items-center gap-1"
@@ -1018,7 +1023,7 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                   </div>
                   <div className="rounded-xl border border-slate-200 overflow-hidden bg-slate-100 shadow-inner">
                     <iframe
-                      src={`${selectedDoc.fileUrl}#toolbar=1`}
+                      src={`${sanitizeUrl(selectedDoc.fileUrl)}#toolbar=1`}
                       title={selectedDoc.title}
                       className="w-full h-80 sm:h-96 border-0"
                     />
@@ -1075,7 +1080,7 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                 ) : selectedDoc.fileUrl ? (
                   <>
                     <a
-                      href={selectedDoc.fileUrl}
+                      href={sanitizeUrl(selectedDoc.fileUrl)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-navy text-xs font-bold px-4 py-2 flex items-center gap-1.5 cursor-pointer shadow-xs"
@@ -1084,7 +1089,7 @@ This is an authentic public inspection copy verified per ANGRAU statutory record
                       <span>Open in New Tab</span>
                     </a>
                     <a
-                      href={selectedDoc.fileUrl}
+                      href={sanitizeUrl(selectedDoc.fileUrl)}
                       download={selectedDoc.docName}
                       className="btn btn-gold text-xs font-bold px-4 py-2 flex items-center gap-1.5 cursor-pointer shadow-xs"
                     >

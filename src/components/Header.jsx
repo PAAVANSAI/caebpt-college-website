@@ -6,7 +6,6 @@ import {
   ChevronDown,
   ChevronRight,
   ExternalLink,
-  Shield,
   Globe,
   Clock,
   Phone,
@@ -14,6 +13,7 @@ import {
 import CollegeEmblem from './CollegeEmblem';
 import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
+import { sanitizeUrl } from '../utils/security';
 
 export default function Header() {
   const { officialStructure, siteSettings } = useWebsite();
@@ -176,7 +176,7 @@ export default function Header() {
               </span>
             </div>
             <a
-              href={currentStructure.angrauUrl || "https://angrau.ac.in"}
+              href={sanitizeUrl(currentStructure.angrauUrl, { fallback: "https://angrau.ac.in" })}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 bg-[#06101e]/90 hover:bg-[#06101e] text-white px-2.5 py-1 rounded text-[11px] font-bold transition-all shadow-xs"
@@ -214,7 +214,7 @@ export default function Header() {
               </span>
             </div>
 
-            {/* Right: Phone & Admin Portal */}
+            {/* Right: Contact Telephone */}
             <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               <a
                 href={`tel:${(siteSettings?.topBarPhone || '+91 8643 224025').replace(/[^0-9+]/g, '')}`}
@@ -224,16 +224,6 @@ export default function Header() {
                 <Phone className="w-3.5 h-3.5 text-[#f5c84c]" />
                 <span>{siteSettings?.topBarPhone || '+91 8643 224025'}</span>
               </a>
-
-              <Link
-                to="/admin"
-                className="flex items-center gap-1 bg-[#d4a72c] hover:bg-[#ecc75f] text-[#06101e] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md text-[10.5px] sm:text-[11px] font-extrabold transition-all shadow-xs flex-shrink-0"
-                title="Administrator Control Panel"
-                style={{ textDecoration: 'none' }}
-              >
-                <Shield className="w-3 h-3 text-[#06101e]" />
-                <span>Admin Portal</span>
-              </Link>
             </div>
           </div>
         </div>
@@ -269,7 +259,7 @@ export default function Header() {
             <div className="flex items-center gap-2 sm:gap-2.5">
               {/* ANGRAU Official University Link */}
               <a
-                href={currentStructure.angrauUrl}
+                href={sanitizeUrl(currentStructure.angrauUrl, { fallback: "https://angrau.ac.in" })}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-[#0b1a2e] hover:text-white text-slate-700 border border-slate-200 text-xs font-bold transition-all"
@@ -279,17 +269,6 @@ export default function Header() {
                 <span>ANGRAU Portal</span>
                 <ExternalLink className="w-3.5 h-3.5 text-[#854d0e]" />
               </a>
-
-              {/* Admin Portal Shortcut */}
-              <Link
-                to="/admin"
-                className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-[#0b1a2e] hover:text-white text-slate-700 border border-slate-200 text-xs font-bold transition-all shadow-2xs"
-                title="Administrator Control Panel"
-                style={{ textDecoration: 'none' }}
-              >
-                <Shield className="w-3.5 h-3.5 text-[#d4a72c]" />
-                <span>Admin</span>
-              </Link>
 
               {/* Mobile Hamburger Toggle (Visible on screens < 1024px) */}
               <button
@@ -519,15 +498,17 @@ export default function Header() {
           {/* Scrolled Right Quick Actions - Appears only when scrolled to keep navbar balanced */}
           {isScrolled && (
             <div className="hidden xl:flex items-center gap-2 flex-shrink-0 ml-2 xl:ml-4 animate-fadeIn">
-              <Link
-                to="/admin"
-                className="flex items-center gap-1 bg-[#d4a72c] hover:bg-[#ecc75f] text-[#06101e] px-2.5 py-1 rounded-md text-[11px] font-extrabold transition-all shadow-xs"
-                title="Admin Portal"
+              <a
+                href={sanitizeUrl(currentStructure.angrauUrl, { fallback: "https://angrau.ac.in" })}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 bg-slate-100 hover:bg-[#0b1a2e] text-[#0b1a2e] hover:text-white px-2.5 py-1 rounded-md text-[11px] font-extrabold transition-all shadow-xs"
+                title="Official ANGRAU University Portal"
                 style={{ textDecoration: 'none' }}
               >
-                <Shield className="w-3 h-3 text-[#06101e]" />
-                <span>Admin</span>
-              </Link>
+                <span>ANGRAU</span>
+                <ExternalLink className="w-3 h-3 text-[#b88e22]" />
+              </a>
             </div>
           )}
 
@@ -571,21 +552,13 @@ export default function Header() {
               </span>
               <div className="flex items-center gap-2">
                 <a
-                  href={currentStructure.angrauUrl}
+                  href={sanitizeUrl(currentStructure.angrauUrl, { fallback: "https://angrau.ac.in" })}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="badge badge-navy text-xs font-bold flex items-center gap-1"
                 >
                   ANGRAU ↗
                 </a>
-                <Link
-                  to="/admin"
-                  className="badge badge-gold text-xs font-bold flex items-center gap-1"
-                  style={{ textDecoration: 'none' }}
-                >
-                  <Shield className="w-3 h-3" />
-                  <span>Admin</span>
-                </Link>
               </div>
             </div>
 

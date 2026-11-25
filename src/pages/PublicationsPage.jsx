@@ -4,6 +4,7 @@ import { useWebsite } from '../context/WebsiteContext';
 import { officialStructureData } from '../data/officialStructureData';
 import { BookOpen, FileText, Download, Calendar, Users, Award, ShieldCheck, Sparkles } from 'lucide-react';
 import PatentsSection from '../components/PatentsSection';
+import { escapeHtml } from '../utils/security';
 
 export default function PublicationsPage() {
   const { officialStructure } = useWebsite();
@@ -13,11 +14,19 @@ export default function PublicationsPage() {
   const handleDownloadDoc = (item) => {
     const win = window.open('', '_blank');
     if (win) {
+      win.opener = null;
+      const safeTitle = escapeHtml(item.title);
+      const safeType = escapeHtml(item.type);
+      const safeDept = escapeHtml(item.department);
+      const safeYear = escapeHtml(item.year);
+      const safeDocName = escapeHtml(item.docName || 'ANGRAU-CAE-PUB');
+      const safeAuthors = escapeHtml(item.authors);
+
       win.document.write(`
         <!DOCTYPE html>
         <html>
         <head>
-          <title>${item.title}</title>
+          <title>${safeTitle}</title>
           <style>
             body { font-family: 'Times New Roman', serif; padding: 40px; max-width: 800px; margin: 0 auto; color: #111; line-height: 1.6; }
             .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 15px; margin-bottom: 25px; }
@@ -42,14 +51,14 @@ export default function PublicationsPage() {
             <div class="sub">Division of Research Publications & Scholarly Monographs</div>
           </div>
           <div class="meta">
-            <div>Type: ${item.type} | Dept: ${item.department}</div>
-            <div>Year: ${item.year} | Ref: ${item.docName || 'ANGRAU-CAE-PUB'}</div>
+            <div>Type: ${safeType} | Dept: ${safeDept}</div>
+            <div>Year: ${safeYear} | Ref: ${safeDocName}</div>
           </div>
-          <div class="title">${item.title}</div>
-          <div class="authors">Authors / Contributors: ${item.authors}</div>
+          <div class="title">${safeTitle}</div>
+          <div class="authors">Authors / Contributors: ${safeAuthors}</div>
           <div class="abstract-box">
             <h4 style="margin-top:0; font-size:15px; text-transform:uppercase;">Publication Abstract & Executive Summary</h4>
-            <p class="content">This technical publication is officially archived in the institutional repository of College of Agricultural Engineering, Bapatla, ANGRAU. Full monograph texts, laboratory protocols, and field findings are maintained under library accession code <strong>${item.docName}</strong>.</p>
+            <p class="content">This technical publication is officially archived in the institutional repository of College of Agricultural Engineering, Bapatla, ANGRAU. Full monograph texts, laboratory protocols, and field findings are maintained under library accession code <strong>${safeDocName}</strong>.</p>
           </div>
           <div class="sig">
             <div style="font-weight: bold;">Editor-in-Chief / Associate Dean</div>

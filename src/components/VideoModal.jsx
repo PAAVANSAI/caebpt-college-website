@@ -1,5 +1,6 @@
 import React from 'react';
 import { X, Video, ExternalLink } from 'lucide-react';
+import { sanitizeUrl } from '../utils/security';
 
 export default function VideoModal({ video, onClose }) {
   if (!video) return null;
@@ -51,7 +52,7 @@ export default function VideoModal({ video, onClose }) {
           <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-blue-900 text-xs flex items-center justify-between">
             <span>Institutional Documentary / Video Stream: <strong>{video.title}</strong></span>
             <a
-              href={video.videoUrl}
+              href={sanitizeUrl(video.videoUrl)}
               target="_blank"
               rel="noopener noreferrer"
               className="font-bold text-blue-800 hover:text-blue-950 flex items-center gap-1"

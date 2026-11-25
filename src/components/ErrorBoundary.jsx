@@ -49,8 +49,8 @@ export class ErrorBoundary extends React.Component {
               </div>
             </div>
 
-            <div className="p-4 bg-slate-950 rounded-xl border border-slate-700 font-mono text-xs text-red-400 overflow-x-auto max-h-48">
-              {this.state.error?.toString()}
+            <div className="p-4 bg-slate-950 rounded-xl border border-slate-700 font-mono text-xs text-red-300 overflow-x-auto max-h-48">
+              An unexpected display error occurred. Please reset the local session cache or return to the homepage.
             </div>
 
             <div className="flex flex-wrap items-center gap-3 pt-2">

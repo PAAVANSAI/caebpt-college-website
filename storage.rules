@@ -1,0 +1,36 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isAdmin() {
+      return request.auth != null && (
+        request.auth.token.admin == true ||
+        request.auth.token.email == 'admin@caebpt.ac.in'
+      );
+    }
+
+    // Public read access for uploaded documents; writes strictly admin-only with MIME & size checks
+    match /documents/{fileName} {
+      allow read: if true;
+      allow write: if isAdmin()
+        && request.resource.size <= 50 * 1024 * 1024
+        && (
+          request.resource.contentType == 'application/pdf' ||
+          request.resource.contentType == 'application/msword' ||
+          request.resource.contentType == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+          request.resource.contentType == 'text/plain'
+        );
+    }
+
+    // Public read access for uploaded images (explicitly excludes SVG); writes strictly admin-only
+    match /uploads/{fileName} {
+      allow read: if true;
+      allow write: if isAdmin()
+        && request.resource.size <= 10 * 1024 * 1024
+        && request.resource.contentType.matches('image/(jpeg|png|webp|gif)');
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

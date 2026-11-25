@@ -122,17 +122,6 @@ export default function Footer() {
                 <span className="truncate">{collegeInfo?.contact?.email || 'principal.cae@caebpt.ac.in'}</span>
               </div>
             </address>
-
-            <div className="pt-3 space-y-2">
-              <Link
-                to="/admin"
-                className="btn btn-gold btn-sm text-[11px] w-full justify-center font-bold flex items-center gap-1.5"
-                style={{ textDecoration: 'none' }}
-              >
-                <ShieldCheck className="w-3.5 h-3.5 text-[#06101e]" />
-                <span>Administrator Dashboard</span>
-              </Link>
-            </div>
           </div>
         </div>
       </div>

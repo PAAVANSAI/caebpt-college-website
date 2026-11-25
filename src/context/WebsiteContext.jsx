@@ -8,49 +8,15 @@ import { facilitiesData as defaultFacilities } from '../data/facilitiesData';
 import { noticesData as defaultNotices } from '../data/noticesData';
 import { galleryData as defaultGallery } from '../data/galleryData';
 import { auth, db, storage } from '../lib/firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import {
-  doc, onSnapshot, setDoc, collection, deleteDoc, increment, getDocs
+  doc, onSnapshot, setDoc, collection, deleteDoc, increment
 } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const WebsiteContext = createContext();
 
-const initialEnquiries = [
-  {
-    id: "enq-101",
-    fullName: "K. Sai Praneeth",
-    phone: "98480 12345",
-    email: "sai.praneeth@gmail.com",
-    course: "B.Tech in Agricultural Engineering",
-    city: "Guntur, AP",
-    message: "Inquiring about AP EAPCET cutoff ranks and hostel availability for boys.",
-    date: "2024-10-26 14:32",
-    status: "New"
-  },
-  {
-    id: "enq-102",
-    fullName: "M. Anusha Reddy",
-    phone: "99890 54321",
-    email: "anusha.reddy@yahoo.com",
-    course: "M.Tech in Soil & Water Conservation",
-    city: "Vijayawada, AP",
-    message: "Seeking details on GATE scholarship eligibility and department research grants.",
-    date: "2024-10-25 11:15",
-    status: "Contacted"
-  },
-  {
-    id: "enq-103",
-    fullName: "V. Rajesh Kumar",
-    phone: "94401 98765",
-    email: "rajesh.v@outlook.com",
-    course: "Ph.D. in Agricultural Engineering",
-    city: "Tirupati, AP",
-    message: "Interested in Ph.D. research under Farm Machinery & Power department.",
-    date: "2024-10-23 09:40",
-    status: "In Review"
-  }
-];
+const initialEnquiries = [];
 
 /**
  * Deeply sanitizes data before writing to Firestore.
@@ -90,17 +56,11 @@ function safeFirestoreData(data) {
   }
 }
 
-async function ensureAdminAuth() {
-  if (!auth.currentUser) {
-    try {
-      await signInWithEmailAndPassword(auth, 'admin@caebpt.ac.in', 'caebpt2025');
-    } catch (e) {
-      console.warn('Firebase admin authentication notice:', e?.message);
-    }
-  }
+function hasAuthenticatedAdmin() {
+  return Boolean(auth.currentUser);
 }
 
-const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_21_navbar_alignment_v13';
+const STRUCTURE_CACHE_VERSION = 'caebpt_structure_2026_11_25_security_hardened_v14';
 
 function sanitizeOfficialStructure(data) {
   if (!data || typeof data !== 'object') return defaultOfficialStructure;
@@ -581,8 +541,10 @@ export function WebsiteProvider({ children }) {
   });
 
   const [enquiries, setEnquiries] = useState(() => {
-    const saved = localStorage.getItem('caebpt_enquiries');
-    return saved ? JSON.parse(saved) : initialEnquiries;
+    try {
+      localStorage.removeItem('caebpt_enquiries');
+    } catch { }
+    return initialEnquiries;
   });
 
   const [siteSettings, setSiteSettings] = useState(() => {
@@ -637,10 +599,6 @@ export function WebsiteProvider({ children }) {
   }, [facilities]);
 
   useEffect(() => {
-    localStorage.setItem('caebpt_enquiries', JSON.stringify(enquiries));
-  }, [enquiries]);
-
-  useEffect(() => {
     localStorage.setItem('caebpt_site_settings', JSON.stringify(siteSettings));
   }, [siteSettings]);
 
@@ -681,25 +639,35 @@ export function WebsiteProvider({ children }) {
     }
   }, []);
 
-  // 3. Realtime Admissions Enquiries Sync
+  // 3. Realtime Admissions Enquiries Sync (Authenticated admin sessions only)
   useEffect(() => {
-    try {
-      const colRef = collection(db, 'enquiries');
-      const unsubscribe = onSnapshot(colRef, (querySnap) => {
-        if (!querySnap.empty) {
+    let unsubscribeSnapshot = null;
+    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+      if (unsubscribeSnapshot) {
+        unsubscribeSnapshot();
+        unsubscribeSnapshot = null;
+      }
+      if (!user) {
+        setEnquiries([]);
+        return;
+      }
+      try {
+        const colRef = collection(db, 'enquiries');
+        unsubscribeSnapshot = onSnapshot(colRef, (querySnap) => {
           const remoteList = [];
           querySnap.forEach((d) => remoteList.push(d.data()));
-          if (remoteList.length > 0) {
-            setEnquiries(remoteList.sort((a, b) => (b.date || '').localeCompare(a.date || '')));
-          }
-        }
-      }, (err) => {
-        console.warn('Firestore enquiries listener notice:', err.message);
-      });
-      return () => unsubscribe();
-    } catch (e) {
-      console.warn('Firebase enquiries error:', e);
-    }
+          setEnquiries(remoteList.sort((a, b) => (b.date || '').localeCompare(a.date || '')));
+        }, (err) => {
+          console.warn('Firestore enquiries listener notice:', err.message);
+        });
+      } catch (e) {
+        console.warn('Firebase enquiries error:', e);
+      }
+    });
+    return () => {
+      if (unsubscribeSnapshot) unsubscribeSnapshot();
+      unsubscribeAuth();
+    };
   }, []);
 
   // 4. Realtime Notices Sync
@@ -840,7 +808,7 @@ export function WebsiteProvider({ children }) {
       } catch { }
       (async () => {
         try {
-          await ensureAdminAuth();
+          if (!hasAuthenticatedAdmin()) return;
           const cleaned = safeFirestoreData(next);
           if (cleaned && typeof cleaned === 'object' && Object.keys(cleaned).length > 0) {
             await setDoc(doc(db, 'content', 'officialStructure'), cleaned, { merge: true });
@@ -1108,8 +1076,11 @@ export function WebsiteProvider({ children }) {
     }));
   };
 
-  // 11. Firebase Storage — upload file and return download URL
+  // 11. Firebase Storage — upload file and return download URL (Admin only)
   const uploadFileToStorage = async (file, path) => {
+    if (!hasAuthenticatedAdmin()) {
+      throw new Error('Administrator authentication required.');
+    }
     const storageRef = ref(storage, path);
     await uploadBytes(storageRef, file);
     return await getDownloadURL(storageRef);
@@ -1117,13 +1088,23 @@ export function WebsiteProvider({ children }) {
 
   // 12. Enquiries
   const addEnquiry = (enquiryData) => {
+    const uniqueSuffix = typeof crypto !== 'undefined' && crypto.randomUUID
+      ? crypto.randomUUID().slice(0, 8)
+      : Math.random().toString(36).slice(2, 10);
     const newEnq = {
-      ...enquiryData,
-      id: `enq-${Date.now()}`,
+      fullName: String(enquiryData?.fullName || '').trim().slice(0, 120),
+      phone: String(enquiryData?.phone || '').trim().slice(0, 20),
+      email: String(enquiryData?.email || '').trim().slice(0, 150),
+      course: String(enquiryData?.course || '').trim().slice(0, 150),
+      city: String(enquiryData?.city || '').trim().slice(0, 100),
+      message: String(enquiryData?.message || '').trim().slice(0, 1000),
+      id: `enq-${Date.now()}-${uniqueSuffix}`,
       date: new Date().toISOString().replace('T', ' ').substring(0, 16),
       status: "New"
     };
-    setEnquiries((prev) => [newEnq, ...prev]);
+    if (hasAuthenticatedAdmin()) {
+      setEnquiries((prev) => [newEnq, ...prev]);
+    }
     try {
       const cleaned = safeFirestoreData(newEnq);
       setDoc(doc(db, 'enquiries', newEnq.id), cleaned).catch(() => { });
@@ -1133,6 +1114,7 @@ export function WebsiteProvider({ children }) {
   };
 
   const updateEnquiryStatus = (id, status) => {
+    if (!hasAuthenticatedAdmin()) return;
     setEnquiries((prev) => prev.map((e) => (e.id === id ? { ...e, status } : e)));
     try {
       setDoc(doc(db, 'enquiries', id), { status }, { merge: true }).catch(() => { });
@@ -1142,6 +1124,7 @@ export function WebsiteProvider({ children }) {
   };
 
   const deleteEnquiry = (id) => {
+    if (!hasAuthenticatedAdmin()) return;
     setEnquiries((prev) => prev.filter((e) => e.id !== id));
     try {
       deleteDoc(doc(db, 'enquiries', id)).catch(() => { });
@@ -1157,7 +1140,7 @@ export function WebsiteProvider({ children }) {
       } catch { }
       (async () => {
         try {
-          await ensureAdminAuth();
+          if (!hasAuthenticatedAdmin()) return;
           const cleaned = safeFirestoreData(next);
           await setDoc(doc(db, 'settings', 'siteSettings'), cleaned, { merge: true });
         } catch (err) {

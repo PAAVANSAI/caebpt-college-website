@@ -94,7 +94,7 @@ export const normalizeProgramOrDept = (val) => {
 };
 
 export default function Admissions({ initialCourse = '', isModal = false, onClose = () => {} }) {
-  const { addEnquiry } = useWebsite();
+  const { addEnquiry, siteSettings } = useWebsite();
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -104,6 +104,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
     qualification: 'Intermediate (10+2 / MPC)',
     message: '',
     consent: false,
+    website: '', // honeypot field
   });
 
   const [errors, setErrors] = useState({});
@@ -154,12 +155,35 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Silently discard automated bot submissions filling the hidden honeypot
+    if (formData.website && formData.website.trim() !== '') {
+      return;
+    }
+
+    if (siteSettings && siteSettings.publicAdmissionsOpen === false) {
+      setErrors({ consent: 'Online admissions enquiries are temporarily closed.' });
+      return;
+    }
+
+    // Cooldown throttling to prevent rapid automated submissions
+    try {
+      const lastSubmit = Number(sessionStorage.getItem('caebpt_last_enquiry_ts') || '0');
+      if (Date.now() - lastSubmit < 15000) {
+        setErrors({ consent: 'Please wait 15 seconds before submitting another application.' });
+        return;
+      }
+    } catch { }
+
     if (!validate()) return;
 
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmittedData({ ...formData });
+      try {
+        sessionStorage.setItem('caebpt_last_enquiry_ts', String(Date.now()));
+      } catch { }
       if (addEnquiry) {
         addEnquiry({
           fullName: formData.fullName,
@@ -184,6 +208,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
       qualification: 'Intermediate (10+2 / MPC)',
       message: '',
       consent: false,
+      website: '',
     });
     setErrors({});
   };
@@ -193,6 +218,19 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
   // ─────────────────────────────────────────────────────────────
   const renderForm = () => (
     <form onSubmit={handleSubmit} noValidate className={isModal ? "space-y-3" : "space-y-4"}>
+      {/* Anti-bot honeypot field */}
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          type="text"
+          id="website"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={formData.website}
+          onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+        />
+      </div>
       {/* Row 1: Candidate Name & Mobile */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
         <div>
@@ -203,6 +241,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
             <input
               type="text"
               id="fullName"
+              maxLength={120}
               value={formData.fullName}
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
               placeholder="e.g. Ramesh Kumar"
@@ -221,6 +260,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
           <input
             type="tel"
             id="phone"
+            maxLength={20}
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             placeholder="e.g. 98765 43210"
@@ -241,6 +281,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
           <input
             type="email"
             id="email"
+            maxLength={150}
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             placeholder="e.g. candidate@example.com"
@@ -258,6 +299,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
           <input
             type="text"
             id="city"
+            maxLength={100}
             value={formData.city}
             onChange={(e) => setFormData({ ...formData, city: e.target.value })}
             placeholder="e.g. Bapatla, Guntur, AP"
@@ -321,6 +363,7 @@ export default function Admissions({ initialCourse = '', isModal = false, onClos
         <textarea
           id="message"
           rows={isModal ? 2 : 3}
+          maxLength={1000}
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           placeholder="Enter any questions regarding entrance cutoffs, hostel allotment, fees structure, or certificate verification..."

@@ -26,7 +26,7 @@ export default function TopBar() {
           </div>
         </div>
 
-        {/* Right: Contact & Admin Direct Access */}
+        {/* Right: Contact Info */}
         <div className="flex items-center gap-3 ml-auto">
           <a
             href={`tel:${collegeInfo.contact.phone.replace(/[^0-9+]/g, '')}`}
@@ -36,17 +36,6 @@ export default function TopBar() {
             <Phone className="w-3.5 h-3.5 text-[#ecc75f]" />
             <span>{collegeInfo.contact.phone}</span>
           </a>
-
-          {/* Admin Control Link */}
-          <Link
-            to="/admin"
-            className="flex items-center gap-1.5 bg-[#d4a72c] hover:bg-[#ecc75f] text-[#06101e] px-3 py-1 rounded-full text-xs font-bold transition-all shadow-xs"
-            title="Administrator Control Panel (Traffic, Content, Notices)"
-            style={{ textDecoration: 'none' }}
-          >
-            <ShieldCheck className="w-3.5 h-3.5 text-[#06101e]" />
-            <span>Admin Portal</span>
-          </Link>
         </div>
       </div>
     </div>

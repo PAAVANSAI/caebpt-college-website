@@ -7,6 +7,7 @@ const Lightbox = lazy(() => import('../components/Lightbox'));
 import { officialStructureData } from '../data/officialStructureData';
 import { collegeInfo as defaultCollegeInfo } from '../data/collegeInfo';
 import { useWebsite } from '../context/WebsiteContext';
+import { escapeHtml } from '../utils/security';
 import {
   Quote,
   Bell,
@@ -64,11 +65,21 @@ export default function HomePage({ onSelectProgram, onSelectNotice }) {
   const handleDownloadDoc = (item, type = 'Notification') => {
     const win = window.open('', '_blank');
     if (win) {
+      win.opener = null;
+      const safePageTitle = escapeHtml(item.title || item.docName);
+      const safeRef = escapeHtml(item.refNo || 'CAEBPT/OFFICIAL/' + new Date().getFullYear());
+      const safeDate = escapeHtml(item.date || new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }));
+      const safeType = escapeHtml(type);
+      const safeHeading = escapeHtml(item.title || 'Official Document');
+      const safeBody = escapeHtml(item.summary || item.content || 'This document has been officially issued and entered into the institutional administrative records.');
+      const safeDeadline = escapeHtml(item.deadline);
+      const safeDocName = escapeHtml(item.docName || 'Official Notification');
+
       win.document.write(`
         <!DOCTYPE html>
         <html>
         <head>
-          <title>${item.title || item.docName}</title>
+          <title>${safePageTitle}</title>
           <style>
             body { font-family: 'Times New Roman', serif; padding: 40px; max-width: 800px; margin: 0 auto; color: #111; line-height: 1.6; }
             .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 15px; margin-bottom: 25px; }
@@ -92,13 +103,13 @@ export default function HomePage({ onSelectProgram, onSelectNotice }) {
             <div class="sub">Bapatla - 522 101, Bapatla District, Andhra Pradesh, India</div>
           </div>
           <div class="meta">
-            <div>Ref: ${item.refNo || 'CAEBPT/OFFICIAL/' + new Date().getFullYear()}</div>
-            <div>Date: ${item.date || new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}</div>
+            <div>Ref: ${safeRef}</div>
+            <div>Date: ${safeDate}</div>
           </div>
-          <div class="title">${type}: ${item.title || 'Official Document'}</div>
+          <div class="title">${safeType}: ${safeHeading}</div>
           <div class="content">
-            <p>${item.summary || item.content || 'This document has been officially issued and entered into the institutional administrative records.'}</p>
-            ${item.deadline ? `<div class="specs"><strong>Submission / Application Deadline:</strong> ${item.deadline}<br/><strong>File Reference:</strong> ${item.docName || 'Official Notification'}</div>` : ''}
+            <p>${safeBody}</p>
+            ${item.deadline ? `<div class="specs"><strong>Submission / Application Deadline:</strong> ${safeDeadline}<br/><strong>File Reference:</strong> ${safeDocName}</div>` : ''}
           </div>
           <div class="sig">
             <div style="font-weight: bold;">Associate Dean</div>

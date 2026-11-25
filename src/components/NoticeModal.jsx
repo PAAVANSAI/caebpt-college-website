@@ -1,5 +1,6 @@
 import React from 'react';
 import { X, Calendar, Tag, FileText, Download, AlertTriangle } from 'lucide-react';
+import { escapeHtml } from '../utils/security';
 
 export default function NoticeModal({ notice, onClose }) {
   if (!notice) return null;
@@ -7,11 +8,20 @@ export default function NoticeModal({ notice, onClose }) {
   const handleDownloadCircular = () => {
     const win = window.open('', '_blank');
     if (win) {
+      win.opener = null;
+      const safeTitle = escapeHtml(notice.attachmentName || notice.title);
+      const safeNoticeTitle = escapeHtml(notice.title);
+      const safeId = escapeHtml(notice.id || 'CIR-01');
+      const safeDate = escapeHtml(notice.date || new Date().toLocaleDateString('en-IN'));
+      const safeCategory = escapeHtml(notice.category);
+      const safeSummary = escapeHtml(notice.summary);
+      const safeContent = escapeHtml(notice.content);
+
       win.document.write(`
         <!DOCTYPE html>
         <html>
         <head>
-          <title>${notice.attachmentName || notice.title}</title>
+          <title>${safeTitle}</title>
           <style>
             body { font-family: 'Times New Roman', serif; padding: 40px; max-width: 800px; margin: 0 auto; color: #111; line-height: 1.6; }
             .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 15px; margin-bottom: 25px; }
@@ -34,14 +44,14 @@ export default function NoticeModal({ notice, onClose }) {
             <div class="sub">Bapatla - 522 101, Bapatla District, Andhra Pradesh, India</div>
           </div>
           <div class="meta">
-            <div>Ref No: CAE/OFFICIAL/2026/${notice.id || 'CIR-01'}</div>
-            <div>Date: ${notice.date || new Date().toLocaleDateString('en-IN')}</div>
+            <div>Ref No: CAE/OFFICIAL/2026/${safeId}</div>
+            <div>Date: ${safeDate}</div>
           </div>
-          <div class="title">CIRCULAR: ${notice.title}</div>
+          <div class="title">CIRCULAR: ${safeNoticeTitle}</div>
           <div class="content">
-            <p><strong>Subject / Category:</strong> ${notice.category}</p>
-            <p>${notice.summary}</p>
-            <p>${notice.content}</p>
+            <p><strong>Subject / Category:</strong> ${safeCategory}</p>
+            <p>${safeSummary}</p>
+            <p>${safeContent}</p>
           </div>
           <div class="sig">
             <p><strong>Associate Dean & Head</strong><br>College of Agricultural Engineering<br>ANGRAU, Bapatla</p>
